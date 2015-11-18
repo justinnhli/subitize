@@ -1,11 +1,5 @@
 #!/usr/bin/env python3
 
-# TODO
-# the problem here is that there are two purposes this script could be used for
-# the first is to find a list of courses for some purpose (advising, instructor schedule, etc.)
-# the second is to get the set of background knowledge (list of instructors, list of departments, etc.)
-# in theory, the second doesn't require a query at all - the KB just needs to be updated every semester
-
 from argparse import ArgumentParser
 from csv import reader as csv_reader
 from datetime import datetime
