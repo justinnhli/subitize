@@ -275,11 +275,11 @@ def to_year_season(semester):
         return year, 'summer'
 
 def get_data_from_web(year, season):
-    response = _request_counts(to_semester(year, season))
-    if response.status_code != 200:
-        print('Request to Course Counts resulted in status code {}; quitting.'.format(response.status_code))
+    response = _request_counts(to_semester(year, season)).text.split('|')
+    if response[2] != '':
+        print('Request to Course Counts resulted in status code {}; quitting.'.format(response[2]))
         exit(1)
-    return _extract_results(response.text.split('|')[7], year, season)
+    return _extract_results(response[7], year, season)
 
 def get_data_from_file():
     offerings = []
