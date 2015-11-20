@@ -357,15 +357,15 @@ def main():
             time = datetime.strptime(args.time.upper(), '%I:%M%p')
         except ValueError:
             arg_parser.error('argument --time: time must be in HH:MMxm format')
-        filters.append((lambda offering: any(meeting.start_time < time < meeting.end_time for meeting in offering.meetings if meeting.start_time is not None)))
+        filters.append((lambda offering: any((meeting.start_time < time < meeting.end_time) for meeting in offering.meetings if meeting.start_time)))
     if args.day:
         if args.day.lower() in DAY_ABBRS:
             args.day = DAY_ABBRS[args.day.lower()]
-        filters.append((lambda offering: any((args.day.upper() in meeting.days) for meeting in offering.meetings)))
+        filters.append((lambda offering: any((args.day.upper() in meeting.days) for meeting in offering.meetings if meeting.days)))
     if args.building:
-        filters.append((lambda offering: any((meeting.location is not None and args.building.lower() in meeting.location.lower()) for meeting in offering.meetings)))
+        filters.append((lambda offering: any((args.building.lower() in meeting.location.lower()) for meeting in offering.meetings if meeting.location)))
     if args.room:
-        filters.append((lambda offering: any((meeting.location is not None and args.room.lower() in meeting.location.lower()) for meeting in offering.meetings)))
+        filters.append((lambda offering: any((args.room.lower() in meeting.location.lower()) for meeting in offering.meetings if meeting.location)))
     if args.header:
         print('\t'.join(('year', 'season', 'department', 'number', 'section', 'title', 'units', 'instructors', 'meetings', 'core', 'seats', 'enrolled', 'reserved', 'reserved_open', 'waitlisted')))
     for offering in offerings:
