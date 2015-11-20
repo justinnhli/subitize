@@ -155,6 +155,27 @@ class Offering:
         values.append(self.reserved_open)
         values.append(self.waitlisted)
         return '\t'.join(values)
+    def __str__(self):
+        values = []
+        values.append(self.year)
+        values.append(self.season)
+        values.append(self.department)
+        values.append(self.number)
+        values.append(self.section)
+        values.append(self.title)
+        values.append(self.units)
+        values.append(';'.join(sorted(self.instructors)))
+        values.append(';'.join(str(meeting) for meeting in self.meetings))
+        if any(self.core):
+            values.append(';'.join(sorted(self.core)))
+        else:
+            values.append('N/A')
+        values.append(self.seats)
+        values.append(self.enrolled)
+        values.append(self.reserved)
+        values.append(self.reserved_open)
+        values.append(self.waitlisted)
+        return '\t'.join(values)
 
 def _extract_text(soup):
     text = []
@@ -349,7 +370,7 @@ def main():
         print('\t'.join(('year', 'season', 'department', 'number', 'section', 'title', 'units', 'instructors', 'meetings', 'core', 'seats', 'enrolled', 'reserved', 'reserved_open', 'waitlisted')))
     for offering in offerings:
         if all(fn(offering) for fn in filters):
-            print(offering.tsv_row())
+            print(str(offering))
 
 if __name__ == '__main__':
     main()
