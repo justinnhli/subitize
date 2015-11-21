@@ -124,6 +124,7 @@ class Offering:
     def __init__(self, year, season, department, number, section, title, units, instructors, meetings, core, seats, enrolled, reserved, reserved_open, waitlisted):
         self.year = year
         self.season = season
+        self.semester = to_semester(year, season)
         self.department = department
         self.number = number
         self.section = section
@@ -274,8 +275,9 @@ def to_year_season(semester):
     elif season == '03':
         return year, 'summer'
 
-def get_data_from_web(year, season):
-    response = _request_counts(to_semester(year, season)).text.split('|')
+def get_data_from_web(semester):
+    year, season = to_year_season(semester)
+    response = _request_counts(semester).text.split('|')
     if response[2] != '':
         print('Request to Course Counts resulted in status code {}; quitting.'.format(response[2]))
         exit(1)
@@ -295,43 +297,63 @@ def get_data_from_file():
 
 def parse_args():
     arg_parser = ArgumentParser()
-    group = arg_parser.add_argument_group("FILTERS")
-    group.add_argument('--year')
+    group = arg_parser.add_argument_group("semester filters")
+    group.add_argument('--year', type=int)
     group.add_argument('--season', choices=('fall', 'spring', 'summer'))
+    group.add_argument('--semester', type=int)
+    group.add_argument('--before-semester', type=int)
+    group.add_argument('--after-semester', type=int)
+    group = arg_parser.add_argument_group("academic filters")
     group.add_argument('--department')
-    group.add_argument('--number')
-    group.add_argument('--min-number')
-    group.add_argument('--max-number')
+    group.add_argument('--number', type=int)
+    group.add_argument('--min-number', type=int)
+    group.add_argument('--max-number', type=int)
     group.add_argument('--title')
-    group.add_argument('--units')
-    group.add_argument('--min-units')
-    group.add_argument('--max-units')
+    group.add_argument('--units', type=int)
+    group.add_argument('--min-units', type=int)
+    group.add_argument('--max-units', type=int)
     group.add_argument('--instructor')
     group.add_argument('--core')
+    group = arg_parser.add_argument_group("meeting filters")
     group.add_argument('--time')
     group.add_argument('--day')
     group.add_argument('--building')
     group.add_argument('--room')
-    group = arg_parser.add_argument_group("DATA SOURCE").add_mutually_exclusive_group()
+    group = arg_parser.add_argument_group("enrollment filters")
+    group.add_argument('--open', action='store_true', default=False)
+    group = arg_parser.add_argument_group("data source options").add_mutually_exclusive_group()
     group.add_argument('--web', dest='web', action='store_true', default=False)
-    group.add_argument('--file', dest='web', action='store_false', default=False)
-    group = arg_parser.add_argument_group("OUTPUT")
+    group.add_argument('--file', dest='web', action='store_false', default=True)
+    group = arg_parser.add_argument_group("output options")
     group.add_argument('--header', action='store_true', default=False)
-    return arg_parser, arg_parser.parse_args()
+    args = arg_parser.parse_args()
+    for attr in ('year', 'semester', 'before_semester', 'after_semester', 'number', 'min_number', 'max_number', 'units', 'min_units', 'max_units'):
+        if getattr(args, attr):
+            setattr(args, attr, str(getattr(args, attr)))
+    for attr in ('semester', 'before_semester', 'after_semester'):
+        if getattr(args, attr) and len(getattr(args, attr)) != 6:
+            arg_parser.error('argument --{}: must be in YYYY0S format'.format(attr.replace('_', '-')))
+    if args.time:
+        try:
+            datetime.strptime(args.time.upper(), '%I:%M%p')
+        except ValueError:
+            arg_parser.error('argument --time: must be in HH:MM[ap]m format')
+    if args.web and (args.semester is None and (args.year is None or args.season is None)):
+        arg_parser.error('argument --web: specific semester must be provided')
+    return args
 
-def main():
-    arg_parser, args = parse_args()
-    if args.web:
-        if args.year is None or args.season is None:
-            arg_parser.error('argument --web: --year and --season must be provided')
-        offerings = get_data_from_web(args.year, args.season)
-    else:
-        offerings = get_data_from_file()
+def create_filters(args):
     filters = []
     if args.year:
         filters.append((lambda offering: args.year == offering.year))
     if args.season:
         filters.append((lambda offering: args.season.lower() == offering.season.lower()))
+    if args.semester:
+        filters.append((lambda offering: args.semester == offering.semester))
+    if args.before_semester:
+        filters.append((lambda offering: offering.semester < args.before_semester))
+    if args.after_semester:
+        filters.append((lambda offering: args.after_semester <= offering.semester))
     if args.department:
         filters.append((lambda offering: args.department.lower() == offering.department.lower() or args.department.lower() in DEPARTMENT_ABBRS[offering.department].lower()))
     if args.number:
@@ -353,11 +375,7 @@ def main():
     if args.core:
         filters.append((lambda offering: any((args.core.lower() == core.lower() or args.core.lower()) in CORE_ABBRS[core].lower() for core in offering.core if core)))
     if args.time:
-        try:
-            time = datetime.strptime(args.time.upper(), '%I:%M%p')
-        except ValueError:
-            arg_parser.error('argument --time: time must be in HH:MMxm format')
-        filters.append((lambda offering: any((meeting.start_time < time < meeting.end_time) for meeting in offering.meetings if meeting.start_time)))
+        filters.append((lambda offering: any((meeting.start_time < datetime.strptime(args.time.upper(), '%I:%M%p') < meeting.end_time) for meeting in offering.meetings if meeting.start_time)))
     if args.day:
         if args.day.lower() in DAY_ABBRS:
             args.day = DAY_ABBRS[args.day.lower()]
@@ -366,6 +384,20 @@ def main():
         filters.append((lambda offering: any((args.building.lower() in meeting.location.lower()) for meeting in offering.meetings if meeting.location)))
     if args.room:
         filters.append((lambda offering: any((args.room.lower() in meeting.location.lower()) for meeting in offering.meetings if meeting.location)))
+    if args.open:
+        filters.append((lambda offering: offering.enrolled < offering.seats))
+    return filters
+
+def main():
+    args = parse_args()
+    filters = create_filters(args)
+    if args.web:
+        if args.semester:
+            offerings = get_data_from_web(args.semester)
+        else:
+            offerings = get_data_from_web(to_semester(args.year, args.season))
+    else:
+        offerings = get_data_from_file()
     if args.header:
         print('\t'.join(('year', 'season', 'department', 'number', 'section', 'title', 'units', 'instructors', 'meetings', 'core', 'seats', 'enrolled', 'reserved', 'reserved_open', 'waitlisted')))
     for offering in offerings:
