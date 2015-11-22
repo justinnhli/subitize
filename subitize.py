@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 
 from argparse import ArgumentParser
-from csv import reader as csv_reader
+from csv import reader as csv_reader, QUOTE_NONE
 from datetime import datetime
+from functools import total_ordering
 from os.path import dirname, join as join_path
 
 import requests
 from bs4 import BeautifulSoup
+
+DATA_FILE = 'counts.tsv'
 
 DAY_ABBRS = {
     'monday': 'M',
@@ -120,6 +123,7 @@ class Meeting:
     def from_string(s):
         return Meeting(*s.split(' ', maxsplit=2))
 
+@total_ordering
 class Offering:
     def __init__(self, year, season, department, number, section, title, units, instructors, meetings, core, seats, enrolled, reserved, reserved_open, waitlisted):
         self.year = year
@@ -138,7 +142,7 @@ class Offering:
         self.reserved = reserved
         self.reserved_open = reserved_open
         self.waitlisted = waitlisted
-    def tsv_row(self):
+    def to_tsv_row(self):
         values = []
         values.append(self.year)
         values.append(self.season)
@@ -156,6 +160,8 @@ class Offering:
         values.append(self.reserved_open)
         values.append(self.waitlisted)
         return '\t'.join(values)
+    def __lt__(self, other):
+        return (self.semester, self.department, self.number, self.section) < (other.semester, other.department, other.number, other.section)
     def __str__(self):
         values = []
         values.append(self.year)
@@ -285,9 +291,9 @@ def get_data_from_web(semester):
 
 def get_data_from_file():
     offerings = []
-    with open(join_path(dirname(__file__), 'counts.tsv')) as fd:
+    with open(join_path(dirname(__file__), DATA_FILE)) as fd:
         fd.readline()
-        for offering in csv_reader(fd, delimiter='\t'):
+        for offering in csv_reader(fd, delimiter='\t', quoting=QUOTE_NONE):
             year, season, department, number, section, title, units, instructors, meetings, core, seats, enrolled, reserved, reserved_open, waitlisted = offering
             instructors = tuple(instructor.strip() for instructor in instructors.split(';'))
             meetings = tuple(Meeting.from_string(meeting) for meeting in meetings.split(';'))
@@ -297,13 +303,13 @@ def get_data_from_file():
 
 def parse_args():
     arg_parser = ArgumentParser()
-    group = arg_parser.add_argument_group("semester filters")
+    group = arg_parser.add_argument_group('semester filters')
     group.add_argument('--year', type=int)
     group.add_argument('--season', choices=('fall', 'spring', 'summer'))
     group.add_argument('--semester', type=int)
     group.add_argument('--before-semester', type=int)
     group.add_argument('--after-semester', type=int)
-    group = arg_parser.add_argument_group("academic filters")
+    group = arg_parser.add_argument_group('academic filters')
     group.add_argument('--department')
     group.add_argument('--number', type=int)
     group.add_argument('--min-number', type=int)
@@ -314,18 +320,20 @@ def parse_args():
     group.add_argument('--max-units', type=int)
     group.add_argument('--instructor')
     group.add_argument('--core')
-    group = arg_parser.add_argument_group("meeting filters")
+    group = arg_parser.add_argument_group('meeting filters')
     group.add_argument('--time')
     group.add_argument('--day')
     group.add_argument('--building')
     group.add_argument('--room')
-    group = arg_parser.add_argument_group("enrollment filters")
+    group = arg_parser.add_argument_group('enrollment filters')
     group.add_argument('--open', action='store_true', default=False)
-    group = arg_parser.add_argument_group("data source options").add_mutually_exclusive_group()
+    group = arg_parser.add_argument_group('data source options').add_mutually_exclusive_group()
     group.add_argument('--web', dest='web', action='store_true', default=False)
     group.add_argument('--file', dest='web', action='store_false', default=True)
-    group = arg_parser.add_argument_group("output options")
+    group = arg_parser.add_argument_group('output options')
     group.add_argument('--header', action='store_true', default=False)
+    group = arg_parser.add_argument_group('maintenance options')
+    group.add_argument('--update', action='store_true', default=False)
     args = arg_parser.parse_args()
     for attr in ('year', 'semester', 'before_semester', 'after_semester', 'number', 'min_number', 'max_number', 'units', 'min_units', 'max_units'):
         if getattr(args, attr):
@@ -339,7 +347,9 @@ def parse_args():
         except ValueError:
             arg_parser.error('argument --time: must be in HH:MM[ap]m format')
     if args.web and (args.semester is None and (args.year is None or args.season is None)):
-        arg_parser.error('argument --web: specific semester must be provided')
+        arg_parser.error('argument --web: must provide specific semester')
+    if args.update and args.semester is None:
+        arg_parser.error('argument --update: must specify --semester')
     return args
 
 def create_filters(args):
@@ -388,21 +398,33 @@ def create_filters(args):
         filters.append((lambda offering: offering.enrolled < offering.seats))
     return filters
 
+def get_header():
+    return '\t'.join(('year', 'season', 'department', 'number', 'section', 'title', 'units', 'instructors', 'meetings', 'core', 'seats', 'enrolled', 'reserved', 'reserved_open', 'waitlisted'))
+
 def main():
     args = parse_args()
-    filters = create_filters(args)
-    if args.web:
-        if args.semester:
-            offerings = get_data_from_web(args.semester)
-        else:
-            offerings = get_data_from_web(to_semester(args.year, args.season))
-    else:
+    if args.update:
         offerings = get_data_from_file()
-    if args.header:
-        print('\t'.join(('year', 'season', 'department', 'number', 'section', 'title', 'units', 'instructors', 'meetings', 'core', 'seats', 'enrolled', 'reserved', 'reserved_open', 'waitlisted')))
-    for offering in offerings:
-        if all(fn(offering) for fn in filters):
-            print(str(offering))
+        offerings = list(offering for offering in offerings if offering.semester != args.semester)
+        offerings.extend(get_data_from_web(args.semester))
+        with open(DATA_FILE, 'w') as fd:
+            fd.write(get_header() + '\n')
+            for offering in sorted(offerings):
+                fd.write(offering.to_tsv_row() + '\n')
+    else:
+        filters = create_filters(args)
+        if args.web:
+            if args.semester:
+                offerings = get_data_from_web(args.semester)
+            else:
+                offerings = get_data_from_web(to_semester(args.year, args.season))
+        else:
+            offerings = get_data_from_file()
+        if args.header:
+            print(get_header())
+        for offering in offerings:
+            if all(fn(offering) for fn in filters):
+                print(str(offering))
 
 if __name__ == '__main__':
     main()
