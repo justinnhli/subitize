@@ -311,6 +311,7 @@ def parse_args():
     group.add_argument('--after-semester', type=int)
     group = arg_parser.add_argument_group('academic filters')
     group.add_argument('--department')
+    group.add_argument('--department-code')
     group.add_argument('--number', type=int)
     group.add_argument('--min-number', type=int)
     group.add_argument('--max-number', type=int)
@@ -366,6 +367,8 @@ def create_filters(args):
         filters.append((lambda offering: args.after_semester <= offering.semester))
     if args.department:
         filters.append((lambda offering: args.department.lower() == offering.department.lower() or args.department.lower() in DEPARTMENT_ABBRS[offering.department].lower()))
+    if args.department_code:
+        filters.append((lambda offering: args.department_code.lower() == offering.department.lower()))
     if args.number:
         filters.append((lambda offering: args.number == offering.number))
     if args.min_number:
