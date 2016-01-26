@@ -6,9 +6,6 @@ from datetime import datetime
 from functools import total_ordering
 from os.path import dirname, join as join_path
 
-import requests
-from bs4 import BeautifulSoup
-
 DATA_FILE = 'counts.tsv'
 
 DAY_ABBRS = {
@@ -282,6 +279,8 @@ def to_year_season(semester):
         return year, 'summer'
 
 def get_data_from_web(semester):
+    import requests
+    from bs4 import BeautifulSoup
     year, season = to_year_season(semester)
     response = _request_counts(semester).text.split('|')
     if response[2] != '':
