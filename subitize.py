@@ -386,9 +386,17 @@ def create_filters(args):
         filters.append((lambda offering: any((args.instructor.lower() in instructor.lower()) for instructor in offering.instructors)))
     if args.core:
         filters.append((lambda offering: any((args.core.lower() == core.lower() or args.core.lower()) in CORE_ABBRS[core].lower() for core in offering.core if core)))
-    if args.time:
+    if args.day and args.time:
+        if args.day.lower() in DAY_ABBRS:
+            args.day = DAY_ABBRS[args.day.lower()]
+        filters.append((lambda offering:
+            any(
+                (args.day.upper() in meeting.days) and
+                (meeting.start_time < datetime.strptime(args.time.upper(), '%I:%M%p') < meeting.end_time)
+                for meeting in offering.meetings if meeting.days and meeting.start_time)))
+    elif args.time:
         filters.append((lambda offering: any((meeting.start_time < datetime.strptime(args.time.upper(), '%I:%M%p') < meeting.end_time) for meeting in offering.meetings if meeting.start_time)))
-    if args.day:
+    elif args.day:
         if args.day.lower() in DAY_ABBRS:
             args.day = DAY_ABBRS[args.day.lower()]
         filters.append((lambda offering: any((args.day.upper() in meeting.days) for meeting in offering.meetings if meeting.days)))
