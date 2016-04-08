@@ -247,7 +247,7 @@ def _request_counts(semester):
     data = '&'.join('{}={}'.format(k, v) for k, v in {
         'ScriptManager1':'pageUpdatePanel%7CtabContainer%24TabPanel3%24btnAdvGo',
         'ScriptManager1_HiddenField':'%3B%3BAjaxControlToolkit%2C%20Version%3D1.0.10920.32880%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3D28f01b0e84b6d53e%3Aen-US%3A816bbca1-959d-46fd-928f-6347d6f2c9c3%3Ae2e86ef9%3A1df13a87%3Aee0a475d%3Ac4c00916%3A9ea3f0e2%3A9e8e87e9%3A4c9865be%3Aa6a5a927%3B',
-        'tabContainer%24TabPanel1%24ddlSemesters':'201602',
+        'tabContainer%24TabPanel1%24ddlSemesters':semester,
         'tabContainer%24TabPanel1%24ddlSubjects':'',
         'tabContainer%24TabPanel1%24txtCrseNum':'',
         'tabContainer%24TabPanel2%24ddlCoreTerms':'201002',
