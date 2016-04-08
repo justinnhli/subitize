@@ -229,6 +229,7 @@ def _extract_text(soup):
     return ''.join(text).strip()
 
 def _request_counts(semester):
+    import requests
     url = 'http://counts.oxy.edu/'
     headers = {
         'Host':'counts.oxy.edu',
@@ -274,6 +275,7 @@ def _request_counts(semester):
     return requests.post(url, headers=headers, data=data)
 
 def _extract_results(html, year, season):
+    from bs4 import BeautifulSoup
     offerings = []
     soup = BeautifulSoup(html, 'html.parser').find_all(id='searchResultsPanel')[0]
     soup = soup.find_all('div', recursive=False)[1].find_all('table', limit=1)[0]
@@ -318,8 +320,6 @@ def to_year_season(semester):
         return year, 'summer'
 
 def get_data_from_web(semester):
-    import requests
-    from bs4 import BeautifulSoup
     year, season = to_year_season(semester)
     response = _request_counts(semester).text.split('|')
     if response[2] != '':
