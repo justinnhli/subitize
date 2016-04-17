@@ -4,9 +4,9 @@ from argparse import ArgumentParser
 from csv import reader as csv_reader, QUOTE_NONE
 from datetime import datetime
 from functools import total_ordering
-from os.path import dirname, join as join_path
+from os.path import dirname, join as join_path, realpath
 
-DATA_FILE = 'counts.tsv'
+DATA_FILE = join_path(dirname(realpath(__file__)), 'counts.tsv')
 
 DAY_ABBRS = {
     'monday': 'M',
