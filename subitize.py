@@ -32,6 +32,9 @@ CORE_ABBRS = {
     'CPRF': 'Core Regional Focus',
     'CPUS': 'Core United States',
     'CPUD': 'Core United States Diversity',
+    'CICP': 'Core Program (deprecated)',
+    'CUSP': 'Core United States (deprecated)',
+    'CAFP': 'Core Africa (deprecated)',
 }
 
 DEPARTMENT_ABBRS = {
