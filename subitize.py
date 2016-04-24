@@ -203,24 +203,6 @@ class Offering:
     @property
     def department_long(self):
         return DEPARTMENT_ABBRS[self.department]
-    def to_tsv_row(self):
-        values = []
-        values.append(self.year)
-        values.append(self.season)
-        values.append(self.department)
-        values.append(self.number)
-        values.append(self.section)
-        values.append(self.title)
-        values.append(self.units)
-        values.append('; '.join(self.instructors))
-        values.append('; '.join(str(meeting) for meeting in self.meetings))
-        values.append('; '.join(sorted(self.core)))
-        values.append(self.seats)
-        values.append(self.enrolled)
-        values.append(self.reserved)
-        values.append(self.reserved_open)
-        values.append(self.waitlisted)
-        return '\t'.join(values)
     def __lt__(self, other):
         return (self.semester, self.department, self.number, self.section) < (other.semester, other.department, other.number, other.section)
     def __str__(self):
@@ -238,6 +220,24 @@ class Offering:
             values.append('; '.join(sorted(self.core)))
         else:
             values.append('N/A')
+        values.append(self.seats)
+        values.append(self.enrolled)
+        values.append(self.reserved)
+        values.append(self.reserved_open)
+        values.append(self.waitlisted)
+        return '\t'.join(values)
+    def to_tsv_row(self):
+        values = []
+        values.append(self.year)
+        values.append(self.season)
+        values.append(self.department)
+        values.append(self.number)
+        values.append(self.section)
+        values.append(self.title)
+        values.append(self.units)
+        values.append('; '.join(self.instructors))
+        values.append('; '.join(str(meeting) for meeting in self.meetings))
+        values.append('; '.join(sorted(self.core)))
         values.append(self.seats)
         values.append(self.enrolled)
         values.append(self.reserved)

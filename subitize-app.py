@@ -169,8 +169,14 @@ def view_root():
             context['instructors'].add((instructor_id, display_name, instructor_id == parameters.get('instructor')))
     context['semesters'] = sorted(context['semesters'], reverse=True)
     context['departments'] = sorted(context['departments'])
-    context['lower'] = (parameters.get('lower') if ('lower' in parameters and parameters.get('lower') != '') else 0)
-    context['upper'] = (parameters.get('upper') if ('upper' in parameters and parameters.get('upper') != '') else max(context['upper']))
+    if 'lower' in parameters and parameters.get('lower') != '':
+        context['lower'] = parameters.get('lower')
+    else:
+        context['lower'] = 0
+    if 'upper' in parameters and parameters.get('upper') != '':
+        context['upper'] = parameters.get('upper')
+    else:
+        context['upper'] = max(context['upper'])
     context['units'] = sorted(context['units'])
     context['cores'] = sorted(context['cores'])
     context['instructors'] = sorted(context['instructors'], key=(lambda seq: seq[1].lower()))
