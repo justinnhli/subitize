@@ -126,6 +126,9 @@ DEPARTMENT_ABBRS = {
     'WRD': 'Writing and Rhetoric',
 }
 
+DAYS_ORDER = 'MTWRF'
+
+@total_ordering
 class Meeting:
     def __init__(self, time, days, location):
         if time != 'Time-TBD':
@@ -143,6 +146,18 @@ class Meeting:
             self.location = location
         else:
             self.location = None
+    def __lt__(self, other):
+        if self.days is None and other.days is not None:
+            return False
+        elif self.days is not None and other.days is None:
+            return True
+        if self.days is not None and other.days is not None:
+            self_day = min(DAYS_ORDER.index(day) for day in self.days)
+            other_day = min(DAYS_ORDER.index(day) for day in other.days)
+        else:
+            self_day = None
+            other_day = None
+        return (self_day, self.start_time, self.end_time) < (other_day, other.start_time, other.end_time)
     def __str__(self):
         if self.start_time is None:
             time = 'Time-TBD'
