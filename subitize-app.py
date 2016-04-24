@@ -11,10 +11,11 @@ from subitize import to_semester, to_year_season, get_data_from_file
 from subitize import DEPARTMENT_ABBRS, CORE_ABBRS
 
 INSTRUCTOR_PREFERRED_NAMES = {
-    'Aleksandra Sherman': 'Sasha Sherman',
-    'Amanda J. Zellmer McCormack': 'Amanda J. Zellmer',
     'Ning Hui Li': 'Justin Li',
     'William Dylan Sabo': 'Dylan Sabo',
+    'Aleksandra Sherman': 'Sasha Sherman',
+    'Charles Potts': 'Brady Potts',
+    'Amanda J. Zellmer McCormack': 'Amanda J. Zellmer',
 }
 
 INSTRUCTOR_LAST_NAMES = {
