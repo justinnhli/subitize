@@ -351,7 +351,7 @@ def get_data_from_file():
         for offering in csv_reader(fd, delimiter='\t', quoting=QUOTE_NONE):
             year, season, department, number, section, title, units, instructors, meetings, core, seats, enrolled, reserved, reserved_open, waitlisted = offering
             instructors = tuple(instructor.strip() for instructor in instructors.split(';'))
-            meetings = tuple(Meeting.from_string(meeting) for meeting in meetings.split(';'))
+            meetings = tuple(Meeting.from_string(meeting.strip()) for meeting in meetings.split(';'))
             core = core.split(';')
             offerings.append(Offering(year, season, department, number, section, title, units, instructors, meetings, core, seats, enrolled, reserved, reserved_open, waitlisted))
     return offerings
