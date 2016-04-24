@@ -69,16 +69,7 @@ function field_click_handler(field, dir) {
                     <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text }}</option>
                     {% endfor %}
                 </select>
-                Department:
-                <select name="department">
-                    <option value="">(any)</option>
-                    {% for code, text, selected in departments %}
-                    <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text }}</option>
-                    {% endfor %}
-                </select>
-                Number:
-                <input class="number" type="number" name="lower" value="{{ lower }}"> - <input class="number" type="number" name="upper" value="{{ upper }}">
-                <br>
+                &nbsp;&nbsp;&nbsp;
                 Units:
                 <select name="units">
                     <option value="">(any)</option>
@@ -86,6 +77,7 @@ function field_click_handler(field, dir) {
                     <option value="{{ unit }}" {% if selected %}selected{% endif %}>{{ unit }}</option>
                     {% endfor %}
                 </select>
+                &nbsp;&nbsp;&nbsp;
                 Core:
                 <select name="core">
                     <option value="">(any)</option>
@@ -93,6 +85,18 @@ function field_click_handler(field, dir) {
                     <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text}}</option>
                     {% endfor %}
                 </select>
+                <br>
+                Department:
+                <select name="department">
+                    <option value="">(any)</option>
+                    {% for code, text, selected in departments %}
+                    <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text }}</option>
+                    {% endfor %}
+                </select>
+                &nbsp;&nbsp;&nbsp;
+                Number (min): <input class="number" type="number" name="lower" value="{{ lower }}">
+                &nbsp;&nbsp;&nbsp;
+                Number (max): <input class="number" type="number" name="upper" value="{{ upper }}">
                 <br>
                 Instructor:
                 <select name="instructor">
