@@ -200,6 +200,9 @@ class Offering:
         self.reserved = reserved
         self.reserved_open = reserved_open
         self.waitlisted = waitlisted
+    @property
+    def department_long(self):
+        return DEPARTMENT_ABBRS[self.department]
     def to_tsv_row(self):
         values = []
         values.append(self.year)

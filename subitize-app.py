@@ -55,7 +55,11 @@ def to_result(offering):
     course = ' '.join([offering.department, offering.number, offering.section])
     title = offering.title
     units = offering.units
-    instructors = '; '.join(sorted(get_first_last_names(instructor)[1] for instructor in offering.instructors))
+    instructors = []
+    for instructor in offering.instructors:
+        first_name, last_name = get_first_last_names(instructor)
+        instructors.append((last_name, first_name + ' ' + last_name))
+    instructors = sorted(instructors)
     meetings = []
     for meeting in offering.meetings:
         if meeting.start_time is None:
@@ -77,7 +81,10 @@ def to_result(offering):
             result += ')'
             meetings.append(result)
     meetings = '; '.join(meetings)
-    core = '; '.join(offering.core)
+    core = []
+    for code in offering.core:
+        core.append((code, CORE_ABBRS[code]))
+    core = sorted(core)
     return Result(offering, semester, course, title, units, instructors, meetings, core)
 
 app = Flask(__name__)

@@ -119,15 +119,27 @@ function field_click_handler(field, dir) {
                 <th><a href="{{ url }}&sort=meetings">Meeting Times (Room)</a></th>
                 <th><a href="{{ url }}&sort=core">Core</a></th>
             </tr>
-            {% for offering in results %}
+            {% for result in results %}
             <tr>
-                <td>{{ offering.semester }}</td>
-                <td>{{ offering.course }}</td>
-                <td>{{ offering.title }}</td>
-                <td>{{ offering.units }}</td>
-                <td>{{ offering.instructors }}</td>
-                <td>{{ offering.meetings }}</td>
-                <td>{{ offering.core }}</td>
+                <td>{{ result.semester }}</td>
+                <td>
+                        <abbr title="{{ result.offering.department_long }}">{{ result.offering.department }}</abbr>
+                        {{ result.offering.number }}
+                        {{ result.offering.section }}
+                </td>
+                <td>{{ result.title }}</td>
+                <td>{{ result.units }}</td>
+                <td>
+                    {% for last_name, full_name in result.instructors %}
+                    <abbr title="{{ full_name }}">{{ last_name }}</abbr>{% if not loop.last %};{% endif %}
+                    {% endfor %}
+                </td>
+                <td>{{ result.meetings }}</td>
+                <td>
+                    {% for core_code, core_name in result.core %}
+                    <abbr title="{{ core_name }}">{{ core_code }}</abbr>{% if not loop.last %};{% endif %}
+                    {% endfor %}
+                </td>
             </tr>
             {% endfor %}
         </table>
