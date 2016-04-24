@@ -178,7 +178,7 @@ def view_root():
     else:
         context['upper'] = max(context['upper'])
     context['units'] = sorted(context['units'])
-    context['cores'] = sorted(context['cores'])
+    context['cores'] = sorted(context['cores'], key=(lambda l: l[1]))
     context['instructors'] = sorted(context['instructors'], key=(lambda seq: seq[1].lower()))
     context['url'] = url_for('view_root', **parameters)
     return render_template('base.html', **context)
