@@ -152,6 +152,10 @@ class Meeting:
             return False
         elif self.days is not None and other.days is None:
             return True
+        if self.start_time is None and other.start_time is not None:
+            return False
+        elif self.start_time is not None and other.start_time is None:
+            return True
         if self.days is not None and other.days is not None:
             self_day = min(DAYS_ORDER.index(day) for day in self.days)
             other_day = min(DAYS_ORDER.index(day) for day in other.days)
