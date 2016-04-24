@@ -84,7 +84,7 @@ app = Flask(__name__)
 @app.route("/")
 def view_root():
     offerings = get_data_from_file()
-    offerings = tuple(offering for offering in offerings if not offering.department.startswith('AB'))
+    offerings = tuple(o for o in offerings if not (o.department == 'OXAB' or o.department.startswith('AB')))
     parameters = request.args.to_dict()
     context = {}
     # get search results, if necessary

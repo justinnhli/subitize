@@ -112,6 +112,7 @@ DEPARTMENT_ABBRS = {
     'MATH': 'Mathematics',
     'MUSA': 'Music Applied Study',
     'MUSC': 'Music',
+    'OXAB': 'Study Abroad',
     'PHAC': 'Physical Activities',
     'PHIL': 'Philosophy',
     'PHYS': 'Physics',
