@@ -159,7 +159,7 @@ def view_root():
         offering_semester = to_semester(o.year, o.season)
         context['semesters'].add((offering_semester, o.year + ' ' + o.season.capitalize(), offering_semester == semester))
         context['departments'].add((o.department, DEPARTMENT_ABBRS[o.department], o.department == parameters.get('department')))
-        context['upper'].add(ceil(get_course_number(o.number) / 100) * 100)
+        context['upper'].add(ceil(get_course_number(o.number) / 100) * 100 - 1)
         context['units'].add((o.units, o.units == parameters.get('units')))
         context['cores'].update((core, CORE_ABBRS[core], core == parameters.get('core')) for core in o.core if core != '')
         for instructor in o.instructors:
