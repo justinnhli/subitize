@@ -352,7 +352,7 @@ def get_data_from_file():
             year, season, department, number, section, title, units, instructors, meetings, core, seats, enrolled, reserved, reserved_open, waitlisted = offering
             instructors = tuple(instructor.strip() for instructor in instructors.split(';'))
             meetings = tuple(Meeting.from_string(meeting.strip()) for meeting in meetings.split(';'))
-            core = core.split(';')
+            core = tuple(code.strip() for code in core.split(';'))
             offerings.append(Offering(year, season, department, number, section, title, units, instructors, meetings, core, seats, enrolled, reserved, reserved_open, waitlisted))
     return offerings
 
