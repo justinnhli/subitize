@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Subitize - Course Counts on Steroids</title>
+    <style>
+        body {background-color:#EEEEEC; color:#2E3436;}
+        h1 a {color:#2E3436; text-decoration:none;}
+        h1 a:hover {text-decoration:underline;}
+        table {border-collapse:collapse; margin:0 auto;}
+        th, td {border-left:2px solid #D3D7CF; border-right:2px solid #D3D7CF; padding:0 5px 0; vertical-align:top;}
+        th {font-weight:bold; text-align:center;}
+        tr:first-child th {border-bottom:2px solid #D3D7CF;}
+        tr th:first-child, tr td:first-child {border-left-style:none;}
+        tr th:last-child, tr td:last-child {border-right-style:none;}
+        tr td {padding-top:3px; padding-bottom:3px;}
+
+        body > div {margin-top:1em; text-align:center;}
+        #tagline {font-style:italic; margin-top:-1em;}
+        #basic .basic {font-size:x-large;}
+        #searchbar {margin:auto; width:80%;}
+        .number {width:4em;}
+        #results-table {width:100%;}
+        #results-table th a {color:#2E3436;}
+        #results-table td {text-align:left;}
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> 
+    <script>
+function query_focus_handler() {
+    var searchbar = $('#searchbar');
+    if (searchbar.val() === 'search for courses...') {
+        searchbar.val('');
+        searchbar.css('color', '#000000');
+    }
+}
+function query_blur_handler() {
+    var searchbar = $('#searchbar');
+    if (searchbar.val() == '') {
+        searchbar.val('search for courses...');
+        searchbar.css('color', '#BABDB6');
+    }
+};
+
+function field_click_handler(field, dir) {
+    alert(window.location.href);
+}
+    </script>
+</head>
+<body>
+    <div id="header">
+        <h1><a href="/">Subitize</a></h1>
+        <p id="tagline">subitize (v.) - to rapidly, accurately, and confidently perceive the number of objects without counting them</p>
+    </div>
+    <div id="form">
+        <form action="" method="get">
+            <div id="basic">
+                {% if form_query %}
+                <input id="searchbar" class="basic" type="text" name="query" value="{{ form_query }}" onfocus="query_focus_handler();" onblur="query_blur_handler();" style="color:#000000;">
+                {% else %}
+                <input id="searchbar" class="basic" type="text" name="query" value="search for courses..." onfocus="query_focus_handler();" onblur="query_blur_handler();" style="color:#BABDB6;">
+                {% endif %}
+                <input class="basic" type="submit" value="Search">
+            </div>
+            <div id="advanced">
+                Semester:
+                <select name="semester">
+                    <option value="">(any)</option>
+                    {% for code, text, selected in semesters %}
+                    <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text }}</option>
+                    {% endfor %}
+                </select>
+                Department:
+                <select name="department">
+                    <option value="">(any)</option>
+                    {% for code, text, selected in departments %}
+                    <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text }}</option>
+                    {% endfor %}
+                </select>
+                Number:
+                <input class="number" type="number" name="lower" value="{{ lower }}"> - <input class="number" type="number" name="upper" value="{{ upper }}">
+                <br>
+                Units:
+                <select name="units">
+                    <option value="">(any)</option>
+                    {% for unit, selected in units %}
+                    <option value="{{ unit }}" {% if selected %}selected{% endif %}>{{ unit }}</option>
+                    {% endfor %}
+                </select>
+                Core:
+                <select name="core">
+                    <option value="">(any)</option>
+                    {% for code, text, selected in cores %}
+                    <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text}}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                Instructor:
+                <select name="instructor">
+                    <option value="">(any)</option>
+                    {% for code, text, selected in instructors %}
+                    <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </form>
+    </div>
+    <div id="results">
+        {% if searching %}
+        {% if not results %}
+        <h3>No courses found.</h3>
+        {% else %}
+        <table id="results-table">
+            <tr>
+                <th><a href="{{ url }}&sort=semester">Semester</a></th>
+                <th><a href="{{ url }}&sort=course">Course</a></th>
+                <th><a href="{{ url }}&sort=title">Title</a></th>
+                <th><a href="{{ url }}&sort=units">Units</a></th>
+                <th><a href="{{ url }}&sort=instructors">Instructor(s)</a></th>
+                <th><a href="{{ url }}&sort=meetings">Meeting Times (Room)</a></th>
+                <th><a href="{{ url }}&sort=core">Core</a></th>
+            </tr>
+            {% for offering in results %}
+            <tr>
+                <td>{{ offering.semester }}</td>
+                <td>{{ offering.course }}</td>
+                <td>{{ offering.title }}</td>
+                <td>{{ offering.units }}</td>
+                <td>{{ offering.instructors }}</td>
+                <td>{{ offering.meetings }}</td>
+                <td>{{ offering.core }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>
