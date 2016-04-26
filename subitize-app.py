@@ -10,6 +10,8 @@ from flask import Flask, render_template, request, url_for
 from subitize import to_semester, to_year_season, get_data_from_file
 from subitize import WEEKDAY_ABBRS, DEPARTMENT_ABBRS, CORE_ABBRS
 
+OFFERINGS = tuple(get_data_from_file())
+
 WEEKDAYS = 'MTWRF'
 
 INSTRUCTOR_PREFERRED_NAMES = {
@@ -92,8 +94,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def view_root():
-    offerings = tuple(get_data_from_file())
-    offerings = tuple(o for o in offerings if not (o.department == 'OXAB' or o.department.startswith('AB')))
+    offerings = tuple(o for o in OFFERINGS if not (o.department == 'OXAB' or o.department.startswith('AB')))
     parameters = request.args.to_dict()
     context = {}
     # get search results, if necessary
