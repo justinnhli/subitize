@@ -140,9 +140,9 @@ def view_root():
         if 'day' in parameters and parameters.get('day') != '':
             results = tuple(offering for offering in results if any((parameters.get('day') in meeting.days) for meeting in offering.meetings))
         start_hour = datetime.strptime(parameters.get('start_hour') + parameters.get('start_meridian'), '%I%p').time()
-        results = tuple(offering for offering in results if all((start_hour < meeting.start_time) for meeting in offering.meetings))
+        results = tuple(offering for offering in results if all((meeting.start_time is not None and start_hour < meeting.start_time) for meeting in offering.meetings))
         end_hour = datetime.strptime(parameters.get('end_hour') + parameters.get('end_meridian'), '%I%p').time()
-        results = tuple(offering for offering in results if all((meeting.end_time < end_hour) for meeting in offering.meetings))
+        results = tuple(offering for offering in results if all((meeting.end_time is not None and meeting.end_time < end_hour) for meeting in offering.meetings))
     context['searching'] = (len(parameters) > 0)
     context['results'] = tuple(to_result(o) for o in results)
     # sort search results
