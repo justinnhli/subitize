@@ -192,7 +192,11 @@ $(document).ready(function() {
                     <abbr title="{{ full_name }}">{{ last_name }}</abbr>{% if not loop.last %};{% endif %}
                     {% endfor %}
                 </td>
-                <td>{{ result.meetings }}</td>
+                <td>
+                    {% for time, days, days_full, location in result.meetings %}
+                    {{ time }} <abbr title="{{ days_full }}">{{ days }}</abbr> ({{ location }})
+                    {% endfor %}
+                </td>
                 <td>
                     {% for core_code, core_name in result.core %}
                     <abbr title="{{ core_name }}">{{ core_code }}</abbr>{% if not loop.last %};{% endif %}

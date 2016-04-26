@@ -177,6 +177,11 @@ class Meeting:
         else:
             location = self.location
         return ' '.join((time, days, location))
+    @property
+    def days_long(self):
+        if self.days is None:
+            return None
+        return ', '.join(WEEKDAY_ABBRS[day.lower()].capitalize() for day in self.days)
     @staticmethod
     def from_string(s):
         return Meeting(*s.split(' ', maxsplit=2))

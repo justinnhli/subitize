@@ -69,24 +69,21 @@ def to_result(offering):
     meetings = []
     for meeting in offering.meetings:
         if meeting.start_time is None:
-            meetings.append('TBD')
-            break
+            time = ''
+            days = ''
+            days_full = ''
+            location = 'TBD'
         else:
-            result = ''
-            result += meeting.start_time.strftime('%I:%M%p')
-            result += '-'
-            result += meeting.end_time.strftime('%I:%M%p')
-            result += ' '
-            result = result.lower()
-            result += meeting.days
-            result += ' ('
+            time = (meeting.start_time.strftime('%I:%M%p') + '-' + meeting.end_time.strftime('%I:%M%p')).lower()
+            days = meeting.days
+            days_full = meeting.days_long
             if meeting.location is None:
-                result += 'TBD'
+                location = 'TBD'
             else:
-                result += meeting.location
-            result += ')'
-            meetings.append(result)
-    meetings = '; '.join(meetings)
+                location = meeting.location
+        meetings.append((time, days, days_full, location))
+    for meeting in meetings:
+        print(meeting)
     core = []
     for code in offering.core:
         core.append((code, CORE_ABBRS[code]))
@@ -150,9 +147,9 @@ def view_root():
         if 'day' in parameters and parameters.get('day') != '':
             results = tuple(offering for offering in results if any((parameters.get('day') in meeting.days) for meeting in offering.meetings))
         start_hour = datetime.strptime(parameters.get('start_hour') + parameters.get('start_meridian'), '%I%p').time()
-        results = tuple(offering for offering in results if all((meeting.start_time is not None and start_hour < meeting.start_time) for meeting in offering.meetings))
+        results = tuple(offering for offering in results if all((meeting.start_time is None or start_hour < meeting.start_time) for meeting in offering.meetings))
         end_hour = datetime.strptime(parameters.get('end_hour') + parameters.get('end_meridian'), '%I%p').time()
-        results = tuple(offering for offering in results if all((meeting.end_time is not None and meeting.end_time < end_hour) for meeting in offering.meetings))
+        results = tuple(offering for offering in results if all((meeting.end_time is None or meeting.end_time < end_hour) for meeting in offering.meetings))
     context['searching'] = (len(parameters) > 0)
     context['results'] = tuple(to_result(o) for o in results)
     # sort search results
