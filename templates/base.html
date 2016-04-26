@@ -81,17 +81,17 @@ $(document).ready(function() {
             <input id="searchbar" class="large" type="text" name="query" value="search for courses..." onfocus="query_focus_handler();" onblur="query_blur_handler();" style="color:#BABDB6;">
             {% endif %}
             <input class="large" type="submit" value="Search"><br>
+            Semester:
+            <select name="semester">
+                <option value="">(any)</option>
+                {% for code, text, selected in semesters %}
+                <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text }}</option>
+                {% endfor %}
+            </select>
+            &nbsp;&nbsp;&nbsp;
             <span id="advanced-toggle" onclick="toggle_advanced_search();">Show Advanced Search</span>
             <input type="hidden" id="advanced-state" name="advanced" value="{{ advanced }}">
             <div id="advanced-search">
-                Semester:
-                <select name="semester">
-                    <option value="">(any)</option>
-                    {% for code, text, selected in semesters %}
-                    <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text }}</option>
-                    {% endfor %}
-                </select>
-                &nbsp;&nbsp;&nbsp;
                 Instructor:
                 <select name="instructor">
                     <option value="">(any)</option>
@@ -99,19 +99,7 @@ $(document).ready(function() {
                     <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text }}</option>
                     {% endfor %}
                 </select>
-                <br>
-                Department:
-                <select name="department">
-                    <option value="">(any)</option>
-                    {% for code, text, selected in departments %}
-                    <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text }}</option>
-                    {% endfor %}
-                </select>
                 &nbsp;&nbsp;&nbsp;
-                Number (min): <input class="number" type="number" name="lower" value="{{ lower }}">
-                &nbsp;&nbsp;&nbsp;
-                Number (max): <input class="number" type="number" name="upper" value="{{ upper }}">
-                <br>
                 Core:
                 <select name="core">
                     <option value="">(any)</option>
@@ -127,6 +115,18 @@ $(document).ready(function() {
                     <option value="{{ unit }}" {% if selected %}selected{% endif %}>{{ unit }}</option>
                     {% endfor %}
                 </select>
+                <br>
+                Department:
+                <select name="department">
+                    <option value="">(any)</option>
+                    {% for code, text, selected in departments %}
+                    <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text }}</option>
+                    {% endfor %}
+                </select>
+                &nbsp;&nbsp;&nbsp;
+                Number (min): <input class="number" type="number" name="lower" value="{{ lower }}">
+                &nbsp;&nbsp;&nbsp;
+                Number (max): <input class="number" type="number" name="upper" value="{{ upper }}">
                 <br>
                 Meets on:
                 <select name="day">
