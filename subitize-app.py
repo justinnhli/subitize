@@ -82,8 +82,6 @@ def to_result(offering):
             else:
                 location = meeting.location
         meetings.append((time, days, days_full, location))
-    for meeting in meetings:
-        print(meeting)
     core = []
     for code in offering.core:
         core.append((code, CORE_ABBRS[code]))
