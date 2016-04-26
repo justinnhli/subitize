@@ -20,7 +20,10 @@
         #tagline {font-style:italic; margin-top:-1em;}
         .large {font-size:x-large;}
         #searchbar {margin:auto; width:80%; max-width:40em;}
+        #advanced-toggle {cursor:pointer; text-decoration:underline; margin-bottom:0;}
+        #advanced-search {display:none; line-height:1.5em;}
         .number {width:4em;}
+        #results {margin-top:2em;}
         #results-table {width:100%;}
         #results-table td {text-align:left;}
     </style>
@@ -32,7 +35,7 @@ function query_focus_handler() {
         searchbar.val('');
         searchbar.css('color', '#000000');
     }
-}
+};
 function query_blur_handler() {
     var searchbar = $('#searchbar');
     if (searchbar.val() == '') {
@@ -40,10 +43,29 @@ function query_blur_handler() {
         searchbar.css('color', '#BABDB6');
     }
 };
-
-function field_click_handler(field, dir) {
-    alert(window.location.href);
-}
+function toggle_advanced_search() {
+    toggle = $('#advanced-toggle');
+    state = $('#advanced-state');
+    div = $('#advanced-search');
+    if (state.val() === 'True') {
+        div.css('display', 'none');
+        toggle.html('Show Advanced Search');
+        state.val('False');
+    } else {
+        div.css('display', 'block');
+        toggle.html('Hide Advanced Search');
+        state.val('True');
+    }
+};
+$(document).ready(function() {
+    state = $('#advanced-state');
+    if (state.val() === 'True') {
+        state.val('False');
+    } else {
+        state.val('True');
+    }
+    toggle_advanced_search();
+});
     </script>
 </head>
 <body>
@@ -58,83 +80,86 @@ function field_click_handler(field, dir) {
             {% else %}
             <input id="searchbar" class="large" type="text" name="query" value="search for courses..." onfocus="query_focus_handler();" onblur="query_blur_handler();" style="color:#BABDB6;">
             {% endif %}
-            <input class="large" type="submit" value="Search">
-            <br>
-            Semester:
-            <select name="semester">
-                <option value="">(any)</option>
-                {% for code, text, selected in semesters %}
-                <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text }}</option>
-                {% endfor %}
-            </select>
-            &nbsp;&nbsp;&nbsp;
-            Units:
-            <select name="units">
-                <option value="">(any)</option>
-                {% for unit, selected in units %}
-                <option value="{{ unit }}" {% if selected %}selected{% endif %}>{{ unit }}</option>
-                {% endfor %}
-            </select>
-            &nbsp;&nbsp;&nbsp;
-            Core:
-            <select name="core">
-                <option value="">(any)</option>
-                {% for code, text, selected in cores %}
-                <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text}}</option>
-                {% endfor %}
-            </select>
-            <br>
-            Department:
-            <select name="department">
-                <option value="">(any)</option>
-                {% for code, text, selected in departments %}
-                <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text }}</option>
-                {% endfor %}
-            </select>
-            &nbsp;&nbsp;&nbsp;
-            Number (min): <input class="number" type="number" name="lower" value="{{ lower }}">
-            &nbsp;&nbsp;&nbsp;
-            Number (max): <input class="number" type="number" name="upper" value="{{ upper }}">
-            <br>
-            Instructor:
-            <select name="instructor">
-                <option value="">(any)</option>
-                {% for code, text, selected in instructors %}
-                <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text }}</option>
-                {% endfor %}
-            </select>
-            <br>
-            Meets on:
-            <select name="day">
-                <option value="">(any)</option>
-                {% for value, weekday, selected in days %}
-                <option value="{{ value }}" {% if selected %}selected{% endif %}>{{ weekday }}</option>
-                {% endfor %}
-            </select>
-            &nbsp;&nbsp;&nbsp;
-            Starts After:
-            <select name="start_hour">
-                {% for value, hour, selected in start_hours %}
-                <option value="{{ value }}" {% if selected %}selected{% endif %}>{{ hour }}</option>
-                {% endfor %}
-            </select>
-            <select name="start_meridian">
-                {% for meridian, selected in start_meridians %}
-                <option value="{{ meridian }}" {% if selected %}selected{% endif %}>{{ meridian }}</option>
-                {% endfor %}
-            </select>
-            &nbsp;&nbsp;&nbsp;
-            Ends Before:
-            <select name="end_hour">
-                {% for value, hour, selected in end_hours %}
-                <option value="{{ value }}" {% if selected %}selected{% endif %}>{{ hour }}</option>
-                {% endfor %}
-            </select>
-            <select name="end_meridian">
-                {% for meridian, selected in end_meridians %}
-                <option value="{{ meridian }}" {% if selected %}selected{% endif %}>{{ meridian }}</option>
-                {% endfor %}
-            </select>
+            <input class="large" type="submit" value="Search"><br>
+            <span id="advanced-toggle" onclick="toggle_advanced_search();">Show Advanced Search</span>
+            <input type="hidden" id="advanced-state" name="advanced" value="{{ advanced }}">
+            <div id="advanced-search">
+                Semester:
+                <select name="semester">
+                    <option value="">(any)</option>
+                    {% for code, text, selected in semesters %}
+                    <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text }}</option>
+                    {% endfor %}
+                </select>
+                &nbsp;&nbsp;&nbsp;
+                Instructor:
+                <select name="instructor">
+                    <option value="">(any)</option>
+                    {% for code, text, selected in instructors %}
+                    <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text }}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                Department:
+                <select name="department">
+                    <option value="">(any)</option>
+                    {% for code, text, selected in departments %}
+                    <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text }}</option>
+                    {% endfor %}
+                </select>
+                &nbsp;&nbsp;&nbsp;
+                Number (min): <input class="number" type="number" name="lower" value="{{ lower }}">
+                &nbsp;&nbsp;&nbsp;
+                Number (max): <input class="number" type="number" name="upper" value="{{ upper }}">
+                <br>
+                Core:
+                <select name="core">
+                    <option value="">(any)</option>
+                    {% for code, text, selected in cores %}
+                    <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text}}</option>
+                    {% endfor %}
+                </select>
+                &nbsp;&nbsp;&nbsp;
+                Units:
+                <select name="units">
+                    <option value="">(any)</option>
+                    {% for unit, selected in units %}
+                    <option value="{{ unit }}" {% if selected %}selected{% endif %}>{{ unit }}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                Meets on:
+                <select name="day">
+                    <option value="">(any)</option>
+                    {% for value, weekday, selected in days %}
+                    <option value="{{ value }}" {% if selected %}selected{% endif %}>{{ weekday }}</option>
+                    {% endfor %}
+                </select>
+                &nbsp;&nbsp;&nbsp;
+                Starts After:
+                <select name="start_hour">
+                    {% for value, hour, selected in start_hours %}
+                    <option value="{{ value }}" {% if selected %}selected{% endif %}>{{ hour }}</option>
+                    {% endfor %}
+                </select>
+                <select name="start_meridian">
+                    {% for meridian, selected in start_meridians %}
+                    <option value="{{ meridian }}" {% if selected %}selected{% endif %}>{{ meridian }}</option>
+                    {% endfor %}
+                </select>
+                &nbsp;&nbsp;&nbsp;
+                Ends Before:
+                <select name="end_hour">
+                    {% for value, hour, selected in end_hours %}
+                    <option value="{{ value }}" {% if selected %}selected{% endif %}>{{ hour }}</option>
+                    {% endfor %}
+                </select>
+                <select name="end_meridian">
+                    {% for meridian, selected in end_meridians %}
+                    <option value="{{ meridian }}" {% if selected %}selected{% endif %}>{{ meridian }}</option>
+                    {% endfor %}
+                </select>
+            </div>
         </form>
     </div>
     <div id="results">

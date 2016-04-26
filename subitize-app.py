@@ -209,6 +209,7 @@ def view_root():
     context['cores'] = sorted(context['cores'], key=(lambda l: l[1]))
     context['instructors'] = sorted(context['instructors'], key=(lambda seq: seq[1].lower()))
     context['url'] = url_for('view_root', **parameters)
+    context['advanced'] = str(parameters.get('advanced'))
     return render_template('base.html', **context)
 
 if __name__ == "__main__":
