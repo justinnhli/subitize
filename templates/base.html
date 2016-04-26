@@ -18,7 +18,7 @@
 
         body > div {margin-top:1em; text-align:center;}
         #tagline {font-style:italic; margin-top:-1em;}
-        #basic .basic {font-size:x-large;}
+        .large {font-size:x-large;}
         #searchbar {margin:auto; width:80%; max-width:40em;}
         .number {width:4em;}
         #results-table {width:100%;}
@@ -53,59 +53,56 @@ function field_click_handler(field, dir) {
     </div>
     <div id="form">
         <form action="" method="get">
-            <div id="basic">
-                {% if form_query %}
-                <input id="searchbar" class="basic" type="text" name="query" value="{{ form_query }}" onfocus="query_focus_handler();" onblur="query_blur_handler();" style="color:#000000;">
-                {% else %}
-                <input id="searchbar" class="basic" type="text" name="query" value="search for courses..." onfocus="query_focus_handler();" onblur="query_blur_handler();" style="color:#BABDB6;">
-                {% endif %}
-                <input class="basic" type="submit" value="Search">
-            </div>
-            <div id="advanced">
-                Semester:
-                <select name="semester">
-                    <option value="">(any)</option>
-                    {% for code, text, selected in semesters %}
-                    <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text }}</option>
-                    {% endfor %}
-                </select>
-                &nbsp;&nbsp;&nbsp;
-                Units:
-                <select name="units">
-                    <option value="">(any)</option>
-                    {% for unit, selected in units %}
-                    <option value="{{ unit }}" {% if selected %}selected{% endif %}>{{ unit }}</option>
-                    {% endfor %}
-                </select>
-                &nbsp;&nbsp;&nbsp;
-                Core:
-                <select name="core">
-                    <option value="">(any)</option>
-                    {% for code, text, selected in cores %}
-                    <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text}}</option>
-                    {% endfor %}
-                </select>
-                <br>
-                Department:
-                <select name="department">
-                    <option value="">(any)</option>
-                    {% for code, text, selected in departments %}
-                    <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text }}</option>
-                    {% endfor %}
-                </select>
-                &nbsp;&nbsp;&nbsp;
-                Number (min): <input class="number" type="number" name="lower" value="{{ lower }}">
-                &nbsp;&nbsp;&nbsp;
-                Number (max): <input class="number" type="number" name="upper" value="{{ upper }}">
-                <br>
-                Instructor:
-                <select name="instructor">
-                    <option value="">(any)</option>
-                    {% for code, text, selected in instructors %}
-                    <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text }}</option>
-                    {% endfor %}
-                </select>
-            </div>
+            {% if form_query %}
+            <input id="searchbar" class="large" type="text" name="query" value="{{ form_query }}" onfocus="query_focus_handler();" onblur="query_blur_handler();" style="color:#000000;">
+            {% else %}
+            <input id="searchbar" class="large" type="text" name="query" value="search for courses..." onfocus="query_focus_handler();" onblur="query_blur_handler();" style="color:#BABDB6;">
+            {% endif %}
+            <input class="large" type="submit" value="Search">
+            <br>
+            Semester:
+            <select name="semester">
+                <option value="">(any)</option>
+                {% for code, text, selected in semesters %}
+                <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text }}</option>
+                {% endfor %}
+            </select>
+            &nbsp;&nbsp;&nbsp;
+            Units:
+            <select name="units">
+                <option value="">(any)</option>
+                {% for unit, selected in units %}
+                <option value="{{ unit }}" {% if selected %}selected{% endif %}>{{ unit }}</option>
+                {% endfor %}
+            </select>
+            &nbsp;&nbsp;&nbsp;
+            Core:
+            <select name="core">
+                <option value="">(any)</option>
+                {% for code, text, selected in cores %}
+                <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text}}</option>
+                {% endfor %}
+            </select>
+            <br>
+            Department:
+            <select name="department">
+                <option value="">(any)</option>
+                {% for code, text, selected in departments %}
+                <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text }}</option>
+                {% endfor %}
+            </select>
+            &nbsp;&nbsp;&nbsp;
+            Number (min): <input class="number" type="number" name="lower" value="{{ lower }}">
+            &nbsp;&nbsp;&nbsp;
+            Number (max): <input class="number" type="number" name="upper" value="{{ upper }}">
+            <br>
+            Instructor:
+            <select name="instructor">
+                <option value="">(any)</option>
+                {% for code, text, selected in instructors %}
+                <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text }}</option>
+                {% endfor %}
+            </select>
         </form>
     </div>
     <div id="results">
