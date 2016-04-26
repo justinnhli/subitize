@@ -38,7 +38,11 @@ def get_current_year_season():
     return year, season
 
 def get_course_number(number):
-    return int(re.sub('[^0-9]', '', number))
+    stripped = re.sub('[^0-9]', '', number)
+    if stripped:
+        return int(stripped)
+    else:
+        return 0
 
 def get_first_last_names(instructor):
     if instructor in INSTRUCTOR_LAST_NAMES:
@@ -109,9 +113,15 @@ def view_root():
             for offering in offerings:
                 match = True
                 for term in terms:
-                    if any(term in instructor.lower() for instructor in offering.instructors):
-                        continue
                     if term in offering.title.lower():
+                        continue
+                    if term == offering.department.lower() or term in DEPARTMENT_ABBRS[offering.department].lower():
+                        continue
+                    if get_course_number(term) == get_course_number(offering.number):
+                        continue
+                    if any((term in instructor.lower()) for instructor in offering.instructors):
+                        continue
+                    if any((term in INSTRUCTOR_PREFERRED_NAMES[instructor].lower()) for instructor in offering.instructors if instructor in INSTRUCTOR_PREFERRED_NAMES):
                         continue
                     match = False
                     break
