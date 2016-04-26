@@ -92,13 +92,13 @@ app = Flask(__name__)
 
 @app.route("/")
 def view_root():
-    offerings = get_data_from_file()
+    offerings = tuple(get_data_from_file())
     offerings = tuple(o for o in offerings if not (o.department == 'OXAB' or o.department.startswith('AB')))
     parameters = request.args.to_dict()
     context = {}
     # get search results, if necessary
     if len(parameters) == 0:
-        results = []
+        results = tuple()
         semester = to_semester(*get_current_year_season())
     else:
         results = offerings
