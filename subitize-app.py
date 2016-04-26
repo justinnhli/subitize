@@ -8,7 +8,9 @@ from collections import namedtuple
 from flask import Flask, render_template, request, url_for
 
 from subitize import to_semester, to_year_season, get_data_from_file
-from subitize import DEPARTMENT_ABBRS, CORE_ABBRS
+from subitize import WEEKDAY_ABBRS, DEPARTMENT_ABBRS, CORE_ABBRS
+
+WEEKDAYS = 'MTWRF'
 
 INSTRUCTOR_PREFERRED_NAMES = {
     'Ning Hui Li': 'Justin Li',
@@ -135,6 +137,12 @@ def view_root():
             results = tuple(offering for offering in results if parameters.get('instructor') in offering.instructors)
         if 'core' in parameters and parameters.get('core') != '':
             results = tuple(offering for offering in results if parameters.get('core') in offering.core)
+        if 'day' in parameters and parameters.get('day') != '':
+            results = tuple(offering for offering in results if any((parameters.get('day') in meeting.days) for meeting in offering.meetings))
+        start_hour = datetime.strptime(parameters.get('start_hour') + parameters.get('start_meridian'), '%I%p').time()
+        results = tuple(offering for offering in results if all((start_hour < meeting.start_time) for meeting in offering.meetings))
+        end_hour = datetime.strptime(parameters.get('end_hour') + parameters.get('end_meridian'), '%I%p').time()
+        results = tuple(offering for offering in results if all((meeting.end_time < end_hour) for meeting in offering.meetings))
     context['searching'] = (len(parameters) > 0)
     context['results'] = tuple(to_result(o) for o in results)
     # sort search results
@@ -165,6 +173,18 @@ def view_root():
             first_name, last_name = get_first_last_names(instructor)
             display_name = '{}, {}'.format(last_name, first_name)
             context['instructors'].add((instructor_id, display_name, instructor_id == parameters.get('instructor')))
+    context['days'] = [(code, WEEKDAY_ABBRS[code.lower()].capitalize(), code == parameters.get('day')) for code in WEEKDAYS]
+    context['start_hours'] = [("12", 12, parameters.get('start_hour') == "12"),]
+    context['start_hours'] += [(str(hour), (12 if hour == 0 else hour), str(hour) == parameters.get('start_hour')) for hour in range(1, 12)]
+    context['start_meridians'] = [(meridian, meridian == parameters.get('start_meridian')) for meridian in ('am', 'pm')]
+    if len(parameters) > 0:
+        context['end_hours'] = [("12", 12, parameters.get('end_hour') == "12"),]
+        context['end_hours'] += [(str(hour), hour, str(hour) == parameters.get('end_hour')) for hour in range(1, 12)]
+        context['end_meridians'] = [(meridian, meridian == parameters.get('end_meridian')) for meridian in ('am', 'pm')]
+    else:
+        context['end_hours'] = [("12", 12, False),]
+        context['end_hours'] += [(str(hour), hour, hour == 11) for hour in range(12)]
+        context['end_meridians'] = [(meridian, meridian == 'pm') for meridian in ('am', 'pm')]
     context['semesters'] = sorted(context['semesters'], reverse=True)
     context['departments'] = sorted(context['departments'])
     if 'lower' in parameters and parameters.get('lower') != '':

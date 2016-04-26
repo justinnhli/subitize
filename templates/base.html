@@ -103,6 +103,38 @@ function field_click_handler(field, dir) {
                 <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text }}</option>
                 {% endfor %}
             </select>
+            <br>
+            Meets on:
+            <select name="day">
+                <option value="">(any)</option>
+                {% for value, weekday, selected in days %}
+                <option value="{{ value }}" {% if selected %}selected{% endif %}>{{ weekday }}</option>
+                {% endfor %}
+            </select>
+            &nbsp;&nbsp;&nbsp;
+            Starts After:
+            <select name="start_hour">
+                {% for value, hour, selected in start_hours %}
+                <option value="{{ value }}" {% if selected %}selected{% endif %}>{{ hour }}</option>
+                {% endfor %}
+            </select>
+            <select name="start_meridian">
+                {% for meridian, selected in start_meridians %}
+                <option value="{{ meridian }}" {% if selected %}selected{% endif %}>{{ meridian }}</option>
+                {% endfor %}
+            </select>
+            &nbsp;&nbsp;&nbsp;
+            Ends Before:
+            <select name="end_hour">
+                {% for value, hour, selected in end_hours %}
+                <option value="{{ value }}" {% if selected %}selected{% endif %}>{{ hour }}</option>
+                {% endfor %}
+            </select>
+            <select name="end_meridian">
+                {% for meridian, selected in end_meridians %}
+                <option value="{{ meridian }}" {% if selected %}selected{% endif %}>{{ meridian }}</option>
+                {% endfor %}
+            </select>
         </form>
     </div>
     <div id="results">
