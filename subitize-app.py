@@ -127,16 +127,14 @@ def view_root():
             results = tuple(offering for offering in results if offering.year == year and offering.season == season)
         if 'department' in parameters and parameters.get('department') != '':
             results = tuple(offering for offering in results if offering.department == parameters.get('department'))
-        if 'lower' in parameters and parameters.get('lower') != '':
-            results = tuple(offering for offering in results if get_course_number(offering.number) >= int(parameters.get('lower')))
-        if 'upper' in parameters and parameters.get('upper') != '':
-            results = tuple(offering for offering in results if get_course_number(offering.number) <= int(parameters.get('upper')))
+        results = tuple(offering for offering in results if get_course_number(offering.number) >= int(parameters.get('lower')))
+        results = tuple(offering for offering in results if get_course_number(offering.number) <= int(parameters.get('upper')))
         if 'units' in parameters and parameters.get('units') != '':
             results = tuple(offering for offering in results if offering.units == parameters.get('units'))
-        if 'core' in parameters and parameters.get('core') != '':
-            results = tuple(offering for offering in results if parameters.get('core') in offering.core)
         if 'instructor' in parameters and parameters.get('instructor') != '':
             results = tuple(offering for offering in results if parameters.get('instructor') in offering.instructors)
+        if 'core' in parameters and parameters.get('core') != '':
+            results = tuple(offering for offering in results if parameters.get('core') in offering.core)
     context['searching'] = (len(parameters) > 0)
     context['results'] = tuple(to_result(o) for o in results)
     # sort search results
