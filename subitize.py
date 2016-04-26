@@ -8,12 +8,12 @@ from os.path import dirname, join as join_path, realpath
 
 DATA_FILE = join_path(dirname(realpath(__file__)), 'counts.tsv')
 
-DAY_ABBRS = {
-    'monday': 'M',
-    'tuesday': 'T',
-    'wednesday': 'W',
-    'thursday': 'R',
-    'friday': 'F',
+WEEKDAY_ABBRS = {
+    'm': 'monday',
+    't': 'tuesday',
+    'w': 'wednesday',
+    'r': 'thursday',
+    'f': 'friday',
 }
 
 CORE_ABBRS = {
@@ -454,8 +454,9 @@ def create_filters(args):
     if args.core:
         filters.append((lambda offering: any((args.core.lower() == core.lower() or args.core.lower()) in CORE_ABBRS[core].lower() for core in offering.core if core)))
     if args.day and args.time:
-        if args.day.lower() in DAY_ABBRS:
-            args.day = DAY_ABBRS[args.day.lower()]
+        # FIXME need a more intuitive way of doing this
+        if args.day.lower() in WEEKDAY_ABBRS:
+            args.day = WEEKDAY_ABBRS[args.day.lower()]
         filters.append((lambda offering:
             any(
                 (args.day.upper() in meeting.days) and
@@ -464,8 +465,9 @@ def create_filters(args):
     elif args.time:
         filters.append((lambda offering: any((meeting.start_time < datetime.strptime(args.time.upper(), '%I:%M%p') < meeting.end_time) for meeting in offering.meetings if meeting.start_time)))
     elif args.day:
-        if args.day.lower() in DAY_ABBRS:
-            args.day = DAY_ABBRS[args.day.lower()]
+        # FIXME need a more intuitive way of doing this
+        if args.day.lower() in WEEKDAY_ABBRS:
+            args.day = WEEKDAY_ABBRS[args.day.lower()]
         filters.append((lambda offering: any((args.day.upper() in meeting.days) for meeting in offering.meetings if meeting.days)))
     if args.building:
         filters.append((lambda offering: any((args.building.lower() in meeting.location.lower()) for meeting in offering.meetings if meeting.location)))
