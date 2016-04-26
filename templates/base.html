@@ -44,9 +44,9 @@ function query_blur_handler() {
     }
 };
 function toggle_advanced_search() {
-    toggle = $('#advanced-toggle');
-    state = $('#advanced-state');
-    div = $('#advanced-search');
+    var toggle = $('#advanced-toggle');
+    var state = $('#advanced-state');
+    var div = $('#advanced-search');
     if (state.val() === 'True') {
         div.css('display', 'none');
         toggle.html('Show Advanced Search');
@@ -58,7 +58,7 @@ function toggle_advanced_search() {
     }
 };
 $(document).ready(function() {
-    state = $('#advanced-state');
+    var state = $('#advanced-state');
     if (state.val() === 'True') {
         state.val('False');
     } else {
@@ -90,6 +90,8 @@ $(document).ready(function() {
             </select>
             &nbsp;&nbsp;&nbsp;
             <span id="advanced-toggle" onclick="toggle_advanced_search();">Show Advanced Search</span>
+            &nbsp;&nbsp;&nbsp;
+            <button type="button" onclick="location.href='/';">Reset</button>
             <input type="hidden" id="advanced-state" name="advanced" value="{{ advanced }}">
             <div id="advanced-search">
                 Instructor:
