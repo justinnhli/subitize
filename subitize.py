@@ -134,8 +134,8 @@ class Meeting:
     def __init__(self, time, days, location):
         if time != 'Time-TBD':
             start_time, end_time = time.upper().split('-')
-            self.start_time = datetime.strptime(start_time, '%I:%M%p')
-            self.end_time = datetime.strptime(end_time, '%I:%M%p')
+            self.start_time = datetime.strptime(start_time, '%I:%M%p').time()
+            self.end_time = datetime.strptime(end_time, '%I:%M%p').time()
         else:
             self.start_time = None
             self.end_time = None
