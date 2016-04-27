@@ -20,6 +20,7 @@
         #tagline {font-style:italic; margin-top:-1em;}
         .large {font-size:x-large;}
         #searchbar {margin:auto; width:80%; max-width:40em;}
+        #options {margin-top:0.5em;}
         #advanced-toggle {cursor:pointer; text-decoration:underline; margin-bottom:0;}
         #advanced-search {display:none; line-height:1.5em;}
         .number {width:4em;}
@@ -81,18 +82,20 @@ $(document).ready(function() {
             <input id="searchbar" class="large" type="text" name="query" value="search for courses..." onfocus="query_focus_handler();" onblur="query_blur_handler();" style="color:#BABDB6;">
             {% endif %}
             <input class="large" type="submit" value="Search"><br>
-            Semester:
-            <select name="semester">
-                <option value="">(any)</option>
-                {% for code, text, selected in semesters %}
-                <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text }}</option>
-                {% endfor %}
-            </select>
-            &nbsp;&nbsp;&nbsp;
-            <span id="advanced-toggle" onclick="toggle_advanced_search();">Show Advanced Search</span>
-            &nbsp;&nbsp;&nbsp;
-            <button type="button" onclick="location.href='/';">Reset</button>
-            <input type="hidden" id="advanced-state" name="advanced" value="{{ advanced }}">
+            <div id="options">
+                Semester:
+                <select name="semester">
+                    <option value="">(any)</option>
+                    {% for code, text, selected in semesters %}
+                    <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text }}</option>
+                    {% endfor %}
+                </select>
+                &nbsp;&nbsp;&nbsp;
+                <span id="advanced-toggle" onclick="toggle_advanced_search();">Show Advanced Search</span>
+                &nbsp;&nbsp;&nbsp;
+                <button type="button" onclick="location.href='/';">Reset</button>
+                <input type="hidden" id="advanced-state" name="advanced" value="{{ advanced }}">
+            </div>
             <div id="advanced-search">
                 Instructor:
                 <select name="instructor">
