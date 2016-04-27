@@ -15,6 +15,7 @@ OFFERINGS = tuple(get_data_from_file())
 WEEKDAYS = 'MTWRF'
 
 INSTRUCTOR_PREFERRED_NAMES = {
+    'Alexander F. Day': 'Sasha Day',
     'Ning Hui Li': 'Justin Li',
     'William Dylan Sabo': 'Dylan Sabo',
     'Aleksandra Sherman': 'Sasha Sherman',
