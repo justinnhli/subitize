@@ -145,7 +145,7 @@ def view_root():
         if 'core' in parameters and parameters.get('core') != '':
             results = tuple(offering for offering in results if parameters.get('core') in offering.core)
         if 'day' in parameters and parameters.get('day') != '':
-            results = tuple(offering for offering in results if any((parameters.get('day') in meeting.days) for meeting in offering.meetings))
+            results = tuple(offering for offering in results if any(meeting.days is None or (parameters.get('day') in meeting.days) for meeting in offering.meetings))
         start_hour = datetime.strptime(parameters.get('start_hour') + parameters.get('start_meridian'), '%I%p').time()
         results = tuple(offering for offering in results if all((meeting.start_time is None or start_hour < meeting.start_time) for meeting in offering.meetings))
         end_hour = datetime.strptime(parameters.get('end_hour') + parameters.get('end_meridian'), '%I%p').time()
