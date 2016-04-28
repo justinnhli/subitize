@@ -31,20 +31,25 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> 
     <script>
 function query_focus_handler() {
+    "use strict";
     var searchbar = $('#searchbar');
     if (searchbar.val() === 'search for courses...') {
         searchbar.val('');
         searchbar.css('color', '#000000');
     }
-};
+}
+
 function query_blur_handler() {
+    "use strict";
     var searchbar = $('#searchbar');
-    if (searchbar.val() == '') {
+    if (searchbar.val() === '') {
         searchbar.val('search for courses...');
         searchbar.css('color', '#BABDB6');
     }
-};
+}
+
 function toggle_advanced_search() {
+    "use strict";
     var toggle = $('#advanced-toggle');
     var state = $('#advanced-state');
     var div = $('#advanced-search');
@@ -57,8 +62,10 @@ function toggle_advanced_search() {
         toggle.html('Hide Advanced Search');
         state.val('True');
     }
-};
+}
+
 $(document).ready(function() {
+    "use strict";
     var state = $('#advanced-state');
     if (state.val() === 'True') {
         state.val('False');
