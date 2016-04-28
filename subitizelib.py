@@ -1,20 +1,12 @@
 #!/usr/bin/env python3
 
-from argparse import ArgumentParser
-from csv import reader as csv_reader, QUOTE_NONE
+import re
+from csv import DictReader, QUOTE_NONE
 from datetime import datetime
 from functools import total_ordering
 from os.path import dirname, join as join_path, realpath
 
 DATA_FILE = join_path(dirname(realpath(__file__)), 'counts.tsv')
-
-WEEKDAY_ABBRS = {
-    'm': 'monday',
-    't': 'tuesday',
-    'w': 'wednesday',
-    'r': 'thursday',
-    'f': 'friday',
-}
 
 CORE_ABBRS = {
     'CPAF': 'Core Africa and The Middle East',
@@ -127,10 +119,18 @@ DEPARTMENT_ABBRS = {
     'WRD': 'Writing and Rhetoric',
 }
 
-DAYS_ORDER = 'MTWRF'
+# classes
 
 @total_ordering
 class Meeting:
+    WEEKDAYS = 'MTWRF'
+    WEEKDAY_ABBRS = {
+        'M': 'Monday',
+        'T': 'Tuesday',
+        'W': 'Wednesday',
+        'R': 'Thursday',
+        'F': 'Friday',
+    }
     def __init__(self, time, days, location):
         if time != 'Time-TBD':
             start_time, end_time = time.upper().split('-')
@@ -147,6 +147,11 @@ class Meeting:
             self.location = location
         else:
             self.location = None
+    @property
+    def days_long(self):
+        if self.days is None:
+            return None
+        return ', '.join(Meeting.WEEKDAY_ABBRS[day] for day in self.days)
     def __lt__(self, other):
         if self.days is None and other.days is not None:
             return False
@@ -157,8 +162,8 @@ class Meeting:
         elif self.start_time is not None and other.start_time is None:
             return True
         if self.days is not None and other.days is not None:
-            self_day = min(DAYS_ORDER.index(day) for day in self.days)
-            other_day = min(DAYS_ORDER.index(day) for day in other.days)
+            self_day = min(Meeting.WEEKDAYS.index(day) for day in self.days)
+            other_day = min(Meeting.WEEKDAYS.index(day) for day in other.days)
         else:
             self_day = None
             other_day = None
@@ -177,18 +182,40 @@ class Meeting:
         else:
             location = self.location
         return ' '.join((time, days, location))
-    @property
-    def days_long(self):
-        if self.days is None:
-            return None
-        return ', '.join(WEEKDAY_ABBRS[day.lower()].capitalize() for day in self.days)
     @staticmethod
     def from_string(s):
         return Meeting(*s.split(' ', maxsplit=2))
 
+class Instructor:
+    PREFERRED_NAMES = {
+        'Alexander F. Day': ('Sasha', 'Day'),
+        'Allison de Fren': ('Allison', 'de Fren'),
+        'Ning Hui Li': ('Justin', 'Li'),
+        'William Dylan Sabo': ('Dylan', 'Sabo'),
+        'Aleksandra Sherman': ('Sasha', 'Sherman'),
+        'Charles Potts': ('Brady', 'Potts'),
+        'Amanda J. Zellmer McCormack': ('Amanda J.', 'Zellmer'),
+    }
+    def __init__(self, first, last):
+        self.first_name = first
+        self.last_name = last
+    @property
+    def full_name(self):
+        return '{} {}'.format(self.first_name, self.last_name)
+    @property
+    def display_str(self):
+        return '{}, {}'.format(self.last_name, self.first_name)
+    @staticmethod
+    def from_string(s):
+        if s in Instructor.PREFERRED_NAMES:
+            first_name, last_name = Instructor.PREFERRED_NAMES[s]
+        else:
+            first_name, last_name = s.rsplit(' ', maxsplit=1)
+        return Instructor(first_name, last_name)
+
 @total_ordering
 class Offering:
-    def __init__(self, year, season, department, number, section, title, units, instructors, meetings, core, seats, enrolled, reserved, reserved_open, waitlisted):
+    def __init__(self, year, season, department, number, section, title, units, instructors, meetings, cores, seats, enrolled, reserved, reserved_open, waitlisted):
         self.year = year
         self.season = season
         self.semester = to_semester(year, season)
@@ -199,7 +226,7 @@ class Offering:
         self.units = units
         self.instructors = instructors
         self.meetings = meetings
-        self.core = core
+        self.cores = cores
         self.seats = seats
         self.enrolled = enrolled
         self.reserved = reserved
@@ -208,6 +235,9 @@ class Offering:
     @property
     def department_long(self):
         return DEPARTMENT_ABBRS[self.department]
+    @property
+    def number_as_int(self):
+        return int(re.sub('[^0-9]', '', self.number))
     def __lt__(self, other):
         return (self.semester, self.department, self.number, self.section) < (other.semester, other.department, other.number, other.section)
     def __str__(self):
@@ -221,8 +251,8 @@ class Offering:
         values.append(self.units)
         values.append('; '.join(sorted(self.instructors)))
         values.append('; '.join(str(meeting) for meeting in self.meetings))
-        if any(self.core):
-            values.append('; '.join(sorted(self.core)))
+        if any(self.cores):
+            values.append('; '.join(sorted(self.cores)))
         else:
             values.append('N/A')
         values.append(self.seats)
@@ -242,13 +272,15 @@ class Offering:
         values.append(self.units)
         values.append('; '.join(self.instructors))
         values.append('; '.join(str(meeting) for meeting in self.meetings))
-        values.append('; '.join(sorted(self.core)))
+        values.append('; '.join(sorted(self.cores)))
         values.append(self.seats)
         values.append(self.enrolled)
         values.append(self.reserved)
         values.append(self.reserved_open)
         values.append(self.waitlisted)
         return '\t'.join(values)
+
+# data sources
 
 def _extract_text(soup):
     text = []
@@ -320,15 +352,15 @@ def _extract_results(html, year, season):
         meetings = []
         for tr in tds[5].find_all('tr'):
             meetings.append(Meeting(*(_extract_text(tag) for tag in tr.find_all('td'))))
-        core = list(set(_extract_text(tag) for tag in tds[6].find_all('abbr')))
-        if not core:
-            core = []
+        cores = list(set(_extract_text(tag) for tag in tds[6].find_all('abbr')))
+        if not cores:
+            cores = []
         seats = _extract_text(tds[7])
         enrolled = _extract_text(tds[8])
         reserved = _extract_text(tds[9])
         reserved_open = _extract_text(tds[10])
         waitlisted = _extract_text(tds[11])
-        offerings.append(Offering(year, season, department, number, section, title, units, instructors, meetings, core, seats, enrolled, reserved, reserved_open, waitlisted))
+        offerings.append(Offering(year, season, department, number, section, title, units, instructors, meetings, cores, seats, enrolled, reserved, reserved_open, waitlisted))
     return offerings
 
 def to_semester(year, season):
@@ -349,6 +381,19 @@ def to_year_season(semester):
     elif season == '03':
         return year, 'summer'
 
+def get_current_year_season():
+    today = datetime.now()
+    if today.month < 3 or (today.month == 3 and today.day < 15):
+        year = today.year
+        season = 'spring'
+    elif (today.month == 3 and today.day >= 15) or 4 <= today.month < 11:
+        year = str(today.year)
+        season = 'fall'
+    else:
+        year = str(today.year + 1)
+        season = 'spring'
+    return year, season
+
 def get_data_from_web(semester):
     year, season = to_year_season(semester)
     response = _request_counts(semester).text.split('|')
@@ -359,156 +404,71 @@ def get_data_from_web(semester):
 
 def get_data_from_file():
     offerings = []
-    with open(join_path(dirname(__file__), DATA_FILE)) as fd:
-        fd.readline()
-        for offering in csv_reader(fd, delimiter='\t', quoting=QUOTE_NONE):
-            year, season, department, number, section, title, units, instructors, meetings, core, seats, enrolled, reserved, reserved_open, waitlisted = offering
-            instructors = tuple(instructor.strip() for instructor in instructors.split(';'))
-            meetings = tuple(Meeting.from_string(meeting.strip()) for meeting in meetings.split(';'))
-            if core:
-                core = tuple(code.strip() for code in core.split(';'))
+    with open(DATA_FILE) as fd:
+        for offering in DictReader(fd, delimiter='\t', quoting=QUOTE_NONE):
+            offering['instructors'] = tuple(Instructor.from_string(instructor.strip()) for instructor in offering['instructors'].split(';'))
+            offering['meetings'] = tuple(Meeting.from_string(meeting.strip()) for meeting in offering['meetings'].split(';'))
+            if offering['cores']:
+                offering['cores'] = tuple(code.strip() for code in offering['cores'].split(';'))
             else:
-                core = tuple()
-            offerings.append(Offering(year, season, department, number, section, title, units, instructors, meetings, core, seats, enrolled, reserved, reserved_open, waitlisted))
+                offering['cores'] = tuple()
+            offerings.append(Offering(**offering))
     return offerings
 
-def parse_args():
-    arg_parser = ArgumentParser()
-    group = arg_parser.add_argument_group('semester filters')
-    group.add_argument('--year', type=int)
-    group.add_argument('--season', choices=('fall', 'spring', 'summer'))
-    group.add_argument('--semester', type=int)
-    group.add_argument('--before-semester', type=int)
-    group.add_argument('--after-semester', type=int)
-    group = arg_parser.add_argument_group('academic filters')
-    group.add_argument('--department')
-    group.add_argument('--department-code')
-    group.add_argument('--number', type=int)
-    group.add_argument('--min-number', type=int)
-    group.add_argument('--max-number', type=int)
-    group.add_argument('--title')
-    group.add_argument('--units', type=int)
-    group.add_argument('--min-units', type=int)
-    group.add_argument('--max-units', type=int)
-    group.add_argument('--instructor')
-    group.add_argument('--core')
-    group = arg_parser.add_argument_group('meeting filters')
-    group.add_argument('--time')
-    group.add_argument('--day')
-    group.add_argument('--building')
-    group.add_argument('--room')
-    group = arg_parser.add_argument_group('enrollment filters')
-    group.add_argument('--open', action='store_true', default=False)
-    group = arg_parser.add_argument_group('data source options').add_mutually_exclusive_group()
-    group.add_argument('--web', dest='web', action='store_true', default=False)
-    group.add_argument('--file', dest='web', action='store_false', default=True)
-    group = arg_parser.add_argument_group('output options')
-    group.add_argument('--header', action='store_true', default=False)
-    group = arg_parser.add_argument_group('maintenance options')
-    group.add_argument('--update', action='store_true', default=False)
-    args = arg_parser.parse_args()
-    for attr in ('year', 'semester', 'before_semester', 'after_semester', 'number', 'min_number', 'max_number', 'units', 'min_units', 'max_units'):
-        if getattr(args, attr):
-            setattr(args, attr, str(getattr(args, attr)))
-    for attr in ('semester', 'before_semester', 'after_semester'):
-        if getattr(args, attr) and len(getattr(args, attr)) != 6:
-            arg_parser.error('argument --{}: must be in YYYY0S format'.format(attr.replace('_', '-')))
-    if args.time:
-        try:
-            datetime.strptime(args.time.upper(), '%I:%M%p')
-        except ValueError:
-            arg_parser.error('argument --time: must be in HH:MM[ap]m format')
-    if args.web and (args.semester is None and (args.year is None or args.season is None)):
-        arg_parser.error('argument --web: must provide specific semester')
-    if args.update and args.semester is None:
-        arg_parser.error('argument --update: must specify --semester')
-    return args
+# filters
 
-def create_filters(args):
-    filters = []
-    if args.year:
-        filters.append((lambda offering: args.year == offering.year))
-    if args.season:
-        filters.append((lambda offering: args.season.lower() == offering.season.lower()))
-    if args.semester:
-        filters.append((lambda offering: args.semester == offering.semester))
-    if args.before_semester:
-        filters.append((lambda offering: offering.semester < args.before_semester))
-    if args.after_semester:
-        filters.append((lambda offering: args.after_semester <= offering.semester))
-    if args.department:
-        filters.append((lambda offering: args.department.lower() == offering.department.lower() or args.department.lower() in DEPARTMENT_ABBRS[offering.department].lower()))
-    if args.department_code:
-        filters.append((lambda offering: args.department_code.lower() == offering.department.lower()))
-    if args.number:
-        filters.append((lambda offering: args.number == offering.number))
-    if args.min_number:
-        filters.append((lambda offering: args.min_number <= offering.number))
-    if args.max_number:
-        filters.append((lambda offering: args.max_number >= offering.number))
-    if args.title:
-        filters.append((lambda offering: args.title.lower() in offering.title.lower()))
-    if args.units:
-        filters.append((lambda offering: args.units == offering.units))
-    if args.min_units:
-        filters.append((lambda offering: args.min_units <= offering.units))
-    if args.max_units:
-        filters.append((lambda offering: args.max_units >= offering.units))
-    if args.instructor:
-        filters.append((lambda offering: any((args.instructor.lower() in instructor.lower()) for instructor in offering.instructors)))
-    if args.core:
-        filters.append((lambda offering: any((args.core.lower() == core.lower() or args.core.lower()) in CORE_ABBRS[core].lower() for core in offering.core if core)))
-    if args.day and args.time:
-        # FIXME need a more intuitive way of doing this
-        if args.day.lower() in WEEKDAY_ABBRS:
-            args.day = WEEKDAY_ABBRS[args.day.lower()]
-        filters.append((lambda offering:
-            any(
-                (args.day.upper() in meeting.days) and
-                (meeting.start_time < datetime.strptime(args.time.upper(), '%I:%M%p') < meeting.end_time)
-                for meeting in offering.meetings if meeting.days and meeting.start_time)))
-    elif args.time:
-        filters.append((lambda offering: any((meeting.start_time < datetime.strptime(args.time.upper(), '%I:%M%p') < meeting.end_time) for meeting in offering.meetings if meeting.start_time)))
-    elif args.day:
-        # FIXME need a more intuitive way of doing this
-        if args.day.lower() in WEEKDAY_ABBRS:
-            args.day = WEEKDAY_ABBRS[args.day.lower()]
-        filters.append((lambda offering: any((args.day.upper() in meeting.days) for meeting in offering.meetings if meeting.days)))
-    if args.building:
-        filters.append((lambda offering: any((args.building.lower() in meeting.location.lower()) for meeting in offering.meetings if meeting.location)))
-    if args.room:
-        filters.append((lambda offering: any((args.room.lower() in meeting.location.lower()) for meeting in offering.meetings if meeting.location)))
-    if args.open:
-        filters.append((lambda offering: offering.enrolled < offering.seats))
-    return filters
+def filter_study_abroad(offerings):
+    return tuple(o for o in offerings if not (o.department == 'OXAB' or o.department.startswith('AB')))
 
-def get_header():
-    return '\t'.join(('year', 'season', 'department', 'number', 'section', 'title', 'units', 'instructors', 'meetings', 'core', 'seats', 'enrolled', 'reserved', 'reserved_open', 'waitlisted'))
+def filter_by_search(offerings, query):
+    if query is None:
+        return offerings
+    terms = query.lower().split()
+    results = []
+    for offering in offerings:
+        match = True
+        for term in terms:
+            if term in offering.title.lower():
+                continue
+            if term == offering.department.lower() or term in DEPARTMENT_ABBRS[offering.department].lower():
+                continue
+            if term == offering.number_as_int:
+                continue
+            if any((term in instructor.full_name.lower()) for instructor in offering.instructors):
+                continue
+            match = False
+            break
+        if match:
+            results.append(offering)
+    return tuple(results)
 
-def main():
-    args = parse_args()
-    if args.update:
-        offerings = get_data_from_file()
-        offerings = list(offering for offering in offerings if offering.semester != args.semester)
-        offerings.extend(get_data_from_web(args.semester))
-        with open(DATA_FILE, 'w') as fd:
-            fd.write(get_header() + '\n')
-            for offering in sorted(offerings):
-                fd.write(offering.to_tsv_row() + '\n')
-    else:
-        filters = create_filters(args)
-        if args.web:
-            if args.semester:
-                offerings = get_data_from_web(args.semester)
-            else:
-                offerings = get_data_from_web(to_semester(args.year, args.season))
-        else:
-            offerings = get_data_from_file()
-        if args.header:
-            print(get_header())
-        for offering in offerings:
-            if all(fn(offering) for fn in filters):
-                print(str(offering))
+def filter_by_semester(offerings, semester):
+    if semester is None:
+        return offerings
+    year, season = to_year_season(semester)
+    return tuple(offering for offering in offerings if offering.year == year and offering.season == season)
 
-if __name__ == '__main__':
-    main()
+def filter_by_department(offerings, department):
+    if department is None:
+        return offerings
+    return tuple(offering for offering in offerings if offering.department == department)
+
+def filter_by_number(offerings, minimum, maximum):
+    if minimum is None or maximum is None:
+        return offerings
+    return tuple(offering for offering in offerings if minimum <= offering.number_as_int <= maximum)
+
+def filter_by_units(offerings, units):
+    if units is None:
+        return offerings
+    return tuple(offering for offering in offerings if offering.units == units)
+
+def filter_by_instructor(offerings, instructor):
+    if instructor is None:
+        return offerings
+    return tuple(offering for offering in offerings if instructor in offering.instructors)
+
+def filter_by_core(offerings, core):
+    if core is None:
+        return offerings
+    return tuple(offering for offering in offerings if core in offering.core)
