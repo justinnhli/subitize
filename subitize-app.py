@@ -100,7 +100,7 @@ def view_root():
     context = {}
     # get search results, if necessary
     if len(parameters) == 0:
-        results = tuple()
+        context['results'] = None
         semester = to_semester(*get_current_year_season())
     else:
         results = offerings
@@ -124,7 +124,6 @@ def view_root():
                     break
                 if match:
                     results.append(offering)
-            context['form_query'] = parameters.get('query')
         if 'semester' in parameters and parameters.get('semester') == '':
             semester = ''
         else:
@@ -150,8 +149,8 @@ def view_root():
         results = tuple(offering for offering in results if all((meeting.start_time is None or start_hour < meeting.start_time) for meeting in offering.meetings))
         end_hour = datetime.strptime(parameters.get('end_hour') + parameters.get('end_meridian'), '%I%p').time()
         results = tuple(offering for offering in results if all((meeting.end_time is None or meeting.end_time < end_hour) for meeting in offering.meetings))
-    context['searching'] = (len(parameters) > 0)
-    context['results'] = tuple(to_result(o) for o in results)
+        context['results'] = tuple(to_result(o) for o in results)
+        context['query'] = parameters.get('query')
     # sort search results
     if 'sort' in parameters:
         field = parameters.pop('sort')

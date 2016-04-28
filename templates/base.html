@@ -83,10 +83,10 @@ $(document).ready(function() {
     </div>
     <div>
         <form action="" method="get">
-            {% if form_query %}
-            <input id="searchbar" class="large" type="text" name="query" value="{{ form_query }}" onfocus="query_focus_handler();" onblur="query_blur_handler();" style="color:#000000;">
-            {% else %}
+            {% if results is none or query == 'search for courses...' %}
             <input id="searchbar" class="large" type="text" name="query" value="search for courses..." onfocus="query_focus_handler();" onblur="query_blur_handler();" style="color:#BABDB6;">
+            {% else %}
+            <input id="searchbar" class="large" type="text" name="query" value="{{ query }}" onfocus="query_focus_handler();" onblur="query_blur_handler();" style="color:#000000;">
             {% endif %}
             <input class="large" type="submit" value="Search"><br>
             <div id="options">
@@ -175,8 +175,8 @@ $(document).ready(function() {
         </form>
     </div>
     <div id="results">
-        {% if searching %}
-        {% if not results %}
+        {% if results is none %}
+        {% elif not results %}
         <h3>No courses found.</h3>
         {% else %}
         <table id="results-table">
@@ -217,7 +217,6 @@ $(document).ready(function() {
             </tr>
             {% endfor %}
         </table>
-        {% endif %}
         {% endif %}
     </div>
     <div>
