@@ -14,7 +14,7 @@ from subitizelib import filter_study_abroad, filter_by_search, filter_by_semeste
 OFFERINGS = tuple(get_data_from_file())
 
 OPTIONS_SEMESTERS = sorted(set((to_semester(o.year, o.season), o.year + ' ' + o.season.capitalize()) for o in OFFERINGS), reverse=True)
-OPTIONS_INSTRUCTORS = sorted(set((instructor, instructor.display_str) for o in OFFERINGS for instructor in o.instructors), key=(lambda seq: seq[1].lower()))
+OPTIONS_INSTRUCTORS = sorted(set((instructor, instructor.display_name) for o in OFFERINGS for instructor in o.instructors), key=(lambda seq: seq[1].lower()))
 OPTIONS_CORES = sorted(set((core, CORE_ABBRS[core]) for o in OFFERINGS for core in o.cores))
 OPTIONS_UNITS = sorted(set(o.units for o in OFFERINGS))
 OPTIONS_DEPARTMENTS = sorted(set((o.department, DEPARTMENT_ABBRS[o.department]) for o in OFFERINGS))

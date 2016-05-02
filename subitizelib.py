@@ -203,7 +203,7 @@ class Instructor:
     def full_name(self):
         return '{} {}'.format(self.first_name, self.last_name)
     @property
-    def display_str(self):
+    def display_name(self):
         return '{}, {}'.format(self.last_name, self.first_name)
     @staticmethod
     def from_string(s):
