@@ -236,6 +236,9 @@ class Offering:
     def department_long(self):
         return DEPARTMENT_ABBRS[self.department]
     @property
+    def number_as_str(self):
+        return re.sub('[^0-9]', '', self.number)
+    @property
     def number_as_int(self):
         return int(re.sub('[^0-9]', '', self.number))
     def __lt__(self, other):
@@ -432,7 +435,7 @@ def filter_by_search(offerings, query):
                 continue
             if term == offering.department.lower() or term in DEPARTMENT_ABBRS[offering.department].lower():
                 continue
-            if term == offering.number_as_int:
+            if term == offering.number_as_str:
                 continue
             if any((term in instructor.full_name.lower()) for instructor in offering.instructors):
                 continue
