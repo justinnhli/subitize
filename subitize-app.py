@@ -117,7 +117,7 @@ def to_result(offering):
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route('/')
 def view_root():
     parameters = request.args.to_dict()
     if 'semester' in parameters:
@@ -134,5 +134,5 @@ def view_root():
     context['advanced'] = str(parameters.get('advanced'))
     return render_template('base.html', **context)
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run(debug=True)
