@@ -5,10 +5,12 @@ from datetime import datetime
 
 from flask import Flask, render_template, request, url_for
 
-from models import Semester, Weekday, Core, Department, Faculty, get_data_from_file
+from models import Semester, Weekday, Core, Department, Faculty, Offering, load_data
 from subitizelib import filter_study_abroad, filter_by_search, filter_by_semester, filter_by_department, filter_by_number, filter_by_units, filter_by_instructor, filter_by_core
 
-OFFERINGS = tuple(get_data_from_file())
+load_data()
+
+OFFERINGS = tuple(Offering.all())
 
 OPTIONS_SEMESTERS = sorted(Semester.all(), reverse=True)
 OPTIONS_INSTRUCTORS = sorted(Faculty.all(), key=(lambda f: f.last_first.lower()))

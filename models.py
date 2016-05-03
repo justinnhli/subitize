@@ -5,6 +5,13 @@ from datetime import datetime
 from functools import total_ordering
 from os.path import dirname, join as join_path, realpath
 
+DIRECTORY = dirname(realpath(__file__))
+
+BUILDINGS_FILE = join_path(DIRECTORY, 'buildings.tsv')
+CORES_FILE = join_path(DIRECTORY, 'cores.tsv')
+DEPARTMENTS_FILE = join_path(DIRECTORY, 'departments.tsv')
+OFFERINGS_FILE = join_path(DIRECTORY, 'offerings.tsv')
+
 DATA_FILE = join_path(dirname(realpath(__file__)), 'counts.tsv')
 
 def _multiton_canonicalize_key_(cls, args):
@@ -249,20 +256,28 @@ class Offering(AbstractMultiton):
         return super().__str__() + ': ' + self.name
 
 def load_data():
-    with open('buildings.tsv') as fd:
+    load_buildings()
+    load_cores()
+    load_departments()
+    load_offerings()
+
+def load_buildings():
+    with open(BUILDINGS_FILE) as fd:
         for row in DictReader(fd, delimiter='\t'):
             Building(row['code'], row['name'])
-    with open('departments.tsv') as fd:
+
+def load_departments():
+    with open(DEPARTMENTS_FILE) as fd:
         for row in DictReader(fd, delimiter='\t'):
             Department(row['code'], row['name'])
-    with open('cores.tsv') as fd:
+
+def load_cores():
+    with open(CORES_FILE) as fd:
         for row in DictReader(fd, delimiter='\t'):
             Core(row['code'], row['name'])
 
-def get_data_from_file():
-    load_data()
-    offerings = []
-    with open(DATA_FILE) as fd:
+def load_offerings():
+    with open(OFFERINGS_FILE) as fd:
         for offering in DictReader(fd, delimiter='\t', quoting=QUOTE_NONE):
             semester = Semester(int(offering['year']), offering['season'].capitalize())
             meetings = []
@@ -308,19 +323,3 @@ def get_data_from_file():
             else:
                 cores = tuple()
             offering = Offering(semester, course, offering['section'], offering['title'], int(offering['units']), tuple(instructors), tuple(meetings), cores)
-            offerings.append(offering)
-    return offerings
-
-def main():
-    load_data()
-    get_data_from_file()
-    for b in Building.all():
-        print('{}\t{}'.format(b.code, 'FIXME'))
-    '''
-    faculty = sorted((f.first_name, f.last_name) for f in Faculty.INSTANCES.values())
-    for first, last in faculty:
-        print('None\t{}\t{}'.format(first, last))
-    '''
-
-if __name__ == '__main__':
-    main()
