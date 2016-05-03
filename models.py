@@ -122,8 +122,17 @@ class TimeSlot(AbstractMultiton):
     def weekdays_str(self):
         return ', '.join(weekday.weekday for weekday in self.weekdays)
     @property
-    def start_end(self):
-        return (self.start_time.strftime('%I:%M%p') + '-' + self.end_time.strftime('%I:%M%p')).lower()
+    def us_start_time(self):
+        return self.start_time.strftime('%I:%M%p').strip('0').lower()
+    @property
+    def us_end_time(self):
+        return self.end_time.strftime('%I:%M%p').strip('0').lower()
+    @property
+    def iso_start_time(self):
+        return self.start_time.strftime('%H:%M')
+    @property
+    def iso_end_time(self):
+        return self.end_time.strftime('%H:%M')
     def __lt__(self, other):
         return (self.weekdays, self.start_time, self.end_time) < (other.weekdays, other.start_time, other.end_time)
     def __str__(self):
@@ -168,8 +177,17 @@ class Meeting(AbstractMultiton):
     def weekdays_str(self):
         return self.time_slot.weekdays_str
     @property
-    def start_end(self):
-        return self.time_slot.start_end
+    def us_start_time(self):
+        return self.time_slot.us_start_time
+    @property
+    def us_end_time(self):
+        return self.time_slot.us_end_time
+    @property
+    def iso_start_time(self):
+        return self.time_slot.iso_start_time
+    @property
+    def iso_end_time(self):
+        return self.time_slot.iso_end_time
     @property
     def building(self):
         return self.location.building

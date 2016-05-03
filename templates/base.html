@@ -206,7 +206,7 @@ $(document).ready(function() {
                 </td>
                 <td>
                     {% for meeting in offering.meetings %}
-                    {{ meeting.time_slot.start_end }}
+                    {{ meeting.us_start_time }} - {{ meeting.us_end_time }}
                     <abbr title="{{ meeting.weekdays_str }}">{{ meeting.weekdays_abbreviation }}</abbr>
                     {% if meeting.location is none %}
                     (TBD)
