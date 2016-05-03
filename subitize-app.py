@@ -1,26 +1,23 @@
 #!/usr/bin/env python3
 
-from datetime import datetime
 from math import ceil
-from collections import namedtuple
+from datetime import datetime
 
 from flask import Flask, render_template, request, url_for
 
-from subitizelib import CORE_ABBRS, DEPARTMENT_ABBRS
-from subitizelib import Meeting
-from subitizelib import get_data_from_file, to_semester, get_current_year_season
+from models import Semester, Weekday, Core, Department, Faculty, get_data_from_file
 from subitizelib import filter_study_abroad, filter_by_search, filter_by_semester, filter_by_department, filter_by_number, filter_by_units, filter_by_instructor, filter_by_core
 
 OFFERINGS = tuple(get_data_from_file())
 
-OPTIONS_SEMESTERS = sorted(set((to_semester(o.year, o.season), o.year + ' ' + o.season.capitalize()) for o in OFFERINGS), reverse=True)
-OPTIONS_INSTRUCTORS = sorted(set((instructor, instructor.display_name) for o in OFFERINGS for instructor in o.instructors), key=(lambda seq: seq[1].lower()))
-OPTIONS_CORES = sorted(set((core, CORE_ABBRS[core]) for o in OFFERINGS for core in o.cores))
+OPTIONS_SEMESTERS = sorted(Semester.all(), reverse=True)
+OPTIONS_INSTRUCTORS = sorted(Faculty.all(), key=(lambda f: f.last_first.lower()))
+OPTIONS_CORES = sorted(Core.all(), key=(lambda c: c.name))
 OPTIONS_UNITS = sorted(set(o.units for o in OFFERINGS))
-OPTIONS_DEPARTMENTS = sorted(set((o.department, DEPARTMENT_ABBRS[o.department]) for o in OFFERINGS))
+OPTIONS_DEPARTMENTS = sorted(Department.all(), key=(lambda d: d.name))
 OPTIONS_LOWER = 0
-OPTIONS_UPPER = max(ceil(o.number_as_int / 100) * 100 - 1 for o in OFFERINGS)
-OPTIONS_DAYS = [(code, Meeting.WEEKDAY_ABBRS[code]) for code in Meeting.WEEKDAYS]
+OPTIONS_UPPER = max(ceil(o.course.pure_number_int / 100) * 100 - 1 for o in OFFERINGS)
+OPTIONS_DAYS = sorted(Weekday.all())
 OPTIONS_HOURS = [(str(hour), hour) for hour in (12, *range(1, 12))]
 OPTIONS_MERIDIANS = ['am', 'pm']
 
@@ -44,35 +41,46 @@ def get_search_results(parameters, context):
         results = filter_by_instructor(results, get_parameter(parameters, 'instructor'))
         results = filter_by_core(results, get_parameter(parameters, 'core'))
         if get_parameter(parameters, 'day'):
-            results = tuple(offering for offering in results if any(meeting.days is None or (parameters.get('day') in meeting.days) for meeting in offering.meetings))
+            results = tuple(offering for offering in results if any(meeting.time_slot is None or parameters.get('day') in meeting.time_slot.weekdays_abbreviation for meeting in offering.meetings))
         start_hour = datetime.strptime(parameters.get('start_hour') + parameters.get('start_meridian'), '%I%p').time()
-        results = tuple(offering for offering in results if all((meeting.start_time is None or start_hour < meeting.start_time) for meeting in offering.meetings))
+        results = tuple(offering for offering in results if all((meeting.time_slot is None or start_hour < meeting.time_slot.start_time) for meeting in offering.meetings))
         end_hour = datetime.strptime(parameters.get('end_hour') + parameters.get('end_meridian'), '%I%p').time()
-        results = tuple(offering for offering in results if all((meeting.end_time is None or meeting.end_time < end_hour) for meeting in offering.meetings))
-        context['results'] = tuple(to_result(o) for o in results)
-        context['query'] = parameters.get('query')
+        results = tuple(offering for offering in results if all((meeting.time_slot is None or meeting.time_slot.end_time < end_hour) for meeting in offering.meetings))
+        context['results'] = tuple(results)
+        if parameters.get('query').strip() == '':
+            context['query'] = 'search for courses...'
+        else:
+            context['query'] = parameters.get('query')
     return context
 
 def sort_search_results(parameters, context):
     if 'sort' in parameters:
         field = parameters.get('sort')
         if field == 'semester':
-            context['results'] = sorted(context['results'], key=(lambda result: result.offering.semester))
+            context['results'] = sorted(context['results'], key=(lambda offering: offering.semester))
+        elif field == 'course':
+            context['results'] = sorted(context['results'], key=(lambda offering: (offering.course.department.code, offering.course.number)))
+        elif field == 'title':
+            context['results'] = sorted(context['results'], key=(lambda offering: offering.course.name))
+        elif field == 'units':
+            context['results'] = sorted(context['results'], key=(lambda offering: offering.course.units))
+        elif field == 'instructor':
+            context['results'] = sorted(context['results'], key=(lambda offering: sorted(i.last_name for i in offering.instructors)))
         elif field == 'meetings':
-            context['results'] = sorted(context['results'], key=(lambda result: sorted(result.offering.meetings)))
-        else:
-            context['results'] = sorted(context['results'], key=(lambda result: getattr(result, field)))
+            context['results'] = sorted(context['results'], key=(lambda offering: sorted(offering.meetings)))
+        elif field == 'cores':
+            context['results'] = sorted(context['results'], key=(lambda offering: sorted(c.code for c in offering.cores)))
     return context
 
-def get_dropdown_options(parameters, context, semester):
-    context['semesters'] = tuple((code, o_semester, code == semester) for code, o_semester in OPTIONS_SEMESTERS)
-    context['instructors'] = tuple((code, instructor, instructor == parameters.get('instructor')) for code, instructor in OPTIONS_INSTRUCTORS)
-    context['cores'] = tuple((code, core, code == parameters.get('core')) for code, core in OPTIONS_CORES)
-    context['units'] = tuple((unit, unit == parameters.get('units')) for unit in OPTIONS_UNITS)
-    context['departments'] = tuple((code, department, code == parameters.get('department')) for code, department in OPTIONS_DEPARTMENTS)
+def get_dropdown_options(parameters, context):
+    context['semesters'] = OPTIONS_SEMESTERS
+    context['instructors'] = OPTIONS_INSTRUCTORS
+    context['cores'] = OPTIONS_CORES
+    context['units'] = OPTIONS_UNITS
+    context['departments'] = OPTIONS_DEPARTMENTS
     context['lower'] = (OPTIONS_LOWER if parameters.get('lower') is None else parameters.get('lower'))
     context['upper'] = (OPTIONS_UPPER if parameters.get('upper') is None else parameters.get('upper'))
-    context['days'] = tuple((code, day, code == parameters.get('day')) for code, day in OPTIONS_DAYS)
+    context['days'] = OPTIONS_DAYS
     context['start_hours'] = tuple((value, hour, value == parameters.get('start_hour')) for value, hour in OPTIONS_HOURS)
     context['start_meridians'] = tuple((meridian, meridian == parameters.get('start_meridian')) for meridian in OPTIONS_MERIDIANS)
     if len(parameters) == 0:
@@ -82,56 +90,22 @@ def get_dropdown_options(parameters, context, semester):
     context['end_meridians'] = tuple((meridian, meridian == parameters.get('end_meridian')) for meridian in OPTIONS_MERIDIANS)
     return context
 
-Result = namedtuple('Result', ('offering', 'semester', 'course', 'title', 'units', 'instructors', 'meetings', 'core'))
-
-def to_result(offering):
-    semester = offering.year + ' ' + offering.season.capitalize()
-    course = ' '.join([offering.department, offering.number, offering.section])
-    title = offering.title
-    units = offering.units
-    instructors = []
-    for instructor in offering.instructors:
-        instructors.append((instructor.last_name, instructor.full_name))
-    instructors = sorted(instructors)
-    meetings = []
-    for meeting in offering.meetings:
-        if meeting.start_time is None:
-            time = ''
-            days = ''
-            days_full = ''
-            location = 'TBD'
-        else:
-            time = (meeting.start_time.strftime('%I:%M%p') + '-' + meeting.end_time.strftime('%I:%M%p')).lower()
-            days = meeting.days
-            days_full = meeting.days_long
-            if meeting.location is None:
-                location = 'TBD'
-            else:
-                location = meeting.location
-        meetings.append((time, days, days_full, location))
-    core = []
-    for code in offering.cores:
-        core.append((code, CORE_ABBRS[code]))
-    core = sorted(core)
-    return Result(offering, semester, course, title, units, instructors, meetings, core)
-
 app = Flask(__name__)
 
 @app.route('/')
 def view_root():
     parameters = request.args.to_dict()
-    if 'semester' in parameters:
-        semester = parameters.get('semester')
-    else:
-        semester = to_semester(*get_current_year_season())
     context = {}
     context = get_search_results(parameters, context)
     context = sort_search_results(parameters, context)
-    context = get_dropdown_options(parameters, context, semester)
+    context = get_dropdown_options(parameters, context)
     if 'sort' in parameters:
         parameters.pop('sort')
     context['url'] = url_for('view_root', **parameters)
     context['advanced'] = str(parameters.get('advanced'))
+    if 'semester' not in parameters:
+        parameters['semester'] = Semester.current_semester().code
+    context['parameters'] = parameters
     return render_template('base.html', **context)
 
 if __name__ == '__main__':

@@ -93,8 +93,8 @@ $(document).ready(function() {
                 Semester:
                 <select name="semester">
                     <option value="">(any)</option>
-                    {% for code, text, selected in semesters %}
-                    <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text }}</option>
+                    {% for s in semesters %}
+                    <option value="{{ s.code }}" {% if parameters.semester == s.code %}selected{% endif %}>{{ s }}</option>
                     {% endfor %}
                 </select>
                 &nbsp;&nbsp;&nbsp;
@@ -107,32 +107,32 @@ $(document).ready(function() {
                 Instructor:
                 <select name="instructor">
                     <option value="">(any)</option>
-                    {% for code, text, selected in instructors %}
-                    <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text }}</option>
+                    {% for f in instructors %}
+                    <option value="{{ f.alias }}" {% if parameters.instructor == f.alias %}selected{% endif %}>{{ f.last_first }}</option>
                     {% endfor %}
                 </select>
                 &nbsp;&nbsp;&nbsp;
                 Core:
                 <select name="core">
                     <option value="">(any)</option>
-                    {% for code, text, selected in cores %}
-                    <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text}}</option>
+                    {% for c in cores %}
+                    <option value="{{ c.code }}" {% if parameters.core == c.code %}selected{% endif %}>{{ c.name }}</option>
                     {% endfor %}
                 </select>
                 &nbsp;&nbsp;&nbsp;
                 Units:
                 <select name="units">
                     <option value="">(any)</option>
-                    {% for unit, selected in units %}
-                    <option value="{{ unit }}" {% if selected %}selected{% endif %}>{{ unit }}</option>
+                    {% for unit in units %}
+                    <option value="{{ unit }}" {% if parameters.units == unit %}selected{% endif %}>{{ unit }}</option>
                     {% endfor %}
                 </select>
                 <br>
                 Department:
                 <select name="department">
                     <option value="">(any)</option>
-                    {% for code, text, selected in departments %}
-                    <option value="{{ code }}" {% if selected %}selected{% endif %}>{{ text }}</option>
+                    {% for d in departments %}
+                    <option value="{{ d.code }}" {% if parameters.department == d.code %}selected{% endif %}>{{ d.name }}</option>
                     {% endfor %}
                 </select>
                 &nbsp;&nbsp;&nbsp;
@@ -143,8 +143,8 @@ $(document).ready(function() {
                 Meets on:
                 <select name="day">
                     <option value="">(any)</option>
-                    {% for value, weekday, selected in days %}
-                    <option value="{{ value }}" {% if selected %}selected{% endif %}>{{ weekday }}</option>
+                    {% for day in days %}
+                    <option value="{{ day.abbreviation }}" {% if parameters.day == day.abbreviation %}selected{% endif %}>{{ day.weekday }}</option>
                     {% endfor %}
                 </select>
                 &nbsp;&nbsp;&nbsp;
@@ -189,29 +189,35 @@ $(document).ready(function() {
                 <th><a href="{{ url }}&sort=meetings">Meeting Times (Room)</a></th>
                 <th><a href="{{ url }}&sort=core">Core</a></th>
             </tr>
-            {% for result in results %}
+            {% for offering in results %}
             <tr>
-                <td>{{ result.semester }}</td>
+                <td>{{ offering.semester }}</td>
                 <td>
-                        <abbr title="{{ result.offering.department_long }}">{{ result.offering.department }}</abbr>
-                        {{ result.offering.number }}
-                        {{ result.offering.section }}
+                        <abbr title="{{ offering.course.department.name }}">{{ offering.course.department.code }}</abbr>
+                        {{ offering.course.number }}
+                        {{ offering.section }}
                 </td>
-                <td>{{ result.title }}</td>
-                <td>{{ result.units }}</td>
+                <td>{{ offering.name }}</td>
+                <td>{{ offering.units }}</td>
                 <td>
-                    {% for last_name, full_name in result.instructors %}
-                    <abbr title="{{ full_name }}">{{ last_name }}</abbr>{% if not loop.last %};{% endif %}
+                    {% for instructor in offering.instructors|sort(attribute='last_name') %}
+                    <abbr title="{{ instructor.first_last }}">{{ instructor.last_name }}</abbr>{% if not loop.last %};{% endif %}
                     {% endfor %}
                 </td>
                 <td>
-                    {% for time, days, days_full, location in result.meetings %}
-                    {{ time }} <abbr title="{{ days_full }}">{{ days }}</abbr> ({{ location }})
+                    {% for meeting in offering.meetings %}
+                    {{ meeting.time_slot.start_end }}
+                    <abbr title="{{ meeting.time_slot.weekdays_str }}">{{ meeting.time_slot.weekdays_abbreviation }}</abbr>
+                    {% if meeting.location is none %}
+                    (TBD)
+                    {% else %}
+                    (<abbr title="{{ meeting.location.building.name }}">{{ meeting.location.building.code }}</abbr> {{ meeting.location.room }})
+                    {% endif %}
                     {% endfor %}
                 </td>
                 <td>
-                    {% for core_code, core_name in result.core %}
-                    <abbr title="{{ core_name }}">{{ core_code }}</abbr>{% if not loop.last %};{% endif %}
+                    {% for core in offering.cores %}
+                    <abbr title="{{ core.name }}">{{ core.code }}</abbr>{% if not loop.last %};{% endif %}
                     {% endfor %}
                 </td>
             </tr>
