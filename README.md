@@ -1,5 +1,7 @@
 # Subitize
 
-> *Subitize* (v.): To judge the number of objects in a group rapidly, accurately and confidently without counting them.
+> *Subitize* (v.): to rapidly, accurately, and confidently perceive the number of objects without counting
 
-This project is a collection of Python scripts for accessing Occidental College's Course Counts system. The goal is to provide a command-line interface for Course Counts, as well as serve as the back-end for other programs that may require course offering information (eg. for advising, scheduling, etc.).
+This project is a web app that redesigns Occidental College's [Course Counts](http://counts.oxy.edu/) with a friendlier user interface that simultaneously offers more flexibility. The long-term goal is to supersede Course Counts by serving all student-side course scheduling needs, including graduation and major/minor planning.
+
+The live app can be found at [http://subitize.herokuapp.com/](http://subitize.herokuapp.com/).
