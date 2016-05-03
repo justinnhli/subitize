@@ -56,7 +56,9 @@ def get_search_results(parameters, context):
     return context
 
 def sort_search_results(parameters, context):
-    if 'sort' in parameters:
+    if context['results'] is None:
+        return context
+    elif 'sort' in parameters:
         field = parameters.get('sort')
         if field == 'semester':
             context['results'] = sorted(context['results'], key=(lambda offering: offering.semester))
@@ -72,6 +74,8 @@ def sort_search_results(parameters, context):
             context['results'] = sorted(context['results'], key=(lambda offering: sorted(offering.meetings)))
         elif field == 'cores':
             context['results'] = sorted(context['results'], key=(lambda offering: sorted(c.code for c in offering.cores)))
+    else:
+        context['results'] = sorted(context['results'], key=(lambda offering: (offering.semester, offering.course, offering.section)))
     return context
 
 def get_dropdown_options(parameters, context):
