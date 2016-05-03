@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 from csv import DictReader, QUOTE_NONE
 from datetime import datetime
 from functools import total_ordering
