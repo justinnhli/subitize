@@ -286,7 +286,7 @@ class Course(AbstractMultiton):
 @multiton
 class Offering(AbstractMultiton):
     KEYS = ('semester', 'course', 'section',)
-    def __init__(self, semester, course, section, name, units, instructors=None, meetings=None, cores=None):
+    def __init__(self, semester, course, section, name, units, instructors=None, meetings=None, cores=None, seats=0, enrolled=0, reserved=0, reserved_open=0, waitlisted=0):
         self.semester = semester
         self.course = course
         self.section = section
@@ -295,6 +295,11 @@ class Offering(AbstractMultiton):
         self.instructors = instructors
         self.meetings = meetings
         self.cores = cores
+        self.num_enrolled = enrolled
+        self.num_seats = seats
+        self.num_reserved = reserved
+        self.num_reserved_open = reserved_open
+        self.num_waitlisted = waitlisted
     @property
     def year(self):
         return self.semester.year
@@ -377,4 +382,4 @@ def load_offerings():
                 cores = tuple(Core.get(code.strip()) for code in offering['cores'].split(';'))
             else:
                 cores = tuple()
-            offering = Offering(semester, course, offering['section'], offering['title'], int(offering['units']), tuple(instructors), tuple(meetings), cores)
+            offering = Offering(semester, course, offering['section'], offering['title'], int(offering['units']), tuple(instructors), tuple(meetings), cores, int(offering['seats']), int(offering['enrolled']), int(offering['reserved']), int(offering['reserved_open']), int(offering['waitlisted']))

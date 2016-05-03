@@ -188,6 +188,7 @@ $(document).ready(function() {
                 <th><a href="{{ url }}&sort=instructors">Instructor(s)</a></th>
                 <th><a href="{{ url }}&sort=meetings">Meeting Times (Room)</a></th>
                 <th><a href="{{ url }}&sort=core">Core</a></th>
+                <th>Seats</th>
             </tr>
             {% for offering in results %}
             <tr>
@@ -219,6 +220,17 @@ $(document).ready(function() {
                     {% for core in offering.cores %}
                     <abbr title="{{ core.name }}">{{ core.code }}</abbr>{% if not loop.last %};{% endif %}
                     {% endfor %}
+                </td>
+                <td>
+                    {% if offering.num_reserved != 0 %}
+                    <abbr title="Enrolled: {{ offering.num_enrolled }}/{{ offering.num_seats }}&#13;Reserved Remaining: {{ offering.num_reserved_open }}/{{ offering.num_reserved }}&#13;Waitlisted: {{ offering.num_waitlisted }}">
+                    {{ offering.num_enrolled }}/{{ offering.num_seats }} [{{ offering.num_waitlisted }}]
+                    </abbr>
+                    {% else %}
+                    <abbr title="Enrolled: {{ offering.num_enrolled }}/{{ offering.num_seats }}&#13;Waitlisted: {{ offering.num_waitlisted }}">
+                    {{ offering.num_enrolled }}/{{ offering.num_seats }} [{{ offering.num_waitlisted }}]
+                    </abbr>
+                    {% endif %}
                 </td>
             </tr>
             {% endfor %}
