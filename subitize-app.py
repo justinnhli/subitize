@@ -61,11 +61,11 @@ def sort_search_results(parameters, context):
         if field == 'semester':
             context['results'] = sorted(context['results'], key=(lambda offering: offering.semester))
         elif field == 'course':
-            context['results'] = sorted(context['results'], key=(lambda offering: (offering.course.department.code, offering.course.number)))
+            context['results'] = sorted(context['results'], key=(lambda offering: (offering.department.code, offering.number)))
         elif field == 'title':
-            context['results'] = sorted(context['results'], key=(lambda offering: offering.course.name))
+            context['results'] = sorted(context['results'], key=(lambda offering: offering.name))
         elif field == 'units':
-            context['results'] = sorted(context['results'], key=(lambda offering: offering.course.units))
+            context['results'] = sorted(context['results'], key=(lambda offering: offering.units))
         elif field == 'instructor':
             context['results'] = sorted(context['results'], key=(lambda offering: sorted(i.last_name for i in offering.instructors)))
         elif field == 'meetings':

@@ -152,6 +152,30 @@ class Meeting(AbstractMultiton):
     def __init__(self, time_slot, location):
         self.time_slot = time_slot
         self.location = location
+    @property
+    def weekdays(self):
+        return self.time_slot.weekdays
+    @property
+    def start_time(self):
+        return self.time_slot.start_time
+    @property
+    def end_time(self):
+        return self.time_slot.end_time
+    @property
+    def weekdays_abbreviation(self):
+        return self.time_slot.weekdays_abbreviation
+    @property
+    def weekdays_str(self):
+        return self.time_slot.weekdays_str
+    @property
+    def start_end(self):
+        return self.time_slot.start_end
+    @property
+    def building(self):
+        return self.location.building
+    @property
+    def room(self):
+        return self.location.room
     def __lt__(self, other):
         if self.time_slot is None and other.time_slot is not None:
             return False
@@ -225,6 +249,7 @@ class Student(Person):
         self.majors = []
         self.minors = []
 
+@total_ordering
 @multiton
 class Course(AbstractMultiton):
     KEYS = ('department', 'number',)
@@ -237,6 +262,8 @@ class Course(AbstractMultiton):
     @property
     def pure_number_int(self):
         return int(''.join(c for c in self.number if c.isdigit()))
+    def __lt__(self, other):
+        return (self.department.code, self.number) < (other.department.code, other.number)
 
 @multiton
 class Offering(AbstractMultiton):
@@ -250,6 +277,18 @@ class Offering(AbstractMultiton):
         self.instructors = instructors
         self.meetings = meetings
         self.cores = cores
+    @property
+    def year(self):
+        return self.semester.year
+    @property
+    def season(self):
+        return self.semester.season
+    @property
+    def department(self):
+        return self.course.department
+    @property
+    def number(self):
+        return self.course.number
     def __str__(self):
         return super().__str__() + ': ' + self.name
 

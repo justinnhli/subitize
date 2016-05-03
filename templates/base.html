@@ -193,8 +193,8 @@ $(document).ready(function() {
             <tr>
                 <td>{{ offering.semester }}</td>
                 <td>
-                        <abbr title="{{ offering.course.department.name }}">{{ offering.course.department.code }}</abbr>
-                        {{ offering.course.number }}
+                        <abbr title="{{ offering.department.name }}">{{ offering.department.code }}</abbr>
+                        {{ offering.number }}
                         {{ offering.section }}
                 </td>
                 <td>{{ offering.name }}</td>
@@ -207,11 +207,11 @@ $(document).ready(function() {
                 <td>
                     {% for meeting in offering.meetings %}
                     {{ meeting.time_slot.start_end }}
-                    <abbr title="{{ meeting.time_slot.weekdays_str }}">{{ meeting.time_slot.weekdays_abbreviation }}</abbr>
+                    <abbr title="{{ meeting.weekdays_str }}">{{ meeting.weekdays_abbreviation }}</abbr>
                     {% if meeting.location is none %}
                     (TBD)
                     {% else %}
-                    (<abbr title="{{ meeting.location.building.name }}">{{ meeting.location.building.code }}</abbr> {{ meeting.location.room }})
+                    (<abbr title="{{ meeting.building.name }}">{{ meeting.building.code }}</abbr> {{ meeting.room }})
                     {% endif %}
                     {% endfor %}
                 </td>
