@@ -38,7 +38,12 @@ def filter_by_department(offerings, department):
 def filter_by_number(offerings, minimum, maximum):
     if minimum is None or maximum is None:
         return offerings
-    return tuple(offering for offering in offerings if minimum <= offering.course.pure_number_int <= maximum)
+    elif minimum is None:
+        return tuple(offering for offering in offerings if offering.course.pure_number_int <= int(maximum))
+    elif maximum is None:
+        return tuple(offering for offering in offerings if int(minimum) <= offering.course.pure_number_int)
+    else:
+        return tuple(offering for offering in offerings if int(minimum) <= offering.course.pure_number_int <= int(maximum))
 
 def filter_by_units(offerings, units):
     if units is None:

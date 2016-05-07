@@ -38,7 +38,7 @@ def get_search_results(parameters, context):
         results = filter_by_search(results, get_parameter(parameters, 'query', default='search for courses...'))
         results = filter_by_semester(results, get_parameter(parameters, 'semester'))
         results = filter_by_department(results, get_parameter(parameters, 'department'))
-        results = filter_by_number(results, int(get_parameter(parameters, 'lower')), int(get_parameter(parameters, 'upper')))
+        results = filter_by_number(results, get_parameter(parameters, 'lower'), get_parameter(parameters, 'upper'))
         results = filter_by_units(results, get_parameter(parameters, 'units'))
         results = filter_by_instructor(results, get_parameter(parameters, 'instructor'))
         results = filter_by_core(results, get_parameter(parameters, 'core'))
