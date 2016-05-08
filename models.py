@@ -66,15 +66,22 @@ class Semester(AbstractMultiton):
     def current_semester():
         today = datetime.now()
         if today.month < 3 or (today.month == 3 and today.day < 15):
-            year = today.year
-            season = 'Spring'
+            return Semester(today.year, 'Spring')
         elif (today.month == 3 and today.day >= 15) or 4 <= today.month < 11:
-            year = str(today.year)
-            season = 'Fall'
+            return Semester(today.year, 'Fall')
         else:
-            year = str(today.year + 1)
-            season = 'Spring'
-        return Semester(year, season)
+            return Semester(today.year + 1, 'Spring')
+    @staticmethod
+    def from_code(code):
+        year = int(code[:4])
+        season = code[-2:]
+        if season == '01':
+            return Semester(year - 1, 'Fall')
+        elif season == '02':
+            return Semester(year, 'Spring')
+        elif season == '03':
+            return Semester(year, 'Summer')
+        raise ValueError('invalid semester code: {}'.format(code))
 
 @total_ordering
 @multiton
