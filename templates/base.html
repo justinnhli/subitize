@@ -55,11 +55,11 @@ function toggle_advanced_search() {
     var div = $('#advanced-search');
     if (state.val() === 'True') {
         div.css('display', 'none');
-        toggle.html('Show Advanced Search');
+        toggle.html('More Options');
         state.val('False');
     } else {
         div.css('display', 'block');
-        toggle.html('Hide Advanced Search');
+        toggle.html('Less Options');
         state.val('True');
     }
 }
@@ -98,7 +98,7 @@ $(document).ready(function() {
                     {% endfor %}
                 </select>
                 &nbsp;&nbsp;&nbsp;
-                <span id="advanced-toggle" onclick="toggle_advanced_search();">Show Advanced Search</span>
+                <span id="advanced-toggle" onclick="toggle_advanced_search();">More Options</span>
                 &nbsp;&nbsp;&nbsp;
                 <button type="button" onclick="location.href='/';">Reset</button>
                 <input type="hidden" id="advanced-state" name="advanced" value="{{ advanced }}">
