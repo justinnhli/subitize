@@ -71,11 +71,11 @@ def sort_offerings(offerings, field=None, reverse=False):
     elif field == 'course':
         key_fn = (lambda offering: (offering.department.code, offering.number))
     elif field == 'title':
-        key_fn = (lambda offering: offering.name)
+        key_fn = (lambda offering: offering.name.lower())
     elif field == 'units':
         key_fn = (lambda offering: offering.units)
     elif field == 'instructors':
-        key_fn = (lambda offering: sorted(i.last_name for i in offering.instructors))
+        key_fn = (lambda offering: sorted(i.last_name.lower() for i in offering.instructors if i))
     elif field == 'meetings':
         key_fn = (lambda offering: sorted(offering.meetings))
     elif field == 'cores':
