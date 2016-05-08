@@ -83,10 +83,10 @@ $(document).ready(function() {
     </div>
     <div>
         <form action="/" method="get">
-            {% if results is none or query == 'search for courses...' %}
+            {% if defaults.query == 'search for courses...' %}
             <input id="searchbar" class="large" type="text" name="query" value="search for courses..." onfocus="query_focus_handler();" onblur="query_blur_handler();" style="color:#BABDB6;">
             {% else %}
-            <input id="searchbar" class="large" type="text" name="query" value="{{ query }}" onfocus="query_focus_handler();" onblur="query_blur_handler();" style="color:#000000;">
+            <input id="searchbar" class="large" type="text" name="query" value="{{ defaults.query }}" onfocus="query_focus_handler();" onblur="query_blur_handler();" style="color:#000000;">
             {% endif %}
             <input class="large" type="submit" value="Search"><br>
             <div id="options">
@@ -94,7 +94,7 @@ $(document).ready(function() {
                 <select name="semester">
                     <option value="">(any)</option>
                     {% for s in semesters %}
-                    <option value="{{ s.code }}" {% if parameters.semester == s.code %}selected{% endif %}>{{ s }}</option>
+                    <option value="{{ s.code }}" {% if defaults.semester == s.code %}selected{% endif %}>{{ s }}</option>
                     {% endfor %}
                 </select>
                 &nbsp;&nbsp;&nbsp;
@@ -110,7 +110,7 @@ $(document).ready(function() {
                 <select name="instructor">
                     <option value="">(any)</option>
                     {% for f in instructors %}
-                    <option value="{{ f.alias }}" {% if parameters.instructor == f.alias %}selected{% endif %}>{{ f.last_first }}</option>
+                    <option value="{{ f.alias }}" {% if defaults.instructor == f.alias %}selected{% endif %}>{{ f.last_first }}</option>
                     {% endfor %}
                 </select>
                 &nbsp;&nbsp;&nbsp;
@@ -118,7 +118,7 @@ $(document).ready(function() {
                 <select name="core">
                     <option value="">(any)</option>
                     {% for c in cores %}
-                    <option value="{{ c.code }}" {% if parameters.core == c.code %}selected{% endif %}>{{ c.name }}</option>
+                    <option value="{{ c.code }}" {% if defaults.core == c.code %}selected{% endif %}>{{ c.name }}</option>
                     {% endfor %}
                 </select>
                 &nbsp;&nbsp;&nbsp;
@@ -126,7 +126,7 @@ $(document).ready(function() {
                 <select name="units">
                     <option value="">(any)</option>
                     {% for unit in units %}
-                    <option value="{{ unit }}" {% if parameters.units == unit %}selected{% endif %}>{{ unit }}</option>
+                    <option value="{{ unit }}" {% if defaults.units == unit %}selected{% endif %}>{{ unit }}</option>
                     {% endfor %}
                 </select>
                 <br>
@@ -134,7 +134,7 @@ $(document).ready(function() {
                 <select name="department">
                     <option value="">(any)</option>
                     {% for d in departments %}
-                    <option value="{{ d.code }}" {% if parameters.department == d.code %}selected{% endif %}>{{ d.name }}</option>
+                    <option value="{{ d.code }}" {% if defaults.department == d.code %}selected{% endif %}>{{ d.name }}</option>
                     {% endfor %}
                 </select>
                 &nbsp;&nbsp;&nbsp;
@@ -146,31 +146,31 @@ $(document).ready(function() {
                 <select name="day">
                     <option value="">(any)</option>
                     {% for day in days %}
-                    <option value="{{ day.abbreviation }}" {% if parameters.day == day.abbreviation %}selected{% endif %}>{{ day.weekday }}</option>
+                    <option value="{{ day.abbreviation }}" {% if defaults.day == day.abbreviation %}selected{% endif %}>{{ day.weekday }}</option>
                     {% endfor %}
                 </select>
                 &nbsp;&nbsp;&nbsp;
                 Starts After:
                 <select name="start_hour">
                     {% for value, hour in start_hours %}
-                    <option value="{{ value }}" {% if parameters.start_hour == value %}selected{% endif %}>{{ hour }}</option>
+                    <option value="{{ value }}" {% if defaults.start_hour == value %}selected{% endif %}>{{ hour }}</option>
                     {% endfor %}
                 </select>
                 <select name="start_meridian">
                     {% for meridian in start_meridians %}
-                    <option value="{{ meridian }}" {% if parameters.start_meridian == meridian %}selected{% endif %}>{{ meridian }}</option>
+                    <option value="{{ meridian }}" {% if defaults.start_meridian == meridian %}selected{% endif %}>{{ meridian }}</option>
                     {% endfor %}
                 </select>
                 &nbsp;&nbsp;&nbsp;
                 Ends Before:
                 <select name="end_hour">
                     {% for value, hour in end_hours %}
-                    <option value="{{ value }}" {% if parameters.end_hour == value %}selected{% endif %}>{{ hour }}</option>
+                    <option value="{{ value }}" {% if defaults.end_hour == value %}selected{% endif %}>{{ hour }}</option>
                     {% endfor %}
                 </select>
                 <select name="end_meridian">
                     {% for meridian in end_meridians %}
-                    <option value="{{ meridian }}" {% if parameters.end_meridian == meridian %}selected{% endif %}>{{ meridian }}</option>
+                    <option value="{{ meridian }}" {% if defaults.end_meridian == meridian %}selected{% endif %}>{{ meridian }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -189,7 +189,7 @@ $(document).ready(function() {
                 <th><a href="{{ url }}&sort=units">Units</a></th>
                 <th><a href="{{ url }}&sort=instructors">Instructor(s)</a></th>
                 <th><a href="{{ url }}&sort=meetings">Meeting Times (Room)</a></th>
-                <th><a href="{{ url }}&sort=core">Core</a></th>
+                <th><a href="{{ url }}&sort=cores">Core</a></th>
                 <th>Seats</th>
             </tr>
             {% for offering in results %}

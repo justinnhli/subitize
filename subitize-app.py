@@ -83,10 +83,6 @@ def get_search_results(parameters, context):
         ends_before = datetime.strptime(end_hour + end_meridian, '%I%p').time()
         results = filter_by_meeting(results, day, starts_after, ends_before)
         context['results'] = tuple(results)
-        if parameters.get('query').strip() == '':
-            context['query'] = 'search for courses...'
-        else:
-            context['query'] = parameters.get('query')
     return context
 
 def sort_search_results(parameters, context):
@@ -124,7 +120,8 @@ def view_root():
     context['advanced'] = str(parameters.get('advanced'))
     if 'semester' not in parameters:
         parameters['semester'] = Semester.current_semester().code
-    context['parameters'] = parameters
+    context['defaults'] = dict((k, v) for k, v in DEFAULT_OPTIONS.items())
+    context['defaults'].update(parameters)
     return render_template('base.html', **context)
 
 if __name__ == '__main__':
