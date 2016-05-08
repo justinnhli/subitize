@@ -59,3 +59,24 @@ def filter_by_core(offerings, core=None):
     if core is None:
         return offerings
     return tuple(offering for offering in offerings for o_core in offering.cores if core == o_core.code)
+
+def sort_offerings(offerings, field=None, reverse=False):
+    if field is None:
+        key_fn = (lambda offering: (offering.semester, offering.course, offering.section))
+    elif field == 'semester':
+        key_fn = (lambda offering: offering.semester)
+    elif field == 'course':
+        key_fn = (lambda offering: (offering.department.code, offering.number))
+    elif field == 'title':
+        key_fn = (lambda offering: offering.name)
+    elif field == 'units':
+        key_fn = (lambda offering: offering.units)
+    elif field == 'instructors':
+        key_fn = (lambda offering: sorted(i.last_name for i in offering.instructors))
+    elif field == 'meetings':
+        key_fn = (lambda offering: sorted(offering.meetings))
+    elif field == 'cores':
+        key_fn = (lambda offering: sorted(c.code for c in offering.cores))
+    else:
+        raise ValueError('invalid sorting key: {}'.format(field))
+    return sorted(offerings, key=key_fn, reverse=reverse)

@@ -7,6 +7,7 @@ from flask import Flask, render_template, request, url_for
 
 from models import Semester, Weekday, Core, Department, Faculty, Offering, load_data
 from subitizelib import filter_study_abroad, filter_by_search, filter_by_semester, filter_by_department, filter_by_number, filter_by_units, filter_by_instructor, filter_by_core
+from subitizelib import sort_offerings
 
 load_data()
 
@@ -56,26 +57,8 @@ def get_search_results(parameters, context):
     return context
 
 def sort_search_results(parameters, context):
-    if context['results'] is None:
-        return context
-    elif 'sort' in parameters:
-        field = parameters.get('sort')
-        if field == 'semester':
-            context['results'] = sorted(context['results'], key=(lambda offering: offering.semester))
-        elif field == 'course':
-            context['results'] = sorted(context['results'], key=(lambda offering: (offering.department.code, offering.number)))
-        elif field == 'title':
-            context['results'] = sorted(context['results'], key=(lambda offering: offering.name))
-        elif field == 'units':
-            context['results'] = sorted(context['results'], key=(lambda offering: offering.units))
-        elif field == 'instructor':
-            context['results'] = sorted(context['results'], key=(lambda offering: sorted(i.last_name for i in offering.instructors)))
-        elif field == 'meetings':
-            context['results'] = sorted(context['results'], key=(lambda offering: sorted(offering.meetings)))
-        elif field == 'cores':
-            context['results'] = sorted(context['results'], key=(lambda offering: sorted(c.code for c in offering.cores)))
-    else:
-        context['results'] = sorted(context['results'], key=(lambda offering: (offering.semester, offering.course, offering.section)))
+    if context['results'] is not None:
+        context['results'] = sort_offerings(context['results'], get_parameter(parameters, 'sort'))
     return context
 
 def get_dropdown_options(parameters, context):
