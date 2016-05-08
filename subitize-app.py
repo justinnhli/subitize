@@ -3,7 +3,7 @@
 from math import ceil
 from datetime import datetime
 
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request, url_for, redirect
 
 from models import Semester, Weekday, Core, Department, Faculty, Offering, load_data
 from subitizelib import filter_study_abroad, filter_by_search, filter_by_semester, filter_by_openness, filter_by_department, filter_by_number, filter_by_units, filter_by_instructor, filter_by_core, filter_by_meeting
@@ -123,6 +123,20 @@ def view_root():
     context['defaults'] = dict((k, v) for k, v in DEFAULT_OPTIONS.items())
     context['defaults'].update(parameters)
     return render_template('base.html', **context)
+
+@app.route('/simplify/')
+def view_simplify():
+    parameters = request.args.to_dict()
+    got = get_parameter(parameters, 'query')
+    if got:
+        parameters['query'] = parameters['query'].strip()
+    else:
+        del parameters['query']
+    simplified = {}
+    for key, value in parameters.items():
+        if key not in DEFAULT_OPTIONS or value != DEFAULT_OPTIONS[key]:
+            simplified[key] = value
+    return redirect(url_for('view_root', **simplified))
 
 if __name__ == '__main__':
     app.run(debug=True)
