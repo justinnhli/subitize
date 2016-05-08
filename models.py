@@ -322,6 +322,9 @@ class Offering(AbstractMultiton):
     @property
     def number(self):
         return self.course.number
+    @property
+    def is_open(self):
+        return self.num_waitlisted == 0 and self.num_enrolled < self.num_seats - self.num_reserved
     def __str__(self):
         return super().__str__() + ': ' + self.name
 

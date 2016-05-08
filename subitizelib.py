@@ -30,6 +30,9 @@ def filter_by_semester(offerings, semester=None):
         return offerings
     return tuple(offering for offering in offerings if offering.semester.code == semester)
 
+def filter_by_openness(offerings):
+    return tuple(offering for offering in offerings if offering.is_open)
+
 def filter_by_instructor(offerings, instructor=None):
     if instructor is None:
         return offerings

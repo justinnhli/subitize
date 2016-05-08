@@ -38,6 +38,8 @@ def get_search_results(parameters, context):
         results = filter_study_abroad(OFFERINGS)
         results = filter_by_search(results, get_parameter(parameters, 'query', default='search for courses...'))
         results = filter_by_semester(results, get_parameter(parameters, 'semester'))
+        if get_parameter(parameters, 'open'):
+            results = filter_by_openness(results)
         results = filter_by_department(results, get_parameter(parameters, 'department'))
         results = filter_by_number(results, get_parameter(parameters, 'lower'), get_parameter(parameters, 'upper'))
         results = filter_by_units(results, get_parameter(parameters, 'units'))
