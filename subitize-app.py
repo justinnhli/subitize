@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-from math import ceil
 from datetime import datetime
+from math import ceil
 
 from flask import Flask, render_template, request, url_for, redirect
 
