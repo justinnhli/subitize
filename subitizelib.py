@@ -30,6 +30,21 @@ def filter_by_semester(offerings, semester=None):
         return offerings
     return tuple(offering for offering in offerings if offering.semester.code == semester)
 
+def filter_by_instructor(offerings, instructor=None):
+    if instructor is None:
+        return offerings
+    return tuple(offering for offering in offerings if any(instructor == o_instructor.alias for o_instructor in offering.instructors if o_instructor))
+
+def filter_by_core(offerings, core=None):
+    if core is None:
+        return offerings
+    return tuple(offering for offering in offerings for o_core in offering.cores if core == o_core.code)
+
+def filter_by_units(offerings, units=None):
+    if units is None:
+        return offerings
+    return tuple(offering for offering in offerings if offering.units == int(units))
+
 def filter_by_department(offerings, department=None):
     if department is None:
         return offerings
@@ -44,21 +59,6 @@ def filter_by_number(offerings, minimum=None, maximum=None):
         return tuple(offering for offering in offerings if int(minimum) <= offering.course.pure_number_int)
     else:
         return tuple(offering for offering in offerings if int(minimum) <= offering.course.pure_number_int <= int(maximum))
-
-def filter_by_units(offerings, units=None):
-    if units is None:
-        return offerings
-    return tuple(offering for offering in offerings if offering.units == int(units))
-
-def filter_by_instructor(offerings, instructor=None):
-    if instructor is None:
-        return offerings
-    return tuple(offering for offering in offerings if any(instructor == o_instructor.alias for o_instructor in offering.instructors if o_instructor))
-
-def filter_by_core(offerings, core=None):
-    if core is None:
-        return offerings
-    return tuple(offering for offering in offerings for o_core in offering.cores if core == o_core.code)
 
 def sort_offerings(offerings, field=None, reverse=False):
     if field is None:
