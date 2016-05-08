@@ -141,7 +141,7 @@ class TimeSlot(AbstractMultiton):
     def iso_end_time(self):
         return self.end_time.strftime('%H:%M')
     def __lt__(self, other):
-        return (self.weekdays, self.start_time, self.end_time) < (other.weekdays, other.start_time, other.end_time)
+        return (self.weekdays[0], self.start_time, self.end_time) < (other.weekdays[0], other.start_time, other.end_time)
     def __str__(self):
         return '{} {}-{}'.format(''.join(day.abbreviation for day in self.weekdays), self.start_time.strftime('%H:%M'), self.end_time.strftime('%H:%M'))
 
