@@ -12,13 +12,6 @@ OFFERINGS_FILE = join_path(DIRECTORY, 'offerings.tsv')
 
 DATA_FILE = join_path(dirname(realpath(__file__)), 'counts.tsv')
 
-def _multiton_canonicalize_key_(cls, args):
-    assert len(args) >= len(cls.KEYS)
-    key = tuple(args[:len(cls.KEYS)])
-    if hasattr(cls, 'ALIASES'):
-        key = tuple(cls.ALIASES.get(k, k) for k in key)
-    return key
-
 def _multiton_new_(cls, *args):
     key = cls._canonicalize_key_(tuple(args))
     if key not in cls.INSTANCES:
@@ -30,9 +23,6 @@ def multiton(cls):
         return cls
     setattr(cls, 'INSTANCES', {})
     setattr(cls, '__new__', _multiton_new_)
-    setattr(cls, '_canonicalize_key_', classmethod(_multiton_canonicalize_key_))
-    setattr(cls, 'get', classmethod(lambda cls, *args: cls.INSTANCES[cls._canonicalize_key_(tuple(args))]))
-    setattr(cls, 'all', classmethod(lambda cls: cls.INSTANCES.values()))
     return cls
 
 class AbstractMultiton:
@@ -41,6 +31,19 @@ class AbstractMultiton:
         return '{}({})'.format(type(self).__name__, args)
     def __str__(self):
         return ' '.join(str(getattr(self, k)) for k in type(self).KEYS)
+    @classmethod
+    def _canonicalize_key_(cls, args):
+        assert len(args) >= len(cls.KEYS)
+        key = tuple(args[:len(cls.KEYS)])
+        if hasattr(cls, 'ALIASES'):
+            key = tuple(cls.ALIASES.get(k, k) for k in key)
+        return key
+    @classmethod
+    def all(cls):
+        return cls.INSTANCES.values()
+    @classmethod
+    def get(cls, *args):
+        return cls.INSTANCES[cls._canonicalize_key_(tuple(args))]
 
 @total_ordering
 @multiton
