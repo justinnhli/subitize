@@ -6,7 +6,7 @@ from datetime import datetime
 from flask import Flask, render_template, request, url_for
 
 from models import Semester, Weekday, Core, Department, Faculty, Offering, load_data
-from subitizelib import filter_study_abroad, filter_by_search, filter_by_semester, filter_by_department, filter_by_number, filter_by_units, filter_by_instructor, filter_by_core
+from subitizelib import filter_study_abroad, filter_by_search, filter_by_semester, filter_by_openness, filter_by_department, filter_by_number, filter_by_units, filter_by_instructor, filter_by_core, filter_by_meeting
 from subitizelib import sort_offerings
 
 load_data()
@@ -24,20 +24,49 @@ OPTIONS_DAYS = sorted(Weekday.all())
 OPTIONS_HOURS = [(str(hour), hour) for hour in (12, *range(1, 12))]
 OPTIONS_MERIDIANS = ['am', 'pm']
 
-def get_parameter(parameters, parameter, default=''):
+DEFAULT_OPTIONS = {
+    'query': 'search for courses...',
+    'semester': str(Semester.current_semester()),
+    'open': '',
+    'advanced': 'False',
+    'instructor': '',
+    'core': '',
+    'units': '',
+    'department': '',
+    'lower': '0',
+    'upper': '999',
+    'day': '',
+    'start_hour': '12',
+    'start_meridian': 'am',
+    'end_hour': '11',
+    'end_meridian': 'pm',
+}
+
+def get_parameter(parameters, parameter):
+    if parameter not in parameters:
+        return None
+    if parameter not in DEFAULT_OPTIONS:
+        return parameters[parameter]
     value = parameters.get(parameter)
-    if value != default:
+    if value != DEFAULT_OPTIONS[parameter]:
         return value
     else:
         return None
+
+def get_parameter_or_default(parameters, parameter):
+    if get_parameter(parameters, parameter):
+        return get_parameter(parameters, parameter)
+    else:
+        assert parameter in DEFAULT_OPTIONS
+        return DEFAULT_OPTIONS[parameter]
 
 def get_search_results(parameters, context):
     if len(parameters) == 0:
         context['results'] = None
     else:
         results = filter_study_abroad(OFFERINGS)
-        results = filter_by_search(results, get_parameter(parameters, 'query', default='search for courses...'))
-        results = filter_by_semester(results, get_parameter(parameters, 'semester'))
+        results = filter_by_search(results, get_parameter(parameters, 'query'))
+        results = filter_by_semester(results, get_parameter_or_default(parameters, 'semester'))
         if get_parameter(parameters, 'open'):
             results = filter_by_openness(results)
         results = filter_by_department(results, get_parameter(parameters, 'department'))
@@ -45,12 +74,14 @@ def get_search_results(parameters, context):
         results = filter_by_units(results, get_parameter(parameters, 'units'))
         results = filter_by_instructor(results, get_parameter(parameters, 'instructor'))
         results = filter_by_core(results, get_parameter(parameters, 'core'))
-        if get_parameter(parameters, 'day'):
-            results = tuple(offering for offering in results if any(meeting.time_slot is None or parameters.get('day') in meeting.time_slot.weekdays_abbreviation for meeting in offering.meetings))
-        start_hour = datetime.strptime(parameters.get('start_hour') + parameters.get('start_meridian'), '%I%p').time()
-        results = tuple(offering for offering in results if all((meeting.time_slot is None or start_hour < meeting.time_slot.start_time) for meeting in offering.meetings))
-        end_hour = datetime.strptime(parameters.get('end_hour') + parameters.get('end_meridian'), '%I%p').time()
-        results = tuple(offering for offering in results if all((meeting.time_slot is None or meeting.time_slot.end_time < end_hour) for meeting in offering.meetings))
+        day = get_parameter(parameters, 'day')
+        start_hour = get_parameter_or_default(parameters, 'start_hour')
+        start_meridian = get_parameter_or_default(parameters, 'start_meridian')
+        starts_after = datetime.strptime(start_hour + start_meridian, '%I%p').time()
+        end_hour = get_parameter_or_default(parameters, 'end_hour')
+        end_meridian = get_parameter_or_default(parameters, 'end_meridian')
+        ends_before = datetime.strptime(end_hour + end_meridian, '%I%p').time()
+        results = filter_by_meeting(results, day, starts_after, ends_before)
         context['results'] = tuple(results)
         if parameters.get('query').strip() == '':
             context['query'] = 'search for courses...'
@@ -72,13 +103,10 @@ def get_dropdown_options(parameters, context):
     context['lower'] = (OPTIONS_LOWER if parameters.get('lower') is None else parameters.get('lower'))
     context['upper'] = (OPTIONS_UPPER if parameters.get('upper') is None else parameters.get('upper'))
     context['days'] = OPTIONS_DAYS
-    context['start_hours'] = tuple((value, hour, value == parameters.get('start_hour')) for value, hour in OPTIONS_HOURS)
-    context['start_meridians'] = tuple((meridian, meridian == parameters.get('start_meridian')) for meridian in OPTIONS_MERIDIANS)
-    if len(parameters) == 0:
-        parameters['end_hour'] = '11'
-        parameters['end_meridian'] = 'pm'
-    context['end_hours'] = tuple((value, hour, value == parameters.get('end_hour')) for value, hour in OPTIONS_HOURS)
-    context['end_meridians'] = tuple((meridian, meridian == parameters.get('end_meridian')) for meridian in OPTIONS_MERIDIANS)
+    context['start_hours'] = OPTIONS_HOURS
+    context['start_meridians'] = OPTIONS_MERIDIANS
+    context['end_hours'] = OPTIONS_HOURS
+    context['end_meridians'] = OPTIONS_MERIDIANS
     return context
 
 app = Flask(__name__)

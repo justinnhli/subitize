@@ -63,6 +63,28 @@ def filter_by_number(offerings, minimum=None, maximum=None):
     else:
         return tuple(offering for offering in offerings if int(minimum) <= offering.course.pure_number_int <= int(maximum))
 
+def filter_by_meeting(offerings, day=None, starts_after=None, ends_before=None):
+    if day is None and starts_after is None and ends_before is None:
+        return offerings
+    result = []
+    for offering in offerings:
+        for meeting in offering.meetings:
+            passes = True
+            if meeting.time_slot is None:
+                passes = True
+                break
+            if day is not None and day not in meeting.weekdays_abbrevation:
+                passes = False
+            if starts_after is not None and meeting.start_time < starts_after:
+                passes = False
+            if ends_before is not None and ends_before < meeting.end_time:
+                passes = False
+            if passes:
+                break
+        if passes:
+            result.append(offering)
+    return tuple(result)
+
 def sort_offerings(offerings, field=None, reverse=False):
     if field is None:
         key_fn = (lambda offering: (offering.semester, offering.course, offering.section))

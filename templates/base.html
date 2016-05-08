@@ -152,25 +152,25 @@ $(document).ready(function() {
                 &nbsp;&nbsp;&nbsp;
                 Starts After:
                 <select name="start_hour">
-                    {% for value, hour, selected in start_hours %}
-                    <option value="{{ value }}" {% if selected %}selected{% endif %}>{{ hour }}</option>
+                    {% for value, hour in start_hours %}
+                    <option value="{{ value }}" {% if parameters.start_hour == value %}selected{% endif %}>{{ hour }}</option>
                     {% endfor %}
                 </select>
                 <select name="start_meridian">
-                    {% for meridian, selected in start_meridians %}
-                    <option value="{{ meridian }}" {% if selected %}selected{% endif %}>{{ meridian }}</option>
+                    {% for meridian in start_meridians %}
+                    <option value="{{ meridian }}" {% if parameters.start_meridian == meridian %}selected{% endif %}>{{ meridian }}</option>
                     {% endfor %}
                 </select>
                 &nbsp;&nbsp;&nbsp;
                 Ends Before:
                 <select name="end_hour">
-                    {% for value, hour, selected in end_hours %}
-                    <option value="{{ value }}" {% if selected %}selected{% endif %}>{{ hour }}</option>
+                    {% for value, hour in end_hours %}
+                    <option value="{{ value }}" {% if parameters.end_hour == value %}selected{% endif %}>{{ hour }}</option>
                     {% endfor %}
                 </select>
                 <select name="end_meridian">
-                    {% for meridian, selected in end_meridians %}
-                    <option value="{{ meridian }}" {% if selected %}selected{% endif %}>{{ meridian }}</option>
+                    {% for meridian in end_meridians %}
+                    <option value="{{ meridian }}" {% if parameters.end_meridian == meridian %}selected{% endif %}>{{ meridian }}</option>
                     {% endfor %}
                 </select>
             </div>
