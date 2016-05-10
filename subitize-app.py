@@ -66,7 +66,10 @@ def get_search_results(parameters, context):
     else:
         results = filter_study_abroad(OFFERINGS)
         results = filter_by_search(results, get_parameter(parameters, 'query'))
-        results = filter_by_semester(results, get_parameter_or_default(parameters, 'semester'))
+        semester = get_parameter(parameters, 'semester')
+        if semester == '':
+            semester = None
+        results = filter_by_semester(results, semester)
         if get_parameter(parameters, 'open'):
             results = filter_by_openness(results)
         results = filter_by_department(results, get_parameter(parameters, 'department'))
