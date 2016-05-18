@@ -87,9 +87,9 @@ def filter_by_meeting(offerings, day=None, starts_after=None, ends_before=None):
 
 def sort_offerings(offerings, field=None, reverse=False):
     if field is None:
-        key_fn = (lambda offering: (offering.semester, offering.course, offering.section))
+        key_fn = (lambda offering: (-int(offering.semester.code), offering.course, offering.section))
     elif field == 'semester':
-        key_fn = (lambda offering: offering.semester)
+        key_fn = (lambda offering: -int(offering.semester))
     elif field == 'course':
         key_fn = (lambda offering: (offering.department.code, offering.number))
     elif field == 'title':
