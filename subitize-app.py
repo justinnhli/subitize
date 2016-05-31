@@ -130,8 +130,7 @@ def view_root():
 @app.route('/simplify/')
 def view_simplify():
     parameters = request.args.to_dict()
-    got = get_parameter(parameters, 'query')
-    if got:
+    if get_parameter(parameters, 'query'):
         parameters['query'] = parameters['query'].strip()
     else:
         del parameters['query']
