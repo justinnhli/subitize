@@ -58,6 +58,22 @@ def get_parameter_or_default(parameters, parameter):
         assert parameter in DEFAULT_OPTIONS
         return DEFAULT_OPTIONS[parameter]
 
+def get_dropdown_options(parameters):
+    context = {}
+    context['semesters'] = OPTIONS_SEMESTERS
+    context['instructors'] = OPTIONS_INSTRUCTORS
+    context['cores'] = OPTIONS_CORES
+    context['units'] = OPTIONS_UNITS
+    context['departments'] = OPTIONS_DEPARTMENTS
+    context['lower'] = (OPTIONS_LOWER if parameters.get('lower') is None else parameters.get('lower'))
+    context['upper'] = (OPTIONS_UPPER if parameters.get('upper') is None else parameters.get('upper'))
+    context['days'] = OPTIONS_DAYS
+    context['start_hours'] = OPTIONS_HOURS
+    context['start_meridians'] = OPTIONS_MERIDIANS
+    context['end_hours'] = OPTIONS_HOURS
+    context['end_meridians'] = OPTIONS_MERIDIANS
+    return context
+
 def get_search_results(parameters, context):
     if len(parameters) == 0:
         context['results'] = None
@@ -91,32 +107,18 @@ def sort_search_results(parameters, context):
         context['results'] = sort_offerings(context['results'], get_parameter(parameters, 'sort'))
     return context
 
-def get_dropdown_options(parameters, context):
-    context['semesters'] = OPTIONS_SEMESTERS
-    context['instructors'] = OPTIONS_INSTRUCTORS
-    context['cores'] = OPTIONS_CORES
-    context['units'] = OPTIONS_UNITS
-    context['departments'] = OPTIONS_DEPARTMENTS
-    context['lower'] = (OPTIONS_LOWER if parameters.get('lower') is None else parameters.get('lower'))
-    context['upper'] = (OPTIONS_UPPER if parameters.get('upper') is None else parameters.get('upper'))
-    context['days'] = OPTIONS_DAYS
-    context['start_hours'] = OPTIONS_HOURS
-    context['start_meridians'] = OPTIONS_MERIDIANS
-    context['end_hours'] = OPTIONS_HOURS
-    context['end_meridians'] = OPTIONS_MERIDIANS
-    return context
-
 app = Flask(__name__)
 
 @app.route('/')
 def view_root():
     parameters = request.args.to_dict()
-    context = {}
+    context = get_dropdown_options(parameters)
     context = get_search_results(parameters, context)
     context = sort_search_results(parameters, context)
-    context = get_dropdown_options(parameters, context)
     if 'sort' in parameters:
         parameters.pop('sort')
+    context['parameters'] = parameters
+    context['base_url'] = url_for('view_root')
     context['url'] = url_for('view_root', **parameters)
     context['advanced'] = str(parameters.get('advanced'))
     if 'semester' not in parameters:

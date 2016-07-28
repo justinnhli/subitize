@@ -194,17 +194,22 @@ $(document).ready(function() {
             </tr>
             {% for offering in results %}
             <tr>
-                <td>{{ offering.semester }}</td>
                 <td>
-                        <abbr title="{{ offering.department.name }}">{{ offering.department.code }}</abbr>
-                        {{ offering.number }}
-                        {{ offering.section }}
+                    <a href="{{ base_url }}?advanced={{ parameters['advanced'] }}&semester={{ parameters['semester'] }}">
+                        {{ offering.semester }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ base_url }}?advanced=True&semester={{ parameters['semester'] }}&department={{ offering.department.code }}"><abbr title="{{ offering.department.name }}">{{ offering.department.code }}</abbr></a>
+                    {{ offering.number }}
+                    {{ offering.section }}
                 </td>
                 <td>{{ offering.name }}</td>
                 <td>{{ offering.units }}</td>
                 <td>
                     {% for instructor in offering.instructors|sort(attribute='last_name') %}
-                    <abbr title="{{ instructor.first_last }}">{{ instructor.last_name }}</abbr>{% if not loop.last %};{% endif %}
+                    <a href="{{ base_url }}?advanced=True&semester={{ parameters['semester'] }}&instructor={{ instructor.alias }}"><abbr title="{{ instructor.first_last }}">{{ instructor.last_name }}</abbr></a>
+                    {% if not loop.last %};{% endif %}
                     {% endfor %}
                 </td>
                 <td>
@@ -224,7 +229,7 @@ $(document).ready(function() {
                 </td>
                 <td>
                     {% for core in offering.cores %}
-                    <abbr title="{{ core.name }}">{{ core.code }}</abbr>{% if not loop.last %};{% endif %}
+                    <a href="{{ base_url }}?advanced=True&semester={{ parameters['semester'] }}&core={{ core.code }}"><abbr title="{{ core.name }}">{{ core.code }}</abbr>{% if not loop.last %};{% endif %}</a>
                     {% endfor %}
                 </td>
                 <td>
