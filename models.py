@@ -426,3 +426,5 @@ def load_offerings():
     with open(OFFERINGS_FILE) as fd:
         for offering in DictReader(fd, delimiter='\t', quoting=QUOTE_NONE):
             load_offering(offering)
+
+load_data()

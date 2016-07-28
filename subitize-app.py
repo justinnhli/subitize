@@ -5,11 +5,9 @@ from math import ceil
 
 from flask import Flask, render_template, request, url_for, redirect
 
-from models import Semester, Weekday, Core, Department, Faculty, Offering, load_data
+from models import Semester, Weekday, Core, Department, Faculty, Offering
 from subitizelib import filter_study_abroad, filter_by_search, filter_by_semester, filter_by_openness, filter_by_department, filter_by_number, filter_by_units, filter_by_instructor, filter_by_core, filter_by_meeting
 from subitizelib import sort_offerings
-
-load_data()
 
 OFFERINGS = tuple(Offering.all())
 

@@ -2,10 +2,8 @@
 
 from argparse import ArgumentParser
 
-from models import Semester, Offering, load_data
+from models import Semester, Offering
 from subitizelib import filter_study_abroad, filter_by_search, filter_by_semester, sort_offerings
-
-load_data()
 
 OFFERINGS = filter_study_abroad(tuple(Offering.all()))
 
