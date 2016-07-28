@@ -3,7 +3,7 @@ from datetime import datetime
 from functools import total_ordering
 from os.path import dirname, join as join_path, realpath
 
-DIRECTORY = dirname(realpath(__file__))
+DIRECTORY = join_path(dirname(realpath(__file__)), 'data')
 
 BUILDINGS_FILE = join_path(DIRECTORY, 'buildings.tsv')
 CORES_FILE = join_path(DIRECTORY, 'cores.tsv')
