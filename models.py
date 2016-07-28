@@ -218,6 +218,28 @@ class Meeting(AbstractMultiton):
             return '{} (TBD)'.format(self.time_slot)
         else:
             return '{} ({})'.format(self.time_slot, self.location)
+    @staticmethod
+    def from_str(time_str, days_str, location_str):
+        if time_str == 'Time-TBD' or days_str == 'Days-TBD':
+            timeslot = None
+            location = None
+        else:
+            weekdays = tuple(Weekday(c) for c in days_str)
+            start_time_str, end_time_str = time_str.upper().split('-')
+            start_time = datetime.strptime(start_time_str, '%I:%M%p').time()
+            end_time = datetime.strptime(end_time_str, '%I:%M%p').time()
+            timeslot = TimeSlot(weekdays, start_time, end_time)
+            if location_str == 'Bldg-TBD':
+                location = None
+            else:
+                if len(location_str.split()) == 1 and location_str in ('AGYM', 'KECK', 'UEPI', 'MULLIN', 'BIRD', 'TENNIS', 'THORNE', 'FM', 'CULLEY', 'TREE', 'RUSH', 'LIB', 'HERR'):
+                    building_str = location_str
+                    room_str = None
+                else:
+                    building_str, room_str = location_str.rsplit(' ', maxsplit=1)
+                building = Building.get(building_str)
+                location = Room(building, room_str)
+        return Meeting(timeslot, location)
 
 @multiton
 class Core(AbstractMultiton):
@@ -268,6 +290,12 @@ class Faculty(Person):
     def __init__(self, alias, first_name, last_name):
         super().__init__(alias, first_name, last_name)
         self.affiliations = []
+    @staticmethod
+    def split_name(alias):
+        if alias in Faculty.PREFERRED_NAMES:
+            return Faculty.PREFERRED_NAMES[alias]
+        else:
+            return alias.rsplit(' ', maxsplit=1)
 
 @multiton
 class Student(Person):
@@ -349,50 +377,30 @@ def load_cores():
         for row in DictReader(fd, delimiter='\t'):
             Core(row['code'], row['name'])
 
+def load_offering(offering):
+    semester = Semester(int(offering['year']), offering['season'].capitalize())
+    meetings = []
+    for meeting_str in offering['meetings'].split(';'):
+        time_str, days_str, location_str = meeting_str.strip().split(' ', maxsplit=2)
+        meeting = Meeting.from_str(time_str, days_str, location_str)
+        meetings.append(meeting)
+    department = Department.get(offering['department'])
+    instructors = []
+    for instructor_str in offering['instructors'].split(';'):
+        instructor_str = instructor_str.strip()
+        if instructor_str == 'Instructor Unassigned':
+            instructor = None
+        else:
+            instructor = Faculty(instructor_str, *Faculty.split_name(instructor_str))
+        instructors.append(instructor)
+    course = Course(department, offering['number'])
+    if offering['cores']:
+        cores = tuple(Core.get(code.strip()) for code in offering['cores'].split(';'))
+    else:
+        cores = tuple()
+    return Offering(semester, course, offering['section'], offering['title'], int(offering['units']), tuple(instructors), tuple(meetings), cores, int(offering['seats']), int(offering['enrolled']), int(offering['reserved']), int(offering['reserved_open']), int(offering['waitlisted']))
+
 def load_offerings():
     with open(OFFERINGS_FILE) as fd:
         for offering in DictReader(fd, delimiter='\t', quoting=QUOTE_NONE):
-            semester = Semester(int(offering['year']), offering['season'].capitalize())
-            meetings = []
-            for meeting_str in offering['meetings'].split(';'):
-                time_str, days_str, location_str = meeting_str.strip().split(' ', maxsplit=2)
-                if time_str == 'Time-TBD' or days_str == 'Days-TBD':
-                    timeslot = None
-                    location = None
-                else:
-                    weekdays = tuple(Weekday(c) for c in days_str)
-                    start_time_str, end_time_str = time_str.upper().split('-')
-                    start_time = datetime.strptime(start_time_str, '%I:%M%p').time()
-                    end_time = datetime.strptime(end_time_str, '%I:%M%p').time()
-                    timeslot = TimeSlot(weekdays, start_time, end_time)
-                    if location_str == 'Bldg-TBD':
-                        location_str = None
-                    else:
-                        if len(location_str.split()) == 1 and location_str in ('AGYM', 'KECK', 'UEPI', 'MULLIN', 'BIRD', 'TENNIS', 'THORNE', 'FM', 'CULLEY', 'TREE', 'RUSH', 'LIB', 'HERR'):
-                            building_str = location_str
-                            room_str = None
-                        else:
-                            building_str, room_str = location_str.rsplit(' ', maxsplit=1)
-                        building = Building.get(building_str)
-                        location = Room(building, room_str)
-                meeting = Meeting(timeslot, location)
-                meetings.append(meeting)
-            department = Department.get(offering['department'])
-            instructors = []
-            for instructor_str in offering['instructors'].split(';'):
-                instructor_str = instructor_str.strip()
-                if instructor_str == 'Instructor Unassigned':
-                    instructor = None
-                else:
-                    if instructor_str in Faculty.PREFERRED_NAMES:
-                        first_name, last_name = Faculty.PREFERRED_NAMES[instructor_str]
-                    else:
-                        first_name, last_name = instructor_str.rsplit(' ', maxsplit=1)
-                    instructor = Faculty(instructor_str, first_name, last_name)
-                instructors.append(instructor)
-            course = Course(department, offering['number'])
-            if offering['cores']:
-                cores = tuple(Core.get(code.strip()) for code in offering['cores'].split(';'))
-            else:
-                cores = tuple()
-            offering = Offering(semester, course, offering['section'], offering['title'], int(offering['units']), tuple(instructors), tuple(meetings), cores, int(offering['seats']), int(offering['enrolled']), int(offering['reserved']), int(offering['reserved_open']), int(offering['waitlisted']))
+            load_offering(offering)
