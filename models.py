@@ -145,8 +145,16 @@ class TimeSlot(AbstractMultiton):
         return self.end_time.strftime('%H:%M')
     def __lt__(self, other):
         return (self.weekdays[0], self.start_time, self.end_time) < (other.weekdays[0], other.start_time, other.end_time)
+    def __repr__(self):
+        start_time = self.us_start_time
+        if len(start_time) == 6:
+            start_time = '0' + start_time
+        end_time = self.us_end_time
+        if len(end_time) == 6:
+            end_time = '0' + end_time
+        return '{}-{} {}'.format(start_time, end_time, ''.join(day.abbreviation for day in self.weekdays))
     def __str__(self):
-        return '{} {}-{}'.format(''.join(day.abbreviation for day in self.weekdays), self.start_time.strftime('%H:%M'), self.end_time.strftime('%H:%M'))
+        return '{} {}-{}'.format(''.join(day.abbreviation for day in self.weekdays), self.us_start_time, self.us_end_time)
 
 @multiton
 class Building(AbstractMultiton):
@@ -163,6 +171,11 @@ class Room(AbstractMultiton):
     def __init__(self, building, room):
         self.building = building
         self.room = room
+    def __repr__(self):
+        if self.room:
+            return self.building.code + ' ' + self.room
+        else:
+            return self.building.code
 
 @total_ordering
 @multiton
@@ -211,6 +224,13 @@ class Meeting(AbstractMultiton):
             return True
         else:
             return self.time_slot < other.time_slot
+    def __repr__(self):
+        if self.time_slot is None:
+            return 'Time-TBD Days-TBD Bldg-TBD'
+        elif self.location is None:
+            return repr(self.time_slot) + ' Bldg-TBD'
+        else:
+            return '{} {}'.format(repr(self.time_slot), repr(self.location))
     def __str__(self):
         if self.time_slot is None:
             return 'TBD'
@@ -290,6 +310,8 @@ class Faculty(Person):
     def __init__(self, alias, first_name, last_name):
         super().__init__(alias, first_name, last_name)
         self.affiliations = []
+    def __repr__(self):
+        return self.alias
     @staticmethod
     def split_name(alias):
         if alias in Faculty.PREFERRED_NAMES:
