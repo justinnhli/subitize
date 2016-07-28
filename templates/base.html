@@ -220,11 +220,12 @@ $(document).ready(function() {
                     {{ meeting.us_start_time }} - {{ meeting.us_end_time }}
                     <abbr title="{{ meeting.weekdays_str }}">{{ meeting.weekdays_abbreviation }}</abbr>
                     {% endif %}
-                    {% if meeting.location is none %}
+                    {%- if meeting.location is none -%}
                     (Location TBD)
                     {% else %}
                     (<abbr title="{{ meeting.building.name }}">{{ meeting.building.code }}</abbr> {{ meeting.room }})
-                    {% endif %}
+                    {%- endif -%}
+                    {% if not loop.last %};{% endif %}
                     {% endfor %}
                 </td>
                 <td>
