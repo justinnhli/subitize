@@ -106,6 +106,8 @@ def get_data_from_web(semester):
     if response[2] != '':
         print('Request to Course Counts resulted in status code {}; quitting.'.format(response[2]))
         exit(1)
+    with open('response', 'w') as fd:
+        fd.write(response[7])
     _extract_results(response[7], semester.year, semester.season)
 
 HEADINGS = (
