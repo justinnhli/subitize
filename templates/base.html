@@ -184,7 +184,7 @@ $(document).ready(function() {
         <table id="results-table">
             <tr>
                 <th><a href="{{ url }}&sort=semester">Semester</a></th>
-                <th><a href="{{ url }}&sort=course">Course</a></th>
+                <th><a href="{{ url }}&sort=course">Course (Section)</a></th>
                 <th><a href="{{ url }}&sort=title">Title</a></th>
                 <th><a href="{{ url }}&sort=units">Units</a></th>
                 <th><a href="{{ url }}&sort=instructors">Instructor(s)</a></th>
@@ -201,8 +201,7 @@ $(document).ready(function() {
                 </td>
                 <td>
                     <a href="{{ base_url }}?advanced=True&semester={{ parameters['semester'] }}&department={{ offering.department.code }}"><abbr title="{{ offering.department.name }}">{{ offering.department.code }}</abbr></a>
-                    {{ offering.number }}
-                    {{ offering.section }}
+                    {{ offering.number }} ({{ offering.section }})
                 </td>
                 <td>{{ offering.name }}</td>
                 <td>{{ offering.units }}</td>
