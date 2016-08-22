@@ -20,7 +20,7 @@ def _extract_text(soup):
 def _request_counts(semester):
     # just-in-time import to allow non-virtualenv usage
     import requests
-    url = 'http://counts.oxy.edu/'
+    url = 'https://counts.oxy.edu/'
     headers = {
         'Host':'counts.oxy.edu',
         'User-Agent':'Mozilla/5.0 (X11; Linux i686; rv:42.0) Gecko/20100101 Firefox/42.0',
