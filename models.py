@@ -268,12 +268,15 @@ class Core(AbstractMultiton):
         self.code = code
         self.name = name
 
+@total_ordering
 @multiton
 class Department(AbstractMultiton):
     KEYS = ('code',)
     def __init__(self, code, name):
         self.code = code
         self.name = name
+    def __lt__(self, other):
+        return self.code < other.code
 
 class Person(AbstractMultiton):
     KEYS = ('alias',)
