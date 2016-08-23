@@ -152,25 +152,15 @@ $(document).ready(function() {
                 &nbsp;&nbsp;&nbsp;
                 Starts After:
                 <select name="start_hour">
-                    {% for value, hour in start_hours %}
-                    <option value="{{ value }}" {% if defaults.start_hour == value %}selected{% endif %}>{{ hour }}</option>
-                    {% endfor %}
-                </select>
-                <select name="start_meridian">
-                    {% for meridian in start_meridians %}
-                    <option value="{{ meridian }}" {% if defaults.start_meridian == meridian %}selected{% endif %}>{{ meridian }}</option>
+                    {% for hour in start_hours %}
+                    <option value="{{ hour }}" {% if defaults.start_hour == hour %}selected{% endif %}>{{ hour }}</option>
                     {% endfor %}
                 </select>
                 &nbsp;&nbsp;&nbsp;
                 Ends Before:
                 <select name="end_hour">
-                    {% for value, hour in end_hours %}
-                    <option value="{{ value }}" {% if defaults.end_hour == value %}selected{% endif %}>{{ hour }}</option>
-                    {% endfor %}
-                </select>
-                <select name="end_meridian">
-                    {% for meridian in end_meridians %}
-                    <option value="{{ meridian }}" {% if defaults.end_meridian == meridian %}selected{% endif %}>{{ meridian }}</option>
+                    {% for hour in end_hours %}
+                    <option value="{{ hour }}" {% if defaults.end_hour == hour %}selected{% endif %}>{{ hour }}</option>
                     {% endfor %}
                 </select>
             </div>

@@ -19,8 +19,7 @@ OPTIONS_DEPARTMENTS = sorted(Department.all(), key=(lambda d: d.name))
 OPTIONS_LOWER = 0
 OPTIONS_UPPER = max(ceil(o.course.pure_number_int / 100) * 100 - 1 for o in OFFERINGS)
 OPTIONS_DAYS = sorted(Weekday.all())
-OPTIONS_HOURS = [(str(hour), hour) for hour in (12, *range(1, 12))]
-OPTIONS_MERIDIANS = ['am', 'pm']
+OPTIONS_HOURS = [datetime.strptime(str(i), '%H').strftime('%I %p').strip('0').lower() for i in range(6, 24)]
 
 DEFAULT_OPTIONS = {
     'query': 'search for courses...',
@@ -34,10 +33,8 @@ DEFAULT_OPTIONS = {
     'lower': '0',
     'upper': '999',
     'day': '',
-    'start_hour': '12',
-    'start_meridian': 'am',
-    'end_hour': '11',
-    'end_meridian': 'pm',
+    'start_hour': '6 am',
+    'end_hour': '11 pm',
 }
 
 def get_parameter(parameters, parameter):
@@ -69,9 +66,7 @@ def get_dropdown_options(parameters):
     context['upper'] = (OPTIONS_UPPER if parameters.get('upper') is None else parameters.get('upper'))
     context['days'] = OPTIONS_DAYS
     context['start_hours'] = OPTIONS_HOURS
-    context['start_meridians'] = OPTIONS_MERIDIANS
     context['end_hours'] = OPTIONS_HOURS
-    context['end_meridians'] = OPTIONS_MERIDIANS
     return context
 
 def get_search_results(parameters, context):
@@ -92,12 +87,8 @@ def get_search_results(parameters, context):
         results = filter_by_instructor(results, get_parameter(parameters, 'instructor'))
         results = filter_by_core(results, get_parameter(parameters, 'core'))
         day = get_parameter(parameters, 'day')
-        start_hour = get_parameter_or_default(parameters, 'start_hour')
-        start_meridian = get_parameter_or_default(parameters, 'start_meridian')
-        starts_after = datetime.strptime(start_hour + start_meridian, '%I%p').time()
-        end_hour = get_parameter_or_default(parameters, 'end_hour')
-        end_meridian = get_parameter_or_default(parameters, 'end_meridian')
-        ends_before = datetime.strptime(end_hour + end_meridian, '%I%p').time()
+        starts_after = datetime.strptime(get_parameter_or_default(parameters, 'start_hour'), '%I %p').time()
+        ends_before = datetime.strptime(get_parameter_or_default(parameters, 'end_hour'), '%I %p').time()
         results = filter_by_meeting(results, day, starts_after, ends_before)
         context['results'] = tuple(results)
     return context
