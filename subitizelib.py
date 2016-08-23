@@ -91,7 +91,7 @@ def sort_offerings(offerings, field=None, reverse=False):
     elif field == 'semester':
         key_fn = (lambda offering: -int(offering.semester))
     elif field == 'course':
-        key_fn = (lambda offering: (offering.department.code, offering.number))
+        key_fn = (lambda offering: (offering.department.code, offering.number, offering.section))
     elif field == 'title':
         key_fn = (lambda offering: offering.name.lower())
     elif field == 'units':
