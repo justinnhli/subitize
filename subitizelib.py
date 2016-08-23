@@ -73,7 +73,7 @@ def filter_by_meeting(offerings, day=None, starts_after=None, ends_before=None):
             if meeting.time_slot is None:
                 passes = True
                 break
-            if day is not None and day not in meeting.weekdays_abbrevation:
+            if day is not None and day not in meeting.weekdays_abbreviation:
                 passes = False
             if starts_after is not None and meeting.start_time < starts_after:
                 passes = False
