@@ -98,7 +98,7 @@ $(document).ready(function() {
                     {% endfor %}
                 </select>
                 &nbsp;&nbsp;&nbsp;
-                <input type="checkbox" name="open" {% if defaults.open %}checked{% endif %}>Open courses only</input>
+                <label><input type="checkbox" name="open" {% if defaults.open %}checked{% endif %}>Open courses only</input></label>
                 &nbsp;&nbsp;&nbsp;
                 <span id="advanced-toggle" onclick="toggle_advanced_search();">More Options</span>
                 &nbsp;&nbsp;&nbsp;
