@@ -3397,8 +3397,8 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2012	spring	CSP	52S	1	Debating Controversial Issues in Sexuality Seminar	4	Caroline Heldman	01:30pm-02:25pm MWF FOWLER 309		16	16	16	0	0
 2012	spring	CSP	52S	2	Debating Controversial Issues in Sexuality Seminar	4	Lisa Dawn Wade	02:30pm-03:25pm MWF FOWLER 309		16	16	10	0	0
 2012	spring	CSP	52S	3	Debating Controversial Issues in Sexuality Seminar	4	Lisa Dawn Wade	03:30pm-04:25pm MWF FOWLER 309		16	11	4	0	0
-2012	spring	CSP	53	1	Working Toward the Healthy City: Environment, People, and  Health	4	Victor M. Polanco	11:30am-12:25pm MWF BOOTH 119		16	16	14	0	0
-2012	spring	CSP	53	2	Working Toward the Healthy City: Environment, People, and  Health	4	Victor M. Polanco	01:30pm-02:25pm MWF LIB 260		15	15	14	0	0
+2012	spring	CSP	53	1	Working Toward the Healthy City: Environment, People, and Health	4	Victor M. Polanco	11:30am-12:25pm MWF BOOTH 119		16	16	14	0	0
+2012	spring	CSP	53	2	Working Toward the Healthy City: Environment, People, and Health	4	Victor M. Polanco	01:30pm-02:25pm MWF LIB 260		15	15	14	0	0
 2012	spring	CSP	54	1	Reading the Real	4	Leila B. Neti	10:30am-11:25am MWF LIB 260		15	14	11	0	0
 2012	spring	CSP	54	2	Reading the Real	4	Leila B. Neti	11:30am-12:25pm MWF LIB 260		16	14	14	0	0
 2012	spring	CSP	55	1	Urban Fictions: The Modern City in Literature and Other Arts	4	Raul Villa	11:30am-12:25pm MWF FOWLER 310		16	15	14	1	0
@@ -7826,6 +7826,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2015	spring	ARTS	327	0	Book Arts/Letterpress Printing	2	Jocelyn Webb Pedersen	01:55pm-04:25pm M WEIN 20		18	16	0	0	0
 2015	spring	ARTS	328	0	Book Arts: The Handprinted Book	4	Jocelyn Webb Pedersen	09:00am-11:25am MW WEIN 212	CPFA	18	6	0	0	0
 2015	spring	ARTS	330	0	Advanced Printmaking	4	Linda F. Lyke	01:30pm-04:25pm W WEIN 18	CPFA	18	8	0	0	0
+2015	spring	ARTS	397	2	Sound and Sculpture	2		Time-TBD Days-TBD Bldg-TBD		1	0	0	0	0
 2015	spring	BICH	490	1	Senior Seminar	2	Roberta R. Pollock	03:00pm-03:55pm WF MOSHER 2		99	18	0	0	0
 2015	spring	BICH	490	2	Senior Seminar	2	Joseph R. Schulz	03:00pm-03:55pm WF MOSHER 2		99	4	0	0	0
 2015	spring	BICH	999	0	Comprehensive Examination	0	Roberta R. Pollock	Time-TBD Days-TBD Bldg-TBD		99	21	0	0	0
@@ -8649,9 +8650,9 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2015	fall	BIO	349L	1	Biochemistry I Laboratory	1	Gary Craig Schindelman	03:00pm-05:55pm M Bldg-TBD		12	15	0	0	0
 2015	fall	BIO	349L	2	Biochemistry I Laboratory	1	Gary Craig Schindelman	01:30pm-04:25pm T Bldg-TBD		12	14	0	0	0
 2015	fall	BIO	349L	3	Biochemistry I Laboratory	1	Karen Marie Molinder	06:00pm-09:00pm R Bldg-TBD		12	13	0	0	0
-2015	fall	BIO	369	0	Biological Oceanography	4	Maria S. Adreani	01:30pm-02:55pm TR MOSHER 3	CPLS	18	19	0	0	0
+2015	fall	BIO	369	0	Biological Oceanography	4	Maria S. Adreani	01:30pm-02:55pm TR MOSHER 3	CPLS	18	20	0	0	0
 2015	fall	BIO	369L	1	Oceanography Laboratory	1	Maria S. Adreani	08:30am-11:25am T Bldg-TBD		9	10	0	0	0
-2015	fall	BIO	369L	2	Oceanography Laboratory	1	Maria S. Adreani	08:30am-11:25am R Bldg-TBD		9	9	0	0	0
+2015	fall	BIO	369L	2	Oceanography Laboratory	1	Maria S. Adreani	08:30am-11:25am R Bldg-TBD		9	10	0	0	0
 2015	fall	BIO	395	1	Research	2	Renee A. Baran	Time-TBD Days-TBD Bldg-TBD		99	2	0	0	0
 2015	fall	BIO	395	10	Research	4	John E. McCormack	Time-TBD Days-TBD Bldg-TBD		99	2	0	0	0
 2015	fall	BIO	395	11	Research	2	Gretchen B. North	Time-TBD Days-TBD Bldg-TBD		99	6	0	0	0
@@ -8678,11 +8679,12 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2015	fall	BIO	395	9	Research	2	John E. McCormack	Time-TBD Days-TBD Bldg-TBD		99	5	0	0	0
 2015	fall	BIO	490	1	Senior Seminar	4	Cheryl Yoshi Okumura	01:55pm-02:50pm MF FOWLER 108		9	10	0	0	0
 2015	fall	BIO	490	2	Senior Seminar	4	H. Elizabeth Braker	01:55pm-02:50pm M FOWLER 210		9	10	0	0	0
+2015	fall	BIO	999	0	Comprehensive Examination	0	Daniel J. Pondella	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2015	fall	CHEM	100	0	Introduction to Chemistry	4	Derek James Ross	08:30am-09:25am MWF MOSHER 3		32	25	0	0	0
-2015	fall	CHEM	120	1	Foundations of General Chemistry	4	Franklin P. Ow	08:30am-09:25am MWF MOSHER 1	CPLS	32	14	12	2	0
+2015	fall	CHEM	120	1	Foundations of General Chemistry	4	Franklin P. Ow	08:30am-09:25am MWF MOSHER 1	CPLS	32	13	12	3	0
 2015	fall	CHEM	120	2	Foundations of General Chemistry	4	Chris Craney	09:35am-10:30am MWF MOSHER 3	CPLS	32	28	15	0	0
 2015	fall	CHEM	120	3	Foundations of General Chemistry	4	Eileen M. Spain	10:40am-11:35am MWF MOSHER 1	CPLS	32	36	15	-1	0
-2015	fall	CHEM	120L	1	Foundations of General Chemistry Laboratory	0	Harry B. Gray	01:55pm-04:50pm M Bldg-TBD		16	7	0	0	0
+2015	fall	CHEM	120L	1	Foundations of General Chemistry Laboratory	0	Harry B. Gray	01:55pm-04:50pm M Bldg-TBD		16	6	0	0	0
 2015	fall	CHEM	120L	2	Foundations of General Chemistry Laboratory	0	Eileen M. Spain	08:30am-11:25am T Bldg-TBD		16	17	0	0	0
 2015	fall	CHEM	120L	3	Foundations of General Chemistry Laboratory	0	Eileen M. Spain	01:30pm-04:25pm T Bldg-TBD		16	14	0	0	0
 2015	fall	CHEM	120L	4	Foundations of General Chemistry Laboratory	0	John Hudson Phillips	06:30pm-09:30pm W Bldg-TBD		16	12	0	0	0
@@ -8727,7 +8729,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2015	fall	CHEM	395	1	Directed Research	4	Jeffrey Scott Cannon	Time-TBD Days-TBD Bldg-TBD		99	4	0	0	0
 2015	fall	CHEM	395	2	Directed Research	4	Chris Craney	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2015	fall	CHEM	395	3	Directed Research	4	Michael G. Hill	Time-TBD Days-TBD Bldg-TBD		99	7	0	0	0
-2015	fall	CHEM	395	4	Directed Research	4	Aram M. Nersissian	Time-TBD Days-TBD Bldg-TBD		99	3	0	0	0
+2015	fall	CHEM	395	4	Directed Research	4	Aram M. Nersissian	Time-TBD Days-TBD Bldg-TBD		99	4	0	0	0
 2015	fall	CHEM	395	5	Directed Research	4	Eileen M. Spain	Time-TBD Days-TBD Bldg-TBD		99	2	0	0	0
 2015	fall	CHEM	395	6	Directed Research	4	Andrew K. Udit	Time-TBD Days-TBD Bldg-TBD		99	9	0	0	0
 2015	fall	CHEM	490	0	Senior Seminar	2	Michael G. Hill	03:00pm-03:55pm M MOSHER 2		99	10	0	0	0
@@ -8772,8 +8774,8 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2015	fall	CSP	18	0	A Global History of Anarchism	4	Alexander F. Day	11:45am-12:40pm MWF LIB 251		15	15	15	0	0
 2015	fall	CSP	19	0	Burning Up the Screen: Slavery and Emancipation in Film and History	4	Sharla M. Fett	11:45am-12:40pm MWF JOHN 303		16	15	15	0	0
 2015	fall	CSP	1S	0	The Struggle for Human Rights in Mexico: Representations	4	Dolores Trevizo	03:05pm-04:30pm TR JOHN 315	CPRF	16	13	13	0	0
-2015	fall	CSP	2	1	California (Im)migration Semester	4	Mary Christianakis; Salvador C. Fernandez; Richard Mora	09:35am-10:30am MWF JOHN 104		16	13	13	0	0
-2015	fall	CSP	2	2	California (Im)migration Semester	4	Mary Christianakis; Salvador C. Fernandez; Richard Mora	09:35am-10:30am MWF JOHN 104		16	14	14	0	0
+2015	fall	CSP	2	1	California (Im)migration Semester	4	Salvador C. Fernandez; Richard Mora	09:35am-10:30am MWF JOHN 104		16	13	13	0	0
+2015	fall	CSP	2	2	California (Im)migration Semester	4	Salvador C. Fernandez; Richard Mora	09:35am-10:30am MWF JOHN 104		16	14	14	0	0
 2015	fall	CSP	20	0	Great Ideas and Healers in the History of Medicine	4	Nina R. Gelbart	11:45am-12:40pm MWF SWAN 111		16	14	14	0	0
 2015	fall	CSP	21	0	Sport in Film	4	Lynn M. Mehl	11:45am-12:40pm MWF JOHN 105		16	15	15	0	0
 2015	fall	CSP	22	0	Lessons from the Great Philosophers	4	Marcia L. Homiak	11:45am-12:40pm MWF JOHN 106		16	14	14	0	0
@@ -8810,6 +8812,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2015	fall	CTSJ	397	2	I.S.:DoLA Spaceland	2	Jonathan A. Veitch	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
 2015	fall	CTSJ	397	3	I.S.:Lacan	2	Heather N. Lukes	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
 2015	fall	CTSJ	490	0	Senior Seminar in Critical Theory - Social Justice	4	Donna Kay Maeda	11:45am-12:40pm MWF WEIN 116		15	16	0	0	0
+2015	fall	CTSJ	999	0	Comprehensive Examination	0	Donna Kay Maeda	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2015	fall	DWA	101	1	International Relations: The Changing Rules of the Game	4	Sanjeev Khagram	04:05pm-05:30pm MW JOHN 203		35	26	0	0	0
 2015	fall	DWA	101	2	International Relations: The Changing Rules of the Game	4	Lan Chu	10:05am-11:30am TR JOHN 203		35	34	0	0	0
 2015	fall	DWA	101	3	International Relations: The Changing Rules of the Game	4	Lan Chu	01:30pm-02:55pm TR FOWLER 201		35	34	0	0	0
@@ -8873,7 +8876,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2015	fall	ENGL	490	0	Senior Seminar: Comprehensive Project	4	Warren Montag	01:30pm-02:55pm TR FOWLER 301		30	16	0	0	0
 2015	fall	FREN	101	1	Beginning French I	4	Lauren A Brown	01:55pm-02:50pm MWF JOHN 315		25	23	5	0	0
 2015	fall	FREN	101	2	Beginning French I	4	Lauren A Brown	03:00pm-03:55pm MWF JOHN 315		25	18	3	0	0
-2015	fall	FREN	102	0	Beginning French II	4	Arthur Flannigan Saint-Aubin	08:30am-09:25am MWF JOHN 105		25	20	5	0	0
+2015	fall	FREN	102	0	Beginning French II	4	Arthur Flannigan Saint-Aubin	08:30am-09:25am MWF JOHN 105		25	19	5	0	0
 2015	fall	FREN	151	0	Intermediate Conversation I	1	Arthur Flannigan Saint-Aubin	06:00pm-06:55pm MW BERKUS 232		99	9	0	0	0
 2015	fall	FREN	201	0	Intermediate French	4	Hanan Elsayed	08:30am-09:25am MWF JOHN 315	CPGC; CPIC	18	15	4	0	0
 2015	fall	FREN	202	0	Introduction to Literary Analysis/Advanced Composition and Grammar	4	Arthur Flannigan Saint-Aubin	09:35am-10:30am MWF JOHN 105	CPEU; CPRF	18	7	5	0	0
@@ -8893,7 +8896,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2015	fall	GEO	225	0	Introduction to Field Methods	4	Geoffrey John Deustua Cromwell	10:05am-11:30am TR HSC 202	CPLS	16	10	0	0	0
 2015	fall	GEO	225L	0	Intro/Field Meth-Field Trips	0	Geoffrey John Deustua Cromwell	Time-TBD Days-TBD Bldg-TBD		16	10	0	0	0
 2015	fall	GEO	245	0	Earth's Climate: Past and Future	4	Scott W. Bogue	10:40am-11:35am MWF HSC 202	CPLS	16	12	0	0	0
-2015	fall	GEO	245L	0	Earth's Climate: Past/Fut Lab	0	Scott W. Bogue	03:00pm-05:55pm M HSC 202		16	10	0	0	0
+2015	fall	GEO	245L	0	Earth's Climate: Past and Future Laboratory	0	Scott W. Bogue	03:00pm-05:55pm M HSC 202		16	11	0	0	0
 2015	fall	GEO	305	0	Earth Materials	4	Natalia Solomatova	09:35am-10:30am MWF HSC 104	CPLS	16	11	0	0	0
 2015	fall	GEO	305L	0	Earth Materials Laboratory	1	Natalia Solomatova	01:30pm-04:25pm R HSC 104		16	11	0	0	0
 2015	fall	GEO	315	0	Sedimentary Geology	4	Ann E. Blythe	10:05am-11:30am TR HSC 225	CPLS	16	9	0	0	0
@@ -8927,6 +8930,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2015	fall	HIST	354	0	The History of Race in Latin America	4	Lisa Sousa	04:05pm-05:30pm MW WEIN 210	CPLA	18	16	0	0	0
 2015	fall	HIST	490	1	Senior Seminar	4	Alexandra M. Puerto	01:30pm-02:55pm TR SWAN 111		18	8	0	0	0
 2015	fall	HIST	490	2	Senior Seminar	4	Marla Stone	01:30pm-02:55pm TR WEIN 116		18	7	0	0	0
+2015	fall	HIST	999	0	Comprehensive Examination	0	Marla Stone	Time-TBD Days-TBD Bldg-TBD		99	8	0	0	0
 2015	fall	JAPN	101	0	Elementary Japanese I	5	Motoko Ezaki	09:05am-10:30am MWF JOHN 303		25	28	0	0	0
 2015	fall	JAPN	201	0	Intermediate Japanese I	5	Yuki Taylor	01:55pm-03:20pm MWF JOHN 314	CPAS; CPRF	25	18	0	0	0
 2015	fall	JAPN	271	0	Fiction in Japanese Literature and Film	4	Motoko Ezaki	01:30pm-02:55pm TR JOHN 106	CPAS; CPRF	20	20	0	0	0
@@ -8943,13 +8947,14 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2015	fall	KINE	304L	2	Human Physiology Laboratory	1	Christian K. Roberts	03:00pm-05:55pm W BIOS 313		12	9	0	0	0
 2015	fall	KINE	305	0	Exercise Physiology	4	Christian K. Roberts	10:40am-11:35am MWF BERKUS 242	CPMS	26	15	13	0	0
 2015	fall	KINE	306	0	Biochemistry of Exercise and Energy	4	Marcella Ann Raney	01:55pm-02:50pm MWF BERKUS 243	CPMS	20	8	7	0	0
-2015	fall	KINE	310	0	Motor Learning and Control	4	Stephanie Cooper	01:30pm-02:55pm TR BERKUS 243	CPLS	24	18	0	0	0
-2015	fall	KINE	310L	1	Motor Learning and Control Laboratory	1	Stephanie Cooper	08:30am-11:25am T BIOS 312B		12	11	0	0	0
-2015	fall	KINE	310L	2	Motor Learning and Control Laboratory	1	Stephanie Cooper	08:30am-11:25am R BIOS 312B		12	7	0	0	0
+2015	fall	KINE	310	0	Motor Learning and Control	4	Stephanie Lyn Cooper Hosaka	01:30pm-02:55pm TR BERKUS 243	CPLS	24	18	0	0	0
+2015	fall	KINE	310L	1	Motor Learning and Control Laboratory	1	Stephanie Lyn Cooper Hosaka	08:30am-11:25am T BIOS 312B		12	11	0	0	0
+2015	fall	KINE	310L	2	Motor Learning and Control Laboratory	1	Stephanie Lyn Cooper Hosaka	08:30am-11:25am R BIOS 312B		12	7	0	0	0
 2015	fall	KINE	311	0	Sport and Exercise Psychology	4	Lynn M. Mehl	09:35am-10:30am MWF BERKUS 242		24	19	6	0	0
 2015	fall	KINE	396	1	Internship	2	Kirk Richard Bentzen	Time-TBD Days-TBD Bldg-TBD		8	1	1	0	0
 2015	fall	KINE	396	2	Internship	2	Lynn M. Mehl	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2015	fall	KINE	398	0	Community Health and Fitness Research	2	Marcella Ann Raney	Time-TBD Days-TBD Bldg-TBD		99	3	0	0	0
+2015	fall	LANG	999	0	Comprehensive Examination	0	Michael F. Shelton	Time-TBD Days-TBD Bldg-TBD		99	1	0	0	0
 2015	fall	LATN	101	0	Elementary Latin	5	Debra L. Freas	01:55pm-03:20pm MWF SWAN 111		20	8	3	0	0
 2015	fall	LATN	300	0	War, Love, and Sacrifice in Latin Literature	4	Debra L. Freas	01:30pm-02:55pm TR JOHN 301	CPEU; CPPE; CPRF	18	12	0	0	0
 2015	fall	LING	301	0	Introduction to Linguistics	4	Michael F. Shelton	10:40am-11:35am MWF JOHN 105	CPMS	18	20	0	0	0
@@ -8992,7 +8997,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2015	fall	MATH	146	2-1	Statistics Laboratory	0	Kanadpriya Basu	01:30pm-02:55pm R LIB 2		16	14	0	0	0
 2015	fall	MATH	146	2-2	Statistics Laboratory	0	Kanadpriya Basu	03:05pm-04:30pm R LIB 2		16	15	0	0	0
 2015	fall	MATH	160	0	Creative Problem-Solving	2	Tamas Lengyel	01:30pm-02:55pm T FOWLER 108		16	11	0	0	0
-2015	fall	MATH	210	0	Discrete Mathematics	4	Gregory Tollisen	10:40am-11:35am MWF FOWLER 201	CPMS	25	34	0	0	0
+2015	fall	MATH	210	0	Discrete Mathematics	4	Gregory Tollisen	10:40am-11:35am MWF FOWLER 201	CPMS	25	33	0	0	0
 2015	fall	MATH	210	2	Discrete Mathematics	4	Henry Macdonald	09:35am-10:30am MWF FOWLER 110	CPMS	25	22	0	0	0
 2015	fall	MATH	212	1	Multivariable Calculus	4	Tamas Lengyel	10:40am-11:35am MWF FOWLER 307	CPMS	25	20	0	0	0
 2015	fall	MATH	212	2	Multivariable Calculus	4	Donald D Lawrence	11:45am-12:40pm MWF FOWLER 301	CPMS	25	30	0	0	0
@@ -9003,6 +9008,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2015	fall	MATH	340	2	Ordinary Differential Equations	4	Ron Buckmire	03:00pm-03:55pm MWF FOWLER 307	CPMS	20	23	0	0	0
 2015	fall	MATH	352	0	Computability and Complexity	4	Ramin Naimi	01:55pm-02:50pm MWF FOWLER 310	CPMS	15	9	0	0	0
 2015	fall	MATH	400	0	Senior Colloquium	2	Ron Buckmire	03:05pm-04:30pm R FOWLER 309		20	17	0	0	0
+2015	fall	MATH	999	0	Comprehensive Examinations	0	Ron Buckmire	Time-TBD Days-TBD Bldg-TBD		99	1	0	0	0
 2015	fall	MUSA	100	0	Electronic Music Class	1	Jennifer A. Logan	07:15pm-09:10pm M BOOTH 200	CFAP	10	5	0	0	0
 2015	fall	MUSA	101	0	Voice Class	1	Laura Desiree LaVertu	10:05am-11:30am TR BIRD	CFAP	10	5	0	0	0
 2015	fall	MUSA	102	0	Piano Class	1	Dina Asta Ormenyi	Time-TBD Days-TBD Bldg-TBD	CFAP	10	12	0	0	0
@@ -9091,7 +9097,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2015	fall	MUSC	126	0	Concert Band	1	William Bing	07:30pm-09:00pm R Bldg-TBD	CFAP	99	7	0	0	0
 2015	fall	MUSC	127	0	Jazz Ensemble	1	Shawn N. Costantino	06:00pm-07:55pm M BOOTH 208	CFAP	99	10	0	0	0
 2015	fall	MUSC	128	0	Chamber Jazz and Improvisation	1	Shawn N. Costantino	Time-TBD Days-TBD Bldg-TBD		20	0	0	0	0
-2015	fall	MUSC	129	0	Chamber Music	1	Gloria Lum; Stephanie O'Keefe	04:35pm-06:55pm TR BIRD	CFAP	25	18	0	0	0
+2015	fall	MUSC	129	0	Chamber Music	1	Gloria Lum; Stephanie O'Keefe	04:35pm-06:55pm TR BIRD	CFAP	25	19	0	0	0
 2015	fall	MUSC	130	0	Occidental Sinfonia	1	Dean Anderson	07:15pm-10:10pm R BOOTH 208	CFAP	40	11	0	0	0
 2015	fall	MUSC	150	0	Introduction to Music Theory	4	Jennifer A. Logan	09:35am-10:30am MW BOOTH 204; 10:40am-11:35am MWF BOOTH 204	CPFA	35	8	0	0	0
 2015	fall	MUSC	240	0	Music Production	4	Jennifer A. Logan	07:15pm-10:10pm W BOOTH 204	CPFA	20	15	0	0	0
@@ -9100,7 +9106,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2015	fall	MUSC	258	0	Introduction to Film Scoring	4	Adam Schoenberg	10:05am-11:30am TR BOOTH 224	CPFA	15	5	0	0	0
 2015	fall	MUSC	261	0	Western Music and Culture: 1600-1789	4	David M. Kasunic	05:00pm-06:25pm TR BOOTH 208	CPEU; CPFA; CPPE; CPRF	25	6	0	0	0
 2015	fall	MUSC	272	0	Instrumental Conducting	2	Dean Anderson	02:00pm-04:00pm F BOOTH 224	CFAP	16	3	0	0	0
-2015	fall	MUSC	282	0	Introduction to North Indian Classical Music	4	David Trasoff	05:40pm-07:05pm MW BOOTH 204	CPFA; CPGC; CPPE	25	4	0	0	0
+2015	fall	MUSC	282	0	Introduction to North Indian Classical Music	4	David Trasoff	05:40pm-07:05pm MW BOOTH 204	CPAS; CPFA; CPGC; CPPE	25	4	0	0	0
 2015	fall	MUSC	285	0	Topics in the Critical Study of Music. Music and Social Protest	4	Shanna Lorenz	01:30pm-02:55pm TR BOOTH 208	CPFA; CPGC; CPIC	25	11	0	0	0
 2015	fall	MUSC	374	1	Junior Recital Preparation	2	Irene Montefiore Girton	Time-TBD Days-TBD Bldg-TBD		1	0	0	0	0
 2015	fall	MUSC	374	2	Junior Recital Preparation	2	David M. Kasunic	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
@@ -9111,7 +9117,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2015	fall	MUSC	474	3	Senior Comprehensives Preparation	2	Laura Desiree LaVertu	Time-TBD Days-TBD Bldg-TBD		1	0	0	0	0
 2015	fall	MUSC	474	4	Senior Comprehensives Preparation	2	Jennifer A. Logan	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2015	fall	MUSC	474	5	Senior Comprehensives Preparation	2	Shanna Lorenz	Time-TBD Days-TBD Bldg-TBD		99	1	0	0	0
-2015	fall	PHAC	110	1	Fall Intercollegiate Athletics	1	Jaime A. Hoffman; William W. Morris	Time-TBD Days-TBD Bldg-TBD		99	136	0	0	0
+2015	fall	PHAC	110	1	Fall Intercollegiate Athletics	1	Jaime A. Hoffman; William W. Morris	Time-TBD Days-TBD Bldg-TBD		99	135	0	0	0
 2015	fall	PHAC	110	2	Fall Intercollegiate Athletics	0	Jaime A. Hoffman; William W. Morris	Time-TBD Days-TBD Bldg-TBD		99	2	0	0	0
 2015	fall	PHAC	125	1	Dance Team	1	Kathleen Grogan	07:00am-08:25am M AGYM 21; 08:30pm-10:15pm W AGYM 21; 04:30pm-06:30pm F AGYM 21; 11:00am-01:00pm U AGYM 21		99	7	0	0	0
 2015	fall	PHAC	125	2	Dance Team	0	Kathleen Grogan	07:00am-08:25am M AGYM 21; 08:30pm-10:15pm W AGYM 21; 04:30pm-06:30pm F AGYM 21; 11:00am-01:00pm U AGYM 21		99	0	0	0	0
@@ -9119,8 +9125,8 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2015	fall	PHAC	126	2	Cheerleading	0	Kathleen Grogan	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2015	fall	PHAC	127	1	Cardio Tennis	1	Ghia Elizabeth Godfree; William W. Morris	08:45am-09:45am TR TENNIS		11	6	0	0	0
 2015	fall	PHAC	127	2	Cardio Tennis	0	Ghia Elizabeth Godfree; William W. Morris	08:45am-09:45am TR TENNIS		5	4	0	0	0
-2015	fall	PHAC	128	1	Spin Class I	1	Lorie Jo Margolis; William W. Morris	12:00pm-12:55pm MW RUSH SPIN		13	5	0	0	0
-2015	fall	PHAC	128	2	Spin Class I	0	Lorie Jo Margolis; William W. Morris	12:00pm-12:55pm MW RUSH SPIN		4	1	0	0	0
+2015	fall	PHAC	128	1	Spin Class I	1	Lorie Jo Margolis; William W. Morris	12:00pm-12:55pm MW RUSH SPIN		13	6	0	0	0
+2015	fall	PHAC	128	2	Spin Class I	0	Lorie Jo Margolis; William W. Morris	12:00pm-12:55pm MW RUSH SPIN		4	0	0	0	0
 2015	fall	PHAC	128	3	Spin Class I	1	Lorin N. Huffman; William W. Morris	08:15am-09:25am MW RUSH SPIN		14	13	0	0	0
 2015	fall	PHAC	128	4	Spin Class I	0	Lorin N. Huffman; William W. Morris	08:15am-09:25am MW RUSH SPIN		3	2	0	0	0
 2015	fall	PHAC	128	5	Spin Class I	1	Lorin N. Huffman; William W. Morris	08:30am-09:25am TR RUSH SPIN		14	6	0	0	0
@@ -9129,9 +9135,9 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2015	fall	PHAC	130	2	Boot Camp	0	Hannah R. Khin; William W. Morris	07:00am-07:55am TR AGYM		13	5	0	0	0
 2015	fall	PHAC	133	1	Circuit Weight Training	1	William W. Morris; Jesse Rodgers	08:00am-08:55am TR AGYM		99	2	0	0	0
 2015	fall	PHAC	133	2	Circuit Weight Training	0	William W. Morris; Jesse Rodgers	08:00am-08:55am TR AGYM		99	1	0	0	0
-2015	fall	PHAC	134	1	Beginning Yoga	1	William W. Morris; Laura C. Vandenbergh	07:00am-07:55am TR AGYM 21		20	11	0	0	0
+2015	fall	PHAC	134	1	Beginning Yoga	1	William W. Morris; Laura C. Vandenbergh	07:00am-07:55am TR AGYM 21		20	9	0	0	0
 2015	fall	PHAC	134	10	Beginning Yoga	0	William W. Morris; Laura C. Vandenbergh	07:00am-09:00am W AGYM 21		10	1	0	0	0
-2015	fall	PHAC	134	2	Beginning Yoga	0	William W. Morris; Laura C. Vandenbergh	07:00am-07:55am TR AGYM 21		10	3	0	0	0
+2015	fall	PHAC	134	2	Beginning Yoga	0	William W. Morris; Laura C. Vandenbergh	07:00am-07:55am TR AGYM 21		10	4	0	0	0
 2015	fall	PHAC	134	3	Beginning Yoga	1	William W. Morris; Laura C. Vandenbergh	08:00am-08:55am TR AGYM 21		20	18	0	0	0
 2015	fall	PHAC	134	4	Beginning Yoga	0	William W. Morris; Laura C. Vandenbergh	08:00am-08:55am TR AGYM 21		10	9	0	0	0
 2015	fall	PHAC	134	5	Beginning Yoga	1	William W. Morris; Laura C. Vandenbergh	12:00pm-12:55pm TR AGYM 21		20	22	0	0	0
@@ -9139,7 +9145,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2015	fall	PHAC	134	7	Beginning Yoga	1	Dana Joy Marshall; William W. Morris	08:00pm-08:55pm TR AGYM 21		20	20	0	0	0
 2015	fall	PHAC	134	8	Beginning Yoga	0	Dana Joy Marshall; William W. Morris	08:00pm-08:55pm TR AGYM 21		10	9	0	0	0
 2015	fall	PHAC	134	9	Beginning Yoga	1	William W. Morris; Laura C. Vandenbergh	07:00am-09:00am W AGYM 21		20	4	0	0	0
-2015	fall	PHAC	149	1	Karate	1	Victor Chico; William W. Morris	05:10pm-06:25pm MW AGYM 21		99	14	0	0	0
+2015	fall	PHAC	149	1	Karate	1	Victor Chico; William W. Morris	05:10pm-06:25pm MW AGYM 21		99	15	0	0	0
 2015	fall	PHAC	149	2	Karate	0	Victor Chico; William W. Morris	05:10pm-06:25pm MW AGYM 21		99	6	0	0	0
 2015	fall	PHAC	150	1	Zumba	1	Marisol Gomez; William W. Morris	06:00pm-07:00pm MW RUSH		30	12	0	0	0
 2015	fall	PHAC	150	2	Zumba	0	Marisol Gomez; William W. Morris	06:00pm-07:00pm MW RUSH		15	5	0	0	0
@@ -9152,6 +9158,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2015	fall	PHIL	375	0	Theory of Knowledge	4	Saul P. Traiger	04:05pm-05:00pm MWF TREE N	CPUD; CPUS	18	16	7	1	0
 2015	fall	PHIL	397	1	Independent Study	2	Carolyn J. Brighouse	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
 2015	fall	PHIL	490	0	Senior Seminar	4	Clair Morrissey	07:15pm-10:10pm T FOWLER 210		15	10	11	1	0
+2015	fall	PHIL	999	0	Comprehensive Examination	0	Clair Morrissey	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2015	fall	PHYS	110	1	Introductory Mechanics	4	Daniel P. Snowden-Ifft	10:40am-11:35am MWF FOWLER 202	CPLS	36	26	24	0	0
 2015	fall	PHYS	110	2	Introductory Mechanics	4	Daniel P. Snowden-Ifft	01:55pm-02:50pm MWF FOWLER 202	CPLS	36	19	16	1	0
 2015	fall	PHYS	110L	1	Introductory Mechanics Laboratory	0	Igor Umanskiy	08:30am-11:25am T HSC 109		14	11	8	0	0
@@ -9198,7 +9205,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2015	fall	PSYC	200	1	Methods in Psychological Science	4	Andrea Hopmeyer	08:30am-09:25am MWF BERKUS 244	CPMS	17	20	7	-2	0
 2015	fall	PSYC	200	2	Methods in Psychological Science	4	Andrea Hopmeyer	09:35am-10:30am MWF BERKUS 244	CPMS	17	21	0	0	0
 2015	fall	PSYC	201	0	Statistics in Psychological Science	4	Anne Schell	10:40am-11:35am MWF FOWLER 110	CPMS	17	17	3	-1	0
-2015	fall	PSYC	295	1	Directed Research	2	Nancy K. Dess	12:50pm-01:45pm W Bldg-TBD		5	2	0	0	0
+2015	fall	PSYC	295	1	Directed Research	2	Nancy K. Dess	12:50pm-01:45pm W Bldg-TBD		5	3	0	0	0
 2015	fall	PSYC	295	2	Directed Research	2	Andrea Hopmeyer	12:50pm-01:45pm W Bldg-TBD		5	5	0	0	0
 2015	fall	PSYC	295	3	Directed Research	2	Brian Hahn Kim	12:50pm-01:45pm W Bldg-TBD		5	0	0	0	0
 2015	fall	PSYC	295	4	Directed Research	2	Jaclyn Toni Rodriguez	12:50pm-01:45pm W Bldg-TBD		5	0	0	0	0
@@ -9206,7 +9213,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2015	fall	PSYC	295	6	Directed Research	2	Andrew E. Shtulman	12:50pm-01:45pm W Bldg-TBD		5	0	0	0	0
 2015	fall	PSYC	306	1	Cognitive Psychology	4	Andrew E. Shtulman	01:55pm-02:50pm MWF WEIN 210	CPMS	21	23	11	-2	0
 2015	fall	PSYC	306	2	Cognitive Psychology	4	Andrew E. Shtulman	03:00pm-03:55pm MWF WEIN 210	CPMS	21	21	7	0	0
-2015	fall	PSYC	306	8	Cognitive Psychology	4	Andrew E. Shtulman	Time-TBD Days-TBD Bldg-TBD	CPMS	0	1	0	0	0
+2015	fall	PSYC	306	8	Cognitive Psychology	0	Andrew E. Shtulman	Time-TBD Days-TBD Bldg-TBD	CPMS	0	1	0	0	0
 2015	fall	PSYC	322	0	Physiological Psychology	4	Clinton D. Chapman	08:30am-09:25am MWF JOHN 106	CPLS	21	16	8	-1	0
 2015	fall	PSYC	322L	1	Physiological Psychology Laboratory	2	Clinton D. Chapman	08:30am-11:25am T Bldg-TBD		8	4	0	0	0
 2015	fall	PSYC	322L	2	Physiological Psychology Laboratory	2	Clinton D. Chapman	01:55pm-04:50pm W Bldg-TBD		8	4	0	0	0
@@ -9225,6 +9232,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2015	fall	PSYC	490	0	Contemporary Topics Seminar. Trauma	4	Heather Tweddle Banis	03:00pm-05:55pm W SWAN 117		12	14	10	-3	0
 2015	fall	PSYC	498	0	Practicum in Psychology	4	Anne Schell	07:15pm-10:10pm W SWAN 117		15	7	0	0	0
 2015	fall	PSYC	499	1	Honor Res:Learning with Frien	2	Nancy K. Dess	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
+2015	fall	PSYC	999	0	Comprehensive Examination	0	Brian Hahn Kim	Time-TBD Days-TBD Bldg-TBD		99	2	0	0	0
 2015	fall	RELS	130	0	Judaism as a Religious Civilization	4	Sanford Ragins	10:05am-11:30am TR FOWLER 301	CPGC; CPIC; CPPE	35	35	7	-1	0
 2015	fall	RELS	145	0	Introduction to American Religious Movements	4	D. Keith Naylor	10:40am-11:35am MWF TREE S	CPUS	35	11	2	0	0
 2015	fall	RELS	150	1	Introduction to Islam	4	Malek Moazzam-Doulat	04:05pm-05:30pm MW FOWLER 302	CPAF; CPPE; CPRF	35	32	5	0	0
@@ -9254,6 +9262,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2015	fall	SOC	490	1	Senior Seminar in Sociology	4	Dolores Trevizo	05:40pm-07:05pm MW SWAN 111		12	12	0	0	0
 2015	fall	SOC	490	2	Senior Seminar in Sociology	4	Jan Chien-Chen Lin	10:05am-11:30am TR SWAN 111		12	11	0	0	0
 2015	fall	SOC	490	3	Senior Seminar in Sociology	4	John T. Lang	03:05pm-04:30pm TR SWAN 111		12	12	0	0	0
+2015	fall	SOC	999	0	Comprehensive Examination	0	Jan Chien-Chen Lin	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2015	fall	SPAN	101	1	Beginning Spanish I	4	Karina Rincon	08:30am-09:25am MWF JOHN 301		25	19	2	0	0
 2015	fall	SPAN	101	2	Beginning Spanish I	4	Gloria Luz Orozco Allan	01:55pm-02:50pm MWF FOWLER 309		25	24	4	0	0
 2015	fall	SPAN	102	1	Beginning Spanish II	4	Karina Rincon	09:35am-10:30am MWF JOHN 301		25	25	5	0	0
@@ -9261,7 +9270,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2015	fall	SPAN	102	3	Beginning Spanish II	4	Alicia Gonzalez	01:55pm-02:50pm MWF JOHN 301		25	24	5	-1	0
 2015	fall	SPAN	102	4	Beginning Spanish II	4	Alicia Gonzalez	03:00pm-03:55pm MWF JOHN 301		25	25	4	0	0
 2015	fall	SPAN	105	0	Rancho Hollywood: Los Angeles Migration Stories	4	Salvador C. Fernandez	08:30am-09:55am TR JOHN 302	CPGC	32	27	27	0	0
-2015	fall	SPAN	151	1	Intermediate Conversation I	1	Adelaida Lopez	06:00pm-06:55pm MW BERKUS 243		99	17	0	0	0
+2015	fall	SPAN	151	1	Intermediate Conversation I	1	Adelaida Lopez	06:00pm-06:55pm MW BERKUS 243		99	16	0	0	0
 2015	fall	SPAN	151	2	Intermediate Conversation I	1	Adelaida Lopez	07:15pm-08:10pm TR BERKUS 243		99	5	0	0	0
 2015	fall	SPAN	201	1	Intermediate Spanish	4	Alicia Gonzalez	10:40am-11:35am MWF JOHN 303		18	19	5	0	0
 2015	fall	SPAN	201	2	Intermediate Spanish	4	Michael F. Shelton	01:55pm-02:50pm MWF JOHN 104		18	18	5	0	0
@@ -9301,7 +9310,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2015	fall	THEA	202	0	Shakespeare's Scripts	4	John R. Bouchard	09:35am-10:30am MWF TREE N	CPFA; CPPE; CPRF	20	15	0	0	0
 2015	fall	THEA	204	0	Comedy and Social Change	4	James K. Angell	01:30pm-02:55pm TR KECK 208	CPFA	16	13	0	0	0
 2015	fall	THEA	210	0	Acting 1	4	Sarah E. Kozinn	01:55pm-03:55pm MWF KECK 208	CPFA	16	14	0	0	0
-2015	fall	THEA	211	1	Performance Laboratory	1	Instructor Unassigned	06:00pm-10:30pm MTWRF KECK	CFAP	20	2	0	0	0
+2015	fall	THEA	211	1	Performance Laboratory	1	John R. Bouchard	06:00pm-10:30pm MTWRF KECK	CFAP	20	2	0	0	0
 2015	fall	THEA	211	2	Performance Laboratory	1	Instructor Unassigned	06:00pm-10:30pm MTWRF KECK	CFAP	20	0	0	0	0
 2015	fall	THEA	233	0	Advanced Tai Chi	1	Ezra Ethan Weisz	12:30pm-01:25pm TR KECK 208	CFAP	10	2	0	0	0
 2015	fall	THEA	246	0	Costume Construction	2	Thomas Slotten	01:30pm-02:55pm TR KECK 104	CFAP	8	7	0	0	0
@@ -9351,6 +9360,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	AMST	390	0	Junior Seminar	4	Eric L. Newhall	10:05am-11:30am TR SWAN 111	CPUD; CPUS	18	7	0	0	0
 2016	spring	AMST	397	1	I.S.:: Honors Thesis	4	Xiao-huang Yin	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
 2016	spring	AMST	490	0	Senior Seminar	4	Xiao-huang Yin	07:15pm-10:10pm W SWAN 117		18	5	0	0	0
+2016	spring	AMST	999	0	Comprehensive Examination	0	Xiao-huang Yin	Time-TBD Days-TBD Bldg-TBD		99	4	0	0	0
 2016	spring	ARAB	102	0	Elementary Arabic II	5	Zohaa A. El-Gamal	01:55pm-03:20pm MWF FOWLER 110		25	13	5	0	0
 2016	spring	ARAB	202	0	Intermediate Arabic II	4	Hanan Elsayed	11:45am-12:40pm MWF JOHN 106	CPAF; CPRF	18	8	0	0	0
 2016	spring	ARAB	252	0	Advanced Conversation	1	Zohaa A. El-Gamal	04:05pm-05:00pm MW FOWLER 310		99	2	0	0	0
@@ -9396,6 +9406,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	ARTS	330	8	Advanced Printmaking	0	Linda F. Lyke	Time-TBD Days-TBD Bldg-TBD	CPFA	1	0	0	0	0
 2016	spring	BICH	490	1	Senior Seminar	2	Chris Craney	03:00pm-04:25pm WF MOSHER 2		14	14	0	0	0
 2016	spring	BICH	490	2	Senior Seminar	2	Roberta R. Pollock	03:00pm-04:25pm WF MOSHER 2		14	13	0	0	0
+2016	spring	BICH	999	0	Comprehensive Examination	0	Chris Craney	Time-TBD Days-TBD Bldg-TBD		99	27	0	0	0
 2016	spring	BIO	103	1	Topics in Biology: Ecological Enhancement and Restoration	4	Jonathan P. Williams	05:40pm-07:05pm MW BIOS 113	CPMS	36	35	0	0	0
 2016	spring	BIO	103	2	Topics in Biology: Ecological Enhancement and Restoration	4	Jonathan P. Williams	03:05pm-04:30pm TR BIOS 113	CPMS	36	37	0	0	0
 2016	spring	BIO	105	1	Marine Biology	4	Laurel Ann Zahn	10:05am-11:30am TR BIOS 113	CPLS	36	35	5	0	0
@@ -9431,7 +9442,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	BIO	290	0	Research Methods in Biology	2	Kristine Kaiser	08:00am-09:25am W BIOS 200		16	4	0	0	0
 2016	spring	BIO	310	0	Museum Science	2	James Maley	Time-TBD Days-TBD Bldg-TBD		99	12	0	0	0
 2016	spring	BIO	325	0	Microbial Diversity	0	Shana Kaye Goffredi	10:40am-11:35am MWF FOWLER 111	CPLS	18	18	6	-3	0
-2016	spring	BIO	325	8	Microbial Diversity	0	Shana Kaye Goffredi	Time-TBD Days-TBD Bldg-TBD	CPLS	1	1	0	0	0
+2016	spring	BIO	325	8	Microbial Diversity	0	Shana Kaye Goffredi	Time-TBD Days-TBD Bldg-TBD	CPLS	1	2	0	0	0
 2016	spring	BIO	325L	1	Microbial Diversity Laboratory	1	Shana Kaye Goffredi	01:55pm-04:50pm W Bldg-TBD		8	10	0	0	0
 2016	spring	BIO	325L	2	Microbial Diversity Laboratory	1	Shana Kaye Goffredi	01:30pm-04:25pm R Bldg-TBD		10	8	2	-5	0
 2016	spring	BIO	340	0	Advanced Animal Physiology	4	Joseph R. Schulz	10:05am-11:30am TR BERKUS 232	CPLS	18	17	0	0	0
@@ -9473,6 +9484,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	BIO	490	1	Senior Seminar	4	Renee A. Baran	Time-TBD Days-TBD Bldg-TBD		9	8	7	0	0
 2016	spring	BIO	490	2	Senior Seminar	4	Shana Kaye Goffredi	01:55pm-02:50pm MF FOWLER 111		9	9	0	0	0
 2016	spring	BIO	490	3	Senior Seminar	4	John E. McCormack	Time-TBD Days-TBD Bldg-TBD		9	10	1	-1	0
+2016	spring	BIO	999	0	Comprehensive Examination	0	Daniel J. Pondella	Time-TBD Days-TBD Bldg-TBD		99	26	0	0	0
 2016	spring	CHEM	120	1	Foundations of General Chemistry	4	Franklin P. Ow	08:30am-09:25am MWF MOSHER 3	CPLS	32	14	0	0	0
 2016	spring	CHEM	120	2	Foundations of General Chemistry	4	Franklin P. Ow	09:35am-10:30am MWF MOSHER 3	CPLS	32	28	0	0	0
 2016	spring	CHEM	120	3	Foundations of General Chemistry	4	Franklin P. Ow	10:40am-11:35am MWF MOSHER 3	CPLS	32	29	0	0	0
@@ -9492,8 +9504,8 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	CHEM	201	0	Biochemical and Environmental Analysis	2	Victor Kenyon	01:30pm-05:30pm T NORRIS 110		16	5	0	0	0
 2016	spring	CHEM	220	1	Organic Chemistry I	4	Linda S. Lasater-Munson	08:30am-09:25am MWF MOSHER 2	CPLS	24	15	0	0	0
 2016	spring	CHEM	220	2	Organic Chemistry I	4	Linda S. Lasater-Munson	10:40am-11:35am MWF MOSHER 2	CPLS	24	24	0	0	0
-2016	spring	CHEM	220L	1	Organic Chemistry I Laboratory	0	Helen Segal	01:55pm-04:50pm M NORRIS 101		14	8	0	0	0
-2016	spring	CHEM	220L	2	Organic Chemistry I Laboratory	0	Helen Segal	08:30am-11:25am T NORRIS 101		14	17	0	0	0
+2016	spring	CHEM	220L	1	Organic Chemistry I Laboratory	0	Helen Segal	01:55pm-04:50pm M NORRIS 101		14	9	0	0	0
+2016	spring	CHEM	220L	2	Organic Chemistry I Laboratory	0	Helen Segal	08:30am-11:25am T NORRIS 101		14	16	0	0	0
 2016	spring	CHEM	220L	3	Organic Chemistry I Laboratory	0	Lauren Rosebrugh	01:30pm-04:25pm T NORRIS 101		14	11	0	0	0
 2016	spring	CHEM	221	1	Organic Chemistry II	4	Jeffrey Scott Cannon	09:35am-10:30am MWF MOSHER 2	CPLS	24	8	0	0	0
 2016	spring	CHEM	221	2	Organic Chemistry II	4	Derek James Ross	10:40am-11:35am MWF MOSHER 1	CPLS	24	20	0	0	0
@@ -9533,10 +9545,12 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	CHEM	395	6	Directed Research	4	Eileen M. Spain	Time-TBD Days-TBD Bldg-TBD		99	2	0	0	0
 2016	spring	CHEM	395	7	Directed Research	4	Andrew K. Udit	Time-TBD Days-TBD Bldg-TBD		99	10	0	0	0
 2016	spring	CHEM	397	1	L.S.:Sphingomyelinase	2	Victor Kenyon	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
-2016	spring	CHEM	490	0	Senior Seminar	2	Andrew K. Udit	03:00pm-03:55pm M MOSHER 2		99	10	0	0	0
+2016	spring	CHEM	490	0	Senior Seminar	2	Michael G. Hill	03:00pm-03:55pm M MOSHER 2		99	10	0	0	0
+2016	spring	CHEM	999	0	Comprehensive Examination	0	Michael G. Hill	Time-TBD Days-TBD Bldg-TBD		99	10	0	0	0
 2016	spring	CHIN	102	0	Elementary Chinese II	5	Andrew H Miller	09:05am-10:30am MWF TREE N		25	19	0	0	0
 2016	spring	CHIN	202	0	Intermediate Chinese II	5	Sarah Wei-ming Chen	01:55pm-03:20pm MWF WEIN 210	CPAS; CPRF	25	11	0	0	0
 2016	spring	CHIN	330	0	Topics in Fiction and Film. Transnational Chinese	4	Sarah Wei-ming Chen	04:05pm-05:30pm MW JOHN 104	CPAS; CPGC	25	23	0	0	0
+2016	spring	CHIN	999	0	Comprehensive Examination	0	Sarah Wei-ming Chen	Time-TBD Days-TBD Bldg-TBD		99	2	0	0	0
 2016	spring	CLAS	223	0	The Hero in Ancient Greece and Rome	4	Debra L. Freas	01:30pm-02:55pm TR JOHN 301	CPPE; CPRF	18	23	0	0	0
 2016	spring	COGS	101	0	Introduction to Cognitive Science	4	Carmel A Levitan; Ning Hui Li; Saul P. Traiger	10:40am-11:35am MWF JOHN 200	CPMS	45	46	15	-1	0
 2016	spring	COGS	104	0	Introduction to Neuroscience	4	Diana Card Linden	09:35am-10:30am MWF FOWLER 302	CPMS	35	37	6	0	0
@@ -9552,6 +9566,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	COGS	395	4	Directed Research	4	Aleksandra Sherman	Time-TBD Days-TBD Bldg-TBD		10	1	0	0	0
 2016	spring	COGS	395	5	Directed Research	2	Ning Hui Li	Time-TBD Days-TBD Bldg-TBD		10	3	0	0	0
 2016	spring	COGS	395	6	Directed Research	4	Ning Hui Li	Time-TBD Days-TBD Bldg-TBD		10	0	0	0	0
+2016	spring	COGS	999	0	Comprehensive Examination	0	Andrew E. Shtulman	Time-TBD Days-TBD Bldg-TBD		99	15	0	0	0
 2016	spring	COMP	131	0	Fundamentals of Computer Science	4	Ning Hui Li	04:05pm-05:30pm MW FOWLER 112	CPLS	32	35	0	0	0
 2016	spring	COMP	131L	1	Fundamentals of Computer Science Laboratory	0	Ning Hui Li	08:30am-11:25am R FOWLER 110		16	13	0	0	0
 2016	spring	COMP	131L	2	Fundamentals of Computer Science Laboratory	0	Ning Hui Li	01:30pm-04:25pm R FOWLER 110		16	22	0	0	0
@@ -9567,6 +9582,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	CSLC	233	0	Codes, Cultures, and Killing	4	Christopher James Gilman	01:30pm-02:55pm T HSC 225; 01:30pm-02:55pm R JOHN 103	CPEU; CPRF	24	7	2	0	0
 2016	spring	CSLC	280	0	Hegel, Nietzsche, Heidegger: Tragic Philosophy	4	Damian Alexander Stocking	05:00pm-06:25pm TR JOHN 302	CPEU; CPRF	25	25	6	-3	0
 2016	spring	CSLC	397	1	Independent Study: Comps	4	Damian Alexander Stocking	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
+2016	spring	CSLC	999	0	Comprehensive Examination	0	Damian Alexander Stocking	Time-TBD Days-TBD Bldg-TBD		99	1	0	0	0
 2016	spring	CSP	50	1	In the Process of Shattering Their Chains: Modern Literature of Resistence in the US and Middle East	4	Amy Tahani-Madain	11:45am-12:40pm MWF JOHN 315		15	15	15	0	0
 2016	spring	CSP	50	2	In the Process of Shattering Their Chains: Modern Literature of Resistence in the US and Middle East	4	Amy Tahani-Madain	12:50pm-01:45pm MWF JOHN 315		16	16	16	0	0
 2016	spring	CSP	51	1	Urban Fictions: The Modern City in Literature and Other Arts	4	Raul Villa	11:45am-12:40pm MWF BERKUS 243B		16	16	15	0	0
@@ -9617,6 +9633,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	CTSJ	499	0	Honors Project in Critical Theory - Social Justice	4	Donna Kay Maeda	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
 2016	spring	CTSJ	499	1	Honors:Comps Project	4	Donna Kay Maeda	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
 2016	spring	CTSJ	499	2	Honors:Wmn Sexual health	4	Donna Kay Maeda	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
+2016	spring	CTSJ	999	0	Comprehensive Examination	0	Donna Kay Maeda	Time-TBD Days-TBD Bldg-TBD		99	15	0	0	0
 2016	spring	DWA	101	0	International Relations: The Changing Rules of the Game	4	Juvenal Cortes	04:05pm-05:30pm MW JOHN 203		35	25	0	0	0
 2016	spring	DWA	201	0	International Organizations	4	Laura Hebert	01:30pm-02:55pm TR JOHN 302		25	28	13	0	0
 2016	spring	DWA	220	0	International Political Economy	4	Sophal Ear	05:00pm-06:25pm TR JOHN 203	CPGC	25	28	15	-3	0
@@ -9634,12 +9651,13 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	DWA	351	0	Advanced Topics in Global Sustainability	4	Sanjeev Khagram	07:15pm-10:10pm T JOHN 103		15	13	8	0	0
 2016	spring	DWA	397	1	Independent Study: Senior Comp	4	Anthony Chase	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
 2016	spring	DWA	397	2	I.S.: Bully Proj-Soc Media	4	Sherry Simpson Dean	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
-2016	spring	DWA	397	3	I.S.:Birdy.com	2	Sanjeev Khagram	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
+2016	spring	DWA	397	3	I.S.:Entrepreneurial Develop	2	Sanjeev Khagram	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
 2016	spring	DWA	397	4	I.S.:Entrepreneurial Project	2	Sanjeev Khagram	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
 2016	spring	DWA	397	5	I.S.:Mod Argentine Economy	2	Jane S. Jaquette	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
 2016	spring	DWA	490	1	Senior Seminar	4	Lan Chu	03:05pm-04:30pm T Bldg-TBD		12	14	0	0	0
 2016	spring	DWA	490	2	Senior Seminar	4	Sophal Ear	03:05pm-04:30pm T JOHN 301		12	15	0	0	0
 2016	spring	DWA	490	3	Senior Seminar	4	Laura Hebert	03:05pm-04:30pm T JOHN 314		12	15	0	0	0
+2016	spring	DWA	999	0	Comprehensive Examination	0	Laura Hebert	Time-TBD Days-TBD Bldg-TBD		99	44	0	0	0
 2016	spring	ECON	101	1	Principles of Economics I	4	Victoria I. Umanskaya	09:35am-10:30am MWF FOWLER 112		35	34	0	0	0
 2016	spring	ECON	101	2	Principles of Economics I	4	Victoria I. Umanskaya	10:40am-11:35am MWF FOWLER 112		35	34	0	0	0
 2016	spring	ECON	101	3	Principles of Economics I	4	Bevin Meredith Ashenmiller	08:30am-09:55am TR FOWLER 209		35	21	0	0	0
@@ -9667,6 +9685,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	ECON	397	1	I.S.:Education Outcomes	4	Kirsten Wandschneider	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
 2016	spring	ECON	397	2	Independent Study	2	Jesse Mora	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
 2016	spring	ECON	397	3	I.S.:Econ Dev Lit	2	Brandon Lehr	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
+2016	spring	ECON	999	0	Comprehensive Examination	0	Kirsten Wandschneider	Time-TBD Days-TBD Bldg-TBD		99	60	0	0	0
 2016	spring	EDUC	140	0	Community Literacy	2	Desiree M. Zamorano	03:05pm-04:55pm TR LIB		30	21	0	0	0
 2016	spring	EDUC	141	0	Community Literacy and Middle School Students	2	Desiree M. Zamorano	02:30pm-05:25pm W LIB		30	11	0	0	0
 2016	spring	EDUC	201	0	Sociocultural Foundations of Education	4	Clarence La Mont Terry	01:30pm-02:55pm TR BOOTH 119	CPUD; CPUS	25	20	0	0	0
@@ -9692,6 +9711,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	ENGL	397	2	I.S.:Althusser	2	Warren Montag	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
 2016	spring	ENGL	397	3	I.S.:Althusser	2	Warren Montag	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
 2016	spring	ENGL	499	1	Hon:Queer Epiphanies/The Dead	2	Warren Montag	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
+2016	spring	ENGL	999	0	Comprehensive Examination	0	Leila B. Neti	Time-TBD Days-TBD Bldg-TBD		99	3	0	0	0
 2016	spring	FREN	101	0	Beginning French I	4	Lauren A Brown	09:35am-10:30am MWF WEIN 210		25	14	4	0	0
 2016	spring	FREN	102	1	Beginning French II	4	Susan Grayson	09:35am-10:30am MWF JOHN 301		25	17	4	0	0
 2016	spring	FREN	102	2	Beginning French II	4	Susan Grayson	10:40am-11:35am MWF JOHN 301		25	22	5	0	0
@@ -9701,6 +9721,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	FREN	252	0	Advanced Conversation II	1	Susan Grayson	04:05pm-05:00pm MW BERKUS 244		99	13	0	0	0
 2016	spring	FREN	363	0	Representations of French Colonial History	4	Hanan Elsayed	09:35am-10:30am MWF JOHN 302	CPAF; CPRF	18	11	0	0	0
 2016	spring	FREN	397	1	I.S.:Cinematic Adapt:Fren Nov	4	Arthur Flannigan Saint-Aubin	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
+2016	spring	FREN	999	0	Comprehensive Examination	0	Michael F. Shelton	Time-TBD Days-TBD Bldg-TBD		99	1	0	0	0
 2016	spring	GEO	105	1	Earth: Our Environment	4	Ann E. Blythe	09:35am-10:30am MWF HSC 102	CPLS	32	33	15	-1	0
 2016	spring	GEO	105	1-1	Earth: Our Environment Laboratory	0	Ann E. Blythe	02:30pm-04:25pm T HSC 102		16	16	0	0	0
 2016	spring	GEO	105	1-2	Earth: Our Environment Laboratory	0	Ann E. Blythe	03:00pm-05:00pm W HSC 102		16	17	0	0	0
@@ -9724,6 +9745,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	GEO	395	3	Directed Research	2	Margaret E. Rusmore	Time-TBD Days-TBD Bldg-TBD		5	2	0	0	0
 2016	spring	GEO	395	4	Directed Research	2	James L. Sadd	Time-TBD Days-TBD Bldg-TBD		5	1	0	0	0
 2016	spring	GEO	397	1	I.S.:Apatite Fission Track Dat	2	Ann E. Blythe	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
+2016	spring	GEO	999	0	Comprehensive Examination	0	Margaret E. Rusmore	Time-TBD Days-TBD Bldg-TBD		99	15	0	0	0
 2016	spring	GERM	102	0	Elementary German II	4	Anja Pauline Ebert	01:55pm-02:50pm MWF JOHN 106		20	17	5	0	0
 2016	spring	GERM	151	0	Beginning/Intermediate Conversation I	1	Anja Pauline Ebert	12:00pm-01:00pm M JOHN 313; 06:00pm-07:00pm R JOHN 313		12	4	0	0	0
 2016	spring	GERM	202	0	German Stylistics	4	Anja Pauline Ebert	03:00pm-03:55pm MWF JOHN 106	CPEU; CPRF	18	9	0	0	0
@@ -9753,6 +9775,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	JAPN	102	0	Elementary Japanese II	5	Motoko Ezaki	09:05am-10:30am MWF JOHN 106		25	20	0	0	0
 2016	spring	JAPN	202	0	Intermediate Japanese II	5	Yuki Taylor	01:55pm-03:20pm MWF JOHN 315	CPAS; CPRF	25	13	0	0	0
 2016	spring	JAPN	350	0	Tales of the Supernatural	4	Motoko Ezaki	10:40am-11:35am MWF JOHN 106	CPAS; CPPE; CPRF	25	17	0	0	0
+2016	spring	JAPN	999	0	Comprehensive Examination	0	Sarah Wei-ming Chen	Time-TBD Days-TBD Bldg-TBD		99	4	0	0	0
 2016	spring	KINE	104	0	Introduction to Kinesiology	4	Christian K. Roberts	10:40am-11:35am MWF BERKUS 242	CPMS	24	26	14	-2	0
 2016	spring	KINE	201	0	Sport in American Society	4	Melinda Houston	01:30pm-02:55pm TR BERKUS 243	CPUD; CPUS	24	23	1	0	0
 2016	spring	KINE	298	0	Community Health and Fitness Research	2	Marcella Ann Raney	Time-TBD Days-TBD Bldg-TBD		99	10	0	0	0
@@ -9774,11 +9797,13 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	KINE	398	0	Community Health and Fitness Research	2	Marcella Ann Raney	Time-TBD Days-TBD Bldg-TBD		99	2	0	0	0
 2016	spring	KINE	490	0	Senior Seminar	4	Lynn M. Mehl	07:15pm-10:10pm M BIOS 113		99	18	0	0	0
 2016	spring	KINE	499	1	Honors	4	Stuart G. Rugg	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
+2016	spring	KINE	999	0	Comprehensive Examination	0	Lynn M. Mehl	Time-TBD Days-TBD Bldg-TBD		99	16	0	0	0
 2016	spring	LANG	999	0	Comprehensive Examination	0	Michael F. Shelton	Time-TBD Days-TBD Bldg-TBD		99	3	0	0	0
 2016	spring	LATN	102	0	Elementary and Intermediate Latin	5	Debra L. Freas	01:55pm-03:20pm MWF FOWLER 113		20	8	3	0	0
 2016	spring	LING	301	1	Introduction to Linguistics	4	Michael F. Shelton	01:55pm-02:50pm MWF JOHN 203	CPMS	18	20	0	0	0
 2016	spring	LING	301	2	Introduction to Linguistics	4	Robert Liddiard	10:05am-11:30am TR JOHN 106	CPMS	18	17	0	0	0
 2016	spring	LLAS	101	0	Introduction to Latina/o and Latin American Studies	4	Raul Villa	01:30pm-02:55pm TR BERKUS 243B	CPGC; CPIC	35	11	4	0	0
+2016	spring	LLAS	999	0	Comprehensive Examination	0	Dolores Trevizo	Time-TBD Days-TBD Bldg-TBD		99	4	0	0	0
 2016	spring	MATH	109	0	Unified Precalculus and Calculus 1-B	4	Donald D Lawrence	03:00pm-03:55pm MWF FOWLER 201	CPMS	32	17	0	0	0
 2016	spring	MATH	109A	1	Unified Precalculus and Calculus 1-B Laboratory	0	Donald D Lawrence	10:05am-11:30am R FOWLER 108		16	10	0	0	0
 2016	spring	MATH	109A	2	Unified Precalculus and Calculus 1-B Laboratory	0	Donald D Lawrence	01:30pm-02:55pm R LIB 219		16	7	0	0	0
@@ -9820,6 +9845,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	MATH	397	1	I.S.: Rings and Fields	4	Nalsey B Tinberg	Time-TBD Days-TBD Bldg-TBD		3	3	0	0	0
 2016	spring	MATH	397	2	Independent Study	4	Jeffrey S. Miller	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
 2016	spring	MATH	397	3	I.S.:Multivariable Calculus	4	Henry Macdonald	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
+2016	spring	MATH	999	0	Comprehensive Examinations	0	Ron Buckmire	Time-TBD Days-TBD Bldg-TBD		99	19	0	0	0
 2016	spring	MUSA	100	0	Electronic Music Class	1	Jennifer A. Logan	07:15pm-09:10pm M BOOTH 200	CFAP	10	6	0	0	0
 2016	spring	MUSA	102	0	Piano Class	1	Dina Asta Ormenyi	Time-TBD Days-TBD Bldg-TBD	CFAP	10	14	0	0	0
 2016	spring	MUSA	103	0	Classical Guitar Class (Beginning)	1	Ronald Mark Berman	11:35am-12:25pm T BOOTH 204	CFAP	10	7	0	0	0
@@ -9874,7 +9900,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	MUSA	262	1	Violin (One Hour)	1	Aroussiak G. Baltaian	Time-TBD Days-TBD Bldg-TBD	CFAP	20	2	0	0	0
 2016	spring	MUSA	262	2	Violin (One Hour)	1	Lawrence D. Sonderling	Time-TBD Days-TBD Bldg-TBD	CFAP	20	1	0	0	0
 2016	spring	MUSA	263	0	Viola (Half Hour)	1	Minor Lewis Wetzel	Time-TBD Days-TBD Bldg-TBD	CFAP	20	0	0	0	0
-2016	spring	MUSA	264	0	Viola (One Hour)	1	Minor Lewis Wetzel	Time-TBD Days-TBD Bldg-TBD	CFAP	20	1	0	0	0
+2016	spring	MUSA	264	0	Viola (One Hour)	1	Minor Lewis Wetzel	Time-TBD Days-TBD Bldg-TBD	CFAP	20	2	0	0	0
 2016	spring	MUSA	265	0	Cello (Half Hour)	1	Gloria Lum	Time-TBD Days-TBD Bldg-TBD	CFAP	20	4	0	0	0
 2016	spring	MUSA	266	0	Cello (One Hour)	1	Gloria Lum	Time-TBD Days-TBD Bldg-TBD	CFAP	20	5	0	0	0
 2016	spring	MUSA	267	0	String Bass (Half Hour)	1	Timothy Emmons	Time-TBD Days-TBD Bldg-TBD	CFAP	20	0	0	0	0
@@ -9924,8 +9950,9 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	MUSC	474	3	Senior Comprehensives Preparation	2	Laura Desiree LaVertu	Time-TBD Days-TBD Bldg-TBD		1	0	0	0	0
 2016	spring	MUSC	474	4	Senior Comprehensives Preparation	2	Jennifer A. Logan	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2016	spring	MUSC	474	5	Senior Comprehensives Preparation	2	Shanna Lorenz	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
+2016	spring	MUSC	999	0	Comprehensive Examination	0	David M. Kasunic	Time-TBD Days-TBD Bldg-TBD		99	3	0	0	0
 2016	spring	PHAC	111	1	Spring Intercollegiate Athletics	1	Jaime A. Hoffman; William W. Morris	Time-TBD Days-TBD Bldg-TBD		99	89	0	0	0
-2016	spring	PHAC	111	2	Spring Intercollegiate Athletics	0	Jaime A. Hoffman; William W. Morris	Time-TBD Days-TBD Bldg-TBD		99	4	0	0	0
+2016	spring	PHAC	111	2	Spring Intercollegiate Athletics	0	Jaime A. Hoffman; William W. Morris	Time-TBD Days-TBD Bldg-TBD		99	3	0	0	0
 2016	spring	PHAC	121	1	Lacrosse - Men	1	Kathleen Grogan	Time-TBD Days-TBD Bldg-TBD		99	10	0	0	0
 2016	spring	PHAC	121	2	Lacrosse - Men	0	Kathleen Grogan	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2016	spring	PHAC	123	1	Rugby - Men	1	Kathleen Grogan	Time-TBD Days-TBD Bldg-TBD		99	10	0	0	0
@@ -9968,6 +9995,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	PHIL	355	0	Philosophy of Space and Time	4	Carolyn J. Brighouse	01:30pm-02:55pm TR FOWLER 301	CPGC; CPIC	18	16	6	0	0
 2016	spring	PHIL	380	0	Wittgenstein	4	Saul P. Traiger	04:05pm-05:30pm MW TREE N	CPEU	18	9	3	0	0
 2016	spring	PHIL	397	1	I.S.:Read & Analy:Phyl Teach	2	Clair Morrissey	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
+2016	spring	PHIL	999	0	Comprehensive Examination	0	Carolyn J. Brighouse	Time-TBD Days-TBD Bldg-TBD		99	8	0	0	0
 2016	spring	PHYS	117	1	Waves and Thermal Physics	4	Janet D Scheel	10:40am-11:35am MWF FOWLER 202	CPLS	36	29	19	0	0
 2016	spring	PHYS	117	2	Waves and Thermal Physics	4	Janet D Scheel	01:55pm-02:50pm MWF FOWLER 201	CPLS	36	9	6	0	0
 2016	spring	PHYS	117L	1	Waves and Thermal Physics Laboratory	0	Igor Umanskiy	08:30am-11:25am T HSC 107		14	16	12	-2	0
@@ -9990,6 +10018,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	PHYS	397	1	I.S.:Q-Factor Measuremts	2	Daniel P. Snowden-Ifft	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
 2016	spring	PHYS	491	1	Senior Physics Seminar II	2	Jean-Luc Gauvreau	01:30pm-02:55pm R HSC 124		12	12	0	0	0
 2016	spring	PHYS	491	2	Senior Physics Seminar II	2	Jean-Luc Gauvreau	01:30pm-02:55pm T HSC 124		12	5	0	0	0
+2016	spring	PHYS	999	0	Comprehensive Examination	0	Daniel P. Snowden-Ifft	Time-TBD Days-TBD Bldg-TBD		99	14	0	0	0
 2016	spring	POLS	101	1	American Politics and Public Policy	4	Tsung Chi	04:05pm-05:30pm MW JOHN 302	CPUD; CPUS	25	28	9	-1	0
 2016	spring	POLS	101	2	American Politics and Public Policy	4	Jennifer M. Piscopo	01:30pm-02:55pm TR JOHN 303	CPUD; CPUS	25	27	10	-1	0
 2016	spring	POLS	208	0	Movements for Social Justice	4	Peter Dreier	07:00pm-09:00pm M WEIN 117; 01:30pm-02:55pm TR BERKUS 232	CPUD; CPUS	25	8	0	0	0
@@ -10009,6 +10038,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	POLS	354	0	Seminar on How Tyrannies Work	4	Roger C. Boesche	11:45am-12:40pm MWF JOHN 303		18	15	5	0	0
 2016	spring	POLS	397	1	I.S.:Community Law:Bet Tzedek	2	Thalia N.C. Gonzalez	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
 2016	spring	POLS	495	0	Comprehensive Seminar	4	Tsung Chi; Caroline Heldman; Jennifer M. Piscopo	07:15pm-10:10pm T JOHN 302		40	28	0	0	0
+2016	spring	POLS	999	0	Comprehensive Examination	0	Thalia N.C. Gonzalez	Time-TBD Days-TBD Bldg-TBD		99	28	0	0	0
 2016	spring	PSYC	101	0	Introduction to Psychology	4	Kenjus Terrel Watson	01:30pm-02:55pm TR FOWLER 209	CPMS	28	35	18	-1	0
 2016	spring	PSYC	200	1	Methods in Psychological Science	4	Nancy K. Dess	10:05am-11:30am TR JOHN 105	CPMS	17	10	2	0	0
 2016	spring	PSYC	200	2	Methods in Psychological Science	4	Andrew E. Shtulman	10:40am-11:35am MWF TREE N	CPMS	17	16	5	0	0
@@ -10032,7 +10062,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	PSYC	395	4	Directed Research	2	Jaclyn Toni Rodriguez	12:50pm-01:45pm M Bldg-TBD		5	0	0	0	0
 2016	spring	PSYC	395	5	Directed Research	2	Anne Schell	12:50pm-01:45pm M Bldg-TBD		5	2	0	0	0
 2016	spring	PSYC	395	6	Directed Research	2	Andrew E. Shtulman	12:50pm-01:45pm M Bldg-TBD		5	5	0	0	0
-2016	spring	PSYC	397	1	Independent Study	2	Nancy K. Dess	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
+2016	spring	PSYC	397	1	Food Selection at Oxy Rat Lab	2	Nancy K. Dess	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
 2016	spring	PSYC	397	2	I.S.:Rat Operant Behavior	4	Nancy K. Dess	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
 2016	spring	PSYC	397	3	I.S.:Soc Psyc of Intergroup Re	4	Jaclyn Toni Rodriguez	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
 2016	spring	PSYC	397	4	I.S.:Psyc Impact of IGD	2	Jaclyn Toni Rodriguez	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
@@ -10047,6 +10077,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	PSYC	448	0	Theories of Personality	4	Jaclyn Toni Rodriguez	10:05am-11:30am TR FOWLER 111		16	16	10	-1	0
 2016	spring	PSYC	498	0	Practicum in Psychology	4	Heather Tweddle Banis	Time-TBD Days-TBD Bldg-TBD		15	5	0	0	0
 2016	spring	PSYC	499	1	Honors:Learning W/a Friend	2	Nancy K. Dess	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
+2016	spring	PSYC	999	0	Comprehensive Examination	0	Brian Hahn Kim	Time-TBD Days-TBD Bldg-TBD		99	30	0	0	0
 2016	spring	RELS	147	0	"Cults" and "Sects": New Religious Movements in America	4	Julius Howard Bailey	04:05pm-05:30pm MW FOWLER 302	CPUD	30	35	9	-2	0
 2016	spring	RELS	150	0	Introduction to Islam	4	Malek Moazzam-Doulat	03:05pm-04:30pm TR FOWLER 302	CPAF; CPPE; CPRF	35	35	9	-1	0
 2016	spring	RELS	195	0	Shamanism and Spirit Possession	4	Brian Clearwater	10:40am-11:35am MWF FOWLER 209	CPGC	30	29	7	0	0
@@ -10057,6 +10088,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	RELS	261	8	Contemporary Buddhist Thought	0	Dale S. Wright	Time-TBD Days-TBD Bldg-TBD	CPAS; CPRF	1	1	0	0	0
 2016	spring	RELS	281	0	Religion and Politics	0	Malek Moazzam-Doulat	07:15pm-10:10pm W FOWLER 309	CPIC	20	20	0	0	0
 2016	spring	RELS	281	8	Religion and Politics	0	Malek Moazzam-Doulat	Time-TBD Days-TBD Bldg-TBD	CPIC	1	1	0	0	0
+2016	spring	RELS	999	0	Comprehensive Examination	0	Kristi J. Upson-Saia	Time-TBD Days-TBD Bldg-TBD		99	2	0	0	0
 2016	spring	RUSN	102	0	Elementary Russian II	4	Walter G. Richmond	03:00pm-03:55pm MWF JOHN 303		20	10	0	0	0
 2016	spring	RUSN	202	0	Intermediate Russian II	5	Walter G. Richmond	04:05pm-05:30pm MWF JOHN 303	CPEU; CPRF	20	6	0	0	0
 2016	spring	RUSN	333	0	Codes, Cultures, and Killing	5	Christopher James Gilman	01:30pm-02:55pm T HSC 225; 01:30pm-02:55pm R JOHN 103; Time-TBD Days-TBD Bldg-TBD	CPEU; CPRF	8	4	0	0	0
@@ -10076,7 +10108,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	SOC	390	0	Sociology of Religion	4	Charles Potts	11:45am-12:40pm MWF FOWLER 310	CPUD; CPUS	18	18	10	0	0
 2016	spring	SOC	397	1	I.S.:Gentrification in L.A.	4	Jan Chien-Chen Lin	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
 2016	spring	SOC	397	2	I.S.:Teaching Sociology	4	Charles Potts	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
-2016	spring	SOC	999	0	Comprehensive Examination	0	Richard Mora	Time-TBD Days-TBD Bldg-TBD		99	1	0	0	0
+2016	spring	SOC	999	0	Comprehensive Examination	0	Richard Mora	Time-TBD Days-TBD Bldg-TBD		99	30	0	0	0
 2016	spring	SPAN	101	0	Beginning Spanish I	4	Maria A. Castro	10:40am-11:35am MWF TREE S		25	21	5	0	0
 2016	spring	SPAN	102	1	Beginning Spanish II	4	Karina Rincon	08:30am-09:25am MWF JOHN 104		25	25	5	0	0
 2016	spring	SPAN	102	2	Beginning Spanish II	4	Maria A. Castro	09:35am-10:30am MWF TREE S		25	23	4	0	0
@@ -10107,7 +10139,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	THEA	120	0	Introduction to Technical Theater	4	Brian A. Fitzmorris	04:05pm-05:00pm MWF KECK 114	CPFA	18	15	5	0	0
 2016	spring	THEA	121	1	Production Laboratory	1	Brian A. Fitzmorris	Time-TBD Days-TBD Bldg-TBD	CFAP	12	6	0	0	0
 2016	spring	THEA	121	2	Production Laboratory	1	Thomas Slotten	Time-TBD Days-TBD Bldg-TBD	CFAP	3	4	0	0	0
-2016	spring	THEA	122	0	Intensive Production Laboratory	2	Brian A. Fitzmorris	Time-TBD Days-TBD Bldg-TBD	CFAP	3	6	0	0	0
+2016	spring	THEA	122	0	Intensive Production Laboratory	2	Brian A. Fitzmorris	Time-TBD Days-TBD Bldg-TBD	CFAP	3	5	0	0	0
 2016	spring	THEA	130	0	Modern Dance	1	Francisco Martinez	06:45pm-08:10pm MW AGYM 21	CFAP	20	3	0	0	0
 2016	spring	THEA	133	0	Beginning Tai Chi	1	Ezra Ethan Weisz	12:30pm-01:25pm TR KECK 208	CFAP	25	8	0	0	0
 2016	spring	THEA	134	0	Beginning Ballet	1	Francisco Martinez	04:40pm-06:05pm T AGYM 21	CFAP	20	21	0	0	0
@@ -10134,8 +10166,9 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	THEA	397	3	Independent Study:Playwriting	2	Laural Jill Meade	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
 2016	spring	THEA	397	4	I.S.:Costume Design	2	Thomas Slotten	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
 2016	spring	THEA	397	5	I.S.:L.A. Theater Analysis	2	Laural Jill Meade	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
+2016	spring	THEA	397	6	I.S.:Stage Management	4	Brian A. Fitzmorris	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
 2016	spring	THEA	490	0	Senior Seminar	4	James K. Angell	Time-TBD Days-TBD Bldg-TBD		12	2	0	0	0
-2016	spring	THEA	999	0	Comprehensive Examination	0	Susan Gratch	Time-TBD Days-TBD Bldg-TBD		99	4	0	0	0
+2016	spring	THEA	999	0	Comprehensive Examination	0	Susan Gratch	Time-TBD Days-TBD Bldg-TBD		99	7	0	0	0
 2016	spring	UEP	101	1	Environment and Society	4	Karna Wong	10:05am-11:30am TR FOWLER 207	CPUD; CPUS	25	19	9	0	0
 2016	spring	UEP	101	2	Environment and Society	4	Mark A. Vallianatos	10:05am-11:30am TR FOWLER 210	CPUD; CPUS	25	15	5	0	0
 2016	spring	UEP	201	0	Environmental Health and Policy	4	Bhavna Shamasunder	03:05pm-04:30pm TR JOHN 104	CPMS	25	24	5	0	0
@@ -10154,6 +10187,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	UEP	397	0	Special Topics in Urban and Environmental Policy	4	Bhavna Shamasunder	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
 2016	spring	UEP	397	1	L.S.:Facilitating Sust - Oxy	2	Mark A. Vallianatos	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
 2016	spring	UEP	411	0	Applied Public Policy Practicum	4	Virginia L. Parks; Bhavna Shamasunder	Time-TBD Days-TBD Bldg-TBD		35	21	0	0	0
+2016	spring	UEP	999	0	Comprehensive Examination	0	Peter Dreier	Time-TBD Days-TBD Bldg-TBD		99	20	0	0	0
 2016	spring	WRD	135	0	Occidental Weekly Practicum	1	James Burns	Time-TBD Days-TBD Bldg-TBD		18	9	0	0	0
 2016	spring	WRD	201	1	The Art of Essay Writing	4	Sarah C. Ostendorf	05:40pm-07:05pm MW LIB 3		18	16	0	0	0
 2016	spring	WRD	201	2	The Art of Essay Writing	4	Sarah C. Ostendorf	01:55pm-02:50pm MWF LIB 3		18	18	0	0	0
@@ -10509,7 +10543,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	fall	EDUC	101	0	A History of Urban Schooling in the United States	4	Kenjus Terrel Watson	04:05pm-05:30pm MW FOWLER 112	CPUD; CPUS	35	15	20	20	0
 2016	fall	EDUC	140	0	Community Literacy	2	Desiree M. Zamorano	03:05pm-04:55pm TR LIB		25	22	0	0	0
 2016	fall	EDUC	141	0	Community Literacy and Middle School Students	2	Desiree M. Zamorano	02:30pm-05:25pm W LIB		25	11	0	0	0
-2016	fall	EDUC	145	0	Educational Innovations:  Challenges and Effects	4	Suzie M. Abajian	05:40pm-07:05pm MW BOOTH 119	CPUD; CPUS	35	13	20	20	0
+2016	fall	EDUC	145	0	Educational Innovations: Challenges and Effects	4	Suzie M. Abajian	05:40pm-07:05pm MW BOOTH 119	CPUD; CPUS	35	13	20	20	0
 2016	fall	EDUC	201	0	Sociocultural Foundations of Education	4	Suzie M. Abajian	04:05pm-05:30pm MW BOOTH 119	CPUD; CPUS	25	16	0	0	0
 2016	fall	EDUC	207	0	Conflict in Education	4	Ronald Solorzano	01:30pm-02:55pm TR BOOTH 119	CPUD; CPUS	25	11	0	0	0
 2016	fall	EDUC	213	0	Chicano Education	4	Ronald Solorzano	03:05pm-04:30pm TR BOOTH 119	CPUD; CPUS	25	18	0	0	0
@@ -11253,7 +11287,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	spring	DWA	260	0	Model United Nations	2	Sherry Simpson Dean	07:15pm-10:10pm W Bldg-TBD		25	0	0	0	0
 2017	spring	DWA	280	0	Globalization: Issues And Controversies	4	Sanjeev Khagram	04:40pm-07:30pm T Bldg-TBD	CPGC; CPIC	25	0	0	0	0
 2017	spring	DWA	288	0	Environmental Challenges	4	Juvenal Cortes	07:15pm-10:10pm R Bldg-TBD	CPGC	25	0	0	0	0
-2017	spring	DWA	295	0	Topics in Diplomacy and World Affairs.  Introduction to International Law	4	Carina J. Miller	03:05pm-04:30pm TR Bldg-TBD	CPGC; CPIC	25	0	0	0	0
+2017	spring	DWA	295	0	Topics in Diplomacy and World Affairs. Introduction to International Law	4	Carina J. Miller	03:05pm-04:30pm TR Bldg-TBD	CPGC; CPIC	25	0	0	0	0
 2017	spring	DWA	332	0	The South Asian Diaspora	5	Movindri Reddy	10:05am-11:30am TR Bldg-TBD	CPAS; CPGC	15	0	15	15	0
 2017	spring	DWA	340	0	Contemporary Issues in International and Human Rights Law	4	Anthony Chase	07:15pm-10:10pm W Bldg-TBD		15	0	15	15	0
 2017	spring	DWA	490	1	Senior Seminar	4	Lan Chu	03:05pm-04:30pm T Bldg-TBD		12	0	12	12	0
