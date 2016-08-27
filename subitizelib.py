@@ -54,14 +54,14 @@ def filter_by_department(offerings, department=None):
     return tuple(offering for offering in offerings if offering.course.department.code == department)
 
 def filter_by_number(offerings, minimum=None, maximum=None):
-    if minimum is None or maximum is None:
-        return offerings
-    elif minimum is None:
+    if minimum is not None and maximum is not None:
+        return tuple(offering for offering in offerings if int(minimum) <= offering.course.pure_number_int <= int(maximum))
+    elif maximum is not None:
         return tuple(offering for offering in offerings if offering.course.pure_number_int <= int(maximum))
-    elif maximum is None:
+    elif minimum is not None:
         return tuple(offering for offering in offerings if int(minimum) <= offering.course.pure_number_int)
     else:
-        return tuple(offering for offering in offerings if int(minimum) <= offering.course.pure_number_int <= int(maximum))
+        return offerings
 
 def filter_by_meeting(offerings, day=None, starts_after=None, ends_before=None):
     if day is None and starts_after is None and ends_before is None:
