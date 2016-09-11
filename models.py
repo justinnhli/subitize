@@ -251,14 +251,14 @@ class Meeting(AbstractMultiton):
             timeslot = TimeSlot(weekdays, start_time, end_time)
             if location_str == 'Bldg-TBD':
                 location = None
+            elif len(location_str.split()) == 1 and location_str in ('AGYM', 'KECK', 'UEPI', 'MULLIN', 'BIRD', 'TENNIS', 'THORNE', 'FM', 'CULLEY', 'TREE', 'RUSH', 'LIB', 'HERR'):
+                location = Room(Building.get(location_str), None)
             else:
-                if len(location_str.split()) == 1 and location_str in ('AGYM', 'KECK', 'UEPI', 'MULLIN', 'BIRD', 'TENNIS', 'THORNE', 'FM', 'CULLEY', 'TREE', 'RUSH', 'LIB', 'HERR'):
-                    building_str = location_str
-                    room_str = None
-                else:
+                try:
                     building_str, room_str = location_str.rsplit(' ', maxsplit=1)
-                building = Building.get(building_str)
-                location = Room(building, room_str)
+                    location = Room(Building.get(building_str), room_str)
+                except ValueError:
+                    location = None
         return Meeting(timeslot, location)
 
 @multiton
@@ -406,8 +406,11 @@ def load_offering(offering):
     semester = Semester(int(offering['year']), offering['season'].capitalize())
     meetings = []
     for meeting_str in offering['meetings'].split(';'):
-        time_str, days_str, location_str = meeting_str.strip().split(' ', maxsplit=2)
-        meeting = Meeting.from_str(time_str, days_str, location_str)
+        try:
+            time_str, days_str, location_str = meeting_str.strip().split(' ', maxsplit=2)
+            meeting = Meeting.from_str(time_str, days_str, location_str)
+        except ValueError:
+            meeting = Meeting(None, None)
         meetings.append(meeting)
     department = Department.get(offering['department'])
     instructors = []
