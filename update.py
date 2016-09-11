@@ -145,12 +145,11 @@ def get_data_from_web(semester):
     response = get_course_counts(semester.code)
     response = response.text.split('|')
     assert response[2] == '', 'Failed to get Course Counts data with status code {}'.format(response[2])
-    with open('response', 'w') as fd:
-        fd.write(response[7])
     extract_results(response[7], semester.year, semester.season)
+    return response[7]
 
 def update_db(semester):
-    get_data_from_web(semester)
+    response = get_data_from_web(semester)
     with open(OFFERINGS_FILE, 'w') as fd:
         fd.write('\t'.join(HEADINGS) + '\n')
         offerings = Offering.all()
@@ -177,13 +176,18 @@ def update_db(semester):
                 offering.num_reserved_open,
                 offering.num_waitlisted,
             )) + '\n')
+    return response
 
 def main():
     semester_choices = sorted((semester.code for semester in Semester.all()), reverse=True)
     arg_parser = ArgumentParser()
     arg_parser.add_argument('semester', nargs='?', default=Semester.current_semester().code, choices=semester_choices)
+    arg_parser.add_argument('--raw', default=False, action='store_true')
     args = arg_parser.parse_args()
-    update_db(Semester.from_code(args.semester))
+    response = update_db(Semester.from_code(args.semester))
+    if args.raw:
+        with open('response', 'w') as fd:
+            fd.write(response)
 
 if __name__ == '__main__':
     main()
