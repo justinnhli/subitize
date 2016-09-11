@@ -45,8 +45,9 @@ def super_encode_url(string):
     return quote(string, safe='').replace('$', '%24')
 
 def get_state_vars():
-    assert file_exists('curl'), '`curl` file not found'
-    with open('curl') as fd:
+    curl_file = 'curl.sh'
+    assert file_exists(curl_file), '`{}` file not found'.format(curl_file)
+    with open(curl_file) as fd:
         data = dict(arg.split('=', maxsplit=1) for arg in re.search("--data '([^']*)'", fd.read()).group(1).split('&'))
     assert data, 'could not parse curl arguments'
     return unquote(data['__VIEWSTATE'].strip()), unquote(data['__EVENTVALIDATION'].strip())
