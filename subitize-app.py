@@ -37,20 +37,22 @@ DEFAULT_OPTIONS = {
     'end_hour': '11 pm',
 }
 
-def get_parameter(parameters, parameter):
+def get_parameter_or_none(parameters, parameter):
     if parameter not in parameters:
         return None
     if parameter not in DEFAULT_OPTIONS:
         return parameters[parameter]
     value = parameters.get(parameter)
-    if value != DEFAULT_OPTIONS[parameter]:
+    default = DEFAULT_OPTIONS[parameter]
+    if value != '' and value != default:
         return value
     else:
         return None
 
 def get_parameter_or_default(parameters, parameter):
-    if get_parameter(parameters, parameter):
-        return get_parameter(parameters, parameter)
+    value = get_parameter_or_none(parameters, parameter)
+    if value:
+        return value
     else:
         assert parameter in DEFAULT_OPTIONS
         return DEFAULT_OPTIONS[parameter]
@@ -74,19 +76,19 @@ def get_search_results(parameters, context):
         context['results'] = None
     else:
         results = filter_study_abroad(OFFERINGS)
-        results = filter_by_search(results, get_parameter(parameters, 'query'))
-        semester = get_parameter(parameters, 'semester')
+        results = filter_by_search(results, get_parameter_or_none(parameters, 'query'))
+        semester = get_parameter_or_none(parameters, 'semester')
         if semester == '':
             semester = None
         results = filter_by_semester(results, semester)
-        if get_parameter(parameters, 'open'):
+        if get_parameter_or_none(parameters, 'open'):
             results = filter_by_openness(results)
-        results = filter_by_department(results, get_parameter(parameters, 'department'))
-        results = filter_by_number(results, get_parameter(parameters, 'lower'), get_parameter(parameters, 'upper'))
-        results = filter_by_units(results, get_parameter(parameters, 'units'))
-        results = filter_by_instructor(results, get_parameter(parameters, 'instructor'))
-        results = filter_by_core(results, get_parameter(parameters, 'core'))
-        day = get_parameter(parameters, 'day')
+        results = filter_by_department(results, get_parameter_or_none(parameters, 'department'))
+        results = filter_by_number(results, get_parameter_or_none(parameters, 'lower'), get_parameter_or_none(parameters, 'upper'))
+        results = filter_by_units(results, get_parameter_or_none(parameters, 'units'))
+        results = filter_by_instructor(results, get_parameter_or_none(parameters, 'instructor'))
+        results = filter_by_core(results, get_parameter_or_none(parameters, 'core'))
+        day = get_parameter_or_none(parameters, 'day')
         starts_after = datetime.strptime(get_parameter_or_default(parameters, 'start_hour'), '%I %p').time()
         ends_before = datetime.strptime(get_parameter_or_default(parameters, 'end_hour'), '%I %p').time()
         results = filter_by_meeting(results, day, starts_after, ends_before)
@@ -95,7 +97,7 @@ def get_search_results(parameters, context):
 
 def sort_search_results(parameters, context):
     if context['results'] is not None:
-        context['results'] = sort_offerings(context['results'], get_parameter(parameters, 'sort'))
+        context['results'] = sort_offerings(context['results'], get_parameter_or_none(parameters, 'sort'))
     return context
 
 app = Flask(__name__)
@@ -121,7 +123,7 @@ def view_root():
 @app.route('/simplify/')
 def view_simplify():
     parameters = request.args.to_dict()
-    if get_parameter(parameters, 'query'):
+    if get_parameter_or_none(parameters, 'query'):
         parameters['query'] = parameters['query'].strip()
     else:
         del parameters['query']
