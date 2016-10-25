@@ -1,5 +1,5 @@
 from csv import DictReader, QUOTE_NONE
-from datetime import datetime
+from datetime import datetime, date
 from functools import total_ordering
 from os.path import dirname, join as join_path, realpath
 
@@ -67,10 +67,10 @@ class Semester(AbstractMultiton):
         return '{} {}'.format(self.year, self.season.capitalize())
     @staticmethod
     def current_semester():
-        today = datetime.now()
-        if today.month < 3 or (today.month == 3 and today.day < 15):
+        today = datetime.today().date()
+        if today < date(today.year, 3, 15):
             return Semester(today.year, 'Spring')
-        elif (today.month == 3 and today.day >= 15) or 4 <= today.month < 11:
+        elif today < date(today.year, 10, 15):
             return Semester(today.year, 'Fall')
         else:
             return Semester(today.year + 1, 'Spring')
