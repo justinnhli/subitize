@@ -278,6 +278,7 @@ class Department(AbstractMultiton):
     def __lt__(self, other):
         return self.code < other.code
 
+@total_ordering
 class Person(AbstractMultiton):
     KEYS = ('alias',)
     def __init__(self, alias, first_name, last_name):
@@ -290,6 +291,8 @@ class Person(AbstractMultiton):
     @property
     def email(self):
         return '{}@oxy.edu'.format(self.alias)
+    def __lt__(self, other):
+        return (self.last_name, self.first_name) < (other.last_name, other.first_name)
     def __str__(self):
         return '{}, {}'.format(self.last_name, self.first_name)
 
