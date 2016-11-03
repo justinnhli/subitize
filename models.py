@@ -422,6 +422,8 @@ def load_offering(offering):
         if instructor_str == 'Instructor Unassigned':
             instructor = None
         else:
+            if len(Faculty.split_name(instructor_str)) < 2:
+                raise ValueError('\t'.join('{}={}'.format(k, v) for k, v in sorted(offering.items())))
             instructor = Faculty(instructor_str, *Faculty.split_name(instructor_str))
         instructors.append(instructor)
     course = Course(department, offering['number'])
