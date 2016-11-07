@@ -12021,9 +12021,10 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	spring	ARTH	257	0	Architecture of the Asia/Pacific	4	Kelema Lee Moses	09:35am-10:30am MWF Bldg-TBD	CPAS; CPFA; CPRF	25	0	10	10	0
 2017	spring	ARTH	261	0	Buddhist Art in South and East Asia	4	Julie Romain	01:30pm-02:55pm MW Bldg-TBD	CPAS; CPFA; CPPE; CPRF	25	0	11	11	0
 2017	spring	ARTH	274	0	Roman Art	4	Eric M. Frank	10:40am-11:35am MWF Bldg-TBD	CPEU; CPFA; CPPE	25	0	0	0	0
+2017	spring	ARTH	285	0	Nineteenth Century Art: Culture, Politics, and National Identity	4	Diana L. Linden	10:05am-11:30am TR Bldg-TBD	CPFA; CPGC; CPIC	25	0	15	15	0
 2017	spring	ARTH	374	0	Art of the Early Italian Renaissance	4	Eric M. Frank	03:00pm-03:55pm MWF Bldg-TBD	CPEU; CPFA; CPPE	18	0	5	5	0
 2017	spring	ARTH	390	0	Seminar in Art History. Giotto di Bondone	4	Eric M. Frank	01:30pm-02:55pm TR Bldg-TBD	CPEU; CPFA; CPRF	18	0	5	5	0
-2017	spring	ARTH	391	0	Curatorial Seminar in Art History	2	Amy Scott	01:00pm-05:00pm F Bldg-TBD	CFAP	16	0	5	5	0
+2017	spring	ARTH	391	0	Curatorial Seminar in Art History. Art & Tech in the American West: Survey Science to Silicon Valley	2	Amy Scott	01:00pm-05:00pm F Bldg-TBD	CFAP	16	0	5	5	0
 2017	spring	ARTH	392	0	The Culture of Collections: Introduction to Museum Studies	4	Nancy Marie Mithlo	09:00am-12:00pm T Bldg-TBD	CPFA; CPUD	10	0	0	0	0
 2017	spring	ARTH	490	0	Senior Seminar in Art History	2	Amy Lyford	04:05pm-05:30pm W Bldg-TBD		18	0	0	0	0
 2017	spring	ARTS	101	0	Drawing Fundamentals	4	Ross Alan Rudel	07:00pm-09:25pm TR Bldg-TBD	CPFA	18	0	5	5	0
@@ -12182,19 +12183,20 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	spring	CHIN	350	0	Classical Chinese Texts	4	Andrew H Miller	10:40am-11:35am MWF Bldg-TBD	CPAS; CPPE; CPRF	25	0	0	0	0
 2017	spring	COGS	101	0	Introduction to Cognitive Science	4	Justin Li; Aleksandra Sherman	10:40am-11:35am MWF Bldg-TBD	CPMS	30	0	10	10	0
 2017	spring	COGS	104	0	Introduction to Neuroscience	4	Diana Card Linden	10:40am-11:35am MWF Bldg-TBD	CPMS	35	0	15	15	0
-2017	spring	COGS	210	0	Introduction to Artificial Intelligence	4	Justin Li	11:45am-12:40pm MWF Bldg-TBD	CPMS	18	0	0	0	0
-2017	spring	COGS	210L	1	Introduction to Artificial Intelligence Laboratory	0	Justin Li	08:30am-11:25am R Bldg-TBD		9	0	0	0	0
-2017	spring	COGS	210L	2	Introduction to Artificial Intelligence Laboratory	0	Justin Li	01:30pm-04:25pm R Bldg-TBD		9	0	0	0	0
+2017	spring	COGS	111	0	The Origins of Knowledge	4	Andrew E. Shtulman	03:00pm-03:55pm MWF Bldg-TBD	CPMS	19	0	0	0	0
 2017	spring	COGS	290	0	Open Science: Collaborative Research	2	Aleksandra Sherman	12:50pm-01:45pm M Bldg-TBD		12	0	0	0	0
 2017	spring	COGS	301	0	Applied Cognitive Science and Education	4	Diana Card Linden	10:05am-11:30am TR Bldg-TBD	CPMS	18	0	18	18	0
 2017	spring	COGS	320	0	Cognitive Neuroscience	4	Aleksandra Sherman	09:35am-10:30am MWF Bldg-TBD	CPLS	18	0	12	12	0
 2017	spring	COGS	320L	1	Cognitive Neuroscience Laboratory	1	Aleksandra Sherman	03:00pm-05:55pm M Bldg-TBD		9	0	0	0	0
 2017	spring	COGS	320L	2	Cognitive Neuroscience Laboratory	1	Aleksandra Sherman	03:00pm-05:55pm W Bldg-TBD		9	0	0	0	0
+2017	spring	COGS	325	0	Topics in Artificial Intelligence	4	Justin Li	11:45am-12:40pm MWF Bldg-TBD	CPMS	18	0	0	0	0
+2017	spring	COGS	395	0	Directed Research	2	Justin Li	Time-TBD Days-TBD Bldg-TBD		12	0	0	0	0
 2017	spring	COMP	131	0	Fundamentals of Computer Science	4	Jeffrey S. Miller	12:50pm-01:45pm MWF Bldg-TBD	CPLS	32	0	0	0	0
 2017	spring	COMP	131L	1	Fundamentals of Computer Science Laboratory	0	Jeffrey S. Miller	08:30am-11:25am T Bldg-TBD		16	0	0	0	0
 2017	spring	COMP	131L	2	Fundamentals of Computer Science Laboratory	0	Jeffrey S. Miller	01:30pm-04:25pm T Bldg-TBD		16	0	0	0	0
 2017	spring	COMP	165	0	Mathematica	2	Jeffrey S. Miller	03:05pm-04:30pm R Bldg-TBD		20	0	0	0	0
-2017	spring	COMP	229	0	Data Structures	4	Jeffrey S. Miller	03:00pm-03:55pm MWF Bldg-TBD	CPMS	24	0	0	0	0
+2017	spring	COMP	229	0	Data Structures	4	Justin Li	03:00pm-03:55pm MWF Bldg-TBD	CPMS	24	0	0	0	0
+2017	spring	COMP	395	0	Special Topics in Computer Science	4	Jeffrey S. Miller	04:05pm-05:00pm MWF Bldg-TBD		20	0	0	0	0
 2017	spring	CSLC	120	0	Metamorphic Bodies: Fluid Forms from Ovid to Kafka	4	Debra L. Freas; Bryan K Klausmeyer	01:30pm-02:55pm TR Bldg-TBD	CPGC; CPPE	40	0	5	5	0
 2017	spring	CSLC	134	0	Exploding Tongues: Language Art & Russian Avangard	4	Christopher James Gilman	10:05am-11:30am TR Bldg-TBD	CPFA; CPRF	30	0	5	5	0
 2017	spring	CSLC	185	0	Islam and the West	4	Malek Moazzam-Doulat	05:00pm-06:25pm TR Bldg-TBD	CPGC; CPPE	35	0	5	5	0
@@ -12244,6 +12246,8 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	spring	CTSJ	332	0	Psychic Life of Violence	4	Heather N. Lukes	01:30pm-02:55pm TR Bldg-TBD	CPEU	15	0	0	0	0
 2017	spring	CTSJ	352	0	Spatial Justice	4	Donna Kay Maeda	04:05pm-05:30pm MW Bldg-TBD	CPUD	15	0	0	0	0
 2017	spring	CTSJ	390	0	CTSJ Junior Seminar: Interventions	4	G. Elmer Griffin	07:15pm-10:10pm R Bldg-TBD		25	0	0	0	0
+2017	spring	CTSJ	394	0	Critical Theory and Social Justice Journal of Undergraduate Research Colloquium	2	G. Elmer Griffin	07:00pm-08:30pm T Bldg-TBD		10	0	0	0	0
+2017	spring	CTSJ	399	0	Advanced Methods: Topics in Guided Collaborative Research	4	Mary Christianakis	Time-TBD Days-TBD Bldg-TBD		10	0	0	0	0
 2017	spring	DWA	101	0	International Relations: The Changing Rules of the Game	4	Juvenal Cortes	05:40pm-07:05pm MW Bldg-TBD		35	0	0	0	0
 2017	spring	DWA	201	0	International Organizations	4	Sanjeev Khagram	04:05pm-05:30pm MW Bldg-TBD		25	0	15	15	0
 2017	spring	DWA	220	0	International Political Economy	4	Sophal Ear	01:30pm-02:55pm TR Bldg-TBD	CPGC	25	0	15	15	0
@@ -12391,7 +12395,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	spring	LLAS	101	0	Introduction to Latina/o and Latin American Studies	4	Raul Villa	10:05am-11:30am TR Bldg-TBD	CPGC	30	0	8	8	0
 2017	spring	LLAS	250	0	Dialogue on Critical Latinx/Latin American Issues	4	Jaclyn Toni Rodriguez	01:30pm-04:25pm T Bldg-TBD	CPIC; CPUD	16	0	0	0	0
 2017	spring	MAC	110	0	Introduction to Digital Design	2	Diana Lee Keeler	05:00pm-06:25pm T Bldg-TBD		16	0	0	0	0
-2017	spring	MAC	145	0	Introduction to Digital Media and Culture	4	Allison de Fren	10:05am-11:30am TR Bldg-TBD	CPFA	25	0	25	25	0
+2017	spring	MAC	145	0	Introduction to Digital Media and Culture	4	Allison de Fren	10:05am-11:30am TR Bldg-TBD	CPFA	22	0	22	22	0
 2017	spring	MAC	220	0	Narrative Practices	4	Garret Christopher Williams	07:15pm-10:10pm W Bldg-TBD	CPFA	14	0	0	0	0
 2017	spring	MAC	240	0	Introduction to Media Practices	4	Ari Lee Laskin	01:30pm-02:55pm T Bldg-TBD; 01:30pm-04:25pm R Bldg-TBD	CPFA	14	0	0	0	0
 2017	spring	MAC	242	0	Projects in Documentary Media	4	Sonja Bertucci	01:30pm-02:55pm W Bldg-TBD; 01:30pm-04:25pm F Bldg-TBD	CPFA	14	0	7	7	0
@@ -12432,10 +12436,10 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	spring	MATH	150	0	Statistical Data Analysis	4	Tamas Lengyel	01:55pm-02:50pm MWF Bldg-TBD; 10:05am-11:30am T Bldg-TBD	CPMS	24	0	0	0	0
 2017	spring	MATH	210	1	Discrete Mathematics	4	Eric Lars Sundberg	09:35am-10:30am MWF Bldg-TBD	CPMS	25	0	0	0	0
 2017	spring	MATH	210	2	Discrete Mathematics	4	Ramin Naimi	11:45am-12:40pm MWF Bldg-TBD	CPMS	25	0	0	0	0
-2017	spring	MATH	212	1	Multivariable Calculus	4	Instructor Unassigned	09:35am-10:30am MWF Bldg-TBD	CPMS	25	0	0	0	0
+2017	spring	MATH	212	1	Multivariable Calculus	4	Lyla Fadali	09:35am-10:30am MWF Bldg-TBD	CPMS	25	0	0	0	0
 2017	spring	MATH	212	2	Multivariable Calculus	4	Donald D Lawrence	10:40am-11:35am MWF Bldg-TBD	CPMS	25	0	0	0	0
 2017	spring	MATH	214	1	Linear Algebra	4	Gerald J. Daigle	09:35am-10:30am MWF Bldg-TBD	CPMS	25	0	0	0	0
-2017	spring	MATH	214	2	Linear Algebra	4	Instructor Unassigned	09:35am-10:30am MWF Bldg-TBD	CPMS	20	0	0	0	0
+2017	spring	MATH	214	2	Linear Algebra	4	Lyla Fadali	11:45am-12:40pm MWF Bldg-TBD	CPMS	20	0	0	0	0
 2017	spring	MATH	214	3	Linear Algebra	4	Ramin Naimi	01:55pm-02:50pm MWF Bldg-TBD	CPMS	25	0	0	0	0
 2017	spring	MATH	300	0	Junior Colloquium	2	Gerald J. Daigle	10:05am-11:30am R Bldg-TBD		20	0	0	0	0
 2017	spring	MATH	312	0	Complex Analysis	4	Nishu Lal	11:45am-12:40pm MWF Bldg-TBD		24	0	0	0	0
@@ -12522,7 +12526,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	spring	MUSA	276	0	Advanced Classical Guitar (One Hour)	1	Almer Imamovic	Time-TBD Days-TBD Bldg-TBD	CFAP	10	0	0	0	0
 2017	spring	MUSA	277	0	African Drumming (Half Hour)	1	Francis Awe	Time-TBD Days-TBD Bldg-TBD	CFAP	20	0	0	0	0
 2017	spring	MUSA	278	0	African Drumming (One Hour)	1	Francis Awe	Time-TBD Days-TBD Bldg-TBD	CFAP	20	0	0	0	0
-2017	spring	MUSC	104	0	Music of Africa and the Middle East	4	Simeon Pillich	01:55pm-02:50pm MWF Bldg-TBD	CPAF; CPFA; CPRF	35	0	15	15	0
+2017	spring	MUSC	104	0	Music of Africa and the Middle East	4	Simeon Pillich	01:55pm-02:50pm MWF Bldg-TBD	CPAF; CPFA; CPRF	34	0	15	15	0
 2017	spring	MUSC	108	0	European Vernacular Music	4	Simeon Pillich	03:00pm-03:55pm MWF Bldg-TBD	CPFA; CPRF	35	0	0	0	0
 2017	spring	MUSC	113	0	Learning to Compose	4	Adam Schoenberg	08:30am-09:55am TR Bldg-TBD	CPFA	16	0	0	0	0
 2017	spring	MUSC	119	0	Why Music Matters	4	David M. Kasunic	10:40am-11:35am MWF Bldg-TBD	CPFA; CPGC	35	0	10	10	0
@@ -12550,6 +12554,8 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	spring	PHAC	123	2	Men's Rugby	0	Katie Grogan	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2017	spring	PHAC	124	1	Women's Rugby	1	Katie Grogan	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2017	spring	PHAC	124	2	Women's Rugby	0	Katie Grogan	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
+2017	spring	PHAC	125	1	Dance Team	1	Katie Grogan	08:25pm-10:15pm M Bldg-TBD; 06:30am-07:50am W Bldg-TBD; 04:30pm-06:30pm F Bldg-TBD; 11:00am-12:30pm U Bldg-TBD		99	0	0	0	0
+2017	spring	PHAC	125	2	Dance Team	0	Katie Grogan	08:25pm-10:15pm M Bldg-TBD; 06:30am-07:50am W Bldg-TBD; 04:30pm-06:30pm F Bldg-TBD; 11:00am-12:30pm U Bldg-TBD		99	0	0	0	0
 2017	spring	PHAC	127	1	Cardio Tennis	1	Ghia Elizabeth Godfree; William W. Morris	08:45am-09:45am TR Bldg-TBD		11	0	0	0	0
 2017	spring	PHAC	127	2	Cardio Tennis	0	Ghia Elizabeth Godfree; William W. Morris	08:45am-09:45am TR Bldg-TBD		5	0	0	0	0
 2017	spring	PHAC	128	1	Spin Class I	1	Hannah R. Khin; William W. Morris	12:00pm-12:55pm MW Bldg-TBD		13	0	0	0	0
@@ -12572,6 +12578,8 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	spring	PHAC	134	7	Beginning Yoga	1	Dana Joy Marshall; William W. Morris	08:10pm-10:00pm T Bldg-TBD		20	0	0	0	0
 2017	spring	PHAC	134	8	Beginning Yoga	0	Dana Joy Marshall; William W. Morris	08:10pm-10:00pm T Bldg-TBD		10	0	0	0	0
 2017	spring	PHAC	134	9	Beginning Yoga	1	William W. Morris; Laura C. Vandenbergh	Time-TBD Days-TBD Bldg-TBD		20	0	0	0	0
+2017	spring	PHAC	147	1	Men's Ultimate Frisbee	1	Katie Grogan	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
+2017	spring	PHAC	147	2	Men's Ultimate Frisbee	0	Katie Grogan	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2017	spring	PHAC	148	1	Women's Ultimate Frisbee	1	Katie Grogan	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2017	spring	PHAC	148	2	Women's Ultimate Frisbee	0	Katie Grogan	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2017	spring	PHAC	149	1	Karate	1	Victor Chico; William W. Morris	05:10pm-06:25pm MW Bldg-TBD		99	0	0	0	0
@@ -12647,18 +12655,18 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	spring	POLS	221	0	Latin American Politics	4	Jane S. Jaquette	03:05pm-04:30pm TR Bldg-TBD	CPLA; CPRF	25	0	0	0	0
 2017	spring	POLS	235	0	United States Foreign Relations	4	Roger Zane George	01:30pm-02:55pm TR Bldg-TBD	CPUD; CPUS	25	0	0	0	0
 2017	spring	POLS	250	0	American Intelligence and National Security	4	Roger Zane George	10:05am-11:30am TR Bldg-TBD	CPUD	25	0	0	0	0
-2017	spring	POLS	254	0	American Political Thought	4	Roger C. Boesche	11:45am-12:40pm MWF Bldg-TBD	CPUD; CPUS	25	0	0	0	0
+2017	spring	POLS	254	0	American Political Thought	4	Roger C. Boesche	10:40am-11:35am MWF Bldg-TBD	CPUD; CPUS	25	0	0	0	0
 2017	spring	POLS	258	0	Theoretical Accounts of Racism	4	Ainsley LeSure	04:05pm-05:30pm MW Bldg-TBD	CPUD	25	0	0	0	0
 2017	spring	POLS	321	0	Gender and Politics in the Developing World	4	Jane S. Jaquette	01:30pm-02:55pm TR Bldg-TBD	CPGC; CPIC	18	0	0	0	0
 2017	spring	POLS	346	0	Civil Rights and Civil Liberties	4	Edward Kammerer	04:05pm-05:30pm MW Bldg-TBD	CPUD; CPUS	18	0	0	0	0
-2017	spring	POLS	354	0	Seminar on How Tyrannies Work	4	Roger C. Boesche	10:40am-11:35am MWF Bldg-TBD		18	0	0	0	0
+2017	spring	POLS	354	0	Seminar on How Tyrannies Work	4	Roger C. Boesche	11:45am-12:40pm MWF Bldg-TBD		18	0	0	0	0
 2017	spring	POLS	495	0	Comprehensive Seminar	4	Tsung Chi; Regina Freer; Caroline Heldman	07:15pm-10:10pm T Bldg-TBD		50	0	0	0	0
 2017	spring	PSYC	101	1	Introduction to Psychology	4	Helder Araujo	11:45am-12:40pm MWF Bldg-TBD	CPMS	30	0	0	0	0
 2017	spring	PSYC	101	2	Introduction to Psychology	4	Helder Araujo	04:05pm-05:00pm MWF Bldg-TBD	CPMS	30	0	0	0	0
 2017	spring	PSYC	111	0	The Origins of Knowledge	4	Andrew E. Shtulman	03:00pm-03:55pm MWF Bldg-TBD	CPMS	19	0	0	0	0
-2017	spring	PSYC	200	1	Methods in Psychological Science	4	Andrea Hopmeyer	09:35am-10:30am MWF Bldg-TBD	CPMS	19	0	0	0	0
-2017	spring	PSYC	200	2	Methods in Psychological Science	4	Andrew Young	01:55pm-02:50pm MWF Bldg-TBD	CPMS	19	0	0	0	0
-2017	spring	PSYC	201	0	Statistics in Psychological Science	4	Nancy K. Dess	10:05am-11:30am TR Bldg-TBD	CPMS	19	0	8	8	0
+2017	spring	PSYC	200	1	Methods in Psychological Science	4	Andrea Hopmeyer	09:35am-10:30am MWF Bldg-TBD	CPMS	17	0	0	0	0
+2017	spring	PSYC	200	2	Methods in Psychological Science	4	Andrew Young	01:55pm-02:50pm MWF Bldg-TBD	CPMS	17	0	0	0	0
+2017	spring	PSYC	201	0	Statistics in Psychological Science	4	Nancy K. Dess	10:05am-11:30am TR Bldg-TBD	CPMS	20	0	8	8	0
 2017	spring	PSYC	295	1	Directed Research	2	Clinton D. Chapman	12:50pm-01:45pm W Bldg-TBD		5	0	0	0	0
 2017	spring	PSYC	295	2	Directed Research	2	Nancy K. Dess	12:50pm-01:45pm W Bldg-TBD		5	0	0	0	0
 2017	spring	PSYC	295	3	Directed Research	2	Andrea Hopmeyer	12:50pm-01:45pm W Bldg-TBD		5	0	0	0	0
@@ -12666,12 +12674,13 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	spring	PSYC	295	5	Directed Research	2	Anne Schell	12:50pm-01:45pm W Bldg-TBD		5	0	0	0	0
 2017	spring	PSYC	295	6	Directed Research	2	Andrew E. Shtulman	12:50pm-01:45pm W Bldg-TBD		5	0	0	0	0
 2017	spring	PSYC	301	0	Learning	4	Clinton D. Chapman	08:30am-09:25am MWF Bldg-TBD	CPMS	19	0	9	9	0
-2017	spring	PSYC	302	0	Perception	4	Susan Geffen	01:30pm-02:55pm TR Bldg-TBD	CPMS	19	0	0	0	0
+2017	spring	PSYC	302	0	Perception	4	Susan Geffen	01:30pm-02:55pm TR Bldg-TBD	CPMS	19	0	4	4	0
+2017	spring	PSYC	311	0	Sport and Exercise Psychology	4	Lynn M. Mehl	10:05am-11:30am TR Bldg-TBD		28	0	0	0	0
 2017	spring	PSYC	321	0	Developmental Psychology	4	Andrea Hopmeyer	08:30am-09:25am MWF Bldg-TBD		19	0	11	11	0
 2017	spring	PSYC	334	1	Health Psychology	4	Helder Araujo	01:55pm-02:50pm MWF Bldg-TBD		17	0	6	6	0
 2017	spring	PSYC	334	2	Health Psychology	4	Helder Araujo	03:00pm-03:55pm MWF Bldg-TBD		17	0	6	6	0
 2017	spring	PSYC	336	0	Evolutionary Psychology	4	Clinton D. Chapman	10:40am-11:35am MWF Bldg-TBD	CPMS	19	0	9	9	0
-2017	spring	PSYC	350	0	Psychology of Gender	4	Nancy K. Dess	08:30am-09:55am TR Bldg-TBD		19	0	0	0	0
+2017	spring	PSYC	350	0	Psychology of Gender	4	Nancy K. Dess	08:30am-09:55am TR Bldg-TBD		19	0	3	3	0
 2017	spring	PSYC	395	1	Directed Research	2	Clinton D. Chapman	12:50pm-01:45pm W Bldg-TBD		5	0	0	0	0
 2017	spring	PSYC	395	2	Directed Research	2	Nancy K. Dess	12:50pm-01:45pm W Bldg-TBD		5	0	0	0	0
 2017	spring	PSYC	395	3	Directed Research	2	Andrea Hopmeyer	12:50pm-01:45pm W Bldg-TBD		5	0	0	0	0
@@ -12679,9 +12688,9 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	spring	PSYC	395	5	Directed Research	2	Anne Schell	12:50pm-01:45pm W Bldg-TBD		5	0	0	0	0
 2017	spring	PSYC	395	6	Directed Research	2	Andrew E. Shtulman	12:50pm-01:45pm W Bldg-TBD		5	0	0	0	0
 2017	spring	PSYC	428	0	Adolescence	4	Andrea Hopmeyer	11:45am-12:40pm MWF Bldg-TBD		16	0	0	0	0
-2017	spring	PSYC	431	0	Clinical Psychology	4	Doug L. Wilson	01:30pm-04:25pm T Bldg-TBD		17	0	1	1	0
-2017	spring	PSYC	444	0	Thinking and Reasoning	4	Andrew E. Shtulman	04:05pm-05:30pm MW Bldg-TBD	CPMS	16	0	0	0	0
-2017	spring	PSYC	448	0	Theories of Personality	4	Jaclyn Toni Rodriguez	10:05am-11:30am TR Bldg-TBD		16	0	0	0	0
+2017	spring	PSYC	431	0	Clinical Psychology	4	Doug L. Wilson	01:30pm-04:25pm T Bldg-TBD		17	0	9	9	0
+2017	spring	PSYC	444	0	Thinking and Reasoning	4	Andrew E. Shtulman	04:05pm-05:30pm MW Bldg-TBD	CPMS	12	0	4	4	0
+2017	spring	PSYC	448	0	Theories of Personality	4	Jaclyn Toni Rodriguez	10:05am-11:30am TR Bldg-TBD		14	0	4	4	0
 2017	spring	PSYC	498	1	Practicum in Psychology	4	Brian Hahn Kim	07:15pm-10:10pm T Bldg-TBD		5	0	0	0	0
 2017	spring	PSYC	498	2	Practicum in Psychology	4	Trisha O'Neill	12:50pm-02:15pm W Bldg-TBD		10	0	0	0	0
 2017	spring	RELS	155	0	Islam and the West	4	Malek Moazzam-Doulat	05:00pm-06:25pm TR Bldg-TBD	CPGC; CPPE	35	0	15	15	0
@@ -12719,15 +12728,15 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	spring	SPAN	201	2	Intermediate Spanish	4	Alicia Gonzalez	03:00pm-03:55pm MWF Bldg-TBD		18	0	5	5	0
 2017	spring	SPAN	202	1	Advanced Spanish	4	Gloria Luz Orozco Allan	01:55pm-02:50pm MWF Bldg-TBD	CPGC; CPIC	18	0	5	5	0
 2017	spring	SPAN	202	2	Advanced Spanish	4	Gloria Luz Orozco Allan	03:00pm-03:55pm MWF Bldg-TBD	CPGC; CPIC	18	0	5	5	0
-2017	spring	SPAN	252	1	Advanced Conversation II	1	Adelaida Lopez	06:00pm-06:55pm MW Bldg-TBD		99	0	0	0	0
-2017	spring	SPAN	252	2	Advanced Conversation II	1	Adelaida Lopez	07:15pm-08:10pm TR Bldg-TBD		99	0	0	0	0
+2017	spring	SPAN	252	1	Advanced Conversation II	1	Adelaida Lopez	07:15pm-08:10pm MW Bldg-TBD		99	0	0	0	0
+2017	spring	SPAN	252	2	Advanced Conversation II	1	Adelaida Lopez	06:00pm-06:55pm TR Bldg-TBD		99	0	0	0	0
 2017	spring	SPAN	303	1	Introduction to Modern Latin American Literature and Civilization	4	Adelaida Lopez	11:45am-12:40pm MWF Bldg-TBD	CPLA	18	0	0	0	0
 2017	spring	SPAN	303	2	Introduction to Modern Latin American Literature and Civilization	4	Adelaida Lopez	01:55pm-02:50pm MWF Bldg-TBD	CPLA	18	0	0	0	0
 2017	spring	SPAN	309	0	Latin American Writers in Spain	4	Adelaida Lopez	01:30pm-02:55pm TR Bldg-TBD	CPGC; CPIC	18	0	0	0	0
 2017	spring	SPAN	362	0	Modern Spanish Theater and Cinema	4	Robert R. Ellis	03:00pm-03:55pm MWF Bldg-TBD	CPEU	18	0	0	0	0
 2017	spring	SPAN	382	0	Contemporary Mexican Novel	4	Salvador C. Fernandez	10:05am-11:30am TR Bldg-TBD	CPLA	18	0	0	0	0
-2017	spring	THEA	110	1	Introduction to Performance	2	Instructor Unassigned	09:35am-10:30am MWF Bldg-TBD	CFAP	12	0	7	7	0
-2017	spring	THEA	110	2	Introduction to Performance	2	Instructor Unassigned	09:35am-10:30am MWF Bldg-TBD	CFAP	12	0	7	7	0
+2017	spring	THEA	110	1	Introduction to Performance	2	Perry Daniel	09:35am-10:30am MWF Bldg-TBD	CFAP	12	0	7	7	0
+2017	spring	THEA	110	2	Introduction to Performance	2	Perry Daniel	09:35am-10:30am MWF Bldg-TBD	CFAP	12	0	7	7	0
 2017	spring	THEA	120	0	Introduction to Technical Theater	4	Brian A. Fitzmorris	04:05pm-05:00pm MWF Bldg-TBD	CPFA	18	0	6	6	0
 2017	spring	THEA	121	1	Production Laboratory	1	Brian A. Fitzmorris	Time-TBD Days-TBD Bldg-TBD	CFAP	12	0	0	0	0
 2017	spring	THEA	121	2	Production Laboratory	1	Tom Slotten	Time-TBD Days-TBD Bldg-TBD	CFAP	3	0	0	0	0
