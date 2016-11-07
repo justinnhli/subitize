@@ -181,7 +181,7 @@ def update_db(semester):
 def main():
     semester_choices = sorted((semester.code for semester in Semester.all()), reverse=True)
     arg_parser = ArgumentParser()
-    arg_parser.add_argument('semester', nargs='?', default=Semester.current_semester().code, choices=semester_choices)
+    arg_parser.add_argument('semester', nargs='?', default=Semester.current_semester().code)
     arg_parser.add_argument('--raw', default=False, action='store_true')
     args = arg_parser.parse_args()
     response = update_db(Semester.from_code(args.semester))
