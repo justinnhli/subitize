@@ -45,7 +45,7 @@ def super_encode_url(string):
     return quote(string, safe='').replace('$', '%24')
 
 def get_state_vars():
-    curl_file = 'curl.sh'
+    curl_file = 'curl-args'
     assert file_exists(curl_file), '`{}` file not found'.format(curl_file)
     with open(curl_file) as fd:
         data = dict(arg.split('=', maxsplit=1) for arg in re.search("--data '([^']*)'", fd.read()).group(1).split('&'))
