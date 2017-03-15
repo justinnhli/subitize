@@ -155,10 +155,12 @@ def update_db(semester):
         offerings = Offering.all()
         offerings = sorted(offerings, key=(lambda offering: (int(offering.semester.code), offering.course, offering.section)))
         for offering in offerings:
-            if offering.instructors == (None,): # TODO this is stupid
-                instructor_str = 'Instructor Unassigned'
-            else:
-                instructor_str = '; '.join(repr(instructor) for instructor in sorted(offering.instructors, key=(lambda instructor: instructor.last_name)))
+            instructor_strs = []
+            for instructor in offering.instructors:
+                if instructor is not None:
+                    instructor_strs.append((instructor.last_name, repr(instructor)))
+            instructor_strs = list(pair[1] for pair in sorted(instructor_strs)) + offering.instructors.count(None) * ['Instructor Unassigned']
+            instructor_str = '; '.join(instructor_strs)
             fd.write('\t'.join(str(field) for field in (
                 offering.year,
                 offering.season.lower(),
