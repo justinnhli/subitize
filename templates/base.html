@@ -197,8 +197,12 @@ $(document).ready(function() {
                 <td>{{ offering.name }}</td>
                 <td>{{ offering.units }}</td>
                 <td>
-                    {% for instructor in offering.instructors|sort(attribute='last_name') %}
+                    {% for instructor in offering.instructors %}
+                    {% if instructor is none %}
+                    Unassigned
+                    {% else %}
                     <a href="{{ base_url }}?advanced=True&semester={{ parameters['semester'] }}&instructor={{ instructor.alias }}"><abbr title="{{ instructor.first_last }}">{{ instructor.last_name }}</abbr></a>
+                    {% endif %}
                     {% if not loop.last %};{% endif %}
                     {% endfor %}
                 </td>
