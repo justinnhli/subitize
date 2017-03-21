@@ -19,6 +19,8 @@ def filter_by_search(offerings, query=None):
                 continue
             if any((term in instructor.full_name.lower()) for instructor in offering.instructors if instructor is not None):
                 continue
+            if any((term in core.code.lower() or term in core.name.lower()) for core in offering.cores):
+                continue;
             match = False
             break
         if match:
