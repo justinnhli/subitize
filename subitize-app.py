@@ -72,9 +72,7 @@ def get_dropdown_options(parameters):
     return context
 
 def get_search_results(parameters, context):
-    if len(parameters) == 0:
-        context['results'] = None
-    else:
+    if parameters:
         results = filter_study_abroad(OFFERINGS)
         results = filter_by_search(results, get_parameter_or_none(parameters, 'query'))
         semester = get_parameter_or_none(parameters, 'semester')
@@ -93,6 +91,8 @@ def get_search_results(parameters, context):
         ends_before = datetime.strptime(get_parameter_or_default(parameters, 'end_hour'), '%I %p').time()
         results = filter_by_meeting(results, day, starts_after, ends_before)
         context['results'] = tuple(results)
+    else:
+        context['results'] = None
     return context
 
 def sort_search_results(parameters, context):

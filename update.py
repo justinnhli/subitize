@@ -3,17 +3,14 @@
 import re
 from argparse import ArgumentParser
 from os.path import exists as file_exists
-from urllib.parse import quote, unquote, urlencode
+from urllib.parse import quote, unquote
 
 import requests
 from bs4 import BeautifulSoup
 
 from models import OFFERINGS_FILE, Semester, Meeting, Department, Faculty, Core, Course, Offering
-from subitizelib import filter_study_abroad
 
 COURSE_COUNTS = 'https://counts.oxy.edu/'
-
-OFFERINGS = filter_study_abroad(tuple(Offering.all()))
 
 HEADINGS = (
     'year',
@@ -181,7 +178,6 @@ def update_db(semester):
     return response
 
 def main():
-    semester_choices = sorted((semester.code for semester in Semester.all()), reverse=True)
     arg_parser = ArgumentParser()
     arg_parser.add_argument('semester', nargs='?', default=Semester.current_semester().code)
     arg_parser.add_argument('--raw', default=False, action='store_true')
