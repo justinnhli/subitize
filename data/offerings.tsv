@@ -12783,120 +12783,91 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	spring	WRD	286	0	Principles of Journalism II: Narrative Journalism	4	Robert J. Sipchen	07:15pm-10:10pm R FOWLER 110		22	10	0	0	0
 2017	spring	WRD	301	0	Creative Nonfiction	4	Sarah C. Ostendorf	05:00pm-06:25pm TR LIB 260	CPFA	18	14	0	0	0
 2017	spring	WRD	395	0	Theory and Pedagogy of Writing	2	Sarah C. Ostendorf	12:50pm-01:45pm M LIB 3		18	8	0	0	0
-2017	fall	ABAR	301	0	Occidental-in-Argentina	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	2	0	0	0
-2017	fall	ABAU	301	0	Occidental-in-Australia	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	4	0	0	0
-2017	fall	ABBR	301	0	Occidental-in-Brazil	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	2	0	0	0
-2017	fall	ABBW	301	0	Occidental-in-Botswana	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	1	0	0	0
-2017	fall	ABCH	301	0	Occidental-in-China	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	2	0	0	0
-2017	fall	ABCI	301	0	Occidental-in-Chile	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	3	0	0	0
-2017	fall	ABCR	301	0	Occidental-in-Costa Rica	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	1	0	0	0
-2017	fall	ABCZ	301	0	Oxy-in-the-Czech Republic	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	3	0	0	0
-2017	fall	ABDE	301	0	Occidental-in-Denmark	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	4	0	0	0
-2017	fall	ABEN	301	0	Occidental-in-England	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	3	0	0	0
-2017	fall	ABFR	301	0	Occidental-in-France	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	8	0	0	0
-2017	fall	ABGE	301	0	Occidental-in-Germany	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	6	0	0	0
-2017	fall	ABGH	301	0	Occidental-in-Ghana	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	1	0	0	0
-2017	fall	ABHU	301	0	Occidental-in-Hungary	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	2	0	0	0
-2017	fall	ABID	301	0	Occidental-in-Indonesia	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	1	0	0	0
-2017	fall	ABIR	301	0	Occidental-in-Ireland	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	3	0	0	0
-2017	fall	ABIT	301	0	Occidental-in-Italy	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	2	0	0	0
-2017	fall	ABJA	301	0	Occidental-in-Japan	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	3	0	0	0
-2017	fall	ABJO	301	0	Occidental-in-Jordan	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	2	0	0	0
-2017	fall	ABMO	301	0	Occidental-in-Morocco	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	3	0	0	0
-2017	fall	ABNT	301	0	Occidental-in-the-Netherlands	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	2	0	0	0
-2017	fall	ABNZ	301	0	Occidental-in-New Zealand	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	2	0	0	0
-2017	fall	ABRU	301	0	Occidental-in-Russia	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
-2017	fall	ABSA	301	0	Occidental-in-South Africa	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	3	0	0	0
-2017	fall	ABSP	301	0	Occidental-in-Spain	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	8	0	0	0
-2017	fall	ABSR	301	0	Occidental-in-Serbia	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	1	0	0	0
-2017	fall	ABSW	301	0	Occidental-in-Switzerland	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	1	0	0	0
-2017	fall	ABTA	301	0	Occidental-in-Tanzania	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	1	0	0	0
-2017	fall	ABTH	301	0	Occidental-in-Thailand	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	1	0	0	0
-2017	fall	ABTN	301	0	Occidental-in-Taiwan	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	1	0	0	0
-2017	fall	ABTS	301	0	Occidental-in-Tunisia	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	1	0	0	0
-2017	fall	ABVN	301	0	Occidental-in-Vietnam	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	1	0	0	0
+2017	fall	ABCH	301	0	Occidental-in-China	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	3	0	0	0
+2017	fall	ABEN	301	0	Occidental-in-England	16	Robin A Craggs	Time-TBD Days-TBD Bldg-TBD		99	4	0	0	0
 2017	fall	AMST	101	0	United States Redux: Introduction to American Studies	4	Amy Tahani-Madain	10:40am-11:35am MWF Bldg-TBD	CPUD	30	3	10	10	0
 2017	fall	AMST	242	0	The Great Migration	4	Erica Louise Ball	04:05pm-05:30pm MW Bldg-TBD	CPUD; CPUS	25	8	5	5	0
-2017	fall	AMST	256	0	Race Women: African American Women's Protest Culture	4	Erica Louise Ball	05:40pm-07:05pm MW Bldg-TBD	CPUD	25	9	5	5	0
-2017	fall	AMST	270	0	Asian American Literature	4	Adrienne Catherine Tien	04:05pm-05:30pm MW Bldg-TBD	CPUD; CPUS	25	22	5	5	0
-2017	fall	AMST	290	0	American Studies Theory and Methodology	4	Courtney R. Baker	10:05am-11:30am TR Bldg-TBD	CPUD	25	8	5	5	0
+2017	fall	AMST	256	0	Race Women: African American Women's Protest Culture	4	Erica Louise Ball	05:40pm-07:05pm MW Bldg-TBD	CPUD	25	10	5	5	0
+2017	fall	AMST	270	0	Asian American Literature	4	Adrienne Catherine Tien	04:05pm-05:30pm MW Bldg-TBD	CPUD; CPUS	25	21	5	5	1
+2017	fall	AMST	290	0	American Studies Theory and Methodology	4	Courtney R. Baker	10:05am-11:30am TR Bldg-TBD	CPUD	25	9	5	5	0
 2017	fall	AMST	295	0	The Politics of Transnational Iranian-American Women's Memoirs & the Legacy of Black Radical Thought	4	Amy Tahani-Madain	01:55pm-02:50pm MWF Bldg-TBD	CPGC	25	6	5	5	0
 2017	fall	AMST	325	0	Toni Morrison and African-American Self-Fashioning	4	Courtney R. Baker	01:30pm-04:25pm T Bldg-TBD	CPUD	15	3	0	0	0
 2017	fall	ARAB	101	0	Elementary Arabic I	5	Zohaa A. El-Gamal	09:05am-10:30am MWF Bldg-TBD		25	9	5	5	0
 2017	fall	ARAB	151	0	Arabic Conversation I	1	Zohaa A. El-Gamal	12:50pm-01:45pm MW Bldg-TBD		99	3	0	0	0
 2017	fall	ARAB	201	0	Intermediate Arabic I	4	Hanan Elsayed	09:35am-10:30am MWF Bldg-TBD	CPAF; CPRF	18	12	0	0	0
 2017	fall	ARAB	301	0	Arabic in the Media and Film	4	Zohaa A. El-Gamal	10:40am-11:35am MWF Bldg-TBD	CPAF	18	5	0	0	0
-2017	fall	ARTH	150	0	History of Urban Design	4	Kelema Lee Moses	09:35am-10:30am MWF Bldg-TBD	CPFA	35	23	10	10	3
-2017	fall	ARTH	170	0	Introduction to Early European Art	4	Eric M. Frank	10:40am-11:35am MWF Bldg-TBD	CPEU; CPFA; CPPE; CPRF	35	24	11	10	8
-2017	fall	ARTH	180	0	Introduction to Later Western Art	4	Amy Lyford	04:05pm-05:30pm MW Bldg-TBD	CPFA; CPGC; CPIC	35	14	10	10	0
+2017	fall	ARTH	150	0	History of Urban Design	4	Kelema Lee Moses	09:35am-10:30am MWF Bldg-TBD	CPFA	35	22	10	10	4
+2017	fall	ARTH	170	0	Introduction to Early European Art	4	Eric M. Frank	10:40am-11:35am MWF Bldg-TBD	CPEU; CPFA; CPPE; CPRF	35	25	11	10	9
+2017	fall	ARTH	180	0	Introduction to Later Western Art	4	Amy Lyford	04:05pm-05:30pm MW Bldg-TBD	CPFA; CPGC; CPIC	35	13	10	10	0
 2017	fall	ARTH	287	0	History of Photography	4	Kelema Lee Moses	10:05am-11:30am TR Bldg-TBD	CPFA; CPGC; CPIC	25	14	10	8	5
 2017	fall	ARTH	373	0	Major Figures in the Italian Renaissance	4	Eric M. Frank	03:00pm-03:55pm MWF Bldg-TBD	CPEU; CPFA; CPPE; CPRF	25	18	4	0	0
-2017	fall	ARTH	389	0	Modern and Contemporary Art	4	Amy Lyford	01:30pm-04:25pm R Bldg-TBD	CPFA; CPGC; CPIC	18	11	2	0	0
+2017	fall	ARTH	389	0	Modern and Contemporary Art	4	Amy Lyford	01:30pm-04:25pm R Bldg-TBD	CPFA; CPGC; CPIC	18	12	2	0	0
 2017	fall	ARTH	391	0	Curatorial Seminar in Art History. Chicana Art in LA: Historical and Contemporary Perspectives	2	Sybil Venegas	01:00pm-04:00pm F Bldg-TBD	CFAP; CUDP	15	6	0	0	0
 2017	fall	ARTH	490	0	Senior Seminar in Art History	2	Eric M. Frank	03:05pm-05:00pm T Bldg-TBD		35	3	0	0	0
 2017	fall	ARTS	101	1	Drawing Fundamentals	4	Linda A. Stark	02:30pm-04:55pm MW Bldg-TBD	CPFA	18	9	5	5	7
 2017	fall	ARTS	101	2	Drawing Fundamentals	4	Linda A. Stark	05:40pm-08:05pm MW Bldg-TBD	CPFA	18	10	5	5	7
 2017	fall	ARTS	102	0	Painting Fundamentals	4	Linda M. Besemer	09:00am-11:25am TR Bldg-TBD	CPFA	18	12	5	5	1
-2017	fall	ARTS	105	0	Basic Printmaking: Relief and Intaglio	4	Linda F. Lyke	09:00am-11:25am TR Bldg-TBD	CPFA	18	8	5	5	5
+2017	fall	ARTS	105	0	Basic Printmaking: Relief and Intaglio	4	Linda F. Lyke	09:00am-11:25am TR Bldg-TBD	CPFA	18	10	5	5	3
 2017	fall	ARTS	107	0	Digital Photography	4	Instructor Unassigned	05:40pm-07:05pm MW Bldg-TBD	CPFA	16	9	5	5	14
 2017	fall	ARTS	203	0	Intermediate Sculpture	4	Mary Beth Heffernan	09:00am-11:25am TR Bldg-TBD	CPFA	18	13	2	0	0
-2017	fall	ARTS	209	0	Photography Against the Grain	4	Mary Beth Heffernan	01:30pm-03:55pm TR Bldg-TBD	CPFA	18	13	1	0	0
-2017	fall	ARTS	210	0	Intermediate Painting	4	Linda M. Besemer	09:00am-11:25am MW Bldg-TBD	CPFA	18	8	2	0	0
-2017	fall	ARTS	215	0	Silkscreen Printmaking	4	Linda F. Lyke	01:30pm-03:55pm TR Bldg-TBD	CPFA	18	7	5	5	7
+2017	fall	ARTS	209	0	Photography Against the Grain	4	Mary Beth Heffernan	01:30pm-03:55pm TR Bldg-TBD	CPFA	18	11	1	0	0
+2017	fall	ARTS	210	0	Intermediate Painting	4	Linda M. Besemer	09:00am-11:25am MW Bldg-TBD	CPFA	18	10	2	0	0
+2017	fall	ARTS	215	0	Silkscreen Printmaking	4	Linda F. Lyke	01:30pm-03:55pm TR Bldg-TBD	CPFA	18	9	5	5	6
 2017	fall	ARTS	227	1	Introduction to Letterpress Printing	2	Jocelyn Webb Pedersen	09:00am-11:25am W Bldg-TBD		14	9	5	5	1
-2017	fall	ARTS	227	2	Introduction to Letterpress Printing	2	Jocelyn Webb Pedersen	01:55pm-04:50pm W Bldg-TBD		14	12	0	0	1
-2017	fall	ARTS	290	0	Art Outside the Bounds: Wanlass Artists in Residence. Kenyatta A. C. Hinkle	4	Instructor Unassigned	09:00am-11:25am MW Bldg-TBD	CPFA	18	15	6	5	3
-2017	fall	ARTS	490	0	Studio Senior Seminar	4	Linda F. Lyke	01:30pm-04:45pm W Bldg-TBD		18	3	0	0	0
+2017	fall	ARTS	227	2	Introduction to Letterpress Printing	2	Jocelyn Webb Pedersen	01:55pm-04:50pm W Bldg-TBD		14	13	0	0	1
+2017	fall	ARTS	290	0	Art Outside the Bounds: Wanlass Artists in Residence. Kenyatta A. C. Hinkle	4	Instructor Unassigned	09:00am-11:25am MW Bldg-TBD	CPFA	18	16	6	5	3
+2017	fall	ARTS	490	0	Studio Senior Seminar	4	Linda F. Lyke	01:30pm-04:45pm W Bldg-TBD		18	5	0	0	0
 2017	fall	BICH	490	0	Senior Seminar	2	Chris Craney; Joseph R. Schulz	03:00pm-04:30pm WF Bldg-TBD		30	24	0	0	0
-2017	fall	BIO	103	1	Topics in Biology	4	Instructor Unassigned	10:05am-11:30am TR Bldg-TBD	CPMS	36	15	7	7	0
-2017	fall	BIO	103	2	Topics in Biology	4	Instructor Unassigned	01:30pm-02:55pm TR Bldg-TBD	CPMS	36	13	6	6	0
-2017	fall	BIO	105	1	Marine Biology	4	Laurel Ann Zahn	10:05am-11:30am TR Bldg-TBD	CPLS	36	24	8	8	7
-2017	fall	BIO	105	1-1	Marine Biology Laboratory	0	Laurel Ann Zahn	01:30pm-04:25pm T Bldg-TBD		18	13	4	4	8
-2017	fall	BIO	105	1-2	Marine Biology Laboratory	0	Laurel Ann Zahn	01:30pm-04:25pm R Bldg-TBD		18	11	4	4	1
-2017	fall	BIO	105	2	Marine Biology	4	Instructor Unassigned	01:30pm-02:55pm TR Bldg-TBD	CPLS	36	19	8	8	0
-2017	fall	BIO	105	2-1	Marine Biology Laboratory	0	Instructor Unassigned	08:30am-11:25am T Bldg-TBD		18	14	4	4	0
+2017	fall	BIO	103	1	Topics in Biology	4	Instructor Unassigned	10:05am-11:30am TR Bldg-TBD	CPMS	36	14	7	7	0
+2017	fall	BIO	103	2	Topics in Biology	4	Instructor Unassigned	01:30pm-02:55pm TR Bldg-TBD	CPMS	36	14	6	6	0
+2017	fall	BIO	105	1	Marine Biology	4	Laurel Ann Zahn	10:05am-11:30am TR Bldg-TBD	CPLS	36	24	8	8	6
+2017	fall	BIO	105	1-1	Marine Biology Laboratory	0	Laurel Ann Zahn	01:30pm-04:25pm T Bldg-TBD		18	14	4	4	7
+2017	fall	BIO	105	1-2	Marine Biology Laboratory	0	Laurel Ann Zahn	01:30pm-04:25pm R Bldg-TBD		18	10	4	4	1
+2017	fall	BIO	105	2	Marine Biology	4	Instructor Unassigned	01:30pm-02:55pm TR Bldg-TBD	CPLS	36	18	8	8	0
+2017	fall	BIO	105	2-1	Marine Biology Laboratory	0	Instructor Unassigned	08:30am-11:25am T Bldg-TBD		18	13	4	4	1
 2017	fall	BIO	105	2-2	Marine Biology Laboratory	0	Instructor Unassigned	08:30am-11:25am R Bldg-TBD		18	5	4	4	0
-2017	fall	BIO	115	1	General Zoology	4	Gary G. Martin	09:35am-10:30am MWF Bldg-TBD	CPLS	36	10	10	10	0
+2017	fall	BIO	115	1	General Zoology	4	Gary G. Martin	09:35am-10:30am MWF Bldg-TBD	CPLS	36	9	10	10	0
 2017	fall	BIO	115	1-1	General Zoology Laboratory	0	Gary G. Martin	03:00pm-05:55pm M Bldg-TBD		18	5	5	5	0
-2017	fall	BIO	115	1-2	General Zoology Laboratory	0	Gary G. Martin	01:30pm-04:25pm T Bldg-TBD		18	5	5	5	0
-2017	fall	BIO	115	2	General Zoology	4	Instructor Unassigned	09:35am-10:30am MWF Bldg-TBD	CPLS	36	8	10	10	0
+2017	fall	BIO	115	1-2	General Zoology Laboratory	0	Gary G. Martin	01:30pm-04:25pm T Bldg-TBD		18	4	5	5	0
+2017	fall	BIO	115	2	General Zoology	4	Instructor Unassigned	09:35am-10:30am MWF Bldg-TBD	CPLS	36	7	10	10	0
 2017	fall	BIO	115	2-1	General Zoology Laboratory	0	Instructor Unassigned	01:55pm-04:50pm W Bldg-TBD		18	2	5	5	0
-2017	fall	BIO	115	2-2	General Zoology Laboratory	0	Instructor Unassigned	01:30pm-04:25pm R Bldg-TBD		18	6	5	5	0
-2017	fall	BIO	115	3	General Zoology	4	Jeffrey D Arendt	01:30pm-02:55pm TR Bldg-TBD	CPLS	36	17	10	10	0
-2017	fall	BIO	115	3-1	General Zoology Laboratory	0	Jeffrey D Arendt	08:30am-11:25am T Bldg-TBD		18	7	5	5	0
+2017	fall	BIO	115	2-2	General Zoology Laboratory	0	Instructor Unassigned	01:30pm-04:25pm R Bldg-TBD		18	5	5	5	0
+2017	fall	BIO	115	3	General Zoology	4	Jeffrey D Arendt	01:30pm-02:55pm TR Bldg-TBD	CPLS	36	19	10	10	0
+2017	fall	BIO	115	3-1	General Zoology Laboratory	0	Jeffrey D Arendt	08:30am-11:25am T Bldg-TBD		18	9	5	5	0
 2017	fall	BIO	115	3-2	General Zoology Laboratory	0	Jeffrey D Arendt	08:30am-11:25am R Bldg-TBD		18	10	5	5	0
-2017	fall	BIO	130	1	Introduction to Cell and Molecular Biology	4	Mary Caroline Clark	10:40am-11:35am MWF Bldg-TBD	CPLS	36	24	5	5	0
+2017	fall	BIO	130	1	Introduction to Cell and Molecular Biology	4	Mary Caroline Clark	10:40am-11:35am MWF Bldg-TBD	CPLS	36	23	5	5	0
 2017	fall	BIO	130	1-1	Introduction to Cell and Molecular Biology Laboratory	0	Mary Caroline Clark	08:30am-11:25am T Bldg-TBD		18	9	0	0	0
-2017	fall	BIO	130	1-2	Introduction to Cell and Molecular Biology Laboratory	0	Mary Caroline Clark	01:30pm-04:25pm T Bldg-TBD		18	15	0	0	0
+2017	fall	BIO	130	1-2	Introduction to Cell and Molecular Biology Laboratory	0	Mary Caroline Clark	01:30pm-04:25pm T Bldg-TBD		18	14	0	0	0
 2017	fall	BIO	224	0	Genetic Analysis	4	Renee A. Baran	11:45am-12:40pm MWF Bldg-TBD	CPLS	32	25	0	0	0
 2017	fall	BIO	224L	1	Genetic Analysis Laboratory	0	Renee A. Baran	01:55pm-04:50pm W Bldg-TBD		16	13	0	0	0
 2017	fall	BIO	224L	2	Genetic Analysis Laboratory	0	Renee A. Baran	01:30pm-04:25pm R Bldg-TBD		16	12	0	0	0
-2017	fall	BIO	240	0	Vertebrate Physiology	4	Joseph R. Schulz	10:05am-11:30am TR Bldg-TBD	CPLS	32	31	0	0	2
+2017	fall	BIO	240	0	Vertebrate Physiology	4	Joseph R. Schulz	10:05am-11:30am TR Bldg-TBD	CPLS	32	32	0	0	1
 2017	fall	BIO	240L	1	Vertebrate Physiology Laboratory	0	Joseph R. Schulz	01:30pm-04:25pm T Bldg-TBD		16	17	0	0	2
-2017	fall	BIO	240L	2	Vertebrate Physiology Laboratory	0	Joseph R. Schulz	01:30pm-04:25pm R Bldg-TBD		16	14	0	0	1
-2017	fall	BIO	260	0	Biodiversity and Organization of Marine Ecosystems	4	Jonathan P. Williams	01:30pm-02:55pm TR Bldg-TBD	CPLS	28	20	0	0	0
+2017	fall	BIO	240L	2	Vertebrate Physiology Laboratory	0	Joseph R. Schulz	01:30pm-04:25pm R Bldg-TBD		16	15	0	0	0
+2017	fall	BIO	260	0	Biodiversity and Organization of Marine Ecosystems	4	Jonathan P. Williams	01:30pm-02:55pm TR Bldg-TBD	CPLS	28	19	0	0	0
 2017	fall	BIO	260L	1	Biodiversity and Organization of Marine Ecosystems Laboratory	0	Jonathan P. Williams	08:30am-11:25am T Bldg-TBD		14	14	0	0	0
-2017	fall	BIO	260L	2	Biodiversity and Organization of Marine Ecosystems Laboratory	0	Jonathan P. Williams	08:30am-11:25am R Bldg-TBD		14	6	0	0	0
-2017	fall	BIO	268	0	Biostatistics	4	Amanda J. Zellmer McCormack	09:35am-10:30am MWF Bldg-TBD	CPMS	32	33	0	0	11
-2017	fall	BIO	268L	1	Biostatistics Laboratory	0	Amanda J. Zellmer McCormack	03:00pm-05:55pm M Bldg-TBD		16	16	0	0	4
-2017	fall	BIO	268L	2	Biostatistics Laboratory	0	Amanda J. Zellmer McCormack	01:55pm-04:50pm W Bldg-TBD		16	17	0	0	7
-2017	fall	BIO	280	1	Evolutionary Biology	4	John E. McCormack	10:40am-11:35am MWF Bldg-TBD	CPMS	32	27	0	0	0
-2017	fall	BIO	280	2	Evolutionary Biology	4	John E. McCormack	01:55pm-02:50pm MWF Bldg-TBD	CPMS	32	32	0	0	2
+2017	fall	BIO	260L	2	Biodiversity and Organization of Marine Ecosystems Laboratory	0	Jonathan P. Williams	08:30am-11:25am R Bldg-TBD		14	5	0	0	0
+2017	fall	BIO	268	0	Biostatistics	4	Amanda J. Zellmer McCormack	09:35am-10:30am MWF Bldg-TBD	CPMS	40	39	0	0	4
+2017	fall	BIO	268L	1	Biostatistics Laboratory	0	Amanda J. Zellmer McCormack	03:00pm-05:55pm M Bldg-TBD		16	18	0	0	0
+2017	fall	BIO	268L	2	Biostatistics Laboratory	0	Amanda J. Zellmer McCormack	01:55pm-04:50pm W Bldg-TBD		16	17	0	0	4
+2017	fall	BIO	268L	3	Biostatistics Laboratory	0	Amanda J. Zellmer McCormack	08:30am-11:25am T Bldg-TBD		16	4	0	0	0
+2017	fall	BIO	280	1	Evolutionary Biology	4	John E. McCormack	10:40am-11:35am MWF Bldg-TBD	CPMS	32	30	0	0	0
+2017	fall	BIO	280	2	Evolutionary Biology	4	John E. McCormack	01:55pm-02:50pm MWF Bldg-TBD	CPMS	32	31	0	0	1
 2017	fall	BIO	322	0	Principles of Biochemistry	4	Gary Craig Schindelman	08:30am-09:25am MWF Bldg-TBD	CPLS	24	25	0	0	7
 2017	fall	BIO	322L	1	Principles of Biochemistry Laboratory	1	Gary Craig Schindelman	03:00pm-05:55pm M Bldg-TBD		12	14	0	0	4
 2017	fall	BIO	322L	2	Principles of Biochemistry Laboratory	1	Gary Craig Schindelman	01:30pm-04:25pm T Bldg-TBD		12	10	0	0	4
 2017	fall	BIO	325	0	Microbial Diversity	4	Shana Kaye Goffredi	10:40am-11:35am MWF Bldg-TBD	CPLS	18	20	0	0	2
 2017	fall	BIO	325L	1	Microbial Diversity Laboratory	1	Shana Kaye Goffredi	01:30pm-04:25pm T Bldg-TBD		9	10	0	0	2
 2017	fall	BIO	325L	2	Microbial Diversity Laboratory	1	Shana Kaye Goffredi	01:30pm-04:25pm R Bldg-TBD		9	10	0	0	2
-2017	fall	BIO	333	0	Neurobiology	4	Kerry W Thompson	10:40am-11:35am MWF Bldg-TBD	CPLS	18	18	0	0	0
-2017	fall	BIO	333L	1	Neurobiology Laboratory	1	Kerry W Thompson	01:55pm-04:50pm W Bldg-TBD		9	8	0	0	0
-2017	fall	BIO	333L	2	Neurobiology Laboratory	1	Kerry W Thompson	01:30pm-04:25pm R Bldg-TBD		9	9	0	0	4
-2017	fall	BIO	349	1	Biochemistry I	4	Karen Marie Molinder; Gary Craig Schindelman	10:40am-11:35am MWF Bldg-TBD	CPLS	18	19	0	0	0
+2017	fall	BIO	333	0	Neurobiology	4	Kerry W Thompson	10:40am-11:35am MWF Bldg-TBD	CPLS	18	19	0	0	0
+2017	fall	BIO	333L	1	Neurobiology Laboratory	1	Kerry W Thompson	01:55pm-04:50pm W Bldg-TBD		9	10	0	0	0
+2017	fall	BIO	333L	2	Neurobiology Laboratory	1	Kerry W Thompson	01:30pm-04:25pm R Bldg-TBD		9	9	0	0	2
+2017	fall	BIO	349	1	Biochemistry I	4	Karen Marie Molinder; Gary Craig Schindelman	10:40am-11:35am MWF Bldg-TBD	CPLS	18	18	0	0	0
 2017	fall	BIO	349	2	Biochemistry I	4	Karen Marie Molinder; Gary Craig Schindelman	11:45am-12:40pm MWF Bldg-TBD	CPLS	18	15	0	0	0
 2017	fall	BIO	349L	1	Biochemistry I Laboratory	1	Karen Marie Molinder	01:55pm-04:50pm W Bldg-TBD		12	12	0	0	0
 2017	fall	BIO	349L	2	Biochemistry I Laboratory	1	Karen Marie Molinder	08:30am-11:25am R Bldg-TBD		12	10	0	0	0
-2017	fall	BIO	349L	3	Biochemistry I Laboratory	1	Karen Marie Molinder	01:30pm-04:25pm R Bldg-TBD		12	7	0	0	0
-2017	fall	BIO	395	1	Research	2	Renee A. Baran	Time-TBD Days-TBD Bldg-TBD		99	2	0	0	0
+2017	fall	BIO	349L	3	Biochemistry I Laboratory	1	Karen Marie Molinder	01:30pm-04:25pm R Bldg-TBD		12	6	0	0	0
+2017	fall	BIO	395	1	Research	2	Renee A. Baran	Time-TBD Days-TBD Bldg-TBD		99	3	0	0	0
 2017	fall	BIO	395	10	Research	4	John E. McCormack	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2017	fall	BIO	395	11	Research	2	Gretchen B. North	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2017	fall	BIO	395	12	Research	4	Gretchen B. North	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
@@ -12912,7 +12883,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	fall	BIO	395	21	Research	2	Kerry W Thompson	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2017	fall	BIO	395	22	Research	4	Kerry W Thompson	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2017	fall	BIO	395	23	Research	2	Amanda J. Zellmer McCormack	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
-2017	fall	BIO	395	24	Research	4	Amanda J. Zellmer McCormack	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
+2017	fall	BIO	395	24	Research	4	Amanda J. Zellmer McCormack	Time-TBD Days-TBD Bldg-TBD		99	1	0	0	0
 2017	fall	BIO	395	3	Research	2	Elizabeth Braker	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2017	fall	BIO	395	4	Research	4	Elizabeth Braker	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2017	fall	BIO	395	5	Research	2	Shana Kaye Goffredi	Time-TBD Days-TBD Bldg-TBD		99	2	0	0	0
@@ -12920,15 +12891,15 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	fall	BIO	395	7	Research	2	Gary G. Martin	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2017	fall	BIO	395	8	Research	4	Gary G. Martin	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2017	fall	BIO	395	9	Research	2	John E. McCormack	Time-TBD Days-TBD Bldg-TBD		99	1	0	0	0
-2017	fall	BIO	490	1	Senior Seminar	4	Renee A. Baran	Time-TBD Days-TBD Bldg-TBD		9	5	0	0	0
+2017	fall	BIO	490	1	Senior Seminar	4	Renee A. Baran	Time-TBD Days-TBD Bldg-TBD		9	7	0	0	0
 2017	fall	BIO	490	2	Senior Seminar	4	Cheryl Yoshi Okumura	Time-TBD Days-TBD Bldg-TBD		9	5	0	0	0
 2017	fall	CHEM	100	0	Introduction to Chemistry	4	Derek James Ross	08:30am-09:25am MWF Bldg-TBD		30	2	0	0	0
 2017	fall	CHEM	104	0	From Fundamental Chemistry to the Human Genome	4	Aram M. Nersissian	01:55pm-02:50pm MWF Bldg-TBD	CPMS	30	1	10	10	0
-2017	fall	CHEM	120	1	Foundations of General Chemistry	4	Anne Yu	08:30am-09:25am MWF Bldg-TBD	CPLS	30	4	16	16	0
-2017	fall	CHEM	120	2	Foundations of General Chemistry	4	Chris Craney	09:35am-10:30am MWF Bldg-TBD	CPLS	30	14	16	16	0
-2017	fall	CHEM	120	3	Foundations of General Chemistry	4	Anne Yu	10:40am-11:35am MWF Bldg-TBD	CPLS	35	5	0	0	0
+2017	fall	CHEM	120	1	Foundations of General Chemistry	4	Anne Yu	08:30am-09:25am MWF Bldg-TBD	CPLS	30	5	16	16	0
+2017	fall	CHEM	120	2	Foundations of General Chemistry	4	Chris Craney	09:35am-10:30am MWF Bldg-TBD	CPLS	30	15	16	16	0
+2017	fall	CHEM	120	3	Foundations of General Chemistry	4	Anne Yu	10:40am-11:35am MWF Bldg-TBD	CPLS	35	6	0	0	0
 2017	fall	CHEM	120L	1	Foundations of General Chemistry Laboratory	0	Aram M. Nersissian	08:30am-11:25am T Bldg-TBD		15	4	0	0	0
-2017	fall	CHEM	120L	2	Foundations of General Chemistry Laboratory	0	Mike B. Gray	01:30pm-04:25pm T Bldg-TBD		15	6	0	0	0
+2017	fall	CHEM	120L	2	Foundations of General Chemistry Laboratory	0	Mike B. Gray	01:30pm-04:25pm T Bldg-TBD		15	9	0	0	0
 2017	fall	CHEM	120L	3	Foundations of General Chemistry Laboratory	0	John Hudson Phillips	06:30pm-09:30pm W Bldg-TBD		16	1	0	0	0
 2017	fall	CHEM	120L	4	Foundations of General Chemistry Laboratory	0	Mike B. Gray	08:30am-11:25am R Bldg-TBD		16	6	0	0	0
 2017	fall	CHEM	120L	5	Foundations of General Chemistry Laboratory	0	Mike B. Gray	01:30pm-04:25pm R Bldg-TBD		15	6	0	0	0
@@ -12941,14 +12912,14 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	fall	CHEM	195	5	Directed Research	1	Eileen M. Spain	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2017	fall	CHEM	195	6	Directed Research	1	Andrew K. Udit	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2017	fall	CHEM	195	7	Directed Research	1	Instructor Unassigned	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
-2017	fall	CHEM	220	1	Organic Chemistry I	4	Jeff Scott Cannon	08:30am-09:25am MWF Bldg-TBD	CPLS	20	22	0	0	0
-2017	fall	CHEM	220	2	Organic Chemistry I	4	Jeff Scott Cannon	10:40am-11:35am MWF Bldg-TBD	CPLS	20	15	0	0	0
+2017	fall	CHEM	220	1	Organic Chemistry I	4	Jeff Scott Cannon	08:30am-09:25am MWF Bldg-TBD	CPLS	20	20	0	0	0
+2017	fall	CHEM	220	2	Organic Chemistry I	4	Jeff Scott Cannon	10:40am-11:35am MWF Bldg-TBD	CPLS	20	16	0	0	0
 2017	fall	CHEM	220	3	Organic Chemistry I	4	Instructor Unassigned	11:45am-12:40pm MWF Bldg-TBD	CPLS	20	21	0	0	0
-2017	fall	CHEM	220L	1	Organic Chemistry I Laboratory	0	Instructor Unassigned	01:55pm-04:50pm W Bldg-TBD		12	11	0	0	1
-2017	fall	CHEM	220L	2	Organic Chemistry I Laboratory	0	Instructor Unassigned	06:30pm-09:30pm W Bldg-TBD		12	14	0	0	0
-2017	fall	CHEM	220L	3	Organic Chemistry I Laboratory	0	Instructor Unassigned	08:30am-11:25am R Bldg-TBD		12	11	0	0	5
-2017	fall	CHEM	220L	4	Organic Chemistry I Laboratory	0	Derek James Ross	01:30pm-04:25pm R Bldg-TBD		12	12	0	0	4
-2017	fall	CHEM	220L	5	Organic Chemistry I Laboratory	0	Instructor Unassigned	01:55pm-04:50pm F Bldg-TBD		12	10	0	0	0
+2017	fall	CHEM	220L	1	Organic Chemistry I Laboratory	0	Instructor Unassigned	01:55pm-04:50pm W Bldg-TBD		12	9	0	0	1
+2017	fall	CHEM	220L	2	Organic Chemistry I Laboratory	0	Instructor Unassigned	06:30pm-09:30pm W Bldg-TBD		12	13	0	0	0
+2017	fall	CHEM	220L	3	Organic Chemistry I Laboratory	0	Instructor Unassigned	08:30am-11:25am R Bldg-TBD		12	13	0	0	5
+2017	fall	CHEM	220L	4	Organic Chemistry I Laboratory	0	Derek James Ross	01:30pm-04:25pm R Bldg-TBD		12	13	0	0	3
+2017	fall	CHEM	220L	5	Organic Chemistry I Laboratory	0	Instructor Unassigned	01:55pm-04:50pm F Bldg-TBD		12	9	0	0	0
 2017	fall	CHEM	221	0	Organic Chemistry II	4	Linda S. Lasater-Munson	10:40am-11:35am MWF Bldg-TBD	CPLS	20	25	0	0	0
 2017	fall	CHEM	221L	1	Organic Chemistry II Laboratory	0	Instructor Unassigned	08:30am-11:25am T Bldg-TBD		12	12	0	0	0
 2017	fall	CHEM	221L	2	Organic Chemistry II Laboratory	0	Derek James Ross	01:30pm-04:25pm T Bldg-TBD		12	13	0	0	0
@@ -12964,63 +12935,66 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	fall	CHEM	295	7	Directed Research	2	Instructor Unassigned	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2017	fall	CHEM	300	0	Physical Chemistry I	4	Mike B. Gray	11:45am-12:40pm MWF Bldg-TBD	CPLS	20	12	0	0	0
 2017	fall	CHEM	300L	0	Thermodynamics and Kinetics Laboratory	1	Mike B. Gray	08:30am-11:25am T Bldg-TBD		15	10	0	0	0
-2017	fall	CHEM	301	0	Biophysical Chemistry	4	Chris Craney	11:45am-12:40pm MWF Bldg-TBD	CPMS	25	22	0	0	0
-2017	fall	CHEM	340	0	Inorganic Chemistry	4	Michael G. Hill	10:05am-11:30am TR Bldg-TBD	CPLS	15	13	0	0	0
+2017	fall	CHEM	301	0	Biophysical Chemistry	4	Chris Craney	11:45am-12:40pm MWF Bldg-TBD	CPMS	25	23	0	0	0
+2017	fall	CHEM	340	0	Inorganic Chemistry	4	Michael G. Hill	10:05am-11:30am TR Bldg-TBD	CPLS	15	14	0	0	0
 2017	fall	CHEM	355	0	Bioinformatics	2	Aram M. Nersissian	Time-TBD Days-TBD Bldg-TBD		30	0	0	0	0
-2017	fall	CHEM	380	0	Organic Synthesis	2	Jeff Scott Cannon	05:00pm-06:25pm T Bldg-TBD		30	4	0	0	0
+2017	fall	CHEM	380	0	Organic Synthesis	2	Jeff Scott Cannon	05:00pm-06:25pm T Bldg-TBD		30	5	0	0	0
 2017	fall	CHEM	395	1	Directed Research	4	Jeff Scott Cannon	Time-TBD Days-TBD Bldg-TBD		99	1	0	0	0
 2017	fall	CHEM	395	2	Directed Research	4	Chris Craney	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2017	fall	CHEM	395	3	Directed Research	4	Michael G. Hill	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2017	fall	CHEM	395	4	Directed Research	4	Aram M. Nersissian	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2017	fall	CHEM	395	5	Directed Research	4	Eileen M. Spain	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
-2017	fall	CHEM	395	6	Directed Research	4	Andrew K. Udit	Time-TBD Days-TBD Bldg-TBD		99	1	0	0	0
+2017	fall	CHEM	395	6	Directed Research	4	Andrew K. Udit	Time-TBD Days-TBD Bldg-TBD		99	2	0	0	0
 2017	fall	CHEM	395	7	Directed Research	4	Instructor Unassigned	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2017	fall	CHEM	490	0	Senior Seminar	2	Michael G. Hill	03:00pm-03:55pm M Bldg-TBD		99	11	0	0	0
 2017	fall	CHIN	101	0	Elementary Chinese I	5	Andrew H Miller	09:05am-10:30am MWF Bldg-TBD		25	5	0	0	0
-2017	fall	CHIN	201	0	Intermediate Chinese I	5	Swee Fong Lee	01:55pm-03:20pm MWF Bldg-TBD	CPAS; CPRF	25	12	0	0	0
+2017	fall	CHIN	201	0	Intermediate Chinese I	5	Swee Fong Lee	01:55pm-03:20pm MWF Bldg-TBD	CPAS; CPRF	25	13	0	0	0
 2017	fall	CHIN	274	0	Ghost and Love Stories	4	Andrew H Miller	08:30am-09:55am TR Bldg-TBD	CPAS; CPPE; CPRF	25	16	0	0	0
 2017	fall	CHIN	301	0	Expository Essays and Short Narratives I	4	Sarah Wei-ming Chen	10:40am-11:35am MWF Bldg-TBD	CPAS; CPRF	25	10	0	0	0
-2017	fall	CHIN	330	0	Topics in Fiction and Film	4	Sarah Wei-ming Chen	10:05am-11:30am TR Bldg-TBD	CPAS	25	5	0	0	0
-2017	fall	COGS	101	0	Introduction to Cognitive Science	4	Carmel A Levitan; Instructor Unassigned	10:40am-11:35am MWF Bldg-TBD	CPMS	45	19	25	25	5
-2017	fall	COGS	104	0	Introduction to Neuroscience	4	Instructor Unassigned	10:40am-11:35am MWF Bldg-TBD	CPMS	24	13	10	10	5
+2017	fall	CHIN	330	0	Topics in Fiction and Film	4	Sarah Wei-ming Chen	10:05am-11:30am TR Bldg-TBD	CPAS	25	8	0	0	0
+2017	fall	COGS	101	0	Introduction to Cognitive Science	4	Carmel A Levitan; Instructor Unassigned	10:40am-11:35am MWF Bldg-TBD	CPMS	45	20	25	25	3
+2017	fall	COGS	104	0	Introduction to Neuroscience	4	Instructor Unassigned	10:40am-11:35am MWF Bldg-TBD	CPMS	24	15	10	10	3
 2017	fall	COGS	201	0	Empirical Methods in Cognitive Science	4	Aleksandra Sherman	10:05am-11:30am TR Bldg-TBD	CPLS	18	15	9	0	1
 2017	fall	COGS	201L	1	Empirical Methods in Cognitive Science Laboratory	0	Aleksandra Sherman	01:30pm-04:25pm T Bldg-TBD		9	11	0	0	2
 2017	fall	COGS	201L	2	Empirical Methods in Cognitive Science Laboratory	0	Aleksandra Sherman	01:55pm-04:50pm W Bldg-TBD		9	4	0	0	0
-2017	fall	COGS	230	0	Mind, Brain, and Behavior	4	Instructor Unassigned	09:35am-10:30am MWF Bldg-TBD	CPMS	18	14	0	0	0
-2017	fall	COGS	242	0	Computational Approaches to Cognition	4	Alan P. Knoerr	08:30am-09:25am MWF Bldg-TBD	CPLS	24	22	12	2	0
-2017	fall	COGS	242L	1	Computational Approaches to Cognition Laboratory	0	Alan P. Knoerr	01:30pm-04:25pm T Bldg-TBD		12	10	0	0	0
+2017	fall	COGS	230	0	Mind, Brain, and Behavior	4	Instructor Unassigned	09:35am-10:30am MWF Bldg-TBD	CPMS	18	15	0	0	0
+2017	fall	COGS	242	0	Computational Approaches to Cognition	4	Alan P. Knoerr	08:30am-09:25am MWF Bldg-TBD	CPLS	24	23	12	1	0
+2017	fall	COGS	242L	1	Computational Approaches to Cognition Laboratory	0	Alan P. Knoerr	01:30pm-04:25pm T Bldg-TBD		12	11	0	0	0
 2017	fall	COGS	242L	2	Computational Approaches to Cognition Laboratory	0	Alan P. Knoerr	01:30pm-04:25pm R Bldg-TBD		12	12	0	0	0
 2017	fall	COGS	265	0	Art, Creativity, and Cognition	4	Aleksandra Sherman	01:30pm-04:25pm R Bldg-TBD		18	18	0	0	0
 2017	fall	COGS	290	0	The State of Science: Integrity, Ethics, and Statistics in Research	2	Justin Li	12:50pm-01:45pm M Bldg-TBD		12	0	0	0	0
 2017	fall	COGS	330	0	Linguistics for Cognitive Science	4	William Dylan Sabo	11:45am-12:40pm MWF Bldg-TBD	CPMS	18	19	7	0	0
+2017	fall	COGS	395	1	Directed Research	4	Carmel A Levitan	Time-TBD Days-TBD Bldg-TBD		12	0	0	0	0
+2017	fall	COGS	395	2	Directed Research	2	Justin Li	Time-TBD Days-TBD Bldg-TBD		12	0	0	0	0
+2017	fall	COGS	395	3	Directed Research	2	Aleksandra Sherman	Time-TBD Days-TBD Bldg-TBD		12	0	0	0	0
 2017	fall	COGS	490	1	Senior Seminar in Cognitive Science	4	Justin Li	03:00pm-06:00pm M Bldg-TBD		12	8	8	0	0
-2017	fall	COGS	490	2	Senior Seminar in Cognitive Science	4	William Dylan Sabo	01:30pm-04:25pm T Bldg-TBD		12	8	8	0	0
-2017	fall	COMP	131	1	Fundamentals of Computer Science	4	Justin Li	09:35am-10:30am MWF Bldg-TBD	CPLS	30	25	10	10	13
+2017	fall	COGS	490	2	Senior Seminar in Cognitive Science	4	William Dylan Sabo	01:30pm-04:25pm T Bldg-TBD		12	9	8	0	0
+2017	fall	COMP	131	1	Fundamentals of Computer Science	4	Justin Li	09:35am-10:30am MWF Bldg-TBD	CPLS	30	25	10	10	11
 2017	fall	COMP	131	1-1	Fundamentals of Computer Science Laboratory	0	Justin Li	08:30am-11:25am T Bldg-TBD		15	12	0	0	0
 2017	fall	COMP	131	1-2	Fundamentals of Computer Science Laboratory	0	Justin Li	01:30pm-04:25pm T Bldg-TBD		15	13	0	0	0
-2017	fall	COMP	131	2	Fundamentals of Computer Science	4	Jeffrey S. Miller	03:00pm-03:55pm MWF Bldg-TBD	CPLS	30	18	10	10	16
+2017	fall	COMP	131	2	Fundamentals of Computer Science	4	Jeffrey S. Miller	03:00pm-03:55pm MWF Bldg-TBD	CPLS	30	18	10	10	15
 2017	fall	COMP	131	2-1	Fundamentals of Computer Science Laboratory	0	Jeffrey S. Miller	08:30am-11:25am R Bldg-TBD		15	6	0	0	0
 2017	fall	COMP	131	2-2	Fundamentals of Computer Science Laboratory	0	Jeffrey S. Miller	01:30pm-04:25pm R Bldg-TBD		15	12	0	0	0
-2017	fall	COMP	155	0	Web Design and Programming	2	Daniel Chamberlain	10:05am-11:30am T Bldg-TBD		20	18	0	0	11
-2017	fall	COMP	229	0	Data Structures	4	Instructor Unassigned	01:55pm-02:50pm MWF Bldg-TBD	CPMS	24	25	0	0	0
+2017	fall	COMP	155	0	Web Design and Programming	2	Daniel Chamberlain	10:05am-11:30am T Bldg-TBD		20	18	0	0	12
+2017	fall	COMP	229	0	Data Structures	4	Instructor Unassigned	01:55pm-02:50pm MWF Bldg-TBD	CPMS	24	26	0	0	0
 2017	fall	COMP	317	0	Algorithms Analysis	4	Jeffrey S. Miller	11:45am-12:40pm MWF Bldg-TBD	CPMS	24	10	0	0	0
 2017	fall	COMP	337	0	Programming Languages	4	Instructor Unassigned	03:00pm-03:55pm MWF Bldg-TBD	CPMS	24	15	0	0	0
-2017	fall	CSLC	131	0	Slavic Pagan Culture and its Legacy	4	Walter G. Richmond	10:05am-11:30am TR Bldg-TBD	CPPE; CPRF	30	11	10	10	0
-2017	fall	CSLC	140	0	Sex in the Satyricon: Romance in the Ancient Novel	4	Debra L. Freas	01:30pm-02:55pm TR Bldg-TBD	CPPE; CPRF	20	15	0	0	0
-2017	fall	CSLC	210	0	Reading Bodies: Face, Race, Space in German Thought	4	Bryan K Klausmeyer	01:30pm-02:55pm MW Bldg-TBD	CPRF	20	4	0	0	0
+2017	fall	CSLC	131	0	Slavic Pagan Culture and its Legacy	4	Walter G. Richmond	10:05am-11:30am TR Bldg-TBD	CPPE; CPRF	30	12	10	10	0
+2017	fall	CSLC	140	0	Sex in the Satyricon: Romance in the Ancient Novel	4	Debra L. Freas	01:30pm-02:55pm TR Bldg-TBD	CPPE; CPRF	20	16	0	0	0
+2017	fall	CSLC	210	0	Reading Bodies: Face, Race, Space in German Thought	4	Bryan K Klausmeyer	01:30pm-02:55pm MW Bldg-TBD	CPRF	20	3	0	0	0
 2017	fall	CSLC	251	0	Nahuatl Language, Writing, and Culture	4	Lisa Sousa	10:40am-11:35am MWF Bldg-TBD	CPPE; CPRF	20	21	0	0	0
 2017	fall	CSLC	286	0	Ulysses: The No-Place That's Home	4	Damian Alexander Stocking	07:15pm-08:40pm MW Bldg-TBD	CPGC	20	20	5	0	3
-2017	fall	CSLC	296	0	Contemporary Islam in the Modern Middle East	4	Malek Moazzam-Doulat	05:00pm-06:25pm TR Bldg-TBD	CPRF	30	28	0	0	1
+2017	fall	CSLC	296	0	Contemporary Islam in the Modern Middle East	4	Malek Moazzam-Doulat	05:00pm-06:25pm TR Bldg-TBD	CPRF	30	29	0	0	2
 2017	fall	CSLC	490	1	Senior Seminar	2	Debra L. Freas	Time-TBD Days-TBD Bldg-TBD		15	1	0	0	0
 2017	fall	CSLC	490	2	Senior Seminar	4	Debra L. Freas	Time-TBD Days-TBD Bldg-TBD		10	4	0	0	0
-2017	fall	CTSJ	105	0	Immigration and Education	4	Andrea C. Rodriguez-Minkoff	10:40am-11:35am MWF Bldg-TBD	CPGC	35	9	0	0	0
+2017	fall	CTSJ	105	0	Immigration and Education	4	Andrea C. Rodriguez-Minkoff	10:40am-11:35am MWF Bldg-TBD	CPGC	35	8	0	0	0
 2017	fall	CTSJ	140	0	Critical Theories of Sexuality	4	Joseph Hankins	10:05am-11:30am TR Bldg-TBD	CPUD; CPUS	35	7	5	5	0
 2017	fall	CTSJ	186	0	Introduction to Critical Theory	4	Mary Christianakis	09:35am-10:30am MWF Bldg-TBD		25	1	7	7	0
 2017	fall	CTSJ	195	0	Topics in Critical Theory and Social Justice. Radical Critiques of Incarceration	4	Lizbet Simmons	07:15pm-08:40pm MW Bldg-TBD	CPUD	35	10	0	0	0
 2017	fall	CTSJ	260	0	Culture, Resistance, and the Politics of Human Rights	4	Viviana Beatriz MacManus	01:55pm-02:50pm MWF Bldg-TBD	CPRF	25	7	0	0	0
-2017	fall	CTSJ	261	0	Race, Gender, Class, and the Media	4	Viviana Beatriz MacManus	04:05pm-05:00pm MWF Bldg-TBD	CPUD	25	5	0	0	0
+2017	fall	CTSJ	261	0	Race, Gender, Class, and the Media	4	Viviana Beatriz MacManus	04:05pm-05:00pm MWF Bldg-TBD	CPUD	25	7	0	0	0
 2017	fall	CTSJ	280	0	Rastafari	4	G. Elmer Griffin	03:05pm-04:30pm TR Bldg-TBD	CPGC; CPIC	25	19	0	0	0
-2017	fall	CTSJ	285	0	Foucault	4	G. Elmer Griffin	05:00pm-06:25pm TR Bldg-TBD		25	9	0	0	0
+2017	fall	CTSJ	285	0	Foucault	4	G. Elmer Griffin	05:00pm-06:25pm TR Bldg-TBD		25	10	0	0	0
 2017	fall	CTSJ	340	0	Critical Ethnography	4	Joseph Hankins	01:30pm-02:55pm TR Bldg-TBD	CPGC; CPIC	15	14	0	0	0
 2017	fall	CTSJ	360	0	Methodologies of Gender and Women?s Studies	4	Viviana Beatriz MacManus	03:00pm-03:55pm MWF Bldg-TBD	CPUD	20	6	0	0	0
 2017	fall	CTSJ	394	0	Critical Theory and Social Justice Journal of Undergraduate Research Colloquium	2	G. Elmer Griffin	07:15pm-10:10pm T Bldg-TBD		25	2	0	0	0
@@ -13030,77 +13004,77 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	fall	DWA	101	3	International Relations: The Changing Rules of the Game	4	Movindri Reddy	01:30pm-02:55pm TR Bldg-TBD		35	7	27	27	0
 2017	fall	DWA	102	0	International Organizations	4	Laura Hebert	01:30pm-02:55pm TR Bldg-TBD		25	30	15	-1	7
 2017	fall	DWA	220	0	International Political Economy	4	Mariano Bertucci	08:30am-09:55am TR Bldg-TBD	CPGC	25	15	15	0	0
-2017	fall	DWA	224	0	Latin American Politics	4	Juvenal Cortes	05:40pm-07:05pm MW Bldg-TBD	CPLA; CPRF	25	23	0	0	3
-2017	fall	DWA	230	0	Gender and International Human Rights	4	Laura Hebert	03:05pm-04:30pm TR Bldg-TBD		25	18	0	0	0
+2017	fall	DWA	224	0	Latin American Politics	4	Juvenal Cortes	05:40pm-07:05pm MW Bldg-TBD	CPLA; CPRF	25	24	0	0	2
+2017	fall	DWA	230	0	Gender and International Human Rights	4	Laura Hebert	03:05pm-04:30pm TR Bldg-TBD		25	19	0	0	0
 2017	fall	DWA	239	0	Comparative Politics of Europe	4	Keira Stearns	04:05pm-05:30pm MW Bldg-TBD	CPGC	25	11	0	0	0
-2017	fall	DWA	241	0	International Relations of the Middle East	4	Youssef Chouhoud	10:05am-11:30am TR Bldg-TBD	CPAF; CPRF	25	23	0	0	0
-2017	fall	DWA	248	0	Global Public Health	4	Jane S. Schmitz	10:05am-11:30am TR Bldg-TBD	CPGC; CPIC	25	25	0	0	3
-2017	fall	DWA	284	0	Sports and Diplomacy in a Globalized World	4	Derek N. Shearer	01:30pm-02:55pm TR Bldg-TBD		25	27	0	0	0
+2017	fall	DWA	241	0	International Relations of the Middle East	4	Youssef Chouhoud	10:05am-11:30am TR Bldg-TBD	CPAF; CPRF	25	24	0	0	0
+2017	fall	DWA	248	0	Global Public Health	4	Jane S. Schmitz	10:05am-11:30am TR Bldg-TBD	CPGC; CPIC	25	24	0	0	4
+2017	fall	DWA	284	0	Sports and Diplomacy in a Globalized World	4	Derek N. Shearer	01:30pm-02:55pm TR Bldg-TBD		25	26	0	0	0
 2017	fall	DWA	290	0	Physics for Future Presidents	4	Juvenal Cortes	04:40pm-07:30pm R Bldg-TBD	CPGC	25	18	0	0	0
 2017	fall	DWA	335	0	Junior Seminar: Theories of Revolution from Africa and the African Diaspora	4	Movindri Reddy	03:05pm-04:30pm TR Bldg-TBD	CPAF	15	8	8	0	0
 2017	fall	DWA	351	0	Advanced Topics in Global Sustainability	4	Sanjeev Khagram	04:40pm-07:30pm T Bldg-TBD		15	9	7	0	1
-2017	fall	DWA	401	0	Human Development in a World of Promise and Peril	4	Douglas W. Gardner	Time-TBD Days-TBD Bldg-TBD	CPIC	18	14	0	0	0
-2017	fall	DWA	402	0	United Nations and Conflict Prevention: Actors and Architecture	4	Jacques F Fomerand	Time-TBD Days-TBD Bldg-TBD		18	14	0	0	0
-2017	fall	DWA	403	0	The United Nations Experience	8	Jacques F Fomerand; Douglas W. Gardner	Time-TBD Days-TBD Bldg-TBD		18	14	0	0	0
-2017	fall	ECON	101	1	Principles of Economics I	4	Instructor Unassigned	09:35am-10:30am MWF Bldg-TBD		27	8	19	19	0
-2017	fall	ECON	101	2	Principles of Economics I	4	Instructor Unassigned	10:40am-11:35am MWF Bldg-TBD		27	12	19	19	3
+2017	fall	DWA	401	0	Human Development in a World of Promise and Peril	4	Douglas W. Gardner	Time-TBD Days-TBD Bldg-TBD	CPIC	18	18	0	0	0
+2017	fall	DWA	402	0	United Nations and Conflict Prevention: Actors and Architecture	4	Jacques F Fomerand	Time-TBD Days-TBD Bldg-TBD		18	18	0	0	0
+2017	fall	DWA	403	0	The United Nations Experience	8	Jacques F Fomerand; Douglas W. Gardner	Time-TBD Days-TBD Bldg-TBD		18	18	0	0	0
+2017	fall	ECON	101	1	Principles of Economics I	4	Amy Ramnarine	09:35am-10:30am MWF Bldg-TBD		27	8	19	19	1
+2017	fall	ECON	101	2	Principles of Economics I	4	Amy Ramnarine	10:40am-11:35am MWF Bldg-TBD		27	12	19	19	3
 2017	fall	ECON	101	3	Principles of Economics I	4	Matthew Hill	08:30am-09:55am TR Bldg-TBD		27	8	19	19	0
-2017	fall	ECON	101	5	Principles of Economics I	4	Matthew Hill	10:05am-11:30am TR Bldg-TBD		27	11	19	19	0
-2017	fall	ECON	102	1	Principles of Economics II	4	Daron O. Djerdjian	01:55pm-02:50pm MWF Bldg-TBD		35	25	12	12	6
-2017	fall	ECON	102	2	Principles of Economics II	4	Daron O. Djerdjian	03:00pm-03:55pm MWF Bldg-TBD		35	24	12	12	3
-2017	fall	ECON	233	0	Accounting and Financial Analysis	4	Daryl K. Ono	03:05pm-04:30pm TR Bldg-TBD		30	28	0	0	0
+2017	fall	ECON	101	5	Principles of Economics I	4	Matthew Hill	10:05am-11:30am TR Bldg-TBD		27	11	19	19	1
+2017	fall	ECON	102	1	Principles of Economics II	4	Daron O. Djerdjian	01:55pm-02:50pm MWF Bldg-TBD		35	26	7	7	4
+2017	fall	ECON	102	2	Principles of Economics II	4	Daron O. Djerdjian	03:00pm-03:55pm MWF Bldg-TBD		35	23	7	7	3
+2017	fall	ECON	233	0	Accounting and Financial Analysis	4	Daryl K. Ono	03:05pm-04:30pm TR Bldg-TBD		30	29	0	0	0
 2017	fall	ECON	250	1	Intermediate Microeconomic Theory	4	Brandon Lehr	09:35am-10:30am MWF Bldg-TBD		25	25	2	2	4
 2017	fall	ECON	250	2	Intermediate Microeconomic Theory	4	Brandon Lehr	10:40am-11:35am MWF Bldg-TBD		25	27	2	2	2
 2017	fall	ECON	251	1	Intermediate Macroeconomic Theory	4	Andrew J. Jalil	08:30am-09:55am TR Bldg-TBD		25	29	2	2	4
 2017	fall	ECON	251	2	Intermediate Macroeconomic Theory	4	Andrew J. Jalil	10:05am-11:30am TR Bldg-TBD		25	25	2	2	8
 2017	fall	ECON	272	0	Applied Econometrics	4	Woody Studenmund	09:35am-10:30am MWF Bldg-TBD	CPMS	25	36	0	0	5
-2017	fall	ECON	301	0	Environmental Economics and Policy	4	Yating Chuang	03:05pm-04:30pm TR Bldg-TBD		16	21	0	0	5
+2017	fall	ECON	301	0	Environmental Economics and Policy	4	Yating Chuang	03:05pm-04:30pm TR Bldg-TBD		16	20	0	0	6
 2017	fall	ECON	309	0	Free Market Economics: The Austrian Perspective	4	Daron O. Djerdjian	10:40am-11:35am MWF Bldg-TBD		18	20	0	0	14
 2017	fall	ECON	314	0	Economic Institutions in Historical Perspective	4	Matthew Hill	01:30pm-02:55pm TR Bldg-TBD		18	19	0	0	4
-2017	fall	ECON	320	0	Economic Development	4	Instructor Unassigned	04:05pm-05:30pm MW Bldg-TBD		16	17	0	0	2
-2017	fall	ECON	495	1	Senior Seminar. Industrial Organization	4	Lesley Chiou	01:30pm-02:55pm TR Bldg-TBD		15	17	0	0	7
-2017	fall	ECON	495	2	Senior Seminar. Open Economy Macroeconomics	4	Kirsten Wandschneider	01:30pm-02:55pm TR Bldg-TBD		15	17	0	0	0
-2017	fall	ECON	495	3	Senior Seminar. Industrial Organization	4	Lesley Chiou	03:05pm-04:30pm TR Bldg-TBD		15	15	0	0	6
+2017	fall	ECON	320	0	Economic Development	4	Amy Ramnarine	04:05pm-05:30pm MW Bldg-TBD		16	17	0	0	2
+2017	fall	ECON	495	1	Senior Seminar. Industrial Organization	4	Lesley Chiou	01:30pm-02:55pm TR Bldg-TBD		15	17	0	0	6
+2017	fall	ECON	495	2	Senior Seminar. Open Economy Macroeconomics	4	Kirsten Wandschneider	01:30pm-02:55pm TR Bldg-TBD		15	16	0	0	0
+2017	fall	ECON	495	3	Senior Seminar. Industrial Organization	4	Lesley Chiou	03:05pm-04:30pm TR Bldg-TBD		15	15	0	0	5
 2017	fall	ECON	495	4	Senior Seminar. Macroeconomic Policy Since the Great Depression	4	Andrew J. Jalil	03:05pm-04:30pm TR Bldg-TBD		15	15	0	0	0
 2017	fall	ECON	495	5	Senior Seminar. Open Economy Macroeconomics	4	Kirsten Wandschneider	03:05pm-04:30pm TR Bldg-TBD		15	16	0	0	0
-2017	fall	EDUC	101	0	A History of Urban Schooling in the United States	4	Kenjus Terrel Watson	07:15pm-08:40pm MW Bldg-TBD	CPUD; CPUS	25	15	0	0	0
-2017	fall	EDUC	140	0	Community Literacy	2	Desiree M. Zamorano	03:05pm-04:55pm TR Bldg-TBD		25	18	0	0	0
-2017	fall	EDUC	141	0	Community Literacy and Middle School Students	2	Desiree M. Zamorano	02:30pm-05:30pm W Bldg-TBD		25	8	0	0	0
-2017	fall	EDUC	145	0	Educational Innovations:  Challenges and Effects	4	Suzie M. Abajian	05:40pm-07:05pm MW Bldg-TBD	CPUD; CPUS	35	5	0	0	0
-2017	fall	EDUC	201	0	Sociocultural Foundations of Education	4	La Mont Terry	01:30pm-02:55pm TR Bldg-TBD	CPUD; CPUS	25	12	0	0	0
-2017	fall	EDUC	205	0	The Politics and Pedagogy of First and Second Language Acquisition	4	Suzie M. Abajian	04:05pm-05:30pm MW Bldg-TBD	CPGC; CPIC	25	14	0	0	0
+2017	fall	EDUC	101	0	A History of Urban Schooling in the United States	4	Kenjus Terrel Watson	07:15pm-08:40pm MW Bldg-TBD	CPUD; CPUS	25	18	0	0	0
+2017	fall	EDUC	140	0	Community Literacy	2	Desiree M. Zamorano	03:05pm-04:55pm TR Bldg-TBD		25	15	0	0	0
+2017	fall	EDUC	141	0	Community Literacy and Middle School Students	2	Desiree M. Zamorano	02:30pm-05:30pm W Bldg-TBD		25	9	0	0	0
+2017	fall	EDUC	145	0	Educational Innovations:  Challenges and Effects	4	Suzie M. Abajian	05:40pm-07:05pm MW Bldg-TBD	CPUD; CPUS	35	4	0	0	0
+2017	fall	EDUC	201	0	Sociocultural Foundations of Education	4	La Mont Terry	01:30pm-02:55pm TR Bldg-TBD	CPUD; CPUS	25	14	0	0	0
+2017	fall	EDUC	205	0	The Politics and Pedagogy of First and Second Language Acquisition	4	Suzie M. Abajian	04:05pm-05:30pm MW Bldg-TBD	CPGC; CPIC	25	15	0	0	0
 2017	fall	EDUC	207	0	Conflict in Education	4	Ronald Solorzano	03:05pm-04:30pm TR Bldg-TBD	CPUD; CPUS	25	12	0	0	0
-2017	fall	EDUC	219	0	Educational Inequality	4	Ronald Solorzano	01:30pm-02:55pm TR Bldg-TBD	CPUD; CPUS	25	6	0	0	0
+2017	fall	EDUC	219	0	Educational Inequality	4	Ronald Solorzano	01:30pm-02:55pm TR Bldg-TBD	CPUD; CPUS	25	7	0	0	0
 2017	fall	EDUC	300	0	Community Engagement in Education	2	La Mont Terry	05:00pm-06:25pm T Bldg-TBD		12	7	0	0	0
-2017	fall	ENGL	178	0	Shakespeare and Film	4	Ross B. Lerner	03:05pm-04:30pm TR Bldg-TBD	CPEU; CPFA; CPPE; CPRF	35	35	0	0	2
+2017	fall	ENGL	178	0	Shakespeare and Film	4	Ross B. Lerner	03:05pm-04:30pm TR Bldg-TBD	CPEU; CPFA; CPPE; CPRF	35	34	0	0	2
 2017	fall	ENGL	280	0	Creative Writing	4	Instructor Unassigned	07:15pm-10:10pm T Bldg-TBD	CPFA	14	12	0	0	3
-2017	fall	ENGL	287	0	Early British Literary Traditions	4	Ross B. Lerner	10:05am-11:30am TR Bldg-TBD	CPEU; CPPE; CPRF	25	19	0	0	0
-2017	fall	ENGL	290	0	Introduction to Literary Methods	4	James E. Ford	09:35am-10:30am MWF Bldg-TBD		25	11	0	0	0
+2017	fall	ENGL	287	0	Early British Literary Traditions	4	Ross B. Lerner	10:05am-11:30am TR Bldg-TBD	CPEU; CPPE; CPRF	25	20	0	0	0
+2017	fall	ENGL	290	0	Introduction to Literary Methods	4	James E. Ford	09:35am-10:30am MWF Bldg-TBD		25	10	0	0	0
 2017	fall	ENGL	345	0	American Literature Before 1900. The American Renaissance	4	Daniel D. Fineman	01:30pm-02:55pm TR Bldg-TBD	CPUD	18	11	0	0	0
 2017	fall	ENGL	377	0	Literature and Other Arts	4	James E. Ford	03:00pm-03:55pm MWF Bldg-TBD		18	8	0	0	0
-2017	fall	ENGL	380	0	Advanced Creative Writing: Political Fictions	4	Instructor Unassigned	07:15pm-10:10pm W Bldg-TBD	CPFA	14	9	0	0	0
+2017	fall	ENGL	380	0	Advanced Creative Writing: Political Fictions	4	Instructor Unassigned	07:15pm-10:10pm W Bldg-TBD	CPFA	14	11	0	0	0
 2017	fall	ENGL	390	0	Junior Seminar in English. Laughter and Non-Representation	4	Daniel D. Fineman	05:00pm-06:25pm TR Bldg-TBD		15	10	0	0	0
 2017	fall	ENGL	490	1	Senior Seminar: Comprehensive Project	4	Warren Montag	11:45am-12:40pm MWF Bldg-TBD		15	15	0	0	0
-2017	fall	ENGL	490	2	Senior Seminar: Comprehensive Project	4	Warren Montag	01:55pm-02:50pm MWF Bldg-TBD		15	3	0	0	0
+2017	fall	ENGL	490	2	Senior Seminar: Comprehensive Project	4	Warren Montag	01:55pm-02:50pm MWF Bldg-TBD		15	4	0	0	0
 2017	fall	FREN	101	1	Beginning French I	4	Susan Grayson	09:35am-10:30am MWF Bldg-TBD		25	3	5	5	0
-2017	fall	FREN	101	2	Beginning French I	4	Susan Grayson	11:45am-12:40pm MWF Bldg-TBD		25	9	5	5	0
-2017	fall	FREN	102	0	Beginning French II	4	Susan Grayson	10:40am-11:35am MWF Bldg-TBD		25	16	5	5	0
-2017	fall	FREN	151	0	Intermediate Conversation I	1	Arthur Flannigan Saint-Aubin	06:00pm-06:55pm MW Bldg-TBD		99	5	0	0	0
+2017	fall	FREN	101	2	Beginning French I	4	Susan Grayson	11:45am-12:40pm MWF Bldg-TBD		25	8	5	5	0
+2017	fall	FREN	102	0	Beginning French II	4	Susan Grayson	10:40am-11:35am MWF Bldg-TBD		25	15	5	5	0
+2017	fall	FREN	151	0	Intermediate Conversation I	1	Arthur Flannigan Saint-Aubin	06:00pm-06:55pm MW Bldg-TBD		99	4	0	0	0
 2017	fall	FREN	201	0	Intermediate French	4	Arthur Flannigan Saint-Aubin	09:35am-10:30am MWF Bldg-TBD	CPGC; CPIC	18	6	5	5	0
-2017	fall	FREN	202	0	Introduction to Literary Analysis/Advanced Composition and Grammar	4	Arthur Flannigan Saint-Aubin	10:40am-11:35am MWF Bldg-TBD	CPEU; CPRF	18	7	5	5	0
+2017	fall	FREN	202	0	Introduction to Literary Analysis/Advanced Composition and Grammar	4	Arthur Flannigan Saint-Aubin	10:40am-11:35am MWF Bldg-TBD	CPEU; CPRF	18	6	5	5	0
 2017	fall	FREN	251	0	Advanced Conversation I	1	Arthur Flannigan Saint-Aubin	04:05pm-05:00pm MW Bldg-TBD		99	1	0	0	0
-2017	fall	FREN	301	0	Arab Francophone Works	4	Hanan Elsayed	10:40am-11:35am MWF Bldg-TBD	CPAF; CPRF	18	4	0	0	0
+2017	fall	FREN	301	0	Arab Francophone Works	4	Hanan Elsayed	10:40am-11:35am MWF Bldg-TBD	CPAF; CPRF	18	3	0	0	0
 2017	fall	GEO	105	1	Earth: Our Environment	4	Darren J. Larsen	09:35am-10:30am MWF Bldg-TBD	CPLS	32	16	16	16	0
 2017	fall	GEO	105	1-1	Earth: Our Environment Laboratory	0	Joel A. Wedberg	09:30am-11:25am T Bldg-TBD		16	7	0	0	0
 2017	fall	GEO	105	1-2	Earth: Our Environment Laboratory	0	Joel A. Wedberg	03:00pm-04:55pm T Bldg-TBD		16	9	0	0	0
-2017	fall	GEO	105	3	Earth: Our Environment	4	Joel A. Wedberg	01:55pm-02:50pm MWF Bldg-TBD	CPLS	32	16	16	16	2
+2017	fall	GEO	105	3	Earth: Our Environment	4	Joel A. Wedberg	01:55pm-02:50pm MWF Bldg-TBD	CPLS	32	15	16	16	2
 2017	fall	GEO	105	3-1	Earth: Our Environment Laboratory	0	Joel A. Wedberg	09:30am-11:25am R Bldg-TBD		16	5	0	0	0
-2017	fall	GEO	105	3-2	Earth: Our Environment Laboratory	0	Joel A. Wedberg	03:00pm-04:55pm R Bldg-TBD		16	11	0	0	0
+2017	fall	GEO	105	3-2	Earth: Our Environment Laboratory	0	Joel A. Wedberg	03:00pm-04:55pm R Bldg-TBD		16	10	0	0	0
 2017	fall	GEO	225	0	Introduction to Field Methods	4	Ann E. Blythe	10:05am-11:30am TR Bldg-TBD	CPLS	18	15	0	0	0
 2017	fall	GEO	225L	0	Intro/Field Meth-Field Trips	0	Ann E. Blythe	Time-TBD Days-TBD Bldg-TBD		18	15	0	0	0
 2017	fall	GEO	245	0	Earth's Climate: Past and Future	4	Darren J. Larsen	10:40am-11:35am MWF Bldg-TBD	CPLS	25	22	4	0	0
-2017	fall	GEO	245L	1	Earth's Climate: Past and Future Laboratory	0	Darren J. Larsen	03:00pm-05:55pm M Bldg-TBD		16	15	0	0	0
-2017	fall	GEO	245L	2	Earth's Climate: Past and Future Laboratory	0	Darren J. Larsen	03:00pm-05:55pm W Bldg-TBD		16	7	0	0	0
+2017	fall	GEO	245L	1	Earth's Climate: Past and Future Laboratory	0	Darren J. Larsen	03:00pm-05:55pm M Bldg-TBD		16	16	0	0	0
+2017	fall	GEO	245L	2	Earth's Climate: Past and Future Laboratory	0	Darren J. Larsen	03:00pm-05:55pm W Bldg-TBD		16	6	0	0	0
 2017	fall	GEO	305	0	Earth Materials	4	Christopher John-Paul Oze	09:35am-10:30am MWF Bldg-TBD	CPLS	16	13	0	0	0
 2017	fall	GEO	305L	0	Earth Materials Laboratory	1	Christopher John-Paul Oze	01:30pm-04:25pm R Bldg-TBD		16	13	0	0	0
 2017	fall	GEO	390	0	Special Topics in Geology. Geochemistry	4	Christopher John-Paul Oze	01:55pm-02:50pm MWF Bldg-TBD	CPLS	16	6	0	0	0
@@ -13110,8 +13084,8 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	fall	GEO	395	3	Directed Research	2	Christopher John-Paul Oze	Time-TBD Days-TBD Bldg-TBD		5	0	0	0	0
 2017	fall	GEO	395	4	Directed Research	2	Margaret E. Rusmore	Time-TBD Days-TBD Bldg-TBD		5	0	0	0	0
 2017	fall	GEO	395	5	Directed Research	2	James L. Sadd	Time-TBD Days-TBD Bldg-TBD		5	0	0	0	0
-2017	fall	GEO	490	0	Senior Seminar and Thesis Research	4	Ann E. Blythe	07:15pm-10:15pm W Bldg-TBD		12	5	0	0	0
-2017	fall	GERM	101	0	Elementary German I	4	Adrienne Merritt	01:55pm-02:50pm MWF Bldg-TBD		25	13	0	0	0
+2017	fall	GEO	490	0	Senior Seminar and Thesis Research	4	Ann E. Blythe	07:15pm-10:15pm W Bldg-TBD		12	6	0	0	0
+2017	fall	GERM	101	0	Elementary German I	4	Adrienne Merritt	01:55pm-02:50pm MWF Bldg-TBD		25	14	0	0	0
 2017	fall	GERM	201	0	Intermediate German	4	Adrienne Merritt	03:00pm-03:55pm MWF Bldg-TBD	CPEU; CPRF	20	8	0	0	0
 2017	fall	GERM	310	0	Reading Bodies: Face, Race, Space in German Thought	5	Bryan K Klausmeyer	01:30pm-02:55pm MW Bldg-TBD; Time-TBD Days-TBD Bldg-TBD	CPRF	10	4	0	0	0
 2017	fall	GRK	102	0	Elementary Greek	5	Damian Alexander Stocking	05:40pm-07:05pm MW Bldg-TBD; Time-TBD Days-TBD Bldg-TBD		20	9	0	0	0
@@ -13121,71 +13095,67 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	fall	HIST	121	2	Antiquity to 1700: Europe and the Middle East	4	Maryanne Horowitz	01:30pm-02:55pm TR Bldg-TBD	CPGC; CPIC; CPPE	25	10	10	10	0
 2017	fall	HIST	141	1	East Asian Survey Since 1600	4	Alexander F. Day	09:35am-10:30am MWF Bldg-TBD	CPAS; CPPE; CPRF	30	9	12	12	0
 2017	fall	HIST	141	2	East Asian Survey Since 1600	4	Alexander F. Day	10:40am-11:35am MWF Bldg-TBD	CPAS; CPPE; CPRF	30	18	12	12	3
-2017	fall	HIST	150	0	Colonial Latin America	4	Lisa Sousa	08:30am-09:25am MWF Bldg-TBD	CPLA; CPPE; CPRF	30	19	12	12	0
-2017	fall	HIST	249	0	Modern Korea	4	Paul S. Nam	05:40pm-07:05pm MW Bldg-TBD	CPAS; CPRF	25	13	7	7	0
-2017	fall	HIST	251	0	Nahuatl Language, Writing, and Culture	4	Lisa Sousa	10:40am-11:35am MWF Bldg-TBD	CPPE; CPRF	20	21	4	4	1
+2017	fall	HIST	150	0	Colonial Latin America	4	Lisa Sousa	08:30am-09:25am MWF Bldg-TBD	CPLA; CPPE; CPRF	30	20	12	12	0
+2017	fall	HIST	249	0	Modern Korea	4	Paul S. Nam	05:40pm-07:05pm MW Bldg-TBD	CPAS; CPRF	25	15	7	7	0
+2017	fall	HIST	251	0	Nahuatl Language, Writing, and Culture	4	Lisa Sousa	10:40am-11:35am MWF Bldg-TBD	CPPE; CPRF	20	21	4	4	0
 2017	fall	HIST	274	1	Medicine and Disease in Western Society	4	Nina R. Gelbart	08:30am-09:25am MWF Bldg-TBD	CPEU; CPPE; CPRF	25	24	1	1	0
-2017	fall	HIST	274	2	Medicine and Disease in Western Society	4	Nina R. Gelbart	09:35am-10:30am MWF Bldg-TBD	CPEU; CPPE; CPRF	25	23	1	1	8
+2017	fall	HIST	274	2	Medicine and Disease in Western Society	4	Nina R. Gelbart	09:35am-10:30am MWF Bldg-TBD	CPEU; CPPE; CPRF	25	25	1	1	4
 2017	fall	HIST	295	0	Topics in History. History of Modern India	4	Instructor Unassigned	05:00pm-06:25pm TR Bldg-TBD	CPRF	25	7	0	0	0
-2017	fall	HIST	300	1	History Colloquium. Writing World History	4	Alexander F. Day	04:05pm-05:30pm MW Bldg-TBD		15	8	1	0	0
+2017	fall	HIST	300	1	History Colloquium. Writing World History	4	Alexander F. Day	04:05pm-05:30pm MW Bldg-TBD		15	9	1	0	0
 2017	fall	HIST	300	2	History Colloquium. Re-Assessing European Global Encounters	4	Maryanne Horowitz	10:05am-11:30am TR Bldg-TBD	CPGC; CPPE	15	0	0	0	0
 2017	fall	HIST	335	0	Fascism, Nazism, and the Crisis of Liberal Democracy	4	Marla Stone	01:30pm-02:55pm TR Bldg-TBD	CPRF	18	15	0	0	0
-2017	fall	HIST	395	0	Special Topics in History. Disneyland and Los Angeles	4	Jeremiah B. Axelrod	04:05pm-05:30pm MW Bldg-TBD	CPUD	18	16	0	0	0
+2017	fall	HIST	395	0	Special Topics in History. Disneyland and Los Angeles	4	Jeremiah B. Axelrod	04:05pm-05:30pm MW Bldg-TBD	CPUD	18	17	0	0	0
 2017	fall	HIST	490	1	Senior Seminar	4	Michael E. Gasper	03:05pm-04:30pm TR Bldg-TBD		15	11	0	0	0
 2017	fall	HIST	490	2	Senior Seminar	4	Marla Stone	03:05pm-04:30pm TR Bldg-TBD		15	9	0	0	0
-2017	fall	JAPN	101	0	Elementary Japanese I	5	Motoko Ezaki	09:05am-10:30am MWF Bldg-TBD		25	7	0	0	0
+2017	fall	JAPN	101	0	Elementary Japanese I	5	Motoko Ezaki	09:05am-10:30am MWF Bldg-TBD		25	8	0	0	0
 2017	fall	JAPN	201	0	Intermediate Japanese I	5	Yuki Taylor	01:55pm-03:20pm MWF Bldg-TBD	CPAS; CPRF	25	8	0	0	0
 2017	fall	JAPN	271	0	Fiction in Japanese Literature and Film	4	Motoko Ezaki	01:30pm-02:55pm TR Bldg-TBD	CPAS; CPRF	25	15	0	0	0
-2017	fall	JAPN	301	0	Advanced Japanese I	4	Yuki Taylor	12:50pm-01:45pm MWF Bldg-TBD	CPAS; CPRF	25	8	0	0	0
+2017	fall	JAPN	301	0	Advanced Japanese I	4	Yuki Taylor	12:50pm-01:45pm MWF Bldg-TBD	CPAS; CPRF	25	9	0	0	0
 2017	fall	JAPN	460	0	Translating Texts	4	Motoko Ezaki	10:40am-11:35am MWF Bldg-TBD	CPGC	18	10	0	0	0
-2017	fall	KINE	298	0	Community Health and Fitness Research	2	Marcella Ann Raney	Time-TBD Days-TBD Bldg-TBD		5	1	0	0	0
-2017	fall	KINE	299	0	Women's Sports and Empowerment	4	Myralyn Nartey	09:35am-10:30am MWF Bldg-TBD	CPUD	25	23	0	0	3
-2017	fall	KINE	300	0	Human Anatomy I	4	Kirk Richard Bentzen	08:30am-09:25am MWF Bldg-TBD	CPLS	26	27	0	0	0
-2017	fall	KINE	300L	1	Human Anatomy I Laboratory	1	Kirk Richard Bentzen	08:30am-11:25am T Bldg-TBD		13	13	0	0	0
+2017	fall	KINE	298	0	Community Health and Fitness Research	2	Marcella Ann Raney	Time-TBD Days-TBD Bldg-TBD		5	2	0	0	0
+2017	fall	KINE	299	0	Women's Sports and Empowerment	4	Myralyn Nartey	09:35am-10:30am MWF Bldg-TBD	CPUD	25	21	0	0	4
+2017	fall	KINE	300	0	Human Anatomy I	4	Kirk Richard Bentzen	08:30am-09:25am MWF Bldg-TBD	CPLS	26	26	0	0	0
+2017	fall	KINE	300L	1	Human Anatomy I Laboratory	1	Kirk Richard Bentzen	08:30am-11:25am T Bldg-TBD		13	12	0	0	0
 2017	fall	KINE	300L	2	Human Anatomy I Laboratory	1	Kirk Richard Bentzen	01:30pm-04:25pm T Bldg-TBD		13	14	0	0	0
-2017	fall	KINE	301	0	Human Anatomy II	4	Stuart G. Rugg	09:35am-10:30am MWF Bldg-TBD	CPLS	26	14	0	0	0
-2017	fall	KINE	301L	1	Human Anatomy II Laboratory	1	Stuart G. Rugg	08:30am-11:25am R Bldg-TBD		13	6	0	0	0
+2017	fall	KINE	301	0	Human Anatomy II	4	Stuart G. Rugg	09:35am-10:30am MWF Bldg-TBD	CPLS	26	15	0	0	0
+2017	fall	KINE	301L	1	Human Anatomy II Laboratory	1	Stuart G. Rugg	08:30am-11:25am R Bldg-TBD		13	7	0	0	0
 2017	fall	KINE	301L	2	Human Anatomy II Laboratory	1	Stuart G. Rugg	01:30pm-04:25pm R Bldg-TBD		13	8	0	0	0
-2017	fall	KINE	304	0	Human Physiology	4	Christian K. Roberts	09:35am-10:30am MWF Bldg-TBD	CPLS	24	1	0	0	0
-2017	fall	KINE	304L	1	Human Physiology Laboratory	1	Christian K. Roberts	03:00pm-05:55pm M Bldg-TBD		12	0	0	0	0
-2017	fall	KINE	304L	2	Human Physiology Laboratory	1	Christian K. Roberts	01:55pm-04:50pm W Bldg-TBD		12	1	0	0	0
 2017	fall	KINE	305	0	Exercise Physiology	4	Christian K. Roberts	10:40am-11:35am MWF Bldg-TBD	CPMS	26	16	0	0	0
 2017	fall	KINE	310	0	Motor Learning and Control	4	Melinda Houston	10:05am-11:30am TR Bldg-TBD	CPLS	26	15	0	0	0
 2017	fall	KINE	310L	1	Motor Learning and Control Laboratory	1	Melinda Houston	01:30pm-04:25pm T Bldg-TBD		13	8	0	0	0
 2017	fall	KINE	310L	2	Motor Learning and Control Laboratory	1	Melinda Houston	01:30pm-04:25pm R Bldg-TBD		12	7	1	1	0
-2017	fall	KINE	311	0	Sport and Exercise Psychology	4	Lynn M. Mehl	10:40am-11:35am MWF Bldg-TBD		30	12	0	0	0
+2017	fall	KINE	311	0	Sport and Exercise Psychology	4	Lynn M. Mehl	10:40am-11:35am MWF Bldg-TBD		30	13	0	0	0
 2017	fall	KINE	396	0	Internship	2	Kirk Richard Bentzen	Time-TBD Days-TBD Bldg-TBD		8	1	1	0	0
 2017	fall	KINE	398	0	Community Health and Fitness Research	2	Marcella Ann Raney	Time-TBD Days-TBD Bldg-TBD		5	0	0	0	0
-2017	fall	LATN	101	0	Elementary Latin	5	Instructor Unassigned	04:05pm-05:30pm MWF Bldg-TBD		18	5	0	0	0
 2017	fall	LATN	340	0	Sex in the Satyricon: Romance in the Ancient	5	Debra L. Freas	01:30pm-02:55pm TR Bldg-TBD; Time-TBD Days-TBD Bldg-TBD	CPPE; CPRF	10	4	0	0	0
-2017	fall	LING	301	1	Introduction to Linguistics	4	Instructor Unassigned	10:40am-11:35am MWF Bldg-TBD	CPMS	18	17	0	0	4
+2017	fall	LING	301	1	Introduction to Linguistics	4	Instructor Unassigned	10:40am-11:35am MWF Bldg-TBD	CPMS	18	18	0	0	3
 2017	fall	LING	301	2	Introduction to Linguistics	4	Michael F. Shelton	03:00pm-03:55pm MWF Bldg-TBD	CPMS	18	18	0	0	0
-2017	fall	LLAS	150	0	Colonial Latin America	4	Lisa Sousa	08:30am-09:25am MWF Bldg-TBD	CPPE; CPRF	30	19	12	12	0
-2017	fall	LLAS	206	0	The Politics and Pedagogy of First and Second Language Acquisition	4	Suzie M. Abajian	04:05pm-05:30pm MW Bldg-TBD	CPGC	25	14	0	0	0
-2017	fall	LLAS	303	0	Latina/o Theater	4	Jorge A. Huerta	10:05am-11:30am TR Bldg-TBD	CPFA; CPUD	25	17	0	0	0
+2017	fall	LLAS	150	0	Colonial Latin America	4	Lisa Sousa	08:30am-09:25am MWF Bldg-TBD	CPPE; CPRF	30	20	12	12	0
+2017	fall	LLAS	206	0	The Politics and Pedagogy of First and Second Language Acquisition	4	Suzie M. Abajian	04:05pm-05:30pm MW Bldg-TBD	CPGC	25	15	0	0	0
+2017	fall	LLAS	303	0	Latina/o Theater	4	Jorge A. Huerta	10:05am-11:30am TR Bldg-TBD	CPFA; CPUD	25	16	0	0	0
 2017	fall	LLAS	490	0	Senior Seminar	4	Raul Villa	07:15pm-10:10pm W Bldg-TBD		10	1	0	0	0
 2017	fall	MAC	110	0	Introduction to Digital Design	2	Diana Lee Keeler	05:00pm-06:25pm T Bldg-TBD		16	16	0	0	0
-2017	fall	MAC	145	0	Introduction to Digital Media and Culture	4	Allison de Fren	10:05am-11:30am TR Bldg-TBD	CPFA	21	25	11	9	8
+2017	fall	MAC	145	0	Introduction to Digital Media and Culture	4	Allison de Fren	10:05am-11:30am TR Bldg-TBD	CPFA	21	24	10	9	6
 2017	fall	MAC	210	0	Introduction to Motion Design	2	Diana Lee Keeler	05:00pm-06:25pm R Bldg-TBD		16	18	0	0	2
 2017	fall	MAC	220	0	Narrative Practices	4	Garret Christopher Williams	07:15pm-10:10pm W Bldg-TBD	CPFA	14	12	0	0	0
-2017	fall	MAC	240	0	Introduction to Media Practices	4	Broderick B. Fox	01:30pm-04:25pm T Bldg-TBD; 01:30pm-02:55pm R Bldg-TBD	CPFA	14	11	0	0	0
-2017	fall	MAC	244	0	Topics in Media Representation. From Cyborgs to Siri: Gender, Technology and Media	4	Allison de Fren	03:05pm-04:30pm TR Bldg-TBD	CPFA	25	26	8	-1	3
+2017	fall	MAC	240	0	Introduction to Media Practices	4	Broderick B. Fox	01:30pm-04:25pm T Bldg-TBD; 01:30pm-02:55pm R Bldg-TBD	CPFA	14	13	0	0	0
+2017	fall	MAC	244	0	Topics in Media Representation. From Cyborgs to Siri: Gender, Technology and Media	4	Allison de Fren	03:05pm-04:30pm TR Bldg-TBD	CPFA	25	25	8	-1	3
 2017	fall	MAC	248	0	Topics in Global Media. Transpacific Social Justice	4	Viola Lasmana	01:30pm-02:55pm MW Bldg-TBD	CPFA; CPGC	25	18	11	5	3
-2017	fall	MAC	250	0	Topics in Media Theory and Practice. Digital Tools for Radical Change	4	Marcus Benigno	01:30pm-04:25pm R Bldg-TBD	CPFA	16	10	3	0	3
-2017	fall	MAC	490	0	Senior Seminar in Critical Media	2	Allison de Fren	05:00pm-06:25pm W Bldg-TBD		16	2	0	0	0
-2017	fall	MAC	491	0	Senior Seminar in Media Production	4	Broderick B. Fox	09:30am-11:30am TR Bldg-TBD		20	19	0	0	0
-2017	fall	MATH	105	0	Mathematics as a Liberal Art	4	Donald D Lawrence	01:55pm-02:50pm MWF Bldg-TBD	CPMS	32	11	8	8	0
-2017	fall	MATH	108	0	Unified Precalculus and Calculus 1-A	4	Instructor Unassigned	01:55pm-02:50pm MWF Bldg-TBD		32	3	0	0	0
+2017	fall	MAC	250	0	Topics in Media Theory and Practice. Digital Tools for Radical Change	4	Marcus Benigno	01:30pm-04:25pm R Bldg-TBD	CPFA	16	10	3	0	2
+2017	fall	MAC	490	0	Senior Seminar in Critical Media	2	Allison de Fren	05:00pm-06:25pm W Bldg-TBD		16	3	0	0	0
+2017	fall	MAC	491	0	Senior Seminar in Media Production	4	Broderick B. Fox	09:30am-11:30am TR Bldg-TBD		20	18	0	0	0
+2017	fall	MATH	105	0	Mathematics as a Liberal Art	4	Donald D Lawrence	01:55pm-02:50pm MWF Bldg-TBD	CPMS	32	10	8	8	0
+2017	fall	MATH	108	0	Unified Precalculus and Calculus 1-A	4	Instructor Unassigned	01:55pm-02:50pm MWF Bldg-TBD		32	2	0	0	0
 2017	fall	MATH	108A	1	Unified Precalculus and Calculus 1-A Laboratory	0	Instructor Unassigned	10:05am-11:30am R Bldg-TBD		16	1	0	0	0
-2017	fall	MATH	108A	2	Unified Precalculus and Calculus 1-A Laboratory	0	Instructor Unassigned	01:30pm-02:55pm R Bldg-TBD		16	2	0	0	0
+2017	fall	MATH	108A	2	Unified Precalculus and Calculus 1-A Laboratory	0	Instructor Unassigned	01:30pm-02:55pm R Bldg-TBD		16	1	0	0	0
 2017	fall	MATH	110	1	Calculus 1	4	Nalsey B Tinberg	09:35am-10:30am MWF Bldg-TBD	CPMS	28	4	0	0	0
 2017	fall	MATH	110	1-1	Calculus 1 Laboratory	0	Nalsey B Tinberg	08:30am-09:55am T Bldg-TBD		14	1	0	0	0
 2017	fall	MATH	110	1-2	Calculus 1 Laboratory	0	Nalsey B Tinberg	10:05am-11:30am T Bldg-TBD		14	3	0	0	0
-2017	fall	MATH	110	2	Calculus 1	4	Instructor Unassigned	09:35am-10:30am MWF Bldg-TBD	CPMS	28	6	0	0	0
-2017	fall	MATH	110	2-1	Calculus 1 Laboratory	0	Instructor Unassigned	08:30am-09:55am T Bldg-TBD		14	2	0	0	0
-2017	fall	MATH	110	2-2	Calculus 1 Laboratory	0	Instructor Unassigned	10:05am-11:30am T Bldg-TBD		14	4	0	0	0
-2017	fall	MATH	110	3	Calculus 1	4	Instructor Unassigned	03:00pm-03:55pm MWF Bldg-TBD	CPMS	28	12	0	0	0
-2017	fall	MATH	110	3-1	Calculus 1 Laboratory	0	Instructor Unassigned	01:30pm-02:55pm T Bldg-TBD		14	9	0	0	0
+2017	fall	MATH	110	2	Calculus 1	4	Instructor Unassigned	09:35am-10:30am MWF Bldg-TBD	CPMS	28	8	0	0	0
+2017	fall	MATH	110	2-1	Calculus 1 Laboratory	0	Instructor Unassigned	08:30am-09:55am T Bldg-TBD		14	3	0	0	0
+2017	fall	MATH	110	2-2	Calculus 1 Laboratory	0	Instructor Unassigned	10:05am-11:30am T Bldg-TBD		14	5	0	0	0
+2017	fall	MATH	110	3	Calculus 1	4	Instructor Unassigned	03:00pm-03:55pm MWF Bldg-TBD	CPMS	28	11	0	0	0
+2017	fall	MATH	110	3-1	Calculus 1 Laboratory	0	Instructor Unassigned	01:30pm-02:55pm T Bldg-TBD		14	8	0	0	0
 2017	fall	MATH	110	3-2	Calculus 1 Laboratory	0	Instructor Unassigned	03:05pm-04:30pm T Bldg-TBD		14	3	0	0	0
 2017	fall	MATH	114	1	Calculus 1 (Advanced)	4	Kanadpriya Basu	10:40am-11:35am MWF Bldg-TBD	CPMS	28	1	0	0	0
 2017	fall	MATH	114	1-1	Calculus 1 (Advanced) Laboratory	0	Kanadpriya Basu	01:30pm-02:55pm R Bldg-TBD		14	0	0	0	0
@@ -13193,24 +13163,24 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	fall	MATH	114	2	Calculus 1 (Advanced)	4	Gerald J. Daigle	03:00pm-03:55pm MWF Bldg-TBD	CPMS	28	3	0	0	0
 2017	fall	MATH	114	2-1	Calculus 1 (Advanced) Laboratory	0	Gerald J. Daigle	01:30pm-02:55pm T Bldg-TBD		14	3	0	0	0
 2017	fall	MATH	114	2-2	Calculus 1 (Advanced) Laboratory	0	Gerald J. Daigle	03:05pm-04:30pm T Bldg-TBD		14	0	0	0	0
-2017	fall	MATH	120	1	Calculus 2	4	Gregory Tollisen	10:40am-11:35am MWF Bldg-TBD	CPMS	28	9	0	0	0
+2017	fall	MATH	120	1	Calculus 2	4	Gregory Tollisen	10:40am-11:35am MWF Bldg-TBD	CPMS	28	8	0	0	0
 2017	fall	MATH	120	1-1	Calculus 2 Laboratory	0	Gregory Tollisen	08:30am-09:55am T Bldg-TBD		14	5	0	0	0
-2017	fall	MATH	120	1-2	Calculus 2 Laboratory	0	Gregory Tollisen	10:05am-11:30am T Bldg-TBD		14	4	0	0	0
-2017	fall	MATH	120	2	Calculus 2	4	Nishu Lal	11:45am-12:40pm MWF Bldg-TBD	CPMS	28	9	0	0	0
+2017	fall	MATH	120	1-2	Calculus 2 Laboratory	0	Gregory Tollisen	10:05am-11:30am T Bldg-TBD		14	3	0	0	0
+2017	fall	MATH	120	2	Calculus 2	4	Nishu Lal	11:45am-12:40pm MWF Bldg-TBD	CPMS	28	11	0	0	0
 2017	fall	MATH	120	2-1	Calculus 2 Laboratory	0	Nishu Lal	08:30am-09:55am R Bldg-TBD		14	2	0	0	0
-2017	fall	MATH	120	2-2	Calculus 2 Laboratory	0	Nishu Lal	10:05am-11:30am R Bldg-TBD		14	7	0	0	0
+2017	fall	MATH	120	2-2	Calculus 2 Laboratory	0	Nishu Lal	10:05am-11:30am R Bldg-TBD		14	9	0	0	0
 2017	fall	MATH	128	0	Calculus 2 (Advanced Placement)	4	Donald D Lawrence	03:00pm-03:55pm MWF Bldg-TBD	CPMS	32	0	0	0	0
 2017	fall	MATH	128A	1	Calculus 2 (Advanced Placement) Laboratory	0	Donald D Lawrence	01:30pm-02:55pm T Bldg-TBD		16	0	0	0	0
 2017	fall	MATH	128A	2	Calculus 2 (Advanced Placement) Laboratory	0	Donald D Lawrence	03:05pm-04:30pm T Bldg-TBD		16	0	0	0	0
-2017	fall	MATH	146	1	Statistics	4	Instructor Unassigned	10:40am-11:35am MWF Bldg-TBD	CPMS	32	29	0	0	0
-2017	fall	MATH	146	1-1	Statistics Laboratory	0	Instructor Unassigned	01:30pm-02:55pm T Bldg-TBD		16	14	0	0	6
-2017	fall	MATH	146	1-2	Statistics Laboratory	0	Instructor Unassigned	03:05pm-04:30pm T Bldg-TBD		16	15	0	0	2
-2017	fall	MATH	146	2	Statistics	4	Instructor Unassigned	04:05pm-05:00pm MWF Bldg-TBD	CPMS	32	28	0	0	0
-2017	fall	MATH	146	2-1	Statistics Laboratory	0	Instructor Unassigned	01:30pm-02:55pm R Bldg-TBD		16	14	0	0	0
-2017	fall	MATH	146	2-2	Statistics Laboratory	0	Instructor Unassigned	03:05pm-04:30pm R Bldg-TBD		16	14	0	0	0
+2017	fall	MATH	146	1	Statistics	4	Instructor Unassigned	10:40am-11:35am MWF Bldg-TBD	CPMS	32	30	0	0	0
+2017	fall	MATH	146	1-1	Statistics Laboratory	0	Instructor Unassigned	01:30pm-02:55pm T Bldg-TBD		16	14	0	0	3
+2017	fall	MATH	146	1-2	Statistics Laboratory	0	Instructor Unassigned	03:05pm-04:30pm T Bldg-TBD		16	16	0	0	1
+2017	fall	MATH	146	2	Statistics	4	Instructor Unassigned	04:05pm-05:00pm MWF Bldg-TBD	CPMS	32	27	0	0	0
+2017	fall	MATH	146	2-1	Statistics Laboratory	0	Instructor Unassigned	01:30pm-02:55pm R Bldg-TBD		16	15	0	0	0
+2017	fall	MATH	146	2-2	Statistics Laboratory	0	Instructor Unassigned	03:05pm-04:30pm R Bldg-TBD		16	12	0	0	0
 2017	fall	MATH	150	0	Statistical Data Analysis	4	Tamas Lengyel	11:45am-12:40pm MWF Bldg-TBD; 10:05am-11:30am T Bldg-TBD	CPMS	24	11	0	0	0
-2017	fall	MATH	160	0	Creative Problem-Solving	2	Tamas Lengyel	01:30pm-02:55pm T Bldg-TBD		16	8	0	0	0
-2017	fall	MATH	210	1	Discrete Mathematics	4	Eric Lars Sundberg	09:35am-10:30am MWF Bldg-TBD	CPMS	20	19	0	0	0
+2017	fall	MATH	160	0	Creative Problem-Solving	2	Tamas Lengyel	01:30pm-02:55pm T Bldg-TBD		16	9	0	0	0
+2017	fall	MATH	210	1	Discrete Mathematics	4	Eric Lars Sundberg	09:35am-10:30am MWF Bldg-TBD	CPMS	20	20	0	0	0
 2017	fall	MATH	210	2	Discrete Mathematics	4	Donald D Lawrence	10:40am-11:35am MWF Bldg-TBD	CPMS	20	25	0	0	0
 2017	fall	MATH	212	1	Multivariable Calculus	4	Ramin Naimi	11:45am-12:40pm MWF Bldg-TBD	CPMS	20	11	0	0	0
 2017	fall	MATH	212	2	Multivariable Calculus	4	Kanadpriya Basu	01:55pm-02:50pm MWF Bldg-TBD	CPMS	20	8	0	0	0
@@ -13218,36 +13188,36 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	fall	MATH	214	2	Linear Algebra	4	Ramin Naimi	01:55pm-02:50pm MWF Bldg-TBD	CPMS	20	6	0	0	0
 2017	fall	MATH	310	0	Real Analysis	4	Ramin Naimi	03:00pm-03:55pm MWF Bldg-TBD	CPMS	15	15	0	0	1
 2017	fall	MATH	322	0	Number Theory	4	Gerald J. Daigle	11:45am-12:40pm MWF Bldg-TBD		15	20	0	0	3
-2017	fall	MATH	330	0	Probability	4	Tamas Lengyel	01:55pm-02:50pm MWF Bldg-TBD	CPMS	15	15	0	0	7
-2017	fall	MATH	340	1	Ordinary Differential Equations	4	Nishu Lal	10:40am-11:35am MWF Bldg-TBD	CPMS	15	20	0	0	3
-2017	fall	MATH	340	2	Ordinary Differential Equations	4	Nishu Lal	01:55pm-02:50pm MWF Bldg-TBD	CPMS	15	19	0	0	1
+2017	fall	MATH	330	0	Probability	4	Tamas Lengyel	01:55pm-02:50pm MWF Bldg-TBD	CPMS	15	15	0	0	6
+2017	fall	MATH	340	1	Ordinary Differential Equations	4	Nishu Lal	10:40am-11:35am MWF Bldg-TBD	CPMS	15	21	0	0	2
+2017	fall	MATH	340	2	Ordinary Differential Equations	4	Nishu Lal	01:55pm-02:50pm MWF Bldg-TBD	CPMS	15	19	0	0	0
 2017	fall	MATH	382	0	Graph Theory	4	Eric Lars Sundberg	10:40am-11:35am MWF Bldg-TBD		15	8	0	0	0
-2017	fall	MATH	400	1	Senior Seminar	2	Jeffrey S. Miller	03:05pm-04:30pm T Bldg-TBD		12	8	0	0	0
-2017	fall	MATH	400	2	Senior Seminar	2	Gerald J. Daigle	03:05pm-04:30pm R Bldg-TBD		12	12	0	0	3
+2017	fall	MATH	400	1	Senior Seminar	2	Jeffrey S. Miller	03:05pm-04:30pm T Bldg-TBD		12	10	0	0	0
+2017	fall	MATH	400	2	Senior Seminar	2	Gerald J. Daigle	03:05pm-04:30pm R Bldg-TBD		12	12	0	0	2
 2017	fall	MUSA	101	0	Voice Class	1	Laura Desiree LaVertu	Time-TBD Days-TBD Bldg-TBD	CFAP	10	1	0	0	0
-2017	fall	MUSA	102	0	Piano Class	1	Dina Asta Ormenyi	Time-TBD Days-TBD Bldg-TBD	CFAP	20	8	0	0	0
-2017	fall	MUSA	103	0	Classical Guitar Class (Beginning)	1	Ronald Mark Berman	Time-TBD Days-TBD Bldg-TBD	CFAP	10	2	0	0	0
+2017	fall	MUSA	102	0	Piano Class	1	Dina Asta Ormenyi	Time-TBD Days-TBD Bldg-TBD	CFAP	20	10	0	0	0
+2017	fall	MUSA	103	0	Classical Guitar Class (Beginning)	1	Ronald Mark Berman	Time-TBD Days-TBD Bldg-TBD	CFAP	10	1	0	0	0
 2017	fall	MUSA	104	0	Classical Guitar Class (Intermediate)	1	Ronald Mark Berman	Time-TBD Days-TBD Bldg-TBD	CFAP	10	0	0	0	0
 2017	fall	MUSA	105	0	Alexander Technique Class	1	Frances P. Marsden	Time-TBD Days-TBD Bldg-TBD	CFAP	10	0	0	0	0
 2017	fall	MUSA	201	1	Piano (Half Hour)	1	Galina Barskaya	Time-TBD Days-TBD Bldg-TBD	CFAP	20	2	0	0	0
 2017	fall	MUSA	201	2	Piano (Half Hour)	1	Hye-Won J. Cho	Time-TBD Days-TBD Bldg-TBD	CFAP	20	3	0	0	0
 2017	fall	MUSA	201	3	Piano (Half Hour)	1	Junko Ueno Garrett	Time-TBD Days-TBD Bldg-TBD	CFAP	20	6	0	0	0
 2017	fall	MUSA	202	1	Piano (One Hour)	1	Galina Barskaya	Time-TBD Days-TBD Bldg-TBD	CFAP	20	2	0	0	0
-2017	fall	MUSA	202	2	Piano (One Hour)	1	Hye-Won J. Cho	Time-TBD Days-TBD Bldg-TBD	CFAP	20	2	0	0	0
+2017	fall	MUSA	202	2	Piano (One Hour)	1	Hye-Won J. Cho	Time-TBD Days-TBD Bldg-TBD	CFAP	20	3	0	0	0
 2017	fall	MUSA	202	3	Piano (One Hour)	1	Junko Ueno Garrett	Time-TBD Days-TBD Bldg-TBD	CFAP	20	4	0	0	0
-2017	fall	MUSA	203	0	Jazz Piano (Half Hour)	1	Matthew L. Weisberg	Time-TBD Days-TBD Bldg-TBD	CFAP	20	1	0	0	0
+2017	fall	MUSA	203	0	Jazz Piano (Half Hour)	1	Matthew L. Weisberg	Time-TBD Days-TBD Bldg-TBD	CFAP	20	2	0	0	0
 2017	fall	MUSA	204	0	Jazz Piano (One Hour)	1	Matthew L. Weisberg	Time-TBD Days-TBD Bldg-TBD	CFAP	20	2	0	0	0
 2017	fall	MUSA	205	0	Piano Improvisation (Half Hour)	1	Matthew L. Weisberg	Time-TBD Days-TBD Bldg-TBD	CFAP	20	0	0	0	0
 2017	fall	MUSA	206	0	Piano Improvisation (One Hour)	1	Matthew L. Weisberg	Time-TBD Days-TBD Bldg-TBD	CFAP	20	0	0	0	0
 2017	fall	MUSA	208	0	Collaborative Piano (One Hour)	1	Galina Barskaya	Time-TBD Days-TBD Bldg-TBD	CFAP	20	0	0	0	0
-2017	fall	MUSA	211	1	Voice (Half Hour)	1	Scott W Blois	Time-TBD Days-TBD Bldg-TBD	CFAP	20	3	0	0	0
-2017	fall	MUSA	211	2	Voice (Half Hour)	1	Karen Jean Hogle Brown	Time-TBD Days-TBD Bldg-TBD	CFAP	20	1	0	0	0
+2017	fall	MUSA	211	1	Voice (Half Hour)	1	Scott W Blois	Time-TBD Days-TBD Bldg-TBD	CFAP	20	4	0	0	0
+2017	fall	MUSA	211	2	Voice (Half Hour)	1	Karen Jean Hogle Brown	Time-TBD Days-TBD Bldg-TBD	CFAP	20	2	0	0	0
 2017	fall	MUSA	211	3	Voice (Half Hour)	1	Laura Desiree LaVertu	Time-TBD Days-TBD Bldg-TBD	CFAP	2	0	0	0	0
 2017	fall	MUSA	212	1	Voice (One Hour)	1	Scott W Blois	Time-TBD Days-TBD Bldg-TBD	CFAP	20	2	0	0	0
 2017	fall	MUSA	212	2	Voice (One Hour)	1	Karen Jean Hogle Brown	Time-TBD Days-TBD Bldg-TBD	CFAP	20	1	0	0	0
 2017	fall	MUSA	212	3	Voice (One Hour)	1	Laura Desiree LaVertu	Time-TBD Days-TBD Bldg-TBD	CFAP	2	0	0	0	0
 2017	fall	MUSA	213	0	Jazz Voice (Half Hour)	1	Loren S. Battley	Time-TBD Days-TBD Bldg-TBD	CFAP	20	2	0	0	0
-2017	fall	MUSA	214	0	Jazz Voice (One Hour)	1	Loren S. Battley	Time-TBD Days-TBD Bldg-TBD	CFAP	20	1	0	0	0
+2017	fall	MUSA	214	0	Jazz Voice (One Hour)	1	Loren S. Battley	Time-TBD Days-TBD Bldg-TBD	CFAP	20	2	0	0	0
 2017	fall	MUSA	221	0	Flute (Half Hour)	1	Gary Woodward	Time-TBD Days-TBD Bldg-TBD	CFAP	20	2	0	0	0
 2017	fall	MUSA	222	0	Flute (One Hour)	1	Gary Woodward	Time-TBD Days-TBD Bldg-TBD	CFAP	20	0	0	0	0
 2017	fall	MUSA	223	0	Oboe (Half Hour)	1	Cathy I. Del Russo	Time-TBD Days-TBD Bldg-TBD	CFAP	20	0	0	0	0
@@ -13266,7 +13236,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	fall	MUSA	242	0	French Horn (One Hour)	1	Stephanie O'Keefe	Time-TBD Days-TBD Bldg-TBD	CFAP	20	0	0	0	0
 2017	fall	MUSA	243	0	Trumpet (Half Hour)	1	Dustin R. McKinney	Time-TBD Days-TBD Bldg-TBD	CFAP	20	0	0	0	0
 2017	fall	MUSA	244	0	Trumpet (One Hour)	1	Dustin R. McKinney	Time-TBD Days-TBD Bldg-TBD	CFAP	20	0	0	0	0
-2017	fall	MUSA	245	0	Trombone (Half Hour)	1	Loren J. Marsteller	Time-TBD Days-TBD Bldg-TBD	CFAP	20	0	0	0	0
+2017	fall	MUSA	245	0	Trombone (Half Hour)	1	Loren J. Marsteller	Time-TBD Days-TBD Bldg-TBD	CFAP	20	1	0	0	0
 2017	fall	MUSA	246	0	Trombone (One Hour)	1	Loren J. Marsteller	Time-TBD Days-TBD Bldg-TBD	CFAP	20	0	0	0	0
 2017	fall	MUSA	247	0	Tuba (Half Hour)	1	Douglas Tornquist	Time-TBD Days-TBD Bldg-TBD	CFAP	20	0	0	0	0
 2017	fall	MUSA	248	0	Tuba (One Hour)	1	Douglas Tornquist	Time-TBD Days-TBD Bldg-TBD	CFAP	20	0	0	0	0
@@ -13274,7 +13244,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	fall	MUSA	250	0	Afro-Cuban Drumming (One Hour)	1	Patrick J. Addington	Time-TBD Days-TBD Bldg-TBD	CFAP	20	0	0	0	0
 2017	fall	MUSA	251	0	Percussion (Half Hour)	1	Yuri Miyoshi	Time-TBD Days-TBD Bldg-TBD	CFAP	10	0	0	0	0
 2017	fall	MUSA	252	0	Percussion (One Hour)	1	Yuri Miyoshi	Time-TBD Days-TBD Bldg-TBD	CFAP	10	1	0	0	0
-2017	fall	MUSA	253	0	Harp (Half Hour)	1	Amy Shulman	Time-TBD Days-TBD Bldg-TBD	CFAP	20	0	0	0	0
+2017	fall	MUSA	253	0	Harp (Half Hour)	1	Amy Shulman	Time-TBD Days-TBD Bldg-TBD	CFAP	20	1	0	0	0
 2017	fall	MUSA	254	0	Harp (One Hour)	1	Amy Shulman	Time-TBD Days-TBD Bldg-TBD	CFAP	20	0	0	0	0
 2017	fall	MUSA	261	1	Violin (Half Hour)	1	Aroussiak G. Baltaian	Time-TBD Days-TBD Bldg-TBD	CFAP	20	0	0	0	0
 2017	fall	MUSA	261	2	Violin (Half Hour)	1	Lyndon Taylor	Time-TBD Days-TBD Bldg-TBD	CFAP	2	0	0	0	0
@@ -13293,24 +13263,25 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	fall	MUSA	274	1	Jazz Guitar (One Hour)	1	Ronald Mark Berman	Time-TBD Days-TBD Bldg-TBD	CFAP	20	1	0	0	0
 2017	fall	MUSA	274	2	Jazz Guitar (One Hour)	1	Robert Riner Scivally	Time-TBD Days-TBD Bldg-TBD	CFAP	20	0	0	0	0
 2017	fall	MUSA	276	0	Advanced Classical Guitar (One Hour)	1	Almer Imamovic	Time-TBD Days-TBD Bldg-TBD	CFAP	20	0	0	0	0
-2017	fall	MUSC	100	0	Electronic Music	1	Jennifer A. Logan	05:40pm-07:05pm M Bldg-TBD	CFAP	15	11	5	5	10
-2017	fall	MUSC	101	0	Materials of Music	4	Irene Montefiore Girton	10:05am-11:30am TR Bldg-TBD	CPFA	35	9	10	10	0
+2017	fall	MUSC	100	0	Electronic Music	1	Jennifer A. Logan	05:40pm-07:05pm M Bldg-TBD	CFAP	15	13	5	5	6
+2017	fall	MUSC	101	0	Materials of Music	4	Irene Montefiore Girton	10:05am-11:30am TR Bldg-TBD	CPFA	35	11	10	10	0
 2017	fall	MUSC	105	0	Topics in American Music	4	Simeon Pillich	01:55pm-02:50pm MWF Bldg-TBD	CPFA; CPUD; CPUS	35	22	10	10	14
-2017	fall	MUSC	111	0	Topics in Jazz History	4	Simeon Pillich	03:00pm-03:55pm MWF Bldg-TBD	CPFA; CPUD; CPUS	35	23	10	10	11
-2017	fall	MUSC	114	0	Introduction to the Orchestra	4	Adam Schoenberg	03:05pm-04:30pm TR Bldg-TBD	CPFA; CPGC; CPIC	35	12	0	0	0
+2017	fall	MUSC	111	0	Topics in Jazz History	4	Simeon Pillich	03:00pm-03:55pm MWF Bldg-TBD	CPFA; CPUD; CPUS	35	24	10	10	10
+2017	fall	MUSC	114	0	Introduction to the Orchestra	4	Adam Schoenberg	03:05pm-04:30pm TR Bldg-TBD	CPFA; CPGC; CPIC	35	14	0	0	0
 2017	fall	MUSC	120	0	College Chorus	1	Laura Desiree LaVertu	07:15pm-09:45pm M Bldg-TBD	CFAP	99	0	0	0	0
 2017	fall	MUSC	121	0	Women's Glee Club	2	Laura Desiree LaVertu	11:40am-12:45pm T Bldg-TBD; 07:15pm-09:45pm W Bldg-TBD; 11:40am-12:30pm R Bldg-TBD	CFAP	35	0	0	0	0
 2017	fall	MUSC	122	0	Men's Glee Club	2	Laura Desiree LaVertu	11:40am-12:45pm T Bldg-TBD; 07:15pm-09:45pm W Bldg-TBD; 12:30pm-01:20pm R Bldg-TBD	CFAP	35	0	0	0	0
+2017	fall	MUSC	123	0	Afro-Cuban Drumming	1	Patrick J. Addington	08:30pm-10:30pm R Bldg-TBD	CFAP	15	0	0	0	0
 2017	fall	MUSC	126	0	Concert Band	1	Glenn D Price	07:30pm-09:45pm R Bldg-TBD	CFAP	40	0	0	0	0
 2017	fall	MUSC	127	0	Jazz Ensemble	1	Shawn N. Costantino	07:15pm-09:10pm M Bldg-TBD	CFAP	50	0	0	0	0
 2017	fall	MUSC	130	0	Sinfonia	2	Dean Anderson	11:40am-12:35pm TR Bldg-TBD; 07:30pm-09:30pm T Bldg-TBD	CFAP	60	0	0	0	0
-2017	fall	MUSC	148	0	Introduction to Digital Audio Workstation (DAW)	4	Daniel Wohl	01:25pm-02:50pm MW Bldg-TBD	CPFA	16	16	13	0	9
+2017	fall	MUSC	148	0	Introduction to Digital Audio Workstation (DAW)	4	Daniel Wohl	01:25pm-02:50pm MW Bldg-TBD	CPFA	16	15	13	0	8
 2017	fall	MUSC	240	0	Music Production	4	Jennifer A. Logan	07:15pm-10:10pm W Bldg-TBD	CPFA	25	19	5	5	0
 2017	fall	MUSC	250	0	Theory and Practice of Music II	4	Irene Montefiore Girton	01:30pm-02:55pm TR Bldg-TBD		25	11	0	0	0
 2017	fall	MUSC	250A	0	Theory and Practice of Music II Musicianship	0	Jennifer A. Logan	09:35am-10:30am WF Bldg-TBD		25	11	0	0	0
 2017	fall	MUSC	257	0	Composition Seminar	4	Adam Schoenberg	10:05am-11:30am TR Bldg-TBD		15	7	0	0	0
-2017	fall	MUSC	272	0	Instrumental Conducting	2	Dean Anderson	02:00pm-04:00pm F Bldg-TBD	CFAP	15	4	0	0	0
-2017	fall	MUSC	280	0	Introduction to Ethnomusicology	4	Simeon Pillich	04:05pm-05:30pm MW Bldg-TBD	CPFA; CPGC; CPIC	25	23	8	0	2
+2017	fall	MUSC	272	0	Instrumental Conducting	2	Dean Anderson	02:00pm-04:00pm F Bldg-TBD	CFAP	15	5	0	0	0
+2017	fall	MUSC	280	0	Introduction to Ethnomusicology	4	Simeon Pillich	04:05pm-05:30pm MW Bldg-TBD	CPFA; CPGC; CPIC	25	21	7	0	2
 2017	fall	MUSC	350	0	Music Analysis: Form, Genre, Point of View	2	Irene Montefiore Girton	Time-TBD Days-TBD Bldg-TBD		6	1	0	0	0
 2017	fall	MUSC	490	0	Senior Seminar	4	David M. Kasunic	01:30pm-02:55pm TR Bldg-TBD		15	3	0	0	0
 2017	fall	PHAC	125	1	Dance Team	1	Katie Grogan	Time-TBD Days-TBD Bldg-TBD		99	1	0	0	0
@@ -13325,21 +13296,21 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	fall	PHAC	128	4	Spin Class I	0	Hannah R. Khin; William W. Morris	12:00pm-12:55pm MW Bldg-TBD		4	2	0	0	0
 2017	fall	PHAC	128	5	Spin Class I	1	Lorin N. Huffman; William W. Morris	08:30am-09:25am TR Bldg-TBD		14	5	0	0	0
 2017	fall	PHAC	128	6	Spin Class I	0	Lorin N. Huffman; William W. Morris	08:30am-09:25am TR Bldg-TBD		3	0	0	0	0
-2017	fall	PHAC	130	1	Boot Camp	1	Hannah R. Khin; William W. Morris	07:00am-07:55am TR Bldg-TBD		15	0	0	0	0
+2017	fall	PHAC	130	1	Boot Camp	1	Hannah R. Khin; William W. Morris	07:00am-07:55am TR Bldg-TBD		15	2	0	0	0
 2017	fall	PHAC	130	2	Boot Camp	0	Hannah R. Khin; William W. Morris	07:00am-07:55am TR Bldg-TBD		13	1	0	0	0
 2017	fall	PHAC	133	1	Circuit Weight Training	1	William W. Morris; Jesse Rodgers	08:00am-08:55am TR Bldg-TBD		99	0	0	0	0
 2017	fall	PHAC	133	2	Circuit Weight Training	0	William W. Morris; Jesse Rodgers	08:00am-08:55am TR Bldg-TBD		99	1	0	0	0
-2017	fall	PHAC	134	1	Beginning Yoga	1	William W. Morris; Laura C. Vandenbergh	08:00am-08:55am MW Bldg-TBD		20	5	0	0	0
-2017	fall	PHAC	134	2	Beginning Yoga	0	William W. Morris; Laura C. Vandenbergh	08:00am-08:55am MW Bldg-TBD		10	0	0	0	0
+2017	fall	PHAC	134	1	Beginning Yoga	1	William W. Morris; Laura C. Vandenbergh	08:00am-08:55am MW Bldg-TBD		20	4	0	0	0
+2017	fall	PHAC	134	2	Beginning Yoga	0	William W. Morris; Laura C. Vandenbergh	08:00am-08:55am MW Bldg-TBD		10	1	0	0	0
 2017	fall	PHAC	134	3	Beginning Yoga	1	William W. Morris; Laura C. Vandenbergh	01:00pm-01:50pm MW Bldg-TBD		20	5	0	0	0
 2017	fall	PHAC	134	4	Beginning Yoga	0	William W. Morris; Laura C. Vandenbergh	01:00pm-01:50pm MW Bldg-TBD		10	2	0	0	0
 2017	fall	PHAC	134	5	Beginning Yoga	1	William W. Morris; Laura C. Vandenbergh	08:00am-08:55am TR Bldg-TBD		20	2	0	0	0
-2017	fall	PHAC	134	6	Beginning Yoga	0	William W. Morris; Laura C. Vandenbergh	08:00am-08:55am TR Bldg-TBD		10	2	0	0	0
-2017	fall	PHAC	134	7	Beginning Yoga	1	Dana Joy Marshall; William W. Morris	08:10pm-10:00pm T Bldg-TBD		20	13	0	0	0
-2017	fall	PHAC	134	8	Beginning Yoga	0	Dana Joy Marshall; William W. Morris	08:10pm-10:00pm T Bldg-TBD		10	4	0	0	0
-2017	fall	PHAC	149	1	Karate	1	Victor Chico; William W. Morris	05:10pm-06:25pm MW Bldg-TBD		99	8	0	0	0
+2017	fall	PHAC	134	6	Beginning Yoga	0	William W. Morris; Laura C. Vandenbergh	08:00am-08:55am TR Bldg-TBD		10	3	0	0	0
+2017	fall	PHAC	134	7	Beginning Yoga	1	Dana Joy Marshall; William W. Morris	08:10pm-10:00pm T Bldg-TBD		20	11	0	0	0
+2017	fall	PHAC	134	8	Beginning Yoga	0	Dana Joy Marshall; William W. Morris	08:10pm-10:00pm T Bldg-TBD		10	5	0	0	0
+2017	fall	PHAC	149	1	Karate	1	Victor Chico; William W. Morris	05:10pm-06:25pm MW Bldg-TBD		99	9	0	0	0
 2017	fall	PHAC	149	2	Karate	0	Victor Chico; William W. Morris	05:10pm-06:25pm MW Bldg-TBD		99	1	0	0	0
-2017	fall	PHAC	150	1	Zumba	1	Marisol Gomez; William W. Morris	05:30pm-06:25pm TR Bldg-TBD		30	3	0	0	0
+2017	fall	PHAC	150	1	Zumba	1	Marisol Gomez; William W. Morris	05:30pm-06:25pm TR Bldg-TBD		30	5	0	0	0
 2017	fall	PHAC	150	2	Zumba	0	Marisol Gomez; William W. Morris	05:30pm-06:25pm TR Bldg-TBD		15	0	0	0	0
 2017	fall	PHAC	201	1	Intercollegiate Men's Cross Country	1	Robert John Bartlett; William W. Morris	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2017	fall	PHAC	201	2	Intercollegiate Men's Cross Country	0	Robert John Bartlett; William W. Morris	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
@@ -13355,14 +13326,14 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	fall	PHAC	206	2	Intercollegiate Volleyball	0	Heather A. Collins; William W. Morris	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2017	fall	PHAC	207	1	Intercollegiate Men's Water Polo	1	William W. Morris; Jack George Stabenfeldt	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2017	fall	PHAC	207	2	Intercollegiate Men's Water Polo	0	William W. Morris; Jack George Stabenfeldt	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
-2017	fall	PHIL	101	0	Introduction to Philosophy	4	Clair Morrissey	01:55pm-02:50pm MWF Bldg-TBD	CPGC	25	10	15	15	1
-2017	fall	PHIL	210	0	Historical Introduction to Philosophy	4	Saul P. Traiger	01:30pm-02:55pm TR Bldg-TBD	CPEU; CPPE; CPRF	25	14	10	7	0
-2017	fall	PHIL	225	0	Formal Logic	4	William Dylan Sabo	09:35am-10:30am MWF Bldg-TBD	CPMS	35	27	11	4	0
+2017	fall	PHIL	101	0	Introduction to Philosophy	4	Clair Morrissey	01:55pm-02:50pm MWF Bldg-TBD	CPGC	25	11	15	15	1
+2017	fall	PHIL	210	0	Historical Introduction to Philosophy	4	Saul P. Traiger	01:30pm-02:55pm TR Bldg-TBD	CPEU; CPPE; CPRF	25	15	10	7	0
+2017	fall	PHIL	225	0	Formal Logic	4	William Dylan Sabo	09:35am-10:30am MWF Bldg-TBD	CPMS	35	28	11	4	0
 2017	fall	PHIL	230	0	Introduction to Ethics	4	Marcia L. Homiak	10:05am-11:30am TR Bldg-TBD	CPGC; CPIC	25	16	12	7	0
-2017	fall	PHIL	235	0	Feminism	4	Instructor Unassigned	09:35am-10:30am MWF Bldg-TBD	CPUD	25	11	9	7	0
-2017	fall	PHIL	300	0	Topics in Classical Philosophy	4	Marcia L. Homiak	03:05pm-04:30pm TR Bldg-TBD	CPEU; CPPE	18	5	3	2	0
+2017	fall	PHIL	235	0	Feminism	4	Instructor Unassigned	09:35am-10:30am MWF Bldg-TBD	CPUD	25	12	9	7	0
+2017	fall	PHIL	300	0	Topics in Classical Philosophy	4	Marcia L. Homiak	03:05pm-04:30pm TR Bldg-TBD	CPEU; CPPE	18	4	3	2	0
 2017	fall	PHIL	345	0	Contemporary Moral Philosophy: Authenticity, Identity, and Freedom	4	Instructor Unassigned	10:40am-11:35am MWF Bldg-TBD	CPUD; CPUS	18	15	7	2	0
-2017	fall	PHIL	375	0	Theory of Knowledge	4	Saul P. Traiger	10:05am-11:30am TR Bldg-TBD	CPUD; CPUS	18	11	2	-2	0
+2017	fall	PHIL	375	0	Theory of Knowledge	4	Saul P. Traiger	10:05am-11:30am TR Bldg-TBD	CPUD; CPUS	18	12	2	-2	0
 2017	fall	PHIL	490	0	Senior Seminar	4	Clair Morrissey	04:05pm-05:30pm MW Bldg-TBD		10	7	0	0	0
 2017	fall	PHYS	110	1	Introductory Mechanics	4	Instructor Unassigned	10:40am-11:35am MWF Bldg-TBD	CPLS	36	2	30	30	0
 2017	fall	PHYS	110	2	Introductory Mechanics	4	Instructor Unassigned	01:55pm-02:50pm MWF Bldg-TBD	CPLS	36	2	30	30	0
@@ -13370,16 +13341,16 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	fall	PHYS	110L	2	Introductory Mechanics Laboratory	0	Instructor Unassigned	01:30pm-04:25pm T Bldg-TBD		14	1	11	11	0
 2017	fall	PHYS	110L	3	Introductory Mechanics Laboratory	0	Instructor Unassigned	08:30am-11:25am R Bldg-TBD		14	2	11	11	0
 2017	fall	PHYS	110L	4	Introductory Mechanics Laboratory	0	Instructor Unassigned	01:30pm-04:25pm R Bldg-TBD		14	1	11	11	0
-2017	fall	PHYS	115	0	General Physics I	4	Instructor Unassigned	09:35am-10:30am MWF Bldg-TBD	CPLS	28	21	0	0	0
+2017	fall	PHYS	115	0	General Physics I	4	Instructor Unassigned	09:35am-10:30am MWF Bldg-TBD	CPLS	28	22	0	0	0
 2017	fall	PHYS	115L	1	General Physics I Laboratory	0	Instructor Unassigned	08:30am-11:25am T Bldg-TBD		14	9	0	0	0
-2017	fall	PHYS	115L	2	General Physics I Laboratory	0	Instructor Unassigned	01:30pm-04:25pm T Bldg-TBD		14	12	0	0	0
+2017	fall	PHYS	115L	2	General Physics I Laboratory	0	Instructor Unassigned	01:30pm-04:25pm T Bldg-TBD		14	13	0	0	0
 2017	fall	PHYS	120	0	Introductory Electricity and Magnetism	4	Daniel P. Snowden-Ifft	08:30am-09:25am MWF Bldg-TBD	CPLS	32	22	0	0	0
 2017	fall	PHYS	120L	1	Introductory Electricity and Magnetism Laboratory	0	Instructor Unassigned	03:00pm-05:55pm M Bldg-TBD		14	7	0	0	0
 2017	fall	PHYS	120L	2	Introductory Electricity and Magnetism Laboratory	0	Instructor Unassigned	08:30am-11:25am T Bldg-TBD		14	10	0	0	0
 2017	fall	PHYS	120L	3	Introductory Electricity and Magnetism Laboratory	0	Instructor Unassigned	01:30pm-04:25pm T Bldg-TBD		14	5	0	0	0
 2017	fall	PHYS	125	0	General Physics II	4	Instructor Unassigned	12:50pm-01:45pm MWF Bldg-TBD	CPLS	28	15	0	0	0
-2017	fall	PHYS	125L	1	General Physics II Laboratory	0	Instructor Unassigned	08:30am-11:25am R Bldg-TBD		14	13	0	0	0
-2017	fall	PHYS	125L	2	General Physics II Laboratory	0	Instructor Unassigned	01:30pm-04:25pm R Bldg-TBD		14	2	0	0	0
+2017	fall	PHYS	125L	1	General Physics II Laboratory	0	Instructor Unassigned	08:30am-11:25am R Bldg-TBD		14	12	0	0	0
+2017	fall	PHYS	125L	2	General Physics II Laboratory	0	Instructor Unassigned	01:30pm-04:25pm R Bldg-TBD		14	3	0	0	0
 2017	fall	PHYS	310	0	Mathematical Methods in Physics	4	Alec J. Schramm	09:35am-10:30am MWF Bldg-TBD; 10:05am-11:30am T Bldg-TBD	CPMS	24	19	0	0	0
 2017	fall	PHYS	315	1	Advanced Laboratory I	2	Instructor Unassigned	01:30pm-04:25pm T Bldg-TBD		12	4	0	0	0
 2017	fall	PHYS	315	2	Advanced Laboratory I	2	Instructor Unassigned	01:30pm-04:25pm R Bldg-TBD		12	6	0	0	0
@@ -13394,9 +13365,9 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	fall	POLS	140	0	Law and Society	4	Instructor Unassigned	01:55pm-02:50pm MWF Bldg-TBD	CPUD; CPUS	25	17	5	5	9
 2017	fall	POLS	150	0	Introduction to Political Theory	4	Ainsley LeSure	05:40pm-07:05pm MW Bldg-TBD	CPGC	25	10	5	5	0
 2017	fall	POLS	207	0	Los Angeles Politics	4	Regina Freer	10:05am-11:30am TR Bldg-TBD	CPUD; CPUS	25	22	0	0	7
-2017	fall	POLS	209	0	Health Policy	4	Instructor Unassigned	04:05pm-05:30pm MW Bldg-TBD	CPGC	25	23	0	0	4
-2017	fall	POLS	221	0	Latin American Politics	4	Juvenal Cortes	05:40pm-07:05pm MW Bldg-TBD	CPLA; CPRF	25	23	0	0	1
-2017	fall	POLS	264	0	Disaster Politics:  New Orleans in the Wake of Hurricane Katrina	4	Caroline Heldman	05:40pm-07:05pm MW Bldg-TBD		15	13	0	0	0
+2017	fall	POLS	209	0	Health Policy	4	Instructor Unassigned	04:05pm-05:30pm MW Bldg-TBD	CPGC	25	25	0	0	3
+2017	fall	POLS	221	0	Latin American Politics	4	Juvenal Cortes	05:40pm-07:05pm MW Bldg-TBD	CPLA; CPRF	25	24	0	0	1
+2017	fall	POLS	264	0	Disaster Politics:  New Orleans in the Wake of Hurricane Katrina	4	Caroline Heldman	05:40pm-07:05pm MW Bldg-TBD		15	15	0	0	0
 2017	fall	POLS	265	0	Community Planning and Politics Practicum	4	Regina Freer	01:30pm-02:55pm TR Bldg-TBD	CPUD	25	26	0	0	0
 2017	fall	POLS	280	0	Washington, D.C. Internship	8	Instructor Unassigned	Time-TBD Days-TBD Bldg-TBD	CPUD; CPUS	25	5	0	0	0
 2017	fall	POLS	281	0	Seminar in Political Leadership	4	Instructor Unassigned	Time-TBD Days-TBD Bldg-TBD	CPUD; CPUS	25	5	0	0	0
@@ -13405,141 +13376,141 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	fall	POLS	284	0	Seminar in Washington Politics: Global Women?s Leadership Development	4	Instructor Unassigned	Time-TBD Days-TBD Bldg-TBD	CPGC; CPIC	25	0	0	0	0
 2017	fall	POLS	285	0	Seminar in Washington Politics: Inside Washington Politics and Policies	4	Instructor Unassigned	Time-TBD Days-TBD Bldg-TBD	CPUD; CPUS	25	2	0	0	0
 2017	fall	POLS	286	0	Seminar in Washington Politics: International and Foreign Policy Studies	4	Instructor Unassigned	Time-TBD Days-TBD Bldg-TBD	CPGC; CPIC	25	3	0	0	0
-2017	fall	POLS	300	1	Research Methods in Politics and Public Policy	4	Jennifer M. Piscopo	03:05pm-04:30pm TR Bldg-TBD	CPMS	25	8	0	0	0
-2017	fall	POLS	300	2	Research Methods in Politics and Public Policy	4	Jennifer M. Piscopo	05:00pm-06:25pm TR Bldg-TBD	CPMS	25	21	0	0	3
+2017	fall	POLS	300	1	Research Methods in Politics and Public Policy	4	Jennifer M. Piscopo	03:05pm-04:30pm TR Bldg-TBD	CPMS	25	9	0	0	0
+2017	fall	POLS	300	2	Research Methods in Politics and Public Policy	4	Jennifer M. Piscopo	05:00pm-06:25pm TR Bldg-TBD	CPMS	25	22	0	0	3
 2017	fall	POLS	320	0	Contemporary Debates in Comparative Politics	4	Instructor Unassigned	01:30pm-02:55pm TR Bldg-TBD	CPGC	18	3	0	0	0
 2017	fall	POLS	355	0	Critical Fanonism	4	Ainsley LeSure	04:05pm-05:30pm MW Bldg-TBD		18	5	0	0	0
-2017	fall	PSYC	101	1	Introduction to Psychology	4	Nancy K. Dess	08:30am-09:55am TR Bldg-TBD	CPMS	31	10	17	17	0
-2017	fall	PSYC	101	2	Introduction to Psychology	4	Instructor Unassigned	10:05am-11:30am TR Bldg-TBD	CPMS	31	16	14	14	3
-2017	fall	PSYC	101	3	Introduction to Psychology	4	Instructor Unassigned	08:30am-09:55am TR Bldg-TBD	CPMS	31	7	14	14	0
-2017	fall	PSYC	200	0	Methods in Psychological Science	4	Andrea Hopmeyer	09:35am-10:30am MWF Bldg-TBD	CPMS	18	17	2	2	1
-2017	fall	PSYC	201	0	Statistics in Psychological Science	4	Nancy K. Dess	10:05am-11:30am TR Bldg-TBD	CPMS	18	21	11	-1	0
+2017	fall	PSYC	101	1	Introduction to Psychology	4	Nancy K. Dess	08:30am-09:55am TR Bldg-TBD	CPMS	31	11	17	17	0
+2017	fall	PSYC	101	2	Introduction to Psychology	4	Susan Geffen	10:05am-11:30am TR Bldg-TBD	CPMS	31	15	14	14	3
+2017	fall	PSYC	101	3	Introduction to Psychology	4	Susan Geffen	08:30am-09:55am TR Bldg-TBD	CPMS	31	7	14	14	0
+2017	fall	PSYC	200	0	Methods in Psychological Science	4	Andrea Hopmeyer	09:35am-10:30am MWF Bldg-TBD	CPMS	18	18	2	2	1
+2017	fall	PSYC	201	0	Statistics in Psychological Science	4	Nancy K. Dess	10:05am-11:30am TR Bldg-TBD	CPMS	18	19	11	0	0
 2017	fall	PSYC	295	1	Directed Research	2	Nancy K. Dess	Time-TBD Days-TBD Bldg-TBD		5	0	0	0	0
-2017	fall	PSYC	295	2	Directed Research	2	Andrea Hopmeyer	Time-TBD Days-TBD Bldg-TBD		5	5	0	0	0
+2017	fall	PSYC	295	2	Directed Research	2	Andrea Hopmeyer	Time-TBD Days-TBD Bldg-TBD		5	6	0	0	0
 2017	fall	PSYC	295	3	Directed Research	2	Brian Hahn Kim	Time-TBD Days-TBD Bldg-TBD		5	0	0	0	0
 2017	fall	PSYC	295	4	Directed Research	2	Andrew E. Shtulman	Time-TBD Days-TBD Bldg-TBD		5	0	0	0	0
-2017	fall	PSYC	302	0	Perception	4	Susan Geffen	01:55pm-02:50pm MWF Bldg-TBD	CPMS	1	9	1	1	0
+2017	fall	PSYC	302	0	Perception	4	Susan Geffen	01:55pm-02:50pm MWF Bldg-TBD	CPMS	19	11	2	2	0
 2017	fall	PSYC	306	1	Cognitive Psychology	4	Andrew E. Shtulman	01:55pm-02:50pm MWF Bldg-TBD	CPMS	19	22	8	-1	2
-2017	fall	PSYC	306	2	Cognitive Psychology	4	Andrew E. Shtulman	03:00pm-03:55pm MWF Bldg-TBD	CPMS	19	20	7	-2	6
+2017	fall	PSYC	306	2	Cognitive Psychology	4	Andrew E. Shtulman	03:00pm-03:55pm MWF Bldg-TBD	CPMS	19	21	7	-3	6
 2017	fall	PSYC	321	0	Developmental Psychology	4	Andrea Hopmeyer	08:30am-09:25am MWF Bldg-TBD		19	21	9	-1	4
-2017	fall	PSYC	322	0	Physiological Psychology	4	Clinton D. Chapman	08:30am-09:25am MWF Bldg-TBD		19	15	8	1	1
+2017	fall	PSYC	322	0	Physiological Psychology	4	Clinton D. Chapman	08:30am-09:25am MWF Bldg-TBD		19	14	8	1	1
 2017	fall	PSYC	322L	1	Physiological Psychology Laboratory	2	Clinton D. Chapman	08:30am-11:25am T Bldg-TBD	CPLS	8	5	0	0	0
 2017	fall	PSYC	322L	2	Physiological Psychology Laboratory	2	Clinton D. Chapman	01:55pm-04:50pm W Bldg-TBD	CPLS	8	5	0	0	0
-2017	fall	PSYC	330	1	Abnormal Psychology	4	Instructor Unassigned	01:30pm-02:55pm TR Bldg-TBD		19	18	11	1	4
+2017	fall	PSYC	330	1	Abnormal Psychology	4	Doug L. Wilson	01:30pm-02:55pm TR Bldg-TBD		19	17	11	1	3
 2017	fall	PSYC	330	2	Abnormal Psychology	4	Instructor Unassigned	03:05pm-04:30pm TR Bldg-TBD		19	16	11	2	0
-2017	fall	PSYC	340	0	Organizational Psychology	4	Brian Hahn Kim	10:40am-11:35am MWF Bldg-TBD		19	22	9	1	0
+2017	fall	PSYC	340	0	Organizational Psychology	4	Brian Hahn Kim	10:40am-11:35am MWF Bldg-TBD		19	21	9	1	0
 2017	fall	PSYC	395	1	Directed Research	2	Nancy K. Dess	Time-TBD Days-TBD Bldg-TBD		5	0	0	0	0
 2017	fall	PSYC	395	2	Directed Research	2	Andrea Hopmeyer	Time-TBD Days-TBD Bldg-TBD		5	1	0	0	0
 2017	fall	PSYC	395	3	Directed Research	2	Brian Hahn Kim	Time-TBD Days-TBD Bldg-TBD		5	1	0	0	0
-2017	fall	PSYC	395	4	Directed Research	2	Andrew E. Shtulman	Time-TBD Days-TBD Bldg-TBD		5	3	0	0	0
+2017	fall	PSYC	395	4	Directed Research	2	Andrew E. Shtulman	Time-TBD Days-TBD Bldg-TBD		5	6	0	0	0
 2017	fall	PSYC	436	0	Comparative Cognition	4	Nancy K. Dess	01:30pm-02:55pm TR Bldg-TBD		16	5	4	0	0
 2017	fall	PSYC	448	0	Theories of Personality	4	Brian Hahn Kim	10:05am-11:30am TR Bldg-TBD		16	10	6	0	0
 2017	fall	PSYC	460	0	Assessment of Individual Differences	4	Brian Hahn Kim	01:30pm-02:55pm TR Bldg-TBD		12	8	0	0	0
 2017	fall	PSYC	498	0	Practicum in Psychology	4	Brian Hahn Kim	Time-TBD Days-TBD Bldg-TBD		5	1	1	0	0
 2017	fall	RELS	130	0	Jewish Communities in Antiquity	4	Peter T. Lanfer	04:05pm-05:30pm MW Bldg-TBD	CPGC; CPPE	35	9	8	8	0
-2017	fall	RELS	150	0	Introduction to Islam	4	Malek Moazzam-Doulat	01:30pm-02:55pm TR Bldg-TBD	CPAF; CPPE; CPRF	35	27	8	8	4
-2017	fall	RELS	160	0	How to Live and Die Well in Buddhist Traditions	4	Instructor Unassigned	10:05am-11:30am TR Bldg-TBD	CPGC; CPPE	35	29	8	8	5
+2017	fall	RELS	150	0	Introduction to Islam	4	Malek Moazzam-Doulat	01:30pm-02:55pm TR Bldg-TBD	CPAF; CPPE; CPRF	35	27	8	8	2
+2017	fall	RELS	160	0	How to Live and Die Well in Buddhist Traditions	4	Instructor Unassigned	10:05am-11:30am TR Bldg-TBD	CPGC; CPPE	35	29	8	8	6
 2017	fall	RELS	240	0	Religion and Social Reform	4	D. Keith Naylor	10:40am-11:35am MWF Bldg-TBD	CPUD; CPUS	25	11	5	5	0
 2017	fall	RELS	245	0	African American Religious Traditions	4	D. Keith Naylor	01:55pm-02:50pm MWF Bldg-TBD	CPUD; CPUS	25	14	5	5	0
-2017	fall	RELS	276	0	Empire and Religion in Asia and the Pacific	4	Instructor Unassigned	03:05pm-04:30pm TR Bldg-TBD	CPGC	20	8	0	0	0
-2017	fall	RELS	282	0	"Good" Sex: History of Christian Sexual Ethics	4	Kristi J. Upson-Saia	01:30pm-02:55pm TR Bldg-TBD	CPGC; CPPE	20	23	5	-2	5
-2017	fall	RELS	296	0	Contemporary Islam in the Modern Middle East	4	Malek Moazzam-Doulat	05:00pm-06:25pm TR Bldg-TBD	CPRF	30	28	0	0	4
+2017	fall	RELS	276	0	Empire and Religion in Asia and the Pacific	4	Instructor Unassigned	03:05pm-04:30pm TR Bldg-TBD	CPGC	20	9	0	0	0
+2017	fall	RELS	282	0	"Good" Sex: History of Christian Sexual Ethics	4	Kristi J. Upson-Saia	01:30pm-02:55pm TR Bldg-TBD	CPGC; CPPE	20	23	5	-2	4
+2017	fall	RELS	296	0	Contemporary Islam in the Modern Middle East	4	Malek Moazzam-Doulat	05:00pm-06:25pm TR Bldg-TBD	CPRF	30	29	0	0	4
 2017	fall	RELS	490	0	Senior Seminar	4	Kristi J. Upson-Saia	07:15pm-10:10pm T Bldg-TBD		12	3	0	0	0
 2017	fall	RUSN	101	0	Elementary Russian I	4	Walter G. Richmond	03:00pm-03:55pm MWF Bldg-TBD		20	3	0	0	0
 2017	fall	RUSN	201	0	Intermediate Russian I	5	Walter G. Richmond	04:05pm-05:30pm MWF Bldg-TBD	CPEU; CPRF	20	3	0	0	0
 2017	fall	RUSN	331	0	Slavic Pagan Culture: Russian Section	5	Walter G. Richmond	10:05am-11:30am TR Bldg-TBD; 01:30pm-02:55pm T Bldg-TBD	CPPE; CPRF	10	0	0	0	0
-2017	fall	SOC	101	1	Introduction to Sociology	4	Charles Potts	01:55pm-02:50pm MWF Bldg-TBD	CPUD; CPUS	30	12	23	23	0
-2017	fall	SOC	101	2	Introduction to Sociology	4	John Liu	10:05am-11:30am TR Bldg-TBD	CPUD; CPUS	30	6	23	23	0
+2017	fall	SOC	101	1	Introduction to Sociology	4	Charles Potts	01:55pm-02:50pm MWF Bldg-TBD	CPUD; CPUS	30	11	23	23	1
+2017	fall	SOC	101	2	Introduction to Sociology	4	John Liu	10:05am-11:30am TR Bldg-TBD	CPUD; CPUS	30	7	23	23	0
 2017	fall	SOC	101	3	Introduction to Sociology	4	John Liu	03:05pm-04:30pm TR Bldg-TBD	CPUD; CPUS	30	7	23	23	2
-2017	fall	SOC	200	0	Classical Sociological Theory: Marx, Weber, Durkheim	4	Dolores Trevizo	03:05pm-04:30pm TR Bldg-TBD		25	16	11	1	1
+2017	fall	SOC	200	0	Classical Sociological Theory: Marx, Weber, Durkheim	4	Dolores Trevizo	03:05pm-04:30pm TR Bldg-TBD		25	14	10	1	1
 2017	fall	SOC	230	1	Marriage and Family	4	Krystale Elaine Littlejohn	09:35am-10:30am MWF Bldg-TBD	CPUD	25	24	13	1	0
 2017	fall	SOC	230	2	Marriage and Family	4	Krystale Elaine Littlejohn	10:40am-11:35am MWF Bldg-TBD	CPUD	25	25	17	1	2
-2017	fall	SOC	265	0	Gender and Society	4	Lisa Dawn Wade	04:05pm-05:30pm MW Bldg-TBD	CPUS	25	18	8	1	1
+2017	fall	SOC	265	0	Gender and Society	4	Lisa Dawn Wade	04:05pm-05:30pm MW Bldg-TBD	CPUS	25	19	8	1	1
 2017	fall	SOC	304	0	Sociological Inquiry	4	Lisa Dawn Wade	05:40pm-07:05pm MW Bldg-TBD		18	13	13	0	0
 2017	fall	SOC	305	0	Quantitative Research Methods	4	John Liu	01:30pm-02:55pm TR Bldg-TBD	CPMS	15	8	8	0	0
-2017	fall	SOC	370	1	Sociology of (Non)Violence	4	Richard Mora	09:35am-10:30am MWF Bldg-TBD	CPGC; CPIC	18	13	7	1	1
+2017	fall	SOC	370	1	Sociology of (Non)Violence	4	Richard Mora	09:35am-10:30am MWF Bldg-TBD	CPGC; CPIC	18	13	7	1	0
 2017	fall	SOC	370	2	Sociology of (Non)Violence	4	Richard Mora	10:40am-11:35am MWF Bldg-TBD	CPGC; CPIC	18	17	11	1	0
-2017	fall	SOC	380	0	Sociology of Disaster	4	Charles Potts	09:35am-10:30am MWF Bldg-TBD	CPUD; CPUS	18	10	5	1	0
-2017	fall	SOC	390	0	Sociology of Religion	4	Charles Potts	03:00pm-03:55pm MWF Bldg-TBD	CPUD; CPUS	18	12	9	1	0
+2017	fall	SOC	380	0	Sociology of Disaster	4	Charles Potts	09:35am-10:30am MWF Bldg-TBD	CPUD; CPUS	18	12	5	1	0
+2017	fall	SOC	390	0	Sociology of Religion	4	Charles Potts	03:00pm-03:55pm MWF Bldg-TBD	CPUD; CPUS	18	11	9	1	0
 2017	fall	SOC	490	1	Senior Seminar in Sociology	4	John T. Lang	01:55pm-02:50pm MWF Bldg-TBD		12	6	6	0	0
 2017	fall	SOC	490	2	Senior Seminar in Sociology	4	Krystale Elaine Littlejohn	01:55pm-02:50pm MWF Bldg-TBD		12	10	10	0	0
 2017	fall	SOC	490	3	Senior Seminar in Sociology	4	Richard Mora	01:55pm-02:50pm MWF Bldg-TBD		12	7	7	0	0
-2017	fall	SPAN	101	1	Beginning Spanish I	4	Karina Rincon	09:35am-10:30am MWF Bldg-TBD		18	12	5	5	1
+2017	fall	SPAN	101	1	Beginning Spanish I	4	Karina Rincon	09:35am-10:30am MWF Bldg-TBD		18	12	5	5	2
 2017	fall	SPAN	101	2	Beginning Spanish I	4	Karina Rincon	01:55pm-02:50pm MWF Bldg-TBD		18	12	5	5	5
-2017	fall	SPAN	102	1	Beginning Spanish II	4	Karina Rincon	08:30am-09:25am MWF Bldg-TBD		18	2	5	5	0
+2017	fall	SPAN	102	1	Beginning Spanish II	4	Karina Rincon	08:30am-09:25am MWF Bldg-TBD		18	3	5	5	0
 2017	fall	SPAN	102	2	Beginning Spanish II	4	Gloria Luz Orozco Allan	09:35am-10:30am MWF Bldg-TBD		18	14	5	5	2
-2017	fall	SPAN	102	3	Beginning Spanish II	4	Gloria Luz Orozco Allan	10:40am-11:35am MWF Bldg-TBD		18	14	5	5	4
-2017	fall	SPAN	102	4	Beginning Spanish II	4	Alicia Gonzalez	01:55pm-02:50pm MWF Bldg-TBD		18	13	5	5	3
-2017	fall	SPAN	102	5	Beginning Spanish II	4	Instructor Unassigned	03:00pm-03:55pm MWF Bldg-TBD		18	8	5	5	0
+2017	fall	SPAN	102	3	Beginning Spanish II	4	Gloria Luz Orozco Allan	10:40am-11:35am MWF Bldg-TBD		18	14	5	5	3
+2017	fall	SPAN	102	4	Beginning Spanish II	4	Alicia Gonzalez	01:55pm-02:50pm MWF Bldg-TBD		18	13	5	5	4
+2017	fall	SPAN	102	5	Beginning Spanish II	4	Instructor Unassigned	03:00pm-03:55pm MWF Bldg-TBD		18	9	5	5	0
 2017	fall	SPAN	151	1	Intermediate Conversation I	1	Robert R. Ellis	06:00pm-06:55pm MW Bldg-TBD		99	5	0	0	0
 2017	fall	SPAN	151	2	Intermediate Conversation I	1	Robert R. Ellis	07:15pm-08:10pm TR Bldg-TBD		99	7	0	0	0
 2017	fall	SPAN	201	1	Intermediate Spanish	4	Alicia Gonzalez	10:40am-11:35am MWF Bldg-TBD		18	10	5	5	0
-2017	fall	SPAN	201	2	Intermediate Spanish	4	Michael F. Shelton	01:55pm-02:50pm MWF Bldg-TBD		18	9	5	5	0
+2017	fall	SPAN	201	2	Intermediate Spanish	4	Michael F. Shelton	01:55pm-02:50pm MWF Bldg-TBD		18	11	5	5	0
 2017	fall	SPAN	201	3	Intermediate Spanish	4	Alicia Gonzalez	03:00pm-03:55pm MWF Bldg-TBD		18	3	5	5	0
-2017	fall	SPAN	202	1	Advanced Spanish	4	Adelaida Lopez	01:55pm-02:50pm MWF Bldg-TBD	CPGC; CPIC	18	13	5	5	1
+2017	fall	SPAN	202	1	Advanced Spanish	4	Adelaida Lopez	01:55pm-02:50pm MWF Bldg-TBD	CPGC; CPIC	18	13	5	5	0
 2017	fall	SPAN	202	2	Advanced Spanish	4	Adelaida Lopez	03:00pm-03:55pm MWF Bldg-TBD	CPGC; CPIC	18	11	5	5	0
 2017	fall	SPAN	211	0	Advanced Spanish for Native Speakers	4	Gloria Luz Orozco Allan	01:55pm-02:50pm MWF Bldg-TBD	CPGC; CPIC	18	4	5	5	0
 2017	fall	SPAN	251	1	Advanced Conversation I	1	Robert R. Ellis	06:00pm-06:55pm MW Bldg-TBD		99	6	0	0	0
-2017	fall	SPAN	251	2	Advanced Conversation I	1	Robert R. Ellis	07:15pm-08:10pm TR Bldg-TBD		99	4	0	0	0
+2017	fall	SPAN	251	2	Advanced Conversation I	1	Robert R. Ellis	07:15pm-08:10pm TR Bldg-TBD		99	3	0	0	0
 2017	fall	SPAN	304	1	Introduction to Modern Spanish Literature and Civilization	4	Robert R. Ellis	01:55pm-02:50pm MWF Bldg-TBD	CPEU; CPRF	18	19	0	0	0
 2017	fall	SPAN	304	2	Introduction to Modern Spanish Literature and Civilization	4	Robert R. Ellis	03:00pm-03:55pm MWF Bldg-TBD	CPEU; CPRF	18	8	0	0	0
-2017	fall	SPAN	314	0	Latin American Women's Voices in Fiction and Film	4	Adelaida Lopez	03:05pm-04:30pm TR Bldg-TBD	CPLA; CPRF	18	13	0	0	0
-2017	fall	SPAN	320	0	Golden Age Spanish Literature and Film	5	Felisa Guillen	01:30pm-02:55pm TR Bldg-TBD; 12:30pm-01:29pm R Bldg-TBD	CPEU; CPPE; CPRF	18	17	0	0	0
-2017	fall	SPAN	363	0	Hispanic Autobiography	4	Robert R. Ellis	11:45am-12:40pm MWF Bldg-TBD	CPGC; CPIC	18	10	0	0	0
+2017	fall	SPAN	314	0	Latin American Women's Voices in Fiction and Film	4	Adelaida Lopez	03:05pm-04:30pm TR Bldg-TBD	CPLA; CPRF	18	14	0	0	0
+2017	fall	SPAN	320	0	Golden Age Spanish Literature and Film	5	Felisa Guillen	01:30pm-02:55pm TR Bldg-TBD; 12:30pm-01:29pm R Bldg-TBD	CPEU; CPPE; CPRF	18	16	0	0	0
+2017	fall	SPAN	363	0	Hispanic Autobiography	4	Robert R. Ellis	11:45am-12:40pm MWF Bldg-TBD	CPGC; CPIC	18	11	0	0	0
 2017	fall	SPAN	398	0	Community Translation Practicum	2	Felisa Guillen	Time-TBD Days-TBD Bldg-TBD		7	5	0	0	0
 2017	fall	SPAN	490	1	Senior Seminar: Genre and Literary Theory	4	Salvador C. Fernandez	10:05am-11:30am TR Bldg-TBD		10	10	0	0	0
 2017	fall	SPAN	490	2	Senior Seminar: Genre and Literary Theory	4	Salvador C. Fernandez	01:30pm-02:55pm TR Bldg-TBD		10	5	0	0	0
-2017	fall	THEA	101	0	Dramatic Literature: The Art of Reading Scripts	4	Laural Meade	03:00pm-03:55pm MWF Bldg-TBD	CPFA; CPGC; CPIC	35	19	17	17	3
+2017	fall	THEA	101	0	Dramatic Literature: The Art of Reading Scripts	4	Laural Meade	03:00pm-03:55pm MWF Bldg-TBD	CPFA; CPGC; CPIC	35	18	17	17	5
 2017	fall	THEA	110	1	Introduction to Performance	2	James K. Angell	10:40am-11:35am MWF Bldg-TBD	CFAP	12	6	6	6	0
 2017	fall	THEA	110	2	Introduction to Performance	2	James K. Angell	10:40am-11:35am MWF Bldg-TBD	CFAP	12	2	6	6	0
-2017	fall	THEA	120	0	Introduction to Technical Theater	4	Brian A. Fitzmorris	04:05pm-05:00pm MWF Bldg-TBD	CPFA	18	5	9	9	0
+2017	fall	THEA	120	0	Introduction to Technical Theater	4	Brian A. Fitzmorris	04:05pm-05:00pm MWF Bldg-TBD	CPFA	18	6	9	9	0
 2017	fall	THEA	121	1	Production Laboratory	1	Brian A. Fitzmorris	Time-TBD Days-TBD Bldg-TBD	CFAP	10	9	0	0	1
 2017	fall	THEA	121	2	Production Laboratory	1	Tom Slotten	Time-TBD Days-TBD Bldg-TBD	CFAP	3	2	0	0	0
 2017	fall	THEA	122	0	Intensive Production Laboratory	2	Brian A. Fitzmorris	Time-TBD Days-TBD Bldg-TBD	CFAP	10	0	0	0	0
 2017	fall	THEA	130	0	Modern Dance	1	Francisco Martinez	06:45pm-08:10pm MW Bldg-TBD	CFAP	20	1	5	5	0
 2017	fall	THEA	131	0	Beginning Jazz and Tap Dance	1	Jenna K. Dillon	04:05pm-05:30pm MW Bldg-TBD	CFAP	20	4	5	5	0
-2017	fall	THEA	133	0	Beginning Tai Chi	1	Ezra Ethan Weisz	12:30pm-01:25pm TR Bldg-TBD	CFAP	20	6	5	5	0
+2017	fall	THEA	133	0	Beginning Tai Chi	1	Ezra Ethan Weisz	12:30pm-01:25pm TR Bldg-TBD	CFAP	20	7	5	5	0
 2017	fall	THEA	134	0	Beginning Ballet	1	Francisco Martinez	04:40pm-06:05pm T Bldg-TBD	CFAP	20	13	5	5	0
 2017	fall	THEA	137	0	Choreography	2	Francisco Martinez	03:05pm-04:30pm TR Bldg-TBD	CFAP	18	2	0	0	0
-2017	fall	THEA	139	0	African Dance	1	Teresia Brooks	Time-TBD Days-TBD Bldg-TBD		20	1	5	5	0
+2017	fall	THEA	139	0	African Dance	1	Teresia Brooks	Time-TBD Days-TBD Bldg-TBD		20	3	5	5	0
 2017	fall	THEA	142	0	Folk and Historical Dance	1	Alan P. Knoerr	11:45am-01:15pm R Bldg-TBD	CFAP	20	1	5	5	0
-2017	fall	THEA	190	0	Theater Now: Los Angeles	2	Laural Meade	05:10pm-06:30pm M Bldg-TBD; 07:00pm-11:00pm F Bldg-TBD	CFAP	14	1	2	2	0
+2017	fall	THEA	190	0	Theater Now: Los Angeles	2	Laural Meade	05:10pm-06:30pm M Bldg-TBD; 07:00pm-11:00pm F Bldg-TBD	CFAP	14	2	2	2	0
 2017	fall	THEA	202	0	Shakespeare's Scripts	4	John R. Bouchard	01:55pm-02:50pm MWF Bldg-TBD	CPFA; CPPE; CPRF	18	12	2	2	0
 2017	fall	THEA	204	0	Comedy and Social Change	4	James K. Angell	01:30pm-02:55pm TR Bldg-TBD	CPFA	18	11	2	2	0
-2017	fall	THEA	210	0	Acting 1	4	Sarah E. Kozinn	01:55pm-03:55pm MW Bldg-TBD	CPFA	14	4	6	6	0
+2017	fall	THEA	210	0	Acting 1	4	Sarah E. Kozinn	01:55pm-03:55pm MW Bldg-TBD	CPFA	14	5	6	6	0
 2017	fall	THEA	211	1	Performance Laboratory	1	John R. Bouchard	Time-TBD Days-TBD Bldg-TBD	CFAP	20	0	0	0	0
 2017	fall	THEA	211	2	Performance Laboratory	1	Sarah E. Kozinn	Time-TBD Days-TBD Bldg-TBD	CFAP	20	0	0	0	0
 2017	fall	THEA	233	0	Advanced Tai Chi	1	Ezra Ethan Weisz	12:30pm-01:25pm TR Bldg-TBD	CFAP	20	0	0	0	0
 2017	fall	THEA	260	0	Children's Theater, 3rd Grade	2	James K. Angell	08:30am-09:55am TR Bldg-TBD	CFAP	6	0	0	0	0
 2017	fall	THEA	301	0	Topics in Theater History	4	Sarah E. Kozinn	09:35am-10:30am MWF Bldg-TBD	CPFA; CPGC; CPPE	18	19	2	2	0
-2017	fall	THEA	303	0	Latina/o Theatre and Performance	4	Jorge A. Huerta	10:05am-11:30am TR Bldg-TBD	CPFA; CPUD	25	17	0	0	0
+2017	fall	THEA	303	0	Latina/o Theatre and Performance	4	Jorge A. Huerta	10:05am-11:30am TR Bldg-TBD	CPFA; CPUD	25	16	0	0	0
 2017	fall	THEA	310	0	Acting 2	4	John R. Bouchard	10:40am-12:40pm MWF Bldg-TBD	CPFA	14	1	0	0	0
 2017	fall	THEA	311	1	Intensive Performance Laboratory	2	John R. Bouchard	Time-TBD Days-TBD Bldg-TBD	CFAP	20	0	0	0	0
 2017	fall	THEA	311	2	Intensive Performance Laboratory	2	Sarah E. Kozinn	Time-TBD Days-TBD Bldg-TBD	CFAP	20	0	0	0	0
-2017	fall	THEA	370	0	Costume Design	4	Tom Slotten	01:30pm-02:55pm TR Bldg-TBD	CPFA	18	10	2	2	0
-2017	fall	THEA	380	0	Playwriting	4	Laural Meade	03:05pm-04:50pm TR Bldg-TBD	CPFA	12	10	0	0	0
+2017	fall	THEA	370	0	Costume Design	4	Tom Slotten	01:30pm-02:55pm TR Bldg-TBD	CPFA	18	11	2	2	0
+2017	fall	THEA	380	0	Playwriting	4	Laural Meade	03:05pm-04:50pm TR Bldg-TBD	CPFA	12	11	0	0	0
 2017	fall	THEA	490	0	Senior Seminar	4	Susan Gratch	12:50pm-01:45pm W Bldg-TBD		20	6	0	0	0
-2017	fall	UEP	101	1	Environment and Society	4	Mijin Cha	10:05am-11:30am TR Bldg-TBD	CPUD; CPUS	25	13	11	11	3
-2017	fall	UEP	101	2	Environment and Society	4	Mijin Cha	01:30pm-02:55pm TR Bldg-TBD	CPUD; CPUS	25	11	11	11	0
-2017	fall	UEP	203	1	Introduction to Public Health	4	Jane S. Schmitz	01:30pm-02:55pm TR Bldg-TBD	CPUD; CPUS	25	15	0	0	0
+2017	fall	UEP	101	1	Environment and Society	4	Mijin Cha	10:05am-11:30am TR Bldg-TBD	CPUD; CPUS	25	12	11	11	3
+2017	fall	UEP	101	2	Environment and Society	4	Mijin Cha	01:30pm-02:55pm TR Bldg-TBD	CPUD; CPUS	25	12	11	11	0
+2017	fall	UEP	203	1	Introduction to Public Health	4	Jane S. Schmitz	01:30pm-02:55pm TR Bldg-TBD	CPUD; CPUS	25	14	0	0	0
 2017	fall	UEP	203	2	Introduction to Public Health	4	Nicole Vick	01:30pm-02:55pm TR Bldg-TBD	CPUD; CPUS	25	8	0	0	0
-2017	fall	UEP	209	0	Health Policy	4	Instructor Unassigned	04:05pm-05:30pm MW Bldg-TBD	CPGC	25	23	0	0	2
-2017	fall	UEP	212	0	Policy Debates and Controversies in Education--Panel Sessions	2	Steven J. Zimmer	07:15pm-09:15pm W Bldg-TBD	CUDP; CUSP	25	9	0	0	0
-2017	fall	UEP	213	0	Policy Debates and Controversies in Education--Seminar Sessions	2	Steven J. Zimmer	07:15pm-09:15pm W Bldg-TBD	CUDP; CUSP	25	5	0	0	0
-2017	fall	UEP	246	0	Sustainable Oxy: Campus Greening	2	Instructor Unassigned	08:00am-09:25am MW Bldg-TBD		25	9	0	0	0
-2017	fall	UEP	248	0	Global Public Health	4	Jane S. Schmitz	10:05am-11:30am TR Bldg-TBD	CPGC; CPIC	25	25	0	0	5
+2017	fall	UEP	209	0	Health Policy	4	Instructor Unassigned	04:05pm-05:30pm MW Bldg-TBD	CPGC	25	25	0	0	2
+2017	fall	UEP	212	0	Policy Debates and Controversies in Education--Panel Sessions	2	Steven J. Zimmer	07:15pm-09:15pm W Bldg-TBD	CUDP; CUSP	25	11	0	0	0
+2017	fall	UEP	213	0	Policy Debates and Controversies in Education--Seminar Sessions	2	Steven J. Zimmer	07:15pm-09:15pm W Bldg-TBD	CUDP; CUSP	25	6	0	0	0
+2017	fall	UEP	246	0	Sustainable Oxy: Campus Greening	2	Instructor Unassigned	08:00am-09:25am MW Bldg-TBD		25	11	0	0	0
+2017	fall	UEP	248	0	Global Public Health	4	Jane S. Schmitz	10:05am-11:30am TR Bldg-TBD	CPGC; CPIC	25	24	0	0	4
 2017	fall	UEP	265	0	Community Planning and Politics Practicum	4	Regina Freer	01:30pm-02:55pm TR Bldg-TBD	CPUD	25	26	0	0	0
-2017	fall	UEP	299	0	Women's Sports and Empowerment	4	Myralyn Nartey	09:35am-10:30am MWF Bldg-TBD	CPUD	25	23	0	0	4
+2017	fall	UEP	299	0	Women's Sports and Empowerment	4	Myralyn Nartey	09:35am-10:30am MWF Bldg-TBD	CPUD	25	21	0	0	4
 2017	fall	UEP	302	0	Housing Problems and Policy	4	Janis Breidenbach	03:05pm-06:00pm R Bldg-TBD	CPUD; CPUS	20	4	0	0	0
-2017	fall	UEP	304	0	Research Methods for Urban and Environmental Policy	4	Bhavna Shamasunder	03:00pm-05:55pm W Bldg-TBD		25	10	7	0	0
-2017	fall	UEP	306	0	Food and the Environment	4	Sharon G. Cech; Rosa Romero	01:30pm-02:55pm TR Bldg-TBD	CPGC; CPIC	20	14	5	0	0
+2017	fall	UEP	304	0	Research Methods for Urban and Environmental Policy	4	Bhavna Shamasunder	03:00pm-05:55pm W Bldg-TBD		25	11	7	0	0
+2017	fall	UEP	306	0	Food and the Environment	4	Sharon G. Cech; Rosa Romero	01:30pm-02:55pm TR Bldg-TBD	CPGC; CPIC	20	15	5	0	0
 2017	fall	UEP	307	0	Public Health Practicum	4	Heng Lam Foong	07:15pm-10:10pm T Bldg-TBD	CPIC; CPUD	12	6	0	0	0
 2017	fall	UEP	310	1	Community Organizing and Leadership	4	Peter Dreier	10:05am-11:30am TR Bldg-TBD		18	5	3	0	0
 2017	fall	UEP	310	2	Community Organizing and Leadership	4	Martha M. Matsuoka	10:05am-11:30am TR Bldg-TBD		18	18	0	0	0
-2017	fall	UEP	311	0	Community Internship	4	Peter Dreier	Time-TBD Days-TBD Bldg-TBD		99	23	0	0	0
+2017	fall	UEP	311	0	Community Internship	4	Peter Dreier	Time-TBD Days-TBD Bldg-TBD		99	22	0	0	0
 2017	fall	UEP	410	0	Controversies in Policy and Politics	4	Mijin Cha; Bhavna Shamasunder	03:00pm-05:55pm M Bldg-TBD		35	31	0	0	0
-2017	fall	WRD	135	0	Occidental Weekly Practicum	1	Barbara A. Thomas	01:55pm-02:50pm W Bldg-TBD		18	1	0	0	0
-2017	fall	WRD	201	1	The Art of Essay Writing	4	Thomas L. Burkdall	10:40am-11:35am MWF Bldg-TBD		18	17	2	2	4
+2017	fall	WRD	135	0	Occidental Weekly Practicum	1	Barbara A. Thomas	01:55pm-02:50pm W Bldg-TBD		18	2	0	0	0
+2017	fall	WRD	201	1	The Art of Essay Writing	4	Thomas L. Burkdall	10:40am-11:35am MWF Bldg-TBD		18	17	2	2	3
 2017	fall	WRD	201	2	The Art of Essay Writing	4	Thomas L. Burkdall	01:55pm-02:50pm MWF Bldg-TBD		18	17	2	2	1
 2017	fall	WRD	201	3	The Art of Essay Writing	4	Sarah C. Ostendorf	03:00pm-03:55pm MWF Bldg-TBD		18	16	2	2	4
 2017	fall	WRD	201	4	The Art of Essay Writing	4	Instructor Unassigned	01:30pm-02:55pm TR Bldg-TBD		18	14	2	2	0
@@ -13548,7 +13519,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2017	fall	WRD	287	0	Rhetorical Fault Lines: Journalism, Persuasion, and Propaganda	4	Robert J. Sipchen	07:15pm-10:10pm W Bldg-TBD		20	5	0	0	0
 2017	fall	WRD	295	0	Argument and Rhetoric Across the Disciplines	4	Julie E Prebel	03:05pm-04:30pm TR Bldg-TBD	CPPE	18	15	0	0	0
 2017	fall	WRD	301	0	Creative Nonfiction	4	Sarah C. Ostendorf	05:40pm-07:05pm MW Bldg-TBD	CPFA	18	15	0	0	0
-2017	fall	WRD	395	0	Theory and Pedagogy of Writing	2	Thomas L. Burkdall	12:50pm-01:45pm M Bldg-TBD		14	0	0	0	0
+2017	fall	WRD	395	0	Theory and Pedagogy of Writing	2	Thomas L. Burkdall	12:50pm-01:45pm M Bldg-TBD		14	9	0	0	0
 2018	spring	AMST	110	0	Introduction to Black Studies	4	Courtney R. Baker	04:05pm-05:30pm MW Bldg-TBD	CPGC; CPUD	30	0	10	10	0
 2018	spring	AMST	252	0	African-American Film: 1967-Present	4	Courtney R. Baker	03:05pm-04:30pm TR Bldg-TBD	CPUD	25	0	5	5	0
 2018	spring	AMST	268	0	American Beauty: Race, Fashion, and the Female Body	4	Erica Louise Ball	10:05am-11:30am TR Bldg-TBD	CPUD	25	0	5	5	0
