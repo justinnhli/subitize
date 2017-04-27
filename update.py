@@ -2,8 +2,6 @@
 
 import re
 from argparse import ArgumentParser
-from os.path import exists as file_exists
-from urllib.parse import quote, unquote
 
 import requests
 from bs4 import BeautifulSoup
@@ -30,6 +28,20 @@ HEADINGS = (
     'waitlisted'
 )
 
+REQUEST_HEADERS = {
+    'Host':'counts.oxy.edu',
+    'User-Agent':'Mozilla/5.0 (X11; Linux i686; rv:42.0) Gecko/20100101 Firefox/42.0',
+    'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    'Accept-Language':'en-US,en;q=0.5',
+    'X-Requested-With':'XMLHttpRequest',
+    'X-MicrosoftAjax':'Delta=true',
+    'Cache-Control':'no-cache',
+    'Content-Type':'application/x-www-form-urlencoded; charset=utf-8',
+    'Referer':'https://counts.oxy.edu/',
+    'Connection':'keep-alive',
+    'Pragma':'no-cache',
+}
+
 def extract_text(soup):
     text = []
     for desc in soup.descendants:
@@ -38,44 +50,50 @@ def extract_text(soup):
                 text.append(desc.strip())
     return re.sub(r'  \+', ' ', ''.join(text).strip())
 
-def super_encode_url(string):
-    return quote(string, safe='').replace('$', '%24')
-
-def get_state_vars():
-    curl_file = 'curl-args'
-    assert file_exists(curl_file), '`{}` file not found'.format(curl_file)
-    with open(curl_file) as fd:
-        data = dict(arg.split('=', maxsplit=1) for arg in re.search("--data '([^']*)'", fd.read()).group(1).split('&'))
-    assert data, 'could not parse curl arguments'
-    return unquote(data['__VIEWSTATE'].strip()), unquote(data['__EVENTVALIDATION'].strip())
-
-'''
-# this doesn't work
-# as far as I can tell, the VIEWSTATE and EVENTVALIDATION must be from the Advanced Search tab
-# or at any rate, *not* the first VIEWSTATE and EVENTVALIDATION when the page is first loaded
-def get_state_vars():
+def get_simple_search_state():
     response = requests.get(COURSE_COUNTS)
-    assert response.status_code == 200, 'Failed to get state variables with status code {}'.format(response.status_code)
+    assert response.status_code == 200, 'Unable to connect to Course Counts Simple Search (status code {})'.format(response.status_code)
     soup = BeautifulSoup(response.text, 'html.parser')
     view_state = soup.select('#__VIEWSTATE')[0]['value'].strip()
     event_validation = soup.select('#__EVENTVALIDATION')[0]['value'].strip()
     return view_state, event_validation
-'''
 
-def get_course_counts(semester):
-    headers = {
-        'Host':'counts.oxy.edu',
-        'User-Agent':'Mozilla/5.0 (X11; Linux i686; rv:42.0) Gecko/20100101 Firefox/42.0',
-        'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-        'Accept-Language':'en-US,en;q=0.5',
-        'X-Requested-With':'XMLHttpRequest',
-        'X-MicrosoftAjax':'Delta=true',
-        'Cache-Control':'no-cache',
-        'Content-Type':'application/x-www-form-urlencoded; charset=utf-8',
-        'Referer':'https://counts.oxy.edu/',
-        'Connection':'keep-alive',
-        'Pragma':'no-cache',
+def get_advanced_search_state():
+    params = {
+        'tabContainer$TabPanel1$ddlSemesters':'201801',
+        'tabContainer$TabPanel1$ddlSubjects':'',
+        'tabContainer$TabPanel1$txtCrseNum':'',
+        'tabContainer$TabPanel2$ddlCoreAreas':'CPFA',
+        'tabContainer$TabPanel2$ddlCoreSubj':'AMST',
+        'tabContainer$TabPanel2$ddlCoreTerms':'201002',
+        'tabContainer$TabPanel3$ddlAdvDays':'m',
+        'tabContainer$TabPanel3$ddlAdvSubj':'AMST',
+        'tabContainer$TabPanel3$ddlAdvTerms':'201002',
+        'tabContainer$TabPanel3$ddlAdvTimes':'07000755',
+        'tabContainer$TabPanel4$ddlCRNTerms':'201002',
+        'tabContainer$TabPanel4$txtCRN':'',
+        'tabContainer_ClientState':'{"ActiveTabIndex":0,"TabState":[true,true,true,true]}',
+        'ScriptManager1':'pageUpdatePanel|tabContainer',
+        'ScriptManager1_HiddenField':';;AjaxControlToolkit, Version=1.0.10920.32880, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e:en-US:816bbca1-959d-46fd-928f-6347d6f2c9c3:e2e86ef9:1df13a87:ee0a475d:c4c00916:9ea3f0e2:9e8e87e9:4c9865be:a6a5a927',
+        '__ASYNCPOST':'true',
+        '__EVENTARGUMENT':'activeTabChanged:2',
+        '__EVENTTARGET':'tabContainer',
+        '__LASTFOCUS':'',
+        '__VIEWSTATEENCRYPTED':'',
+        '__VIEWSTATEGENERATOR':'CA0B0334',
     }
+    params['__VIEWSTATE'], params['__EVENTVALIDATION'] = get_simple_search_state()
+    response = requests.post(COURSE_COUNTS, headers=REQUEST_HEADERS, data=params)
+    assert response.status_code == 200, 'Unable to connect to Course Counts Advanced Search (status code {})'.format(response.status_code)
+    response = response.text.split('|')
+    assert response[2] == '', 'Unable to extract state from Advanced Search'
+    event_validation_index = response.index('__EVENTVALIDATION') + 1
+    event_validation = response[event_validation_index]
+    view_state_index = response.index('__VIEWSTATE') + 1
+    view_state = response[view_state_index]
+    return view_state, event_validation
+
+def get_offerings_data(semester):
     params = {
         'tabContainer$TabPanel1$btnGo':'Go',
         'tabContainer$TabPanel1$ddlSemesters':semester,
@@ -102,9 +120,12 @@ def get_course_counts(semester):
         '__VIEWSTATEENCRYPTED':'',
         '__VIEWSTATEGENERATOR':'CA0B0334',
     }
-    params['__VIEWSTATE'], params['__EVENTVALIDATION'] = get_state_vars()
-    #data = '&'.join('{}={}'.format(k, v) for k, v in params.items())
-    return requests.post(COURSE_COUNTS, headers=headers, data=params)
+    params['__VIEWSTATE'], params['__EVENTVALIDATION'] = get_advanced_search_state()
+    response = requests.post(COURSE_COUNTS, headers=REQUEST_HEADERS, data=params)
+    assert response.status_code == 200, 'Unable to connect to Course Counts offerings data (status code {})'.format(response.status_code)
+    response = response.text.split('|')
+    assert response[2] == '', 'Unable to extract offerings data'
+    return response[7]
 
 def extract_results(html, year, season):
     soup = BeautifulSoup(html, 'html.parser').find_all(id='searchResultsPanel')[0]
@@ -139,14 +160,12 @@ def extract_results(html, year, season):
         Offering(semester, course, section, title, units, tuple(instructors), tuple(meetings), tuple(cores), seats, enrolled, reserved, reserved_open, waitlisted)
 
 def get_data_from_web(semester):
-    response = get_course_counts(semester.code)
-    response = response.text.split('|')
-    assert response[2] == '', 'Failed to get Course Counts data with status code {}'.format(response[2])
-    extract_results(response[7], semester.year, semester.season)
-    return response[7]
+    offerings_data = get_offerings_data(semester.code)
+    extract_results(offerings_data, semester.year, semester.season)
+    return offerings_data
 
 def update_db(semester):
-    response = get_data_from_web(semester)
+    offerings_data = get_data_from_web(semester)
     with open(OFFERINGS_FILE, 'w') as fd:
         fd.write('\t'.join(HEADINGS) + '\n')
         offerings = Offering.all()
@@ -175,17 +194,17 @@ def update_db(semester):
                 offering.num_reserved_open,
                 offering.num_waitlisted,
             )) + '\n')
-    return response
+    return offerings_data
 
 def main():
     arg_parser = ArgumentParser()
     arg_parser.add_argument('semester', nargs='?', default=Semester.current_semester().code)
     arg_parser.add_argument('--raw', default=False, action='store_true')
     args = arg_parser.parse_args()
-    response = update_db(Semester.from_code(args.semester))
+    offerings_data = update_db(Semester.from_code(args.semester))
     if args.raw:
         with open('response', 'w') as fd:
-            fd.write(response)
+            fd.write(offerings_data)
 
 if __name__ == '__main__':
     main()
