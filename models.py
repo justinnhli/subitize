@@ -10,8 +10,6 @@ CORES_FILE = join_path(DIRECTORY, 'cores.tsv')
 DEPARTMENTS_FILE = join_path(DIRECTORY, 'departments.tsv')
 OFFERINGS_FILE = join_path(DIRECTORY, 'offerings.tsv')
 
-DATA_FILE = join_path(dirname(realpath(__file__)), 'counts.tsv')
-
 def _multiton_new_(cls, *args):
     key = cls._canonicalize_key_(tuple(args))
     if key not in cls.INSTANCES:
