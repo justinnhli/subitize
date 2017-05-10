@@ -50,47 +50,12 @@ def extract_text(soup):
                 text.append(desc.strip())
     return re.sub(r'  \+', ' ', ''.join(text).strip())
 
-def get_simple_search_state():
+def get_view_state():
     response = requests.get(COURSE_COUNTS)
     assert response.status_code == 200, 'Unable to connect to Course Counts Simple Search (status code {})'.format(response.status_code)
     soup = BeautifulSoup(response.text, 'html.parser')
     view_state = soup.select('#__VIEWSTATE')[0]['value'].strip()
     event_validation = soup.select('#__EVENTVALIDATION')[0]['value'].strip()
-    return view_state, event_validation
-
-def get_advanced_search_state():
-    params = {
-        'tabContainer$TabPanel1$ddlSemesters':'201801',
-        'tabContainer$TabPanel1$ddlSubjects':'',
-        'tabContainer$TabPanel1$txtCrseNum':'',
-        'tabContainer$TabPanel2$ddlCoreAreas':'CPFA',
-        'tabContainer$TabPanel2$ddlCoreSubj':'AMST',
-        'tabContainer$TabPanel2$ddlCoreTerms':'201002',
-        'tabContainer$TabPanel3$ddlAdvDays':'m',
-        'tabContainer$TabPanel3$ddlAdvSubj':'AMST',
-        'tabContainer$TabPanel3$ddlAdvTerms':'201002',
-        'tabContainer$TabPanel3$ddlAdvTimes':'07000755',
-        'tabContainer$TabPanel4$ddlCRNTerms':'201002',
-        'tabContainer$TabPanel4$txtCRN':'',
-        'tabContainer_ClientState':'{"ActiveTabIndex":0,"TabState":[true,true,true,true]}',
-        'ScriptManager1':'pageUpdatePanel|tabContainer',
-        'ScriptManager1_HiddenField':';;AjaxControlToolkit, Version=1.0.10920.32880, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e:en-US:816bbca1-959d-46fd-928f-6347d6f2c9c3:e2e86ef9:1df13a87:ee0a475d:c4c00916:9ea3f0e2:9e8e87e9:4c9865be:a6a5a927',
-        '__ASYNCPOST':'true',
-        '__EVENTARGUMENT':'activeTabChanged:2',
-        '__EVENTTARGET':'tabContainer',
-        '__LASTFOCUS':'',
-        '__VIEWSTATEENCRYPTED':'',
-        '__VIEWSTATEGENERATOR':'CA0B0334',
-    }
-    params['__VIEWSTATE'], params['__EVENTVALIDATION'] = get_simple_search_state()
-    response = requests.post(COURSE_COUNTS, headers=REQUEST_HEADERS, data=params)
-    assert response.status_code == 200, 'Unable to connect to Course Counts Advanced Search (status code {})'.format(response.status_code)
-    response = response.text.split('|')
-    assert response[2] == '', 'Unable to extract state from Advanced Search'
-    event_validation_index = response.index('__EVENTVALIDATION') + 1
-    event_validation = response[event_validation_index]
-    view_state_index = response.index('__VIEWSTATE') + 1
-    view_state = response[view_state_index]
     return view_state, event_validation
 
 def get_offerings_data(semester):
@@ -102,11 +67,10 @@ def get_offerings_data(semester):
         'tabContainer$TabPanel2$ddlCoreAreas':'CPFA',
         'tabContainer$TabPanel2$ddlCoreSubj':'AMST',
         'tabContainer$TabPanel2$ddlCoreTerms':semester,
-        'tabContainer$TabPanel3$ddlAdvDays':'',
-        'tabContainer$TabPanel3$ddlAdvInstructors':'',
-        'tabContainer$TabPanel3$ddlAdvSubj':'',
+        'tabContainer$TabPanel3$ddlAdvDays':'m',
+        'tabContainer$TabPanel3$ddlAdvSubj':'AMST',
         'tabContainer$TabPanel3$ddlAdvTerms':semester,
-        'tabContainer$TabPanel3$ddlAdvTimes':'',
+        'tabContainer$TabPanel3$ddlAdvTimes':'07000755',
         'tabContainer$TabPanel4$ddlCRNTerms':semester,
         'tabContainer$TabPanel4$txtCRN':'',
         'tabContainer_ClientState':'{"ActiveTabIndex":0,"TabState":[true,true,true,true]}',
@@ -120,7 +84,7 @@ def get_offerings_data(semester):
         '__VIEWSTATEENCRYPTED':'',
         '__VIEWSTATEGENERATOR':'CA0B0334',
     }
-    params['__VIEWSTATE'], params['__EVENTVALIDATION'] = get_advanced_search_state()
+    params['__VIEWSTATE'], params['__EVENTVALIDATION'] = get_view_state()
     response = requests.post(COURSE_COUNTS, headers=REQUEST_HEADERS, data=params)
     assert response.status_code == 200, 'Unable to connect to Course Counts offerings data (status code {})'.format(response.status_code)
     response = response.text.split('|')
