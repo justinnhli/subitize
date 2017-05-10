@@ -2,11 +2,15 @@
 
 import re
 from argparse import ArgumentParser
+from datetime import datetime
 
 import requests
 from bs4 import BeautifulSoup
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
-from models import OFFERINGS_FILE, Semester, Meeting, Department, Faculty, Core, Course, Offering
+from models import Semester, TimeSlot, Building, Room, Meeting, Core, Department, Course, Person, Offering
+from models import SQLITE_URI, get_or_create
 
 COURSE_COUNTS = 'https://counts.oxy.edu/'
 
@@ -91,84 +95,112 @@ def get_offerings_data(semester):
     assert response[2] == '', 'Unable to extract offerings data'
     return response[7]
 
-def extract_results(html, year, season):
+def extract_instructors(session, td):
+    instructors = []
+    for tag in td.find_all('abbr'):
+        instructor_str = tag['title']
+        if instructor_str != 'Instructor Unassigned':
+            first_name, last_name = instructor_str.rsplit(' ', maxsplit=1)
+            instructor = get_or_create(session, Person, first_name=first_name, last_name=last_name)
+            instructors.append(instructor)
+    return instructors
+
+def extract_room(session, location_str):
+    if location_str == 'Bldg-TBD':
+        room = None
+    elif len(location_str.split()) == 1 and location_str in ('AGYM', 'KECK', 'UEPI', 'MULLIN', 'BIRD', 'TENNIS', 'THORNE', 'FM', 'CULLEY', 'TREE', 'RUSH', 'LIB', 'HERR'):
+        building = get_or_create(session, Building, code=location_str)
+        room = get_or_create(session, Room, building=building, room=None)
+    else:
+        building_str, room_str = location_str.rsplit(' ', maxsplit=1)
+        building = get_or_create(session, Building, code=building_str)
+        room = get_or_create(session, Room, building=building, room=room_str)
+    return room
+
+def extract_meetings(session, td):
+    meetings = []
+    for tr in td.find_all('tr'):
+        print(str(tr))
+        time_str, days_str, location_str = ((extract_text(td) for td in tr.find_all('td')))
+        if time_str == 'Time-TBD' or days_str == 'Days-TBD':
+            timeslot = None
+            room = None
+        else:
+            start_time_str, end_time_str = time_str.upper().split('-')
+            start_time = datetime.strptime(start_time_str, '%I:%M%p').time()
+            end_time = datetime.strptime(end_time_str, '%I:%M%p').time()
+            timeslot = get_or_create(session, TimeSlot, weekdays=days_str, start=start_time, end=end_time)
+            room = extract_room(session, location_str)
+        if timeslot is not None:
+            meeting = get_or_create(session, Meeting, timeslot=timeslot, room=room)
+            meetings.append(meeting)
+    return meetings
+
+def extract_cores(session, td):
+    cores = []
+    for tag in td.find_all('abbr'):
+        core = get_or_create(session, Core, code=extract_text(tag))
+        cores.append(core)
+    return cores
+
+def extract_results(session, semester, html):
     soup = BeautifulSoup(html, 'html.parser').find_all(id='searchResultsPanel')[0]
     soup = soup.find_all('div', recursive=False)[1].find_all('table', limit=1)[0]
-    semester = Semester(year, season)
     for row in soup.find_all('tr', recursive=False):
         tds = row.find_all('td', recursive=False)
         if not tds:
             continue
-        department, number, section = extract_text(tds[1]).split()
-        course = Course(Department.get(department), number)
+        department_code, number, section = extract_text(tds[1]).split()
+        department = get_or_create(session, Department, code=department_code)
+        course = get_or_create(session, Course, department=department, number=number)
         title = extract_text(tds[2])
         units = int(extract_text(tds[3]))
-        instructors = []
-        for tag in tds[4].find_all('abbr'):
-            instructor_str = tag['title']
-            if instructor_str == 'Instructor Unassigned':
-                instructors.append(None)
-            else:
-                instructors.append(Faculty(instructor_str, *Faculty.split_name(instructor_str)))
-        meetings = []
-        for tr in tds[5].find_all('tr'):
-            meetings.append(Meeting.from_str(*(extract_text(tag) for tag in tr.find_all('td'))))
-        cores = list(set(Core.get(extract_text(tag)) for tag in tds[6].find_all('abbr')))
-        if not cores:
-            cores = []
-        seats = int(extract_text(tds[7]))
-        enrolled = int(extract_text(tds[8]))
-        reserved = int(extract_text(tds[9]))
-        reserved_open = int(extract_text(tds[10]))
-        waitlisted = int(extract_text(tds[11]))
-        Offering(semester, course, section, title, units, tuple(instructors), tuple(meetings), tuple(cores), seats, enrolled, reserved, reserved_open, waitlisted)
+        instructors = extract_instructors(session, tds[4])
+        meetings = extract_meetings(session, tds[5])
+        cores = extract_cores(session, tds[6])
+        num_seats = int(extract_text(tds[7]))
+        num_enrolled = int(extract_text(tds[8]))
+        num_reserved = int(extract_text(tds[9]))
+        num_reserved_open = int(extract_text(tds[10]))
+        num_waitlisted = int(extract_text(tds[11]))
+        offering = get_or_create(
+            session,
+            Offering,
+            semester=semester,
+            course=course,
+            section=section,
+            title=title,
+            units=units,
+            num_seats=num_seats,
+            num_enrolled=num_enrolled,
+            num_reserved=num_reserved,
+            num_reserved_open=num_reserved_open,
+            num_waitlisted=num_waitlisted,
+        )
+        offering.instructors.extend(instructors)
+        offering.meetings.extend(meetings)
+        offering.cores.extend(cores)
 
-def get_data_from_web(semester):
-    offerings_data = get_offerings_data(semester.code)
-    extract_results(offerings_data, semester.year, semester.season)
-    return offerings_data
-
-def update_db(semester):
-    offerings_data = get_data_from_web(semester)
-    with open(OFFERINGS_FILE, 'w') as fd:
-        fd.write('\t'.join(HEADINGS) + '\n')
-        offerings = Offering.all()
-        offerings = sorted(offerings, key=(lambda offering: (int(offering.semester.code), offering.course, offering.section)))
-        for offering in offerings:
-            instructor_strs = []
-            for instructor in offering.instructors:
-                if instructor is not None:
-                    instructor_strs.append((instructor.last_name, repr(instructor)))
-            instructor_strs = list(pair[1] for pair in sorted(instructor_strs)) + offering.instructors.count(None) * ['Instructor Unassigned']
-            instructor_str = '; '.join(instructor_strs)
-            fd.write('\t'.join(str(field) for field in (
-                offering.year,
-                offering.season.lower(),
-                offering.department.code,
-                offering.number,
-                offering.section,
-                offering.name,
-                offering.units,
-                instructor_str,
-                '; '.join(repr(meeting) for meeting in sorted(offering.meetings)),
-                '; '.join(sorted(core.code for core in offering.cores)),
-                offering.num_seats,
-                offering.num_enrolled,
-                offering.num_reserved,
-                offering.num_reserved_open,
-                offering.num_waitlisted,
-            )) + '\n')
-    return offerings_data
+def update_db(semester_code):
+    engine = create_engine(SQLITE_URI)
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    year, season = Semester.code_to_season(semester_code)
+    semester = session.query(Semester).filter_by(year=year, season=season).first()
+    session.query(Offering).filter_by(semester_id=semester.id).delete()
+    offerings_data = get_offerings_data(semester_code)
+    extract_results(session, semester, offerings_data)
+    session.commit()
 
 def main():
     arg_parser = ArgumentParser()
-    arg_parser.add_argument('semester', nargs='?', default=Semester.current_semester().code)
-    arg_parser.add_argument('--raw', default=False, action='store_true')
+    arg_parser.add_argument('semester', nargs='?', default=Semester.current_semester_code())
+    arg_parser.add_argument('--raw', action='store_true')
     args = arg_parser.parse_args()
-    offerings_data = update_db(Semester.from_code(args.semester))
     if args.raw:
-        with open('response', 'w') as fd:
-            fd.write(offerings_data)
+        print(get_offerings_data(args.semester))
+    else:
+        update_db(args.semester)
 
 if __name__ == '__main__':
     main()
