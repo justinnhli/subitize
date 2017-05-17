@@ -141,5 +141,12 @@ def get_css(file):
     else:
         return abort(404)
 
+@app.route('/static/js/<file>')
+def get_js(file):
+    if file_exists(join_path('static/js', file)):
+        return send_from_directory('static/js', file)
+    else:
+        return abort(404)
+
 if __name__ == '__main__':
     app.run(debug=True)
