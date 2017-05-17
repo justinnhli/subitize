@@ -2,8 +2,9 @@
 
 from datetime import datetime
 from math import ceil
+from os.path import exists as file_exists, join as join_path
 
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request, send_from_directory, url_for, redirect
 
 from models import Semester, Weekday, Core, Department, Faculty, Offering
 from subitizelib import filter_study_abroad, filter_by_search, filter_by_semester, filter_by_openness, filter_by_department, filter_by_number, filter_by_units, filter_by_instructor, filter_by_core, filter_by_meeting
@@ -132,6 +133,13 @@ def view_simplify():
         if key not in DEFAULT_OPTIONS or value != DEFAULT_OPTIONS[key]:
             simplified[key] = value
     return redirect(url_for('view_root', **simplified))
+
+@app.route('/static/css/<file>')
+def get_css(file):
+    if file_exists(join_path('static/css', file)):
+        return send_from_directory('static/css', file)
+    else:
+        return abort(404)
 
 if __name__ == '__main__':
     app.run(debug=True)
