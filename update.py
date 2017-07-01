@@ -9,8 +9,8 @@ from bs4 import BeautifulSoup
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
+from models import create_session, get_or_create
 from models import Semester, TimeSlot, Building, Room, Meeting, Core, Department, Course, Person, Offering
-from models import SQLITE_URI, get_or_create
 
 COURSE_COUNTS = 'https://counts.oxy.edu/'
 
@@ -101,7 +101,7 @@ def extract_instructors(session, td):
         instructor_str = tag['title']
         if instructor_str != 'Instructor Unassigned':
             first_name, last_name = instructor_str.rsplit(' ', maxsplit=1)
-            instructor = get_or_create(session, Person, first_name=first_name, last_name=last_name)
+            instructor = get_or_create(session, Person, system_name=instructor_str, first_name=first_name, last_name=last_name)
             instructors.append(instructor)
     return instructors
 
@@ -120,7 +120,6 @@ def extract_room(session, location_str):
 def extract_meetings(session, td):
     meetings = []
     for tr in td.find_all('tr'):
-        print(str(tr))
         time_str, days_str, location_str = ((extract_text(td) for td in tr.find_all('td')))
         if time_str == 'Time-TBD' or days_str == 'Days-TBD':
             timeslot = None
@@ -152,7 +151,7 @@ def extract_results(session, semester, html):
             continue
         department_code, number, section = extract_text(tds[1]).split()
         department = get_or_create(session, Department, code=department_code)
-        course = get_or_create(session, Course, department=department, number=number)
+        course = get_or_create(session, Course, department=department, number=number, number_int=int(re.sub('[^0-9]', '', number)))
         title = extract_text(tds[2])
         units = int(extract_text(tds[3]))
         instructors = extract_instructors(session, tds[4])
@@ -181,12 +180,11 @@ def extract_results(session, semester, html):
         offering.meetings.extend(meetings)
         offering.cores.extend(cores)
 
-def update_db(semester_code):
-    engine = create_engine(SQLITE_URI)
-    Session = sessionmaker(bind=engine)
-    session = Session()
+def update_db(semester_code, session=None):
+    if session is None:
+        session = create_session()
     year, season = Semester.code_to_season(semester_code)
-    semester = session.query(Semester).filter_by(year=year, season=season).first()
+    semester = get_or_create(session, Semester, year=year, season=season)
     session.query(Offering).filter_by(semester_id=semester.id).delete()
     offerings_data = get_offerings_data(semester_code)
     extract_results(session, semester, offerings_data)
@@ -194,7 +192,7 @@ def update_db(semester_code):
 
 def main():
     arg_parser = ArgumentParser()
-    arg_parser.add_argument('semester', nargs='?', default=Semester.current_semester_code())
+    arg_parser.add_argument('semester', nargs='?', default=Semester.current_semester().code)
     arg_parser.add_argument('--raw', action='store_true')
     args = arg_parser.parse_args()
     if args.raw:
