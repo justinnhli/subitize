@@ -1,55 +1,35 @@
-from csv import DictReader, QUOTE_NONE
 from datetime import datetime, date
-from functools import total_ordering
-from os.path import dirname, join as join_path, realpath
 
-DIRECTORY = join_path(dirname(realpath(__file__)), 'data')
+from sqlalchemy import create_engine, event
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy import Column, Integer, String, Time, ForeignKey
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import relationship
+from sqlalchemy.schema import UniqueConstraint
 
-BUILDINGS_FILE = join_path(DIRECTORY, 'buildings.tsv')
-CORES_FILE = join_path(DIRECTORY, 'cores.tsv')
-DEPARTMENTS_FILE = join_path(DIRECTORY, 'departments.tsv')
-OFFERINGS_FILE = join_path(DIRECTORY, 'offerings.tsv')
+SQLITE_URI = 'sqlite:///counts.db'
 
-def _multiton_new_(cls, *args):
-    key = cls._canonicalize_key_(tuple(args))
-    if key not in cls.INSTANCES:
-        cls.INSTANCES[key] = super(cls, cls).__new__(cls)
-    return cls.INSTANCES[key]
+def create_session(engine=None):
+    if engine is None:
+        engine = create_engine(SQLITE_URI, connect_args={'check_same_thread':False})
+    event.listen(engine, 'connect', (lambda dbapi_con, con_record: dbapi_con.execute('pragma foreign_keys=ON')))
+    Session = sessionmaker(bind=engine)
+    return Session()
 
-def multiton(cls):
-    if hasattr(cls, 'INSTANCES'):
-        return cls
-    setattr(cls, 'INSTANCES', {})
-    setattr(cls, '__new__', _multiton_new_)
-    return cls
+Base = declarative_base()
 
-class AbstractMultiton:
-    def __repr__(self):
-        args = ', '.join('{}={}'.format(k, repr(getattr(self, k))) for k in type(self).KEYS)
-        return '{}({})'.format(type(self).__name__, args)
-    def __str__(self):
-        return ' '.join(str(getattr(self, k)) for k in type(self).KEYS)
-    @classmethod
-    def _canonicalize_key_(cls, args):
-        assert len(args) >= len(cls.KEYS)
-        key = tuple(args[:len(cls.KEYS)])
-        if hasattr(cls, 'ALIASES'):
-            key = tuple(cls.ALIASES.get(k, k) for k in key)
-        return key
-    @classmethod
-    def all(cls):
-        return cls.INSTANCES.values()
-    @classmethod
-    def get(cls, *args):
-        return cls.INSTANCES[cls._canonicalize_key_(tuple(args))]
-
-@total_ordering
-@multiton
-class Semester(AbstractMultiton):
-    KEYS = ('year', 'season',)
+class Semester(Base):
+    __tablename__ = 'semesters'
+    id = Column(Integer, primary_key=True)
+    year = Column(Integer, nullable=False)
+    season = Column(String, nullable=False)
+    __table_args__ = (
+        UniqueConstraint('year', 'season', name='_year_season_uc'),
+    )
     def __init__(self, year, season):
         self.year = year
         self.season = season
+        self.id = int(self.code)
     @property
     def code(self):
         season = self.season.lower()
@@ -59,381 +39,204 @@ class Semester(AbstractMultiton):
             return '{}02'.format(self.year)
         elif season == 'summer':
             return '{}03'.format(self.year)
+    def __str__(self):
+        return '{} {}'.format(self.year, self.season)
     def __lt__(self, other):
         return self.code < other.code
-    def __str__(self):
-        return '{} {}'.format(self.year, self.season.capitalize())
+    def __repr__(self):
+        return '<Semester(year={}, season="{}")>'.format(self.year, self.season)
     @staticmethod
-    def current_semester():
+    def current_semester(session=None):
         today = datetime.today().date()
         if today < date(today.year, 3, 15):
-            return Semester(today.year, 'Spring')
+            year, season = today.year, 'Spring'
         elif today < date(today.year, 10, 15):
-            return Semester(today.year, 'Fall')
+            year, season = today.year, 'Fall'
         else:
-            return Semester(today.year + 1, 'Spring')
+            year, season = today.year + 1, 'Spring'
+        if session is None:
+            session = create_session()
+        return session.query(Semester).filter(Semester.year == year, Semester.season == season).one()
     @staticmethod
-    def from_code(code):
+    def code_to_season(code):
         year = int(code[:4])
         season = code[-2:]
         if season == '01':
-            return Semester(year - 1, 'Fall')
+            return year - 1, 'Fall'
         elif season == '02':
-            return Semester(year, 'Spring')
+            return year, 'Spring'
         elif season == '03':
-            return Semester(year, 'Summer')
+            return year, 'Summer'
         raise ValueError('invalid semester code: {}'.format(code))
 
-@total_ordering
-@multiton
-class Weekday(AbstractMultiton):
-    KEYS = ('weekday',)
-    ALIASES = {
-        'M': 'Monday',
-        'T': 'Tuesday',
-        'W': 'Wednesday',
-        'R': 'Thursday',
-        'F': 'Friday',
-        'U': 'Saturday',
-    }
-    WEEKDAYS = ('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday')
-    ABBRS = {
-        'Monday': 'M',
-        'Tuesday': 'T',
-        'Wednesday': 'W',
-        'Thursday': 'R',
-        'Friday': 'F',
-        'Saturday': 'U',
-    }
-    def __init__(self, weekday):
-        weekday = self._canonicalize_key_(tuple(weekday,))[0]
-        assert weekday in Weekday.WEEKDAYS, weekday
-        self.weekday = weekday
+class TimeSlot(Base):
+    ALIASES = [
+        ['M', 'Monday'],
+        ['T', 'Tuesday'],
+        ['W', 'Wednesday'],
+        ['R', 'Thursday'],
+        ['F', 'Friday'],
+        ['U', 'Saturday'],
+    ]
+    __tablename__ = 'timeslots'
+    id = Column(Integer, primary_key=True)
+    weekdays = Column(String, nullable=False)
+    start = Column(Time, nullable=False)
+    end = Column(Time, nullable=False)
+    def __repr__(self):
+        return '<TimeSlot(weekdays={}, start={}, end={})>'.format(self.weekdays, self.start.strftime('%H:%M'), self.end.strftime('%H:%M'))
     @property
-    def abbreviation(self):
-        return Weekday.ABBRS[self.weekday]
-    def __lt__(self, other):
-        return Weekday.WEEKDAYS.index(self.weekday) < Weekday.WEEKDAYS.index(other.weekday)
-
-@total_ordering
-@multiton
-class TimeSlot(AbstractMultiton):
-    KEYS = ('weekdays', 'start_time', 'end_time',)
-    def __init__(self, weekdays, start_time, end_time):
-        self.weekdays = weekdays
-        self.start_time = start_time
-        self.end_time = end_time
-    @property
-    def weekdays_abbreviation(self):
-        return ''.join(weekday.abbreviation for weekday in self.weekdays)
-    @property
-    def weekdays_str(self):
-        return ', '.join(weekday.weekday for weekday in self.weekdays)
+    def weekdays_names(self):
+        return ',' .join(name for abbr, name in TimeSlot.ALIASES if abbr in self.weekdays)
     @property
     def us_start_time(self):
-        return self.start_time.strftime('%I:%M%p').strip('0').lower()
+        return self.start.strftime('%I:%M%p').strip('0').lower()
     @property
     def us_end_time(self):
-        return self.end_time.strftime('%I:%M%p').strip('0').lower()
-    @property
-    def iso_start_time(self):
-        return self.start_time.strftime('%H:%M')
-    @property
-    def iso_end_time(self):
-        return self.end_time.strftime('%H:%M')
-    def __lt__(self, other):
-        return (self.weekdays[0], self.start_time, self.end_time) < (other.weekdays[0], other.start_time, other.end_time)
+        return self.end.strftime('%I:%M%p').strip('0').lower()
+
+class Building(Base):
+    __tablename__ = 'buildings'
+    id = Column(Integer, primary_key=True)
+    code = Column(String, index=True, unique=True, nullable=False)
+    name = Column(String, nullable=False)
     def __repr__(self):
-        start_time = self.us_start_time
-        if len(start_time) == 6:
-            start_time = '0' + start_time
-        end_time = self.us_end_time
-        if len(end_time) == 6:
-            end_time = '0' + end_time
-        return '{}-{} {}'.format(start_time, end_time, ''.join(day.abbreviation for day in self.weekdays))
-    def __str__(self):
-        return '{} {}-{}'.format(''.join(day.abbreviation for day in self.weekdays), self.us_start_time, self.us_end_time)
+        return '<Building(code="{}")>'.format(self.code)
 
-@multiton
-class Building(AbstractMultiton):
-    KEYS = ('code',)
-    def __init__(self, code, name):
-        self.code = code
-        self.name = name
+class Room(Base):
+    __tablename__ = 'rooms'
+    __table_args__ = (
+        UniqueConstraint('building_id', 'room', name='_building_room_uc'),
+    )
+    id = Column(Integer, primary_key=True)
+    building_id = Column(Integer, ForeignKey('buildings.id'), nullable=False)
+    building = relationship('Building')
+    room = Column(String, nullable=True)
     def __str__(self):
-        return self.name
-
-@multiton
-class Room(AbstractMultiton):
-    KEYS = ('building', 'room',)
-    def __init__(self, building, room):
-        self.building = building
-        self.room = room
+        return ''
     def __repr__(self):
-        if self.room:
-            return self.building.code + ' ' + self.room
-        else:
-            return self.building.code
+        return '<Room(building="{}", room="{}")>'.format(self.building.code, self.room)
 
-@total_ordering
-@multiton
-class Meeting(AbstractMultiton):
-    KEYS = ('time_slot', 'location')
-    def __init__(self, time_slot, location):
-        self.time_slot = time_slot
-        self.location = location
+class Meeting(Base):
+    __tablename__ = 'meetings'
+    id = Column(Integer, primary_key=True)
+    timeslot_id = Column(Integer, ForeignKey('timeslots.id'), nullable=True)
+    room_id = Column(Integer, ForeignKey('rooms.id'), nullable=True)
+    timeslot = relationship('TimeSlot')
+    room = relationship('Room')
+    def __repr__(self):
+        return '<Meeting(UGH)>'
     @property
     def weekdays(self):
-        return self.time_slot.weekdays
+        return self.timeslot.weekdays
     @property
-    def start_time(self):
-        return self.time_slot.start_time
-    @property
-    def end_time(self):
-        return self.time_slot.end_time
-    @property
-    def weekdays_abbreviation(self):
-        return self.time_slot.weekdays_abbreviation
-    @property
-    def weekdays_str(self):
-        return self.time_slot.weekdays_str
+    def weekdays_names(self):
+        return self.timeslot.weekdays_names
     @property
     def us_start_time(self):
-        return self.time_slot.us_start_time
+        return self.timeslot.us_start_time
     @property
     def us_end_time(self):
-        return self.time_slot.us_end_time
-    @property
-    def iso_start_time(self):
-        return self.time_slot.iso_start_time
-    @property
-    def iso_end_time(self):
-        return self.time_slot.iso_end_time
-    @property
-    def building(self):
-        return self.location.building
-    @property
-    def room(self):
-        return self.location.room
-    def __lt__(self, other):
-        if self.time_slot is None and other.time_slot is not None:
-            return False
-        elif self.time_slot is not None and other.time_slot is None:
-            return True
-        else:
-            return self.time_slot < other.time_slot
+        return self.timeslot.us_end_time
+
+class Core(Base):
+    __tablename__ = 'cores'
+    id = Column(Integer, primary_key=True)
+    code = Column(String, index=True, unique=True, nullable=False)
+    name = Column(String, nullable=False)
     def __repr__(self):
-        if self.time_slot is None:
-            return 'Time-TBD Days-TBD Bldg-TBD'
-        elif self.location is None:
-            return repr(self.time_slot) + ' Bldg-TBD'
-        else:
-            return '{} {}'.format(repr(self.time_slot), repr(self.location))
-    def __str__(self):
-        if self.time_slot is None:
-            return 'TBD'
-        elif self.location is None:
-            return '{} (TBD)'.format(self.time_slot)
-        else:
-            return '{} ({})'.format(self.time_slot, self.location)
-    @staticmethod
-    def from_str(time_str, days_str, location_str):
-        if time_str == 'Time-TBD' or days_str == 'Days-TBD':
-            timeslot = None
-            location = None
-        else:
-            weekdays = tuple(Weekday(c) for c in days_str)
-            start_time_str, end_time_str = time_str.upper().split('-')
-            start_time = datetime.strptime(start_time_str, '%I:%M%p').time()
-            end_time = datetime.strptime(end_time_str, '%I:%M%p').time()
-            timeslot = TimeSlot(weekdays, start_time, end_time)
-            if location_str == 'Bldg-TBD':
-                location = None
-            elif len(location_str.split()) == 1 and location_str in ('AGYM', 'KECK', 'UEPI', 'MULLIN', 'BIRD', 'TENNIS', 'THORNE', 'FM', 'CULLEY', 'TREE', 'RUSH', 'LIB', 'HERR'):
-                location = Room(Building.get(location_str), None)
-            else:
-                try:
-                    building_str, room_str = location_str.rsplit(' ', maxsplit=1)
-                    location = Room(Building.get(building_str), room_str)
-                except ValueError:
-                    location = None
-        return Meeting(timeslot, location)
+        return '<Core(code="{}")>'.format(self.code)
 
-@multiton
-class Core(AbstractMultiton):
-    KEYS = ('code',)
-    def __init__(self, code, name):
-        self.code = code
-        self.name = name
+class Department(Base):
+    __tablename__ = 'departments'
+    id = Column(Integer, primary_key=True)
+    code = Column(String, index=True, unique=True, nullable=False)
+    name = Column(String, nullable=False)
+    def __repr__(self):
+        return '<Department(code="{}")>'.format(self.code)
 
-@total_ordering
-@multiton
-class Department(AbstractMultiton):
-    KEYS = ('code',)
-    def __init__(self, code, name):
-        self.code = code
-        self.name = name
-    def __lt__(self, other):
-        return self.code < other.code
+class Course(Base):
+    __tablename__ = 'courses'
+    __table_args__ = (
+        UniqueConstraint('department_id', 'number', name='_department_number_uc'),
+    )
+    id = Column(Integer, primary_key=True)
+    department_id = Column(Integer, ForeignKey('departments.id'), nullable=False)
+    number = Column(String, nullable=False)
+    number_int = Column(Integer, nullable=False)
+    department = relationship('Department')
+    def __repr__(self):
+        return '<Course(department="{}", number="{}")>'.format(self.department.code, self.number)
 
-@total_ordering
-class Person(AbstractMultiton):
-    KEYS = ('alias',)
-    def __init__(self, alias, first_name, last_name):
-        self.alias = alias
-        self.first_name = first_name
-        self.last_name = last_name
-    @property
-    def full_name(self):
-        return '{} {}'.format(self.first_name, self.last_name)
-    @property
-    def email(self):
-        return '{}@oxy.edu'.format(self.alias)
-    def __lt__(self, other):
-        return (self.last_name, self.first_name) < (other.last_name, other.first_name)
+class Person(Base):
+    __tablename__ = 'people'
+    id = Column(Integer, primary_key=True)
+    system_name = Column(String)
+    first_name = Column(String)
+    last_name = Column(String)
+    nick_name = Column(String, nullable=True)
+    offerings = relationship(
+        'Offering',
+        secondary='offering_instructor_assoc',
+        back_populates='instructors'
+    )
     def __str__(self):
         return '{}, {}'.format(self.last_name, self.first_name)
 
-@multiton
-class Faculty(Person):
-    PREFERRED_NAMES = {
-        'Alexander F. Day': ('Sasha', 'Day'),
-        'Allison de Fren': ('Allison', 'de Fren'),
-        'Ning Hui Li': ('Justin', 'Li'),
-        'William Dylan Sabo': ('Dylan', 'Sabo'),
-        'Aleksandra Sherman': ('Sasha', 'Sherman'),
-        'Charles Potts': ('Brady', 'Potts'),
-        'Amanda J. Zellmer McCormack': ('Amanda J.', 'Zellmer'),
-    }
-    @property
-    def first_last(self):
-        return self.first_name + ' ' + self.last_name
-    @property
-    def last_first(self):
-        return self.last_name + ', ' + self.first_name
-    def __init__(self, alias, first_name, last_name):
-        super().__init__(alias, first_name, last_name)
-        self.affiliations = []
-    def __repr__(self):
-        return self.alias
-    @staticmethod
-    def split_name(alias):
-        if alias in Faculty.PREFERRED_NAMES:
-            return Faculty.PREFERRED_NAMES[alias]
-        else:
-            return alias.rsplit(' ', maxsplit=1)
+class OfferingMeeting(Base):
+    __tablename__ = 'offering_meeting_assoc'
+    id = Column(Integer, primary_key=True)
+    offering_id = Column(Integer, ForeignKey('offerings.id', ondelete='CASCADE'), nullable=False)
+    meeting_id = Column(Integer, ForeignKey('meetings.id', ondelete='CASCADE'), nullable=False)
 
-@multiton
-class Student(Person):
-    def __init__(self, alias, first_name, last_name):
-        super().__init__(alias, first_name, last_name)
-        self.advisor = None
-        self.majors = []
-        self.minors = []
+class OfferingCore(Base):
+    __tablename__ = 'offering_core_assoc'
+    id = Column(Integer, primary_key=True)
+    offering_id = Column(Integer, ForeignKey('offerings.id', ondelete='CASCADE'), nullable=False)
+    core_id = Column(Integer, ForeignKey('cores.id', ondelete='CASCADE'), nullable=False)
 
-@total_ordering
-@multiton
-class Course(AbstractMultiton):
-    KEYS = ('department', 'number',)
-    def __init__(self, department, number):
-        self.department = department
-        self.number = number
-    @property
-    def pure_number_str(self):
-        return ''.join(c for c in self.number if c.isdigit())
-    @property
-    def pure_number_int(self):
-        return int(''.join(c for c in self.number if c.isdigit()))
-    def __lt__(self, other):
-        return (self.department.code, self.number) < (other.department.code, other.number)
+class OfferingInstructor(Base):
+    __tablename__ = 'offering_instructor_assoc'
+    id = Column(Integer, primary_key=True)
+    offering_id = Column(Integer, ForeignKey('offerings.id', ondelete='CASCADE'), nullable=False)
+    instructor_id = Column(Integer, ForeignKey('people.id', ondelete='CASCADE'), nullable=False)
 
-@multiton
-class Offering(AbstractMultiton):
-    KEYS = ('semester', 'course', 'section',)
-    def __init__(self, semester, course, section, name, units, instructors=None, meetings=None, cores=None, seats=0, enrolled=0, reserved=0, reserved_open=0, waitlisted=0):
-        self.semester = semester
-        self.course = course
-        self.section = section
-        self.name = name
-        self.units = units
-        self.instructors = instructors
-        self.meetings = meetings
-        self.cores = cores
-        self.num_enrolled = enrolled
-        self.num_seats = seats
-        self.num_reserved = reserved
-        self.num_reserved_open = reserved_open
-        self.num_waitlisted = waitlisted
-    @property
-    def year(self):
-        return self.semester.year
-    @property
-    def season(self):
-        return self.semester.season
-    @property
-    def department(self):
-        return self.course.department
-    @property
-    def number(self):
-        return self.course.number
+class Offering(Base):
+    __tablename__ = 'offerings'
+    __table_args__ = (
+        UniqueConstraint('semester_id', 'course_id', 'section', name='_semester_course_section_uc'),
+    )
+    id = Column(Integer, primary_key=True)
+    semester_id = Column(Integer, ForeignKey('semesters.id'), nullable=False)
+    semester = relationship('Semester')
+    course_id = Column(Integer, ForeignKey('courses.id'), nullable=False)
+    course = relationship('Course')
+    section = Column(String, nullable=False)
+    title = Column(String, nullable=False)
+    units = Column(Integer, nullable=False)
+    instructors = relationship(
+        'Person',
+        secondary='offering_instructor_assoc',
+        back_populates='offerings')
+    meetings = relationship(
+        'Meeting',
+        secondary='offering_meeting_assoc')
+    cores = relationship(
+        'Core',
+        secondary='offering_core_assoc')
+    num_enrolled = Column(Integer, nullable=False)
+    num_seats = Column(Integer, nullable=False)
+    num_reserved = Column(Integer, nullable=False)
+    num_reserved_open = Column(Integer, nullable=False)
+    num_waitlisted = Column(Integer, nullable=False)
     @property
     def is_open(self):
         return self.num_waitlisted == 0 and self.num_enrolled < self.num_seats - self.num_reserved
-    def __str__(self):
-        return super().__str__() + ': ' + self.name
 
-def load_data():
-    load_buildings()
-    load_cores()
-    load_departments()
-    load_offerings()
-
-def load_buildings():
-    with open(BUILDINGS_FILE) as fd:
-        for row in DictReader(fd, delimiter='\t'):
-            Building(row['code'], row['name'])
-
-def load_departments():
-    with open(DEPARTMENTS_FILE) as fd:
-        for row in DictReader(fd, delimiter='\t'):
-            Department(row['code'], row['name'])
-
-def load_cores():
-    with open(CORES_FILE) as fd:
-        for row in DictReader(fd, delimiter='\t'):
-            Core(row['code'], row['name'])
-
-def load_offering(offering):
-    semester = Semester(int(offering['year']), offering['season'].capitalize())
-    meetings = []
-    for meeting_str in offering['meetings'].split(';'):
-        try:
-            time_str, days_str, location_str = meeting_str.strip().split(' ', maxsplit=2)
-            meeting = Meeting.from_str(time_str, days_str, location_str)
-        except ValueError:
-            meeting = Meeting(None, None)
-        meetings.append(meeting)
-    department = Department.get(offering['department'])
-    instructors = []
-    for instructor_str in offering['instructors'].split(';'):
-        instructor_str = instructor_str.strip()
-        if instructor_str == 'Instructor Unassigned':
-            instructor = None
-        else:
-            if len(Faculty.split_name(instructor_str)) < 2:
-                raise ValueError('\t'.join('{}={}'.format(k, v) for k, v in sorted(offering.items())))
-            instructor = Faculty(instructor_str, *Faculty.split_name(instructor_str))
-        instructors.append(instructor)
-    course = Course(department, offering['number'])
-    if offering['cores']:
-        cores = tuple(Core.get(code.strip()) for code in offering['cores'].split(';'))
-    else:
-        cores = tuple()
-    return Offering(semester, course, offering['section'], offering['title'], int(offering['units']), tuple(instructors), tuple(meetings), cores, int(offering['seats']), int(offering['enrolled']), int(offering['reserved']), int(offering['reserved_open']), int(offering['waitlisted']))
-
-def load_offerings():
-    with open(OFFERINGS_FILE) as fd:
-        for offering in DictReader(fd, delimiter='\t', quoting=QUOTE_NONE):
-            load_offering(offering)
-
-load_data()
+def get_or_create(session, model, **kwargs):
+    instance = session.query(model).filter_by(**kwargs).first()
+    if not instance:
+        instance = model(**kwargs)
+        session.add(instance)
+    assert instance is not None
+    return instance
