@@ -93,7 +93,7 @@ $(document).ready(function() {
             <div id="options">
                 Semester:
                 <select name="semester">
-                    <option value="">(any)</option>
+                    <option value="any">(any)</option>
                     {% for s in semesters %}
                     <option value="{{ s.code }}" {% if defaults.semester == s.code %}selected{% endif %}>{{ s }}</option>
                     {% endfor %}
@@ -111,7 +111,7 @@ $(document).ready(function() {
                 <select name="instructor">
                     <option value="">(any)</option>
                     {% for f in instructors %}
-                    <option value="{{ f.alias }}" {% if defaults.instructor == f.alias %}selected{% endif %}>{{ f.last_first }}</option>
+                    <option value="{{ f.alias }}" {% if defaults.instructor == f.alias %}selected{% endif %}>{{ f }}</option>
                     {% endfor %}
                 </select>
                 &nbsp;&nbsp;&nbsp;
@@ -147,7 +147,7 @@ $(document).ready(function() {
                 <select name="day">
                     <option value="">(any)</option>
                     {% for day in days %}
-                    <option value="{{ day.abbreviation }}" {% if defaults.day == day.abbreviation %}selected{% endif %}>{{ day.weekday }}</option>
+                    <option value="{{ day.abbr }}" {% if defaults.day == day.abbr %}selected{% endif %}>{{ day.name }}</option>
                     {% endfor %}
                 </select>
                 &nbsp;&nbsp;&nbsp;
@@ -191,36 +191,40 @@ $(document).ready(function() {
                     </a>
                 </td>
                 <td>
-                    <a href="{{ base_url }}?advanced=True&semester={{ parameters['semester'] }}&department={{ offering.department.code }}"><abbr title="{{ offering.department.name }}">{{ offering.department.code }}</abbr></a>
-                    {{ offering.number }} ({{ offering.section }})
+                    <a href="{{ base_url }}?advanced=True&semester={{ parameters['semester'] }}&department={{ offering.course.department.code }}"><abbr title="{{ offering.course.department.name }}">{{ offering.course.department.code }}</abbr></a>
+                    {{ offering.course.number }} ({{ offering.section }})
                 </td>
-                <td>{{ offering.name }}</td>
+                <td>{{ offering.title }}</td>
                 <td>{{ offering.units }}</td>
                 <td>
+                    {% if offering.instructors %}
                     {% for instructor in offering.instructors %}
-                    {% if instructor is none %}
-                    Unassigned
-                    {% else %}
                     <a href="{{ base_url }}?advanced=True&semester={{ parameters['semester'] }}&instructor={{ instructor.alias }}"><abbr title="{{ instructor.first_last }}">{{ instructor.last_name }}</abbr></a>
-                    {% endif %}
                     {% if not loop.last %};{% endif %}
                     {% endfor %}
+                    {% else %}
+                    Unassigned
+                    {% endif %}
                 </td>
                 <td>
+                    {% if offering.meetings %}
                     {% for meeting in offering.meetings %}
-                    {% if meeting.time_slot is none %}
+                    {% if meeting.timeslot is none %}
                     Time TBD
                     {% else %}
                     {{ meeting.us_start_time }} - {{ meeting.us_end_time }}
-                    <abbr title="{{ meeting.weekdays_str }}">{{ meeting.weekdays_abbreviation }}</abbr>
+                    <abbr title="{{ meeting.weekdays_names }}">{{ meeting.weekdays }}</abbr>
                     {% endif %}
-                    {%- if meeting.location is none -%}
+                    {%- if meeting.room is none -%}
                     (Location TBD)
                     {% else %}
-                    (<abbr title="{{ meeting.building.name }}">{{ meeting.building.code }}</abbr> {{ meeting.room }})
+                    (<abbr title="{{ meeting.room.building.name }}">{{ meeting.room.building.code }}</abbr> {{ meeting.room.room }})
                     {%- endif -%}
                     {% if not loop.last %};{% endif %}
                     {% endfor %}
+                    {% else %}
+                    Time TBD (Location TBD) 
+                    {% endif %}
                 </td>
                 <td>
                     {% for core in offering.cores %}

@@ -1,31 +1,39 @@
 #!/usr/bin/env python3
 
-from datetime import datetime
-from math import ceil
+from datetime import datetime, date
+from collections import namedtuple
 
 from flask import Flask, render_template, request, url_for, redirect
 
-from models import Semester, Weekday, Core, Department, Faculty, Offering
+from models import create_session
+from models import Semester
+from models import TimeSlot, Building, Room, Meeting
+from models import Core, Department, Course
+from models import Person
+from models import OfferingMeeting, OfferingCore, OfferingInstructor, Offering
 from subitizelib import filter_study_abroad, filter_by_search, filter_by_semester, filter_by_openness, filter_by_department, filter_by_number, filter_by_units, filter_by_instructor, filter_by_core, filter_by_meeting
 from subitizelib import sort_offerings
 
-OFFERINGS = tuple(Offering.all())
+app = Flask(__name__)
 
-OPTIONS_SEMESTERS = sorted(Semester.all(), reverse=True)
-OPTIONS_INSTRUCTORS = sorted(Faculty.all(), key=(lambda f: f.last_first.lower()))
-OPTIONS_CORES = sorted(Core.all(), key=(lambda c: c.name))
-OPTIONS_UNITS = sorted(set(o.units for o in OFFERINGS))
-OPTIONS_DEPARTMENTS = sorted(Department.all(), key=(lambda d: d.name))
+Day = namedtuple('Day', ['abbr', 'name'])
+
 OPTIONS_LOWER = 0
-OPTIONS_UPPER = max(ceil(o.course.pure_number_int / 100) * 100 - 1 for o in OFFERINGS)
-OPTIONS_DAYS = sorted(Weekday.all())
+OPTIONS_UPPER = 999
+OPTIONS_DAYS = [
+    Day('M','Monday'),
+    Day('T','Tuesday'),
+    Day('W','Wednesday'),
+    Day('R','Thursday'),
+    Day('F','Friday'),
+    Day('U','Saturday'),
+]
 OPTIONS_HOURS = [datetime.strptime(str(i), '%H').strftime('%I %p').strip('0').lower() for i in range(6, 24)]
 
 DEFAULT_OPTIONS = {
     'query': 'search for courses...',
-    'semester': str(Semester.current_semester()),
+    'semester': Semester.current_semester().code,
     'open': '',
-    'advanced': 'False',
     'instructor': '',
     'core': '',
     'units': '',
@@ -57,13 +65,13 @@ def get_parameter_or_default(parameters, parameter):
         assert parameter in DEFAULT_OPTIONS
         return DEFAULT_OPTIONS[parameter]
 
-def get_dropdown_options(parameters):
+def get_dropdown_options(session, parameters):
     context = {}
-    context['semesters'] = OPTIONS_SEMESTERS
-    context['instructors'] = OPTIONS_INSTRUCTORS
-    context['cores'] = OPTIONS_CORES
-    context['units'] = OPTIONS_UNITS
-    context['departments'] = OPTIONS_DEPARTMENTS
+    context['semesters'] = sorted(session.query(Semester), reverse=True)
+    context['instructors'] = sorted(session.query(Person), key=(lambda p: (p.last_name + ', ' + p.first_name).lower()))
+    context['cores'] = sorted(session.query(Core), key=(lambda c: c.name))
+    context['units'] = sorted(row[0] for row in session.query(Offering.units).distinct())
+    context['departments'] = sorted(session.query(Department), key=(lambda d: d.name))
     context['lower'] = (OPTIONS_LOWER if parameters.get('lower') is None else parameters.get('lower'))
     context['upper'] = (OPTIONS_UPPER if parameters.get('upper') is None else parameters.get('upper'))
     context['days'] = OPTIONS_DAYS
@@ -71,43 +79,56 @@ def get_dropdown_options(parameters):
     context['end_hours'] = OPTIONS_HOURS
     return context
 
-def get_search_results(parameters, context):
+def get_search_results(session, parameters, context):
+    query = session.query(Offering)
+    query = query.join(Semester)
+    query = query.join(Course, Department)
+    # FIXME
+    #query = query.join(OfferingMeeting, Meeting, TimeSlot, Room, Building)
+    #query = query.join(OfferingCore, Core)
+    #query = query.join(OfferingInstructor, Person)
     if parameters:
-        results = filter_study_abroad(OFFERINGS)
-        results = filter_by_search(results, get_parameter_or_none(parameters, 'query'))
+        query = filter_study_abroad(query)
         semester = get_parameter_or_none(parameters, 'semester')
-        if semester == '':
+        if semester is None:
+            semester = Semester.current_semester()
+        elif semester is not 'any':
+            year, season = Semester.code_to_season(semester)
+            semester = session.query(Semester).filter(Semester.year == year, Semester.season == season).one()
+        else:
             semester = None
-        results = filter_by_semester(results, semester)
+        assert semester is None or isinstance(semester, Semester)
+        query = filter_by_semester(query, semester)
         if get_parameter_or_none(parameters, 'open'):
-            results = filter_by_openness(results)
-        results = filter_by_department(results, get_parameter_or_none(parameters, 'department'))
-        results = filter_by_number(results, get_parameter_or_none(parameters, 'lower'), get_parameter_or_none(parameters, 'upper'))
-        results = filter_by_units(results, get_parameter_or_none(parameters, 'units'))
-        results = filter_by_instructor(results, get_parameter_or_none(parameters, 'instructor'))
-        results = filter_by_core(results, get_parameter_or_none(parameters, 'core'))
+            query = filter_by_openness(query)
+        department = get_parameter_or_none(parameters, 'department')
+        if department is not None:
+            department = session.query(Department).filter(Department.code == department).one()
+        query = filter_by_department(query, department)
+        query = filter_by_number(query, get_parameter_or_none(parameters, 'lower'), get_parameter_or_none(parameters, 'upper'))
+        query = filter_by_units(query, get_parameter_or_none(parameters, 'units'))
+        query = filter_by_instructor(query, get_parameter_or_none(parameters, 'instructor'))
+        query = filter_by_core(query, get_parameter_or_none(parameters, 'core'))
         day = get_parameter_or_none(parameters, 'day')
         starts_after = datetime.strptime(get_parameter_or_default(parameters, 'start_hour'), '%I %p').time()
         ends_before = datetime.strptime(get_parameter_or_default(parameters, 'end_hour'), '%I %p').time()
-        results = filter_by_meeting(results, day, starts_after, ends_before)
-        context['results'] = tuple(results)
+        query = filter_by_meeting(query, day, starts_after, ends_before)
+        terms = get_parameter_or_none(parameters, 'query')
+        query = filter_by_search(query, terms)
+        query = sort_offerings(query, get_parameter_or_none(parameters, 'sort'))
+        context['results'] = []
+        for offering in query:
+            context['results'].append(offering)
     else:
         context['results'] = None
     return context
 
-def sort_search_results(parameters, context):
-    if context['results'] is not None:
-        context['results'] = sort_offerings(context['results'], get_parameter_or_none(parameters, 'sort'))
-    return context
-
-app = Flask(__name__)
-
 @app.route('/')
 def view_root():
+    session = create_session()
     parameters = request.args.to_dict()
-    context = get_dropdown_options(parameters)
-    context = get_search_results(parameters, context)
-    context = sort_search_results(parameters, context)
+    context = get_dropdown_options(session, parameters)
+    context = get_search_results(session, parameters, context)
     if 'sort' in parameters:
         parameters.pop('sort')
     context['parameters'] = parameters
@@ -129,7 +150,7 @@ def view_simplify():
         del parameters['query']
     simplified = {}
     for key, value in parameters.items():
-        if key not in DEFAULT_OPTIONS or value != DEFAULT_OPTIONS[key]:
+        if key == 'semester' or key not in DEFAULT_OPTIONS or value != DEFAULT_OPTIONS[key]:
             simplified[key] = value
     return redirect(url_for('view_root', **simplified))
 

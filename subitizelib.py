@@ -1,109 +1,124 @@
 #!/usr/bin/env python3
 
-def filter_study_abroad(offerings):
-    return tuple(o for o in offerings if not (o.course.department.code == 'OXAB' or o.course.department.code.startswith('AB')))
+from sqlalchemy.sql.expression import and_, or_, text, asc, desc
 
-def filter_by_search(offerings, query=None):
-    if query is None:
-        return offerings
-    terms = query.lower().split()
-    results = []
-    for offering in offerings:
-        match = True
-        for term in terms:
-            if term in offering.name.lower():
-                continue
-            if term == offering.course.department.code.lower() or term in offering.course.department.name.lower():
-                continue
-            if term == offering.course.pure_number_str:
-                continue
-            if any((term in instructor.full_name.lower()) for instructor in offering.instructors if instructor is not None):
-                continue
-            if any((term in core.code.lower() or term in core.name.lower()) for core in offering.cores):
-                continue
-            match = False
-            break
-        if match:
-            results.append(offering)
-    return tuple(results)
+from models import Semester, TimeSlot, Meeting, Core, Department, Course, Person, Offering, OfferingMeeting, OfferingCore, OfferingInstructor
 
-def filter_by_semester(offerings, semester=None):
+def filter_study_abroad(query):
+    return query.filter(Department.code != 'OXAB', Department.code.notilike('AB%'))
+
+def filter_by_search(query, terms=None):
+    if terms is None:
+        return query
+    terms = terms.split()
+    for term in terms:
+        query = query.filter(or_(
+            Offering.title.ilike('%{}%'.format(term)),
+            Course.number == term,
+            Department.code == term,
+            Department.name.ilike('%{}%'.format(term)),
+            # FIXME
+#            Core.code == term,
+#            Core.name.ilike('%{}%'.format(term)),
+#            Person.system_name.ilike('%{}%'.format(term)),
+#            Person.first_name.ilike('%{}%'.format(term)),
+#            Person.last_name.ilike('%{}%'.format(term)),
+#            Person.nick_name.ilike('%{}%'.format(term)),
+        ))
+    return query
+
+def filter_by_semester(query, semester=None):
     if semester is None:
-        return offerings
-    return tuple(offering for offering in offerings if offering.semester.code == semester)
+        return query
+    return query.filter(Semester.id == semester.id)
 
-def filter_by_openness(offerings):
-    return tuple(offering for offering in offerings if offering.is_open)
+def filter_by_openness(query):
+    return query.filter(and_(Offering.num_waitlisted == 0, text('num_enrolled < num_seats - num_reserved')))
 
-def filter_by_instructor(offerings, instructor=None):
+def filter_by_instructor(query, instructor=None):
     if instructor is None:
-        return offerings
-    return tuple(offering for offering in offerings if any(instructor == o_instructor.alias for o_instructor in offering.instructors if o_instructor))
+        return query
+    return query.filter(Person.id == instructor.id)
 
-def filter_by_core(offerings, core=None):
+def filter_by_core(query, core=None):
     if core is None:
-        return offerings
-    return tuple(offering for offering in offerings for o_core in offering.cores if core == o_core.code)
+        return query
+    return query.filter(Core.id == core.id)
 
-def filter_by_units(offerings, units=None):
+def filter_by_units(query, units=None):
     if units is None:
-        return offerings
-    return tuple(offering for offering in offerings if offering.units == int(units))
+        return query
+    return query.filter(Offering.units == units)
 
-def filter_by_department(offerings, department=None):
+def filter_by_department(query, department=None):
     if department is None:
-        return offerings
-    return tuple(offering for offering in offerings if offering.course.department.code == department)
+        return query
+    return query.filter(Department.id == department.id)
 
-def filter_by_number(offerings, minimum=None, maximum=None):
-    if minimum is not None and maximum is not None:
-        return tuple(offering for offering in offerings if int(minimum) <= offering.course.pure_number_int <= int(maximum))
-    elif maximum is not None:
-        return tuple(offering for offering in offerings if offering.course.pure_number_int <= int(maximum))
-    elif minimum is not None:
-        return tuple(offering for offering in offerings if int(minimum) <= offering.course.pure_number_int)
-    else:
-        return offerings
+def filter_by_number(query, minimum=None, maximum=None):
+    filters = []
+    if minimum is not None:
+        filters.append(Course.number_int >= minimum)
+    if maximum is not None:
+        filters.append(Course.number_int <= maximum)
+    if filters:
+        query = query.filter(*filters)
+    return query
 
-def filter_by_meeting(offerings, day=None, starts_after=None, ends_before=None):
-    if day is None and starts_after is None and ends_before is None:
-        return offerings
-    result = []
-    for offering in offerings:
-        for meeting in offering.meetings:
-            passes = True
-            if meeting.time_slot is None:
-                passes = True
-                break
-            if day is not None and day not in meeting.weekdays_abbreviation:
-                passes = False
-            if starts_after is not None and meeting.start_time < starts_after:
-                passes = False
-            if ends_before is not None and ends_before < meeting.end_time:
-                passes = False
-            if passes:
-                break
-        if passes:
-            result.append(offering)
-    return tuple(result)
+def filter_by_meeting(query, day=None, starts_after=None, ends_before=None):
+    filters = []
+    if day is not None:
+        filters.append(TimeSlot.weekdays.contains(day))
+    if starts_after is not None:
+        filters.append(TimeSlot.start >= starts_after)
+    if ends_before is not None:
+        filters.append(TimeSlot.end <= ends_before)
+    if filters:
+        query = query.filter(*filters)
+    return query
 
-def sort_offerings(offerings, field=None, reverse=False):
+def sort_offerings(query, field=None):
     if field is None:
-        key_fn = (lambda offering: (-int(offering.semester.code), offering.department, offering.course.pure_number_int, offering.course.number, offering.section))
+        query = query.order_by(
+            desc(Semester.id), # FIXME a semester has no code
+            asc(Department.name),
+            asc(Course.number_int),
+            asc(Course.number),
+            asc(Offering.section),
+        )
     elif field == 'semester':
-        key_fn = (lambda offering: -int(offering.semester))
+        query = query.order_by(
+            asc(Semester.id), # FIXME a semester has no code
+        )
     elif field == 'course':
-        key_fn = (lambda offering: (offering.department.code, offering.number, offering.section))
+        query = query.order_by(
+            asc(Department.code),
+            asc(Course.number_int),
+            asc(Course.number),
+            asc(Offering.section),
+        )
     elif field == 'title':
-        key_fn = (lambda offering: offering.name.lower())
+        query = query.order_by(
+            asc(Offering.title),
+        )
     elif field == 'units':
-        key_fn = (lambda offering: offering.units)
+        query = query.order_by(
+            asc(Offering.units),
+        )
     elif field == 'instructors':
-        key_fn = (lambda offering: sorted(i.last_name.lower() for i in offering.instructors if i))
+        query = query.order_by(
+            asc(Person.last_name),
+        )
     elif field == 'meetings':
-        key_fn = (lambda offering: sorted(offering.meetings))
+        query = query.order_by(
+            asc(TimeSlot.weekdays),
+            asc(TimeSlot.start),
+            asc(TimeSlot.end),
+        )
     elif field == 'cores':
-        key_fn = (lambda offering: sorted(c.code for c in offering.cores))
+        query = query.order_by(
+            asc(Core.code),
+        )
     else:
         raise ValueError('invalid sorting key: {}'.format(field))
-    return sorted(offerings, key=key_fn, reverse=reverse)
+    return query

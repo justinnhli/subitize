@@ -1,7 +1,7 @@
-#!/usr/bin/env python3
-
 from datetime import datetime, date
 
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 from sqlalchemy import Column, Integer, String, Time, ForeignKey
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.declarative import declarative_base
@@ -9,6 +9,11 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.schema import UniqueConstraint
 
 SQLITE_URI = 'sqlite:///counts.db'
+
+def create_session():
+    engine = create_engine(SQLITE_URI, connect_args={'check_same_thread':False})
+    Session = sessionmaker(bind=engine)
+    return Session()
 
 Base = declarative_base()
 
@@ -20,6 +25,10 @@ class Semester(Base):
     __table_args__ = (
         UniqueConstraint('year', 'season', name='_year_season_uc'),
     )
+    def __init__(self, year, season):
+        self.year = year
+        self.season = season
+        self.id = self.code
     @property
     def code(self):
         season = self.season.lower()
@@ -29,17 +38,24 @@ class Semester(Base):
             return '{}02'.format(self.year)
         elif season == 'summer':
             return '{}03'.format(self.year)
+    def __str__(self):
+        return '{} {}'.format(self.year, self.season)
+    def __lt__(self, other):
+        return self.code < other.code
     def __repr__(self):
         return '<Semester(year={}, season="{}")>'.format(self.year, self.season)
     @staticmethod
-    def current_semester_code():
+    def current_semester(session=None):
         today = datetime.today().date()
         if today < date(today.year, 3, 15):
-            return str(today.year) + '02'
+            year, season = today.year, 'Spring'
         elif today < date(today.year, 10, 15):
-            return str(today.year + 1) + '01'
+            year, season = today.year, 'Fall'
         else:
-            return str(today.year + 1) + '01'
+            year, season = today.year + 1, 'Spring'
+        if session is None:
+            session = create_session()
+        return session.query(Semester).filter(Semester.year == year, Semester.season == season).one()
     @staticmethod
     def code_to_season(code):
         year = int(code[:4])
@@ -53,6 +69,14 @@ class Semester(Base):
         raise ValueError('invalid semester code: {}'.format(code))
 
 class TimeSlot(Base):
+    ALIASES = [
+        ['M', 'Monday'],
+        ['T', 'Tuesday'],
+        ['W', 'Wednesday'],
+        ['R', 'Thursday'],
+        ['F', 'Friday'],
+        ['U', 'Saturday'],
+    ]
     __tablename__ = 'timeslots'
     id = Column(Integer, primary_key=True)
     weekdays = Column(String, nullable=False)
@@ -60,6 +84,15 @@ class TimeSlot(Base):
     end = Column(Time, nullable=False)
     def __repr__(self):
         return '<TimeSlot(weekdays={}, start={}, end={})>'.format(self.weekdays, self.start.strftime('%H:%M'), self.end.strftime('%H:%M'))
+    @property
+    def weekdays_names(self):
+        return ',' .join(name for abbr, name in TimeSlot.ALIASES if abbr in self.weekdays)
+    @property
+    def us_start_time(self):
+        return self.start.strftime('%I:%M%p').strip('0').lower()
+    @property
+    def us_end_time(self):
+        return self.end.strftime('%I:%M%p').strip('0').lower()
 
 class Building(Base):
     __tablename__ = 'buildings'
@@ -78,6 +111,8 @@ class Room(Base):
     building_id = Column(Integer, ForeignKey('buildings.id'), nullable=False)
     building = relationship('Building')
     room = Column(String, nullable=True)
+    def __str__(self):
+        return ''
     def __repr__(self):
         return '<Room(building="{}", room="{}")>'.format(self.building.code, self.room)
 
@@ -90,6 +125,18 @@ class Meeting(Base):
     room = relationship('Room')
     def __repr__(self):
         return '<Meeting(UGH)>'
+    @property
+    def weekdays(self):
+        return self.timeslot.weekdays
+    @property
+    def weekdays_names(self):
+        return self.timeslot.weekdays_names
+    @property
+    def us_start_time(self):
+        return self.timeslot.us_start_time
+    @property
+    def us_end_time(self):
+        return self.timeslot.us_end_time
 
 class Core(Base):
     __tablename__ = 'cores'
@@ -115,27 +162,10 @@ class Course(Base):
     id = Column(Integer, primary_key=True)
     department_id = Column(Integer, ForeignKey('departments.id'), nullable=False)
     number = Column(String, nullable=False)
+    number_int = Column(Integer, nullable=False)
     department = relationship('Department')
     def __repr__(self):
         return '<Course(department="{}", number="{}")>'.format(self.department.code, self.number)
-
-class OfferingInstructor(Base):
-    __tablename__ = 'offering_instructor_assoc'
-    id = Column(Integer, primary_key=True)
-    offering_id = Column(Integer, ForeignKey('offerings.id'), nullable=False)
-    instructor_id = Column(Integer, ForeignKey('people.id'), nullable=False)
-
-class OfferingMeeting(Base):
-    __tablename__ = 'offering_meeting_assoc'
-    id = Column(Integer, primary_key=True)
-    offering_id = Column(Integer, ForeignKey('offerings.id'), nullable=False)
-    meeting_id = Column(Integer, ForeignKey('meetings.id'), nullable=False)
-
-class OfferingCore(Base):
-    __tablename__ = 'offering_core_assoc'
-    id = Column(Integer, primary_key=True)
-    offering_id = Column(Integer, ForeignKey('offerings.id'), nullable=False)
-    core_id = Column(Integer, ForeignKey('cores.id'), nullable=False)
 
 class Person(Base):
     __tablename__ = 'people'
@@ -149,6 +179,26 @@ class Person(Base):
         secondary='offering_instructor_assoc',
         back_populates='instructors'
     )
+    def __str__(self):
+        return '{}, {}'.format(self.last_name, self.first_name)
+
+class OfferingMeeting(Base):
+    __tablename__ = 'offering_meeting_assoc'
+    id = Column(Integer, primary_key=True)
+    offering_id = Column(Integer, ForeignKey('offerings.id'), nullable=False)
+    meeting_id = Column(Integer, ForeignKey('meetings.id'), nullable=False)
+
+class OfferingCore(Base):
+    __tablename__ = 'offering_core_assoc'
+    id = Column(Integer, primary_key=True)
+    offering_id = Column(Integer, ForeignKey('offerings.id'), nullable=False)
+    core_id = Column(Integer, ForeignKey('cores.id'), nullable=False)
+
+class OfferingInstructor(Base):
+    __tablename__ = 'offering_instructor_assoc'
+    id = Column(Integer, primary_key=True)
+    offering_id = Column(Integer, ForeignKey('offerings.id'), nullable=False)
+    instructor_id = Column(Integer, ForeignKey('people.id'), nullable=False)
 
 class Offering(Base):
     __tablename__ = 'offerings'
@@ -178,6 +228,9 @@ class Offering(Base):
     num_reserved = Column(Integer, nullable=False)
     num_reserved_open = Column(Integer, nullable=False)
     num_waitlisted = Column(Integer, nullable=False)
+    @property
+    def is_open(self):
+        return self.num_waitlisted == 0 and self.num_enrolled < self.num_seats - self.num_reserved
 
 def get_or_create(session, model, **kwargs):
     instance = session.query(model).filter_by(**kwargs).first()
