@@ -165,23 +165,25 @@ def extract_results(session, semester, html):
         num_reserved = int(extract_text(tds[9]))
         num_reserved_open = int(extract_text(tds[10]))
         num_waitlisted = int(extract_text(tds[11]))
-        offering = get_or_create(
-            session,
-            Offering,
-            semester=semester,
-            course=course,
-            section=section,
-            title=title,
-            units=units,
-            num_seats=num_seats,
-            num_enrolled=num_enrolled,
-            num_reserved=num_reserved,
-            num_reserved_open=num_reserved_open,
-            num_waitlisted=num_waitlisted,
-        )
-        offering.instructors.extend(instructors)
-        offering.meetings.extend(meetings)
-        offering.cores.extend(cores)
+        offering = session.query(Offering).filter_by(semester=semester, course=course, section=section).first()
+        if offering is None:
+            offering = get_or_create(
+                session,
+                Offering,
+                semester=semester,
+                course=course,
+                section=section,
+                title=title,
+                units=units,
+                num_seats=num_seats,
+                num_enrolled=num_enrolled,
+                num_reserved=num_reserved,
+                num_reserved_open=num_reserved_open,
+                num_waitlisted=num_waitlisted,
+            )
+            offering.instructors.extend(instructors)
+            offering.meetings.extend(meetings)
+            offering.cores.extend(cores)
 
 def update_db(semester_code, session=None):
     if session is None:
