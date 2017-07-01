@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
-from datetime import datetime
 from collections import namedtuple
+from datetime import datetime
+from os.path import exists as file_exists, join as join_path
 
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, abort, request, send_from_directory, url_for, redirect
 
 from models import create_session
 from models import Semester
@@ -151,6 +152,13 @@ def view_simplify():
         if key == 'semester' or key not in DEFAULT_OPTIONS or value != DEFAULT_OPTIONS[key]:
             simplified[key] = value
     return redirect(url_for('view_root', **simplified))
+
+@app.route('/static/css/<file>')
+def get_css(file):
+    if file_exists(join_path('static/css', file)):
+        return send_from_directory('static/css', file)
+    else:
+        return abort(404)
 
 if __name__ == '__main__':
     app.run(debug=True)
