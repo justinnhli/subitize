@@ -56,7 +56,8 @@ def extract_text(soup):
 
 def get_view_state():
     response = requests.get(COURSE_COUNTS)
-    assert response.status_code == 200, 'Unable to connect to Course Counts Simple Search (status code {})'.format(response.status_code)
+    if response.status_code != 200:
+        raise IOError('Unable to connect to Course Counts Simple Search (status code {})'.format(response.status_code))
     soup = BeautifulSoup(response.text, 'html.parser')
     view_state = soup.select('#__VIEWSTATE')[0]['value'].strip()
     event_validation = soup.select('#__EVENTVALIDATION')[0]['value'].strip()
@@ -90,9 +91,11 @@ def get_offerings_data(semester):
     }
     params['__VIEWSTATE'], params['__EVENTVALIDATION'] = get_view_state()
     response = requests.post(COURSE_COUNTS, headers=REQUEST_HEADERS, data=params)
-    assert response.status_code == 200, 'Unable to connect to Course Counts offerings data (status code {})'.format(response.status_code)
+    if response.status_code != 200:
+        raise IOError('Unable to connect to Course Counts offerings data (status code {})'.format(response.status_code))
     response = response.text.split('|')
-    assert response[2] == '', 'Unable to extract offerings data'
+    if response[2] != '':
+        raise ValueError('Unable to extract offerings data')
     return response[7]
 
 def extract_instructors(session, td):
