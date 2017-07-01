@@ -90,13 +90,9 @@ def get_search_results(session, parameters, context):
         query = filter_study_abroad(query)
         semester = get_parameter_or_none(parameters, 'semester')
         if semester is None:
-            semester = Semester.current_semester()
-        elif semester is not 'any':
-            year, season = Semester.code_to_season(semester)
-            semester = session.query(Semester).filter(Semester.year == year, Semester.season == season).one()
-        else:
+            semester = Semester.current_semester().code
+        elif semester == 'any':
             semester = None
-        assert semester is None or isinstance(semester, Semester)
         query = filter_by_semester(query, semester)
         if get_parameter_or_none(parameters, 'open'):
             query = filter_by_openness(query)

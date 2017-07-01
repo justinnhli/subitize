@@ -37,12 +37,12 @@ def filter_by_openness(query):
 def filter_by_instructor(query, instructor=None):
     if instructor is None:
         return query
-    return query.filter(Person.id == instructor.id)
+    return query.filter(Person.system_name == instructor)
 
 def filter_by_core(query, core=None):
     if core is None:
         return query
-    return query.filter(Core.id == core.id)
+    return query.filter(Core.code == core)
 
 def filter_by_units(query, units=None):
     if units is None:
@@ -67,11 +67,11 @@ def filter_by_number(query, minimum=None, maximum=None):
 def filter_by_meeting(query, day=None, starts_after=None, ends_before=None):
     filters = []
     if day is not None:
-        filters.append(TimeSlot.weekdays.contains(day))
+        filters.append(or_(TimeSlot.weekdays == None, TimeSlot.weekdays.contains(day)))
     if starts_after is not None:
-        filters.append(TimeSlot.start >= starts_after)
+        filters.append(or_(TimeSlot.start == None, TimeSlot.start >= starts_after))
     if ends_before is not None:
-        filters.append(TimeSlot.end <= ends_before)
+        filters.append(or_(TimeSlot.end == None, TimeSlot.end <= ends_before))
     if filters:
         query = query.filter(*filters)
     return query
