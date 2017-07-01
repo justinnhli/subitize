@@ -3,7 +3,6 @@ from datetime import datetime, date
 from sqlalchemy import create_engine, event
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import Column, Integer, String, Time, ForeignKey
-from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy.schema import UniqueConstraint
@@ -238,9 +237,6 @@ def get_or_create(session, model, **kwargs):
     instance = session.query(model).filter_by(**kwargs).first()
     if not instance:
         instance = model(**kwargs)
-        try:
-            session.add(instance)
-        except IntegrityError as e:
-            assert False, e
+        session.add(instance)
     assert instance is not None
     return instance
