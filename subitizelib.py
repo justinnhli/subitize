@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-from sqlalchemy.sql.expression import and_, or_, text, asc, desc
+from sqlalchemy.sql.expression import and_, or_, text, asc, desc, func
 
-from models import Semester, TimeSlot, Meeting, Core, Department, Course, Person, Offering, OfferingMeeting, OfferingCore, OfferingInstructor
+from models import Semester, TimeSlot, Building, Room, Core, Department, Course, Person, Offering
 
 def filter_study_abroad(query):
     return query.filter(Department.code != 'OXAB', Department.code.notilike('AB%'))

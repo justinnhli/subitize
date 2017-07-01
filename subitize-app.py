@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from datetime import datetime, date
+from datetime import datetime
 from collections import namedtuple
 
 from flask import Flask, render_template, request, url_for, redirect
@@ -21,12 +21,12 @@ Day = namedtuple('Day', ['abbr', 'name'])
 OPTIONS_LOWER = 0
 OPTIONS_UPPER = 999
 OPTIONS_DAYS = [
-    Day('M','Monday'),
-    Day('T','Tuesday'),
-    Day('W','Wednesday'),
-    Day('R','Thursday'),
-    Day('F','Friday'),
-    Day('U','Saturday'),
+    Day('M', 'Monday'),
+    Day('T', 'Tuesday'),
+    Day('W', 'Wednesday'),
+    Day('R', 'Thursday'),
+    Day('F', 'Friday'),
+    Day('U', 'Saturday'),
 ]
 OPTIONS_HOURS = [datetime.strptime(str(i), '%H').strftime('%I %p').strip('0').lower() for i in range(6, 24)]
 
