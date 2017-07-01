@@ -1,6 +1,6 @@
 from datetime import datetime, date
 
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, event
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import Column, Integer, String, Time, ForeignKey
 from sqlalchemy.exc import IntegrityError
@@ -10,8 +10,10 @@ from sqlalchemy.schema import UniqueConstraint
 
 SQLITE_URI = 'sqlite:///counts.db'
 
-def create_session():
-    engine = create_engine(SQLITE_URI, connect_args={'check_same_thread':False})
+def create_session(engine=None):
+    if engine is None:
+        engine = create_engine(SQLITE_URI, connect_args={'check_same_thread':False})
+    event.listen(engine, 'connect', (lambda dbapi_con, con_record: dbapi_con.execute('pragma foreign_keys=ON')))
     Session = sessionmaker(bind=engine)
     return Session()
 
