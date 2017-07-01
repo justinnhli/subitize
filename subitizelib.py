@@ -79,7 +79,7 @@ def filter_by_meeting(query, day=None, starts_after=None, ends_before=None):
 def sort_offerings(query, field=None):
     if field is None:
         query = query.order_by(
-            desc(Semester.id), # FIXME a semester has no code
+            desc(Semester.id),
             asc(Department.name),
             asc(Course.number_int),
             asc(Course.number),
@@ -87,7 +87,7 @@ def sort_offerings(query, field=None):
         )
     elif field == 'semester':
         query = query.order_by(
-            asc(Semester.id), # FIXME a semester has no code
+            asc(Semester.id),
         )
     elif field == 'course':
         query = query.order_by(
@@ -106,16 +106,21 @@ def sort_offerings(query, field=None):
         )
     elif field == 'instructors':
         query = query.order_by(
+            asc(Person.id == None),
             asc(Person.last_name),
         )
     elif field == 'meetings':
         query = query.order_by(
-            asc(TimeSlot.weekdays),
+            asc(TimeSlot.id == None),
+            asc(func.substr(TimeSlot.weekdays, 1, 1)),
             asc(TimeSlot.start),
             asc(TimeSlot.end),
+            asc(Room.id == None),
+            asc(Building.name == None),
         )
     elif field == 'cores':
         query = query.order_by(
+            asc(Core.id == None),
             asc(Core.code),
         )
     else:

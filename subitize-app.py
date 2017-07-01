@@ -125,7 +125,10 @@ def view_root():
     context = get_dropdown_options(session, parameters)
     context = get_search_results(session, parameters, context)
     if 'sort' in parameters:
+        context['cur_sort'] = parameters['sort']
         parameters.pop('sort')
+    else:
+        context['cur_sort'] = 'semester'
     context['parameters'] = parameters
     context['base_url'] = url_for('view_root')
     context['url'] = url_for('view_root', **parameters)
