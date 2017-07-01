@@ -111,7 +111,7 @@ $(document).ready(function() {
                 <select name="instructor">
                     <option value="">(any)</option>
                     {% for f in instructors %}
-                    <option value="{{ f.alias }}" {% if defaults.instructor == f.alias %}selected{% endif %}>{{ f }}</option>
+                    <option value="{{ f.system_name }}" {% if defaults.instructor == f.system_name %}selected{% endif %}>{{ f }}</option>
                     {% endfor %}
                 </select>
                 &nbsp;&nbsp;&nbsp;
