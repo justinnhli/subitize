@@ -83,10 +83,9 @@ def get_search_results(session, parameters, context):
     query = session.query(Offering)
     query = query.join(Semester)
     query = query.join(Course, Department)
-    # FIXME
-    #query = query.join(OfferingMeeting, Meeting, TimeSlot, Room, Building)
-    #query = query.join(OfferingCore, Core)
-    #query = query.join(OfferingInstructor, Person)
+    query = query.outerjoin(OfferingMeeting, Meeting, TimeSlot, Room, Building)
+    query = query.outerjoin(OfferingCore, Core)
+    query = query.outerjoin(OfferingInstructor, Person)
     if parameters:
         query = filter_study_abroad(query)
         semester = get_parameter_or_none(parameters, 'semester')

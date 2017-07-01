@@ -17,20 +17,19 @@ def filter_by_search(query, terms=None):
             Course.number == term,
             Department.code == term,
             Department.name.ilike('%{}%'.format(term)),
-            # FIXME
-#            Core.code == term,
-#            Core.name.ilike('%{}%'.format(term)),
-#            Person.system_name.ilike('%{}%'.format(term)),
-#            Person.first_name.ilike('%{}%'.format(term)),
-#            Person.last_name.ilike('%{}%'.format(term)),
-#            Person.nick_name.ilike('%{}%'.format(term)),
+            Core.code == term,
+            Core.name.ilike('%{}%'.format(term)),
+            Person.system_name.ilike('%{}%'.format(term)),
+            Person.first_name.ilike('%{}%'.format(term)),
+            Person.last_name.ilike('%{}%'.format(term)),
+            Person.nick_name.ilike('%{}%'.format(term)),
         ))
     return query
 
 def filter_by_semester(query, semester=None):
     if semester is None:
         return query
-    return query.filter(Semester.id == semester.id)
+    return query.filter(Semester.id == semester)
 
 def filter_by_openness(query):
     return query.filter(and_(Offering.num_waitlisted == 0, text('num_enrolled < num_seats - num_reserved')))
