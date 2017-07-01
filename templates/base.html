@@ -129,7 +129,7 @@
                 <td>
                     {% if offering.instructors %}
                     {% for instructor in offering.instructors %}
-                    <a href="{{ base_url }}?advanced=True&semester={{ parameters['semester'] }}&instructor={{ instructor.alias }}"><abbr title="{{ instructor.first_last }}">{{ instructor.last_name }}</abbr></a>
+                    <a href="{{ base_url }}?advanced=True&semester={{ parameters['semester'] }}&instructor={{ instructor.system_name }}"><abbr title="{{ instructor.system_name }}">{{ instructor.last_name }}</abbr></a>
                     {% if not loop.last %};{% endif %}
                     {% endfor %}
                     {% else %}
