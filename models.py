@@ -30,7 +30,7 @@ class Semester(Base):
     def __init__(self, year, season):
         self.year = year
         self.season = season
-        self.id = self.code
+        self.id = int(self.code)
     @property
     def code(self):
         season = self.season.lower()
