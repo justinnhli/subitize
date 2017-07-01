@@ -187,20 +187,20 @@ class Person(Base):
 class OfferingMeeting(Base):
     __tablename__ = 'offering_meeting_assoc'
     id = Column(Integer, primary_key=True)
-    offering_id = Column(Integer, ForeignKey('offerings.id'), nullable=False)
-    meeting_id = Column(Integer, ForeignKey('meetings.id'), nullable=False)
+    offering_id = Column(Integer, ForeignKey('offerings.id', ondelete='CASCADE'), nullable=False)
+    meeting_id = Column(Integer, ForeignKey('meetings.id', ondelete='CASCADE'), nullable=False)
 
 class OfferingCore(Base):
     __tablename__ = 'offering_core_assoc'
     id = Column(Integer, primary_key=True)
-    offering_id = Column(Integer, ForeignKey('offerings.id'), nullable=False)
-    core_id = Column(Integer, ForeignKey('cores.id'), nullable=False)
+    offering_id = Column(Integer, ForeignKey('offerings.id', ondelete='CASCADE'), nullable=False)
+    core_id = Column(Integer, ForeignKey('cores.id', ondelete='CASCADE'), nullable=False)
 
 class OfferingInstructor(Base):
     __tablename__ = 'offering_instructor_assoc'
     id = Column(Integer, primary_key=True)
-    offering_id = Column(Integer, ForeignKey('offerings.id'), nullable=False)
-    instructor_id = Column(Integer, ForeignKey('people.id'), nullable=False)
+    offering_id = Column(Integer, ForeignKey('offerings.id', ondelete='CASCADE'), nullable=False)
+    instructor_id = Column(Integer, ForeignKey('people.id', ondelete='CASCADE'), nullable=False)
 
 class Offering(Base):
     __tablename__ = 'offerings'
