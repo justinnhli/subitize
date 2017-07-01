@@ -5,52 +5,7 @@
     <title>Subitize - Course Counts at a Glance</title>
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> 
-    <script>
-function query_focus_handler() {
-    "use strict";
-    var searchbar = $('#searchbar');
-    if (searchbar.val() === 'search for courses...') {
-        searchbar.val('');
-        searchbar.css('color', '#000000');
-    }
-}
-
-function query_blur_handler() {
-    "use strict";
-    var searchbar = $('#searchbar');
-    if (searchbar.val() === '') {
-        searchbar.val('search for courses...');
-        searchbar.css('color', '#BABDB6');
-    }
-}
-
-function toggle_advanced_search() {
-    "use strict";
-    var toggle = $('#advanced-toggle');
-    var state = $('#advanced-state');
-    var div = $('#advanced-search');
-    if (state.val() === 'True') {
-        div.css('display', 'none');
-        toggle.html('More Options');
-        state.val('False');
-    } else {
-        div.css('display', 'block');
-        toggle.html('Fewer Options');
-        state.val('True');
-    }
-}
-
-$(document).ready(function() {
-    "use strict";
-    var state = $('#advanced-state');
-    if (state.val() === 'True') {
-        state.val('False');
-    } else {
-        state.val('True');
-    }
-    toggle_advanced_search();
-});
-    </script>
+    <script src="/static/js/gui.js"></script>
 </head>
 <body>
     <div>
@@ -60,9 +15,9 @@ $(document).ready(function() {
     <div>
         <form action="/simplify" method="get">
             {% if defaults.query == 'search for courses...' %}
-            <input id="searchbar" class="large" type="text" name="query" value="search for courses..." onfocus="query_focus_handler();" onblur="query_blur_handler();" style="color:#BABDB6;">
+            <input id="searchbar" class="large" type="text" name="query" value="search for courses..." style="color:#BABDB6;">
             {% else %}
-            <input id="searchbar" class="large" type="text" name="query" value="{{ defaults.query }}" onfocus="query_focus_handler();" onblur="query_blur_handler();" style="color:#000000;">
+            <input id="searchbar" class="large" type="text" name="query" value="{{ defaults.query }}" style="color:#000000;">
             {% endif %}
             <input class="large" type="submit" value="Search"><br>
             <div id="options">
@@ -76,7 +31,7 @@ $(document).ready(function() {
                 &nbsp;&nbsp;&nbsp;
                 <label><input type="checkbox" name="open" {% if defaults.open %}checked{% endif %}>Open courses only</input></label>
                 &nbsp;&nbsp;&nbsp;
-                <span id="advanced-toggle" onclick="toggle_advanced_search();">More Options</span>
+                <span id="advanced-toggle">Show Options</span>
                 &nbsp;&nbsp;&nbsp;
                 <button type="button" onclick="location.href='/';">Reset</button>
                 <input type="hidden" id="advanced-state" name="advanced" value="{{ advanced }}">
