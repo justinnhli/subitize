@@ -12,10 +12,10 @@ def filter_by_search(query, terms=None):
     for term in terms:
         query = query.filter(or_(
             Offering.title.ilike('%{}%'.format(term)),
-            Course.number == term,
-            Department.code == term,
+            Course.number == term.upper(),
+            Department.code == term.upper(),
             Department.name.ilike('%{}%'.format(term)),
-            Core.code == term,
+            Core.code == term.upper(),
             Core.name.ilike('%{}%'.format(term)),
             Person.system_name.ilike('%{}%'.format(term)),
             Person.first_name.ilike('%{}%'.format(term)),
