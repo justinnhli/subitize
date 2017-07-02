@@ -104,13 +104,13 @@
         {% else %}
         <table id="results-table">
             <tr>
-                <th><a href="{{ url }}&sort=semester">Semester</a>{% if cur_sort == 'semester' %} &#9660; {% endif %}</th>
-                <th><a href="{{ url }}&sort=course">Course (Section)</a>{% if cur_sort == 'course' %} &#9660; {% endif %}</th>
-                <th><a href="{{ url }}&sort=title">Title</a>{% if cur_sort == 'title' %} &#9660; {% endif %}</th>
-                <th><a href="{{ url }}&sort=units">Units</a>{% if cur_sort == 'units' %} &#9660; {% endif %}</th>
-                <th><a href="{{ url }}&sort=instructors">Instructor(s)</a>{% if cur_sort == 'instructors' %} &#9660; {% endif %}</th>
-                <th><a href="{{ url }}&sort=meetings">Meeting Times (Room)</a>{% if cur_sort == 'meetings' %} &#9660; {% endif %}</th>
-                <th><a href="{{ url }}&sort=cores">Core</a>{% if cur_sort == 'cores' %} &#9660; {% endif %}</th>
+                <th><a href="{{ url }}&sort=semester">Semester</a>{% if sorted == 'semester' %} &#9660; {% endif %}</th>
+                <th><a href="{{ url }}&sort=course">Course (Section)</a>{% if sorted == 'course' %} &#9660; {% endif %}</th>
+                <th><a href="{{ url }}&sort=title">Title</a>{% if sorted == 'title' %} &#9660; {% endif %}</th>
+                <th><a href="{{ url }}&sort=units">Units</a>{% if sorted == 'units' %} &#9660; {% endif %}</th>
+                <th><a href="{{ url }}&sort=instructors">Instructor(s)</a>{% if sorted == 'instructors' %} &#9660; {% endif %}</th>
+                <th><a href="{{ url }}&sort=meetings">Meeting Times (Room)</a>{% if sorted == 'meetings' %} &#9660; {% endif %}</th>
+                <th><a href="{{ url }}&sort=cores">Core</a>{% if sorted == 'cores' %} &#9660; {% endif %}</th>
                 <th>Seats</th>
             </tr>
             {% for offering in results %}
