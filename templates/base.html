@@ -122,7 +122,8 @@
                 </td>
                 <td>
                     <a href="{{ base_url }}?advanced=true&semester={{ parameters['semester'] }}&department={{ offering.course.department.code }}"><abbr title="{{ offering.course.department.name }}">{{ offering.course.department.code }}</abbr></a>
-                    {{ offering.course.number }} ({{ offering.section }})
+                    <a href="{{ base_url }}?advanced=true&semester=any&department={{ offering.course.department.code }}&lower={{ offering.course.number }}&upper={{ offering.course.number }}">{{ offering.course.number }}</a>
+                    ({{ offering.section }})
                 </td>
                 <td>{{ offering.title }}</td>
                 <td>{{ offering.units }}</td>
