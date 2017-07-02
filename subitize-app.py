@@ -19,6 +19,7 @@ from subitizelib import sort_offerings
 app = Flask(__name__)
 
 Day = namedtuple('Day', ['abbr', 'name'])
+Hour = namedtuple('Hour', ['value', 'display'])
 
 OPTIONS_LOWER = 0
 OPTIONS_UPPER = 999
@@ -30,7 +31,11 @@ OPTIONS_DAYS = [
     Day('F', 'Friday'),
     Day('U', 'Saturday'),
 ]
-OPTIONS_HOURS = [datetime.strptime(str(i), '%H').strftime('%I %p').strip('0').lower() for i in range(6, 24)]
+OPTIONS_HOURS = [
+        (lambda time: Hour(time.strftime('%H%M'), time.strftime('%I %p').strip('0').lower()))(
+            datetime.strptime(str(i), '%H')
+        ) for i in range(6, 24)
+]
 
 DEFAULT_OPTIONS = {
     'query': 'search for courses...',
@@ -43,8 +48,8 @@ DEFAULT_OPTIONS = {
     'lower': '0',
     'upper': '999',
     'day': '',
-    'start_hour': '6 am',
-    'end_hour': '11 pm',
+    'start_hour': '0600',
+    'end_hour': '2300',
 }
 
 def get_parameter_or_none(parameters, parameter):
@@ -107,8 +112,8 @@ def get_search_results(session, parameters, context):
         query = filter_by_instructor(query, get_parameter_or_none(parameters, 'instructor'))
         query = filter_by_core(query, get_parameter_or_none(parameters, 'core'))
         day = get_parameter_or_none(parameters, 'day')
-        starts_after = datetime.strptime(get_parameter_or_default(parameters, 'start_hour'), '%I %p').time()
-        ends_before = datetime.strptime(get_parameter_or_default(parameters, 'end_hour'), '%I %p').time()
+        starts_after = datetime.strptime(get_parameter_or_default(parameters, 'start_hour'), '%H%M').time()
+        ends_before = datetime.strptime(get_parameter_or_default(parameters, 'end_hour'), '%H%M').time()
         query = filter_by_meeting(query, day, starts_after, ends_before)
         terms = get_parameter_or_none(parameters, 'query')
         query = filter_by_search(query, terms)

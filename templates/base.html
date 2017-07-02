@@ -84,14 +84,14 @@
                 Starts After:
                 <select name="start_hour">
                     {% for hour in start_hours %}
-                    <option value="{{ hour }}" {% if defaults.start_hour == hour %}selected{% endif %}>{{ hour }}</option>
+                    <option value="{{ hour.value }}" {% if defaults.start_hour == hour.value %}selected{% endif %}>{{ hour.display }}</option>
                     {% endfor %}
                 </select>
                 &nbsp;&nbsp;&nbsp;
                 Ends Before:
                 <select name="end_hour">
                     {% for hour in end_hours %}
-                    <option value="{{ hour }}" {% if defaults.end_hour == hour %}selected{% endif %}>{{ hour }}</option>
+                    <option value="{{ hour.value }}" {% if defaults.end_hour == hour.value %}selected{% endif %}>{{ hour.display }}</option>
                     {% endfor %}
                 </select>
             </div>
