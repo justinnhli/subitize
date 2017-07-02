@@ -121,7 +121,7 @@
                     </a>
                 </td>
                 <td>
-                    <a href="{{ base_url }}?advanced=True&semester={{ parameters['semester'] }}&department={{ offering.course.department.code }}"><abbr title="{{ offering.course.department.name }}">{{ offering.course.department.code }}</abbr></a>
+                    <a href="{{ base_url }}?advanced=true&semester={{ parameters['semester'] }}&department={{ offering.course.department.code }}"><abbr title="{{ offering.course.department.name }}">{{ offering.course.department.code }}</abbr></a>
                     {{ offering.course.number }} ({{ offering.section }})
                 </td>
                 <td>{{ offering.title }}</td>
@@ -129,7 +129,7 @@
                 <td>
                     {% if offering.instructors %}
                     {% for instructor in offering.instructors %}
-                    <a href="{{ base_url }}?advanced=True&semester={{ parameters['semester'] }}&instructor={{ instructor.system_name }}"><abbr title="{{ instructor.system_name }}">{{ instructor.last_name }}</abbr></a>
+                    <a href="{{ base_url }}?advanced=true&semester={{ parameters['semester'] }}&instructor={{ instructor.system_name }}"><abbr title="{{ instructor.system_name }}">{{ instructor.last_name }}</abbr></a>
                     {% if not loop.last %};{% endif %}
                     {% endfor %}
                     {% else %}
@@ -158,7 +158,7 @@
                 </td>
                 <td>
                     {% for core in offering.cores %}
-                    <a href="{{ base_url }}?advanced=True&semester={{ parameters['semester'] }}&core={{ core.code }}"><abbr title="{{ core.name }}">{{ core.code }}</abbr>{% if not loop.last %};{% endif %}</a>
+                    <a href="{{ base_url }}?advanced=true&semester={{ parameters['semester'] }}&core={{ core.code }}"><abbr title="{{ core.name }}">{{ core.code }}</abbr>{% if not loop.last %};{% endif %}</a>
                     {% endfor %}
                 </td>
                 <td>

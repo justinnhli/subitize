@@ -22,7 +22,7 @@ $(function (){
 			var toggle = $(this);
 			var state = $('#advanced-state');
 			var div = $('#advanced-search');
-			if (state.val() === 'true') {
+			if (state.val().toLowerCase() === 'true') {
 				div.css('display', 'none');
 				toggle.html('Show Options');
 				state.val('false');
