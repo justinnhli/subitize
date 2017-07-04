@@ -79,10 +79,15 @@ class TimeSlot(Base):
         ['U', 'Saturday'],
     ]
     __tablename__ = 'timeslots'
+    __table_args__ = (
+        UniqueConstraint('weekdays', 'start', 'end', name='_weekdays_time_uc'),
+    )
     id = Column(Integer, primary_key=True)
     weekdays = Column(String, nullable=False)
     start = Column(Time, nullable=False)
     end = Column(Time, nullable=False)
+    def __str__(self):
+        return '{} {}-{}'.format(self.weekdays, self.us_start_time, self.us_end_time)
     def __repr__(self):
         return '<TimeSlot(weekdays={}, start={}, end={})>'.format(self.weekdays, self.start.strftime('%H:%M'), self.end.strftime('%H:%M'))
     @property
@@ -113,7 +118,7 @@ class Room(Base):
     building = relationship('Building')
     room = Column(String, nullable=True)
     def __str__(self):
-        return ''
+        return '{} {}'.format(self.building.code, self.room)
     def __repr__(self):
         return '<Room(building="{}", room="{}")>'.format(self.building.code, self.room)
 
@@ -124,6 +129,8 @@ class Meeting(Base):
     room_id = Column(Integer, ForeignKey('rooms.id'), nullable=True)
     timeslot = relationship('TimeSlot')
     room = relationship('Room')
+    def __str__(self):
+        return '{} ({})'.format(str(self.timeslot), str(self.room))
     def __repr__(self):
         return '<Meeting(UGH)>'
     @property
@@ -171,9 +178,9 @@ class Course(Base):
 class Person(Base):
     __tablename__ = 'people'
     id = Column(Integer, primary_key=True)
-    system_name = Column(String)
-    first_name = Column(String)
-    last_name = Column(String)
+    system_name = Column(String, nullable=False)
+    first_name = Column(String, nullable=False)
+    last_name = Column(String, nullable=False)
     nick_name = Column(String, nullable=True)
     offerings = relationship(
         'Offering',
