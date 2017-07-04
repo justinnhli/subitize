@@ -20,12 +20,12 @@ Base = declarative_base()
 
 class Semester(Base):
     __tablename__ = 'semesters'
-    id = Column(Integer, primary_key=True)
-    year = Column(Integer, nullable=False)
-    season = Column(String, nullable=False)
     __table_args__ = (
         UniqueConstraint('year', 'season', name='_year_season_uc'),
     )
+    id = Column(Integer, primary_key=True)
+    year = Column(Integer, nullable=False)
+    season = Column(String, nullable=False)
     def __init__(self, year, season):
         self.year = year
         self.season = season
@@ -102,8 +102,7 @@ class TimeSlot(Base):
 
 class Building(Base):
     __tablename__ = 'buildings'
-    id = Column(Integer, primary_key=True)
-    code = Column(String, index=True, unique=True, nullable=False)
+    code = Column(String, primary_key=True, nullable=False)
     name = Column(String, nullable=False)
     def __repr__(self):
         return '<Building(code="{}")>'.format(self.code)
@@ -111,10 +110,10 @@ class Building(Base):
 class Room(Base):
     __tablename__ = 'rooms'
     __table_args__ = (
-        UniqueConstraint('building_id', 'room', name='_building_room_uc'),
+        UniqueConstraint('building_code', 'room', name='_building_room_uc'),
     )
     id = Column(Integer, primary_key=True)
-    building_id = Column(Integer, ForeignKey('buildings.id'), nullable=False)
+    building_code = Column(String, ForeignKey('buildings.code'), nullable=False)
     building = relationship('Building')
     room = Column(String, nullable=True)
     def __str__(self):
@@ -148,16 +147,14 @@ class Meeting(Base):
 
 class Core(Base):
     __tablename__ = 'cores'
-    id = Column(Integer, primary_key=True)
-    code = Column(String, index=True, unique=True, nullable=False)
+    code = Column(String, primary_key=True, nullable=False)
     name = Column(String, nullable=False)
     def __repr__(self):
         return '<Core(code="{}")>'.format(self.code)
 
 class Department(Base):
     __tablename__ = 'departments'
-    id = Column(Integer, primary_key=True)
-    code = Column(String, index=True, unique=True, nullable=False)
+    code = Column(String, primary_key=True, nullable=False)
     name = Column(String, nullable=False)
     def __repr__(self):
         return '<Department(code="{}")>'.format(self.code)
@@ -165,10 +162,10 @@ class Department(Base):
 class Course(Base):
     __tablename__ = 'courses'
     __table_args__ = (
-        UniqueConstraint('department_id', 'number', name='_department_number_uc'),
+        UniqueConstraint('department_code', 'number', name='_department_number_uc'),
     )
     id = Column(Integer, primary_key=True)
-    department_id = Column(Integer, ForeignKey('departments.id'), nullable=False)
+    department_code = Column(String, ForeignKey('departments.code'), nullable=False)
     number = Column(String, nullable=False)
     number_int = Column(Integer, nullable=False)
     department = relationship('Department')
@@ -199,7 +196,7 @@ class OfferingCore(Base):
     __tablename__ = 'offering_core_assoc'
     id = Column(Integer, primary_key=True)
     offering_id = Column(Integer, ForeignKey('offerings.id', ondelete='CASCADE'), nullable=False)
-    core_id = Column(Integer, ForeignKey('cores.id', ondelete='CASCADE'), nullable=False)
+    core_code = Column(String, ForeignKey('cores.code', ondelete='CASCADE'), nullable=False)
 
 class OfferingInstructor(Base):
     __tablename__ = 'offering_instructor_assoc'
