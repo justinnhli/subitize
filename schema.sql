@@ -18,27 +18,23 @@ CREATE TABLE buildings (
 	name VARCHAR NOT NULL, 
 	PRIMARY KEY (id)
 );
-CREATE UNIQUE INDEX ix_buildings_code ON buildings (code);
 CREATE TABLE cores (
 	id INTEGER NOT NULL, 
 	code VARCHAR NOT NULL, 
 	name VARCHAR NOT NULL, 
 	PRIMARY KEY (id)
 );
-CREATE UNIQUE INDEX ix_cores_code ON cores (code);
 CREATE TABLE departments (
 	id INTEGER NOT NULL, 
 	code VARCHAR NOT NULL, 
 	name VARCHAR NOT NULL, 
 	PRIMARY KEY (id)
 );
-CREATE UNIQUE INDEX ix_departments_code ON departments (code);
 CREATE TABLE people (
 	id INTEGER NOT NULL, 
 	system_name VARCHAR, 
 	first_name VARCHAR, 
 	last_name VARCHAR, 
-	nick_name VARCHAR, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE rooms (
@@ -107,3 +103,6 @@ CREATE TABLE offering_instructor_assoc (
 	FOREIGN KEY(offering_id) REFERENCES offerings (id) ON DELETE CASCADE, 
 	FOREIGN KEY(instructor_id) REFERENCES people (id) ON DELETE CASCADE
 );
+CREATE UNIQUE INDEX ix_buildings_code ON buildings (code);
+CREATE UNIQUE INDEX ix_cores_code ON cores (code);
+CREATE UNIQUE INDEX ix_departments_code ON departments (code);

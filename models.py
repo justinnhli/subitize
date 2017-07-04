@@ -181,7 +181,6 @@ class Person(Base):
     system_name = Column(String, nullable=False)
     first_name = Column(String, nullable=False)
     last_name = Column(String, nullable=False)
-    nick_name = Column(String, nullable=True)
     offerings = relationship(
         'Offering',
         secondary='offering_instructor_assoc',

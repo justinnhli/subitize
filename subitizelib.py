@@ -20,7 +20,6 @@ def filter_by_search(query, terms=None):
             Person.system_name.ilike('%{}%'.format(term)),
             Person.first_name.ilike('%{}%'.format(term)),
             Person.last_name.ilike('%{}%'.format(term)),
-            Person.nick_name.ilike('%{}%'.format(term)),
         ))
     return query
 
