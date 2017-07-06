@@ -111,7 +111,7 @@ def extract_instructors(session, td):
 def extract_room(session, location_str):
     if location_str == 'Bldg-TBD':
         room = None
-    elif len(location_str.split()) == 1 and location_str in ('AGYM', 'KECK', 'UEPI', 'MULLIN', 'BIRD', 'TENNIS', 'THORNE', 'FM', 'CULLEY', 'TREE', 'RUSH', 'LIB', 'HERR'):
+    elif ' ' not in location_str:
         building = get_or_create(session, Building, code=location_str)
         room = get_or_create(session, Room, building=building, room=None)
     else:
