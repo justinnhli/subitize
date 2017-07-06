@@ -49,7 +49,7 @@ def filter_by_units(query, units=None):
 def filter_by_department(query, department=None):
     if department is None:
         return query
-    return query.filter(Department.id == department.id)
+    return query.filter(Department.code == department)
 
 def filter_by_number(query, minimum=None, maximum=None):
     filters = []

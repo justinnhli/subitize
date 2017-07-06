@@ -103,10 +103,7 @@ def get_search_results(session, parameters, context):
         query = filter_by_semester(query, semester)
         if get_parameter_or_none(parameters, 'open'):
             query = filter_by_openness(query)
-        department = get_parameter_or_none(parameters, 'department')
-        if department is not None:
-            department = session.query(Department).filter(Department.code == department).one()
-        query = filter_by_department(query, department)
+        query = filter_by_department(query, get_parameter_or_none(parameters, 'department'))
         query = filter_by_number(query, get_parameter_or_none(parameters, 'lower'), get_parameter_or_none(parameters, 'upper'))
         query = filter_by_units(query, get_parameter_or_none(parameters, 'units'))
         query = filter_by_instructor(query, get_parameter_or_none(parameters, 'instructor'))
