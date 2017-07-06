@@ -352,8 +352,8 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2010	spring	ECLS	245	0	American Lit Before 1900	4	Daniel D. Fineman	10:00am-11:25am TR FOWLER 201		25	22	0	0	0
 2010	spring	ECLS	287	0	Early British Lit Traditions	4	Michael R. Near	10:30am-11:25am MWF JOHN 206		25	27	0	0	0
 2010	spring	ECLS	288	0	Modern Brit Literary Trad	4	Jean M. Wyatt	03:00pm-04:25pm TR WEIN 209		25	18	0	0	0
-2010	spring	ECLS	289	1	American Experiences	4	P. Gabrielle Foreman	03:30pm-04:55pm MW FOWLER 111		25	12	0	0	0
-2010	spring	ECLS	289	2	American Experiences	4	P. Gabrielle Foreman	05:00pm-06:25pm MW FOWLER 209		25	7	0	0	0
+2010	spring	ECLS	289	1	American Experiences	4	Gabrielle Foreman	03:30pm-04:55pm MW FOWLER 111		25	12	0	0	0
+2010	spring	ECLS	289	2	American Experiences	4	Gabrielle Foreman	05:00pm-06:25pm MW FOWLER 209		25	7	0	0	0
 2010	spring	ECLS	290	0	Intro to Literary Analysis	4	Damian Alexander Stocking	03:30pm-04:55pm MW JOHN 201		15	21	0	0	0
 2010	spring	ECLS	290	8	Intro to Literary Analysis	0	Damian Alexander Stocking	Time-TBD Days-TBD Bldg-TBD		0	1	0	0	0
 2010	spring	ECLS	310	0	Medieval Literature	4	Michael R. Near	02:30pm-03:25pm MWF JOHN 206		25	15	0	0	0
@@ -378,8 +378,8 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2010	spring	ECLS	999	0	Comprehensive Examination	0	Warren Montag	Time-TBD Days-TBD Bldg-TBD		99	33	0	0	0
 2010	spring	ECON	101	1	Principles of Economics I	4	James Whitney	02:30pm-03:25pm MWF FOWLER 209		30	32	0	0	0
 2010	spring	ECON	101	2	Principles of Economics I	4	Bevin Meredith Ashenmiller	01:30pm-02:55pm TR FOWLER 112		30	33	0	0	0
-2010	spring	ECON	102	1	Principles of Economics II	4	Lesley Chia Ching Chiou	09:30am-10:25am MWF FOWLER 209		30	30	0	0	0
-2010	spring	ECON	102	2	Principles of Economics II	4	Lesley Chia Ching Chiou	10:30am-11:25am MWF FOWLER 209		30	31	0	0	0
+2010	spring	ECON	102	1	Principles of Economics II	4	Lesley Chiou	09:30am-10:25am MWF FOWLER 209		30	30	0	0	0
+2010	spring	ECON	102	2	Principles of Economics II	4	Lesley Chiou	10:30am-11:25am MWF FOWLER 209		30	31	0	0	0
 2010	spring	ECON	102	3	Principles of Economics II	4	Shruti Kapoor	10:00am-11:25am TR FOWLER 112		30	26	0	0	0
 2010	spring	ECON	102	4	Principles of Economics II	4	Shruti Kapoor	03:00pm-04:25pm TR FOWLER 209		30	17	0	0	0
 2010	spring	ECON	197	0	Business Internship	2	James Whitney	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
@@ -405,7 +405,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2010	spring	ECON	490	0	Proseminar	4	James Whitney	Time-TBD Days-TBD Bldg-TBD		99	1	0	0	0
 2010	spring	ECON	490	1	Inequality in Macroeconomics	4	Gerald Michael McIntyre	Time-TBD Days-TBD Bldg-TBD		0	1	0	0	0
 2010	spring	ECON	499	0	Honors Thesis	4	Instructor Unassigned	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
-2010	spring	ECON	499	1	Honors Thesis	4	Lesley Chia Ching Chiou	Time-TBD Days-TBD Bldg-TBD		0	1	0	0	0
+2010	spring	ECON	499	1	Honors Thesis	4	Lesley Chiou	Time-TBD Days-TBD Bldg-TBD		0	1	0	0	0
 2010	spring	ECON	499	2	Honors Thesis	4	Bevin Meredith Ashenmiller	Time-TBD Days-TBD Bldg-TBD		0	1	0	0	0
 2010	spring	ECON	499	3	Hnrs Thesis:Grman Cooperatives	4	Kirsten Wandschneider	Time-TBD Days-TBD Bldg-TBD		0	1	0	0	0
 2010	spring	ECON	499	4	Mrket Competition in Hospitals	4	James Whitney	Time-TBD Days-TBD Bldg-TBD		0	1	0	0	0
@@ -1239,7 +1239,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2010	fall	ECLS	309	0	The Bible as Literature	4	Warren Montag	01:30pm-02:25pm MWF MOSHER 3	CPPE	25	33	0	0	0
 2010	fall	ECLS	318	0	Chaucer	4	Michael R. Near	10:00am-11:25am TR JOHN 206	CPEU; CPPE	25	4	0	0	0
 2010	fall	ECLS	330	0	Restoration and Eighteenth Century British Literature	4	Warren Montag	10:30am-11:25am MWF WEIN 116	CPEU; CPPE	25	8	0	0	0
-2010	fall	ECLS	341	0	Race and Literature	4	P. Gabrielle Foreman	03:00pm-04:25pm TR LIB 260	CPIC	25	13	1	0	0
+2010	fall	ECLS	341	0	Race and Literature	4	Gabrielle Foreman	03:00pm-04:25pm TR LIB 260	CPIC	25	13	1	0	0
 2010	fall	ECLS	370	0	Literary Criticism	4	Daniel D. Fineman	01:30pm-02:55pm TR LIB 260		25	9	0	0	0
 2010	fall	ECLS	377	0	Literature and the Other Arts	4	Raul Villa	11:30am-12:25pm MWF WEIN 117	CPUS	25	11	0	0	0
 2010	fall	ECLS	382	0	Advanced Creative Writing	4	Danzy M Senna	10:00am-11:25am TR JOHN 317	CPFA	15	13	0	0	0
@@ -1255,8 +1255,8 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2010	fall	ECON	101	6	Principles of Economics I	4	Bevin Meredith Ashenmiller	10:00am-11:25am TR FOWLER 207; 03:00pm-04:25pm W JOHN 209		16	16	16	0	0
 2010	fall	ECON	101	7	Principles of Economics I	4	Tracy Lynn Orcholski	01:30pm-02:55pm TR JOHN 208		30	26	15	0	0
 2010	fall	ECON	101	8	Principles of Economics I	4	Tracy Lynn Orcholski	03:00pm-04:25pm TR JOHN 208		30	27	14	0	0
-2010	fall	ECON	102	1	Principles of Economics II	4	Lesley Chia Ching Chiou	10:30am-11:25am MWF FOWLER 309		30	19	0	0	0
-2010	fall	ECON	102	2	Principles of Economics II	4	Lesley Chia Ching Chiou	11:30am-12:25pm MWF FOWLER 302		30	25	0	0	0
+2010	fall	ECON	102	1	Principles of Economics II	4	Lesley Chiou	10:30am-11:25am MWF FOWLER 309		30	19	0	0	0
+2010	fall	ECON	102	2	Principles of Economics II	4	Lesley Chiou	11:30am-12:25pm MWF FOWLER 302		30	25	0	0	0
 2010	fall	ECON	102	3	Principles of Economics II	4	Mary J. Lopez	10:00am-11:25am TR FOWLER 209		30	13	0	0	0
 2010	fall	ECON	233	0	Accounting and Financial Analysis	4	Daryl K. Ono	05:00pm-06:25pm MW FOWLER 207		30	29	0	0	0
 2010	fall	ECON	250	1	Intermediate Microeconomic Theory	4	Brandon Lehr	10:30am-11:25am MWF JOHN 309		17	24	0	0	0
@@ -1269,11 +1269,11 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2010	fall	ECON	328	0	Economics of Race and Gender	4	Mary J. Lopez	01:30pm-02:55pm TR FOWLER 112		9	23	0	0	0
 2010	fall	ECON	350	0	Managerial Economics	4	Woody Studenmund	11:30am-12:25pm MWF JOHN 200		19	42	0	0	0
 2010	fall	ECON	490	0	Economics Proseminar	4	Instructor Unassigned	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
-2010	fall	ECON	495	1	Senior Seminar	4	Lesley Chia Ching Chiou	03:30pm-04:55pm MW FOWLER 207		12	15	0	0	0
+2010	fall	ECON	495	1	Senior Seminar	4	Lesley Chiou	03:30pm-04:55pm MW FOWLER 207		12	15	0	0	0
 2010	fall	ECON	495	2	Senior Seminar	4	Robert L. Moore	03:30pm-04:55pm MW FOWLER 111		12	17	0	0	0
 2010	fall	ECON	495	3	Senior Seminar	4	Gerald Michael McIntyre	10:00am-11:25am TR FOWLER 210		12	12	0	0	0
 2010	fall	ECON	495	4	Senior Seminar	4	James Whitney	01:30pm-02:55pm TR FOWLER 207		12	17	0	0	0
-2010	fall	ECON	498	0	Honors Seminar	1	Lesley Chia Ching Chiou	Time-TBD Days-TBD Bldg-TBD		12	5	0	0	0
+2010	fall	ECON	498	0	Honors Seminar	1	Lesley Chiou	Time-TBD Days-TBD Bldg-TBD		12	5	0	0	0
 2010	fall	ECON	999	0	Comprehensive Examination	0	James Whitney	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
 2010	fall	EDUC	140	1	Community Literacy	2	Desiree M. Zamorano	03:00pm-04:55pm TR THORNE 9		30	25	1	0	0
 2010	fall	EDUC	140	2	Community Literacy	2	Desiree M. Zamorano	02:30pm-05:25pm W THORNE 9		30	10	0	0	0
@@ -2003,8 +2003,8 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2011	spring	ECON	250	0	Intermediate Microeconomic Theory	4	Brandon Lehr	10:30am-11:25am MWF MOSHER 3		25	27	0	0	0
 2011	spring	ECON	251	1	Intermediate Macroeconomic Theory	4	Gerald Michael McIntyre	03:30pm-04:55pm MW FOWLER 207		25	25	0	0	0
 2011	spring	ECON	251	2	Intermediate Macroeconomic Theory	4	Gerald Michael McIntyre	05:00pm-06:25pm MW FOWLER 207		25	28	0	0	0
-2011	spring	ECON	272	1	Applied Econometrics	4	Lesley Chia Ching Chiou	10:30am-11:25am MWF FOWLER 207		18	19	0	0	0
-2011	spring	ECON	272	2	Applied Econometrics	4	Lesley Chia Ching Chiou	11:30am-12:25pm MWF FOWLER 207		18	17	0	0	0
+2011	spring	ECON	272	1	Applied Econometrics	4	Lesley Chiou	10:30am-11:25am MWF FOWLER 207		18	19	0	0	0
+2011	spring	ECON	272	2	Applied Econometrics	4	Lesley Chiou	11:30am-12:25pm MWF FOWLER 207		18	17	0	0	0
 2011	spring	ECON	301	0	Environmental Economics and Policy	4	Bevin Meredith Ashenmiller	01:30pm-02:55pm TR RANGEV 242		25	27	0	0	0
 2011	spring	ECON	305	0	Game Theory	4	Brandon Lehr	01:30pm-02:25pm MWF MOSHER 3		24	24	0	0	0
 2011	spring	ECON	311	0	International Economics	4	James Whitney	02:30pm-03:25pm MWF FOWLER 207		25	28	0	0	0
@@ -2787,8 +2787,8 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2011	fall	ECON	101	4	Principles of Economics I	4	Masanori Kuroki	10:00am-11:25am TR FOWLER 309		35	29	16	0	0
 2011	fall	ECON	101	5	Principles of Economics I	4	Bevin Meredith Ashenmiller	01:30pm-02:55pm TR FOWLER 309		35	33	22	0	0
 2011	fall	ECON	101	6	Principles of Economics I	4	Bevin Meredith Ashenmiller	03:00pm-04:25pm TR FOWLER 309		35	32	18	0	0
-2011	fall	ECON	102	1	Principles of Economics II	4	Lesley Chia Ching Chiou	10:30am-11:25am MWF FOWLER 209		30	23	0	0	0
-2011	fall	ECON	102	2	Principles of Economics II	4	Lesley Chia Ching Chiou	11:30am-12:25pm MWF FOWLER 209		30	25	0	0	0
+2011	fall	ECON	102	1	Principles of Economics II	4	Lesley Chiou	10:30am-11:25am MWF FOWLER 209		30	23	0	0	0
+2011	fall	ECON	102	2	Principles of Economics II	4	Lesley Chiou	11:30am-12:25pm MWF FOWLER 209		30	25	0	0	0
 2011	fall	ECON	102	3	Principles of Economics II	4	Mary J. Lopez	10:00am-11:25am TR FOWLER 207		30	10	0	0	0
 2011	fall	ECON	233	0	Accounting and Financial Analysis	4	Daryl K. Ono	03:00pm-04:25pm TR FOWLER 207		30	28	0	0	0
 2011	fall	ECON	250	1	Intermediate Microeconomic Theory	4	Brandon Lehr	10:30am-11:25am MWF JOHN 309		25	21	0	0	0
@@ -2802,7 +2802,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2011	fall	ECON	328	0	Economics of Race and Gender	4	Mary J. Lopez	01:30pm-02:55pm TR FOWLER 209		25	24	1	0	0
 2011	fall	ECON	340	0	Behavioral Economics	4	Brandon Lehr	01:30pm-02:25pm MWF MOSHER 2		25	23	0	0	0
 2011	fall	ECON	490	0	Economics Proseminar	4	Instructor Unassigned	Time-TBD Days-TBD Bldg-TBD		99	0	0	0	0
-2011	fall	ECON	495	1	Senior Seminar	4	Lesley Chia Ching Chiou	03:30pm-04:55pm MW FOWLER 209		16	21	0	0	0
+2011	fall	ECON	495	1	Senior Seminar	4	Lesley Chiou	03:30pm-04:55pm MW FOWLER 209		16	21	0	0	0
 2011	fall	ECON	495	2	Senior Seminar	4	Robert L. Moore	03:30pm-04:55pm MW FOWLER 111		16	20	0	0	0
 2011	fall	ECON	495	3	Senior Seminar	4	Kirsten Wandschneider	10:00am-11:25am TR FOWLER 209		16	20	0	0	0
 2011	fall	EDUC	140	1	Community Literacy	2	Desiree M. Zamorano	03:00pm-04:55pm TR THORNE 9		30	27	0	0	0
@@ -3557,8 +3557,8 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2012	spring	ECON	250	0	Intermediate Microeconomic Theory	4	Brandon Lehr	10:30am-11:25am MWF JOHN 308		23	28	0	0	0
 2012	spring	ECON	251	1	Intermediate Macroeconomic Theory	4	Kirsten Wandschneider	01:30pm-02:55pm TR FOWLER 207		23	26	0	0	0
 2012	spring	ECON	251	2	Intermediate Macroeconomic Theory	4	Kirsten Wandschneider	03:00pm-04:25pm TR FOWLER 207		23	24	0	0	0
-2012	spring	ECON	272	1	Applied Econometrics	4	Lesley Chia Ching Chiou	10:30am-11:25am MWF FOWLER 309		20	23	0	0	0
-2012	spring	ECON	272	2	Applied Econometrics	4	Lesley Chia Ching Chiou	11:30am-12:25pm MWF FOWLER 207		20	26	0	0	0
+2012	spring	ECON	272	1	Applied Econometrics	4	Lesley Chiou	10:30am-11:25am MWF FOWLER 309		20	23	0	0	0
+2012	spring	ECON	272	2	Applied Econometrics	4	Lesley Chiou	11:30am-12:25pm MWF FOWLER 207		20	26	0	0	0
 2012	spring	ECON	305	0	Game Theory	4	Brandon Lehr	01:30pm-02:25pm MWF FOWLER 201		20	20	0	0	0
 2012	spring	ECON	311	1	International Economics	4	James Whitney	02:30pm-03:25pm MWF FOWLER 207		20	22	0	0	0
 2012	spring	ECON	311	2	International Economics	4	James Whitney	03:30pm-04:25pm MWF FOWLER 207		20	23	0	0	0
@@ -5879,7 +5879,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2013	fall	ECON	101	5	Principles of Economics I	4	Bevin Meredith Ashenmiller	10:05am-11:30am TR FOWLER 309		32	31	29	0	0
 2013	fall	ECON	102	1	Principles of Economics II	4	Junyi Liu	12:50pm-01:45pm MWF FOWLER 112		35	32	0	0	0
 2013	fall	ECON	102	2	Principles of Economics II	4	Junyi Liu	01:55pm-02:50pm MWF FOWLER 112		35	20	0	0	0
-2013	fall	ECON	102	3	Principles of Economics II	4	Lesley Chia Ching Chiou	01:30pm-02:55pm TR FOWLER 309		35	15	5	0	0
+2013	fall	ECON	102	3	Principles of Economics II	4	Lesley Chiou	01:30pm-02:55pm TR FOWLER 309		35	15	5	0	0
 2013	fall	ECON	151	0	Entrepreneurial Leadership in the 21st Century	4	Sanjeev Khagram	07:15pm-10:10pm T JOHN 203		40	41	0	0	0
 2013	fall	ECON	233	0	Accounting and Financial Analysis	4	Daryl K. Ono	03:05pm-04:30pm TR FOWLER 209		30	26	0	0	0
 2013	fall	ECON	250	1	Intermediate Microeconomic Theory	4	Brandon Lehr	09:35am-10:30am MWF FOWLER 209		25	20	0	0	0
@@ -5894,8 +5894,8 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2013	fall	ECON	332	0	Economic Issues in Contemporary Asia	4	Junyi Liu	04:05pm-05:30pm MW FOWLER 207	CPAS	20	20	0	0	0
 2013	fall	ECON	495	1	Senior Seminar. Economic Development	4	Daron O. Djerdjian	10:40am-11:35am MWF FOWLER 207		16	17	0	0	0
 2013	fall	ECON	495	2	Senior Seminar. Free Market Economics: The Austrian Perspective	4	Daron O. Djerdjian	03:00pm-03:55pm MWF FOWLER 207		16	16	0	0	0
-2013	fall	ECON	495	3	Senior Seminar. Industrial Organization	4	Lesley Chia Ching Chiou	08:30am-09:55am TR FOWLER 112		16	16	0	0	0
-2013	fall	ECON	495	4	Senior Seminar. Industrial Organization	4	Lesley Chia Ching Chiou	10:05am-11:30am TR FOWLER 112		16	16	0	0	0
+2013	fall	ECON	495	3	Senior Seminar. Industrial Organization	4	Lesley Chiou	08:30am-09:55am TR FOWLER 112		16	16	0	0	0
+2013	fall	ECON	495	4	Senior Seminar. Industrial Organization	4	Lesley Chiou	10:05am-11:30am TR FOWLER 112		16	16	0	0	0
 2013	fall	ECON	495	5	Senior Seminar. Macroeconomic Policy Since the Great Depression	4	Andrew J. Jalil	01:30pm-02:55pm TR FOWLER 210		16	14	0	0	0
 2013	fall	EDUC	140	0	Community Literacy	2	Desiree M. Zamorano	03:05pm-04:55pm TR THORNE 9		30	28	0	0	0
 2013	fall	EDUC	141	0	Community Literacy With Middle School Students	2	Desiree M. Zamorano	02:30pm-05:25pm W THORNE 9		25	12	0	0	0
@@ -6641,8 +6641,8 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2014	spring	ECON	250	2	Intermediate Microeconomic Theory	4	Victoria I. Umanskaya	03:05pm-04:30pm TR FOWLER 202		25	12	0	0	0
 2014	spring	ECON	251	1	Intermediate Macroeconomic Theory	4	Andrew J. Jalil	08:30am-09:55am TR FOWLER 201		25	22	0	0	0
 2014	spring	ECON	251	2	Intermediate Macroeconomic Theory	4	Andrew J. Jalil	10:05am-11:30am TR FOWLER 201		25	27	0	0	0
-2014	spring	ECON	272	1	Applied Econometrics	4	Lesley Chia Ching Chiou	08:30am-09:55am TR FOWLER 207	CPMS	20	11	0	0	0
-2014	spring	ECON	272	2	Applied Econometrics	4	Lesley Chia Ching Chiou	10:05am-11:30am TR FOWLER 207	CPMS	20	22	0	0	0
+2014	spring	ECON	272	1	Applied Econometrics	4	Lesley Chiou	08:30am-09:55am TR FOWLER 207	CPMS	20	11	0	0	0
+2014	spring	ECON	272	2	Applied Econometrics	4	Lesley Chiou	10:05am-11:30am TR FOWLER 207	CPMS	20	22	0	0	0
 2014	spring	ECON	301	0	Environmental Economics and Policy	4	Bevin Meredith Ashenmiller	10:05am-11:30am TR FOWLER 209		20	21	0	0	0
 2014	spring	ECON	309	0	Free Market Economics: The Austrian Perspective	4	Daron O. Djerdjian	10:40am-11:35am MWF BERKUS 243		20	22	0	0	0
 2014	spring	ECON	311	1	International Economics	4	Meric Keskinel	01:30pm-02:55pm TR BERKUS 244		20	19	0	0	0
@@ -8525,9 +8525,9 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2015	spring	ECON	250	1	Intermediate Microeconomic Theory	4	Diana K.L. Ngo	08:30am-09:55am TR FOWLER 112		25	23	0	0	0
 2015	spring	ECON	250	2	Intermediate Microeconomic Theory	4	Diana K.L. Ngo	10:05am-11:30am TR FOWLER 112		25	22	0	0	0
 2015	spring	ECON	251	0	Intermediate Macroeconomic Theory	4	Kirsten Wandschneider	01:30pm-02:55pm TR MOSHER 2		25	26	0	0	0
-2015	spring	ECON	272	1	Applied Econometrics	4	Lesley Chia Ching Chiou	01:30pm-02:55pm TR FOWLER 207	CPMS	25	26	0	0	0
-2015	spring	ECON	272	2	Applied Econometrics	4	Lesley Chia Ching Chiou	03:05pm-04:30pm TR FOWLER 207	CPMS	25	19	0	0	0
-2015	spring	ECON	302	0	Industrial Organization	4	Lesley Chia Ching Chiou	10:05am-11:30am TR FOWLER 207		20	18	0	0	0
+2015	spring	ECON	272	1	Applied Econometrics	4	Lesley Chiou	01:30pm-02:55pm TR FOWLER 207	CPMS	25	26	0	0	0
+2015	spring	ECON	272	2	Applied Econometrics	4	Lesley Chiou	03:05pm-04:30pm TR FOWLER 207	CPMS	25	19	0	0	0
+2015	spring	ECON	302	0	Industrial Organization	4	Lesley Chiou	10:05am-11:30am TR FOWLER 207		20	18	0	0	0
 2015	spring	ECON	305	0	Game Theory	4	Brandon Lehr	09:35am-10:30am MWF FOWLER 201		20	22	0	0	0
 2015	spring	ECON	309	0	Free Market Economics: The Austrian Perspective	4	Daron O. Djerdjian	10:40am-11:35am MWF TREE N		20	19	0	0	0
 2015	spring	ECON	311	0	International Economics	4	Victoria I. Umanskaya	03:05pm-04:30pm TR FOWLER 202		20	22	0	0	0
@@ -9560,8 +9560,8 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2015	fall	ECON	101	5	Principles of Economics I	4	Robert L. Moore	01:55pm-02:50pm MWF FOWLER 209		35	12	10	0	0
 2015	fall	ECON	101	6	Principles of Economics I	4	Daron O. Djerdjian	03:00pm-03:55pm MWF FOWLER 112		35	9	3	0	0
 2015	fall	ECON	101	8	Principles of Economics I	4	Daron O. Djerdjian	Time-TBD Days-TBD Bldg-TBD		1	1	0	0	0
-2015	fall	ECON	102	1	Principles of Economics II	4	Lesley Chia Ching Chiou	01:30pm-02:55pm TR FOWLER 207		35	34	2	0	0
-2015	fall	ECON	102	2	Principles of Economics II	4	Lesley Chia Ching Chiou	03:05pm-04:30pm TR FOWLER 207		35	35	2	0	0
+2015	fall	ECON	102	1	Principles of Economics II	4	Lesley Chiou	01:30pm-02:55pm TR FOWLER 207		35	34	2	0	0
+2015	fall	ECON	102	2	Principles of Economics II	4	Lesley Chiou	03:05pm-04:30pm TR FOWLER 207		35	35	2	0	0
 2015	fall	ECON	233	0	Accounting and Financial Analysis	4	Daryl K. Ono	03:05pm-04:30pm TR FOWLER 202		30	23	0	0	0
 2015	fall	ECON	250	1	Intermediate Microeconomic Theory	4	Diana K.L. Ngo	08:30am-09:25am MWF BERKUS 243		25	21	0	0	0
 2015	fall	ECON	250	2	Intermediate Microeconomic Theory	4	Diana K.L. Ngo	09:35am-10:30am MWF BERKUS 243		25	24	0	0	0
@@ -9577,7 +9577,7 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2015	fall	ECON	495	1	Senior Seminar. Free Market Economics: The Austrian Perspective	4	Daron O. Djerdjian	10:40am-11:35am MWF FOWLER 207		15	16	0	0	0
 2015	fall	ECON	495	2	Senior Seminar. Personnel Economics	4	Robert L. Moore	04:05pm-05:30pm MW FOWLER 111		15	16	0	0	0
 2015	fall	ECON	495	3	Senior Seminar. Health Economics	4	Diana K.L. Ngo	04:05pm-05:30pm MW FOWLER 307		15	16	0	0	0
-2015	fall	ECON	495	4	Senior Seminar.  Industrial Organization	4	Lesley Chia Ching Chiou	10:05am-11:30am TR FOWLER 207		15	18	0	0	0
+2015	fall	ECON	495	4	Senior Seminar.  Industrial Organization	4	Lesley Chiou	10:05am-11:30am TR FOWLER 207		15	18	0	0	0
 2015	fall	EDUC	101	0	A History of Urban Schooling in the United States	4	La Mont Terry	04:05pm-05:30pm MW FOWLER 207	CPUD; CPUS	30	20	9	0	0
 2015	fall	EDUC	140	0	Community Literacy	2	Desiree M. Zamorano	03:05pm-04:55pm TR THORNE 9		30	22	0	0	0
 2015	fall	EDUC	141	0	Community Literacy With Middle School Students	2	Desiree M. Zamorano	02:30pm-05:25pm W THORNE 9		30	9	0	0	0
@@ -10643,8 +10643,8 @@ year	season	department	number	section	title	units	instructors	meetings	cores	sea
 2016	spring	ECON	250	2	Intermediate Microeconomic Theory	4	Brandon Lehr	10:40am-11:35am MWF FOWLER 207		25	28	0	0	0
 2016	spring	ECON	251	1	Intermediate Macroeconomic Theory	4	Jesse Mora	10:05am-11:30am TR FOWLER 201		25	27	0	0	0
 2016	spring	ECON	251	2	Intermediate Macroeconomic Theory	4	Kirsten Wandschneider	01:30pm-02:55pm TR JOHN 104		25	28	0	0	0
-2016	spring	ECON	272	1	Applied Econometrics	4	Lesley Chia Ching Chiou	01:30pm-02:55pm TR FOWLER 207	CPMS	25	20	0	0	0
-2016	spring	ECON	272	2	Applied Econometrics	4	Lesley Chia Ching Chiou	03:05pm-04:30pm TR FOWLER 207	CPMS	25	16	0	0	0
+2016	spring	ECON	272	1	Applied Econometrics	4	Lesley Chiou	01:30pm-02:55pm TR FOWLER 207	CPMS	25	20	0	0	0
+2016	spring	ECON	272	2	Applied Econometrics	4	Lesley Chiou	03:05pm-04:30pm TR FOWLER 207	CPMS	25	16	0	0	0
 2016	spring	ECON	301	0	Environmental Economics and Policy	4	Victoria I. Umanskaya	11:45am-12:40pm MWF FOWLER 112		18	19	0	0	0
 2016	spring	ECON	308	0	Public Finance	4	Robert L. Moore	10:40am-11:35am MWF FOWLER 309		18	18	0	0	0
 2016	spring	ECON	314	0	Economic Institutions in Historical Perspective	4	Matthew Hill	01:30pm-02:55pm TR TREE S		18	15	0	0	0
