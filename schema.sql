@@ -10,49 +10,47 @@ CREATE TABLE timeslots (
 	weekdays VARCHAR NOT NULL, 
 	start TIME NOT NULL, 
 	"end" TIME NOT NULL, 
-	PRIMARY KEY (id)
+	PRIMARY KEY (id), 
+	CONSTRAINT _weekdays_time_uc UNIQUE (weekdays, start, "end")
 );
 CREATE TABLE buildings (
-	id INTEGER NOT NULL, 
 	code VARCHAR NOT NULL, 
 	name VARCHAR NOT NULL, 
-	PRIMARY KEY (id)
+	PRIMARY KEY (code)
 );
 CREATE TABLE cores (
-	id INTEGER NOT NULL, 
 	code VARCHAR NOT NULL, 
 	name VARCHAR NOT NULL, 
-	PRIMARY KEY (id)
+	PRIMARY KEY (code)
 );
 CREATE TABLE departments (
-	id INTEGER NOT NULL, 
 	code VARCHAR NOT NULL, 
 	name VARCHAR NOT NULL, 
-	PRIMARY KEY (id)
+	PRIMARY KEY (code)
 );
 CREATE TABLE people (
 	id INTEGER NOT NULL, 
-	system_name VARCHAR, 
-	first_name VARCHAR, 
-	last_name VARCHAR, 
+	system_name VARCHAR NOT NULL, 
+	first_name VARCHAR NOT NULL, 
+	last_name VARCHAR NOT NULL, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE rooms (
 	id INTEGER NOT NULL, 
-	building_id INTEGER NOT NULL, 
+	building_code VARCHAR NOT NULL, 
 	room VARCHAR, 
 	PRIMARY KEY (id), 
-	CONSTRAINT _building_room_uc UNIQUE (building_id, room), 
-	FOREIGN KEY(building_id) REFERENCES buildings (id)
+	CONSTRAINT _building_room_uc UNIQUE (building_code, room), 
+	FOREIGN KEY(building_code) REFERENCES buildings (code)
 );
 CREATE TABLE courses (
 	id INTEGER NOT NULL, 
-	department_id INTEGER NOT NULL, 
+	department_code VARCHAR NOT NULL, 
 	number VARCHAR NOT NULL, 
 	number_int INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
-	CONSTRAINT _department_number_uc UNIQUE (department_id, number), 
-	FOREIGN KEY(department_id) REFERENCES departments (id)
+	CONSTRAINT _department_number_uc UNIQUE (department_code, number), 
+	FOREIGN KEY(department_code) REFERENCES departments (code)
 );
 CREATE TABLE meetings (
 	id INTEGER NOT NULL, 
@@ -90,10 +88,10 @@ CREATE TABLE offering_meeting_assoc (
 CREATE TABLE offering_core_assoc (
 	id INTEGER NOT NULL, 
 	offering_id INTEGER NOT NULL, 
-	core_id INTEGER NOT NULL, 
+	core_code VARCHAR NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(offering_id) REFERENCES offerings (id) ON DELETE CASCADE, 
-	FOREIGN KEY(core_id) REFERENCES cores (id) ON DELETE CASCADE
+	FOREIGN KEY(core_code) REFERENCES cores (code) ON DELETE CASCADE
 );
 CREATE TABLE offering_instructor_assoc (
 	id INTEGER NOT NULL, 
@@ -103,6 +101,3 @@ CREATE TABLE offering_instructor_assoc (
 	FOREIGN KEY(offering_id) REFERENCES offerings (id) ON DELETE CASCADE, 
 	FOREIGN KEY(instructor_id) REFERENCES people (id) ON DELETE CASCADE
 );
-CREATE UNIQUE INDEX ix_buildings_code ON buildings (code);
-CREATE UNIQUE INDEX ix_cores_code ON cores (code);
-CREATE UNIQUE INDEX ix_departments_code ON departments (code);
