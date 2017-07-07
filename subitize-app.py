@@ -78,7 +78,7 @@ def get_dropdown_options(session, parameters):
     context['instructors'] = sorted(session.query(Person), key=(lambda p: (p.last_name + ', ' + p.first_name).lower()))
     context['cores'] = list(session.query(Core).order_by(Core.name))
     context['units'] = sorted(row[0] for row in session.query(Offering.units).distinct())
-    context['departments'] = list(session.query(Department).order_by(asc(Department.name)))
+    context['departments'] = list(filter_study_abroad(session.query(Department)).order_by(asc(Department.name)))
     context['lower'] = (OPTIONS_LOWER if parameters.get('lower') is None else parameters.get('lower'))
     context['upper'] = (OPTIONS_UPPER if parameters.get('upper') is None else parameters.get('upper'))
     context['days'] = OPTIONS_DAYS
