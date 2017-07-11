@@ -39,6 +39,7 @@ class Semester(Base):
             return '{}02'.format(self.year)
         elif season == 'summer':
             return '{}03'.format(self.year)
+        assert False
     def __str__(self):
         return '{} {}'.format(self.year, self.season)
     def __lt__(self, other):

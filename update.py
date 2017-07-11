@@ -202,6 +202,7 @@ def get_offerings_data(semester):
     return response[7]
 
 def update_from_html(session, semester, html):
+    semester = Semester.code_to_season(semester)
     soup = BeautifulSoup(html, 'html.parser').find_all(id='searchResultsPanel')[0]
     soup = soup.find_all('div', recursive=False)[1].find_all('table', limit=1)[0]
     for row in soup.find_all('tr', recursive=False):
