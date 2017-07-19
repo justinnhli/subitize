@@ -13,6 +13,7 @@ from models import TimeSlot, Building, Room, Meeting
 from models import Core, Department, Course
 from models import Person
 from models import OfferingMeeting, OfferingCore, OfferingInstructor, Offering
+from models import CourseInfo
 from subitizelib import filter_study_abroad, filter_by_search, filter_by_semester, filter_by_openness, filter_by_department, filter_by_number, filter_by_units, filter_by_instructor, filter_by_core, filter_by_meeting
 from subitizelib import sort_offerings
 
@@ -90,6 +91,7 @@ def get_search_results(session, parameters, context):
     query = session.query(Offering)
     query = query.join(Semester)
     query = query.join(Course, Department)
+    query = query.outerjoin(CourseInfo)
     query = query.outerjoin(OfferingMeeting, Meeting, TimeSlot, Room, Building)
     query = query.outerjoin(OfferingCore, Core)
     query = query.outerjoin(OfferingInstructor, Person)

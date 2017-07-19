@@ -170,6 +170,7 @@ class Course(Base):
     number = Column(String, nullable=False)
     number_int = Column(Integer, nullable=False)
     department = relationship('Department')
+    info = relationship('CourseInfo', back_populates='course', uselist=False)
     def __repr__(self):
         return '<Course(department="{}", number="{}")>'.format(self.department.code, self.number)
 
@@ -236,6 +237,18 @@ class Offering(Base):
     @property
     def is_open(self):
         return self.num_waitlisted == 0 and self.num_enrolled < self.num_seats - self.num_reserved
+
+class CourseInfo(Base):
+    __tablename__ = 'course_info'
+    course_id = Column(Integer, ForeignKey('courses.id'), primary_key=True)
+    course = relationship('Course', back_populates='info', uselist=False)
+    url = Column(String, nullable=False)
+    description = Column(String, nullable=True)
+    prerequisites = Column(String, nullable=True)
+    corequisites = Column(String, nullable=True)
+    parsed_prerequisites = Column(String, nullable=True)
+    def __repr__(self):
+        return '_'.join(s for s in [self.url, self.description, self.prerequisites, self.corequisites] if s is not None)
 
 def get_or_create(session, model, **kwargs):
     instance = session.query(model).filter_by(**kwargs).first()
