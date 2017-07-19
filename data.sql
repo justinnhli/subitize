@@ -698,6 +698,7 @@ INSERT INTO departments VALUES('SPAN','Spanish and French Studies');
 INSERT INTO departments VALUES('THEA','Theater');
 INSERT INTO departments VALUES('UEP','Urban and Environmental Policy');
 INSERT INTO departments VALUES('WRD','Writing and Rhetoric');
+INSERT INTO departments VALUES('EALC','East Asian Languages and Culture');
 CREATE TABLE people (
 	id INTEGER NOT NULL, 
 	system_name VARCHAR NOT NULL, 

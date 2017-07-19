@@ -127,6 +127,7 @@ DEPARTMENTS = [
     ['CSP', 'Cultural Studies Program',],
     ['CTSJ', 'Critical Theory and Social Justice',],
     ['DWA', 'Diplomacy and World Affairs',],
+    ['EALC', 'East Asian Languages and Culture',],
     ['ECLS', 'English and Comparative Literary Studies',],
     ['ECON', 'Economics',],
     ['EDUC', 'Education',],
