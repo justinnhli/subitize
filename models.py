@@ -242,5 +242,6 @@ def get_or_create(session, model, **kwargs):
     if not instance:
         instance = model(**kwargs)
         session.add(instance)
+        instance = session.query(model).filter_by(**kwargs).first()
     assert instance is not None
     return instance
