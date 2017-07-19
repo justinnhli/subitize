@@ -21,4 +21,5 @@ body > div {margin-top:1em; text-align:center;}
 #results {margin-top:2em;}
 #results-table {width:100%;}
 #results-table td {text-align:left;}
+#results-table .more-info {cursor:pointer;}
 #disclaimer {font-size:small; margin:1em auto 0;}

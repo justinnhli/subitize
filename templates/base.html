@@ -125,7 +125,21 @@
                     <a href="{{ base_url }}?advanced=true&semester=any&department={{ offering.course.department.code }}&lower={{ offering.course.number }}&upper={{ offering.course.number }}">{{ offering.course.number }}</a>
                     ({{ offering.section }})
                 </td>
-                <td>{{ offering.title }}</td>
+                <td>
+                    {{ offering.title }} <span class="more-info">[+]</span>
+                    <div class="description" style="display:none;">
+                        {% if offering.course.info.description %}
+                        <p>{{ offering.course.info.description }}</p>
+                        {% endif %}
+                        {% if offering.course.info.prerequisites %}
+                        <p>Prerequisites: {{ offering.course.info.prerequisites }}</p>
+                        {% endif %}
+                        {% if offering.course.info.corequisites %}
+                        <p>Corequisites: {{ offering.course.info.corequisites }}</p>
+                        {% endif %}
+                        <p><a href="{{ offering.course.info.url }}">View in Catalog</a></p>
+                    </div>
+                </td>
                 <td>{{ offering.units }}</td>
                 <td>
                     {% if offering.instructors %}

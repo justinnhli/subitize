@@ -33,6 +33,20 @@ $(function (){
 			}
 		});
 
+		$('.more-info').click(function() {
+			var more_info = $(this);
+			var td = more_info.parent();
+			var width = td.width();
+			var description = td.children('.description');
+			description.toggle();
+			td.width(width);
+			if (description.is(':visible')) {
+				more_info.html('[-]');
+			} else {
+				more_info.html('[+]');
+			}
+		});
+
 		$('#advanced-toggle').click().click();
 
 	}
