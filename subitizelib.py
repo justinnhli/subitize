@@ -15,7 +15,6 @@ def filter_by_search(query, terms=None):
         query = query.filter(or_(
             Offering.title.ilike('%{}%'.format(term)),
             Course.number == term.upper(),
-            Course.number_int == int(re.sub('[^0-9]', '', term)),
             Department.code == term.upper(),
             Department.name.ilike('%{}%'.format(term)),
             Core.code == term.upper(),
