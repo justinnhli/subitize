@@ -52562,4 +52562,14 @@ INSERT INTO offering_instructor_assoc VALUES(14025,14485,407);
 INSERT INTO offering_instructor_assoc VALUES(14026,14486,494);
 INSERT INTO offering_instructor_assoc VALUES(14027,14487,466);
 INSERT INTO offering_instructor_assoc VALUES(14028,14488,494);
+CREATE TABLE course_info (
+	course_id INTEGER NOT NULL,
+	url VARCHAR NOT NULL,
+	description VARCHAR,
+	prerequisites VARCHAR,
+	corequisites VARCHAR,
+	parsed_prerequisites VARCHAR,
+	PRIMARY KEY(`course_id`),
+	FOREIGN KEY(course_id) REFERENCES courses (id) ON DELETE CASCADE
+);
 COMMIT;
