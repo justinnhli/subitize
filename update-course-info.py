@@ -55,7 +55,7 @@ def extract_course_info(session, url):
     department = get_or_create(session, Department, code=dept)
     for number in re.sub('[/-]', ' ', number).split():
         course = get_or_create(session, Course, department=department, number=number, number_int=int(re.sub('[^0-9]', '', number)))
-        description = '\n'.join(extract_text(child) for child in sections[0].contents[1:]).strip()
+        description = ' '.join(str(contents).strip() for contents in sections[0].contents[1:] if contents.get_text().strip()).strip()
         if not description:
             description = None
         prerequisites = None
@@ -64,12 +64,11 @@ def extract_course_info(session, url):
         for section_soup in sections[1:]:
             children = [tag for tag in section_soup.contents if hasattr(tag, 'strings') or tag.strip()]
             if len(children) >= 2:
-                #key = re.sub(r'\s+', ' ', ' '.join(children[0].strings).strip())
                 key = re.sub(r'\s+', ' ', children[0].get_text().strip())
                 if key == 'Prerequisite':
-                    prerequisites = extract_text(*children[1:])
+                    prerequisites = ' '.join(str(contents) for contents in section_soup.contents[1:]).strip()
                 elif key == 'Corequisite':
-                    corequisites = extract_text(*children[1:])
+                    corequisites = ' '.join(str(contents) for contents in section_soup.contents[1:]).strip()
         course_info = session.query(CourseInfo).filter(CourseInfo.course_id == course.id).first()
         if course_info:
             if is_preferred_url(course_info.url):
