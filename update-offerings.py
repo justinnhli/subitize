@@ -130,6 +130,13 @@ def create_objects(
             semester=semester,
             course=course,
             section=section,
+            title=title,
+            units=units,
+            num_seats=0,
+            num_enrolled=0,
+            num_reserved=0,
+            num_reserved_open=0,
+            num_waitlisted=0,
         )
     else:
         offering = offering.first()
