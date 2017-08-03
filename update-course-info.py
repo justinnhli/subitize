@@ -55,7 +55,8 @@ def extract_course_info(session, url):
     department = get_or_create(session, Department, code=dept)
     for number in re.sub('[/-]', ' ', number).split():
         course = get_or_create(session, Course, department=department, number=number, number_int=int(re.sub('[^0-9]', '', number)))
-        description = ' '.join(str(contents).strip() for contents in sections[0].contents[1:] if contents.get_text().strip()).strip()
+        description = ''.join(str(contents).strip() for contents in sections[0].contents[1:])
+        description = re.sub(r'\s+', ' ', description)
         if not description:
             description = None
         prerequisites = None
@@ -66,9 +67,9 @@ def extract_course_info(session, url):
             if len(children) >= 2:
                 key = re.sub(r'\s+', ' ', children[0].get_text().strip())
                 if key == 'Prerequisite':
-                    prerequisites = ' '.join(str(contents) for contents in section_soup.contents[1:]).strip()
+                    prerequisites = ''.join(str(contents) for contents in section_soup.contents[1:]).strip()
                 elif key == 'Corequisite':
-                    corequisites = ' '.join(str(contents) for contents in section_soup.contents[1:]).strip()
+                    corequisites = ''.join(str(contents) for contents in section_soup.contents[1:]).strip()
         course_info = session.query(CourseInfo).filter(CourseInfo.course_id == course.id).first()
         if course_info:
             if is_preferred_url(course_info.url):
@@ -95,6 +96,7 @@ def test():
     ]
     session = create_session()
     for course_url in courses:
+        print(course_url)
         extract_course_info(session, course_url)
     session.commit()
 
@@ -114,6 +116,7 @@ def main(year):
             if course_url in visited_urls:
                 continue
             visited_urls.add(course_url)
+            print(course_url)
             extract_course_info(session, course_url)
     session.commit()
 
