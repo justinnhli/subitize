@@ -103,92 +103,96 @@
         <h3>No courses found.</h3>
         {% else %}
         <table id="results-table">
-            <tr>
-                <th><a href="{{ url }}&sort=semester">Semester</a>{% if sorted == 'semester' %} &#9660; {% endif %}</th>
-                <th><a href="{{ url }}&sort=course">Course (Section)</a>{% if sorted == 'course' %} &#9660; {% endif %}</th>
-                <th><a href="{{ url }}&sort=title">Title</a>{% if sorted == 'title' %} &#9660; {% endif %}</th>
-                <th><a href="{{ url }}&sort=units">Units</a>{% if sorted == 'units' %} &#9660; {% endif %}</th>
-                <th><a href="{{ url }}&sort=instructors">Instructor(s)</a>{% if sorted == 'instructors' %} &#9660; {% endif %}</th>
-                <th><a href="{{ url }}&sort=meetings">Meeting Times (Room)</a>{% if sorted == 'meetings' %} &#9660; {% endif %}</th>
-                <th><a href="{{ url }}&sort=cores">Core</a>{% if sorted == 'cores' %} &#9660; {% endif %}</th>
-                <th>Seats</th>
-            </tr>
-            {% for offering in results %}
-            <tr>
-                <td>
-                    <a href="{{ base_url }}?advanced={{ parameters['advanced'] }}&semester={{ offering.semester.code }}">
-                        {{ offering.semester }}
-                    </a>
-                </td>
-                <td>
-                    <a href="{{ base_url }}?advanced=true&semester={{ parameters['semester'] }}&department={{ offering.course.department.code }}"><abbr title="{{ offering.course.department.name }}">{{ offering.course.department.code }}</abbr></a>
-                    <a href="{{ base_url }}?advanced=true&semester=any&department={{ offering.course.department.code }}&lower={{ offering.course.number }}&upper={{ offering.course.number }}">{{ offering.course.number }}</a>
-                    ({{ offering.section }})
-                </td>
-                <td>
-                    {{ offering.title }} <span class="more-info">[+]</span>
-                    <div class="description" style="display:none;">
-                        {% if offering.course.info.description %}
-                        <p>{{ offering.course.info.description | safe }}</p>
+            <thead>
+                <tr>
+                    <th><a href="{{ url }}&sort=semester">Semester</a>{% if sorted == 'semester' %} &#9660; {% endif %}</th>
+                    <th><a href="{{ url }}&sort=course">Course (Section)</a>{% if sorted == 'course' %} &#9660; {% endif %}</th>
+                    <th><a href="{{ url }}&sort=title">Title</a>{% if sorted == 'title' %} &#9660; {% endif %}</th>
+                    <th><a href="{{ url }}&sort=units">Units</a>{% if sorted == 'units' %} &#9660; {% endif %}</th>
+                    <th><a href="{{ url }}&sort=instructors">Instructor(s)</a>{% if sorted == 'instructors' %} &#9660; {% endif %}</th>
+                    <th><a href="{{ url }}&sort=meetings">Meeting Times (Room)</a>{% if sorted == 'meetings' %} &#9660; {% endif %}</th>
+                    <th><a href="{{ url }}&sort=cores">Core</a>{% if sorted == 'cores' %} &#9660; {% endif %}</th>
+                    <th>Seats</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for offering in results %}
+                <tr>
+                    <td>
+                        <a href="{{ base_url }}?advanced={{ parameters['advanced'] }}&semester={{ offering.semester.code }}">
+                            {{ offering.semester }}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ base_url }}?advanced=true&semester={{ parameters['semester'] }}&department={{ offering.course.department.code }}"><abbr title="{{ offering.course.department.name }}">{{ offering.course.department.code }}</abbr></a>
+                        <a href="{{ base_url }}?advanced=true&semester=any&department={{ offering.course.department.code }}&lower={{ offering.course.number }}&upper={{ offering.course.number }}">{{ offering.course.number }}</a>
+                        ({{ offering.section }})
+                    </td>
+                    <td>
+                        {{ offering.title }} <span class="more-info">[+]</span>
+                        <div class="description" style="display:none;">
+                            {% if offering.course.info.description %}
+                            <p>{{ offering.course.info.description | safe }}</p>
+                            {% endif %}
+                            {% if offering.course.info.prerequisites %}
+                            <p>Prerequisites: {{ offering.course.info.prerequisites | safe }}</p>
+                            {% endif %}
+                            {% if offering.course.info.corequisites %}
+                            <p>Corequisites: {{ offering.course.info.corequisites | safe }}</p>
+                            {% endif %}
+                            <p><a href="{{ offering.course.info.url }}">View in Catalog</a></p>
+                        </div>
+                    </td>
+                    <td>{{ offering.units }}</td>
+                    <td>
+                        {% if offering.instructors %}
+                        {% for instructor in offering.instructors %}
+                        <a href="{{ base_url }}?advanced=true&semester={{ parameters['semester'] }}&instructor={{ instructor.system_name }}"><abbr title="{{ instructor.system_name }}">{{ instructor.last_name }}</abbr></a>
+                        {% if not loop.last %};{% endif %}
+                        {% endfor %}
+                        {% else %}
+                        Unassigned
                         {% endif %}
-                        {% if offering.course.info.prerequisites %}
-                        <p>Prerequisites: {{ offering.course.info.prerequisites | safe }}</p>
+                    </td>
+                    <td>
+                        {% if offering.meetings %}
+                        {% for meeting in offering.meetings %}
+                        {% if meeting.timeslot is none %}
+                        Time TBD
+                        {% else %}
+                        {{ meeting.us_start_time }} - {{ meeting.us_end_time }}
+                        <abbr title="{{ meeting.weekdays_names }}">{{ meeting.weekdays }}</abbr>
                         {% endif %}
-                        {% if offering.course.info.corequisites %}
-                        <p>Corequisites: {{ offering.course.info.corequisites | safe }}</p>
+                        {%- if meeting.room is none -%}
+                        (Location TBD)
+                        {% else %}
+                        (<abbr title="{{ meeting.room.building.name }}">{{ meeting.room.building.code }}</abbr> {{ meeting.room.room }})
+                        {%- endif -%}
+                        {% if not loop.last %};{% endif %}
+                        {% endfor %}
+                        {% else %}
+                        Time TBD (Location TBD) 
                         {% endif %}
-                        <p><a href="{{ offering.course.info.url }}">View in Catalog</a></p>
-                    </div>
-                </td>
-                <td>{{ offering.units }}</td>
-                <td>
-                    {% if offering.instructors %}
-                    {% for instructor in offering.instructors %}
-                    <a href="{{ base_url }}?advanced=true&semester={{ parameters['semester'] }}&instructor={{ instructor.system_name }}"><abbr title="{{ instructor.system_name }}">{{ instructor.last_name }}</abbr></a>
-                    {% if not loop.last %};{% endif %}
-                    {% endfor %}
-                    {% else %}
-                    Unassigned
-                    {% endif %}
-                </td>
-                <td>
-                    {% if offering.meetings %}
-                    {% for meeting in offering.meetings %}
-                    {% if meeting.timeslot is none %}
-                    Time TBD
-                    {% else %}
-                    {{ meeting.us_start_time }} - {{ meeting.us_end_time }}
-                    <abbr title="{{ meeting.weekdays_names }}">{{ meeting.weekdays }}</abbr>
-                    {% endif %}
-                    {%- if meeting.room is none -%}
-                    (Location TBD)
-                    {% else %}
-                    (<abbr title="{{ meeting.room.building.name }}">{{ meeting.room.building.code }}</abbr> {{ meeting.room.room }})
-                    {%- endif -%}
-                    {% if not loop.last %};{% endif %}
-                    {% endfor %}
-                    {% else %}
-                    Time TBD (Location TBD) 
-                    {% endif %}
-                </td>
-                <td>
-                    {% for core in offering.cores %}
-                    <a href="{{ base_url }}?advanced=true&semester={{ parameters['semester'] }}&core={{ core.code }}"><abbr title="{{ core.name }}">{{ core.code }}</abbr>{% if not loop.last %};{% endif %}</a>
-                    {% endfor %}
-                </td>
-                <td>
-                    {% if offering.num_reserved != 0 %}
-                    <abbr title="Enrolled: {{ offering.num_enrolled }}/{{ offering.num_seats }}&#13;Reserved Remaining: {{ offering.num_reserved_open }}/{{ offering.num_reserved }}&#13;Waitlisted: {{ offering.num_waitlisted }}">
-                    {{ offering.num_enrolled }}/{{ offering.num_seats }} [{{ offering.num_waitlisted }}]
-                    </abbr>
-                    {% else %}
-                    <abbr title="Enrolled: {{ offering.num_enrolled }}/{{ offering.num_seats }}&#13;Waitlisted: {{ offering.num_waitlisted }}">
-                    {{ offering.num_enrolled }}/{{ offering.num_seats }} [{{ offering.num_waitlisted }}]
-                    </abbr>
-                    {% endif %}
-                </td>
-            </tr>
-            {% endfor %}
+                    </td>
+                    <td>
+                        {% for core in offering.cores %}
+                        <a href="{{ base_url }}?advanced=true&semester={{ parameters['semester'] }}&core={{ core.code }}"><abbr title="{{ core.name }}">{{ core.code }}</abbr>{% if not loop.last %};{% endif %}</a>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% if offering.num_reserved != 0 %}
+                        <abbr title="Enrolled: {{ offering.num_enrolled }}/{{ offering.num_seats }}&#13;Reserved Remaining: {{ offering.num_reserved_open }}/{{ offering.num_reserved }}&#13;Waitlisted: {{ offering.num_waitlisted }}">
+                        {{ offering.num_enrolled }}/{{ offering.num_seats }} [{{ offering.num_waitlisted }}]
+                        </abbr>
+                        {% else %}
+                        <abbr title="Enrolled: {{ offering.num_enrolled }}/{{ offering.num_seats }}&#13;Waitlisted: {{ offering.num_waitlisted }}">
+                        {{ offering.num_enrolled }}/{{ offering.num_seats }} [{{ offering.num_waitlisted }}]
+                        </abbr>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
         </table>
         {% endif %}
     </div>
