@@ -23,5 +23,5 @@ body > div {margin-top:1em; text-align:center;}
 #results-table tbody tr:hover {background-color:#D3D7CF;}
 #results-table tbody tr:hover th, td {border-color:#BABDB6;}
 #results-table tbody td {text-align:left;}
-#results-table .more-info {cursor:pointer;}
+#results-table .more-info {cursor:pointer; font-family:monospace;}
 #disclaimer {font-size:small; margin:1em auto 0;}
