@@ -11,17 +11,31 @@ from models import Department, Course, CourseInfo
 
 BASE_URL = 'http://smartcatalog.co/Catalogs/Occidental-College/2016-2017/Catalog/Courses/'
 
-def extract_text(*soups):
-    text = []
-    for soup in soups:
-        if hasattr(soup, 'descendants'):
-            for desc in soup.descendants:
-                if not hasattr(desc, 'contents'):
-                    if desc:
-                        text.append(desc)
-        else:
-            text.append(soup)
-    return re.sub(r'\s\+', ' ', ''.join(text).strip())
+def extract_section(section):
+    heading = section.contents[0].get_text().strip()
+    body = ' '.join(str(contents) for contents in section.contents[1:]).strip()
+    return heading, body
+
+def clean_html(html):
+    html = re.sub(r'\s+', ' ', html)
+    soup = BeautifulSoup(html, 'html.parser')
+    for tag in soup.select('a'):
+        tag.unwrap()
+    changed = True
+    while changed:
+        changed = False
+        for tag in soup.descendants:
+            if tag.strip is not None and not tag.strip():
+                tag.extract()
+                changed = True
+        for tag in soup.select('*'):
+            if not tag.contents:
+                tag.extract()
+                changed = True
+            elif tag.string and not tag.string.strip():
+                tag.extract()
+                changed = True
+    return str(soup)
 
 def get_year_URL(year):
     return BASE_URL.format(year - 1, year)
@@ -51,25 +65,25 @@ def extract_course_info(session, url):
             sections.append(section_soup)
         last_pos = match.start()
     sections.append(BeautifulSoup(contents[last_pos:], 'html.parser'))
-    dept, number = sections[0].get_text().strip().split(' ')[:2]
+    heading, description = extract_section(sections[0])
+    dept, number = heading.split(' ')[:2]
     department = get_or_create(session, Department, code=dept)
+    description = clean_html(description)
+    if not description:
+        description = None
     for number in re.sub('[/-]', ' ', number).split():
         course = get_or_create(session, Course, department=department, number=number, number_int=int(re.sub('[^0-9]', '', number)))
-        description = ''.join(str(contents).strip() for contents in sections[0].contents[1:])
-        description = re.sub(r'\s+', ' ', description)
-        if not description:
-            description = None
         prerequisites = None
         corequisites = None
         parsed_prerequisites = None
         for section_soup in sections[1:]:
             children = [tag for tag in section_soup.contents if hasattr(tag, 'strings') or tag.strip()]
             if len(children) >= 2:
-                key = re.sub(r'\s+', ' ', children[0].get_text().strip())
+                key, body = extract_section(section_soup)
                 if key == 'Prerequisite':
-                    prerequisites = ''.join(str(contents) for contents in section_soup.contents[1:]).strip()
+                    prerequisites = clean_html(body)
                 elif key == 'Corequisite':
-                    corequisites = ''.join(str(contents) for contents in section_soup.contents[1:]).strip()
+                    corequisites = clean_html(body)
         course_info = session.query(CourseInfo).filter(CourseInfo.course_id == course.id).first()
         if course_info:
             if is_preferred_url(course_info.url):
@@ -107,11 +121,6 @@ def main(year):
     for dept_link_soup in catalog_soup.select('.sc-child-item-links li a'):
         dept_soup = get_soup_from_URL(urljoin(BASE_URL, dept_link_soup['href']))
         for course_link_soup in dept_soup.select('#main ul li a'):
-            text = extract_text(course_link_soup)
-            if ' ' not in text:
-                continue
-            split = [s.strip() for s in text.split(' ', maxsplit=2)]
-            assert len(split) == 3, 'Cannot split "{}" into three'.format(text)
             course_url = urljoin(BASE_URL, course_link_soup['href'])
             if course_url in visited_urls:
                 continue
