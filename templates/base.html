@@ -132,7 +132,7 @@
                         {{ offering.title }} <span class="more-info">[+]</span>
                         <div class="description" style="display:none;">
                             {% if offering.course.info.description %}
-                            <p>{{ offering.course.info.description | safe }}</p>
+                            {{ offering.course.info.description | safe }}
                             {% endif %}
                             {% if offering.course.info.prerequisites %}
                             <p>Prerequisites: {{ offering.course.info.prerequisites | safe }}</p>
