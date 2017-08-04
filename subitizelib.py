@@ -1,5 +1,3 @@
-import re
-
 from sqlalchemy.sql.expression import and_, or_, text, asc, desc, func
 
 from models import Semester, TimeSlot, Building, Room, Core, Department, Course, Person, Offering
