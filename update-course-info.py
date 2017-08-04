@@ -11,32 +11,6 @@ from models import Department, Course, CourseInfo
 
 BASE_URL = 'http://smartcatalog.co/Catalogs/Occidental-College/2016-2017/Catalog/Courses/'
 
-def extract_section(section):
-    heading = section.contents[0].get_text().strip()
-    body = ' '.join(str(contents) for contents in section.contents[1:]).strip()
-    return heading, body
-
-def clean_html(html):
-    html = re.sub(r'\s+', ' ', html)
-    soup = BeautifulSoup(html, 'html.parser')
-    for tag in soup.select('a'):
-        tag.unwrap()
-    changed = True
-    while changed:
-        changed = False
-        for tag in soup.descendants:
-            if tag.strip is not None and not tag.strip():
-                tag.extract()
-                changed = True
-        for tag in soup.select('*'):
-            if not tag.contents:
-                tag.extract()
-                changed = True
-            elif tag.string and not tag.string.strip():
-                tag.extract()
-                changed = True
-    return str(soup)
-
 def get_year_URL(year):
     return BASE_URL.format(year - 1, year)
 
@@ -51,43 +25,75 @@ def is_valid_url(url):
 def is_preferred_url(url):
     return re.search('Courses/[A-Z]+-[^/]*/[0-9]+/[A-Z]+-[^/]+$', url)
 
-def extract_course_info(session, url):
-    if not is_valid_url(url):
-        return
-    course_soup = get_soup_from_URL(url)
-    contents_soup = course_soup.select('#main')[0]
-    contents = str(contents_soup)
+def clean_soup(soup):
+    for tag in soup.select('a'):
+        tag.unwrap()
+    changed = True
+    while changed:
+        changed = False
+        for tag in soup.select('*'):
+            if tag.string and not tag.string.strip():
+                tag.extract()
+                changed = True
+    return soup
+
+def extract_section(section):
+    heading = section.contents[0].get_text().strip()
+    body = ' '.join(str(contents) for contents in section.contents[1:]).strip()
+    return heading, body
+
+def extract_basic_info(session, course_soup):
+    dept, number = course_soup.select('h1')[0].get_text().split(' ')[:2]
+    dept = dept.strip()
+    number = number.strip()
+    department = get_or_create(session, Department, code=dept)
+    description = str(clean_soup(course_soup.select('div.desc')[0]))
+    if not description:
+        description = None
+    else:
+        description = re.sub('\s+', ' ', description)
+    return department, number, description
+
+def extract_prerequisites(course_soup):
+    contents = str(course_soup.select('#main')[0])
     sections = []
     last_pos = 0
-    for match in re.finditer('<h[1-6]>', contents.lower()):
+    for match in re.finditer('<h[2-6]>', contents.lower()):
         section_soup = BeautifulSoup(contents[last_pos:match.start()], 'html.parser')
         if section_soup.get_text().strip():
             sections.append(section_soup)
         last_pos = match.start()
     sections.append(BeautifulSoup(contents[last_pos:], 'html.parser'))
-    heading, description = extract_section(sections[0])
-    dept, number = heading.split(' ')[:2]
-    department = get_or_create(session, Department, code=dept)
-    description = clean_html(description)
-    if not description:
-        description = None
-    for number in re.sub('[/-]', ' ', number).split():
+    prerequisites = None
+    corequisites = None
+    for section_soup in sections[1:]:
+        children = [tag for tag in section_soup.contents if hasattr(tag, 'strings') or tag.strip()]
+        if len(children) >= 2:
+            key, body = extract_section(section_soup)
+            if key == 'Prerequisite':
+                prerequisites = str(clean_soup(BeautifulSoup(body, 'html.parser')))
+                prerequisites = re.sub('\s+', ' ', prerequisites)
+            elif key == 'Corequisite':
+                corequisites = str(clean_soup(BeautifulSoup(body, 'html.parser')))
+                corequisites = re.sub('\s+', ' ', corequisites)
+    return prerequisites, corequisites
+
+def parse_prerequisites(prerequisites):
+    return None # TODO
+
+def extract_course_info(session, url):
+    if not is_valid_url(url):
+        return
+    course_soup = get_soup_from_URL(url)
+    department, number, description = extract_basic_info(session, course_soup)
+    prerequisites, corequisites = extract_prerequisites(course_soup)
+    parsed_prerequisites = parse_prerequisites(prerequisites)
+    for number in re.split('[/-]', number):
         course = get_or_create(session, Course, department=department, number=number, number_int=int(re.sub('[^0-9]', '', number)))
-        prerequisites = None
-        corequisites = None
-        parsed_prerequisites = None
-        for section_soup in sections[1:]:
-            children = [tag for tag in section_soup.contents if hasattr(tag, 'strings') or tag.strip()]
-            if len(children) >= 2:
-                key, body = extract_section(section_soup)
-                if key == 'Prerequisite':
-                    prerequisites = clean_html(body)
-                elif key == 'Corequisite':
-                    corequisites = clean_html(body)
         course_info = session.query(CourseInfo).filter(CourseInfo.course_id == course.id).first()
         if course_info:
             if is_preferred_url(course_info.url):
-                continue
+                pass # TODO detect if prerequisites have changed
             elif is_preferred_url(url):
                 course_info.url = url
         else:
