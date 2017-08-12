@@ -115,8 +115,8 @@
                     <th>Seats</th>
                 </tr>
             </thead>
+            {% for offering in results %}
             <tbody>
-                {% for offering in results %}
                 <tr>
                     <td>
                         <a href="{{ base_url }}?advanced={{ parameters['advanced'] }}&semester={{ offering.semester.code }}">
@@ -130,18 +130,6 @@
                     </td>
                     <td>
                         {{ offering.title }} <span class="more-info">[+]</span>
-                        <div class="description" style="display:none;">
-                            {% if offering.course.info.description %}
-                            {{ offering.course.info.description | safe }}
-                            {% endif %}
-                            {% if offering.course.info.prerequisites %}
-                            <p>Prerequisites: {{ offering.course.info.prerequisites | safe }}</p>
-                            {% endif %}
-                            {% if offering.course.info.corequisites %}
-                            <p>Corequisites: {{ offering.course.info.corequisites | safe }}</p>
-                            {% endif %}
-                            <p><a href="{{ offering.course.info.url }}">View in Catalog</a></p>
-                        </div>
                     </td>
                     <td>{{ offering.units }}</td>
                     <td>
@@ -191,8 +179,27 @@
                         {% endif %}
                     </td>
                 </tr>
-                {% endfor %}
+                <tr class="description" style="display:none;">
+                    <td></td>
+                    <td></td>
+                    <td class="description" colspan="3">
+                        {% if offering.course.info.description %}
+                        {{ offering.course.info.description | safe }}
+                        {% endif %}
+                        {% if offering.course.info.prerequisites %}
+                        <p>Prerequisites: {{ offering.course.info.prerequisites | safe }}</p>
+                        {% endif %}
+                        {% if offering.course.info.corequisites %}
+                        <p>Corequisites: {{ offering.course.info.corequisites | safe }}</p>
+                        {% endif %}
+                        <p><a href="{{ offering.course.info.url }}">View in Catalog</a></p>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
             </tbody>
+            {% endfor %}
         </table>
         {% endif %}
     </div>

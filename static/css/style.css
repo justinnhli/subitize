@@ -20,8 +20,9 @@ body > div {margin-top:1em; text-align:center;}
 .number {width:4em;}
 #results {margin-top:2em;}
 #results-table {width:100%;}
-#results-table tbody tr:hover {background-color:#D3D7CF;}
-#results-table tbody tr:hover th, td {border-color:#BABDB6;}
-#results-table tbody td {text-align:left;}
+#results-table tbody {text-align:left;}
+#results-table tbody:hover tr {background-color:#D3D7CF;}
+#results-table tbody:hover tr td {border-color:#BABDB6;}
+#results-table tbody tr.description td {border-style:none; padding-left:1em;}
 #results-table .more-info {cursor:pointer; font-family:monospace;}
 #footer {font-size:small; margin:1em auto 0;}

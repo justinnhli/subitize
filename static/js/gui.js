@@ -35,12 +35,15 @@ $(function (){
 
 		$('.more-info').click(function() {
 			var more_info = $(this);
-			var td = more_info.parent();
-			var width = td.width();
-			var description = td.children('.description');
-			description.toggle();
-			td.width(width);
-			if (description.is(':visible')) {
+			var desc_tr = more_info.parents('tbody').children('.description');
+			var colspan = desc_tr.children('.description').attr('colspan');
+			var tds = more_info.parents('td').prev('td').nextAll('td').slice(0, colspan);
+			$.each(tds, function(i, td) {
+				var td = $(td);
+				td.width(td.width());
+			});
+			desc_tr.toggle();
+			if (desc_tr.is(':visible')) {
 				more_info.html('[-]');
 			} else {
 				more_info.html('[+]');
