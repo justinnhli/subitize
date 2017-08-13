@@ -129,7 +129,8 @@
                         ({{ offering.section }})
                     </td>
                     <td>
-                        {{ offering.title }} <span class="more-info">[+]</span>
+                        {{ offering.title }}
+                        {% if offering.course.info.url is defined %}<span class="more-info">[+]</span>{% endif %}
                     </td>
                     <td>{{ offering.units }}</td>
                     <td>
@@ -179,6 +180,7 @@
                         {% endif %}
                     </td>
                 </tr>
+                {% if offering.course.info.url is defined %}
                 <tr class="description" style="display:none;">
                     <td></td>
                     <td></td>
@@ -198,6 +200,7 @@
                     <td></td>
                     <td></td>
                 </tr>
+                {% endif %}
             </tbody>
             {% endfor %}
         </table>
