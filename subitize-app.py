@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 
 from collections import namedtuple
-from datetime import datetime
+from datetime import datetime, date
 from os.path import exists as file_exists, join as join_path
 
 from flask import Flask, render_template, abort, request, send_from_directory, url_for, redirect
 from sqlalchemy.sql.expression import asc, desc
 
-from models import create_session
+from models import create_db, create_session
 from models import Semester
 from models import TimeSlot, Building, Room, Meeting
 from models import Core, Department, Course
@@ -18,6 +18,17 @@ from subitizelib import filter_study_abroad, filter_by_search
 from subitizelib import filter_by_semester, filter_by_department, filter_by_number, filter_by_instructor
 from subitizelib import filter_by_units, filter_by_core, filter_by_meeting, filter_by_openness
 from subitizelib import sort_offerings
+
+
+def current_semester_code(session=None):
+    today = datetime.today().date()
+    if today < date(today.year, 3, 15):
+        return str(today.year) + '02'
+    elif today < date(today.year, 10, 15):
+        return str(today.year) + '01'
+    else:
+        return str(today.year + 1) + '02'
+
 
 app = Flask(__name__)
 
@@ -42,7 +53,7 @@ OPTIONS_HOURS = [
 
 DEFAULT_OPTIONS = {
     'query': 'search for courses...',
-    'semester': Semester.current_semester().code,
+    'semester': current_semester_code(),
     'open': '',
     'instructor': '',
     'core': '',

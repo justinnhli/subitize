@@ -1,4 +1,6 @@
+import sqlite3
 from datetime import datetime, date
+from os.path import exists as file_exists
 
 from sqlalchemy import create_engine, event
 from sqlalchemy.orm import sessionmaker
@@ -7,10 +9,26 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy.schema import UniqueConstraint
 
-SQLITE_URI = 'sqlite:///counts.db'
+DB_PATH = 'counts.db'
+SQL_PATH = 'data.sql'
+
+SQLITE_URI = 'sqlite:///' + DB_PATH
+
+def create_db():
+    if not file_exists(DB_PATH):
+        conn = sqlite3.connect(DB_PATH)
+        with open(SQL_PATH) as fd:
+            dump = fd.read()
+        conn.executescript(dump)
+        conn.commit()
+        conn.close()
+
+
+create_db()
 
 
 def create_session(engine=None, echo=False):
+    create_db()
     if engine is None:
         engine = create_engine(SQLITE_URI, connect_args={'check_same_thread': False}, echo=echo)
     event.listen(engine, 'connect', (lambda dbapi_con, con_record: dbapi_con.execute('pragma foreign_keys=ON')))
