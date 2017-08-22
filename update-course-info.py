@@ -11,19 +11,24 @@ from models import Department, Course, CourseInfo
 
 BASE_URL = 'http://smartcatalog.co/Catalogs/Occidental-College/2016-2017/Catalog/Courses/'
 
+
 def get_year_URL(year):
     return BASE_URL.format(year - 1, year)
+
 
 def get_soup_from_URL(url):
     response = requests.get(url)
     assert response.status_code == 200, 'Downloading {} resulted in HTML status {}'.format(url, response.status_code)
     return BeautifulSoup(response.text, 'html.parser')
 
+
 def is_valid_url(url):
     return re.search('/[A-Z]+-[^/]+$', url)
 
+
 def is_preferred_url(url):
     return re.search('Courses/[A-Z]+-[^/]*/[0-9]+/[A-Z]+-[^/]+$', url)
+
 
 def clean_soup(soup):
     for tag in soup.select('a'):
@@ -37,10 +42,12 @@ def clean_soup(soup):
                 changed = True
     return soup
 
+
 def extract_section(section):
     heading = section.contents[0].get_text().strip()
     body = ' '.join(str(contents) for contents in section.contents[1:]).strip()
     return heading, body
+
 
 def extract_basic_info(session, course_soup):
     dept, number = course_soup.select('h1')[0].get_text().split(' ')[:2]
@@ -51,8 +58,9 @@ def extract_basic_info(session, course_soup):
     if not description:
         description = None
     else:
-        description = re.sub('\s+', ' ', description)
+        description = re.sub(r'\s+', ' ', description)
     return department, number, description
+
 
 def extract_prerequisites(course_soup):
     contents = str(course_soup.select('#main')[0])
@@ -72,14 +80,16 @@ def extract_prerequisites(course_soup):
             key, body = extract_section(section_soup)
             if key == 'Prerequisite':
                 prerequisites = str(clean_soup(BeautifulSoup(body, 'html.parser')))
-                prerequisites = re.sub('\s+', ' ', prerequisites)
+                prerequisites = re.sub(r'\s+', ' ', prerequisites)
             elif key == 'Corequisite':
                 corequisites = str(clean_soup(BeautifulSoup(body, 'html.parser')))
-                corequisites = re.sub('\s+', ' ', corequisites)
+                corequisites = re.sub(r'\s+', ' ', corequisites)
     return prerequisites, corequisites
+
 
 def parse_prerequisites(prerequisites):
     return None # TODO
+
 
 def extract_course_info(session, url):
     if not is_valid_url(url):
@@ -89,7 +99,9 @@ def extract_course_info(session, url):
     prerequisites, corequisites = extract_prerequisites(course_soup)
     parsed_prerequisites = parse_prerequisites(prerequisites)
     for number in re.split('[/-]', number):
-        course = get_or_create(session, Course, department=department, number=number, number_int=int(re.sub('[^0-9]', '', number)))
+        course = get_or_create(
+            session, Course, department=department, number=number, number_int=int(re.sub('[^0-9]', '', number))
+        )
         course_info = session.query(CourseInfo).filter(CourseInfo.course_id == course.id).first()
         if course_info:
             if is_preferred_url(course_info.url):
@@ -102,6 +114,7 @@ def extract_course_info(session, url):
         course_info.prerequisites = prerequisites
         course_info.corequisites = corequisites
         course_info.parsed_prerequisites = parsed_prerequisites
+
 
 def test():
     courses = [
@@ -120,6 +133,7 @@ def test():
         extract_course_info(session, course_url)
     session.commit()
 
+
 def main(year):
     catalog_soup = get_soup_from_URL(get_year_URL(year))
     session = create_session()
@@ -134,6 +148,7 @@ def main(year):
             print(course_url)
             extract_course_info(session, course_url)
     session.commit()
+
 
 if __name__ == '__main__':
     main(2017)

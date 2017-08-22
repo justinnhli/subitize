@@ -55,6 +55,7 @@ PREFERRED_NAMES = {
     'Amanda J. Zellmer McCormack': {'first_name':'Amanda J.', 'last_name':'Zellmer'},
 }
 
+
 def create_instructor(session, system_name):
     if system_name == 'Instructor Unassigned':
         return None
@@ -71,6 +72,7 @@ def create_instructor(session, system_name):
         return instructor.first()
     assert False
 
+
 def create_room(session, location_str):
     if location_str == 'Bldg-TBD':
         room = None
@@ -82,6 +84,7 @@ def create_room(session, location_str):
         building = get_or_create(session, Building, code=building_str)
         room = get_or_create(session, Room, building=building, room=room_str)
     return room
+
 
 def create_meeting(session, meeting_strs):
     time_str, days_str, location_str = meeting_strs
@@ -98,6 +101,7 @@ def create_meeting(session, meeting_strs):
         return None
     else:
         return get_or_create(session, Meeting, timeslot=timeslot, room=room)
+
 
 def create_objects(
         session,
@@ -117,7 +121,9 @@ def create_objects(
         num_waitlisted):
     semester = get_or_create(session, Semester, year=semester[0], season=semester[1])
     department = get_or_create(session, Department, code=department_code)
-    course = get_or_create(session, Course, department=department, number=number, number_int=int(re.sub('[^0-9]', '', number)))
+    course = get_or_create(
+        session, Course, department=department, number=number, number_int=int(re.sub('[^0-9]', '', number))
+    )
     instructors = [create_instructor(session, instructor) for instructor in instructors]
     instructors = [instructor for instructor in instructors if instructor is not None]
     meetings = [create_meeting(session, meeting) for meeting in meetings]
@@ -158,6 +164,7 @@ def create_objects(
     offering.num_waitlisted = int(num_waitlisted)
     return offering
 
+
 def extract_text(soup):
     text = []
     for desc in soup.descendants:
@@ -165,6 +172,7 @@ def extract_text(soup):
             if desc.strip():
                 text.append(desc.strip())
     return re.sub(r'  \+', ' ', ''.join(text).strip())
+
 
 def get_view_state():
     response = requests.get(COURSE_COUNTS)
@@ -174,6 +182,7 @@ def get_view_state():
     view_state = soup.select('#__VIEWSTATE')[0]['value'].strip()
     event_validation = soup.select('#__EVENTVALIDATION')[0]['value'].strip()
     return view_state, event_validation
+
 
 def get_offerings_data(semester):
     params = {
@@ -209,6 +218,7 @@ def get_offerings_data(semester):
     if response[2] != '':
         raise ValueError('Unable to extract offerings data')
     return response[7]
+
 
 def update_from_html(session, semester, html):
     semester = Semester.code_to_season(semester)
@@ -246,6 +256,7 @@ def update_from_html(session, semester, html):
         extracted_sections.add(offering_str)
     return extracted_sections
 
+
 def get_existing_sections(session, semester_code):
     existing_sections = set()
     query = session.query(Offering)
@@ -256,6 +267,7 @@ def get_existing_sections(session, semester_code):
         offering_str = '{} {} {}'.format(offering.course.department.code, offering.course.number, offering.section)
         existing_sections.add(offering_str)
     return existing_sections
+
 
 def delete_section(session, semester_code, dept, num, sec):
     query = session.query(Offering)
@@ -269,6 +281,7 @@ def delete_section(session, semester_code, dept, num, sec):
         print('deleting {} offering of {} {} {}'.format(semester_code, dept, num, sec))
         session.delete(offering)
 
+
 def update_db(semester_code, session=None):
     if session is None:
         session = create_session()
@@ -279,6 +292,7 @@ def update_db(semester_code, session=None):
         delete_section(session, semester_code, *section_str.split())
     session.commit()
 
+
 def main():
     arg_parser = ArgumentParser()
     arg_parser.add_argument('semester', nargs='?', default=Semester.current_semester().code)
@@ -288,6 +302,7 @@ def main():
         print(get_offerings_data(args.semester))
     else:
         update_db(args.semester)
+
 
 if __name__ == '__main__':
     main()

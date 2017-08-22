@@ -164,6 +164,7 @@ DEPARTMENTS = [
     ['WRD', 'Writing and Rhetoric',],
 ]
 
+
 def main(filename):
     engine = create_engine('sqlite:///{}'.format(filename))
     Base.metadata.create_all(engine)
@@ -186,6 +187,7 @@ def main(filename):
                 update_db(semester_code, session)
             except ValueError:
                 pass
+
 
 if __name__ == '__main__':
     main('new.db')

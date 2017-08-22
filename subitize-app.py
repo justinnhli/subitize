@@ -35,9 +35,9 @@ OPTIONS_DAYS = [
     Day('U', 'Saturday'),
 ]
 OPTIONS_HOURS = [
-        (lambda time: Hour(time.strftime('%H%M'), time.strftime('%I %p').strip('0').lower()))(
-            datetime.strptime(str(i), '%H')
-        ) for i in range(6, 24)
+    (lambda time: Hour(time.strftime('%H%M'), time.strftime('%I %p').strip('0').lower()))(
+        datetime.strptime(str(i), '%H')
+    ) for i in range(6, 24)
 ]
 
 DEFAULT_OPTIONS = {
@@ -55,6 +55,7 @@ DEFAULT_OPTIONS = {
     'end_hour': '2300',
 }
 
+
 def get_parameter_or_none(parameters, parameter):
     if parameter not in parameters:
         return None
@@ -67,6 +68,7 @@ def get_parameter_or_none(parameters, parameter):
     else:
         return None
 
+
 def get_parameter_or_default(parameters, parameter):
     value = get_parameter_or_none(parameters, parameter)
     if value:
@@ -74,6 +76,7 @@ def get_parameter_or_default(parameters, parameter):
     else:
         assert parameter in DEFAULT_OPTIONS
         return DEFAULT_OPTIONS[parameter]
+
 
 def get_dropdown_options(session, parameters):
     context = {}
@@ -88,6 +91,7 @@ def get_dropdown_options(session, parameters):
     context['start_hours'] = OPTIONS_HOURS
     context['end_hours'] = OPTIONS_HOURS
     return context
+
 
 def get_search_results(session, parameters, context):
     query = session.query(Offering)
@@ -108,7 +112,9 @@ def get_search_results(session, parameters, context):
         if get_parameter_or_none(parameters, 'open'):
             query = filter_by_openness(query)
         query = filter_by_department(query, get_parameter_or_none(parameters, 'department'))
-        query = filter_by_number(query, get_parameter_or_none(parameters, 'lower'), get_parameter_or_none(parameters, 'upper'))
+        query = filter_by_number(
+            query, get_parameter_or_none(parameters, 'lower'), get_parameter_or_none(parameters, 'upper')
+        )
         query = filter_by_units(query, get_parameter_or_none(parameters, 'units'))
         query = filter_by_instructor(query, get_parameter_or_none(parameters, 'instructor'))
         query = filter_by_core(query, get_parameter_or_none(parameters, 'core'))
@@ -125,6 +131,7 @@ def get_search_results(session, parameters, context):
     else:
         context['results'] = None
     return context
+
 
 @app.route('/')
 def view_root():
@@ -147,6 +154,7 @@ def view_root():
     context['defaults'].update(parameters)
     return render_template('base.html', **context)
 
+
 @app.route('/simplify/')
 def view_simplify():
     parameters = request.args.to_dict()
@@ -160,6 +168,7 @@ def view_simplify():
             simplified[key] = value
     return redirect(url_for('view_root', **simplified))
 
+
 @app.route('/static/css/<file>')
 def get_css(file):
     if file_exists(join_path('static/css', file)):
@@ -167,12 +176,14 @@ def get_css(file):
     else:
         return abort(404)
 
+
 @app.route('/static/js/<file>')
 def get_js(file):
     if file_exists(join_path('static/js', file)):
         return send_from_directory('static/js', file)
     else:
         return abort(404)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

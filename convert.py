@@ -8,6 +8,7 @@ from update import create_objects
 
 OFFERINGS_FILE = join_path(dirname(realpath(__file__)), 'offerings.tsv')
 
+
 def update_from_csv(session, file):
     with open(file) as fd:
         for csv_row in DictReader(fd, delimiter='\t', quoting=QUOTE_NONE):
@@ -33,6 +34,7 @@ def main():
     session = create_session()
     update_from_csv(session, OFFERINGS_FILE)
     session.commit()
+
 
 if __name__ == '__main__':
     main()

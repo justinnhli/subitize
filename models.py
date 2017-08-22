@@ -9,14 +9,17 @@ from sqlalchemy.schema import UniqueConstraint
 
 SQLITE_URI = 'sqlite:///counts.db'
 
+
 def create_session(engine=None, echo=False):
     if engine is None:
-        engine = create_engine(SQLITE_URI, connect_args={'check_same_thread':False}, echo=echo)
+        engine = create_engine(SQLITE_URI, connect_args={'check_same_thread': False}, echo=echo)
     event.listen(engine, 'connect', (lambda dbapi_con, con_record: dbapi_con.execute('pragma foreign_keys=ON')))
     Session = sessionmaker(bind=engine)
     return Session()
 
+
 Base = declarative_base()
+
 
 class Semester(Base):
     __tablename__ = 'semesters'
@@ -26,10 +29,12 @@ class Semester(Base):
     id = Column(Integer, primary_key=True)
     year = Column(Integer, nullable=False)
     season = Column(String, nullable=False)
+
     def __init__(self, year, season):
         self.year = year
         self.season = season
         self.id = int(self.code)
+
     @property
     def code(self):
         season = self.season.lower()
@@ -40,12 +45,16 @@ class Semester(Base):
         elif season == 'summer':
             return '{}03'.format(self.year)
         assert False
+
     def __str__(self):
         return '{} {}'.format(self.year, self.season)
+
     def __lt__(self, other):
         return self.code < other.code
+
     def __repr__(self):
         return '<Semester(year={}, season="{}")>'.format(self.year, self.season)
+
     @staticmethod
     def current_semester(session=None):
         today = datetime.today().date()
@@ -58,6 +67,7 @@ class Semester(Base):
         if session is None:
             session = create_session()
         return session.query(Semester).filter(Semester.year == year, Semester.season == season).one()
+
     @staticmethod
     def code_to_season(code):
         year = int(code[:4])
@@ -69,6 +79,7 @@ class Semester(Base):
         elif season == '03':
             return year, 'Summer'
         raise ValueError('invalid semester code: {}'.format(code))
+
 
 class TimeSlot(Base):
     ALIASES = [
@@ -87,26 +98,36 @@ class TimeSlot(Base):
     weekdays = Column(String, nullable=False)
     start = Column(Time, nullable=False)
     end = Column(Time, nullable=False)
+
     def __str__(self):
         return '{} {}-{}'.format(self.weekdays, self.us_start_time, self.us_end_time)
+
     def __repr__(self):
-        return '<TimeSlot(weekdays={}, start={}, end={})>'.format(self.weekdays, self.start.strftime('%H:%M'), self.end.strftime('%H:%M'))
+        return '<TimeSlot(weekdays={}, start={}, end={})>'.format(
+            self.weekdays, self.start.strftime('%H:%M'), self.end.strftime('%H:%M')
+        )
+
     @property
     def weekdays_names(self):
-        return ',' .join(name for abbr, name in TimeSlot.ALIASES if abbr in self.weekdays)
+        return ','.join(name for abbr, name in TimeSlot.ALIASES if abbr in self.weekdays)
+
     @property
     def us_start_time(self):
         return self.start.strftime('%I:%M%p').strip('0').lower()
+
     @property
     def us_end_time(self):
         return self.end.strftime('%I:%M%p').strip('0').lower()
+
 
 class Building(Base):
     __tablename__ = 'buildings'
     code = Column(String, primary_key=True, nullable=False)
     name = Column(String, nullable=False)
+
     def __repr__(self):
         return '<Building(code="{}")>'.format(self.code)
+
 
 class Room(Base):
     __tablename__ = 'rooms'
@@ -117,10 +138,13 @@ class Room(Base):
     building_code = Column(String, ForeignKey('buildings.code'), nullable=False)
     building = relationship('Building')
     room = Column(String, nullable=True)
+
     def __str__(self):
         return '{} {}'.format(self.building.code, self.room)
+
     def __repr__(self):
         return '<Room(building="{}", room="{}")>'.format(self.building.code, self.room)
+
 
 class Meeting(Base):
     __tablename__ = 'meetings'
@@ -129,36 +153,47 @@ class Meeting(Base):
     room_id = Column(Integer, ForeignKey('rooms.id'), nullable=True)
     timeslot = relationship('TimeSlot')
     room = relationship('Room')
+
     def __str__(self):
         return '{} ({})'.format(str(self.timeslot), str(self.room))
+
     def __repr__(self):
         return '<Meeting(UGH)>'
+
     @property
     def weekdays(self):
         return self.timeslot.weekdays
+
     @property
     def weekdays_names(self):
         return self.timeslot.weekdays_names
+
     @property
     def us_start_time(self):
         return self.timeslot.us_start_time
+
     @property
     def us_end_time(self):
         return self.timeslot.us_end_time
+
 
 class Core(Base):
     __tablename__ = 'cores'
     code = Column(String, primary_key=True, nullable=False)
     name = Column(String, nullable=False)
+
     def __repr__(self):
         return '<Core(code="{}")>'.format(self.code)
+
 
 class Department(Base):
     __tablename__ = 'departments'
     code = Column(String, primary_key=True, nullable=False)
     name = Column(String, nullable=False)
+
     def __repr__(self):
         return '<Department(code="{}")>'.format(self.code)
+
 
 class Course(Base):
     __tablename__ = 'courses'
@@ -171,8 +206,10 @@ class Course(Base):
     number_int = Column(Integer, nullable=False)
     department = relationship('Department')
     info = relationship('CourseInfo', back_populates='course', uselist=False)
+
     def __repr__(self):
         return '<Course(department="{}", number="{}")>'.format(self.department.code, self.number)
+
 
 class Person(Base):
     __tablename__ = 'people'
@@ -180,13 +217,11 @@ class Person(Base):
     system_name = Column(String, nullable=False)
     first_name = Column(String, nullable=False)
     last_name = Column(String, nullable=False)
-    offerings = relationship(
-        'Offering',
-        secondary='offering_instructor_assoc',
-        back_populates='instructors'
-    )
+    offerings = relationship('Offering', secondary='offering_instructor_assoc', back_populates='instructors')
+
     def __str__(self):
         return '{}, {}'.format(self.last_name, self.first_name)
+
 
 class OfferingMeeting(Base):
     __tablename__ = 'offering_meeting_assoc'
@@ -194,17 +229,20 @@ class OfferingMeeting(Base):
     offering_id = Column(Integer, ForeignKey('offerings.id', ondelete='CASCADE'), nullable=False)
     meeting_id = Column(Integer, ForeignKey('meetings.id', ondelete='CASCADE'), nullable=False)
 
+
 class OfferingCore(Base):
     __tablename__ = 'offering_core_assoc'
     id = Column(Integer, primary_key=True)
     offering_id = Column(Integer, ForeignKey('offerings.id', ondelete='CASCADE'), nullable=False)
     core_code = Column(String, ForeignKey('cores.code', ondelete='CASCADE'), nullable=False)
 
+
 class OfferingInstructor(Base):
     __tablename__ = 'offering_instructor_assoc'
     id = Column(Integer, primary_key=True)
     offering_id = Column(Integer, ForeignKey('offerings.id', ondelete='CASCADE'), nullable=False)
     instructor_id = Column(Integer, ForeignKey('people.id', ondelete='CASCADE'), nullable=False)
+
 
 class Offering(Base):
     __tablename__ = 'offerings'
@@ -219,24 +257,19 @@ class Offering(Base):
     section = Column(String, nullable=False)
     title = Column(String, nullable=False)
     units = Column(Integer, nullable=False)
-    instructors = relationship(
-        'Person',
-        secondary='offering_instructor_assoc',
-        back_populates='offerings')
-    meetings = relationship(
-        'Meeting',
-        secondary='offering_meeting_assoc')
-    cores = relationship(
-        'Core',
-        secondary='offering_core_assoc')
+    instructors = relationship('Person', secondary='offering_instructor_assoc', back_populates='offerings')
+    meetings = relationship('Meeting', secondary='offering_meeting_assoc')
+    cores = relationship('Core', secondary='offering_core_assoc')
     num_enrolled = Column(Integer, nullable=False)
     num_seats = Column(Integer, nullable=False)
     num_reserved = Column(Integer, nullable=False)
     num_reserved_open = Column(Integer, nullable=False)
     num_waitlisted = Column(Integer, nullable=False)
+
     @property
     def is_open(self):
         return self.num_waitlisted == 0 and self.num_enrolled < self.num_seats - self.num_reserved
+
 
 class CourseInfo(Base):
     __tablename__ = 'course_info'
@@ -247,8 +280,10 @@ class CourseInfo(Base):
     prerequisites = Column(String, nullable=True)
     corequisites = Column(String, nullable=True)
     parsed_prerequisites = Column(String, nullable=True)
+
     def __repr__(self):
         return '_'.join(s for s in [self.url, self.description, self.prerequisites, self.corequisites] if s is not None)
+
 
 def get_or_create(session, model, **kwargs):
     instance = session.query(model).filter_by(**kwargs).first()

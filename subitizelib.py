@@ -2,8 +2,10 @@ from sqlalchemy.sql.expression import and_, or_, text, asc, desc, func
 
 from models import Semester, TimeSlot, Building, Room, Core, Department, Course, Person, Offering
 
+
 def filter_study_abroad(query):
     return query.filter(Department.code != 'OXAB', Department.code.notilike('AB%'))
+
 
 def filter_by_search(query, terms=None):
     if terms is None:
@@ -23,38 +25,46 @@ def filter_by_search(query, terms=None):
         ))
     return query
 
+
 def filter_by_semester(query, semester=None):
     if semester is None:
         return query
     return query.filter(Semester.id == semester)
 
+
 def filter_by_openness(query):
     return query.filter(and_(Offering.num_waitlisted == 0, text('num_enrolled < num_seats - num_reserved')))
+
 
 def filter_by_instructor(query, instructor=None):
     if instructor is None:
         return query
     return query.filter(Person.system_name == instructor)
 
+
 def filter_by_core(query, core=None):
     if core is None:
         return query
     return query.filter(Core.code == core)
+
 
 def filter_by_units(query, units=None):
     if units is None:
         return query
     return query.filter(Offering.units == units)
 
+
 def filter_by_department(query, department=None):
     if department is None:
         return query
     return query.filter(Department.code == department)
 
+
 def filter_by_number_str(query, number=None):
     if number is None:
         return query
     return query.filter(Course.number == number)
+
 
 def filter_by_number(query, minimum=None, maximum=None):
     filters = []
@@ -66,10 +76,12 @@ def filter_by_number(query, minimum=None, maximum=None):
         query = query.filter(*filters)
     return query
 
+
 def filter_by_section(query, section=None):
     if section is None:
         return query
     return query.filter(Offering.section == section)
+
 
 def filter_by_meeting(query, day=None, starts_after=None, ends_before=None):
     filters = []
@@ -82,6 +94,7 @@ def filter_by_meeting(query, day=None, starts_after=None, ends_before=None):
     if filters:
         query = query.filter(*filters)
     return query
+
 
 def sort_offerings(query, field=None):
     if field is None:
