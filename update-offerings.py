@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup
 
 from models import create_session, get_or_create
 from models import Semester, TimeSlot, Building, Room, Meeting, Core, Department, Course, Person, Offering
+from subitizelib import filter_by_semester, filter_by_department, filter_by_number_str, filter_by_section
 
 COURSE_COUNTS = 'https://counts.oxy.edu/'
 
@@ -155,6 +156,7 @@ def create_objects(
     offering.num_reserved = int(num_reserved)
     offering.num_reserved_open = int(num_reserved_open)
     offering.num_waitlisted = int(num_waitlisted)
+    return offering
 
 def extract_text(soup):
     text = []
@@ -212,6 +214,7 @@ def update_from_html(session, semester, html):
     semester = Semester.code_to_season(semester)
     soup = BeautifulSoup(html, 'html.parser').find_all(id='searchResultsPanel')[0]
     soup = soup.find_all('div', recursive=False)[1].find_all('table', limit=1)[0]
+    extracted_sections = set()
     for row in soup.find_all('tr', recursive=False):
         tds = row.find_all('td', recursive=False)
         if not tds:
@@ -237,13 +240,43 @@ def update_from_html(session, semester, html):
         num_reserved = int(extract_text(tds[9]))
         num_reserved_open = int(extract_text(tds[10]))
         num_waitlisted = int(extract_text(tds[11]))
-        create_objects(session, semester, department_code, number, section, title, units, instructors, meetings, cores, num_seats, num_enrolled, num_reserved, num_reserved_open, num_waitlisted)
+        offering = create_objects(session, semester, department_code, number, section, title, units, instructors, meetings, cores, num_seats, num_enrolled, num_reserved, num_reserved_open, num_waitlisted)
+        offering_str = '{} {} {}'.format(offering.course.department.code, offering.course.number, offering.section)
+        assert offering_str not in extracted_sections
+        extracted_sections.add(offering_str)
+    return extracted_sections
+
+def get_existing_sections(session, semester_code):
+    existing_sections = set()
+    query = session.query(Offering)
+    query = query.join(Semester)
+    query = query.join(Course, Department)
+    query = filter_by_semester(query, semester_code)
+    for offering in query:
+        offering_str = '{} {} {}'.format(offering.course.department.code, offering.course.number, offering.section)
+        existing_sections.add(offering_str)
+    return existing_sections
+
+def delete_section(session, semester_code, dept, num, sec):
+    query = session.query(Offering)
+    query = query.join(Semester)
+    query = query.join(Course, Department)
+    query = filter_by_semester(query, semester_code)
+    query = filter_by_department(query, dept)
+    query = filter_by_number_str(query, num)
+    query = filter_by_section(query, sec)
+    for offering in query:
+        print('deleting {} offering of {} {} {}'.format(semester_code, dept, num, sec))
+        session.delete(offering)
 
 def update_db(semester_code, session=None):
     if session is None:
         session = create_session()
+    old_sections = get_existing_sections(session, semester_code)
     offerings_data = get_offerings_data(semester_code)
-    update_from_html(session, semester_code, offerings_data)
+    new_sections = update_from_html(session, semester_code, offerings_data)
+    for section_str in sorted(old_sections - new_sections):
+        delete_section(session, semester_code, *section_str.split())
     session.commit()
 
 def main():

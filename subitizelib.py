@@ -51,6 +51,11 @@ def filter_by_department(query, department=None):
         return query
     return query.filter(Department.code == department)
 
+def filter_by_number_str(query, number=None):
+    if number is None:
+        return query
+    return query.filter(Course.number == number)
+
 def filter_by_number(query, minimum=None, maximum=None):
     filters = []
     if minimum is not None:
@@ -60,6 +65,11 @@ def filter_by_number(query, minimum=None, maximum=None):
     if filters:
         query = query.filter(*filters)
     return query
+
+def filter_by_section(query, section=None):
+    if section is None:
+        return query
+    return query.filter(Offering.section == section)
 
 def filter_by_meeting(query, day=None, starts_after=None, ends_before=None):
     filters = []
