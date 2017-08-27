@@ -20,16 +20,6 @@ from subitizelib import filter_by_units, filter_by_core, filter_by_meeting, filt
 from subitizelib import sort_offerings
 
 
-def current_semester_code(session=None):
-    today = datetime.today().date()
-    if today < date(today.year, 3, 15):
-        return str(today.year) + '02'
-    elif today < date(today.year, 10, 15):
-        return str(today.year) + '01'
-    else:
-        return str(today.year + 1) + '02'
-
-
 app = Flask(__name__)
 
 Day = namedtuple('Day', ['abbr', 'name'])
@@ -53,7 +43,7 @@ OPTIONS_HOURS = [
 
 DEFAULT_OPTIONS = {
     'query': 'search for courses...',
-    'semester': current_semester_code(),
+    'semester': Semester.current_semester_code(),
     'open': '',
     'instructor': '',
     'core': '',
@@ -116,7 +106,7 @@ def get_search_results(session, parameters, context):
         query = filter_study_abroad(query)
         semester = get_parameter_or_none(parameters, 'semester')
         if semester is None:
-            semester = Semester.current_semester().code
+            semester = Semester.current_semester_code()
         elif semester == 'any':
             semester = None
         query = filter_by_semester(query, semester)
@@ -160,7 +150,7 @@ def view_root():
     context['url'] = url_for('view_root', **parameters)
     context['advanced'] = str(parameters.get('advanced'))
     if 'semester' not in parameters:
-        parameters['semester'] = Semester.current_semester().code
+        parameters['semester'] = Semester.current_semester_code()
     context['defaults'] = dict((k, v) for k, v in DEFAULT_OPTIONS.items())
     context['defaults'].update(parameters)
     with open('last-update') as fd:

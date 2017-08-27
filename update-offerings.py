@@ -302,7 +302,7 @@ def update_db(semester_code, session=None):
 
 def main():
     arg_parser = ArgumentParser()
-    arg_parser.add_argument('semester', nargs='?', default=Semester.current_semester().code)
+    arg_parser.add_argument('semester', nargs='?', default=Semester.current_semester_code())
     arg_parser.add_argument('--raw', action='store_true')
     args = arg_parser.parse_args()
     if args.raw:

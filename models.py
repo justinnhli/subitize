@@ -74,17 +74,14 @@ class Semester(Base):
         return '<Semester(year={}, season="{}")>'.format(self.year, self.season)
 
     @staticmethod
-    def current_semester(session=None):
+    def current_semester_code():
         today = datetime.today().date()
         if today < date(today.year, 3, 15):
-            year, season = today.year, 'Spring'
+            return str(today.year) + '02'
         elif today < date(today.year, 10, 15):
-            year, season = today.year, 'Fall'
+            return str(today.year) + '01'
         else:
-            year, season = today.year + 1, 'Spring'
-        if session is None:
-            session = create_session()
-        return session.query(Semester).filter(Semester.year == year, Semester.season == season).one()
+            return str(today.year + 1) + '02'
 
     @staticmethod
     def code_to_season(code):
