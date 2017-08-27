@@ -14,6 +14,7 @@ SQL_PATH = 'data.sql'
 
 SQLITE_URI = 'sqlite:///' + DB_PATH
 
+
 def create_db():
     if not file_exists(DB_PATH):
         conn = sqlite3.connect(DB_PATH)
@@ -26,6 +27,7 @@ def create_db():
 
 create_db()
 ENGINE = create_engine(SQLITE_URI, connect_args={'check_same_thread': False})
+
 
 def create_session(engine=None):
     create_db()

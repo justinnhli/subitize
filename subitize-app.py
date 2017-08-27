@@ -19,7 +19,6 @@ from subitizelib import filter_by_semester, filter_by_department, filter_by_numb
 from subitizelib import filter_by_units, filter_by_core, filter_by_meeting, filter_by_openness
 from subitizelib import sort_offerings
 
-
 app = Flask(__name__)
 
 Day = namedtuple('Day', ['abbr', 'name'])
