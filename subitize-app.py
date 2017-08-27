@@ -7,7 +7,7 @@ from os.path import exists as file_exists, join as join_path
 from flask import Flask, render_template, abort, request, send_from_directory, url_for, redirect
 from sqlalchemy.sql.expression import asc, desc
 
-from models import create_db, create_session
+from models import create_session
 from models import Semester
 from models import TimeSlot, Building, Room, Meeting
 from models import Core, Department, Course

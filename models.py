@@ -25,18 +25,18 @@ def create_db():
 
 
 create_db()
+ENGINE = create_engine(SQLITE_URI, connect_args={'check_same_thread': False})
 
-
-def create_session(engine=None, echo=False):
+def create_session(engine=None):
     create_db()
     if engine is None:
-        engine = create_engine(SQLITE_URI, connect_args={'check_same_thread': False}, echo=echo)
+        engine = ENGINE
     event.listen(engine, 'connect', (lambda dbapi_con, con_record: dbapi_con.execute('pragma foreign_keys=ON')))
     Session = sessionmaker(bind=engine)
     return Session()
 
 
-Base = declarative_base()
+Base = declarative_base(ENGINE)
 
 
 class Semester(Base):
