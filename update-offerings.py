@@ -147,11 +147,18 @@ def create_objects(
         )
     else:
         offering = offering.first()
-        if offering.title != title or offering.units != int(units):
-            print('Inconsistency with {} {} {} {}'.format(offering.semester.code, offering.course.department.code, offering.course.number, offering.section))
-            print('Old:', offering.title, offering.units, offering.num_seats, offering.num_enrolled, offering.num_reserved, offering.num_reserved_open, offering.num_waitlisted)
-            print('New:', title, units, num_seats, num_enrolled, num_reserved, num_reserved_open, num_waitlisted)
-            print()
+        if offering.title != title:
+            print('title change in {} offering {} {} {}: {} -> {}'.format(
+                offering.semester.code,
+                offering.course.department.code, offering.course.number, offering.section,
+                offering.title, title
+            ))
+        if offering.units != int(units):
+            print('units change in {} offering {} {} {}: {} -> {}'.format(
+                offering.semester.code,
+                offering.course.department.code, offering.course.number, offering.section,
+                offering.units, units
+            ))
     offering.title = title
     offering.units = int(units)
     offering.instructors = instructors
