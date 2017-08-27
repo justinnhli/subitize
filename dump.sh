@@ -10,3 +10,4 @@ case "$(uname)" in
 esac
 rm -f counts.db
 sqlite3 counts.db '.read data.sql'
+date '+%Y-%m-%d %H:%M:%S %Z' > last-update
