@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from collections import namedtuple
-from datetime import datetime, date
+from datetime import datetime
 from os.path import exists as file_exists, join as join_path
 
 from flask import Flask, render_template, abort, request, send_from_directory, url_for, redirect

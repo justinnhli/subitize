@@ -1,6 +1,7 @@
 import sqlite3
 from datetime import datetime, date
 from os.path import exists as file_exists
+from time import sleep
 
 from sqlalchemy import create_engine, event
 from sqlalchemy.orm import sessionmaker
@@ -23,6 +24,14 @@ def create_db():
         conn.executescript(dump)
         conn.commit()
         conn.close()
+    assert file_exists(DB_PATH)
+    while True:
+        try:
+            conn = sqlite3.connect(DB_PATH)
+            conn.execute('SELECT * FROM semesters')
+            break
+        except sqlite3.OperationalError:
+            sleep(1)
 
 
 create_db()
