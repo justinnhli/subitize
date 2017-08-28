@@ -90,7 +90,7 @@ class Semester(Base):
         if today < date(today.year, 3, 15):
             return str(today.year) + '02'
         elif today < date(today.year, 10, 15):
-            return str(today.year) + '01'
+            return str(today.year + 1) + '01'
         else:
             return str(today.year + 1) + '02'
 
