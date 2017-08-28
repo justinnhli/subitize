@@ -1,5 +1,8 @@
 #!/bin/sh
 
+if [ ! -e counts.db ]; then
+	exit
+fi
 sqlite3 counts.db .schema > schema.sql
 sqlite3 counts.db .dump > data.sql
 case "$(uname)" in
@@ -10,4 +13,6 @@ case "$(uname)" in
 esac
 rm -f counts.db
 sqlite3 counts.db '.read data.sql'
-date '+%Y-%m-%d %H:%M:%S %Z' > last-update
+if git status | grep modified >/dev/null; then
+	date '+%Y-%m-%d %H:%M:%S %Z' > last-update
+fi
