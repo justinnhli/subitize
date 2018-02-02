@@ -57,6 +57,7 @@ PREFERRED_NAMES = {
 
 
 def create_instructor(session, system_name):
+    system_name = system_name.strip()
     if system_name == 'Instructor Unassigned':
         return None
     if system_name in MAPPED_NAMES:
