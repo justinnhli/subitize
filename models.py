@@ -1,6 +1,6 @@
 import sqlite3
 from datetime import datetime, date
-from os.path import exists as file_exists
+from os.path import dirname, exists as file_exists, join as join_path
 from time import sleep
 
 from sqlalchemy import create_engine, event
@@ -10,10 +10,11 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy.schema import UniqueConstraint
 
-DB_PATH = 'counts.db'
-SQL_PATH = 'data.sql'
+DIR_PATH = dirname(__file__)
+DB_PATH = join_path(DIR_PATH, 'counts.db')
+SQL_PATH = join_path(DIR_PATH, 'data.sql')
 
-SQLITE_URI = 'sqlite:///' + DB_PATH
+SQLITE_URI = 'sqlite:///' + join_path(DIR_PATH, DB_PATH)
 
 
 def create_db():
