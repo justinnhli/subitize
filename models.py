@@ -140,6 +140,14 @@ class TimeSlot(Base):
         return ','.join(name for abbr, name in TimeSlot.ALIASES if abbr in self.weekdays)
 
     @property
+    def iso_start_time(self):
+        return self.start.strftime('%H:%M')
+
+    @property
+    def iso_end_time(self):
+        return self.end.strftime('%H:%M')
+
+    @property
     def us_start_time(self):
         return self.start.strftime('%I:%M%p').strip('0').lower()
 
@@ -195,6 +203,14 @@ class Meeting(Base):
     @property
     def weekdays_names(self):
         return self.timeslot.weekdays_names
+
+    @property
+    def iso_start_time(self):
+        return self.timeslot.iso_start_time
+
+    @property
+    def iso_end_time(self):
+        return self.timeslot.iso_end_time
 
     @property
     def us_start_time(self):
