@@ -93,7 +93,7 @@ def get_dropdown_options(session, parameters):
     return context
 
 
-def get_search_results(session, parameters, context):
+def get_search_results(session, parameters):
     query = session.query(Offering)
     query = query.join(Semester)
     query = query.join(Course, Department)
@@ -101,36 +101,32 @@ def get_search_results(session, parameters, context):
     query = query.outerjoin(OfferingMeeting, Meeting, TimeSlot, Room, Building)
     query = query.outerjoin(OfferingCore, Core)
     query = query.outerjoin(OfferingInstructor, Person)
-    if parameters:
-        query = filter_study_abroad(query)
-        semester = get_parameter_or_none(parameters, 'semester')
-        if semester is None:
-            semester = Semester.current_semester_code()
-        elif semester == 'any':
-            semester = None
-        query = filter_by_semester(query, semester)
-        if get_parameter_or_none(parameters, 'open'):
-            query = filter_by_openness(query)
-        query = filter_by_department(query, get_parameter_or_none(parameters, 'department'))
-        query = filter_by_number(
-            query, get_parameter_or_none(parameters, 'lower'), get_parameter_or_none(parameters, 'upper')
-        )
-        query = filter_by_units(query, get_parameter_or_none(parameters, 'units'))
-        query = filter_by_instructor(query, get_parameter_or_none(parameters, 'instructor'))
-        query = filter_by_core(query, get_parameter_or_none(parameters, 'core'))
-        day = get_parameter_or_none(parameters, 'day')
-        starts_after = datetime.strptime(get_parameter_or_default(parameters, 'start_hour'), '%H%M').time()
-        ends_before = datetime.strptime(get_parameter_or_default(parameters, 'end_hour'), '%H%M').time()
-        query = filter_by_meeting(query, day, starts_after, ends_before)
-        terms = get_parameter_or_none(parameters, 'query')
-        query = filter_by_search(query, terms)
-        query = sort_offerings(query, get_parameter_or_none(parameters, 'sort'))
-        context['results'] = []
-        for offering in query:
-            context['results'].append(offering)
-    else:
-        context['results'] = None
-    return context
+    if not parameters:
+        return None
+    query = filter_study_abroad(query)
+    semester = get_parameter_or_none(parameters, 'semester')
+    if semester is None:
+        semester = Semester.current_semester_code()
+    elif semester == 'any':
+        semester = None
+    query = filter_by_semester(query, semester)
+    if get_parameter_or_none(parameters, 'open'):
+        query = filter_by_openness(query)
+    query = filter_by_department(query, get_parameter_or_none(parameters, 'department'))
+    query = filter_by_number(
+        query, get_parameter_or_none(parameters, 'lower'), get_parameter_or_none(parameters, 'upper')
+    )
+    query = filter_by_units(query, get_parameter_or_none(parameters, 'units'))
+    query = filter_by_instructor(query, get_parameter_or_none(parameters, 'instructor'))
+    query = filter_by_core(query, get_parameter_or_none(parameters, 'core'))
+    day = get_parameter_or_none(parameters, 'day')
+    starts_after = datetime.strptime(get_parameter_or_default(parameters, 'start_hour'), '%H%M').time()
+    ends_before = datetime.strptime(get_parameter_or_default(parameters, 'end_hour'), '%H%M').time()
+    query = filter_by_meeting(query, day, starts_after, ends_before)
+    terms = get_parameter_or_none(parameters, 'query')
+    query = filter_by_search(query, terms)
+    query = sort_offerings(query, get_parameter_or_none(parameters, 'sort'))
+    return query
 
 
 @app.route('/')
@@ -138,7 +134,11 @@ def view_root():
     session = create_session()
     parameters = request.args.to_dict()
     context = get_dropdown_options(session, parameters)
-    context = get_search_results(session, parameters, context)
+    if parameters:
+        query = get_search_results(session, parameters)
+        context['results'] = list(query)
+    else:
+        context['results'] = None
     if 'sort' in parameters:
         context['sorted'] = parameters['sort']
         parameters.pop('sort')
