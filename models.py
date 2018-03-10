@@ -314,6 +314,36 @@ class Offering(Base):
     def is_open(self):
         return self.num_waitlisted == 0 and self.num_enrolled < self.num_seats - self.num_reserved
 
+    def to_json_dict(self):
+        result = {}
+        result['year'] = self.semester.year
+        result['season'] = self.semester.season
+        result['department'] = self.course.department.code
+        result['number'] = self.course.number
+        result['section'] = self.section
+        result['title'] = self.title
+        result['units'] = self.units
+        result['instructors'] = []
+        for instructor in self.instructors:
+            result['instructors'].append({
+                'first_name': instructor.first_name,
+                'last_name': instructor.last_name,
+                'system_name': instructor.system_name,
+            })
+        result['meetings'] = []
+        for meeting in self.meetings:
+            result['meetings'].append({
+                'days': meeting.weekdays,
+                'start_time': meeting.iso_start_time,
+                'end_time': meeting.iso_end_time,
+            })
+        result['num_enrolled'] = self.num_enrolled
+        result['num_seats'] = self.num_seats
+        result['num_reserved'] = self.num_reserved
+        result['num_reserved_open'] = self.num_reserved_open
+        result['num_waitlisted'] = self.num_waitlisted
+        return result
+
 
 class CourseInfo(Base):
     __tablename__ = 'course_info'
