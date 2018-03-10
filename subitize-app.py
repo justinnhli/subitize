@@ -5,6 +5,7 @@ from datetime import datetime
 from os.path import exists as file_exists, join as join_path
 
 from flask import Flask, render_template, abort, request, send_from_directory, url_for, redirect
+from flask.json import jsonify
 from sqlalchemy.sql.expression import asc, desc
 
 from models import create_session
@@ -155,6 +156,16 @@ def view_root():
     with open('last-update') as fd:
         context['last_update'] = fd.read().strip()
     return render_template('base.html', **context)
+
+
+@app.route('/json/')
+def view_json():
+    session = create_session()
+    parameters = request.args.to_dict()
+    query = get_search_results(session, parameters)
+    results = [offering.to_json_dict() for offering in query]
+    print(jsonify(results))
+    return jsonify(results)
 
 
 @app.route('/simplify/')
