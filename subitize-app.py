@@ -135,20 +135,7 @@ def view_root():
     session = create_session()
     parameters = request.args.to_dict()
     context = get_dropdown_options(session, parameters)
-    if parameters:
-        query = get_search_results(session, parameters)
-        context['results'] = list(query)
-    else:
-        context['results'] = None
-    if 'sort' in parameters:
-        context['sorted'] = parameters['sort']
-        parameters.pop('sort')
-    else:
-        context['sorted'] = 'semester'
-    context['parameters'] = parameters
-    context['base_url'] = url_for('view_root')
-    context['url'] = url_for('view_root', **parameters)
-    context['advanced'] = str(parameters.get('advanced'))
+    context['advanced'] = parameters.get('advanced')
     if 'semester' not in parameters:
         parameters['semester'] = Semester.current_semester_code()
     context['defaults'] = dict((k, v) for k, v in DEFAULT_OPTIONS.items())
@@ -164,22 +151,37 @@ def view_json():
     parameters = request.args.to_dict()
     query = get_search_results(session, parameters)
     results = [offering.to_json_dict() for offering in query]
-    print(jsonify(results))
-    return jsonify(results)
+    metadata = {}
+    if 'sort' in parameters:
+        metadata['sorted'] = parameters['sort']
+    else:
+        metadata['sorted'] = 'semester'
+    metadata['advanced'] = parameters['advanced']
+    metadata['parameters'] = url_for('view_root', **parameters)[2:]
+    response = {
+        'metadata': metadata,
+        'results': results,
+    }
+    return jsonify(response)
 
 
 @app.route('/simplify/')
 def view_simplify():
     parameters = request.args.to_dict()
-    if get_parameter_or_none(parameters, 'query'):
-        parameters['query'] = parameters['query'].strip()
-    else:
-        del parameters['query']
+    if 'query' in parameters:
+        if get_parameter_or_none(parameters, 'query'):
+            parameters['query'] = parameters['query'].strip()
+        else:
+            del parameters['query']
     simplified = {}
     for key, value in parameters.items():
         if key == 'semester' or key not in DEFAULT_OPTIONS or value != DEFAULT_OPTIONS[key]:
             simplified[key] = value
-    return redirect(url_for('view_root', **simplified))
+    if 'json' in simplified:
+        del simplified['json']
+        return redirect(url_for('view_json', **simplified))
+    else:
+        return redirect(url_for('view_root', **simplified))
 
 
 @app.route('/static/css/<file>')

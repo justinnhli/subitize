@@ -5,7 +5,7 @@
     <title>Subitize - Course Counts at a Glance</title>
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="/static/js/gui.js"></script>
+    <script src="/static/js/main.js"></script>
 </head>
 <body>
     <div>
@@ -13,13 +13,13 @@
         <p id="tagline">[SOO-bee-tahyz] (v.) - to rapidly, accurately, and confidently perceive the number of objects without counting</p>
     </div>
     <div>
-        <form action="/simplify" method="get">
+        <form id="search-form">
             {% if defaults.query == 'search for courses...' %}
             <input id="searchbar" class="large" type="text" name="query" value="search for courses..." style="color:#BABDB6;">
             {% else %}
             <input id="searchbar" class="large" type="text" name="query" value="{{ defaults.query }}" style="color:#000000;">
             {% endif %}
-            <input class="large" type="submit" value="Search"><br>
+            <button id="search-button" class="large">Search</button><br>
             <div id="options">
                 Semester:
                 <select name="semester">
@@ -97,115 +97,7 @@
             </div>
         </form>
     </div>
-    <div id="results">
-        {% if results is none %}
-        {% elif not results %}
-        <h3>No courses found.</h3>
-        {% else %}
-        <table id="results-table">
-            <thead>
-                <tr>
-                    <th><a href="{{ url }}&sort=semester">Semester</a>{% if sorted == 'semester' %} &#9660; {% endif %}</th>
-                    <th><a href="{{ url }}&sort=course">Course (Section)</a>{% if sorted == 'course' %} &#9660; {% endif %}</th>
-                    <th><a href="{{ url }}&sort=title">Title</a>{% if sorted == 'title' %} &#9660; {% endif %}</th>
-                    <th><a href="{{ url }}&sort=units">Units</a>{% if sorted == 'units' %} &#9660; {% endif %}</th>
-                    <th><a href="{{ url }}&sort=instructors">Instructor(s)</a>{% if sorted == 'instructors' %} &#9660; {% endif %}</th>
-                    <th><a href="{{ url }}&sort=meetings">Meeting Times (Room)</a>{% if sorted == 'meetings' %} &#9660; {% endif %}</th>
-                    <th><a href="{{ url }}&sort=cores">Core</a>{% if sorted == 'cores' %} &#9660; {% endif %}</th>
-                    <th>Seats</th>
-                </tr>
-            </thead>
-            {% for offering in results %}
-            <tbody>
-                <tr>
-                    <td>
-                        <a href="{{ base_url }}?advanced={{ parameters['advanced'] }}&semester={{ offering.semester.code }}">
-                            {{ offering.semester }}
-                        </a>
-                    </td>
-                    <td>
-                        <a href="{{ base_url }}?advanced=true&semester={{ parameters['semester'] }}&department={{ offering.course.department.code }}"><abbr title="{{ offering.course.department.name }}">{{ offering.course.department.code }}</abbr></a>
-                        <a href="{{ base_url }}?advanced=true&semester=any&department={{ offering.course.department.code }}&lower={{ offering.course.number }}&upper={{ offering.course.number }}">{{ offering.course.number }}</a>
-                        ({{ offering.section }})
-                    </td>
-                    <td>
-                        {{ offering.title }}
-                        {% if offering.course.info.url is defined %}<span class="more-info">[+]</span>{% endif %}
-                    </td>
-                    <td>{{ offering.units }}</td>
-                    <td>
-                        {% if offering.instructors %}
-                        {% for instructor in offering.instructors %}
-                        <a href="{{ base_url }}?advanced=true&semester={{ parameters['semester'] }}&instructor={{ instructor.system_name }}"><abbr title="{{ instructor.system_name }}">{{ instructor.last_name }}</abbr></a>
-                        {% if not loop.last %};{% endif %}
-                        {% endfor %}
-                        {% else %}
-                        Unassigned
-                        {% endif %}
-                    </td>
-                    <td>
-                        {% if offering.meetings %}
-                        {% for meeting in offering.meetings %}
-                        {% if meeting.timeslot is none %}
-                        Time TBD
-                        {% else %}
-                        {{ meeting.us_start_time }} - {{ meeting.us_end_time }}
-                        <abbr title="{{ meeting.weekdays_names }}">{{ meeting.weekdays }}</abbr>
-                        {% endif %}
-                        {%- if meeting.room is none -%}
-                        (Location TBD)
-                        {% else %}
-                        (<abbr title="{{ meeting.room.building.name }}">{{ meeting.room.building.code }}</abbr> {{ meeting.room.room }})
-                        {%- endif -%}
-                        {% if not loop.last %};{% endif %}
-                        {% endfor %}
-                        {% else %}
-                        Time TBD (Location TBD) 
-                        {% endif %}
-                    </td>
-                    <td>
-                        {% for core in offering.cores %}
-                        <a href="{{ base_url }}?advanced=true&semester={{ parameters['semester'] }}&core={{ core.code }}"><abbr title="{{ core.name }}">{{ core.code }}</abbr>{% if not loop.last %};{% endif %}</a>
-                        {% endfor %}
-                    </td>
-                    <td>
-                        {% if offering.num_reserved != 0 %}
-                        <abbr title="Enrolled: {{ offering.num_enrolled }}/{{ offering.num_seats }}&#13;Reserved Remaining: {{ offering.num_reserved_open }}/{{ offering.num_reserved }}&#13;Waitlisted: {{ offering.num_waitlisted }}">
-                        {{ offering.num_enrolled }}/{{ offering.num_seats }} [{{ offering.num_waitlisted }}]
-                        </abbr>
-                        {% else %}
-                        <abbr title="Enrolled: {{ offering.num_enrolled }}/{{ offering.num_seats }}&#13;Waitlisted: {{ offering.num_waitlisted }}">
-                        {{ offering.num_enrolled }}/{{ offering.num_seats }} [{{ offering.num_waitlisted }}]
-                        </abbr>
-                        {% endif %}
-                    </td>
-                </tr>
-                {% if offering.course.info.url is defined %}
-                <tr class="description" style="display:none;">
-                    <td></td>
-                    <td></td>
-                    <td class="description" colspan="3">
-                        {% if offering.course.info.description %}
-                        {{ offering.course.info.description | safe }}
-                        {% endif %}
-                        {% if offering.course.info.prerequisites %}
-                        <p>Prerequisites: {{ offering.course.info.prerequisites | safe }}</p>
-                        {% endif %}
-                        {% if offering.course.info.corequisites %}
-                        <p>Corequisites: {{ offering.course.info.corequisites | safe }}</p>
-                        {% endif %}
-                        <p><a href="{{ offering.course.info.url }}">View in Catalog</a></p>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                {% endif %}
-            </tbody>
-            {% endfor %}
-        </table>
-        {% endif %}
-    </div>
+    <div id="results"></div>
     <div id="footer">
         <p>
             <a href="https://github.com/justinnhli/subitize">Code</a> &copy; <a href="http://justinnhli.com">Justin Li</a>, <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.en_US" rel="license">CC-BY-SA</a><br>

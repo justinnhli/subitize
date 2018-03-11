@@ -137,7 +137,7 @@ class TimeSlot(Base):
 
     @property
     def weekdays_names(self):
-        return ','.join(name for abbr, name in TimeSlot.ALIASES if abbr in self.weekdays)
+        return ', '.join(name for abbr, name in TimeSlot.ALIASES if abbr in self.weekdays)
 
     @property
     def iso_start_time(self):
@@ -316,10 +316,19 @@ class Offering(Base):
 
     def to_json_dict(self):
         result = {}
-        result['year'] = self.semester.year
-        result['season'] = self.semester.season
-        result['department'] = self.course.department.code
-        result['number'] = self.course.number
+        result['semester'] = {
+            'year': self.semester.year,
+            'season': self.semester.season,
+            'code': self.semester.code,
+        }
+        result['department'] = {
+            'name': self.course.department.name,
+            'code': self.course.department.code,
+        }
+        result['number'] = {
+            'number': self.course.number_int,
+            'string': self.course.number,
+        }
         result['section'] = self.section
         result['title'] = self.title
         result['units'] = self.units
@@ -332,16 +341,39 @@ class Offering(Base):
             })
         result['meetings'] = []
         for meeting in self.meetings:
-            result['meetings'].append({
-                'days': meeting.weekdays,
-                'start_time': meeting.iso_start_time,
-                'end_time': meeting.iso_end_time,
+            meeting_dict = {}
+            if meeting.timeslot:
+                meeting_dict.update({
+                    'weekdays': {
+                        'names': meeting.weekdays_names,
+                        'codes': meeting.weekdays,
+                    },
+                    'iso_start_time': meeting.iso_start_time,
+                    'iso_end_time': meeting.iso_end_time,
+                    'us_start_time': meeting.us_start_time,
+                    'us_end_time': meeting.us_end_time,
+                })
+            if meeting.room:
+                meeting_dict.update({
+                    'building': {
+                        'name': meeting.room.building.name,
+                        'code': meeting.room.building.code,
+                    },
+                    'room': meeting.room.room,
+                })
+            result['meetings'].append(meeting_dict)
+        result['cores'] = []
+        for core in self.cores:
+            result['cores'].append({
+                'name': core.name,
+                'code': core.code,
             })
         result['num_enrolled'] = self.num_enrolled
         result['num_seats'] = self.num_seats
         result['num_reserved'] = self.num_reserved
         result['num_reserved_open'] = self.num_reserved_open
         result['num_waitlisted'] = self.num_waitlisted
+        result['has_info'] = (self.course.info != None)
         return result
 
 
