@@ -24,6 +24,7 @@ $(function () {
             } else {
                 populate_search_results(metadata, results);
             }
+            enable_more_info_toggle()
         });
     }
 
@@ -75,6 +76,9 @@ $(function () {
         html.push(build_search_result_meetings_cell(metadata, result));
         html.push(build_search_result_cores_cell(metadata, result));
         html.push(build_search_result_seats_cell(metadata, result));
+        if (result.info) {
+            html.push(build_search_result_info_row(metadata, result));
+        }
         html.push("</tr>");
         html.push("</tbody>");
         return html.join("");
@@ -122,7 +126,7 @@ $(function () {
         var html = [];
         html.push("<td>");
         html.push(result.title);
-        if (result.has_info) {
+        if (result.info) {
             html.push(" ");
             html.push("<span class=\"more-info\">[+]</span>");
         }
@@ -245,6 +249,36 @@ $(function () {
         return html.join("");
     }
 
+    function build_search_result_info_row(metadata, result) {
+        var html = [];
+        html.push("<tr class=\"description\" style=\"display:none;\">");
+        html.push("<td></td><td></td>");
+        html.push("<td class=\"description\" colspan=\"3\">");
+        if (result.info.description) {
+            html.push(result.info.description);
+        }
+        if (result.info.prerequisites) {
+            html.push("<p>Prerequisites: ");
+            html.push(result.info.prerequisites);
+            html.push("</p>");
+        }
+        if (result.info.corequisites) {
+            html.push("<p>Corequisites: ");
+            html.push(result.info.corequisites);
+            html.push("</p>");
+        }
+        html.push("<p><a href=\"" + result.info.url + "\">View in Catalog</a></p>");
+        html.push("</td>");
+        html.push("<td></td><td></td><td></td>");
+        html.push("</tr>");
+        return html.join("");
+    }
+
+    function enable_more_info_toggle() {
+        var more_info = $(".more-info");
+        more_info.click(more_info_click_handler);
+    }
+
     function searchbar_focus_handler() {
         var searchbar = $(this);
         if (searchbar.val() === "search for courses...") {
@@ -306,9 +340,6 @@ $(function () {
 
         var advanced_toggle = $("#advanced-toggle");
         advanced_toggle.click(advanced_toggle_click_handler);
-
-        var more_info = $(".more-info");
-        more_info.click(more_info_click_handler);
 
         // TODO set values of advanced options with javascript
         $("#advanced-toggle").click().click();

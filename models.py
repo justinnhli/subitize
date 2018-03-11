@@ -373,7 +373,13 @@ class Offering(Base):
         result['num_reserved'] = self.num_reserved
         result['num_reserved_open'] = self.num_reserved_open
         result['num_waitlisted'] = self.num_waitlisted
-        result['has_info'] = (self.course.info != None)
+        if self.course.info:
+            result['info'] = {
+                'description': self.course.info.description,
+                'prerequisites': self.course.info.prerequisites,
+                'corequisites': self.course.info.corequisites,
+                'url': self.course.info.url,
+            }
         return result
 
 
