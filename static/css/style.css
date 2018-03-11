@@ -12,7 +12,7 @@ tr td {padding-top:3px; padding-bottom:3px;}
 abbr {cursor:help;}
 a abbr {cursor:pointer;}
 
-body > div {margin-top:1em; text-align:center;}
+body > div {text-align:center;}
 #tagline {font-style:italic; margin-top:-1em;}
 .large {font-size:x-large;}
 #searchbar {margin:auto; width:80%; max-width:40em;}
@@ -20,7 +20,6 @@ body > div {margin-top:1em; text-align:center;}
 #advanced-toggle {cursor:pointer; margin-bottom:0; text-decoration:underline;}
 #advanced-search {display:none; line-height:1.5em;}
 .number {width:4em;}
-#course-listing {margin-top:2em;}
 #course-table {width:100%;}
 #course-table tbody {text-align:left;}
 #course-table tbody.separator {display:none;}
