@@ -76,13 +76,14 @@ $(function () {
         return html.join("");
     }
 
-    function build_course_listing_row(result, classname) {
+    function build_course_listing_row(result, classnames) {
         var tbody = $("<tbody class=\"data\"></tbody>").append(tr);
-        if (classname === undefined) {
+        if (classnames === undefined) {
             tbody.addClass("search-result");
         } else {
-            tbody.addClass("saved-course");
-            tbody.addClass(classname);
+            for (var i = 0; i < classnames.length; i += 1) {
+                tbody.addClass(classnames[i]);
+            }
         }
         var tr = $("<tr></tr>");
         tr.append(build_search_result_save_checkbox(result));
@@ -320,7 +321,7 @@ $(function () {
             for (var i = saved_courses_list.length - 1; i >= 0; i -= 1) {
                 var course_id = saved_courses_list[i];
                 var course = saved_courses[course_id];
-                $("#saved-courses-header").after(build_course_listing_row(course, course.id));
+                $("#saved-courses-header").after(build_course_listing_row(course, ["saved-course", course.id]));
             }
         }
     }
