@@ -2,6 +2,7 @@
 
 $(function () {
 
+    var curr_tab = "";
     var saved_courses_list = [];
     var saved_courses = {};
 
@@ -12,18 +13,23 @@ $(function () {
     }
 
     function search_from_parameters(parameters) {
+        show_tab("search-results");
+        // clear search results
+        $("#search-results-table").empty();
+        // add temporary loading message
+        var search_results_header = build_course_listing_header("search-results");
+        $("#search-results-table").append(search_results_header);
+        search_results_header.after("<tbody class=\"search-results data\"><tr><td colspan=\"9\">Searching...</td></tr></tbody>");
         $.get("/simplify?json=1&" + parameters).done(function(response) {
             // parse response
             var metadata = response.metadata;
             var results = response.results;
             // change url first so it can be used in links in the result
             history.pushState(null, "Subitize - Course Counts at a Glance", location.origin + "?" + metadata.parameters + location.hash);
-            // clear previous search results
-            $(".search-results").remove();
-            $(".search-result").remove();
+            // clear search results again
+            $("#search-results-table").empty();
             // repopulate search results
-            var search_results_heading = $("#search-results-heading h3");
-            search_results_heading.html("Search Results (" + results.length + ")");
+            $("#search-results-count").html(results.length);
             populate_search_results(metadata, results);
             enable_more_info_toggle();
             save_saved_courses();
@@ -31,18 +37,18 @@ $(function () {
     }
 
     function populate_search_results(metadata, results) {
-        var search_results_heading = $("#search-results-heading");
         if (results.length === 0) {
             return;
         }
-        search_results_heading.after(build_search_results_header("search-results", metadata.sorted));
+        $("#search-results-table").append(build_course_listing_header("search-results", metadata.sorted));
         var search_results_header = $("#search-results-header");
         for (var i = results.length - 1; i >= 0; i -= 1) {
             search_results_header.after(build_course_listing_row(results[i]));
         }
     }
 
-    function build_search_results_header(section, sort) {
+    function build_course_listing_header(section, sort) {
+        // TODO keep heading, only change href and show sorted glyph
         var headings = [
             {label:""},
             {id:"semester", label:"Semester"},
@@ -73,28 +79,29 @@ $(function () {
         }
         html.push("</tr>");
         html.push("</tbody>");
-        return html.join("");
+        return $(html.join(""));
     }
 
     function build_course_listing_row(result, classnames) {
         var tbody = $("<tbody class=\"data\"></tbody>").append(tr);
         if (classnames === undefined) {
-            tbody.addClass("search-result");
+            tbody.addClass("search-results");
         } else {
             for (var i = 0; i < classnames.length; i += 1) {
                 tbody.addClass(classnames[i]);
             }
         }
+        tbody.addClass("data");
         var tr = $("<tr></tr>");
         tr.append(build_search_result_save_checkbox(result));
-        tr.append(build_search_result_semester_cell(result));
-        tr.append(build_search_result_course_cell(result));
-        tr.append(build_search_result_title_cell(result));
-        tr.append(build_search_result_units_cell(result));
-        tr.append(build_search_result_instructors_cell(result));
-        tr.append(build_search_result_meetings_cell(result));
-        tr.append(build_search_result_cores_cell(result));
-        tr.append(build_search_result_seats_cell(result));
+        tr.append(build_course_listing_semester_cell(result));
+        tr.append(build_course_listing_course_cell(result));
+        tr.append(build_course_listing_title_cell(result));
+        tr.append(build_course_listing_units_cell(result));
+        tr.append(build_course_listing_instructors_cell(result));
+        tr.append(build_course_listing_meetings_cell(result));
+        tr.append(build_course_listing_cores_cell(result));
+        tr.append(build_course_listing_seats_cell(result));
         tbody.append(tr);
         if (result.info) {
             tbody.append(build_search_result_info_row(result));
@@ -114,7 +121,7 @@ $(function () {
         return checkbox;
     }
 
-    function build_search_result_semester_cell(result) {
+    function build_course_listing_semester_cell(result) {
         var html = [];
         var url = "";
         html.push("<td>");
@@ -128,7 +135,7 @@ $(function () {
         return html.join("");
     }
 
-    function build_search_result_course_cell(result) {
+    function build_course_listing_course_cell(result) {
         var html = [];
         var url = "";
         html.push("<td>");
@@ -152,7 +159,7 @@ $(function () {
         return html.join("");
     }
 
-    function build_search_result_title_cell(result) {
+    function build_course_listing_title_cell(result) {
         var html = [];
         html.push("<td>");
         html.push(result.title);
@@ -164,7 +171,7 @@ $(function () {
         return html.join("");
     }
 
-    function build_search_result_units_cell(result) {
+    function build_course_listing_units_cell(result) {
         var html = [];
         html.push("<td>");
         html.push(result.units);
@@ -172,7 +179,7 @@ $(function () {
         return html.join("");
     }
 
-    function build_search_result_instructors_cell(result) {
+    function build_course_listing_instructors_cell(result) {
         var html = [];
         var url = "";
         html.push("<td>");
@@ -198,7 +205,7 @@ $(function () {
         return html.join("");
     }
 
-    function build_search_result_meetings_cell(result) {
+    function build_course_listing_meetings_cell(result) {
         var html = [];
         html.push("<td>");
         if (result.meetings.length === 0) {
@@ -237,7 +244,7 @@ $(function () {
         return html.join("");
     }
 
-    function build_search_result_cores_cell(result) {
+    function build_course_listing_cores_cell(result) {
         var html = [];
         var url = "";
         html.push("<td>");
@@ -259,7 +266,7 @@ $(function () {
         return html.join("");
     }
 
-    function build_search_result_seats_cell(result) {
+    function build_course_listing_seats_cell(result) {
         var html = [];
         html.push("<td>");
         var title = [];
@@ -304,25 +311,22 @@ $(function () {
         return html.join("");
     }
 
+    // saved courses tab
+
     function build_saved_courses_table() {
-        var saved_courses_separator = $("#saved-courses-separator");
-        $("#saved-courses-heading").after(build_search_results_header("saved-courses", null));
+        $("#saved-courses-table").append(build_course_listing_header("saved-courses"));
         update_saved_courses_display();
     }
 
     function update_saved_courses_display() {
-        $("#saved-courses-heading h3").html("Saved Courses (" + saved_courses_list.length + ")");
-        if (saved_courses_list.length === 0) {
-            $(".saved-courses").hide();
-        } else {
-            $(".saved-courses").show();
-            saved_courses_list.sort();
-            $(".saved-course").remove();
-            for (var i = saved_courses_list.length - 1; i >= 0; i -= 1) {
-                var course_id = saved_courses_list[i];
-                var course = saved_courses[course_id];
-                $("#saved-courses-header").after(build_course_listing_row(course, ["saved-course", course.id]));
-            }
+        $("#saved-courses-count").html(saved_courses_list.length);
+        saved_courses_list.sort();
+        $("#saved-courses-table.data").remove();
+        var classes = ["saved-courses"];
+        for (var i = saved_courses_list.length - 1; i >= 0; i -= 1) {
+            var course = saved_courses[saved_courses_list[i]];
+            var row = build_course_listing_row(course, classes.concat(course.id));
+            $("#saved-courses-header").after(row);
         }
     }
 
@@ -403,6 +407,21 @@ $(function () {
         });
     }
 
+    // Miscellaneous GUI
+
+    function show_tab(tab) {
+        if (curr_tab === "") {
+            $(".tab").removeClass("active");
+            $(".course-listing").hide();
+        } else {
+            $("#" + curr_tab + "-heading").removeClass("active");
+            $("#" + curr_tab + "-table").hide();
+        }
+        $("#" + tab + "-heading").addClass("active");
+        $("#" + tab + "-table").show();
+        curr_tab = tab;
+    }
+
     function enable_more_info_toggle() {
         var more_info = $(".more-info");
         more_info.click(more_info_click_handler);
@@ -470,13 +489,24 @@ $(function () {
         var advanced_toggle = $("#advanced-toggle");
         advanced_toggle.click(advanced_toggle_click_handler);
 
+        $("#saved-courses-heading").click(function () {
+            show_tab("saved-courses");
+        });
+        $("#search-results-heading").click(function () {
+            show_tab("search-results");
+        });
+
         // TODO set values of advanced options with javascript
         $("#advanced-toggle").click().click();
         build_saved_courses_table();
         load_saved_courses();
         if (location.search) {
             search_from_parameters(location.search.substring(1));
+            show_tab("search-results");
+        } else {
+            show_tab("saved-courses");
         }
+
     }
 
     main();
