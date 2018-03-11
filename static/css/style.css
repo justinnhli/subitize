@@ -18,11 +18,11 @@ body > div {margin-top:1em; text-align:center;}
 #advanced-toggle {cursor:pointer; margin-bottom:0; text-decoration:underline;}
 #advanced-search {display:none; line-height:1.5em;}
 .number {width:4em;}
-#results {margin-top:2em;}
-#results-table {width:100%;}
-#results-table tbody {text-align:left;}
-#results-table tbody:hover tr {background-color:#D3D7CF;}
-#results-table tbody:hover tr td {border-color:#BABDB6;}
-#results-table tbody tr.description td {border-style:none; padding-left:1em;}
-#results-table .more-info {cursor:pointer; font-family:monospace;}
+#course-listing {margin-top:2em;}
+#course-table {width:100%;}
+#course-table tbody {text-align:left;}
+#course-table tbody:hover tr {background-color:#D3D7CF;}
+#course-table tbody:hover tr td {border-color:#BABDB6;}
+#course-table tbody tr.description td {border-style:none; padding-left:1em;}
+#course-table .more-info {cursor:pointer; font-family:monospace;}
 #footer {font-size:small; margin:1em auto 0;}

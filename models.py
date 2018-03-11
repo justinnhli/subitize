@@ -314,8 +314,18 @@ class Offering(Base):
     def is_open(self):
         return self.num_waitlisted == 0 and self.num_enrolled < self.num_seats - self.num_reserved
 
+    @property
+    def readable_id(self):
+        parts = []
+        parts.append(str(self.semester.code))
+        parts.append(self.course.department.code)
+        parts.append(self.course.number)
+        parts.append(self.section)
+        return '_'.join(parts)
+
     def to_json_dict(self):
         result = {}
+        result['id'] = self.readable_id
         result['semester'] = {
             'year': self.semester.year,
             'season': self.semester.season,
