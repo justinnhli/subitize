@@ -8,7 +8,7 @@
             <button id="search-button" class="large">Search</button><br>
             <div id="options">
                 Semester:
-                <select name="semester">
+                <select id="semester-select" name="semester">
                     <option value="any">(any)</option>
                     {% for s in semesters %}
                     <option value="{{ s.code }}" {% if defaults.semester == s.code %}selected{% endif %}>{{ s }}</option>

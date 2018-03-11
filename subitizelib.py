@@ -140,7 +140,6 @@ def sort_offerings(query, field=None):
         )
     elif field == 'cores':
         query = query.order_by(
-            asc(Core.id == None),
             asc(Core.code),
         )
     else:

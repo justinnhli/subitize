@@ -154,6 +154,7 @@ def view_json():
     metadata = {}
     if 'sort' in parameters:
         metadata['sorted'] = parameters['sort']
+        del parameters['sort']
     else:
         metadata['sorted'] = 'semester'
     metadata['advanced'] = parameters['advanced']

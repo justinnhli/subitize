@@ -44,6 +44,7 @@ $(function () {
 
     function build_search_results_header(section, sort) {
         var headings = [
+            {label:""},
             {id:"semester", label:"Semester"},
             {id:"course", label:"Course (Section)"},
             {id:"title", label:"Title"},
@@ -51,24 +52,23 @@ $(function () {
             {id:"instructors", label:"Instructors"},
             {id:"meetings", label:"Meeting Times (Room)"},
             {id:"cores", label:"Core"},
-            {id:"seats", label:"Seats"}
+            {label:"Seats"}
         ];
         var html = [];
         html.push("<tbody id=\"" + section + "-header\" class=\"" + section + "\">");
         html.push("<tr>");
-        html.push("<th></th>");
         for (var i = 0; i < headings.length; i += 1) {
             var heading = headings[i];
             html.push("<th>");
-            if (sort) {
+            if (heading.hasOwnProperty("id") && sort) {
                 html.push("<a href=\"/" + location.search + "&sort=" + heading.id + location.hash + "\">");
             }
             html.push(heading.label);
-            if (sort) {
+            if (heading.hasOwnProperty("id") && sort) {
                 html.push("</a>");
-            }
-            if (sort === heading.id) {
-                html.push(" &#9660; ");
+                if (sort === heading.id) {
+                    html.push(" &#9660; ");
+                }
             }
         }
         html.push("</tr>");
@@ -77,7 +77,7 @@ $(function () {
     }
 
     function build_course_listing_row(result, classname) {
-        var tbody = $("<tbody></tbody>").append(tr);
+        var tbody = $("<tbody class=\"data\"></tbody>").append(tr);
         if (classname === undefined) {
             tbody.addClass("search-result");
         } else {
@@ -182,7 +182,7 @@ $(function () {
                 var instructor = result.instructors[i];
                 url = "/";
                 url += "?advanced=true";
-                url += "&semester=" + result.semester.code;
+                url += "&semester=" + $("#semester-select").val();
                 url += "&instructor=" + instructor.system_name;
                 html.push("<a href=\"" + url + "\">");
                 html.push("<abbr title=\"" + instructor.system_name + "\">");
