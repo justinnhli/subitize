@@ -17,29 +17,32 @@ $(function () {
             var metadata = response.metadata;
             var results = response.results;
             // change url first so it can be used in links in the result
-            history.pushState(null, "Subitize - Course Counts at a Glance", location.origin + "?" + metadata.parameters);
+            history.pushState(null, "Subitize - Course Counts at a Glance", location.origin + "?" + metadata.parameters + location.hash);
             // clear previous search results
+            $(".search-results").remove();
             $(".search-result").remove();
             // repopulate search results
-            if (results.length === 0) {
-                $("#course-table").append("<tr class=\"search-result\"><td colspan=\"9\"><h3>No courses found.</h3></td></tr>");
-            } else {
-                populate_search_results(metadata, results);
-            }
-            enable_more_info_toggle()
+            var search_results_heading = $("#search-results-heading h3");
+            search_results_heading.html("Search Results (" + results.length + ")");
+            populate_search_results(metadata, results);
+            enable_more_info_toggle();
+            save_saved_courses();
         });
     }
 
     function populate_search_results(metadata, results) {
-        var course_table = $("#course-table");
-        course_table.append("<tbody id=\"search-result-tbody\" class=\"search-result\"><tr><td colspan=\"9\"><h3>Search Results</h3></td></tr></tbody>");
-        course_table.append(build_search_results_header(metadata.sorted));
-        for (var i = 0; i < results.length; i += 1) {
-            course_table.append(build_search_result_row(metadata, results[i], ["search-result"]));
+        var search_results_heading = $("#search-results-heading");
+        if (results.length === 0) {
+            return;
+        }
+        search_results_heading.after(build_search_results_header("search-results", metadata.sorted));
+        var search_results_header = $("#search-results-header");
+        for (var i = results.length - 1; i >= 0; i -= 1) {
+            search_results_header.after(build_course_listing_row(results[i]));
         }
     }
 
-    function build_search_results_header(sort) {
+    function build_search_results_header(section, sort) {
         var headings = [
             {id:"semester", label:"Semester"},
             {id:"course", label:"Course (Section)"},
@@ -51,23 +54,14 @@ $(function () {
             {id:"seats", label:"Seats"}
         ];
         var html = [];
-        if (sort) {
-            html.push("<tbody class=\"heading search-result\">");
-        } else {
-            html.push("<tbody class=\"saved-courses\">");
-        }
+        html.push("<tbody id=\"" + section + "-header\" class=\"" + section + "\">");
         html.push("<tr>");
-        if (sort) {
-            html.push("<th>+</th>");
-        } else {
-            html.push("<th>-</th>");
-        }
-
+        html.push("<th></th>");
         for (var i = 0; i < headings.length; i += 1) {
             var heading = headings[i];
             html.push("<th>");
             if (sort) {
-                html.push("<a href=\"" + location + "&sort=" + heading.id + "\">");
+                html.push("<a href=\"/" + location.search + "&sort=" + heading.id + location.hash + "\">");
             }
             html.push(heading.label);
             if (sort) {
@@ -82,42 +76,49 @@ $(function () {
         return html.join("");
     }
 
-    function build_search_result_row(metadata, result, classes) {
+    function build_course_listing_row(result, classname) {
         var tbody = $("<tbody></tbody>").append(tr);
-        for (var i = 0; i < classes.length; i += 1) {
-            tbody.addClass(classes[i]);
+        if (classname === undefined) {
+            tbody.addClass("search-result");
+        } else {
+            tbody.addClass("saved-course");
+            tbody.addClass(classname);
         }
         var tr = $("<tr></tr>");
-        tr.append(build_search_result_save_checkbox(metadata, result));
-        tr.append(build_search_result_semester_cell(metadata, result));
-        tr.append(build_search_result_course_cell(metadata, result));
-        tr.append(build_search_result_title_cell(metadata, result));
-        tr.append(build_search_result_units_cell(metadata, result));
-        tr.append(build_search_result_instructors_cell(metadata, result));
-        tr.append(build_search_result_meetings_cell(metadata, result));
-        tr.append(build_search_result_cores_cell(metadata, result));
-        tr.append(build_search_result_seats_cell(metadata, result));
+        tr.append(build_search_result_save_checkbox(result));
+        tr.append(build_search_result_semester_cell(result));
+        tr.append(build_search_result_course_cell(result));
+        tr.append(build_search_result_title_cell(result));
+        tr.append(build_search_result_units_cell(result));
+        tr.append(build_search_result_instructors_cell(result));
+        tr.append(build_search_result_meetings_cell(result));
+        tr.append(build_search_result_cores_cell(result));
+        tr.append(build_search_result_seats_cell(result));
         tbody.append(tr);
         if (result.info) {
-            tbody.append(build_search_result_info_row(metadata, result));
+            tbody.append(build_search_result_info_row(result));
         }
-        return tbody
+        return tbody;
     }
 
-    function build_search_result_save_checkbox(metadata, result) {
+    function build_search_result_save_checkbox(result) {
         var checkbox = $("<input type=\"checkbox\">");
+        checkbox.addClass(result.id + "-checkbox");
+        if (saved_courses.hasOwnProperty(result.id)) {
+            checkbox.prop("checked", "checked");
+        }
         checkbox.click(function () {
-            save_course_checkbox_handler(checkbox, metadata, result);
+            save_course_checkbox_handler(checkbox, result);
         });
         return checkbox;
     }
 
-    function build_search_result_semester_cell(metadata, result) {
+    function build_search_result_semester_cell(result) {
         var html = [];
         var url = "";
         html.push("<td>");
-        url = location.origin;
-        url += "?advanced=" + metadata.advanced;
+        url = "/";
+        url += "?advanced=false";
         url += "&semester=" + result.semester.code;
         html.push("<a href=\"" + url + "\">");
         html.push(result.semester.year + " " + result.semester.season);
@@ -126,11 +127,11 @@ $(function () {
         return html.join("");
     }
 
-    function build_search_result_course_cell(metadata, result) {
+    function build_search_result_course_cell(result) {
         var html = [];
         var url = "";
         html.push("<td>");
-        url = location.origin;
+        url = "/";
         url += "?advanced=true";
         url += "&department=" + result.department.code;
         html.push("<a href=\"" + url + "\">");
@@ -150,7 +151,7 @@ $(function () {
         return html.join("");
     }
 
-    function build_search_result_title_cell(metadata, result) {
+    function build_search_result_title_cell(result) {
         var html = [];
         html.push("<td>");
         html.push(result.title);
@@ -162,7 +163,7 @@ $(function () {
         return html.join("");
     }
 
-    function build_search_result_units_cell(metadata, result) {
+    function build_search_result_units_cell(result) {
         var html = [];
         html.push("<td>");
         html.push(result.units);
@@ -170,7 +171,7 @@ $(function () {
         return html.join("");
     }
 
-    function build_search_result_instructors_cell(metadata, result) {
+    function build_search_result_instructors_cell(result) {
         var html = [];
         var url = "";
         html.push("<td>");
@@ -179,7 +180,7 @@ $(function () {
         } else {
             for (var i = 0; i < result.instructors.length; i += 1) {
                 var instructor = result.instructors[i];
-                url = location.origin;
+                url = "/";
                 url += "?advanced=true";
                 url += "&semester=" + result.semester.code;
                 url += "&instructor=" + instructor.system_name;
@@ -196,7 +197,7 @@ $(function () {
         return html.join("");
     }
 
-    function build_search_result_meetings_cell(metadata, result) {
+    function build_search_result_meetings_cell(result) {
         var html = [];
         html.push("<td>");
         if (result.meetings.length === 0) {
@@ -235,16 +236,16 @@ $(function () {
         return html.join("");
     }
 
-    function build_search_result_cores_cell(metadata, result) {
+    function build_search_result_cores_cell(result) {
         var html = [];
         var url = "";
         html.push("<td>");
         for (var i = 0; i < result.cores.length; i += 1) {
             var core = result.cores[i];
-            url = location.origin;
+            url = "/";
             url += "?advanced=true";
             url += "&semester=" + result.semester.code;
-            url += "&core=" + core.coe;
+            url += "&core=" + core.code;
             html.push("<a href=\"" + url + "\">");
             html.push("<abbr title=\"" + core.name + "\">");
             html.push(core.code);
@@ -257,7 +258,7 @@ $(function () {
         return html.join("");
     }
 
-    function build_search_result_seats_cell(metadata, result) {
+    function build_search_result_seats_cell(result) {
         var html = [];
         html.push("<td>");
         var title = [];
@@ -277,7 +278,7 @@ $(function () {
         return html.join("");
     }
 
-    function build_search_result_info_row(metadata, result) {
+    function build_search_result_info_row(result) {
         var html = [];
         html.push("<tr class=\"description\" style=\"display:none;\">");
         html.push("<td></td><td></td><td></td>");
@@ -303,46 +304,102 @@ $(function () {
     }
 
     function build_saved_courses_table() {
-        var course_table = $("#course-table");
-        course_table.append("<tbody class=\"saved-courses\"><tr><td colspan=\"9\"><h3 id=\"saved-courses-heading\"></h3></td></tr></tbody>");
-        course_table.append(build_search_results_header(null));
+        var saved_courses_separator = $("#saved-courses-separator");
+        $("#saved-courses-heading").after(build_search_results_header("saved-courses", null));
         update_saved_courses_display();
     }
 
     function update_saved_courses_display() {
-        $("#saved-courses-heading").html("Saved Courses (" + saved_courses_list.length + ")");
+        $("#saved-courses-heading h3").html("Saved Courses (" + saved_courses_list.length + ")");
         if (saved_courses_list.length === 0) {
             $(".saved-courses").hide();
         } else {
             $(".saved-courses").show();
+            saved_courses_list.sort();
+            $(".saved-course").remove();
+            for (var i = saved_courses_list.length - 1; i >= 0; i -= 1) {
+                var course_id = saved_courses_list[i];
+                var course = saved_courses[course_id];
+                $("#saved-courses-header").after(build_course_listing_row(course, course.id));
+            }
         }
     }
 
-    function save_course_checkbox_handler(checkbox, metadata, result) {
+    function save_course_checkbox_handler(checkbox, result) {
         if (checkbox.prop("checked")) {
-            save_course(metadata, result);
+            save_course(result);
         } else {
-            unsave_course(metadata, result);
+            unsave_course(result);
         }
         update_saved_courses_display();
+        save_saved_courses();
     }
 
-    function save_course(metadata, result) {
-        if (result.id in saved_courses) {
+    function save_course(result) {
+        if (saved_courses.hasOwnProperty(result.id)) {
             return;
         }
         saved_courses_list.push(result.id);
         saved_courses[result.id] = result;
-        $("#search-result-tbody").before(build_search_result_row(metadata, result, [result.id]));
+        saved_courses_list.sort();
     }
 
-    function unsave_course(metadata, result) {
-        if (!(result.id in saved_courses)) {
+    function unsave_course(result) {
+        if (!saved_courses.hasOwnProperty(result.id)) {
             return;
         }
         saved_courses_list.splice(saved_courses_list.indexOf(result.id), 1);
         delete saved_courses[result.id];
         $("tbody." + result.id).remove();
+        $("." + result.id + "-checkbox").prop("checked", false);
+    }
+
+    function param(obj) {
+        return $.param(obj, false);
+    }
+
+    function deparam(str) {
+        var obj = {};
+        str.replace(/([^=&]+)=([^&]*)/g, function(m, key, value) {
+            obj[decodeURIComponent(key)] = decodeURIComponent(value);
+        });
+        return obj;
+    }
+
+    function load_saved_courses() {
+        var hash = deparam(location.hash.substring(1));
+        if (hash["list"] !== undefined) {
+            saved_courses_list = JSON.parse(atob(hash["list"]));
+            saved_courses = JSON.parse(atob(hash["dict"]));
+            update_saved_courses_display();
+            save_saved_courses();
+        }
+    }
+
+    function save_saved_courses() {
+        if (saved_courses_list.length > 0) {
+            location.hash = param({
+                "list": btoa(JSON.stringify(saved_courses_list)),
+                "dict": btoa(JSON.stringify(saved_courses))
+            });
+        } else {
+            location.hash = "";
+        }
+        // update all links on the page
+        $("a").each(function () {
+            var a = $(this);
+            if (!a.attr("href").startsWith("/")) {
+                return;
+            }
+            var index = a.attr("href").lastIndexOf("#");
+            var url = "";
+            if (index !== -1) {
+                url = a.attr("href").substring(0, index);
+            } else {
+                url = a.attr("href");
+            }
+            a.attr("href", url + location.hash);
+        });
     }
 
     function enable_more_info_toggle() {
@@ -415,6 +472,7 @@ $(function () {
         // TODO set values of advanced options with javascript
         $("#advanced-toggle").click().click();
         build_saved_courses_table();
+        load_saved_courses();
         if (location.search) {
             search_from_parameters(location.search.substring(1));
         }

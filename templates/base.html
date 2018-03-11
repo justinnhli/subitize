@@ -9,12 +9,16 @@
 </head>
 <body>
     <div>
-        <h1><a href="/">Subitize</a></h1>
+        <h1><a id="title-link" href="/">Subitize</a></h1>
         <p id="tagline">[SOO-bee-tahyz] (v.) - to rapidly, accurately, and confidently perceive the number of objects without counting</p>
     </div>
     {% include 'search-form.html' %}
     <div id="course-listing">
         <table id="course-table">
+            <tbody id="saved-courses-separator" class="separator"><tr><td colspan="9"></td></tr></tbody>
+            <tbody id="saved-courses-heading"><tr><td colspan="9"><h3></h3></td></tr></tbody>
+            <tbody id="search-results-separator" class="separator"><tr><td colspan="9"></td></tr></tbody>
+            <tbody id="search-results-heading"><tr><td colspan="9"><h3></h3></td></tr></tbody>
         </table>
     </div>
     <div id="footer">
