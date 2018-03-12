@@ -2,17 +2,22 @@
 
 $(function () {
 
+    var curr_parameters = null;
     var curr_tab = "";
     var saved_courses_list = [];
     var saved_courses = {};
 
     function search_handler() {
-        search_from_parameters($("#search-form").serialize());
+        search_from_parameters($("#search-form").serialize(), true);
         // return false to prevent the URL changing
         return false;
     }
 
-    function search_from_parameters(parameters) {
+    function search_from_parameters(parameters, update_history) {
+        if (parameters === curr_parameters) {
+            return;
+        }
+        $("#tab-list").show();
         show_tab("search-results");
         // clear search results
         $("#search-results-table").empty();
@@ -25,7 +30,14 @@ $(function () {
             var metadata = response.metadata;
             var results = response.results;
             // change url first so it can be used in links in the result
-            history.pushState(null, "Subitize - Course Counts at a Glance", location.origin + "?" + metadata.parameters + location.hash);
+            curr_parameters = metadata.parameters;
+            if (update_history) {
+                var url = location.origin + "?" + metadata.parameters;
+                if (location.hash.length > 1) {
+                    url += location.hash;
+                }
+                history.pushState(null, "Subitize - Course Counts at a Glance", url);
+            }
             // clear search results again
             $("#search-results-table").empty();
             // repopulate search results
@@ -319,14 +331,25 @@ $(function () {
     }
 
     function update_saved_courses_display() {
+        if (saved_courses_list.length === 0) {
+            $("#saved-courses-header").hide();
+        } else {
+            $("#saved-courses-header").show();
+        }
         $("#saved-courses-count").html(saved_courses_list.length);
         saved_courses_list.sort();
-        $("#saved-courses-table.data").remove();
+        // clear saved courses table
+        $("#saved-courses-table .data").remove();
+        // clear checkboxes
+        $("input[type=checkbox]").prop("checked", false);
         var classes = ["saved-courses"];
         for (var i = saved_courses_list.length - 1; i >= 0; i -= 1) {
+            // repopulate saved courses table
             var course = saved_courses[saved_courses_list[i]];
             var row = build_course_listing_row(course, classes.concat(course.id));
             $("#saved-courses-header").after(row);
+            // recheck checkboxes
+            $("." + course.id + "-checkbox").prop("checked", "checked");
         }
     }
 
@@ -373,12 +396,15 @@ $(function () {
 
     function load_saved_courses() {
         var hash = deparam(location.hash.substring(1));
-        if (hash["list"] !== undefined) {
+        if (hash["list"] === undefined) {
+            saved_courses_list = [];
+            saved_courses = {};
+        } else {
             saved_courses_list = JSON.parse(atob(hash["list"]));
             saved_courses = JSON.parse(atob(hash["dict"]));
-            update_saved_courses_display();
-            save_saved_courses();
         }
+        update_saved_courses_display();
+        save_saved_courses();
     }
 
     function save_saved_courses() {
@@ -475,6 +501,21 @@ $(function () {
         }
     }
 
+    function load_page(e) {
+        // TODO set values of advanced options with javascript
+        $("#advanced-toggle").click().click();
+        load_saved_courses();
+        if (location.search) {
+            search_from_parameters(location.search.substring(1), false);
+            show_tab("search-results");
+        } else if (saved_courses_list.length > 0) {
+            show_tab("saved-courses");
+        } else {
+            $("#tab-list").hide();
+            $(".course-listing").hide();
+        }
+    }
+
     function main() {
         var search_form = $("#search-form");
         search_form.submit(search_handler);
@@ -496,16 +537,14 @@ $(function () {
             show_tab("search-results");
         });
 
-        // TODO set values of advanced options with javascript
-        $("#advanced-toggle").click().click();
+        window.onhashchange = function (e) {
+            if (e !== undefined && e.oldURL !== e.newURL) {
+                load_page();
+            }
+        };
+
         build_saved_courses_table();
-        load_saved_courses();
-        if (location.search) {
-            search_from_parameters(location.search.substring(1));
-            show_tab("search-results");
-        } else {
-            show_tab("saved-courses");
-        }
+        load_page();
 
     }
 
