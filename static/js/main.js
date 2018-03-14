@@ -2,7 +2,7 @@
 
 $(function () {
 
-    var curr_parameters = null;
+    var curr_parameters = "";
     var curr_tab = "";
     var saved_courses_list = [];
     var saved_courses = {};
@@ -17,7 +17,6 @@ $(function () {
         if (parameters === curr_parameters) {
             return;
         }
-        $("#tab-list").show();
         show_tab("search-results");
         var search_results_table = $("#search-results-table");
         // clear search results
@@ -33,11 +32,7 @@ $(function () {
             // change url first so it can be used in links in the result
             curr_parameters = metadata.parameters;
             if (update_history) {
-                var url = location.origin + "?" + metadata.parameters;
-                if (location.hash.length > 1) {
-                    url += location.hash;
-                }
-                history.pushState(null, "Subitize - Course Counts at a Glance", url);
+                save_saved_courses();
             }
             // clear search results again
             search_results_table.empty();
@@ -45,7 +40,6 @@ $(function () {
             $("#search-results-count").html(results.length);
             populate_search_results(metadata, results);
             enable_more_info_toggle();
-            save_saved_courses();
         });
     }
 
@@ -395,28 +389,51 @@ $(function () {
         return obj;
     }
 
+    /* Get the hash of the URL
+     * 
+     * This function is necessary because location.hash is not always accurate.
+     * In particular, when the back button is clicked, location.hash remains
+     * empty even if the new URL has a hash. This function tries to use
+     * location.hash first, but also tries to manually parse location if
+     * location.hash is empty.
+     */
+    function get_url_hash() {
+        var result = "";
+        if (location.hash !== "") {
+            result = location.hash.substring(1);
+        } else {
+            var parts = location.toString().split("#");
+            if (parts.length > 1) {
+                result = parts[parts.length - 1];
+            }
+        }
+        return result;
+    }
+
     function load_saved_courses() {
-        var hash = deparam(location.hash.substring(1));
-        if (hash["list"] === undefined) {
+        var params = deparam(get_url_hash());
+        if (params["list"] === undefined) {
             saved_courses_list = [];
             saved_courses = {};
         } else {
-            saved_courses_list = JSON.parse(atob(hash["list"]));
-            saved_courses = JSON.parse(atob(hash["dict"]));
+            saved_courses_list = JSON.parse(atob(params["list"]));
+            saved_courses = JSON.parse(atob(params["dict"]));
         }
-        update_saved_courses_display();
-        save_saved_courses();
     }
 
     function save_saved_courses() {
+        var url = location.origin;
+        if (curr_parameters !== "") {
+            url += "?" + curr_parameters;
+        }
         if (saved_courses_list.length > 0) {
-            location.hash = param({
+            url += "#" + param({
                 "list": btoa(JSON.stringify(saved_courses_list)),
                 "dict": btoa(JSON.stringify(saved_courses))
             });
-        } else {
-            location.hash = "";
         }
+        history.pushState(null, "Subitize - Course Counts at a Glance", url);
+
         // update all links on the page
         $("a").each(function () {
             var a = $(this);
@@ -437,6 +454,7 @@ $(function () {
     // Miscellaneous GUI
 
     function show_tab(tab) {
+        $("#tab-list").show();
         if (curr_tab === "") {
             $(".tab").removeClass("active");
             $(".tab-content").hide();
@@ -502,18 +520,22 @@ $(function () {
         }
     }
 
-    function load_page(e) {
+    function load_page(from_back=false) {
         // TODO set values of advanced options with javascript
         $("#advanced-toggle").click().click();
         load_saved_courses();
+        update_saved_courses_display();
         if (location.search) {
-            search_from_parameters(location.search.substring(1), false);
+            search_from_parameters(location.search.substring(1), !from_back);
             show_tab("search-results");
         } else if (saved_courses_list.length > 0) {
             show_tab("saved-courses");
         } else {
             $("#tab-list").hide();
             $(".tab-content").hide();
+        }
+        if (!from_back && !location.search) {
+            save_saved_courses();
         }
     }
 
@@ -538,11 +560,9 @@ $(function () {
             show_tab("search-results");
         });
 
-        window.onhashchange = function (e) {
-            if (e !== undefined && e.oldURL !== e.newURL) {
-                load_page();
-            }
-        };
+        window.onpopstate = function (e) {
+            load_page(true);
+        }
 
         build_saved_courses_table();
         load_page();
