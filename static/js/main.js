@@ -438,13 +438,13 @@ $(function () {
     function show_tab(tab) {
         if (curr_tab === "") {
             $(".tab").removeClass("active");
-            $(".course-listing").hide();
+            $(".tab-content").hide();
         } else {
             $("#" + curr_tab + "-heading").removeClass("active");
-            $("#" + curr_tab + "-table").hide();
+            $("#" + curr_tab + "-content").hide();
         }
         $("#" + tab + "-heading").addClass("active");
-        $("#" + tab + "-table").show();
+        $("#" + tab + "-content").show();
         curr_tab = tab;
     }
 
@@ -512,7 +512,7 @@ $(function () {
             show_tab("saved-courses");
         } else {
             $("#tab-list").hide();
-            $(".course-listing").hide();
+            $(".tab-content").hide();
         }
     }
 
