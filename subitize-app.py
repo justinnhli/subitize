@@ -142,7 +142,7 @@ def view_root():
     context['defaults'].update(parameters)
     with open('data/last-update') as fd:
         context['last_update'] = fd.read().strip()
-    return render_template('base.html', **context)
+    return render_template('main.html', **context)
 
 
 @app.route('/json/')

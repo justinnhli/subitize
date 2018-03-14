@@ -12,23 +12,7 @@
         <h1><a id="title-link" href="/">Subitize</a></h1>
         <p id="tagline">[SOO-bee-tahyz] (v.) - to rapidly, accurately, and confidently perceive the number of objects without counting</p>
     </div>
-    {% include 'search-form.html' %}
-    <div id="tab-list">
-        <h4 id="saved-courses-heading" class="inactive tab">Saved Courses (<span id="saved-courses-count">0</span>)</h4>
-        <h4 id="search-results-heading" class="inactive tab">Search Results (<span id="search-results-count">0</span>)</h4>
-    </div>
-    <div id="saved-courses-content" class="tab-content">
-        <div id="saved-courses-warning">
-            <p>
-                <strong>Note</strong>: The saved courses are <em>not</em> persistent - they will be lost when the browser/tab is closed.
-                Although the saved courses will not update if the course is moved or delete, copy the URL for a persistent link.
-            </p>
-        </div>
-        <table id="saved-courses-table" class="course-listing"></table>
-    </div>
-    <div id="search-results-content" class="tab-content">
-        <table id="search-results-table" class="course-listing"></table>
-    </div>
+    {% block content %}{% endblock %}
     <div id="footer">
         <p>
             <span>
