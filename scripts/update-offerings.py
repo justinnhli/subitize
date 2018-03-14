@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
 
 import re
+import sys
 from argparse import ArgumentParser
 from datetime import datetime
+from os.path import join as join_path
 
 import requests
 from bs4 import BeautifulSoup
+
+sys.path.insert(1, join(sys.path[0], '..'))
 
 from models import create_session, get_or_create
 from models import Semester, TimeSlot, Building, Room, Meeting, Core, Department, Course, Person, Offering

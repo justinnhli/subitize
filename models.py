@@ -11,8 +11,8 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.schema import UniqueConstraint
 
 DIR_PATH = dirname(__file__)
-DB_PATH = join_path(DIR_PATH, 'counts.db')
-SQL_PATH = join_path(DIR_PATH, 'data.sql')
+DB_PATH = join_path(DIR_PATH, 'data', 'counts.db')
+SQL_PATH = join_path(DIR_PATH, 'data', 'data.sql')
 
 SQLITE_URI = 'sqlite:///' + join_path(DIR_PATH, DB_PATH)
 
