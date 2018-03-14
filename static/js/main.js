@@ -19,11 +19,12 @@ $(function () {
         }
         $("#tab-list").show();
         show_tab("search-results");
+        var search_results_table = $("#search-results-table");
         // clear search results
-        $("#search-results-table").empty();
+        search_results_table.empty();
         // add temporary loading message
         var search_results_header = build_course_listing_header("search-results");
-        $("#search-results-table").append(search_results_header);
+        search_results_table.append(search_results_header);
         search_results_header.after("<tbody class=\"search-results data\"><tr><td colspan=\"9\">Searching...</td></tr></tbody>");
         $.get("/simplify?json=1&" + parameters).done(function(response) {
             // parse response
@@ -39,7 +40,7 @@ $(function () {
                 history.pushState(null, "Subitize - Course Counts at a Glance", url);
             }
             // clear search results again
-            $("#search-results-table").empty();
+            search_results_table.empty();
             // repopulate search results
             $("#search-results-count").html(results.length);
             populate_search_results(metadata, results);
