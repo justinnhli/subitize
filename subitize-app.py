@@ -103,7 +103,7 @@ def get_search_results(session, parameters):
     query = query.outerjoin(OfferingCore, Core)
     query = query.outerjoin(OfferingInstructor, Person)
     if not parameters:
-        return None
+        return query
     query = filter_study_abroad(query)
     semester = get_parameter_or_none(parameters, 'semester')
     if semester is None:
@@ -150,14 +150,15 @@ def view_json():
     session = create_session()
     parameters = request.args.to_dict()
     query = get_search_results(session, parameters)
-    results = [offering.to_json_dict() for offering in query]
+    results = [offering.to_json_dict() for offering in query.all()]
     metadata = {}
     if 'sort' in parameters:
         metadata['sorted'] = parameters['sort']
         del parameters['sort']
     else:
         metadata['sorted'] = 'semester'
-    metadata['advanced'] = parameters['advanced']
+    if 'advanced' in parameters:
+        metadata['advanced'] = parameters['advanced']
     metadata['parameters'] = url_for('view_root', **parameters)[2:]
     response = {
         'metadata': metadata,
