@@ -56,6 +56,8 @@ DEFAULT_OPTIONS = {
     'end_hour': '2300',
 }
 
+JSON_RESULT_LIMIT = 200
+
 
 def get_parameter_or_none(parameters, parameter):
     if parameter not in parameters:
@@ -103,7 +105,7 @@ def get_search_results(session, parameters):
     query = query.outerjoin(OfferingCore, Core)
     query = query.outerjoin(OfferingInstructor, Person)
     if not parameters:
-        return query
+        return query.limit(JSON_RESULT_LIMIT)
     query = filter_study_abroad(query)
     semester = get_parameter_or_none(parameters, 'semester')
     if semester is None:
@@ -127,7 +129,7 @@ def get_search_results(session, parameters):
     terms = get_parameter_or_none(parameters, 'query')
     query = filter_by_search(query, terms)
     query = sort_offerings(query, get_parameter_or_none(parameters, 'sort'))
-    return query
+    return query.limit(JSON_RESULT_LIMIT)
 
 
 @app.route('/')
