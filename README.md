@@ -10,7 +10,7 @@ The live app can be found at [http://subitize.herokuapp.com/](http://subitize.he
 
 This app requires Python 3. The following will host a local clone of the site:
 
-```
+```sh
 git clone https://github.com/justinnhli/subitize.git subitize
 cd subitize
 pip install -r requirements.txt
