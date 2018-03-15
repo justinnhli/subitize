@@ -128,7 +128,11 @@ def get_search_results(session, parameters):
     query = filter_by_meeting(query, day, starts_after, ends_before)
     terms = get_parameter_or_none(parameters, 'query')
     query = filter_by_search(query, terms)
-    query = sort_offerings(query, get_parameter_or_none(parameters, 'sort'))
+    sort = get_parameter_or_none(parameters, 'sort')
+    valid_sorts = ['semester', 'course', 'title', 'units', 'instructors', 'meetings', 'cores']
+    if sort is not None and sort not in valid_sorts:
+        raise abort(400)
+    query = sort_offerings(query, sort)
     return query.limit(JSON_RESULT_LIMIT)
 
 
