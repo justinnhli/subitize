@@ -21,7 +21,8 @@ body > div {text-align:center;}
 #options {margin-top:0.5em;}
 #advanced-toggle {cursor:pointer; margin-bottom:0; text-decoration:underline;}
 #advanced-search {display:none; line-height:1.5em;}
-#tab-list {text-align:left;}
+#tab-list {display:none; text-align:left;}
+.tab-content {display:none;}
 .number {width:4em;}
 .course-listing {margin-top:7px; text-align:left; width:100%;}
 .course-listing tbody.data:hover tr {background-color:#D3D7CF;}
