@@ -97,17 +97,13 @@ def filter_by_meeting(query, day=None, starts_after=None, ends_before=None):
 
 
 def sort_offerings(query, field=None):
-    if field is None:
+    if field is None or field == 'semester':
         query = query.order_by(
             desc(Semester.id),
             asc(Department.name),
             asc(Course.number_int),
             asc(Course.number),
             asc(Offering.section),
-        )
-    elif field == 'semester':
-        query = query.order_by(
-            asc(Semester.id),
         )
     elif field == 'course':
         query = query.order_by(
