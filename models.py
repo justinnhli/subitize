@@ -352,7 +352,15 @@ class Offering(Base):
         result['meetings'] = []
         for meeting in self.meetings:
             meeting_dict = {}
-            if meeting.timeslot:
+            if not meeting.timeslot:
+                meeting_dict.update({
+                    'weekdays': None,
+                    'iso_start_time': None,
+                    'iso_end_time': None,
+                    'us_start_time': None,
+                    'us_end_time': None,
+                })
+            else:
                 meeting_dict.update({
                     'weekdays': {
                         'names': meeting.weekdays_names,
@@ -363,7 +371,13 @@ class Offering(Base):
                     'us_start_time': meeting.us_start_time,
                     'us_end_time': meeting.us_end_time,
                 })
-            if meeting.room:
+
+            if not meeting.room.building:
+                meeting_dict.update({
+                    'building': None,
+                    'room': None,
+                })
+            else:
                 meeting_dict.update({
                     'building': {
                         'name': meeting.room.building.name,
@@ -383,7 +397,9 @@ class Offering(Base):
         result['num_reserved'] = self.num_reserved
         result['num_reserved_open'] = self.num_reserved_open
         result['num_waitlisted'] = self.num_waitlisted
-        if self.course.info:
+        if not self.course.info:
+            result['info'] = None
+        else:
             result['info'] = {
                 'description': self.course.info.description,
                 'prerequisites': self.course.info.prerequisites,

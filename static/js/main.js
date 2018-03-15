@@ -39,7 +39,9 @@ $(function () {
             // repopulate search results
             $("#search-results-count").html(results.length);
             populate_search_results(metadata, results);
+            // modify the new DOM as necessary
             enable_more_info_toggle();
+            propagate_saved_courses();
         });
     }
 
@@ -110,7 +112,7 @@ $(function () {
         tr.append(build_course_listing_cores_cell(result));
         tr.append(build_course_listing_seats_cell(result));
         tbody.append(tr);
-        if (result.info) {
+        if (result.info !== null) {
             tbody.append(build_search_result_info_row(result));
         }
         return tbody;
@@ -220,7 +222,7 @@ $(function () {
         } else {
             for (var i = 0; i < result.meetings.length; i += 1) {
                 var meeting = result.meetings[i];
-                if (!meeting.hasOwnProperty("weekdays")) {
+                if (meeting.weekdays === null) {
                     html.push("Time TBD");
                 } else {
                     html.push(meeting.us_start_time);
@@ -232,7 +234,7 @@ $(function () {
                     html.push("</abbr>");
                 }
                 html.push(" (");
-                if (!meeting.hasOwnProperty("room")) {
+                if (meeting.building === null) {
                     html.push("Location TBD");
                 } else {
                     html.push("<abbr title=\"" + meeting.building.name + "\">");
@@ -433,8 +435,11 @@ $(function () {
             });
         }
         history.pushState(null, "Subitize - Course Counts at a Glance", url);
+    }
 
-        // update all links on the page
+    /* update all links on the page
+     */
+    function propagate_saved_courses() {
         $("a").each(function () {
             var a = $(this);
             if (!a.attr("href").startsWith("/")) {
@@ -447,7 +452,13 @@ $(function () {
             } else {
                 url = a.attr("href");
             }
-            a.attr("href", url + location.hash);
+            if (saved_courses_list.length > 0) {
+                url += "#" + param({
+                    "list": btoa(JSON.stringify(saved_courses_list)),
+                    "dict": btoa(JSON.stringify(saved_courses))
+                });
+            }
+            a.attr("href", url);
         });
     }
 
@@ -537,6 +548,7 @@ $(function () {
         if (!from_back && !location.search) {
             save_saved_courses();
         }
+        propagate_saved_courses();
     }
 
     function main() {
