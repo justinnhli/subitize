@@ -6,47 +6,22 @@
     <p><code><span class="host"></span>/json</code></p>
     <p>The <a href="#parameters">parameters</a> and the <a href="#results">returned object</a> are described below, with an <a href="#example">example</a> at the end.</p>
     <h3 id="parameters">Parameters</h3>
-    <p>The JSON endpoint supports the following parameters:</p>
+    <p>The JSON endpoint supports the following parameters. All other parameters are ignored:</p>
     <ul>
-    <li>
-    <p><code>semester</code> - The semester, given as a six digit code. The first four digits represent the academic year, encoded as the ending <em>calendar</em> year. The last two digits represent the semester within that academic year, starting with Fall semester and ending with Summer semester. For example, Fall 2017 is represented by <code>201801</code>, since it's the first (<code>01</code>) semester in the 2017-<code>2018</code> academic year.</p>
-    </li>
-    <li>
-    <p><code>department</code> - The department, given as the code used in course numbers. These are the same codes used on Course Counts. For example, the Computer Science department is represented by <code>COMP</code>.</p>
-    </li>
-    <li>
-    <p><code>lower</code> - The lowest course number, inclusive. Non-digit characters in course numbers (eg. COMP 131L) are ignored for the purpose of this parameter. If a specific course number is desired, set both <code>lower</code> and <code>upper</code> to that number.</p>
-    </li>
-    <li>
-    <p><code>upper</code> - The highest course number, inclusive. Non-digit characters in course numbers (eg. COMP 131L) are ignored for the purpose of this parameter. If a specific course number is desired, set both <code>lower</code> and <code>upper</code> to that number.</p>
-    </li>
-    <li>
-    <p><code>units</code> - The number of units of the course.</p>
-    </li>
-    <li>
-    <p><code>instructor</code> - The instructor of the course, given as the &quot;system name&quot; for that instructor. Results will include courses taught by multiple instructors.</p>
-    </li>
-    <li>
-    <p><code>core</code> - The core requirement fulfilled by the course, given as a code. These are the same codes used on Course Counts. For example, the Lab Science core requirement is represented as <code>CPLS</code>. Results will include courses that fulfill multiple core requirements.</p>
-    </li>
-    <li>
-    <p><code>day</code> - The day of the week on which the course meets, given as a one-letter code. Must be one of <code>MTWRFU</code>, with <code>R</code> for Thursday and <code>U</code> for Saturday. These are the same codes used on Course Counts. Results will include courses that meet on multiple days.</p>
-    </li>
-    <li>
-    <p><code>start_hour</code> - The time after which the course must start, inclusive, given in military time. For example, 9:35am is represented as <code>0935</code>, and noon is represented as <code>1200</code>. For courses that meet at different times throughout the week, this parameter only needs to apply to a single meeting time.</p>
-    </li>
-    <li>
-    <p><code>end_hour</code> - The time before which the course must end, inclusive, given in military time. For example, 9:35am is represented as <code>0935</code>, and noon is represented as <code>1200</code>. For courses that meet at different times throughout the week, this parameter only needs to apply to a single meeting time.</p>
-    </li>
-    <li>
-    <p><code>open</code> - Whether only &quot;open&quot; courses should be included in the results given as either <code>true</code> or <code>false</code>. A course is &quot;open&quot; if there is no one on the waitlist and the number of seats remaining (ie. total number of seats - number of reserved seats) is larger than the number of enrolled students.</p>
-    </li>
-    <li>
-    <p><code>query</code> - Search terms, corresponding to the main search bar on the app.</p>
-    </li>
-    <li>
-    <p><code>sort</code> - How to sort the results. The values must be one of <code>semester</code>, <code>course</code>, <code>title</code>, <code>units</code>, <code>instructors</code>, <code>meetings</code>, <code>cores</code>. Defaults to <code>semester</code>.</p>
-    </li>
+        <li><p><code>semester</code> - The semester, given as a six digit code. The first four digits represent the academic year, encoded as the ending <em>calendar</em> year. The last two digits represent the semester within that academic year, starting with Fall semester and ending with Summer semester. For example, Fall 2017 is represented by <code>201801</code>, since it's the first (<code>01</code>) semester in the 2017-<code>2018</code> academic year.</p></li>
+        <li><p><code>department</code> - The department, given as the code used in course numbers. These are the same codes used on Course Counts. For example, the Computer Science department is represented by <code>COMP</code>.</p></li>
+        <li><p><code>lower</code> - The lowest course number, inclusive. Non-digit characters in course numbers (eg. COMP 131L) are ignored for the purpose of this parameter. If a specific course number is desired, set both <code>lower</code> and <code>upper</code> to that number.</p></li>
+        <li><p><code>upper</code> - The highest course number, inclusive. Non-digit characters in course numbers (eg. COMP 131L) are ignored for the purpose of this parameter. If a specific course number is desired, set both <code>lower</code> and <code>upper</code> to that number.</p></li>
+        <li><p><code>units</code> - The number of units of the course.</p></li>
+        <li><p><code>instructor</code> - The instructor of the course, given as the &quot;system name&quot; for that instructor. Results will include courses taught by multiple instructors.</p></li>
+        <li><p><code>core</code> - The core requirement fulfilled by the course, given as a code. These are the same codes used on Course Counts. For example, the Lab Science core requirement is represented as <code>CPLS</code>. Results will include courses that fulfill multiple core requirements.</p></li>
+        <li><p><code>day</code> - The day of the week on which the course meets, given as a one-letter code. Must be one of <code>MTWRFU</code>, with <code>R</code> for Thursday and <code>U</code> for Saturday. These are the same codes used on Course Counts. Results will include courses that meet on multiple days.</p></li>
+        <li><p><code>start_hour</code> - The time after which the course must start, inclusive, given in military time. For example, 9:35am is represented as <code>0935</code>, and noon is represented as <code>1200</code>. For courses that meet at different times throughout the week, this parameter only needs to apply to a single meeting time.</p></li>
+        <li><p><code>end_hour</code> - The time before which the course must end, inclusive, given in military time. For example, 9:35am is represented as <code>0935</code>, and noon is represented as <code>1200</code>. For courses that meet at different times throughout the week, this parameter only needs to apply to a single meeting time.</p></li>
+        <li><p><code>open</code> - Whether only &quot;open&quot; courses should be included in the results given as either <code>true</code> or <code>false</code>. A course is &quot;open&quot; if there is no one on the waitlist and the number of seats remaining (ie. total number of seats - number of reserved seats) is larger than the number of enrolled students.</p></li>
+        <li><p><code>query</code> - Search terms, corresponding to the main search bar on the app.</p></li>
+        <li><p><code>sort</code> - How to sort the results. The values must be one of <code>semester</code>, <code>course</code>, <code>title</code>, <code>units</code>, <code>instructors</code>, <code>meetings</code>, <code>cores</code>. Defaults to <code>semester</code>.</p></li>
+        <li><p><code>advanced</code> - Whether the advanced search options should be displayed on the app. Has no impact on search results.</p></li>
     </ul>
     <h3 id="results">Results</h3>
     <p>This endpoint is limited to returning 200 results, which should be sufficient for most searching needs. It returns a JSON object with the following structure:</p>
@@ -60,99 +35,85 @@
     </code></pre>
     <p><code>metadata.parameters</code> contains the <code>GET</code> parameters that generated the result, while <code>.metadata.sorted</code> contains the field by which the results are sorted. <code>results</code> contains the list of search results as JSON objects. Each object has the following keys:</p>
     <ul>
-    <li>
-    <p><code>id</code> - A unique identifier for the course.</p>
-    </li>
-    <li>
-    <p><code>semester</code> - A JSON object representing the semester. Each object has the following keys:</p>
-    <ul>
-    <li><code>code</code> - The semester code. Same as the <code>semester</code> parameter.</li>
-    <li><code>year</code> - The <em>calendar</em> year of the semester.</li>
-    <li><code>season</code> - <code>&quot;Fall&quot;</code>, <code>&quot;Spring&quot;</code>, etc.</li>
-    </ul>
-    </li>
-    <li>
-    <p><code>department</code> - A JSON object representing the department. Each object has the following keys:</p>
-    <ul>
-    <li><code>code</code> - The department code. Same as the <code>department</code> parameter.</li>
-    <li><code>name</code> - The full name of the department.</li>
-    </ul>
-    </li>
-    <li>
-    <p><code>number</code> - A JSON object representing the course number. Each object has the following keys:</p>
-    <ul>
-    <li><code>number</code> - The course number as an integer.</li>
-    <li><code>string</code> - The course number as a string, including any punctuation and letters.</li>
-    </ul>
-    </li>
-    <li>
-    <p><code>section</code> - The section of the course, as a string.</p>
-    </li>
-    <li>
-    <p><code>title</code> - The title of the course.</p>
-    </li>
-    <li>
-    <p><code>units</code> - The number of units of the course, as an integer. Same as the <code>units</code> parameter.</p>
-    </li>
-    <li>
-    <p><code>instructors</code> - A list of JSON objects representing the instructors. Each object has the following keys:</p>
-    <ul>
-    <li><code>system_name</code> - The name of the instructor, according to Course Counts. Same as the <code>instructor</code> parameter.</li>
-    <li><code>first_name</code> - The first name of the instructor.</li>
-    <li><code>last_name</code> - The last name of the instructor.</li>
-    </ul>
-    </li>
-    <li>
-    <p><code>meetings</code> - A list of JSON objects representing the class meetings. Each object has the following keys:</p>
-    <ul>
-    <li><code>building</code> - A JSON object representing the building in which the class meets. May be <code>null</code>. Each object has the following keys:
-    <ul>
-    <li><code>code</code> - The code for the building.</li>
-    <li><code>name</code> - The name of the building.</li>
-    </ul>
-    </li>
-    <li><code>room</code> - The room number in which the class meets, as a string. May be <code>null</code>.</li>
-    <li><code>weekdays</code> - A JSON object representing the days of the week in which the class meets. May be <code>null</code>. Each object has the following keys:
-    <ul>
-    <li><code>codes</code> - The capital letters of all the days the class meets.</li>
-    <li><code>names</code> - A comma-separated string of the names of all the days the class meets.</li>
-    </ul>
-    </li>
-    <li><code>us_start_time</code>, <code>us_end_time</code> - The start and end times of the class meeting, formated for US audiences (ie. <code>[H]H:MM(am|pm)</code>). May be <code>null</code>.</li>
-    <li><code>iso_start_time</code>, <code>iso_end_time</code> - The start and end times of the class meeting, formated according to ISO 8601 (ie. <code>HH:MM</code>). May be <code>null</code>.</li>
-    </ul>
-    </li>
-    <li>
-    <p><code>cores</code> - A list of JSON objects representing the core requirements the course fulfills. Each object has the following keys:</p>
-    <ul>
-    <li><code>code</code> - The code for the core requirement. Same as the <code>core</code> parameter.</li>
-    <li><code>name</code> - The name of the core requirement.</li>
-    </ul>
-    </li>
-    <li>
-    <p><code>num_enrolled</code> - The number of students currently enrolled in the course.</p>
-    </li>
-    <li>
-    <p><code>num_reserved</code> - The number of reserved seats in the course.</p>
-    </li>
-    <li>
-    <p><code>num_reserved_open</code> - The number of open reserved seats in the course.</p>
-    </li>
-    <li>
-    <p><code>num_seats</code> - The total number of seats in the course.</p>
-    </li>
-    <li>
-    <p><code>num_waitlisted</code> -  The number of students on the waitlist for the course.</p>
-    </li>
-    <li>
-    <p><code>info</code> - A JSON object representing additional information about the course. Currently still in development, so information may be missing or inaccurate. Each object has the following keys:</p>
-    <ul>
-    <li><code>description</code> - The course catalog description. May be <code>null</code>.</li>
-    <li><code>prerequisites</code> - The prerequisites for the course. May be <code>null</code>.</li>
-    <li><code>corequisites</code> - The corequisites for the course. May be <code>null</code>.</li>
-    <li><code>url</code> - The URL to the course's catalog page. May be <code>null</code>.</li>
-    </ul>
-    </li>
+        <li><p><code>id</code> - A unique identifier for the course.</p></li>
+        <li>
+            <p><code>semester</code> - A JSON object representing the semester. Each object has the following keys:</p>
+            <ul>
+                <li><code>code</code> - The semester code. Same as the <code>semester</code> parameter.</li>
+                <li><code>year</code> - The <em>calendar</em> year of the semester.</li>
+                <li><code>season</code> - <code>&quot;Fall&quot;</code>, <code>&quot;Spring&quot;</code>, etc.</li>
+            </ul>
+        </li>
+        <li>
+            <p><code>department</code> - A JSON object representing the department. Each object has the following keys:</p>
+            <ul>
+                <li><code>code</code> - The department code. Same as the <code>department</code> parameter.</li>
+                <li><code>name</code> - The full name of the department.</li>
+            </ul>
+        </li>
+        <li>
+            <p><code>number</code> - A JSON object representing the course number. Each object has the following keys:</p>
+            <ul>
+                <li><code>number</code> - The course number as an integer.</li>
+                <li><code>string</code> - The course number as a string, including any punctuation and letters.</li>
+            </ul>
+        </li>
+        <li><p><code>section</code> - The section of the course, as a string.</p></li>
+        <li><p><code>title</code> - The title of the course.</p></li>
+        <li><p><code>units</code> - The number of units of the course, as an integer. Same as the <code>units</code> parameter.</p></li>
+        <li>
+            <p><code>instructors</code> - A list of JSON objects representing the instructors. Each object has the following keys:</p>
+            <ul>
+                <li><code>system_name</code> - The name of the instructor, according to Course Counts. Same as the <code>instructor</code> parameter.</li>
+                <li><code>first_name</code> - The first name of the instructor.</li>
+                <li><code>last_name</code> - The last name of the instructor.</li>
+            </ul>
+        </li>
+        <li>
+            <p><code>meetings</code> - A list of JSON objects representing the class meetings. Each object has the following keys:</p>
+            <ul>
+                <li>
+                    <code>building</code> - A JSON object representing the building in which the class meets. May be <code>null</code>. Each object has the following keys:
+                    <ul>
+                        <li><code>code</code> - The code for the building.</li>
+                        <li><code>name</code> - The name of the building.</li>
+                    </ul>
+                </li>
+                <li>
+                    <code>room</code> - The room number in which the class meets, as a string. May be <code>null</code>.
+                </li>
+                <li>
+                    <code>weekdays</code> - A JSON object representing the days of the week in which the class meets. May be <code>null</code>. Each object has the following keys:
+                    <ul>
+                        <li><code>codes</code> - The capital letters of all the days the class meets.</li>
+                        <li><code>names</code> - A comma-separated string of the names of all the days the class meets.</li>
+                    </ul>
+                </li>
+                <li><code>us_start_time</code>, <code>us_end_time</code> - The start and end times of the class meeting, formated for US audiences (ie. <code>[H]H:MM(am|pm)</code>). May be <code>null</code>.</li>
+                <li><code>iso_start_time</code>, <code>iso_end_time</code> - The start and end times of the class meeting, formated according to ISO 8601 (ie. <code>HH:MM</code>). May be <code>null</code>.</li>
+            </ul>
+        </li>
+        <li>
+            <p><code>cores</code> - A list of JSON objects representing the core requirements the course fulfills. Each object has the following keys:</p>
+            <ul>
+                <li><code>code</code> - The code for the core requirement. Same as the <code>core</code> parameter.</li>
+                <li><code>name</code> - The name of the core requirement.</li>
+            </ul>
+        </li>
+        <li><p><code>num_enrolled</code> - The number of students currently enrolled in the course.</p></li>
+        <li><p><code>num_reserved</code> - The number of reserved seats in the course.</p></li>
+        <li><p><code>num_reserved_open</code> - The number of open reserved seats in the course.</p></li>
+        <li><p><code>num_seats</code> - The total number of seats in the course.</p></li>
+        <li><p><code>num_waitlisted</code> - The number of students on the waitlist for the course.</p></li>
+        <li>
+            <p><code>info</code> - A JSON object representing additional information about the course. Currently still in development, so information may be missing or inaccurate. Each object has the following keys:</p>
+            <ul>
+                <li><code>description</code> - The course catalog description. May be <code>null</code>.</li>
+                <li><code>prerequisites</code> - The prerequisites for the course. May be <code>null</code>.</li>
+                <li><code>corequisites</code> - The corequisites for the course. May be <code>null</code>.</li>
+                <li><code>url</code> - The URL to the course's catalog page. May be <code>null</code>.</li>
+            </ul>
+        </li>
     </ul>
     <h3 id="example">Example</h3>
     <p>All Computer Science courses taught by Justin Li during the Fall 2017 semester can be found by the following request:</p>
