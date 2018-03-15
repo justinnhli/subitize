@@ -29,4 +29,5 @@ body > div {text-align:center;}
 .course-listing tbody.data:hover tr td {border-color:#BABDB6;}
 .course-listing tbody tr.description td {border-style:none; padding-left:1em;}
 .course-listing .more-info {cursor:pointer; font-family:monospace;}
+#json-api-doc {margin:auto auto; width:80ex; max-width:95%; text-align:left;}
 #footer {font-size:small; margin:2em auto 0;}
