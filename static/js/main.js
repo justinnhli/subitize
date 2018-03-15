@@ -358,6 +358,7 @@ $(function () {
         }
         update_saved_courses_display();
         save_saved_courses();
+        propagate_saved_courses();
     }
 
     function save_course(result) {
