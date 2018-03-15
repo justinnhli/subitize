@@ -25,12 +25,13 @@
     </ul>
     <h3 id="results">Results</h3>
     <p>This endpoint is limited to returning 200 results, which should be sufficient for most searching needs. It returns a JSON object with the following structure:</p>
-    <pre><code class="language-json">{
+    <pre><code class="language-json">
+    {
         &quot;metadata&quot;: {
             &quot;parameters&quot;: &quot;query=computer+science&quot;, 
             &quot;sorted&quot;: &quot;semester&quot;
         }, 
-        &quot;results&quot;: ...
+        &quot;results&quot;: [...]
     }
     </code></pre>
     <p><code>metadata.parameters</code> contains the <code>GET</code> parameters that generated the result, while <code>.metadata.sorted</code> contains the field by which the results are sorted. <code>results</code> contains the list of search results as JSON objects. Each object has the following keys:</p>
