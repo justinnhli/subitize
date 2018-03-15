@@ -11,7 +11,7 @@
                 <select id="semester-select" name="semester">
                     <option value="any">(any)</option>
                     {% for s in semesters %}
-                    <option value="{{ s.code }}" {% if defaults.semester == s.code %}selected{% endif %}>{{ s }}</option>
+                    <option value="{{ s.code }}"{% if defaults.semester == s.code %} selected{% endif %}>{{ s }}</option>
                     {% endfor %}
                 </select>
                 &nbsp;&nbsp;&nbsp;
