@@ -188,6 +188,11 @@ def view_simplify():
         return redirect(url_for('view_root', **simplified))
 
 
+@app.route('/json-doc/')
+def view_json_doc():
+    return render_template('api.html')
+
+
 @app.route('/static/css/<file>')
 def get_css(file):
     if file_exists(join_path('static/css', file)):
