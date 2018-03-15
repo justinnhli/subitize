@@ -372,7 +372,7 @@ class Offering(Base):
                     'us_end_time': meeting.us_end_time,
                 })
 
-            if not meeting.room.building:
+            if not meeting.room:
                 meeting_dict.update({
                     'building': None,
                     'room': None,
