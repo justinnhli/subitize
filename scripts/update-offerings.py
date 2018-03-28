@@ -125,7 +125,11 @@ def create_objects(
         num_reserved_open,
         num_waitlisted):
     semester = get_or_create(session, Semester, year=semester[0], season=semester[1])
-    department = get_or_create(session, Department, code=department_code)
+    department = session.query(Department).filter_by(code=department_code).first()
+    if not department:
+        department = Department(code=department_code, name='FIXME')
+        session.add(department)
+        print('created unnamed department with code ' + department_code)
     course = get_or_create(
         session, Course, department=department, number=number, number_int=int(re.sub('[^0-9]', '', number))
     )
