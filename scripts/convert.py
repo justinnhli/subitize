@@ -18,7 +18,10 @@ def update_from_csv(session, file):
             section = csv_row['section']
             title = csv_row['title']
             units = csv_row['units']
-            instructors = [instructor.strip() for instructor in csv_row['instructors'].split(';') if 'Instructor Unassigned' not in instructor]
+            instructors = [
+                instructor.strip() for instructor in csv_row['instructors'].split(';')
+                if 'Instructor Unassigned' not in instructor
+            ]
             meetings = [meeting.strip().split(' ', maxsplit=2) for meeting in csv_row['meetings'].split(';')]
             meetings = [[text.strip() for text in meeting] for meeting in meetings]
             cores = [core.strip() for core in csv_row['cores'].split(';')]
@@ -28,7 +31,11 @@ def update_from_csv(session, file):
             num_reserved = int(csv_row['reserved'])
             num_reserved_open = int(csv_row['reserved_open'])
             num_waitlisted = int(csv_row['waitlisted'])
-            create_objects(session, semester, department_code, number, section, title, units, instructors, meetings, cores, num_seats, num_enrolled, num_reserved, num_reserved_open, num_waitlisted)
+            create_objects(
+                session, semester, department_code, number, section, title, units, instructors, meetings, cores,
+                num_seats, num_enrolled, num_reserved, num_reserved_open, num_waitlisted
+            )
+
 
 def main():
     session = create_session()

@@ -61,6 +61,15 @@ PREFERRED_NAMES = {
 }
 
 
+def get_or_create_department(session, code):
+    department = session.query(Department).filter_by(code=code).first()
+    if not department:
+        department = Department(code=code, name='FIXME')
+        session.add(department)
+        print('created unnamed department with code ' + code)
+    return department
+
+
 def create_instructor(session, system_name):
     system_name = system_name.strip()
     if system_name == 'Instructor Unassigned':
@@ -77,6 +86,7 @@ def create_instructor(session, system_name):
     elif instructor.count() == 1:
         return instructor.first()
     assert False
+    return None
 
 
 def create_room(session, location_str):
@@ -110,27 +120,10 @@ def create_meeting(session, meeting_strs):
 
 
 def create_objects(
-        session,
-        semester,
-        department_code,
-        number,
-        section,
-        title,
-        units,
-        instructors,
-        meetings,
-        cores,
-        num_seats,
-        num_enrolled,
-        num_reserved,
-        num_reserved_open,
-        num_waitlisted):
+        session, semester, department_code, number, section, title, units, instructors, meetings, cores,
+        num_seats, num_enrolled, num_reserved, num_reserved_open, num_waitlisted):
     semester = get_or_create(session, Semester, year=semester[0], season=semester[1])
-    department = session.query(Department).filter_by(code=department_code).first()
-    if not department:
-        department = Department(code=department_code, name='FIXME')
-        session.add(department)
-        print('created unnamed department with code ' + department_code)
+    department = get_or_create_department(session, department_code)
     course = get_or_create(
         session, Course, department=department, number=number, number_int=int(re.sub('[^0-9]', '', number))
     )
@@ -267,7 +260,10 @@ def update_from_html(session, semester, html):
         num_reserved = int(extract_text(tds[9]))
         num_reserved_open = int(extract_text(tds[10]))
         num_waitlisted = int(extract_text(tds[11]))
-        offering = create_objects(session, semester, department_code, number, section, title, units, instructors, meetings, cores, num_seats, num_enrolled, num_reserved, num_reserved_open, num_waitlisted)
+        offering = create_objects(
+            session, semester, department_code, number, section, title, units, instructors, meetings, cores,
+            num_seats, num_enrolled, num_reserved, num_reserved_open, num_waitlisted
+        )
         offering_str = '{} {} {}'.format(offering.course.department.code, offering.course.number, offering.section)
         if offering_str in extracted_sections:
             print('DUPLICATE COURSE-SECTION ID: ' + offering_str)
