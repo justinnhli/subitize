@@ -264,8 +264,10 @@ def update_from_html(session, semester, html):
         num_waitlisted = int(extract_text(tds[11]))
         offering = create_objects(session, semester, department_code, number, section, title, units, instructors, meetings, cores, num_seats, num_enrolled, num_reserved, num_reserved_open, num_waitlisted)
         offering_str = '{} {} {}'.format(offering.course.department.code, offering.course.number, offering.section)
-        assert offering_str not in extracted_sections
-        extracted_sections.add(offering_str)
+        if offering_str in extracted_sections:
+            print('DUPLICATE COURSE-SECTION ID: ' + offering_str)
+        else:
+            extracted_sections.add(offering_str)
     return extracted_sections
 
 
