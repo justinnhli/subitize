@@ -7,13 +7,14 @@ from os.path import dirname, join as join_path
 
 import requests
 from bs4 import BeautifulSoup
+from bs4.element import Comment
 
 sys.path.insert(1, join_path(dirname(__file__), '..'))
 
 from models import create_session, get_or_create
 from models import Department, Course, CourseInfo
 
-BASE_URL = 'http://smartcatalog.co/Catalogs/Occidental-College/2016-2017/Catalog/Courses/'
+BASE_URL = 'http://smartcatalog.co/Catalogs/Occidental-College/{}-{}/Catalog/Courses/'
 
 
 def get_year_URL(year):
@@ -44,6 +45,8 @@ def clean_soup(soup):
             if tag.string and not tag.string.strip():
                 tag.extract()
                 changed = True
+    for tag in soup.find_all(text=lambda text: isinstance(text, Comment)):
+        tag.extract()
     return soup
 
 
@@ -59,10 +62,10 @@ def extract_basic_info(session, course_soup):
     number = number.strip()
     department = get_or_create(session, Department, code=dept)
     description = str(clean_soup(course_soup.select('div.desc')[0]))
-    if not description:
-        description = None
-    else:
+    if description:
         description = re.sub(r'\s+', ' ', description)
+    else:
+        description = None
     return department, number, description
 
 
@@ -92,7 +95,7 @@ def extract_prerequisites(course_soup):
 
 
 def parse_prerequisites(prerequisites):
-    return None # TODO
+    pass # TODO
 
 
 def extract_course_info(session, url):
@@ -103,6 +106,9 @@ def extract_course_info(session, url):
     prerequisites, corequisites = extract_prerequisites(course_soup)
     parsed_prerequisites = parse_prerequisites(prerequisites)
     for number in re.split('[/-]', number):
+        number = number.strip()
+        if not number:
+            continue
         course = get_or_create(
             session, Course, department=department, number=number, number_int=int(re.sub('[^0-9]', '', number))
         )
@@ -118,6 +124,7 @@ def extract_course_info(session, url):
         course_info.prerequisites = prerequisites
         course_info.corequisites = corequisites
         course_info.parsed_prerequisites = parsed_prerequisites
+        # TODO detect if prerequisites have changed
 
 
 def test():
