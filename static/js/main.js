@@ -482,7 +482,7 @@ $(function () {
 
     function enable_more_info_toggle() {
         var more_info = $(".more-info");
-        more_info.click(more_info_click_handler);
+        more_info.off().click(more_info_click_handler);
     }
 
     function searchbar_focus_handler() {
