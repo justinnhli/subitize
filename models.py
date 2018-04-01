@@ -270,22 +270,22 @@ class Person(Base):
 class OfferingMeeting(Base):
     __tablename__ = 'offering_meeting_assoc'
     id = Column(Integer, primary_key=True)
-    offering_id = Column(Integer, ForeignKey('offerings.id', ondelete='CASCADE'), nullable=False)
-    meeting_id = Column(Integer, ForeignKey('meetings.id', ondelete='CASCADE'), nullable=False)
+    offering_id = Column(Integer, ForeignKey('offerings.id', ondelete='CASCADE'), nullable=False, index=True)
+    meeting_id = Column(Integer, ForeignKey('meetings.id', ondelete='CASCADE'), nullable=False, index=True)
 
 
 class OfferingCore(Base):
     __tablename__ = 'offering_core_assoc'
     id = Column(Integer, primary_key=True)
-    offering_id = Column(Integer, ForeignKey('offerings.id', ondelete='CASCADE'), nullable=False)
-    core_code = Column(String, ForeignKey('cores.code', ondelete='CASCADE'), nullable=False)
+    offering_id = Column(Integer, ForeignKey('offerings.id', ondelete='CASCADE'), nullable=False, index=True)
+    core_code = Column(String, ForeignKey('cores.code', ondelete='CASCADE'), nullable=False, index=True)
 
 
 class OfferingInstructor(Base):
     __tablename__ = 'offering_instructor_assoc'
     id = Column(Integer, primary_key=True)
-    offering_id = Column(Integer, ForeignKey('offerings.id', ondelete='CASCADE'), nullable=False)
-    instructor_id = Column(Integer, ForeignKey('people.id', ondelete='CASCADE'), nullable=False)
+    offering_id = Column(Integer, ForeignKey('offerings.id', ondelete='CASCADE'), nullable=False, index=True)
+    instructor_id = Column(Integer, ForeignKey('people.id', ondelete='CASCADE'), nullable=False, index=True)
 
 
 class Offering(Base):
