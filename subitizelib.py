@@ -7,52 +7,10 @@ def filter_study_abroad(query):
     return query.filter(Department.code != 'OXAB', Department.code.notilike('AB%'))
 
 
-def filter_by_search(query, terms=None):
-    if terms is None:
-        return query
-    terms = terms.split()
-    for term in terms:
-        query = query.filter(or_(
-            Offering.title.ilike('%{}%'.format(term)),
-            Department.code == term.upper(),
-            Department.name.ilike('%{}%'.format(term)),
-            Course.number == term.upper(),
-            Course.number.ilike('%{}%'.format(term)),
-            Core.code == term.upper(),
-            Core.name.ilike('%{}%'.format(term)),
-            Person.system_name.ilike('%{}%'.format(term)),
-            Person.first_name.ilike('%{}%'.format(term)),
-            Person.last_name.ilike('%{}%'.format(term)),
-        ))
-    return query
-
-
 def filter_by_semester(query, semester=None):
     if semester is None:
         return query
     return query.filter(Semester.id == semester)
-
-
-def filter_by_openness(query):
-    return query.filter(and_(Offering.num_waitlisted == 0, text('num_enrolled < num_seats - num_reserved')))
-
-
-def filter_by_instructor(query, instructor=None):
-    if instructor is None:
-        return query
-    return query.filter(Person.system_name == instructor)
-
-
-def filter_by_core(query, core=None):
-    if core is None:
-        return query
-    return query.filter(Core.code == core)
-
-
-def filter_by_units(query, units=None):
-    if units is None:
-        return query
-    return query.filter(Offering.units == units)
 
 
 def filter_by_department(query, department=None):
@@ -84,6 +42,18 @@ def filter_by_section(query, section=None):
     return query.filter(Offering.section == section)
 
 
+def filter_by_units(query, units=None):
+    if units is None:
+        return query
+    return query.filter(Offering.units == units)
+
+
+def filter_by_instructor(query, instructor=None):
+    if instructor is None:
+        return query
+    return query.filter(Person.system_name == instructor)
+
+
 def filter_by_meeting(query, day=None, starts_after=None, ends_before=None):
     filters = []
     if day is not None:
@@ -94,6 +64,36 @@ def filter_by_meeting(query, day=None, starts_after=None, ends_before=None):
         filters.append(or_(TimeSlot.end == None, TimeSlot.end <= ends_before))
     if filters:
         query = query.filter(*filters)
+    return query
+
+
+def filter_by_core(query, core=None):
+    if core is None:
+        return query
+    return query.filter(Core.code == core)
+
+
+def filter_by_openness(query):
+    return query.filter(and_(Offering.num_waitlisted == 0, text('num_enrolled < num_seats - num_reserved')))
+
+
+def filter_by_search(query, terms=None):
+    if terms is None:
+        return query
+    terms = terms.split()
+    for term in terms:
+        query = query.filter(or_(
+            Offering.title.ilike('%{}%'.format(term)),
+            Department.code == term.upper(),
+            Department.name.ilike('%{}%'.format(term)),
+            Course.number == term.upper(),
+            Course.number.ilike('%{}%'.format(term)),
+            Core.code == term.upper(),
+            Core.name.ilike('%{}%'.format(term)),
+            Person.system_name.ilike('%{}%'.format(term)),
+            Person.first_name.ilike('%{}%'.format(term)),
+            Person.last_name.ilike('%{}%'.format(term)),
+        ))
     return query
 
 
