@@ -9,22 +9,20 @@ from flask.json import jsonify
 from sqlalchemy.sql.expression import asc, desc
 
 from models import create_session
-from models import Semester
-from models import TimeSlot, Building, Room, Meeting
-from models import Core, Department, Course
-from models import Person
-from models import OfferingMeeting, OfferingCore, OfferingInstructor, Offering
-from models import CourseInfo
+from models import Semester, Core, Department, Person, Offering
+from subitizelib import create_query
 from subitizelib import filter_study_abroad, filter_by_search
 from subitizelib import filter_by_semester, filter_by_department, filter_by_number, filter_by_instructor
 from subitizelib import filter_by_units, filter_by_core, filter_by_meeting, filter_by_openness
 from subitizelib import sort_offerings
 
-app = Flask(__name__)
-
 Day = namedtuple('Day', ['abbr', 'name'])
 Hour = namedtuple('Hour', ['value', 'display'])
 
+OPTIONS_DEPARTMENTS = list(create_session().query(Department).filter(
+    Department.code != 'OXAB',
+    Department.code.notilike('AB%'),
+).order_by(asc(Department.name)))
 OPTIONS_LOWER = 0
 OPTIONS_UPPER = 999
 OPTIONS_DAYS = [
@@ -87,7 +85,7 @@ def get_dropdown_options(session, parameters):
     context['instructors'] = sorted(session.query(Person), key=(lambda p: (p.last_name + ', ' + p.first_name).lower()))
     context['cores'] = list(session.query(Core).order_by(Core.name))
     context['units'] = sorted(row[0] for row in session.query(Offering.units).distinct())
-    context['departments'] = list(filter_study_abroad(session.query(Department)).order_by(asc(Department.name)))
+    context['departments'] = OPTIONS_DEPARTMENTS
     context['lower'] = (OPTIONS_LOWER if parameters.get('lower') is None else parameters.get('lower'))
     context['upper'] = (OPTIONS_UPPER if parameters.get('upper') is None else parameters.get('upper'))
     context['days'] = OPTIONS_DAYS
@@ -97,43 +95,51 @@ def get_dropdown_options(session, parameters):
 
 
 def get_search_results(session, parameters):
-    query = session.query(Offering)
-    query = query.join(Semester)
-    query = query.join(Course, Department)
-    query = query.outerjoin(CourseInfo)
-    query = query.outerjoin(OfferingMeeting, Meeting, TimeSlot, Room, Building)
-    query = query.outerjoin(OfferingCore, Core)
-    query = query.outerjoin(OfferingInstructor, Person)
+    # create query and filter out study abroad courses
+    query = create_query(session)
     if not parameters:
         return query.limit(JSON_RESULT_LIMIT)
-    query = filter_study_abroad(query)
+    query = filter_study_abroad(session, query)
+    # filter by semester
     semester = get_parameter_or_none(parameters, 'semester')
     if semester is None:
         semester = Semester.current_semester_code()
     elif semester == 'any':
         semester = None
-    query = filter_by_semester(query, semester)
+    query = filter_by_semester(session, query, semester)
+    # filter by advanced options
     if get_parameter_or_none(parameters, 'open'):
-        query = filter_by_openness(query)
-    query = filter_by_department(query, get_parameter_or_none(parameters, 'department'))
+        query = filter_by_openness(session, query)
+    query = filter_by_department(session, query, get_parameter_or_none(parameters, 'department'))
     query = filter_by_number(
-        query, get_parameter_or_none(parameters, 'lower'), get_parameter_or_none(parameters, 'upper')
+        session,
+        query,
+        get_parameter_or_none(parameters, 'lower'),
+        get_parameter_or_none(parameters, 'upper'),
     )
-    query = filter_by_units(query, get_parameter_or_none(parameters, 'units'))
-    query = filter_by_instructor(query, get_parameter_or_none(parameters, 'instructor'))
-    query = filter_by_core(query, get_parameter_or_none(parameters, 'core'))
-    day = get_parameter_or_none(parameters, 'day')
-    starts_after = datetime.strptime(get_parameter_or_default(parameters, 'start_hour'), '%H%M').time()
-    ends_before = datetime.strptime(get_parameter_or_default(parameters, 'end_hour'), '%H%M').time()
-    query = filter_by_meeting(query, day, starts_after, ends_before)
-    terms = get_parameter_or_none(parameters, 'query')
-    query = filter_by_search(query, terms)
+    query = filter_by_units(session, query, get_parameter_or_none(parameters, 'units'))
+    query = filter_by_instructor(session, query, get_parameter_or_none(parameters, 'instructor'))
+    query = filter_by_core(session, query, get_parameter_or_none(parameters, 'core'))
+    query = filter_by_meeting(
+        session,
+        query,
+        get_parameter_or_none(parameters, 'day'),
+        datetime.strptime(get_parameter_or_default(parameters, 'start_hour'), '%H%M').time(),
+        datetime.strptime(get_parameter_or_default(parameters, 'end_hour'), '%H%M').time(),
+    )
+    # filter by search
+    query = filter_by_search(session, query, get_parameter_or_none(parameters, 'query'))
+    # sort results
     sort = get_parameter_or_none(parameters, 'sort')
     valid_sorts = ['semester', 'course', 'title', 'units', 'instructors', 'meetings', 'cores']
     if sort is not None and sort not in valid_sorts:
         raise abort(400)
-    query = sort_offerings(query, sort)
+    query = sort_offerings(session, query, sort)
+    # return
     return query.limit(JSON_RESULT_LIMIT)
+
+
+app = Flask(__name__)
 
 
 @app.route('/')
