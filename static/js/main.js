@@ -1,3 +1,4 @@
+/* globals $ */
 "use strict";
 
 $(function () {
@@ -482,7 +483,7 @@ $(function () {
 
     function enable_more_info_toggle() {
         var more_info = $(".more-info");
-        more_info.off().click(more_info_click_handler);
+        more_info.off("click").click(more_info_click_handler);
     }
 
     function searchbar_focus_handler() {
@@ -533,7 +534,7 @@ $(function () {
         }
     }
 
-    function load_page(from_back=false) {
+    function load_page(from_back) {
         // TODO set values of advanced options with javascript
         $("#advanced-toggle").click().click();
         load_saved_courses();
@@ -574,12 +575,12 @@ $(function () {
             show_tab("search-results");
         });
 
-        window.onpopstate = function (e) {
+        window.onpopstate = function () {
             load_page(true);
-        }
+        };
 
         build_saved_courses_table();
-        load_page();
+        load_page(false);
 
     }
 
