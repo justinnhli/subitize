@@ -80,9 +80,7 @@ def filter_by_units(session, query=None, units=None):
         query = create_query(session)
     if units is None:
         return query
-    return query.join(
-        session.query(Offering).filter(Offering.units == units)
-    )
+    return query.filter(Offering.units == units)
 
 
 def filter_by_instructor(session, query=None, instructor=None):
