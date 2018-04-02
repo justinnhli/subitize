@@ -14,7 +14,7 @@ sys.path.insert(1, join_path(dirname(__file__), '..'))
 
 from models import create_session, get_or_create
 from models import Semester, TimeSlot, Building, Room, Meeting, Core, Department, Course, Person, Offering
-from subitizelib import filter_by_semester, filter_by_department, filter_by_number_str, filter_by_section
+from subitizelib import create_query, filter_by_semester, filter_by_department, filter_by_number_str, filter_by_section
 
 COURSE_COUNTS = 'https://counts.oxy.edu/'
 
@@ -274,10 +274,8 @@ def update_from_html(session, semester, html):
 
 def get_existing_sections(session, semester_code):
     existing_sections = set()
-    query = session.query(Offering)
-    query = query.join(Semester)
-    query = query.join(Course, Department)
-    query = filter_by_semester(query, semester_code)
+    query = create_query(session)
+    query = filter_by_semester(session, query, semester_code)
     for offering in query:
         offering_str = '{} {} {}'.format(offering.course.department.code, offering.course.number, offering.section)
         existing_sections.add(offering_str)
@@ -285,13 +283,11 @@ def get_existing_sections(session, semester_code):
 
 
 def delete_section(session, semester_code, dept, num, sec):
-    query = session.query(Offering)
-    query = query.join(Semester)
-    query = query.join(Course, Department)
-    query = filter_by_semester(query, semester_code)
-    query = filter_by_department(query, dept)
-    query = filter_by_number_str(query, num)
-    query = filter_by_section(query, sec)
+    query = create_query(session)
+    query = filter_by_semester(session, query, semester_code)
+    query = filter_by_department(session, query, dept)
+    query = filter_by_number_str(session, query, num)
+    query = filter_by_section(session, query, sec)
     for offering in query:
         print('deleting {} offering of {} {} {}'.format(semester_code, dept, num, sec))
         session.delete(offering)
