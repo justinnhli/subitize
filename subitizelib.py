@@ -41,6 +41,16 @@ def filter_by_department(session, query=None, department=None):
     )
 
 
+def filter_by_number_str(session, query=None, number=None):
+    if query is None:
+        query = create_query(session)
+    if number is None:
+        return query
+    return query.join(
+        session.query(Course).filter(Course.number == number).subquery()
+    )
+
+
 def filter_by_number(session, query=None, minimum=None, maximum=None):
     if query is None:
         query = create_query(session)
