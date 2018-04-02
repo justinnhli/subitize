@@ -85,6 +85,8 @@ CREATE TABLE offering_meeting_assoc (
 	FOREIGN KEY(offering_id) REFERENCES offerings (id) ON DELETE CASCADE, 
 	FOREIGN KEY(meeting_id) REFERENCES meetings (id) ON DELETE CASCADE
 );
+CREATE INDEX ix_offering_meeting_assoc_offering_id ON offering_meeting_assoc (offering_id);
+CREATE INDEX ix_offering_meeting_assoc_meeting_id ON offering_meeting_assoc (meeting_id);
 CREATE TABLE offering_core_assoc (
 	id INTEGER NOT NULL, 
 	offering_id INTEGER NOT NULL, 
@@ -93,6 +95,8 @@ CREATE TABLE offering_core_assoc (
 	FOREIGN KEY(offering_id) REFERENCES offerings (id) ON DELETE CASCADE, 
 	FOREIGN KEY(core_code) REFERENCES cores (code) ON DELETE CASCADE
 );
+CREATE INDEX ix_offering_core_assoc_core_code ON offering_core_assoc (core_code);
+CREATE INDEX ix_offering_core_assoc_offering_id ON offering_core_assoc (offering_id);
 CREATE TABLE offering_instructor_assoc (
 	id INTEGER NOT NULL, 
 	offering_id INTEGER NOT NULL, 
@@ -101,6 +105,8 @@ CREATE TABLE offering_instructor_assoc (
 	FOREIGN KEY(offering_id) REFERENCES offerings (id) ON DELETE CASCADE, 
 	FOREIGN KEY(instructor_id) REFERENCES people (id) ON DELETE CASCADE
 );
+CREATE INDEX ix_offering_instructor_assoc_offering_id ON offering_instructor_assoc (offering_id);
+CREATE INDEX ix_offering_instructor_assoc_instructor_id ON offering_instructor_assoc (instructor_id);
 CREATE TABLE course_info (
 	course_id INTEGER NOT NULL,
 	url VARCHAR NOT NULL,
