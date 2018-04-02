@@ -112,8 +112,8 @@ def filter_by_meeting(session, query=None, days=None, starts_after=None, ends_be
     if ends_before is not None:
         filters.append(or_(TimeSlot.end == None, TimeSlot.end <= ends_before))
     if filters:
-        query = query.join(
-            session.query(OfferingMeeting).join(Meeting, TimeSlot).filter(*filters).subquery()
+        query = query.outerjoin(
+            session.query(OfferingMeeting).outerjoin(Meeting, TimeSlot).filter(*filters).subquery()
         )
     return query
 
