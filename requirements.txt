@@ -5,3 +5,4 @@ Werkzeug==0.12.2
 beautifulsoup4==4.6.0
 gunicorn==19.7.1
 requests==2.18.1
+sqlparse==0.2.4
