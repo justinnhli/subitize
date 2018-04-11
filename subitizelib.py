@@ -1,9 +1,9 @@
 from sqlalchemy.orm import aliased
 from sqlalchemy.sql.expression import and_, or_, text, asc, desc, func
 
-from models import Semester, TimeSlot, Building, Room, Meeting, Core, Department, Course, Person, Offering
-from models import OfferingMeeting, OfferingCore, OfferingInstructor
-from models import CourseInfo
+from .models import Semester, TimeSlot, Building, Room, Meeting, Core, Department, Course, Person, Offering
+from .models import OfferingMeeting, OfferingCore, OfferingInstructor
+from .models import CourseInfo
 
 
 def create_query(session):
