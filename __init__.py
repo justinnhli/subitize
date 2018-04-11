@@ -1,3 +1,5 @@
+"""A library and webapp for searching through Occidental College course offerings."""
+
 from .models import create_session
 from .models import Semester
 from .models import TimeSlot, Building, Room, Meeting
