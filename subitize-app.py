@@ -8,13 +8,13 @@ from flask import Flask, render_template, abort, request, send_from_directory, u
 from flask.json import jsonify
 from sqlalchemy.sql.expression import asc, desc
 
-from models import create_session
-from models import Semester, Core, Department, Person, Offering
-from subitizelib import create_query
-from subitizelib import filter_study_abroad, filter_by_search
-from subitizelib import filter_by_semester, filter_by_department, filter_by_number, filter_by_instructor
-from subitizelib import filter_by_units, filter_by_core, filter_by_meeting, filter_by_openness
-from subitizelib import sort_offerings
+from subitize import create_session
+from subitize import Semester, Core, Department, Person, Offering
+from subitize import create_query
+from subitize import filter_study_abroad, filter_by_search
+from subitize import filter_by_semester, filter_by_department, filter_by_number, filter_by_instructor
+from subitize import filter_by_units, filter_by_core, filter_by_meeting, filter_by_openness
+from subitize import sort_offerings
 
 Day = namedtuple('Day', ['abbr', 'name'])
 Hour = namedtuple('Hour', ['value', 'display'])
