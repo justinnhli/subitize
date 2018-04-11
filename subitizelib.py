@@ -110,9 +110,19 @@ def filter_by_meeting(session, query=None, days=None, starts_after=None, ends_be
     if ends_before is not None:
         filters.append(or_(TimeSlot.end == None, TimeSlot.end <= ends_before))
     if filters:
-        query = query.outerjoin(
+        offering_outer_alias = aliased(Offering)
+        offering_inner_alias = aliased(Offering)
+        offering_meeting_alias = aliased(OfferingMeeting)
+        defined_subquery = session.query(offering_outer_alias.id.label('meeting_filtered_offering_id')).join(
             session.query(OfferingMeeting).outerjoin(Meeting, TimeSlot).filter(*filters).subquery()
         )
+        undefined_subquery = (
+            session.query(offering_inner_alias.id.label('meeting_filtered_offering_id'))
+                .outerjoin(offering_meeting_alias)
+                .filter(offering_meeting_alias.id == None)
+        )
+        subquery = defined_subquery.union(undefined_subquery).subquery('meeting_filtered')
+        query = query.join(subquery, subquery.c.meeting_filtered_offering_id == Offering.id)
     return query
 
 
