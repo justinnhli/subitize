@@ -1,6 +1,10 @@
 dist: trusty
 language: python
 python: 3.6
+cache: 
+  directories:
+    - $HOME/.cache/pip
+    - $HOME/virtualenv/python3.6.3/lib/python3.6/site-packages
 matrix:
   include:
     - env: SCRIPT=TEST
