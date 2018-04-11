@@ -1,12 +1,19 @@
 #!/usr/bin/env python3
 
+# pylint: disable = wrong-import-position
+
+"""The subitize web-app."""
+
+import sys
 from collections import namedtuple
 from datetime import datetime
-from os.path import exists as file_exists, join as join_path
+from os.path import exists as file_exists, join as join_path, dirname, realpath
 
 from flask import Flask, render_template, abort, request, send_from_directory, url_for, redirect
 from flask.json import jsonify
 from sqlalchemy.sql.expression import asc, desc
+
+sys.path.append(join_path(dirname(realpath(__file__)), '..', '..'))
 
 from subitize import create_session
 from subitize import Semester, Core, Department, Person, Offering
@@ -58,6 +65,15 @@ JSON_RESULT_LIMIT = 200
 
 
 def get_parameter_or_none(parameters, parameter):
+    """Get a parameter if it is not its default value.
+
+    Argument:
+        parameters (dict): The dictionary of parameters and values.
+        parameter (str): The parameter to get.
+
+    Returns:
+        str: The value of the parameter.
+    """
     if parameter not in parameters:
         return None
     if parameter not in DEFAULT_OPTIONS:
@@ -71,6 +87,15 @@ def get_parameter_or_none(parameters, parameter):
 
 
 def get_parameter_or_default(parameters, parameter):
+    """Get a parameter or fallback to its default value.
+
+    Argument:
+        parameters (dict): The dictionary of parameters and values.
+        parameter (str): The parameter to get.
+
+    Returns:
+        str: The value of the parameter.
+    """
     value = get_parameter_or_none(parameters, parameter)
     if value:
         return value
@@ -80,6 +105,18 @@ def get_parameter_or_default(parameters, parameter):
 
 
 def get_dropdown_options(session, parameters):
+    """Populate a context with the advanced search options.
+
+    Where applicable (eg. with minimum and maximum course numbers), the
+    parameters of the current search will be taken into account.
+
+    Arguments:
+        session (Session): The sqlalchemy session to connect with.
+        parameters (dict): The parameters of the current search.
+
+    Returns:
+        dict: The updated context.
+    """
     context = {}
     context['semesters'] = list(session.query(Semester).order_by(desc(Semester.id)))
     context['instructors'] = sorted(session.query(Person), key=(lambda p: (p.last_name + ', ' + p.first_name).lower()))
@@ -95,6 +132,15 @@ def get_dropdown_options(session, parameters):
 
 
 def get_search_results(session, parameters):
+    """Build a query for the search.
+
+    Arguments:
+        session (Session): The sqlalchemy session to connect with.
+        parameters (dict): The parameters of the current search.
+
+    Returns:
+        Query: A sqlalchemy Query object representing the search.
+    """
     # create query and filter out study abroad courses
     query = create_query(session)
     if not parameters:
@@ -139,11 +185,12 @@ def get_search_results(session, parameters):
     return query.limit(JSON_RESULT_LIMIT)
 
 
-app = Flask(__name__)
+app = Flask(__name__) # pylint: disable = invalid-name
 
 
 @app.route('/')
 def view_root():
+    """Serve the homepage."""
     session = create_session()
     parameters = request.args.to_dict()
     context = get_dropdown_options(session, parameters)
@@ -159,6 +206,7 @@ def view_root():
 
 @app.route('/json/')
 def view_json():
+    """Serve the JSON endpoint."""
     session = create_session()
     parameters = request.args.to_dict()
     query = get_search_results(session, parameters)
@@ -181,6 +229,7 @@ def view_json():
 
 @app.route('/simplify/')
 def view_simplify():
+    """Redirect the request with simplified parameters."""
     parameters = request.args.to_dict()
     if 'query' in parameters:
         if get_parameter_or_none(parameters, 'query'):
@@ -200,11 +249,13 @@ def view_simplify():
 
 @app.route('/json-doc/')
 def view_json_doc():
+    """Serve the JSON API description page."""
     return render_template('api.html')
 
 
 @app.route('/static/css/<file>')
 def get_css(file):
+    """Serve CSS files."""
     if file_exists(join_path('static/css', file)):
         return send_from_directory('static/css', file)
     else:
@@ -213,6 +264,7 @@ def get_css(file):
 
 @app.route('/static/js/<file>')
 def get_js(file):
+    """Serve JavaScript files."""
     if file_exists(join_path('static/js', file)):
         return send_from_directory('static/js', file)
     else:
