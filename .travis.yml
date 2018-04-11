@@ -13,6 +13,6 @@ matrix:
 before_install:
   - pip3 install pylint pydocstyle pytest-cov coveralls
 script:
-  - if [ "$SCRIPT" = "TEST" ]; then py.test && coveralls; fi
+  - if [ "$SCRIPT" = "TEST" ]; then py.test --cov . && coveralls; fi
   - if [ "$SCRIPT" = "LINT" ]; then pylint *.py tests/*.py; fi
   - if [ "$SCRIPT" = "DOCSTYLE" ]; then pydocstyle *.py; fi
