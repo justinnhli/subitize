@@ -4,14 +4,18 @@ python: 3.6
 cache: 
   directories:
     - $HOME/.cache/pip
-matrix:
-  include:
-    - env: SCRIPT=TEST
-    - env: SCRIPT=LINT
-    - env: SCRIPT=DOCSTYLE
 before_install:
   - pip3 install pylint pydocstyle pytest-cov coveralls
-script:
-  - if [ "$SCRIPT" = "TEST" ]; then py.test --cov . && coveralls; fi
-  - if [ "$SCRIPT" = "LINT" ]; then pylint *.py tests/*.py; fi
-  - if [ "$SCRIPT" = "DOCSTYLE" ]; then pydocstyle *.py; fi
+jobs:
+  include:
+    - stage: test
+      script: py.test --cov . && coveralls
+    - script: pylint *.py tests/*.py
+    - script: pydocstyle *.py
+    - stage: deploy
+      install: skip 
+      script: skip
+      deploy:
+        provider: heroku
+        api_key:
+          secure: bnBNyT8kcaxJUm/eIfPyxt0FFHGvLB0bAKKBmqf2A2hjjDE3+ug5F4CAodoXfj3CLrs3TyxFRSKJ0r4qNWJ+MlX2K1qlFB6vyC6uosBxMGVOf/spQtVHrNOwoy2WCnWvtUytBFspWcqKKP9ZpSl3+wFxcT9GidSk8f6jtbBH/zRHjVoU2DImi8NGrZ7eqQx58mO11qTGf2wK7VjL9OL0lAQaF19JoQq3xoxrsmLjQvk7BNktDC9/g3dREbYdXD0pkxeMnTG7YHfAeT1WNbpdftx0YG0BkOGU6dEbQy17xI5VFo1ObXLjeKx00dqP+w02tgCjLbsb20XQ1d6Ttbyrf6L0Km/EXSLpuSy9+RCD2VlXLvGZP50C0zOe482TVsvAHcmz1hTaRg/tk2owoiTZ+gkra6IZI8/YV8NMvEWUGRd7SLiKQLSy+XbBIp7RsxQewJFSpAgEm8qHIsVfTfqzNncKRR8W9M7MBWHUvper7bwrlUmPUi1ytSGfOQU6a63XUVhwz6zx4lMVpfDQi2ilSwrBwy+gtNhsBOsVScbRC3TCzpZ+B4cfrtRscqUbT4++Ci7CRx70nij+HsbWvAKFGfs3R/m3bpjrg2nCm0M7Xz2sPCcH06UpFWXP6826slupRLRWy9yPuBJeHTR3bWpEvlG1ix31dwEWSgWY0Fjmppk=
