@@ -1,3 +1,5 @@
+"""Database models for subitize."""
+
 import sqlite3
 from datetime import datetime, date
 from os.path import dirname, exists as file_exists, join as join_path
@@ -18,6 +20,7 @@ SQLITE_URI = 'sqlite:///' + join_path(DIR_PATH, DB_PATH)
 
 
 def create_db():
+    """Read the dump into a binary SQLite file."""
     if not file_exists(DB_PATH):
         conn = sqlite3.connect(DB_PATH)
         with open(SQL_PATH) as fd:
@@ -40,18 +43,27 @@ ENGINE = create_engine(SQLITE_URI, connect_args={'check_same_thread': False})
 
 
 def create_session(engine=None):
+    """Create a sqlalchemy session.
+
+    Arguments:
+        engine (Engine): The database engine. Optional.
+
+    Returns:
+        Session: A sqlalchemy Session object.
+    """
     create_db()
     if engine is None:
         engine = ENGINE
     event.listen(engine, 'connect', (lambda dbapi_con, con_record: dbapi_con.execute('pragma foreign_keys=ON')))
-    Session = sessionmaker(bind=engine)
-    return Session()
+    return sessionmaker(bind=engine)()
 
 
-Base = declarative_base(ENGINE)
+Base = declarative_base(ENGINE) # pylint: disable = invalid-name
 
 
 class Semester(Base):
+    """An academic semester."""
+
     __tablename__ = 'semesters'
     __table_args__ = (
         UniqueConstraint('year', 'season', name='_year_season_uc'),
@@ -61,12 +73,19 @@ class Semester(Base):
     season = Column(String, nullable=False)
 
     def __init__(self, year, season):
+        """Constructor.
+
+        Arguments:
+            year (int): The calendar year of the semester.
+            season (str): The season. Must be one of [fall, spring, summer].
+        """
         self.year = year
         self.season = season
         self.id = int(self.code)
 
     @property
     def code(self):
+        """Get the Oxy code for the semester."""
         season = self.season.lower()
         if season == 'fall':
             return '{}01'.format(int(self.year) + 1)
@@ -88,6 +107,18 @@ class Semester(Base):
 
     @staticmethod
     def current_semester_code():
+        """Get the semester code for the "current" semester.
+
+        The current semester is determined by hard cutoffs:
+
+        * If it is before March 22, return the spring semester.
+        * If it is before October 15, return the fall semester.
+        * Otherwise, return the next spring semester.
+
+        Returns:
+            str: The semester code.
+
+        """
         today = datetime.today().date()
         if today < date(today.year, 3, 22):
             return str(today.year) + '02'
@@ -98,6 +129,17 @@ class Semester(Base):
 
     @staticmethod
     def code_to_season(code):
+        """Convert a semester code to a (year, season) pair.
+
+        Arguments:
+            code (str): The semester code.
+
+        Returns:
+            list: The integer year and titlized season.
+
+        Raises:
+            ValueError: If the semester code is invalid.
+        """
         year = int(code[:4])
         season = code[-2:]
         if season == '01':
@@ -110,6 +152,8 @@ class Semester(Base):
 
 
 class TimeSlot(Base):
+    """A class meeting weekly time slot."""
+
     ALIASES = [
         ['M', 'Monday'],
         ['T', 'Tuesday'],
@@ -137,26 +181,53 @@ class TimeSlot(Base):
 
     @property
     def weekdays_names(self):
+        """Get the weekdays on which this TimeSlot meets.
+
+        Returns:
+            str: A comma-separated list of weekday names.
+        """
         return ', '.join(name for abbr, name in TimeSlot.ALIASES if abbr in self.weekdays)
 
     @property
     def iso_start_time(self):
+        """Get the start time of this TimeSlot in 24 hour format.
+
+        Returns:
+            str: The start time.
+        """
         return self.start.strftime('%H:%M')
 
     @property
     def iso_end_time(self):
+        """Get the end time of this TimeSlot in 24 hour format.
+
+        Returns:
+            str: The end time.
+        """
         return self.end.strftime('%H:%M')
 
     @property
     def us_start_time(self):
+        """Get the start time of this TimeSlot in 12 hour format.
+
+        Returns:
+            str: The start time.
+        """
         return self.start.strftime('%I:%M%p').strip('0').lower()
 
     @property
     def us_end_time(self):
+        """Get the end time of this TimeSlot in 12 hour format.
+
+        Returns:
+            str: The end time.
+        """
         return self.end.strftime('%I:%M%p').strip('0').lower()
 
 
 class Building(Base):
+    """A building."""
+
     __tablename__ = 'buildings'
     code = Column(String, primary_key=True, nullable=False)
     name = Column(String, nullable=False)
@@ -166,6 +237,8 @@ class Building(Base):
 
 
 class Room(Base):
+    """A room within a building."""
+
     __tablename__ = 'rooms'
     __table_args__ = (
         UniqueConstraint('building_code', 'room', name='_building_room_uc'),
@@ -183,6 +256,12 @@ class Room(Base):
 
 
 class Meeting(Base):
+    """A meeting of a course offering.
+
+    A meeting consists of a TimeSlot and Room. Both of these could be null/None
+    if they are yet to be determined.
+    """
+
     __tablename__ = 'meetings'
     id = Column(Integer, primary_key=True)
     timeslot_id = Column(Integer, ForeignKey('timeslots.id'), nullable=True)
@@ -198,30 +277,62 @@ class Meeting(Base):
 
     @property
     def weekdays(self):
+        """Shortcut for TimeSlot.weekdays.
+
+        Returns:
+            str: The concatenated one-letter abbreviation of the weekdays.
+        """
         return self.timeslot.weekdays
 
     @property
     def weekdays_names(self):
+        """Shortcut for TimeSlot.weekdays_names.
+
+        Returns:
+            str: A comma-separated list of weekday names.
+        """
         return self.timeslot.weekdays_names
 
     @property
     def iso_start_time(self):
+        """Shortcut for TimeSlot.iso_start_time.
+
+        Returns:
+            str: The start time.
+        """
         return self.timeslot.iso_start_time
 
     @property
     def iso_end_time(self):
+        """Shortcut for TimeSlot.iso_end_time.
+
+        Returns:
+            str: The end time.
+        """
         return self.timeslot.iso_end_time
 
     @property
     def us_start_time(self):
+        """Shortcut for TimeSlot.us_start_time.
+
+        Returns:
+            str: The start time.
+        """
         return self.timeslot.us_start_time
 
     @property
     def us_end_time(self):
+        """Shortcut for TimeSlot.us_end_time.
+
+        Returns:
+            str: The end time.
+        """
         return self.timeslot.us_end_time
 
 
 class Core(Base):
+    """A core requirement."""
+
     __tablename__ = 'cores'
     code = Column(String, primary_key=True, nullable=False)
     name = Column(String, nullable=False)
@@ -231,6 +342,8 @@ class Core(Base):
 
 
 class Department(Base):
+    """A course subject."""
+
     __tablename__ = 'departments'
     code = Column(String, primary_key=True, nullable=False)
     name = Column(String, nullable=False)
@@ -240,6 +353,8 @@ class Department(Base):
 
 
 class Course(Base):
+    """A course."""
+
     __tablename__ = 'courses'
     __table_args__ = (
         UniqueConstraint('department_code', 'number', name='_department_number_uc'),
@@ -256,6 +371,8 @@ class Course(Base):
 
 
 class Person(Base):
+    """A person."""
+
     __tablename__ = 'people'
     id = Column(Integer, primary_key=True)
     system_name = Column(String, nullable=False)
@@ -268,6 +385,8 @@ class Person(Base):
 
 
 class OfferingMeeting(Base):
+    """The many-to-many Offering-Meeting relation."""
+
     __tablename__ = 'offering_meeting_assoc'
     id = Column(Integer, primary_key=True)
     offering_id = Column(Integer, ForeignKey('offerings.id', ondelete='CASCADE'), nullable=False, index=True)
@@ -275,6 +394,8 @@ class OfferingMeeting(Base):
 
 
 class OfferingCore(Base):
+    """The many-to-many Offering-Core relation."""
+
     __tablename__ = 'offering_core_assoc'
     id = Column(Integer, primary_key=True)
     offering_id = Column(Integer, ForeignKey('offerings.id', ondelete='CASCADE'), nullable=False, index=True)
@@ -282,6 +403,8 @@ class OfferingCore(Base):
 
 
 class OfferingInstructor(Base):
+    """The many-to-many Offering-Person relation."""
+
     __tablename__ = 'offering_instructor_assoc'
     id = Column(Integer, primary_key=True)
     offering_id = Column(Integer, ForeignKey('offerings.id', ondelete='CASCADE'), nullable=False, index=True)
@@ -289,6 +412,8 @@ class OfferingInstructor(Base):
 
 
 class Offering(Base):
+    """A specific course offering."""
+
     __tablename__ = 'offerings'
     __table_args__ = (
         UniqueConstraint('semester_id', 'course_id', 'section', name='_semester_course_section_uc'),
@@ -312,10 +437,25 @@ class Offering(Base):
 
     @property
     def is_open(self):
+        """Determine if the offering is open to enrollment.
+
+        An offering is open if:
+
+        * There is no one on the waitlist, and
+        * The number of students enrolled is less than the number of non-reserved seats.
+
+        Returns:
+            bool: If the course is open.
+        """
         return self.num_waitlisted == 0 and self.num_enrolled < self.num_seats - self.num_reserved
 
     @property
     def readable_id(self):
+        """Create a unique ID for this offering.
+
+        Returns:
+            str: The unique ID.
+        """
         parts = []
         parts.append(str(self.semester.code))
         parts.append(self.course.department.code)
@@ -324,6 +464,11 @@ class Offering(Base):
         return '_'.join(parts)
 
     def to_json_dict(self):
+        """Represent this offering in JSON-compatible dictionary.
+
+        Returns:
+            dict: The JSON-compatible dictionary.
+        """
         result = {}
         result['id'] = self.readable_id
         result['semester'] = {
@@ -410,6 +555,8 @@ class Offering(Base):
 
 
 class CourseInfo(Base):
+    """Metadata about a course."""
+
     __tablename__ = 'course_info'
     course_id = Column(Integer, ForeignKey('courses.id'), primary_key=True)
     course = relationship('Course', back_populates='info', uselist=False)
@@ -424,6 +571,16 @@ class CourseInfo(Base):
 
 
 def get_or_create(session, model, **kwargs):
+    """Retrieve or create an object from the database.
+
+    Arguments:
+        session (Session): The sqlalchemy session to connect with.
+        model (class): The object class to retrieve or create.
+        **kwargs (Filter): Arbitrary filters on the object.
+
+    Returns:
+        object: The first object that passes all filters.
+    """
     instance = session.query(model).filter_by(**kwargs).first()
     if not instance:
         instance = model(**kwargs)

@@ -1,0 +1,16 @@
+dist: trusty
+language: python
+python: 3.6
+matrix:
+  include:
+    - env: SCRIPT=TEST
+    - env: SCRIPT=LINT
+    - env: SCRIPT=DOCSTYLE
+    - env: SCRIPT=COVERAGE
+before_install:
+  - pip3 install pylint pydocstyle coveralls
+script:
+  - if [ "$SCRIPT" = "TEST" ]; then PYTHONPATH=. pytest; fi
+  - if [ "$SCRIPT" = "LINT" ]; then pylint *.py tests/*.py; fi
+  - if [ "$SCRIPT" = "DOCSTYLE" ]; then pydocstyle *.py; fi
+  - if [ "$SCRIPT" = "COVERAGE" ]; then PYTHONPATH=. python3 -m coverage run -m pytest; python3 -m coveralls.cli; fi

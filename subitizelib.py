@@ -1,3 +1,7 @@
+"""Query functions for subitize."""
+
+# pylint: disable = singleton-comparison
+
 from sqlalchemy.orm import aliased
 from sqlalchemy.sql.expression import and_, or_, text, asc, desc, func
 
@@ -7,10 +11,27 @@ from .models import CourseInfo
 
 
 def create_query(session):
+    """Create a blank query for course offerings.
+
+    Arguments:
+        session (Session): The sqlalchemy session to connect with.
+
+    Returns:
+        Query: An unfiltered sqlalchemy Query on distinct Offerings.
+    """
     return session.query(Offering).distinct()
 
 
 def filter_study_abroad(session, query=None):
+    """Filter out study abroad offerings.
+
+    Arguments:
+        session (Session): The sqlalchemy session to connect with.
+        query (Query): The existing query to build on. Optional.
+
+    Returns:
+        Query: A filtered sqlalchemy Query.
+    """
     if query is None:
         query = create_query(session)
     return query.join(
@@ -22,6 +43,16 @@ def filter_study_abroad(session, query=None):
 
 
 def filter_by_semester(session, query=None, semester=None):
+    """Select offerings from a specific semester.
+
+    Arguments:
+        session (Session): The sqlalchemy session to connect with.
+        query (Query): The existing query to build on. Optional.
+        semester (str): The semester code. Optional.
+
+    Returns:
+        Query: A filtered sqlalchemy Query.
+    """
     if query is None:
         query = create_query(session)
     if semester is None:
@@ -32,6 +63,16 @@ def filter_by_semester(session, query=None, semester=None):
 
 
 def filter_by_department(session, query=None, department=None):
+    """Select offerings from a specific department.
+
+    Arguments:
+        session (Session): The sqlalchemy session to connect with.
+        query (Query): The existing query to build on. Optional.
+        department (str): The department code. Optional.
+
+    Returns:
+        Query: A filtered sqlalchemy Query.
+    """
     if query is None:
         query = create_query(session)
     if department is None:
@@ -42,6 +83,16 @@ def filter_by_department(session, query=None, department=None):
 
 
 def filter_by_number_str(session, query=None, number=None):
+    """Select offerings with a specific exact "number".
+
+    Arguments:
+        session (Session): The sqlalchemy session to connect with.
+        query (Query): The existing query to build on. Optional.
+        number (str): The course number, including any letters.
+
+    Returns:
+        Query: A filtered sqlalchemy Query.
+    """
     if query is None:
         query = create_query(session)
     if number is None:
@@ -52,6 +103,19 @@ def filter_by_number_str(session, query=None, number=None):
 
 
 def filter_by_number(session, query=None, minimum=None, maximum=None):
+    """Select offerings between a range of numbers.
+
+    Letters in course numbers are ignored.
+
+    Arguments:
+        session (Session): The sqlalchemy session to connect with.
+        query (Query): The existing query to build on. Optional.
+        minimum (int): The minimum acceptable number, inclusive. Optional.
+        maximum (int): The maximum acceptable number, inclusive. Optional.
+
+    Returns:
+        Query: A filtered sqlalchemy Query.
+    """
     if query is None:
         query = create_query(session)
     filters = []
@@ -68,6 +132,16 @@ def filter_by_number(session, query=None, minimum=None, maximum=None):
 
 
 def filter_by_section(session, query=None, section=None):
+    """Select offerings of a specific section.
+
+    Arguments:
+        session (Session): The sqlalchemy session to connect with.
+        query (Query): The existing query to build on. Optional.
+        section (str): The section ID.
+
+    Returns:
+        Query: A filtered sqlalchemy Query.
+    """
     if query is None:
         query = create_query(session)
     if section is None:
@@ -76,6 +150,16 @@ def filter_by_section(session, query=None, section=None):
 
 
 def filter_by_units(session, query=None, units=None):
+    """Select offerings worth a specific number of units.
+
+    Arguments:
+        session (Session): The sqlalchemy session to connect with.
+        query (Query): The existing query to build on. Optional.
+        units (int): The number of units. Optional.
+
+    Returns:
+        Query: A filtered sqlalchemy Query.
+    """
     if query is None:
         query = create_query(session)
     if units is None:
@@ -84,6 +168,16 @@ def filter_by_units(session, query=None, units=None):
 
 
 def filter_by_instructor(session, query=None, instructor=None):
+    """Select offerings taught by a specific instructor.
+
+    Arguments:
+        session (Session): The sqlalchemy session to connect with.
+        query (Query): The existing query to build on. Optional.
+        instructor (str): The system name of the instructor. Optional.
+
+    Returns:
+        Query: A filtered sqlalchemy Query.
+    """
     if query is None:
         query = create_query(session)
     if instructor is None:
@@ -94,6 +188,18 @@ def filter_by_instructor(session, query=None, instructor=None):
 
 
 def filter_by_meeting(session, query=None, days=None, starts_after=None, ends_before=None):
+    """Select offerings that meet on specific days and times.
+
+    Arguments:
+        session (Session): The sqlalchemy session to connect with.
+        query (Query): The existing query to build on. Optional.
+        days (str): The concatenated one-letter abbreviation of the weekdays. Optional.
+        starts_after (Time): The earliest acceptable start time, inclusive. Optional.
+        ends_before (Time): The latest acceptable end time, inclusive. Optional.
+
+    Returns:
+        Query: A filtered sqlalchemy Query.
+    """
     if query is None:
         query = create_query(session)
     filters = []
@@ -118,8 +224,8 @@ def filter_by_meeting(session, query=None, days=None, starts_after=None, ends_be
         )
         undefined_subquery = (
             session.query(offering_inner_alias.id.label('meeting_filtered_offering_id'))
-                .outerjoin(offering_meeting_alias)
-                .filter(offering_meeting_alias.id == None)
+            .outerjoin(offering_meeting_alias)
+            .filter(offering_meeting_alias.id == None)
         )
         subquery = defined_subquery.union(undefined_subquery).subquery('meeting_filtered')
         query = query.join(subquery, subquery.c.meeting_filtered_offering_id == Offering.id)
@@ -127,6 +233,16 @@ def filter_by_meeting(session, query=None, days=None, starts_after=None, ends_be
 
 
 def filter_by_core(session, query=None, core=None):
+    """Select offerings by core requirement fulfilled.
+
+    Arguments:
+        session (Session): The sqlalchemy session to connect with.
+        query (Query): The existing query to build on. Optional.
+        core (str): The core requirement code. Optional.
+
+    Returns:
+        Query: A filtered sqlalchemy Query.
+    """
     if query is None:
         query = create_query(session)
     if core is None:
@@ -137,12 +253,41 @@ def filter_by_core(session, query=None, core=None):
 
 
 def filter_by_openness(session, query=None):
+    """Select offerings that are open to enrollment.
+
+    Arguments:
+        session (Session): The sqlalchemy session to connect with.
+        query (Query): The existing query to build on. Optional.
+
+    Returns:
+        Query: A filtered sqlalchemy Query.
+    """
     if query is None:
         query = create_query(session)
     return query.filter(and_(Offering.num_waitlisted == 0, text('num_enrolled < num_seats - num_reserved')))
 
 
 def filter_by_search(session, query=None, terms=None):
+    """Select offerings that match search terms.
+
+    Specifically, this function searches the following fields:
+    * the course offering title
+    * the department code (exact match)
+    * the department name
+    * the course number
+    * the core requirement code (exact match)
+    * the core requirement name
+    * the instructor
+
+    Arguments:
+        session (Session): The sqlalchemy session to connect with.
+        query (Query): The existing query to build on. Optional.
+        terms (str): A space-separated string of search terms. Optional.
+
+    Returns:
+        Query: A filtered sqlalchemy Query.
+    """
+    # pylint: disable = bad-continuation
     if query is None:
         query = create_query(session)
     if terms is None:
@@ -172,6 +317,20 @@ def filter_by_search(session, query=None, terms=None):
 
 
 def sort_offerings(session, query, field=None):
+    """Sort the results of a query.
+
+    Arguments:
+        session (Session): The sqlalchemy session to connect with.
+        query (Query): The existing query to build on.
+        field (str): The sorting order. Must be one of [semester, course,
+            title, units, instructors, meetings, cores]. Defaults to 'semester'.
+
+    Returns:
+        Query: A filtered sqlalchemy Query.
+
+    Raises:
+        ValueError: If the field is invalid.
+    """
     if query is None:
         query = create_query(session)
     query = query.join(Semester)
