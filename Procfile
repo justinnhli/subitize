@@ -1,1 +1,1 @@
-web: gunicorn subitize-app:app --log-file=-
+web: gunicorn subitize_app:app --log-file=-

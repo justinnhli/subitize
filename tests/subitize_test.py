@@ -5,7 +5,7 @@
 import sys
 from os.path import dirname, realpath, join as join_path
 
-sys.path.append(join_path(dirname(realpath(__file__)), '..', '..'))
+sys.path.append(join_path(dirname(realpath(__file__)), '..'))
 
 from subitize import create_session, create_query
 from subitize import filter_by_semester, filter_by_department, filter_by_number, filter_by_instructor
