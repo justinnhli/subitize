@@ -4,18 +4,18 @@ python: 3.6
 cache: 
   directories:
     - $HOME/.cache/pip
-before_install:
-  - pip3 install pylint pydocstyle pytest-cov coveralls
-  - npm install eslint
 jobs:
   include:
-    - stage: test
+    - &python-testing
+      stage: test
+      before_install: pip3 install pylint pydocstyle pytest-cov coveralls
       script: py.test --cov . && coveralls
-    - stage: test
+    - <<: *python-testing
       script: pylint *.py tests/*.py
-    - stage: test
+    - <<: *python-testing
       script: pydocstyle *.py
     - stage: test
+      before_install: npm install eslint
       script: ./node_modules/eslint/bin/eslint.js subitize/static/js/main.js
     - stage: stage
       install: skip
