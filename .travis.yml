@@ -6,12 +6,14 @@ cache:
     - $HOME/.cache/pip
 before_install:
   - pip3 install pylint pydocstyle pytest-cov coveralls
+  - npm install eslint
 jobs:
   include:
     - stage: test
       script: py.test --cov . && coveralls
     - script: pylint *.py tests/*.py
     - script: pydocstyle *.py
+    - script: ./node_modules/eslint/bin/eslint.js subitize/static/js/main.js
     - stage: deploy
       install: skip 
       script: skip
