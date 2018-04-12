@@ -1,2 +1,3 @@
 .coverage
 counts.db
+node_modules
