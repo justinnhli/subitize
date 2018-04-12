@@ -3,13 +3,13 @@
 import re
 import sys
 from urllib.parse import urljoin
-from os.path import dirname, join as join_path
+from os.path import dirname, realpath
 
 import requests
 from bs4 import BeautifulSoup
 from bs4.element import Comment
 
-sys.path.insert(1, join_path(dirname(__file__), '..'))
+sys.path.insert(0, dirname(dirname(realpath(__file__))))
 
 from models import create_session, get_or_create
 from models import Department, Course, CourseInfo

@@ -4,17 +4,17 @@ import re
 import sys
 from argparse import ArgumentParser
 from datetime import datetime
-from os.path import dirname, join as join_path
+from os.path import dirname, join as join_path, realpath
 from os import remove
 
 import requests
 from bs4 import BeautifulSoup
 
-sys.path.insert(1, join_path(dirname(__file__), '..'))
+sys.path.insert(0, dirname(dirname(realpath(__file__))))
 
-from models import create_session, get_or_create
-from models import Semester, TimeSlot, Building, Room, Meeting, Core, Department, Course, Person, Offering
-from subitizelib import create_query, filter_by_semester, filter_by_department, filter_by_number_str, filter_by_section
+from subitize import create_session, get_or_create
+from subitize import Semester, TimeSlot, Building, Room, Meeting, Core, Department, Course, Person, Offering
+from subitize import create_query, filter_by_semester, filter_by_department, filter_by_number_str, filter_by_section
 
 COURSE_COUNTS = 'https://counts.oxy.edu/'
 

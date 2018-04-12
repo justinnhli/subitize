@@ -3,8 +3,10 @@
 from csv import DictReader, QUOTE_NONE
 from os.path import join as join_path, realpath, dirname
 
-from models import create_session
-from update import create_objects
+sys.path.insert(0, dirname(dirname(realpath(__file__))))
+
+from subitize import create_session
+from update import create_objects # FIXME
 
 OFFERINGS_FILE = join_path(dirname(realpath(__file__)), 'offerings.tsv')
 
