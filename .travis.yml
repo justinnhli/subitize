@@ -18,7 +18,8 @@ jobs:
     - stage: test
       before_install: npm install eslint
       script: ./node_modules/eslint/bin/eslint.js subitize/static/js/main.js
-    - stage: stage
+    - &push
+      stage: stage
       if: branch = master
       install: skip
       script: skip
@@ -27,19 +28,16 @@ jobs:
         app: subitest
         api_key:
           secure: bnBNyT8kcaxJUm/eIfPyxt0FFHGvLB0bAKKBmqf2A2hjjDE3+ug5F4CAodoXfj3CLrs3TyxFRSKJ0r4qNWJ+MlX2K1qlFB6vyC6uosBxMGVOf/spQtVHrNOwoy2WCnWvtUytBFspWcqKKP9ZpSl3+wFxcT9GidSk8f6jtbBH/zRHjVoU2DImi8NGrZ7eqQx58mO11qTGf2wK7VjL9OL0lAQaF19JoQq3xoxrsmLjQvk7BNktDC9/g3dREbYdXD0pkxeMnTG7YHfAeT1WNbpdftx0YG0BkOGU6dEbQy17xI5VFo1ObXLjeKx00dqP+w02tgCjLbsb20XQ1d6Ttbyrf6L0Km/EXSLpuSy9+RCD2VlXLvGZP50C0zOe482TVsvAHcmz1hTaRg/tk2owoiTZ+gkra6IZI8/YV8NMvEWUGRd7SLiKQLSy+XbBIp7RsxQewJFSpAgEm8qHIsVfTfqzNncKRR8W9M7MBWHUvper7bwrlUmPUi1ytSGfOQU6a63XUVhwz6zx4lMVpfDQi2ilSwrBwy+gtNhsBOsVScbRC3TCzpZ+B4cfrtRscqUbT4++Ci7CRx70nij+HsbWvAKFGfs3R/m3bpjrg2nCm0M7Xz2sPCcH06UpFWXP6826slupRLRWy9yPuBJeHTR3bWpEvlG1ix31dwEWSgWY0Fjmppk=
-    - stage: test staging
+    - &test-push
+      stage: test staging
       if: branch = master
       install: skip
       script: curl 'https://subitest.herokuapp.com/json/?department=COMP&instructor=Justin%20Li&semester=201701'
-    - stage: deploy
-      if: branch = master
-      install: skip 
-      script: skip
+    - <<: *push
+      stage: deploy
       deploy:
         <<: *heroku
         app: subitize
-    - stage: test deployment
-      if: branch = master
-      install: skip
+    - <<: *test-push
+      stage: test deployment
       script: curl 'https://subitize.herokuapp.com/json/?department=COMP&instructor=Justin%20Li&semester=201701'
-
