@@ -1,14 +1,12 @@
 #!/bin/bash
 
-SCHEMA_SQL=subitize/data/schema.sql
-DATA_SQL=subitize/data/data.sql
-COUNTS_DB=subitize/data/counts.db
-LAST_UPDATE=subitize/data/last-update
+counts_db=subitize/data/counts.db
+
 source ~/.venv/subitize/bin/activate && \
     cd ~/git/subitize/ && \
-    rm -f "$COUNTS_DB" && \
-    scripts/update-offerings.py && \
-    scripts/dump.sh && \
-    git add "$SCHEMA_SQL" "$DATA_SQL" "$LAST_UPDATE" && \
-    git commit -m 'update DB' && \
-    git push
+    rm -f "$counts_db" && \
+    ./scripts/update-offerings.py && \
+    ./scripts/dump.sh && \
+	exit 0
+
+exit 1
