@@ -12,9 +12,9 @@ jobs:
       before_install: pip3 install pylint pydocstyle pytest-cov coveralls
       script: py.test --cov . && coveralls
     - <<: *python-testing
-      script: pylint *.py tests/*.py
+      script: pylint *.py subitize/ tests/*.py
     - <<: *python-testing
-      script: pydocstyle *.py
+      script: pydocstyle *.py subitize/
     - stage: test
       before_install: npm install eslint
       script: ./node_modules/eslint/bin/eslint.js subitize/static/js/main.js
