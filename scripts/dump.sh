@@ -1,18 +1,22 @@
 #!/bin/sh
 
-if [ ! -e data/counts.db ]; then
+SCHEMA_SQL=subitize/data/schema.sql
+DATA_SQL=subitize/data/data.sql
+COUNTS_DB=subitize/data/counts.db
+LAST_UPDATE=subitize/data/last-update
+if [ ! -e "$COUNTS_DB" ]; then
 	exit
 fi
-sqlite3 data/counts.db .schema > data/schema.sql
-sqlite3 data/counts.db .dump > data/data.sql
+sqlite3 "$COUNTS_DB" .schema > "$SCHEMA_SQL"
+sqlite3 "$COUNTS_DB" .dump > "$DATA_SQL"
 case "$(uname)" in
 "Linux")
-	sed -i '1s/foreign_keys=OFF/foreign_keys=ON/' data/data.sql;;
+	sed -i '1s/foreign_keys=OFF/foreign_keys=ON/' "$DATA_SQL";;
 "Darwin")
-	sed -i '' '1s/foreign_keys=OFF/foreign_keys=ON/' data/data.sql;;
+	sed -i '' '1s/foreign_keys=OFF/foreign_keys=ON/' "$DATA_SQL";;
 esac
-rm -f data/counts.db
-sqlite3 data/counts.db '.read data/data.sql'
+rm -f "$COUNTS_DB"
+sqlite3 "$COUNTS_DB" '.read data/data.sql'
 if git status | grep modified >/dev/null; then
-	date '+%Y-%m-%d %H:%M:%S %Z' > data/last-update
+	date '+%Y-%m-%d %H:%M:%S %Z' > "$LAST_UPDATE"
 fi
