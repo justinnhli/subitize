@@ -4,6 +4,7 @@ python: 3.6
 cache: 
   directories:
     - $HOME/.cache/pip
+    - $VIRTUAL_ENV
     - node_modules
 jobs:
   include:
