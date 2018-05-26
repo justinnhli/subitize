@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+"""remove any unused instances in the DB."""
+
 import sys
 from os.path import dirname, realpath
 
@@ -12,9 +14,9 @@ from subitize import Core, Department, Course, Person
 from subitize import OfferingMeeting, OfferingCore, OfferingInstructor, Offering
 from subitize import CourseInfo
 
-# FIXME check that everything is used
-
 def main():
+    """Remove any unused instances in the DB."""
+    # pylint: disable=too-many-branches, too-many-statements
     session = create_session()
     changed = True
     while changed:
