@@ -36,9 +36,11 @@ jobs:
       script: curl 'https://subitest.herokuapp.com/json/?department=COMP&instructor=Justin%20Li&semester=201701'
     - <<: *push
       stage: deploy
+      if: branch = master AND type = push
       deploy:
         <<: *heroku
         app: subitize
     - <<: *test-push
       stage: test deployment
+      if: branch = master AND type = push
       script: curl 'https://subitize.herokuapp.com/json/?department=COMP&instructor=Justin%20Li&semester=201701'
