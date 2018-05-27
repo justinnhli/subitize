@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """remove any unused instances in the DB."""
 
 import sys
@@ -14,85 +13,79 @@ from subitize import Core, Department, Course, Person
 from subitize import OfferingMeeting, OfferingCore, OfferingInstructor, Offering
 from subitize import CourseInfo
 
-def main():
-    """Remove any unused instances in the DB."""
+
+def delete_orphans(session):
+    """Delete unreferenced objects.
+
+    Arguments:
+        session (Session): The DB connection session.
+    """
     # pylint: disable=too-many-branches, too-many-statements
-    session = create_session()
-    changed = True
-    while changed:
-        changed = False
 
-        for building in session.query(Building).all():
-            if not session.query(Room).filter(Room.building == building).first():
-                print('Building {} is never referenced; deleting...'.format(building))
-                session.delete(building)
-                changed = True
-        for room in session.query(Room).all():
-            if not session.query(Meeting).filter(Meeting.room == room).first():
-                print('Room {} is never referenced; deleting...'.format(room))
-                session.delete(room)
-                changed = True
-        for timeslot in session.query(TimeSlot).all():
-            if not session.query(Meeting).filter(Meeting.timeslot == timeslot).first():
-                print('Timeslot {} is never referenced; deleting...'.format(timeslot))
-                session.delete(timeslot)
-                changed = True
-        for meeting in session.query(Meeting).all():
-            if not session.query(OfferingMeeting).filter(OfferingMeeting.meeting_id == meeting.id).first():
-                print('Meeting {} is never referenced; deleting...'.format(meeting))
-                session.delete(meeting)
-                changed = True
+    for course in session.query(Course).all():
+        referenced = (
+            session.query(Offering).filter(Offering.course == course).first()
+            or session.query(CourseInfo).filter(CourseInfo.course == course).first()
+        )
+        if not referenced:
+            print('Course {} is never referenced; deleting...'.format(course))
+            session.delete(course)
+    for department in session.query(Department).all():
+        if not session.query(Course).filter(Course.department == department).first():
+            print('Department {} is never referenced; deleting...'.format(department))
+            session.delete(department)
 
-        for department in session.query(Department).all():
-            if not session.query(Course).filter(Course.department == department).first():
-                print('Department {} is never referenced; deleting...'.format(department))
-                session.delete(department)
-                changed = True
+    for offering_instructor in session.query(OfferingInstructor).all():
+        if not session.query(Offering).filter(Offering.id == offering_instructor.offering_id).first():
+            print('OfferingInstructor {} is never referenced; deleting...'.format(offering_instructor))
+            session.delete(offering_instructor)
+    for person in session.query(Person).all():
+        if not session.query(OfferingInstructor).filter(OfferingInstructor.instructor_id == person.id).first():
+            print('Person {} is never referenced; deleting...'.format(person))
+            session.delete(person)
 
-        for person in session.query(Person).all():
-            if not session.query(OfferingInstructor).filter(OfferingInstructor.instructor_id == person.id).first():
-                print('Person {} is never referenced; deleting...'.format(person))
-                session.delete(person)
-                changed = True
+    for offering_core in session.query(OfferingCore).all():
+        if not session.query(Offering).filter(Offering.id == offering_core.offering_id).first():
+            print('OfferingCore {} is never referenced; deleting...'.format(offering_core))
+            session.delete(offering_core)
+    for core in session.query(Core).all():
+        if not session.query(OfferingCore).filter(OfferingCore.core_code == core.code).first():
+            print('Core {} is never referenced; deleting...'.format(core))
+            session.delete(core)
 
-        for core in session.query(Core).all():
-            if not session.query(OfferingCore).filter(OfferingCore.core_code == core.code).first():
-                print('Core {} is never referenced; deleting...'.format(core))
-                session.delete(core)
-                changed = True
+    for offering_meeting in session.query(OfferingMeeting).all():
+        if not session.query(Offering).filter(Offering.id == offering_meeting.offering_id).first():
+            print('OfferingMeeting {} is never referenced; deleting...'.format(offering_meeting))
+            session.delete(offering_meeting)
+    for meeting in session.query(Meeting).all():
+        if not session.query(OfferingMeeting).filter(OfferingMeeting.meeting_id == meeting.id).first():
+            print('Meeting {} is never referenced; deleting...'.format(meeting))
+            session.delete(meeting)
+    for room in session.query(Room).all():
+        if not session.query(Meeting).filter(Meeting.room == room).first():
+            print('Room {} is never referenced; deleting...'.format(room))
+            session.delete(room)
+    for building in session.query(Building).all():
+        if not session.query(Room).filter(Room.building == building).first():
+            print('Building {} is never referenced; deleting...'.format(building))
+            session.delete(building)
+    for timeslot in session.query(TimeSlot).all():
+        if not session.query(Meeting).filter(Meeting.timeslot == timeslot).first():
+            print('Timeslot {} is never referenced; deleting...'.format(timeslot))
+            session.delete(timeslot)
 
-        for semester in session.query(Semester).all():
-            if not session.query(Offering).filter(Offering.semester == semester).first():
-                print('Semester {} is never referenced; deleting...'.format(semester))
-                session.delete(semester)
-                changed = True
+    for semester in session.query(Semester).all():
+        if not session.query(Offering).filter(Offering.semester == semester).first():
+            print('Semester {} is never referenced; deleting...'.format(semester))
+            session.delete(semester)
 
-        for course in session.query(Course).all():
-            referenced = (
-                session.query(Offering).filter(Offering.course == course).first() or
-                session.query(CourseInfo).filter(CourseInfo.course == course).first()
-            )
-            if not referenced:
-                print('Course {} is never referenced; deleting...'.format(course))
-                session.delete(course)
-                changed = True
 
-        for offering_meeting in session.query(OfferingMeeting).all():
-            if not session.query(Offering).filter(Offering.id == offering_meeting.offering_id).first():
-                print('OfferingMeeting {} is never referenced; deleting...'.format(offering_meeting))
-                session.delete(offering_meeting)
-                changed = True
-        for offering_instructor in session.query(OfferingInstructor).all():
-            if not session.query(Offering).filter(Offering.id == offering_instructor.offering_id).first():
-                print('OfferingInstructor {} is never referenced; deleting...'.format(offering_instructor))
-                session.delete(offering_instructor)
-                changed = True
-        for offering_core in session.query(OfferingCore).all():
-            if not session.query(Offering).filter(Offering.id == offering_core.offering_id).first():
-                print('OfferingCore {} is never referenced; deleting...'.format(offering_core))
-                session.delete(offering_core)
-                changed = True
+def check_children(session):
+    """Assert referenced members of all objects exist.
 
+    Arguments:
+        session (Session): The DB connection session.
+    """
     for offering in session.query(Offering).all():
         semester = session.query(Semester).get(offering.semester_id)
         assert semester, 'Cannot find semester of {}'.format(offering)
@@ -131,7 +124,14 @@ def main():
         course = session.query(Course).get(course_info.course_id)
         assert course, 'Cannot find course of {}'.format(course_info)
 
+
+def main():
+    """Remove any unused instances in the DB."""
+    session = create_session()
+    delete_orphans(session)
+    check_children(session)
     session.commit()
+
 
 if __name__ == '__main__':
     main()
