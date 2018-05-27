@@ -232,6 +232,9 @@ class Building(Base):
     code = Column(String, primary_key=True, nullable=False)
     name = Column(String, nullable=False)
 
+    def __str__(self):
+        return '{} ({})'.format(self.name, self.code)
+
     def __repr__(self):
         return '<Building(code="{}")>'.format(self.code)
 
@@ -337,6 +340,9 @@ class Core(Base):
     code = Column(String, primary_key=True, nullable=False)
     name = Column(String, nullable=False)
 
+    def __str__(self):
+        return '{} ({})'.format(self.name, self.code)
+
     def __repr__(self):
         return '<Core(code="{}")>'.format(self.code)
 
@@ -347,6 +353,9 @@ class Department(Base):
     __tablename__ = 'departments'
     code = Column(String, primary_key=True, nullable=False)
     name = Column(String, nullable=False)
+
+    def __str__(self):
+        return '{} ({})'.format(self.name, self.code)
 
     def __repr__(self):
         return '<Department(code="{}")>'.format(self.code)
@@ -366,6 +375,9 @@ class Course(Base):
     department = relationship('Department')
     info = relationship('CourseInfo', back_populates='course', uselist=False)
 
+    def __str__(self):
+        return '{} {}'.format(self.department.code, self.number)
+
     def __repr__(self):
         return '<Course(department="{}", number="{}")>'.format(self.department.code, self.number)
 
@@ -381,7 +393,7 @@ class Person(Base):
     offerings = relationship('Offering', secondary='offering_instructor_assoc', back_populates='instructors')
 
     def __str__(self):
-        return '{}, {}'.format(self.last_name, self.first_name)
+        return '{} {}'.format(self.first_name, self.last_name)
 
 
 class OfferingMeeting(Base):
