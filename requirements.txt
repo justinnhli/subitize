@@ -1,8 +1,8 @@
-Flask==0.12.2
-Jinja2==2.9.6
-SQLAlchemy==1.1.11
-Werkzeug==0.12.2
-beautifulsoup4==4.6.0
-gunicorn==19.7.1
-requests==2.18.1
+Flask==1.0.2
+Jinja2==2.10
+SQLAlchemy==1.2.11
+Werkzeug==0.14.1
+beautifulsoup4==4.6.3
+gunicorn==19.9.0
+requests==2.19.1
 sqlparse==0.2.4
