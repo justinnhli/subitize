@@ -393,7 +393,11 @@ class Person(Base):
     offerings = relationship('Offering', secondary='offering_instructor_assoc', back_populates='instructors')
 
     def __str__(self):
-        return '{} {}'.format(self.first_name, self.last_name)
+        return f'{self.first_name} {self.last_name}'
+
+    @property
+    def last_first(self):
+        return f'{self.last_name}, {self.first_name}'
 
 
 class OfferingMeeting(Base):

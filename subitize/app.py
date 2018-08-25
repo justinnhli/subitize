@@ -23,7 +23,9 @@ from .subitizelib import sort_offerings
 Day = namedtuple('Day', ['abbr', 'name'])
 Hour = namedtuple('Hour', ['value', 'display'])
 
-OPTIONS_DEPARTMENTS = list(create_session().query(Department).filter(
+SESSION = create_session()
+
+OPTIONS_DEPARTMENTS = list(SESSION.query(Department).filter(
     Department.code != 'OXAB',
     Department.code.notilike('AB%'),
 ).order_by(asc(Department.name)))
@@ -104,83 +106,55 @@ def get_parameter_or_default(parameters, parameter):
         return DEFAULT_OPTIONS[parameter]
 
 
-def get_dropdown_options(session, parameters):
-    """Populate a context with the advanced search options.
-
-    Where applicable (eg. with minimum and maximum course numbers), the
-    parameters of the current search will be taken into account.
-
-    Arguments:
-        session (Session): The sqlalchemy session to connect with.
-        parameters (dict): The parameters of the current search.
-
-    Returns:
-        dict: The updated context.
-    """
-    context = {}
-    context['semesters'] = list(session.query(Semester).order_by(desc(Semester.id)))
-    context['instructors'] = sorted(session.query(Person), key=(lambda p: (p.last_name + ', ' + p.first_name).lower()))
-    context['cores'] = list(session.query(Core).order_by(Core.name))
-    context['units'] = sorted(row[0] for row in session.query(Offering.units).distinct())
-    context['departments'] = OPTIONS_DEPARTMENTS
-    context['lower'] = (OPTIONS_LOWER if parameters.get('lower') is None else parameters.get('lower'))
-    context['upper'] = (OPTIONS_UPPER if parameters.get('upper') is None else parameters.get('upper'))
-    context['days'] = OPTIONS_DAYS
-    context['start_hours'] = OPTIONS_HOURS
-    context['end_hours'] = OPTIONS_HOURS
-    return context
-
-
-def get_search_results(session, parameters):
+def get_search_results(parameters):
     """Build a query for the search.
 
     Arguments:
-        session (Session): The sqlalchemy session to connect with.
         parameters (dict): The parameters of the current search.
 
     Returns:
         Query: A sqlalchemy Query object representing the search.
     """
     # create query and filter out study abroad courses
-    query = create_query(session)
+    query = create_query(SESSION)
     if not parameters:
         return query.limit(JSON_RESULT_LIMIT)
-    query = filter_study_abroad(session, query)
+    query = filter_study_abroad(SESSION, query)
     # filter by semester
     semester = get_parameter_or_none(parameters, 'semester')
     if semester is None:
         semester = Semester.current_semester_code()
     elif semester == 'any':
         semester = None
-    query = filter_by_semester(session, query, semester)
+    query = filter_by_semester(SESSION, query, semester)
     # filter by advanced options
     if get_parameter_or_none(parameters, 'open'):
-        query = filter_by_openness(session, query)
-    query = filter_by_department(session, query, get_parameter_or_none(parameters, 'department'))
+        query = filter_by_openness(SESSION, query)
+    query = filter_by_department(SESSION, query, get_parameter_or_none(parameters, 'department'))
     query = filter_by_number(
-        session,
+        SESSION,
         query,
         get_parameter_or_none(parameters, 'lower'),
         get_parameter_or_none(parameters, 'upper'),
     )
-    query = filter_by_units(session, query, get_parameter_or_none(parameters, 'units'))
-    query = filter_by_instructor(session, query, get_parameter_or_none(parameters, 'instructor'))
-    query = filter_by_core(session, query, get_parameter_or_none(parameters, 'core'))
+    query = filter_by_units(SESSION, query, get_parameter_or_none(parameters, 'units'))
+    query = filter_by_instructor(SESSION, query, get_parameter_or_none(parameters, 'instructor'))
+    query = filter_by_core(SESSION, query, get_parameter_or_none(parameters, 'core'))
     query = filter_by_meeting(
-        session,
+        SESSION,
         query,
         get_parameter_or_none(parameters, 'day'),
         datetime.strptime(get_parameter_or_default(parameters, 'start_hour'), '%H%M').time(),
         datetime.strptime(get_parameter_or_default(parameters, 'end_hour'), '%H%M').time(),
     )
     # filter by search
-    query = filter_by_search(session, query, get_parameter_or_none(parameters, 'query'))
+    query = filter_by_search(SESSION, query, get_parameter_or_none(parameters, 'query'))
     # sort results
     sort = get_parameter_or_none(parameters, 'sort')
     valid_sorts = ['semester', 'course', 'title', 'units', 'instructors', 'meetings', 'cores']
     if sort is not None and sort not in valid_sorts:
         raise abort(400)
-    query = sort_offerings(session, query, sort)
+    query = sort_offerings(SESSION, query, sort)
     # return
     return query.limit(JSON_RESULT_LIMIT)
 
@@ -191,9 +165,8 @@ app = Flask(__name__, root_path=ROOT_DIRECTORY) # pylint: disable = invalid-name
 @app.route('/')
 def view_root():
     """Serve the homepage."""
-    session = create_session()
     parameters = request.args.to_dict()
-    context = get_dropdown_options(session, parameters)
+    context = {}
     context['advanced'] = parameters.get('advanced')
     if 'semester' not in parameters:
         parameters['semester'] = Semester.current_semester_code()
@@ -201,15 +174,14 @@ def view_root():
     context['defaults'].update(parameters)
     with open(LAST_UPDATE_FILE) as fd:
         context['last_update'] = fd.read().strip()
-    return render_template('main.html', **context)
+    return render_template('index.html', **context)
 
 
 @app.route('/json/')
 def view_json():
     """Serve the JSON endpoint."""
-    session = create_session()
     parameters = request.args.to_dict()
-    query = get_search_results(session, parameters)
+    query = get_search_results(SESSION, parameters)
     results = [offering.to_json_dict() for offering in query.all()]
     metadata = {}
     if 'sort' in parameters:
@@ -245,6 +217,53 @@ def view_simplify():
         return redirect(url_for('view_json', **simplified))
     else:
         return redirect(url_for('view_root', **simplified))
+
+@app.route('/defaults')
+def get_option_defaults():
+    return jsonify(DEFAULT_OPTIONS)
+
+@app.route('/list')
+def list_parameter():
+    parameters = request.args.to_dict()
+    if parameters['field'] == 'semesters':
+        return jsonify([
+            [semester.code, str(semester)] for semester in 
+            SESSION.query(Semester).order_by(desc(Semester.id))
+        ])
+    elif parameters['field'] == 'instructors':
+        return jsonify([
+            [instructor.system_name, instructor.last_first] for instructor in 
+            sorted(
+                SESSION.query(Person),
+                key=(lambda p: (p.last_name + ', ' + p.first_name).lower()),
+            )
+        ])
+    elif parameters['field'] == 'cores':
+        return jsonify([
+            [core.code, str(core)] for core in
+            list(SESSION.query(Core).order_by(Core.name))
+        ])
+    elif parameters['field'] == 'units':
+        return jsonify([
+            [unit, unit] for unit in
+            sorted(row[0] for row in SESSION.query(Offering.units).distinct())
+        ])
+    elif parameters['field'] == 'departments':
+        return jsonify([
+            [department.code, department.name] for department in OPTIONS_DEPARTMENTS
+        ])
+    elif parameters['field'] == 'days':
+        return jsonify([
+            [day.abbr, day.name] for day in OPTIONS_DAYS
+        ])
+    elif parameters['field'] == 'start-hours':
+        return jsonify([
+            [hour.value, hour.display] for hour in OPTIONS_HOURS
+        ])
+    elif parameters['field'] == 'end-hours':
+        return jsonify([
+            [hour.value, hour.display] for hour in OPTIONS_HOURS
+        ])
 
 
 @app.route('/json-doc/')

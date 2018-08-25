@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Subitize - Course Counts at a Glance</title>
+    <link rel="stylesheet" type="text/css" href="https://subitize.herokuapp.com/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/static/js/script.js"></script>
+</head>
+<body>
+
+    <div>
+        <h1><a id="title-link" href="/">Subitize</a></h1>
+        <p id="tagline">[SOO-bee-tahyz] (v.) - to rapidly, accurately, and confidently perceive the number of objects without counting</p>
+    </div>
+
+    <div>
+        <form id="search-form">
+            <input id="searchbar" class="large" type="text" name="query" value="search for courses..." style="color:#BABDB6;">
+            <button id="search-button" class="large">Search</button><br>
+            <div id="options">
+                Semester:
+                <select id="semesters-select" name="semester" class="search-option">
+                    <option value="">(any)</option>
+                </select>
+                &nbsp;&nbsp;&nbsp;
+                <label><input type="checkbox" name="open">Open courses only</input></label>
+                &nbsp;&nbsp;&nbsp;
+                <span id="options-toggle">Show Options</span>
+                &nbsp;&nbsp;&nbsp;
+                <button type="button" onclick="location.href='/';">Reset</button>
+            </div>
+            <div id="advanced-search">
+                Instructor:
+                <select id="instructors-select" class="search-option" name="instructor">
+                    <option value="">(any)</option>
+                </select>
+                &nbsp;&nbsp;&nbsp;
+                Core:
+                <select id="cores-select" class="search-option" name="core">
+                    <option value="">(any)</option>
+                </select>
+                &nbsp;&nbsp;&nbsp;
+                Units:
+                <select id="units-select" class="search-option" name="unit">
+                    <option value="">(any)</option>
+                </select>
+                <br>
+                Department:
+                <select id="departments-select" class="search-option" name="department">
+                    <option value="">(any)</option>
+                </select>
+                &nbsp;&nbsp;&nbsp;
+                Number (min): <input id="lower" class="search-option" name="lower" type="number" value="0">
+                &nbsp;&nbsp;&nbsp;
+                Number (max): <input id="upper" class="search-option" name="upper" type="number" value="999">
+                <br>
+                Meets on:
+                <select id="days-select" class="search-option" name="day">
+                    <option value="">(any)</option>
+                </select>
+                &nbsp;&nbsp;&nbsp;
+                Starts After:
+                <select id="start-hours-select" class="search-option" name="start_hour"></select>
+                &nbsp;&nbsp;&nbsp;
+                Ends Before:
+                <select id="end-hours-select" class="search-option" name="end_hour"></select>
+            </div>
+        </form>
+    </div>
+
+    <div id="tabs">
+        <div id="tab-list">
+            <h4 id="saved-courses-heading" class="tab-heading">Saved Courses (<span id="saved-courses-count">0</span>)</h4>
+            <h4 id="search-results-heading" class="tab-heading">Search Results (<span id="search-results-count">0</span>)</h4>
+        </div>
+        <div id="saved-courses-content" class="tab-content">
+            <div id="saved-courses-warning">
+                <p>
+                    <strong>Note</strong>: The saved courses are <em>not</em> persistent - they will be lost when the browser/tab is closed.
+                    Although the saved courses will not update if the course is moved or delete, copy the URL for a persistent link.
+                </p>
+            </div>
+            <table id="saved-courses-table" class="course-listing"></table>
+        </div>
+        <div id="search-results-content" class="tab-content">
+            <table id="search-results-table" class="course-listing"></table>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p>
+            <span>
+                Data &copy; <a href="http://oxy.edu/">Occidental College</a>
+                |
+                <a href="https://github.com/justinnhli/subitize">Code</a> &copy; <a href="http://justinnhli.com">Justin Li</a>, <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.en_US" rel="license">CC-BY-SA</a>
+                |
+                <a href="https://github.com/justinnhli/subitize/issues/new">Report issues</a>
+                |
+                <a href="/json-doc">JSON API</a>
+            </span>
+            <br>
+            <span>Database last updated {{ last_update }} and may contain errors.</span>
+            <br>
+            <span>Check <a href="https://counts.oxy.edu/">Course Counts</a> and the <a href="http://oxy.smartcatalogiq.com/">course catalog</a> for the most current information.</span>
+        </p>
+    </div>
+
+</body>
+</html>

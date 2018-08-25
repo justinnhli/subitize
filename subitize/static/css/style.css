@@ -2,7 +2,7 @@ body {background-color:#EEEEEC; color:#2E3436;}
 h1 a {text-decoration:none; color:#4E9A06;}
 h1 a:hover {text-decoration:underline;}
 h4 {border: 1px solid black; border-bottom-style: none; color:#888A85; cursor:pointer; display:inline-block; font-weight:normal; margin:0.25em 3px; padding: 5px 7px 0; text-decoration:underline;}
-h4.active {color:#2E3436; cursor:unset; font-weight:bold; text-decoration:none;}
+h4.active-tab {color:#2E3436; cursor:unset; font-weight:bold; text-decoration:none;}
 a {color:#2E3436;}
 table {border-collapse:collapse; margin:0 auto;}
 th, td {border-left:2px solid #D3D7CF; border-right:2px solid #D3D7CF; padding:0 5px 0; vertical-align:top;}
@@ -19,11 +19,11 @@ body > div {text-align:center;}
 .large {font-size:x-large;}
 #searchbar {margin:auto; width:80%; max-width:40em;}
 #options {margin-top:0.5em;}
-#advanced-toggle {cursor:pointer; margin-bottom:0; text-decoration:underline;}
+#options-toggle {cursor:pointer; margin-bottom:0; text-decoration:underline;}
 #advanced-search {display:none; line-height:1.5em;}
 #tab-list {display:none; text-align:left;}
 .tab-content {display:none;}
-.number {width:4em;}
+#advanced-search input[type=number] {width:4em;}
 .course-listing {margin-top:7px; text-align:left; width:100%;}
 .course-listing tbody.data:hover tr {background-color:#D3D7CF;}
 .course-listing tbody.data:hover tr td {border-color:#BABDB6;}
