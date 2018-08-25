@@ -48,7 +48,7 @@ OPTIONS_HOURS = [
 DEFAULT_OPTIONS = {
     'query': 'search for courses...',
     'semester': Semester.current_semester_code(),
-    'open': '',
+    'open': 'false',
     'instructor': '',
     'core': '',
     'units': '',
@@ -181,7 +181,7 @@ def view_root():
 def view_json():
     """Serve the JSON endpoint."""
     parameters = request.args.to_dict()
-    query = get_search_results(SESSION, parameters)
+    query = get_search_results(parameters)
     results = [offering.to_json_dict() for offering in query.all()]
     metadata = {}
     if 'sort' in parameters:
@@ -198,25 +198,6 @@ def view_json():
     }
     return jsonify(response)
 
-
-@app.route('/simplify/')
-def view_simplify():
-    """Redirect the request with simplified parameters."""
-    parameters = request.args.to_dict()
-    if 'query' in parameters:
-        if get_parameter_or_none(parameters, 'query'):
-            parameters['query'] = parameters['query'].strip()
-        else:
-            del parameters['query']
-    simplified = {}
-    for key, value in parameters.items():
-        if key == 'semester' or key not in DEFAULT_OPTIONS or value != DEFAULT_OPTIONS[key]:
-            simplified[key] = value
-    if 'json' in simplified:
-        del simplified['json']
-        return redirect(url_for('view_json', **simplified))
-    else:
-        return redirect(url_for('view_root', **simplified))
 
 @app.route('/defaults')
 def get_option_defaults():

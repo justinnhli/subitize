@@ -17,15 +17,15 @@
 
     <div>
         <form id="search-form">
-            <input id="searchbar" class="large" type="text" name="query" value="search for courses..." style="color:#BABDB6;">
-            <button id="search-button" class="large">Search</button><br>
+            <input id="searchbar" class="large search-option" type="text" name="query" value="search for courses...">
+            <input id="search-button" class="large" type="submit" value="Search"><br>
             <div id="options">
                 Semester:
                 <select id="semesters-select" name="semester" class="search-option">
-                    <option value="">(any)</option>
+                    <option value="any">(any)</option>
                 </select>
                 &nbsp;&nbsp;&nbsp;
-                <label><input type="checkbox" name="open">Open courses only</input></label>
+                <label><input id="open" class="search-option" name="open" type="checkbox">Open courses only</input></label>
                 &nbsp;&nbsp;&nbsp;
                 <span id="options-toggle">Show Options</span>
                 &nbsp;&nbsp;&nbsp;
