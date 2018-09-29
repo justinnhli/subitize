@@ -80,7 +80,7 @@ def get_parameter_or_none(parameters, parameter):
         return parameters[parameter]
     value = parameters.get(parameter)
     default = DEFAULT_OPTIONS[parameter]
-    if value != '' and value != default:
+    if value not in ('', default):
         return value
     else:
         return None
