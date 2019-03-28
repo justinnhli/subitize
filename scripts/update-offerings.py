@@ -17,7 +17,7 @@ from subitize import create_session, get_or_create
 from subitize import Semester, TimeSlot, Building, Room, Meeting, Core, Department, Course, Person, Offering
 from subitize import create_query, filter_by_semester, filter_by_department, filter_by_number_str, filter_by_section
 
-COURSE_COUNTS = 'https://counts.oxy.edu/'
+COURSE_COUNTS = 'https://counts.oxy.edu/public/default.aspx'
 
 HEADINGS = (
     'year',
@@ -40,15 +40,16 @@ HEADINGS = (
 REQUEST_HEADERS = {
     'Host':'counts.oxy.edu',
     'User-Agent':'Mozilla/5.0 (X11; Linux i686; rv:42.0) Gecko/20100101 Firefox/42.0',
-    'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    'Accept':'*/*',
+    'Accept-Encoding':'gzip, deflate, br',
     'Accept-Language':'en-US,en;q=0.5',
     'X-Requested-With':'XMLHttpRequest',
     'X-MicrosoftAjax':'Delta=true',
     'Cache-Control':'no-cache',
     'Content-Type':'application/x-www-form-urlencoded; charset=utf-8',
-    'Referer':'https://counts.oxy.edu/',
+    'DNT':'1',
+    'Referer':'https://counts.oxy.edu/public/default.aspx',
     'Connection':'keep-alive',
-    'Pragma':'no-cache',
 }
 
 MAPPED_NAMES = {
@@ -104,7 +105,11 @@ def create_room(session, location_str):
 
 
 def create_meeting(session, meeting_strs):
-    time_str, days_str, location_str = meeting_strs
+    if len(meeting_strs) == 2:
+        time_str, days_str = meeting_strs
+        location_str = 'Bldg-TBD'
+    else:
+        time_str, days_str, location_str = meeting_strs
     if time_str == 'Time-TBD' or days_str == 'Days-TBD':
         timeslot = None
         room = None
@@ -212,14 +217,13 @@ def get_offerings_data(semester):
         'tabContainer$TabPanel4$txtCRN':'',
         'tabContainer_ClientState':'{"ActiveTabIndex":0,"TabState":[true,true,true,true]}',
         'ScriptManager1':'pageUpdatePanel|tabContainer$TabPanel1$btnGo',
-        'ScriptManager1_HiddenField':';;AjaxControlToolkit, Version=1.0.10920.32880, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e:en-US:816bbca1-959d-46fd-928f-6347d6f2c9c3:e2e86ef9:1df13a87:ee0a475d:c4c00916:9ea3f0e2:9e8e87e9:4c9865be:a6a5a927;',
+        'ScriptManager1_HiddenField':';;AjaxControlToolkit, Version=1.0.10920.32880, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e:en-US:816bbca1-959d-46fd-928f-6347d6f2c9c3:e2e86ef9:1df13a87:ee0a475d:c4c00916:9ea3f0e2:9e8e87e9:4c9865be:a6a5a927',
         '__ASYNCPOST':'true',
-        '__AjaxControlToolkitCalendarCssLoaded':'',
         '__EVENTARGUMENT':'',
         '__EVENTTARGET':'',
         '__LASTFOCUS':'',
         '__VIEWSTATEENCRYPTED':'',
-        '__VIEWSTATEGENERATOR':'CA0B0334',
+        '__VIEWSTATEGENERATOR':'47F6A1AC',
     }
     params['__VIEWSTATE'], params['__EVENTVALIDATION'] = get_view_state()
     response = requests.post(COURSE_COUNTS, headers=REQUEST_HEADERS, data=params)
