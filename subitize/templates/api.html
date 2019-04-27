@@ -2,7 +2,7 @@
 {% block content %}
 <div id="json-api-doc">
     <h3>Introduction</h3>
-    <p>The data used by Subitized is available in two forms: as a <a href="https://github.com/justinnhli/subitize/tree/master/data">SQL dump on Github</a>, and as a <code>GET</code> JSON endpoint that also supports queries. The endpoint is used by the app itself, and is available at:</p>
+    <p>The data used by Subitize is available in two forms: as a <a href="https://github.com/justinnhli/subitize/tree/master/data">SQL dump on Github</a>, and as a <code>GET</code> JSON endpoint that also supports queries. The endpoint is used by the app itself, and is available at:</p>
     <p><code><span class="host"></span>/json</code></p>
     <p>The <a href="#parameters">parameters</a> and the <a href="#results">returned object</a> are described below, with an <a href="#example">example</a> at the end.</p>
     <h3 id="parameters">Parameters</h3>
@@ -24,7 +24,7 @@
         <li><p><code>advanced</code> - Whether the advanced search options should be displayed on the app. Has no impact on search results.</p></li>
     </ul>
     <h3 id="results">Results</h3>
-    <p>This endpoint is limited to returning 200 results, which should be sufficient for most searching needs. It returns a JSON object with the following structure:</p>
+    <p>The endpoint returns a JSON object with the following structure:</p>
     <pre><code class="language-json">
     {
         &quot;metadata&quot;: {
@@ -34,7 +34,8 @@
         &quot;results&quot;: [...]
     }
     </code></pre>
-    <p><code>metadata.parameters</code> contains the <code>GET</code> parameters that generated the result, while <code>.metadata.sorted</code> contains the field by which the results are sorted. <code>results</code> contains the list of search results as JSON objects. Each object has the following keys:</p>
+    <p><code>metadata.parameters</code> contains the <code>GET</code> parameters that generated the result, while <code>metadata.sorted</code> contains the field by which the results are sorted.</p>
+    <p><code>results</code> contains the list of up to 200 search results as JSON objects. Each object has the following keys:</p>
     <ul>
         <li><p><code>id</code> - A unique identifier for the course.</p></li>
         <li>
@@ -74,24 +75,24 @@
             <p><code>meetings</code> - A list of JSON objects representing the class meetings. Each object has the following keys:</p>
             <ul>
                 <li>
-                    <code>building</code> - A JSON object representing the building in which the class meets. May be <code>null</code>. Each object has the following keys:
+                    <code>building</code> - A JSON object representing the building in which the class meets. May be <code>null</code> if the meeting location is to be determined. Each object has the following keys:
                     <ul>
                         <li><code>code</code> - The code for the building.</li>
                         <li><code>name</code> - The name of the building.</li>
                     </ul>
                 </li>
                 <li>
-                    <code>room</code> - The room number in which the class meets, as a string. May be <code>null</code>.
+                    <code>room</code> - The room number in which the class meets, as a string. May be <code>null</code> if the meeting location is to be determined.
                 </li>
                 <li>
-                    <code>weekdays</code> - A JSON object representing the days of the week in which the class meets. May be <code>null</code>. Each object has the following keys:
+                    <code>weekdays</code> - A JSON object representing the days of the week in which the class meets. May be <code>null</code> if the meeting time(s) is to be determined. Each object has the following keys:
                     <ul>
                         <li><code>codes</code> - The capital letters of all the days the class meets.</li>
                         <li><code>names</code> - A comma-separated string of the names of all the days the class meets.</li>
                     </ul>
                 </li>
-                <li><code>us_start_time</code>, <code>us_end_time</code> - The start and end times of the class meeting, formated for US audiences (ie. <code>[H]H:MM(am|pm)</code>). May be <code>null</code>.</li>
-                <li><code>iso_start_time</code>, <code>iso_end_time</code> - The start and end times of the class meeting, formated according to ISO 8601 (ie. <code>HH:MM</code>). May be <code>null</code>.</li>
+                <li><code>us_start_time</code>, <code>us_end_time</code> - The start and end times of the class meeting, formated for US audiences (ie. <code>[H]H:MM(am|pm)</code>). May be <code>null</code> if the meeting time(s) is to be determined.</li>
+                <li><code>iso_start_time</code>, <code>iso_end_time</code> - The start and end times of the class meeting, formated according to ISO 8601 (ie. <code>HH:MM</code>). May be <code>null</code> if the meeting time(s) is to be determined.</li>
             </ul>
         </li>
         <li>
@@ -101,10 +102,10 @@
                 <li><code>name</code> - The name of the core requirement.</li>
             </ul>
         </li>
-        <li><p><code>num_enrolled</code> - The number of students currently enrolled in the course.</p></li>
+        <li><p><code>num_seats</code> - The total number of seats in the course.</p></li>
         <li><p><code>num_reserved</code> - The number of reserved seats in the course.</p></li>
         <li><p><code>num_reserved_open</code> - The number of open reserved seats in the course.</p></li>
-        <li><p><code>num_seats</code> - The total number of seats in the course.</p></li>
+        <li><p><code>num_enrolled</code> - The number of students currently enrolled in the course.</p></li>
         <li><p><code>num_waitlisted</code> - The number of students on the waitlist for the course.</p></li>
         <li>
             <p><code>info</code> - A JSON object representing additional information about the course. Currently still in development, so information may be missing or inaccurate. Each object has the following keys:</p>
@@ -119,6 +120,81 @@
     <h3 id="example">Example</h3>
     <p>All Computer Science courses taught by Justin Li during the Fall 2017 semester can be found by the following request:</p>
     <p><code><span class="host"></span>/json?department=COMP&amp;instructor=Justin Li&amp;semester=201801</code></p>
+    <p>It results in the following response (ellipses inserted for readability where appropriate):</p>
+    <pre><code class="language-json">
+{
+    "metadata":{
+        "parameters":"department=COMP&instructor=Justin+Li&semester=201801",
+        "sorted":"semester"
+    },
+    "results":[
+        {
+            "id":"201801_COMP_131_1",
+            "semester":{
+                "code":"201801",
+                "year":2017
+                "season":"Fall",
+            },
+            "department":{
+                "code":"COMP",
+                "name":"Computer Science"
+            },
+            "number":{
+                "number":131,
+                "string":"131"
+            },
+            "section":"1",
+            "title":"Fundamentals of Computer Science",
+            "units":4,
+            "instructors":[
+                {
+                    "system_name":"Justin Li"
+                    "first_name":"Justin",
+                    "last_name":"Li",
+                },
+                ...
+            ],
+            "meetings":[
+                {
+                    "building":{
+                        "code":"MOSHER",
+                        "name":"Norris/Mosher Hall"
+                    },
+                    "room":"3",
+                    "weekdays":{
+                        "codes":"MWF",
+                        "names":"Monday, Wednesday, Friday"
+                    },
+                    "us_start_time":"9:35am",
+                    "us_end_time":"10:30am"
+                    "iso_start_time":"09:35",
+                    "iso_end_time":"10:30",
+                },
+                ...
+            ],
+            "cores":[
+                {
+                    "code":"CPLS",
+                    "name":"Core Laboratory Science"
+                },
+                ...
+            ],
+            "info":{
+                "description":"...",
+                "prerequisites":null,
+                "corequisites":"COMP 131L ",
+                "url":"..."
+            },
+            "num_seats":30
+            "num_reserved":7,
+            "num_reserved_open":0,
+            "num_enrolled":31
+            "num_waitlisted":0
+        },
+        ...
+    ]
+}
+    </code></pre>
     <script>
         $(".host").html(location.origin);
     </script>
