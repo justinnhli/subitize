@@ -7,6 +7,6 @@ source ~/.venv/subitize/bin/activate && \
     rm -f "$counts_db" && \
     ./scripts/update-offerings.py && \
     ./scripts/dump.sh && \
-	exit 0
+    exit 0
 
 exit 1
