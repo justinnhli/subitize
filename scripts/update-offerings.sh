@@ -2,7 +2,9 @@
 
 counts_db=subitize/data/counts.db
 
-source ~/.venv/subitize/bin/activate && \
+source "$HOME/.bashrc" && \
+    source "$HOME/.dot_secrets/bashrc" && \
+    source $PYTHON_VENV_HOME/subitize/bin/activate && \
     cd ~/git/subitize/ && \
     rm -f "$counts_db" && \
     ./scripts/update-offerings.py && \
