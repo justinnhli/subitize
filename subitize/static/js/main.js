@@ -8,12 +8,25 @@ $(function () {
     var saved_courses_list = [];
     var saved_courses = {};
 
+    /**
+     * Handle the search.
+     *
+     * @returns {boolean} - Whether to change the URL.
+     */
     function search_handler() {
         search_from_parameters($("#search-form").serialize(), true);
         // return false to prevent the URL changing
         return false;
     }
 
+
+    /**
+     * Search from the given parameters.
+     *
+     * @param {string} parameters - The parameters from the search.
+     * @param {boolean} update_history - Whether the history should be changed.
+     * @returns {boolean} - Whether to change the URL.
+     */
     function search_from_parameters(parameters, update_history) {
         if (parameters === curr_parameters) {
             return;
@@ -46,6 +59,13 @@ $(function () {
         });
     }
 
+    /**
+     * Populate the search results table.
+     *
+     * @param {Map<string, string>} metadata - The metadata about the results.
+     * @param {List} results - The search results.
+     * @returns {undefined}
+     */
     function populate_search_results(metadata, results) {
         if (results.length === 0) {
             return;
@@ -57,6 +77,13 @@ $(function () {
         }
     }
 
+    /**
+     * Populate a course listing table header.
+     *
+     * @param {string} section - The section the table resides in.
+     * @param {string} sort - The column to sort by.
+     * @returns {JQuery} - The table header.
+     */
     function build_course_listing_header(section, sort) {
         // TODO keep heading, only change href and show sorted glyph
         var headings = [
@@ -76,11 +103,11 @@ $(function () {
         for (var i = 0; i < headings.length; i += 1) {
             var heading = headings[i];
             html.push("<th>");
-            if (heading.hasOwnProperty("id") && sort) {
+            if (Object.prototype.hasOwnProperty.call(heading, "id") && sort) {
                 html.push("<a href=\"/" + location.search + "&sort=" + heading.id + location.hash + "\">");
             }
             html.push(heading.label);
-            if (heading.hasOwnProperty("id") && sort) {
+            if (Object.prototype.hasOwnProperty.call(heading, "id") && sort) {
                 html.push("</a>");
                 if (sort === heading.id) {
                     html.push(" &#9660; ");
@@ -92,6 +119,13 @@ $(function () {
         return $(html.join(""));
     }
 
+    /**
+     * Populate a course listing table row.
+     *
+     * @param {Obj} result - The course object.
+     * @param {List<string>} classnames - CSS classes for the row.
+     * @returns {JQuery} - The table header.
+     */
     function build_course_listing_row(result, classnames) {
         var tbody = $("<tbody class=\"data\"></tbody>").append(tr);
         if (classnames === undefined) {
@@ -119,10 +153,16 @@ $(function () {
         return tbody;
     }
 
+    /**
+     * Create a table cell to save an offering.
+     *
+     * @param {Obj} result - The course object.
+     * @returns {string} - The table cell.
+     */
     function build_search_result_save_checkbox(result) {
         var checkbox = $("<input type=\"checkbox\">");
         checkbox.addClass(result.id + "-checkbox");
-        if (saved_courses.hasOwnProperty(result.id)) {
+        if (Object.prototype.hasOwnProperty.call(saved_courses, result.id)) {
             checkbox.prop("checked", "checked");
         }
         checkbox.click(function () {
@@ -131,6 +171,12 @@ $(function () {
         return checkbox;
     }
 
+    /**
+     * Create a table cell for the semester of an offering.
+     *
+     * @param {Obj} result - The course object.
+     * @returns {string} - The table cell.
+     */
     function build_course_listing_semester_cell(result) {
         var html = [];
         var url = "";
@@ -145,6 +191,12 @@ $(function () {
         return html.join("");
     }
 
+    /**
+     * Create a table cell for the course number of an offering.
+     *
+     * @param {Obj} result - The course object.
+     * @returns {string} - The table cell.
+     */
     function build_course_listing_course_cell(result) {
         var html = [];
         var url = "";
@@ -169,6 +221,12 @@ $(function () {
         return html.join("");
     }
 
+    /**
+     * Create a table cell for the title of an offering.
+     *
+     * @param {Obj} result - The course object.
+     * @returns {string} - The table cell.
+     */
     function build_course_listing_title_cell(result) {
         var html = [];
         html.push("<td>");
@@ -181,6 +239,12 @@ $(function () {
         return html.join("");
     }
 
+    /**
+     * Create a table cell for the units of an offering.
+     *
+     * @param {Obj} result - The course object.
+     * @returns {string} - The table cell.
+     */
     function build_course_listing_units_cell(result) {
         var html = [];
         html.push("<td>");
@@ -189,6 +253,12 @@ $(function () {
         return html.join("");
     }
 
+    /**
+     * Create a table cell for the instructors of an offering.
+     *
+     * @param {Obj} result - The course object.
+     * @returns {string} - The table cell.
+     */
     function build_course_listing_instructors_cell(result) {
         var html = [];
         var url = "";
@@ -215,6 +285,12 @@ $(function () {
         return html.join("");
     }
 
+    /**
+     * Create a table cell for the meeting times of an offering.
+     *
+     * @param {Obj} result - The course object.
+     * @returns {string} - The table cell.
+     */
     function build_course_listing_meetings_cell(result) {
         var html = [];
         html.push("<td>");
@@ -254,6 +330,12 @@ $(function () {
         return html.join("");
     }
 
+    /**
+     * Create a table cell for the core requirements of an offering.
+     *
+     * @param {Obj} result - The course object.
+     * @returns {string} - The table cell.
+     */
     function build_course_listing_cores_cell(result) {
         var html = [];
         var url = "";
@@ -276,6 +358,12 @@ $(function () {
         return html.join("");
     }
 
+    /**
+     * Create a table cell for the number of seats of an offering.
+     *
+     * @param {Obj} result - The course object.
+     * @returns {string} - The table cell.
+     */
     function build_course_listing_seats_cell(result) {
         var html = [];
         html.push("<td>");
@@ -296,6 +384,12 @@ $(function () {
         return html.join("");
     }
 
+    /**
+     * Create a table row for the catalog information of an offering.
+     *
+     * @param {Obj} result - The course object.
+     * @returns {string} - The table row.
+     */
     function build_search_result_info_row(result) {
         var html = [];
         html.push("<tr class=\"description\" style=\"display:none;\">");
@@ -323,11 +417,21 @@ $(function () {
 
     // saved courses tab
 
+    /**
+     * Create the saved courses table.
+     *
+     * @returns {undefined}
+     */
     function build_saved_courses_table() {
         $("#saved-courses-table").append(build_course_listing_header("saved-courses"));
         update_saved_courses_display();
     }
 
+    /**
+     * Update the saved courses table.
+     *
+     * @returns {undefined}
+     */
     function update_saved_courses_display() {
         if (saved_courses_list.length === 0) {
             $("#saved-courses-header").hide();
@@ -351,6 +455,13 @@ $(function () {
         }
     }
 
+    /**
+     * Toggle saving and unsaving a course.
+     *
+     * @param {DOMObject} checkbox - The save course checkbox.
+     * @param {Obj} result - The course object.
+     * @returns {undefined}
+     */
     function save_course_checkbox_handler(checkbox, result) {
         if (checkbox.prop("checked")) {
             save_course(result);
@@ -363,8 +474,14 @@ $(function () {
         enable_more_info_toggle();
     }
 
+    /**
+     * Save a course.
+     *
+     * @param {Obj} result - The course object.
+     * @returns {undefined}
+     */
     function save_course(result) {
-        if (saved_courses.hasOwnProperty(result.id)) {
+        if (Object.prototype.hasOwnProperty.call(saved_courses, result.id)) {
             return;
         }
         saved_courses_list.push(result.id);
@@ -372,8 +489,14 @@ $(function () {
         saved_courses_list.sort();
     }
 
+    /**
+     * Unsave a course.
+     *
+     * @param {Obj} result - The course object.
+     * @returns {undefined}
+     */
     function unsave_course(result) {
-        if (!saved_courses.hasOwnProperty(result.id)) {
+        if (!Object.prototype.hasOwnProperty.call(saved_courses, result.id)) {
             return;
         }
         saved_courses_list.splice(saved_courses_list.indexOf(result.id), 1);
@@ -382,10 +505,22 @@ $(function () {
         $("." + result.id + "-checkbox").prop("checked", false);
     }
 
+    /**
+     * Serialize a JavaScript object.
+     *
+     * @param {Obj} obj - The JavaScript object.
+     * @returns {string} - The resulting serialized string.
+     */
     function param(obj) {
         return $.param(obj, false);
     }
 
+    /**
+     * Deserialize a JavaScript object.
+     *
+     * @param {string} str - The serialized string.
+     * @returns {Obj} - The resulting JavaScript object.
+     */
     function deparam(str) {
         var obj = {};
         str.replace(/([^=&]+)=([^&]*)/g, function(m, key, value) {
@@ -394,13 +529,16 @@ $(function () {
         return obj;
     }
 
-    /* Get the hash of the URL
+    /**
+     * Get the fragment/hash part of the URL.
      * 
      * This function is necessary because location.hash is not always accurate.
      * In particular, when the back button is clicked, location.hash remains
      * empty even if the new URL has a hash. This function tries to use
      * location.hash first, but also tries to manually parse location if
      * location.hash is empty.
+     *
+     * @returns {Obj} - The keys and values in the fragment.
      */
     function get_url_hash() {
         var result = "";
@@ -415,6 +553,11 @@ $(function () {
         return result;
     }
 
+    /**
+     * Load the saved courses from the URL.
+     *
+     * @returns {undefined}
+     */
     function load_saved_courses() {
         var params = deparam(get_url_hash());
         if (params["list"] === undefined) {
@@ -426,6 +569,11 @@ $(function () {
         }
     }
 
+    /**
+     * Save the saved courses into the URL.
+     *
+     * @returns {undefined}
+     */
     function save_saved_courses() {
         var url = location.origin;
         if (curr_parameters !== "") {
@@ -440,7 +588,10 @@ $(function () {
         history.pushState(null, "Subitize - Course Counts at a Glance", url);
     }
 
-    /* update all links on the page
+    /**
+     * Update all links to contain the saved courses fragment.
+     *
+     * @returns {undefined}
      */
     function propagate_saved_courses() {
         $("a").each(function () {
@@ -467,6 +618,12 @@ $(function () {
 
     // Miscellaneous GUI
 
+    /**
+     * Show a tab.
+     *
+     * @param {string} tab - The tab to show.
+     * @returns {undefined}
+     */
     function show_tab(tab) {
         $("#tab-list").show();
         if (curr_tab === "") {
@@ -481,11 +638,21 @@ $(function () {
         curr_tab = tab;
     }
 
+    /**
+     * Attach a handler to the catalog information toggle.
+     *
+     * @returns {undefined}
+     */
     function enable_more_info_toggle() {
         var more_info = $(".more-info");
         more_info.off("click").click(more_info_click_handler);
     }
 
+    /**
+     * Clear the search bar when focused.
+     *
+     * @returns {undefined}
+     */
     function searchbar_focus_handler() {
         var searchbar = $(this);
         if (searchbar.val() === "search for courses...") {
@@ -494,6 +661,11 @@ $(function () {
         }
     }
 
+    /**
+     * Show default text in the search bar when unfocused.
+     *
+     * @returns {undefined}
+     */
     function searchbar_blur_handler() {
         var searchbar = $("#searchbar");
         if (searchbar.val() === "") {
@@ -502,6 +674,11 @@ $(function () {
         }
     }
 
+    /**
+     * Show/Hide the advanced search panel.
+     *
+     * @returns {undefined}
+     */
     function advanced_toggle_click_handler() {
         var toggle = $(this);
         var state = $("#advanced-state");
@@ -517,6 +694,11 @@ $(function () {
         }
     }
 
+    /**
+     * Show/Hide catalog information.
+     *
+     * @returns {undefined}
+     */
     function more_info_click_handler() {
         var more_info = $(this);
         var desc_tr = more_info.parents("tbody").children(".description");
@@ -534,6 +716,13 @@ $(function () {
         }
     }
 
+    /**
+     * Load the page.
+     *
+     * @param {boolean} from_back - Whether the page is loading from the
+     *     navigating backwards.
+     * @returns {undefined}
+     */
     function load_page(from_back) {
         // TODO set values of advanced options with javascript
         $("#advanced-toggle").click().click();
@@ -554,6 +743,11 @@ $(function () {
         propagate_saved_courses();
     }
 
+    /**
+     * Set up the app.
+     *
+     * @returns {undefined}
+     */
     function main() {
         var search_form = $("#search-form");
         search_form.submit(search_handler);
@@ -581,7 +775,6 @@ $(function () {
 
         build_saved_courses_table();
         load_page(false);
-
     }
 
     main();
