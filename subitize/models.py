@@ -2,7 +2,7 @@
 
 import sqlite3
 from datetime import datetime, date
-from os.path import dirname, exists as file_exists, join as join_path
+from pathlib import Path
 from time import sleep
 
 from sqlalchemy import create_engine, event
@@ -12,23 +12,23 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy.schema import UniqueConstraint
 
-DIR_PATH = dirname(__file__)
-DB_PATH = join_path(DIR_PATH, 'data', 'counts.db')
-SQL_PATH = join_path(DIR_PATH, 'data', 'data.sql')
+DIR_PATH = Path(__file__).expanduser().resolve()
+DB_PATH = DIR_PATH.parent.joinpath('data', 'counts.db')
+SQL_PATH = DIR_PATH.parent.joinpath('data', 'data.sql')
 
-SQLITE_URI = 'sqlite:///' + join_path(DIR_PATH, DB_PATH)
+SQLITE_URI = f'sqlite:///{DB_PATH}'
 
 
 def create_db():
     """Read the dump into a binary SQLite file."""
-    if not file_exists(DB_PATH):
+    if not DB_PATH.exists():
         conn = sqlite3.connect(DB_PATH)
-        with open(SQL_PATH) as fd:
+        with SQL_PATH.open() as fd:
             dump = fd.read()
         conn.executescript(dump)
         conn.commit()
         conn.close()
-    assert file_exists(DB_PATH)
+    assert DB_PATH.exists()
     while True:
         try:
             conn = sqlite3.connect(DB_PATH)
