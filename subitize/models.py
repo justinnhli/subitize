@@ -569,7 +569,7 @@ def create_db():
         assert SQL_PATH.exists()
         with SQL_PATH.open() as fd:
             dump = fd.read()
-        conn = sqlite3.connect(DB_PATH)
+        conn = sqlite3.connect(str(DB_PATH))
         conn.executescript(dump)
         conn.commit()
         conn.close()
@@ -577,7 +577,7 @@ def create_db():
     # ensure the connection works
     while True:
         try:
-            conn = sqlite3.connect(DB_PATH)
+            conn = sqlite3.connect(str(DB_PATH))
             conn.execute('SELECT * FROM semesters')
             break
         except sqlite3.OperationalError:
