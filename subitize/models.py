@@ -19,46 +19,10 @@ SQL_PATH = DIR_PATH.parent.joinpath('data', 'data.sql')
 SQLITE_URI = f'sqlite:///{DB_PATH}'
 
 
-def create_db():
-    """Read the dump into a binary SQLite file."""
-    if not DB_PATH.exists():
-        conn = sqlite3.connect(DB_PATH)
-        with SQL_PATH.open() as fd:
-            dump = fd.read()
-        conn.executescript(dump)
-        conn.commit()
-        conn.close()
-    assert DB_PATH.exists()
-    while True:
-        try:
-            conn = sqlite3.connect(DB_PATH)
-            conn.execute('SELECT * FROM semesters')
-            break
-        except sqlite3.OperationalError:
-            sleep(1)
-
-
-create_db()
-ENGINE = create_engine(SQLITE_URI, connect_args={'check_same_thread': False})
-
-
-def create_session(engine=None):
-    """Create a sqlalchemy session.
-
-    Arguments:
-        engine (Engine): The database engine. Optional.
-
-    Returns:
-        Session: A sqlalchemy Session object.
-    """
-    create_db()
-    if engine is None:
-        engine = ENGINE
-    event.listen(engine, 'connect', (lambda dbapi_con, con_record: dbapi_con.execute('pragma foreign_keys=ON')))
-    return sessionmaker(bind=engine)()
-
-
-Base = declarative_base(ENGINE) # pylint: disable = invalid-name
+Base = declarative_base(create_engine( # pylint: disable = invalid-name
+    SQLITE_URI,
+    connect_args={'check_same_thread': False},
+))
 
 
 class Semester(Base):
@@ -582,6 +546,44 @@ class CourseInfo(Base):
         return '_'.join(s for s in [self.url, self.description, self.prerequisites, self.corequisites] if s is not None)
 
 
+def create_session(engine=None):
+    """Create a sqlalchemy session.
+
+    Arguments:
+        engine (Engine): The database engine. Optional.
+
+    Returns:
+        Session: A sqlalchemy Session object.
+    """
+    if engine is None:
+        engine = Base.metadata.bind
+    event.listen(engine, 'connect', (lambda dbapi_con, con_record: dbapi_con.execute('pragma foreign_keys=ON')))
+    return sessionmaker(bind=engine)()
+
+
+def create_db():
+    """Read the dump into a binary SQLite file."""
+    if not DB_PATH.exists():
+        # Normally we would need to do Base.metadata.create_all(), but not here
+        # because the dump already contains CREATE TABLE statements
+        assert SQL_PATH.exists()
+        with SQL_PATH.open() as fd:
+            dump = fd.read()
+        conn = sqlite3.connect(DB_PATH)
+        conn.executescript(dump)
+        conn.commit()
+        conn.close()
+    assert DB_PATH.exists()
+    # ensure the connection works
+    while True:
+        try:
+            conn = sqlite3.connect(DB_PATH)
+            conn.execute('SELECT * FROM semesters')
+            break
+        except sqlite3.OperationalError:
+            sleep(1)
+
+
 def get_or_create(session, model, **kwargs):
     """Retrieve or create an object from the database.
 
@@ -600,3 +602,6 @@ def get_or_create(session, model, **kwargs):
         instance = session.query(model).filter_by(**kwargs).first()
     assert instance is not None
     return instance
+
+
+create_db()
