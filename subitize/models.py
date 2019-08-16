@@ -569,10 +569,13 @@ def create_db():
         assert SQL_PATH.exists()
         with SQL_PATH.open() as fd:
             dump = fd.read()
-        conn = sqlite3.connect(str(DB_PATH))
-        conn.executescript(dump)
-        conn.commit()
-        conn.close()
+        try:
+            conn = sqlite3.connect(str(DB_PATH))
+            conn.executescript(dump)
+            conn.commit()
+            conn.close()
+        except sqlite3.OperationalError:
+            pass
     assert DB_PATH.exists()
     # ensure the connection works
     while True:
