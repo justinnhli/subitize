@@ -573,7 +573,10 @@ def create_db():
                 dump = fd.read()
             conn = sqlite3.connect(str(DB_PATH))
             with conn:
-                conn.executescript(dump)
+                try:
+                    conn.executescript(dump)
+                except sqlite3.OperationalError:
+                    pass
             conn.close()
         assert DB_PATH.exists()
         for _ in range(3):
