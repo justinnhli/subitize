@@ -580,7 +580,7 @@ def create_db():
             try:
                 conn = sqlite3.connect(str(DB_PATH))
                 with conn:
-                    semesters = list(conn.execute('SELECT * FROM semesters'))
+                    conn.execute('SELECT * FROM semesters')
                 conn.close()
                 done = True
                 break
