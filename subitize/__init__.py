@@ -2,7 +2,7 @@
 
 # pylint: disable = line-too-long
 
-from .models import create_session, get_or_create
+from .models import create_db, create_session, get_or_create
 from .models import Semester
 from .models import TimeSlot, Building, Room, Meeting
 from .models import Core, Department, Course

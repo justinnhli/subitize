@@ -563,28 +563,31 @@ def create_session(engine=None):
 
 def create_db():
     """Read the dump into a binary SQLite file."""
-    if not DB_PATH.exists():
-        # Normally we would need to do Base.metadata.create_all(), but not here
-        # because the dump already contains CREATE TABLE statements
-        assert SQL_PATH.exists()
-        with SQL_PATH.open() as fd:
-            dump = fd.read()
-        try:
+    done = False
+    while not done:
+        if not DB_PATH.exists():
+            # Normally we would need to do Base.metadata.create_all(), but not here
+            # because the dump already contains CREATE TABLE statements
+            assert SQL_PATH.exists()
+            with SQL_PATH.open() as fd:
+                dump = fd.read()
             conn = sqlite3.connect(str(DB_PATH))
-            conn.executescript(dump)
-            conn.commit()
+            with conn:
+                conn.executescript(dump)
             conn.close()
-        except sqlite3.OperationalError:
-            pass
-    assert DB_PATH.exists()
-    # ensure the connection works
-    while True:
-        try:
-            conn = sqlite3.connect(str(DB_PATH))
-            conn.execute('SELECT * FROM semesters')
-            break
-        except sqlite3.OperationalError:
-            sleep(1)
+        assert DB_PATH.exists()
+        for _ in range(3):
+            try:
+                conn = sqlite3.connect(str(DB_PATH))
+                with conn:
+                    semesters = list(conn.execute('SELECT * FROM semesters'))
+                conn.close()
+                done = True
+                break
+            except sqlite3.OperationalError:
+                sleep(1)
+        if not done:
+            DB_PATH.unlink(missing_ok=True)
 
 
 def get_or_create(session, model, **kwargs):

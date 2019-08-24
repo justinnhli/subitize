@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup
 ROOT_DIRECTORY = dirname(dirname(realpath(__file__)))
 sys.path.insert(0, ROOT_DIRECTORY)
 
-from subitize import create_session, get_or_create
+from subitize import create_db, create_session, get_or_create
 from subitize import Semester, TimeSlot, Building, Room, Meeting, Core, Department, Course, Person, Offering
 from subitize import create_query, filter_by_semester, filter_by_department, filter_by_number_str, filter_by_section
 
@@ -300,6 +300,7 @@ def delete_section(session, semester_code, dept, num, sec):
 
 def update_db(semester_code, session=None):
     remove(join_path(ROOT_DIRECTORY, 'subitize', 'data', 'counts.db'))
+    create_db()
     if session is None:
         session = create_session()
     old_sections = get_existing_sections(session, semester_code)
