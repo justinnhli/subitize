@@ -310,6 +310,9 @@ $(function () {
                     html.push(meeting.weekdays.codes);
                     html.push("</abbr>");
                 }
+                if (result.semester.code < "202001") {
+                    continue;
+                }
                 html.push(" (");
                 if (meeting.building === null) {
                     html.push("Location TBD");
