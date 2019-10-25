@@ -232,7 +232,12 @@ def get_offerings_data(semester):
     response = response.text.split('|')
     if response[2] != '':
         raise ValueError('Unable to extract offerings data')
-    return response[7]
+    html = []
+    for data in response[7:]:
+        if data.isdigit():
+            break
+        html.append(data)
+    return '|'.join(html)
 
 
 def update_from_html(session, semester, html):
