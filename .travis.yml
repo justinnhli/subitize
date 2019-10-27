@@ -17,7 +17,7 @@ jobs:
     - <<: *python-testing
       script: pydocstyle *.py subitize/
     - stage: test
-      before_install: npm install eslint
+      before_install: npm install eslint@"<6.6.0"
       script: ./node_modules/eslint/bin/eslint.js subitize/static/js/main.js
     - &push
       stage: stage
