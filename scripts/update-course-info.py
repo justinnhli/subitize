@@ -114,10 +114,7 @@ def extract_course_info(session, url):
         )
         course_info = session.query(CourseInfo).filter(CourseInfo.course_id == course.id).first()
         if course_info:
-            if is_preferred_url(course_info.url):
-                pass # TODO detect if prerequisites have changed
-            elif is_preferred_url(url):
-                course_info.url = url
+            course_info.url = url
         else:
             course_info = get_or_create(session, CourseInfo, course_id=course.id, url=url)
         course_info.description = description
