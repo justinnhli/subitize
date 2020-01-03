@@ -37,7 +37,7 @@ class Semester(Base):
     season = Column(String, nullable=False)
 
     def __init__(self, year, season):
-        """Constructor.
+        """Initialize the semester.
 
         Arguments:
             year (int): The calendar year of the semester.
