@@ -146,6 +146,8 @@ def main(year):
     catalog_soup = get_soup_from_URL(get_year_URL(year))
     visited_urls = set()
     for dept_link_soup in catalog_soup.select('.sc-child-item-links li a'):
+        dept_name = dept_link_soup.find_all(text=True, limit=1)[0]
+        print(dept_name)
         dept_soup = get_soup_from_URL(urljoin(BASE_URL, dept_link_soup['href']))
         session = create_session()
         for course_link_soup in dept_soup.select('#main ul li a'):
@@ -153,9 +155,9 @@ def main(year):
             if course_url in visited_urls:
                 continue
             visited_urls.add(course_url)
-            print(course_url)
             extract_course_info(session, course_url)
         session.commit()
+        print('done')
 
 
 if __name__ == '__main__':
