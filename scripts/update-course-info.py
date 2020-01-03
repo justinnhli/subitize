@@ -14,7 +14,7 @@ sys.path.insert(0, dirname(dirname(realpath(__file__))))
 from subitize import create_session, get_or_create
 from subitize import Semester, Department, Course, CourseInfo
 
-BASE_URL = 'http://smartcatalog.co/Catalogs/Occidental-College/{}-{}/Catalog/Courses/'
+BASE_URL = 'http://oxy.smartcatalogiq.com/{}-{}/Catalog/Course-Descriptions/'
 
 
 def get_year_URL(year):
