@@ -11,8 +11,8 @@ from bs4.element import Comment
 
 sys.path.insert(0, dirname(dirname(realpath(__file__))))
 
-from models import create_session, get_or_create
-from models import Department, Course, CourseInfo
+from subitize import create_session, get_or_create
+from subitize import Semester, Department, Course, CourseInfo
 
 BASE_URL = 'http://smartcatalog.co/Catalogs/Occidental-College/{}-{}/Catalog/Courses/'
 
