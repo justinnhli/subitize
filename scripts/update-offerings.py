@@ -202,8 +202,7 @@ def get_view_state():
 
 def get_offerings_data(semester):
     params = {
-        'ScriptManager1':'pageUpdatePanel|tabContainer$TabPanel1$btnGo',
-        'ScriptManager1_HiddenField':';;AjaxControlToolkit, Version=1.0.10920.32880, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e:en-US:816bbca1-959d-46fd-928f-6347d6f2c9c3:e2e86ef9:1df13a87:ee0a475d:c4c00916:9ea3f0e2:9e8e87e9:4c9865be:a6a5a927',
+        'ScriptManager2':'pageUpdatePanel|tabContainer$TabPanel1$btnGo',
         '__ASYNCPOST':'true',
         '__EVENTARGUMENT':'',
         '__EVENTTARGET':'',
@@ -223,7 +222,9 @@ def get_offerings_data(semester):
         'tabContainer$TabPanel3$ddlAdvTimes':'07000755',
         'tabContainer$TabPanel4$ddlCRNTerms':semester,
         'tabContainer$TabPanel4$txtCRN':'',
-        'tabContainer_ClientState':'{"ActiveTabIndex":0,"TabState":[true,true,true,true]}',
+        'tabContainer$TabPanel5$ddlCatalogYear':201801,
+        'tabContainer$TabPanel5$ddlMajorsTerm':201002,
+        'tabContainer_ClientState':'{"ActiveTabIndex":0,"TabEnabledState":[true,true,true,true,true],"TabWasLoadedOnceState":[true,false,false,false,false]}',
     }
     params['__VIEWSTATE'], params['__EVENTVALIDATION'] = get_view_state()
     response = requests.post(COURSE_COUNTS, headers=REQUEST_HEADERS, data=params)
