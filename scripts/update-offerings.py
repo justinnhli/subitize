@@ -222,7 +222,6 @@ def get_offerings_data(semester):
         'tabContainer$TabPanel3$ddlAdvTimes':'07000755',
         'tabContainer$TabPanel4$ddlCRNTerms':semester,
         'tabContainer$TabPanel4$txtCRN':'',
-        'tabContainer$TabPanel5$ddlCatalogYear':201801,
         'tabContainer$TabPanel5$ddlMajorsTerm':201002,
         'tabContainer_ClientState':'{"ActiveTabIndex":0,"TabEnabledState":[true,true,true,true,true],"TabWasLoadedOnceState":[true,false,false,false,false]}',
     }
