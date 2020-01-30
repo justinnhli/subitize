@@ -191,7 +191,7 @@ def extract_text(soup):
 
 
 def get_view_state():
-    response = requests.get(COURSE_COUNTS)
+    response = requests.get(COURSE_COUNTS, verify=False)
     if response.status_code != 200:
         raise IOError('Unable to connect to Course Counts Simple Search (status code {})'.format(response.status_code))
     soup = BeautifulSoup(response.text, 'html.parser')
@@ -226,7 +226,7 @@ def get_offerings_data(semester):
         'tabContainer_ClientState':'{"ActiveTabIndex":0,"TabEnabledState":[true,true,true,true,true],"TabWasLoadedOnceState":[true,false,false,false,false]}',
     }
     params['__VIEWSTATE'], params['__EVENTVALIDATION'] = get_view_state()
-    response = requests.post(COURSE_COUNTS, headers=REQUEST_HEADERS, data=params)
+    response = requests.post(COURSE_COUNTS, headers=REQUEST_HEADERS, data=params, verify=False)
     if response.status_code != 200:
         raise IOError('Unable to connect to Course Counts offerings data (status code {})'.format(response.status_code))
     response = response.text.split('|')
