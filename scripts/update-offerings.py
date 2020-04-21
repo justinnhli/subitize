@@ -216,21 +216,31 @@ def get_offerings_data(semester):
         'tabContainer$TabPanel2$ddlCoreAreas':'CPFA',
         'tabContainer$TabPanel2$ddlCoreSubj':'AMST',
         'tabContainer$TabPanel2$ddlCoreTerms':semester,
-        'tabContainer$TabPanel3$ddlAdvDays':'m',
+        'tabContainer$TabPanel3$ddlAdvDays':'u',
         'tabContainer$TabPanel3$ddlAdvSubj':'AMST',
         'tabContainer$TabPanel3$ddlAdvTerms':semester,
         'tabContainer$TabPanel3$ddlAdvTimes':'07000755',
         'tabContainer$TabPanel4$ddlCRNTerms':semester,
         'tabContainer$TabPanel4$txtCRN':'',
-        'tabContainer$TabPanel5$ddlMajorsTerm':201002,
+        'tabContainer$TabPanel5$ddlMajorsTerm':semester,
         'tabContainer_ClientState':'{"ActiveTabIndex":0,"TabEnabledState":[true,true,true,true,true],"TabWasLoadedOnceState":[true,false,false,false,false]}',
     }
     params['__VIEWSTATE'], params['__EVENTVALIDATION'] = get_view_state()
-    response = requests.post(COURSE_COUNTS, headers=REQUEST_HEADERS, data=params, verify=False)
-    if response.status_code != 200:
-        raise IOError('Unable to connect to Course Counts offerings data (status code {})'.format(response.status_code))
-    response = response.text.split('|')
-    if response[2] != '':
+    # not sure how the catalog year parameter works, so just try the last five years
+    success = False
+    for year_diff in range(5):
+        catalog_year = str(100 * (int(semester) // 100 - year_diff) + 1)
+        params['tabContainer$TabPanel5$ddlCatalogYear'] = catalog_year
+        response = requests.post(COURSE_COUNTS, headers=REQUEST_HEADERS, data=params, verify=False)
+        # if the response code is not 200, it's not a catalog year issue, so fail fast
+        if response.status_code != 200:
+            raise IOError('Unable to connect to Course Counts offerings data (status code {})'.format(response.status_code))
+        response = response.text.split('|')
+        if response[2] != '':
+            continue
+        success = True
+        break
+    if not success:
         raise ValueError('Unable to extract offerings data')
     html = []
     for data in response[7:]:
