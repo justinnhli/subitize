@@ -103,6 +103,8 @@ def extract_course_info(session, url):
         return
     course_soup = get_soup_from_URL(url)
     department, number, description = extract_basic_info(session, course_soup)
+    if department == 'CSP':
+        return
     prerequisites, corequisites = extract_prerequisites(course_soup)
     parsed_prerequisites = parse_prerequisites(prerequisites)
     for number in re.split('[/-]', number):
