@@ -23,7 +23,7 @@ from .subitizelib import sort_offerings
 Day = namedtuple('Day', ['abbr', 'name'])
 Hour = namedtuple('Hour', ['value', 'display'])
 
-OPTIONS_DEPARTMENTS = list(create_session().query(Department).filter(
+OPTIONS_DEPARTMENTS = list(create_session().query(Department).filter( # pylint: disable = no-member
     Department.code != 'OXAB',
     Department.code.notilike('AB%'),
 ).order_by(asc(Department.name)))
