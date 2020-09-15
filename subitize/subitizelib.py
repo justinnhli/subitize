@@ -287,7 +287,6 @@ def filter_by_search(session, query=None, terms=None):
     Returns:
         Query: A filtered sqlalchemy Query.
     """
-    # pylint: disable = bad-continuation
     if query is None:
         query = create_query(session)
     if terms is None:
