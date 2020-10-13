@@ -259,17 +259,18 @@ def update_from_html(session, semester, html):
                 instructors.append(instructor)
         meetings = []
         for tr in tds[5].find_all('tr'):
-            # time_str, days_str, location_str
+            # time_str, days_str
             meetings.append([extract_text(td) for td in tr.find_all('td')])
+        # tds[6] is the location, which is always TBD for non-authenticated use
         cores = []
-        for tag in tds[6].find_all('abbr'):
+        for tag in tds[7].find_all('abbr'):
             cores.append(extract_text(tag))
         cores = [core for core in cores if core]
-        num_seats = int(extract_text(tds[7]))
-        num_enrolled = int(extract_text(tds[8]))
-        num_reserved = int(extract_text(tds[9]))
-        num_reserved_open = int(extract_text(tds[10]))
-        num_waitlisted = int(extract_text(tds[11]))
+        num_seats = int(extract_text(tds[8]))
+        num_enrolled = int(extract_text(tds[9]))
+        num_reserved = int(extract_text(tds[10]))
+        num_reserved_open = int(extract_text(tds[11]))
+        num_waitlisted = int(extract_text(tds[12]))
         offering = create_objects(
             session, semester, department_code, number, section, title, units, instructors, meetings, cores,
             num_seats, num_enrolled, num_reserved, num_reserved_open, num_waitlisted
