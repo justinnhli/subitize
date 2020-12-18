@@ -26,6 +26,7 @@ jobs:
       script: skip
       deploy: &heroku
         provider: heroku
+        skip_cleanup: true
         app: subitest
         api_key:
           secure: "VlxXF2qf7EVx0eoEur3szCTA5Qnj2jvR4PtdDLRYr7bxEHw6Tbt/2D6IZvk0qHLnKhfAldr/N2P7TTkO7tgPLHCq+QQPt2CFP3c7Db6mvIpQ5WDKx0di8LejClWjdsP890l0eR1dCD5pAFyXa6F0A4kqWEigp6yIFWifxj3llsESuQFV1EJ4RlX2Dz6QvmLcP3S0/YX1NATuCZSDc6HeSgMrAqFa3jY6ozO6vCrQlcP8PzmPs4imzjUheB0dvSinAFVef3rWYoxG4MEzME9s4IYf3ZJrbL0HmfIRNg0nkc0yxhdT+2OPd+vkPI8PQ62Scg+iU6TrdcyVrlEux6sKfDFX/P0BZNv4leLtzqJY8/qpCQgxCb0B4eQXbfILSf5BXdax57d5PrXk2sgp0Pp/woSOtXABQ3OIArrAbiLtLm/SxZFdlmqlUirJ0gUeYgNeZ/dDKnM4bR2QyxsIzCIE2kSotfjlUWDnMgYP/D1tim7/1A8GYPnDi4NXLXs9rDKg2Tky6+aJg1GyH6iYVCQxjt51PyEfFxP9BZOwnVjRO+Foz7+nMS2fcjkN0ahE/ijdEwnQ8GZm7b+VdequEvhuZPAJTevP6Pom0O/drhxHm40wcLnbeePkissl+/7EKT9N0fYit3EVKZhT1ojrYsNObKQNXobyxvlteXHTGYINHrQ="
