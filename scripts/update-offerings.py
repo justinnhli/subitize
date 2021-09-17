@@ -52,14 +52,11 @@ REQUEST_HEADERS = {
     'Connection':'keep-alive',
 }
 
-MAPPED_NAMES = {
-    'To the Estate of Deborah Martinson':'Deborah Martinson',
-    'Carey Sargent':'Jacob Sargent',
-}
-
 PREFERRED_NAMES = {
-    'Allison de Fren': {'first_name':'Allison', 'last_name':'de Fren'},
-    'Amanda J. Zellmer McCormack': {'first_name':'Amanda J.', 'last_name':'Zellmer'},
+    'Allison de Fren': ('Allison', 'de Fren'),
+    'Amanda J. Zellmer McCormack': ('Amanda J.', 'Zellmer'),
+    'To the Estate of Deborah Martinson': ('Deborah', 'Martinson'),
+    'Carey Sargent': ('Jacob', 'Sargent'),
 }
 
 
@@ -76,14 +73,12 @@ def create_instructor(session, system_name):
     system_name = system_name.strip()
     if system_name == 'Instructor Unassigned':
         return None
-    if system_name in MAPPED_NAMES:
-        system_name = MAPPED_NAMES[system_name]
-    first_name, last_name = system_name.rsplit(' ', maxsplit=1)
-    if system_name in PREFERRED_NAMES:
-        first_name = PREFERRED_NAMES.get('first_name', first_name)
-        last_name = PREFERRED_NAMES.get('last_name', last_name)
     instructor = session.query(Person).filter_by(system_name=system_name)
     if instructor.count() == 0:
+        if system_name in PREFERRED_NAMES:
+            first_name, last_name = PREFERRED_NAMES[system_name]
+        else:
+            first_name, last_name = system_name.rsplit(' ', maxsplit=1)
         return get_or_create(session, Person, system_name=system_name, first_name=first_name, last_name=last_name)
     elif instructor.count() == 1:
         return instructor.first()
