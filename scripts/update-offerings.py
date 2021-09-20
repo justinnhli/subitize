@@ -78,6 +78,7 @@ def create_instructor(session, system_name):
     if instructor.count() == 0:
         if system_name in PREFERRED_NAMES:
             first_name, last_name = PREFERRED_NAMES[system_name]
+            system_name = f'{first_name} {last_name}'
         else:
             first_name, last_name = system_name.rsplit(' ', maxsplit=1)
         return get_or_create(session, Person, system_name=system_name, first_name=first_name, last_name=last_name)
