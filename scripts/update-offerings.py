@@ -55,6 +55,7 @@ REQUEST_HEADERS = {
 PREFERRED_NAMES = {
     'Allison de Fren': ('Allison', 'de Fren'),
     'Amanda J. Zellmer McCormack': ('Amanda J.', 'Zellmer'),
+    'Justin de Leon': ('Justin', 'de Leon'),
     'To the Estate of Deborah Martinson': ('Deborah', 'Martinson'),
     'Carey Sargent': ('Jacob', 'Sargent'),
 }
