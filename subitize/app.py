@@ -5,6 +5,7 @@
 """The subitize web-app."""
 
 from collections import namedtuple
+from copy import copy
 from datetime import datetime
 from os.path import exists as file_exists, join as join_path, dirname, realpath
 
@@ -23,26 +24,6 @@ from .subitizelib import sort_offerings
 Day = namedtuple('Day', ['abbr', 'name'])
 Hour = namedtuple('Hour', ['value', 'display'])
 
-OPTIONS_DEPARTMENTS = list(create_session().query(Department).filter( # pylint: disable = no-member
-    Department.code != 'OXAB',
-    Department.code.notilike('AB%'),
-).order_by(asc(Department.name)))
-OPTIONS_LOWER = 0
-OPTIONS_UPPER = 999
-OPTIONS_DAYS = [
-    Day('M', 'Monday'),
-    Day('T', 'Tuesday'),
-    Day('W', 'Wednesday'),
-    Day('R', 'Thursday'),
-    Day('F', 'Friday'),
-    Day('U', 'Saturday'),
-]
-OPTIONS_HOURS = [
-    (lambda time: Hour(time.strftime('%H%M'), time.strftime('%I %p').strip('0').lower()))(
-        datetime.strptime(str(i), '%H')
-    ) for i in range(6, 24)
-]
-
 DEFAULT_OPTIONS = {
     'query': 'search for courses...',
     'semester': Semester.current_semester_code(),
@@ -57,6 +38,48 @@ DEFAULT_OPTIONS = {
     'start_hour': '0600',
     'end_hour': '2300',
 }
+
+
+def create_context_template():
+    """Create a context template with the advanced search options values.
+
+    Returns:
+        dict: The context.
+    """
+    session = create_session()
+    hours = [
+        (lambda time: Hour(time.strftime('%H%M'), time.strftime('%I %p').strip('0').lower()))(
+            datetime.strptime(str(i), '%H')
+        ) for i in range(6, 24)
+    ]
+    return {
+        'semesters': list(session.query(Semester).order_by(desc(Semester.id))),
+        'instructors': sorted(session.query(Person), key=(lambda p: (p.last_name + ', ' + p.first_name).lower())),
+        'cores': list(session.query(Core).order_by(Core.name)),
+        'units': [
+            str(unit) for unit in
+            sorted(row[0] for row in session.query(Offering.units).distinct())
+        ],
+        'departments': list(session.query(Department).filter( # pylint: disable = no-member
+            Department.code != 'OXAB',
+            Department.code.notilike('AB%'),
+        ).order_by(asc(Department.name))),
+        'lower': 0,
+        'upper': 999,
+        'days': [
+            Day('M', 'Monday'),
+            Day('T', 'Tuesday'),
+            Day('W', 'Wednesday'),
+            Day('R', 'Thursday'),
+            Day('F', 'Friday'),
+            Day('U', 'Saturday'),
+        ],
+        'start_hours': hours,
+        'end_hours': hours,
+    }
+
+
+CONTEXT_TEMPLATE = create_context_template()
 
 JSON_RESULT_LIMIT = 200
 
@@ -102,36 +125,6 @@ def get_parameter_or_default(parameters, parameter):
     else:
         assert parameter in DEFAULT_OPTIONS
         return DEFAULT_OPTIONS[parameter]
-
-
-def get_dropdown_options(session, parameters):
-    """Populate a context with the advanced search options.
-
-    Where applicable (eg. with minimum and maximum course numbers), the
-    parameters of the current search will be taken into account.
-
-    Arguments:
-        session (Session): The sqlalchemy session to connect with.
-        parameters (dict): The parameters of the current search.
-
-    Returns:
-        dict: The updated context.
-    """
-    context = {}
-    context['semesters'] = list(session.query(Semester).order_by(desc(Semester.id)))
-    context['instructors'] = sorted(session.query(Person), key=(lambda p: (p.last_name + ', ' + p.first_name).lower()))
-    context['cores'] = list(session.query(Core).order_by(Core.name))
-    context['units'] = [
-        str(unit) for unit in
-        sorted(row[0] for row in session.query(Offering.units).distinct())
-    ]
-    context['departments'] = OPTIONS_DEPARTMENTS
-    context['lower'] = (OPTIONS_LOWER if parameters.get('lower') is None else parameters.get('lower'))
-    context['upper'] = (OPTIONS_UPPER if parameters.get('upper') is None else parameters.get('upper'))
-    context['days'] = OPTIONS_DAYS
-    context['start_hours'] = OPTIONS_HOURS
-    context['end_hours'] = OPTIONS_HOURS
-    return context
 
 
 def get_search_results(session, parameters):
@@ -194,9 +187,12 @@ app = Flask(__name__, root_path=ROOT_DIRECTORY) # pylint: disable = invalid-name
 @app.route('/')
 def view_root():
     """Serve the homepage."""
-    session = create_session()
     parameters = request.args.to_dict()
-    context = get_dropdown_options(session, parameters)
+    context = copy(CONTEXT_TEMPLATE)
+    if parameters.get('lower') is not None:
+        context['lower'] = parameters.get('lower')
+    if parameters.get('upper') is not None:
+        context['upper'] = parameters.get('upper')
     context['advanced'] = parameters.get('advanced')
     if 'semester' not in parameters:
         parameters['semester'] = Semester.current_semester_code()
