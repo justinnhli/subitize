@@ -121,7 +121,10 @@ def get_dropdown_options(session, parameters):
     context['semesters'] = list(session.query(Semester).order_by(desc(Semester.id)))
     context['instructors'] = sorted(session.query(Person), key=(lambda p: (p.last_name + ', ' + p.first_name).lower()))
     context['cores'] = list(session.query(Core).order_by(Core.name))
-    context['units'] = sorted(str(row[0]) for row in session.query(Offering.units).distinct())
+    context['units'] = [
+        str(unit) for unit in
+        sorted(row[0] for row in session.query(Offering.units).distinct())
+    ]
     context['departments'] = OPTIONS_DEPARTMENTS
     context['lower'] = (OPTIONS_LOWER if parameters.get('lower') is None else parameters.get('lower'))
     context['upper'] = (OPTIONS_UPPER if parameters.get('upper') is None else parameters.get('upper'))
