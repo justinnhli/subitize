@@ -9,6 +9,26 @@ $(function () {
     var saved_courses = {};
 
     /**
+     * Link course numbers to a search for them.
+     *
+     * @param {Obj} result - The course object.
+     * @param {string} text - The text to embed links in.
+     * @returns {string} - The transformed text.
+     */
+    function link_course_numbers(result, text) {
+        var replacement = ""
+        replacement += "<a href=\"/?advanced=true&department=$1\">"
+        if (result === null) {
+            replacement += "$1";
+        } else {
+            replacement += "<abbr title=\"" + result.department.name + "\">$1</abbr>";
+        }
+        replacement += "</a>"
+        replacement += " <a href=\"/?advanced=true&semester=any&department=$1&lower=$2&upper=$2\">$2</a>"
+        return text.replace(/([A-Z]{3,4}) ([0-9]{1,3})/g, replacement);
+    }
+
+    /**
      * Handle the search.
      *
      * @returns {boolean} - Whether to change the URL.
@@ -201,20 +221,10 @@ $(function () {
         var html = [];
         var url = "";
         html.push("<td>");
-        url = "/";
-        url += "?advanced=true";
-        url += "&department=" + result.department.code;
-        html.push("<a href=\"" + url + "\">");
-        html.push("<abbr title=\"" + result.department.name + "\">");
-        html.push(result.department.code);
-        html.push("</abbr></a>");
-        html.push(" ");
-        url += "&semester=any";
-        url += "&lower=" + result.number.number;
-        url += "&upper=" + result.number.number;
-        html.push("<a href=\"" + url + "\">");
-        html.push(result.number.string);
-        html.push("</a>");
+        html.push(link_course_numbers(
+            result,
+            result.department.code + " " + result.number.string
+        ));
         html.push(" ");
         html.push("(" + result.section + ")");
         html.push("</td>");
@@ -388,20 +398,6 @@ $(function () {
     }
 
     /**
-     * Link course numbers to a search for them.
-     *
-     * @param {string} text - The text to embed links in.
-     * @returns {string} - The transformed text.
-     */
-    function link_course_numbers(text) {
-        return text.replace(
-            /([A-Z]{3,4}) ([0-9]{3})/g,
-            "<a href=\"/?advanced=true&department=$1\">$1</a> "
-            + "<a href=\"/?advanced=true&semester=any&department=$1&lower=$2&upper=$2\">$2</a>"
-        );
-    }
-
-    /**
      * Create a table row for the catalog information of an offering.
      *
      * @param {Obj} result - The course object.
@@ -413,16 +409,16 @@ $(function () {
         html.push("<td></td><td></td><td></td>");
         html.push("<td class=\"description\" colspan=\"3\">");
         if (result.info.description) {
-            html.push(link_course_numbers(result.info.description));
+            html.push(link_course_numbers(null, result.info.description));
         }
         if (result.info.prerequisites) {
             html.push("<p>Prerequisites: ");
-            html.push(link_course_numbers(result.info.prerequisites));
+            html.push(link_course_numbers(null, result.info.prerequisites));
             html.push("</p>");
         }
         if (result.info.corequisites) {
             html.push("<p>Corequisites: ");
-            html.push(link_course_numbers(result.info.corequisites));
+            html.push(link_course_numbers(null, result.info.corequisites));
             html.push("</p>");
         }
         html.push("<p><a href=\"" + result.info.url + "\">View in Catalog</a></p>");
