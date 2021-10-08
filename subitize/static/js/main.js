@@ -388,10 +388,17 @@ $(function () {
     }
 
     /**
-     * Link course numbers to a search for them
+     * Link course numbers to a search for them.
+     *
+     * @param {string} text - The text to embed links in.
+     * @returns {string} - The transformed text.
      */
-    function link_course_numbers(string) {
-        return string.replace(/([A-Z]{3,4}) ([0-9]{3})/g, '<a href="/?advanced=true&department=$1&semester=any&lower=$2&upper=$2">$1 $2</a>');
+    function link_course_numbers(text) {
+        return text.replace(
+            /([A-Z]{3,4}) ([0-9]{3})/g,
+            "<a href=\"/?advanced=true&department=$1\">$1</a> "
+            + "<a href=\"/?advanced=true&semester=any&department=$1&lower=$2&upper=$2\">$2</a>"
+        );
     }
 
     /**
