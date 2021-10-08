@@ -388,6 +388,13 @@ $(function () {
     }
 
     /**
+     * Link course numbers to a search for them
+     */
+    function link_course_numbers(string) {
+        return string.replace(/([A-Z]{3,4}) ([0-9]{3})/g, '<a href="/?advanced=true&department=$1&semester=any&lower=$2&upper=$2">$1 $2</a>');
+    }
+
+    /**
      * Create a table row for the catalog information of an offering.
      *
      * @param {Obj} result - The course object.
@@ -399,16 +406,16 @@ $(function () {
         html.push("<td></td><td></td><td></td>");
         html.push("<td class=\"description\" colspan=\"3\">");
         if (result.info.description) {
-            html.push(result.info.description);
+            html.push(link_course_numbers(result.info.description));
         }
         if (result.info.prerequisites) {
             html.push("<p>Prerequisites: ");
-            html.push(result.info.prerequisites);
+            html.push(link_course_numbers(result.info.prerequisites));
             html.push("</p>");
         }
         if (result.info.corequisites) {
             html.push("<p>Corequisites: ");
-            html.push(result.info.corequisites);
+            html.push(link_course_numbers(result.info.corequisites));
             html.push("</p>");
         }
         html.push("<p><a href=\"" + result.info.url + "\">View in Catalog</a></p>");
