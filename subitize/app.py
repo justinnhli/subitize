@@ -8,6 +8,7 @@ from collections import namedtuple
 from copy import copy
 from datetime import datetime
 from os.path import exists as file_exists, join as join_path, dirname, realpath
+from time import sleep
 
 from flask import Flask, render_template, abort, request, send_from_directory, url_for, redirect
 from flask.json import jsonify
@@ -17,7 +18,8 @@ from .models import create_session
 from .models import Semester, Core, Department, Person, Offering
 from .subitizelib import create_query
 from .subitizelib import filter_study_abroad, filter_by_search
-from .subitizelib import filter_by_semester, filter_by_department, filter_by_number, filter_by_instructor
+from .subitizelib import filter_by_semester, filter_by_department, filter_by_instructor
+from .subitizelib import filter_by_number, filter_by_number_str, filter_by_section
 from .subitizelib import filter_by_units, filter_by_core, filter_by_meeting, filter_by_openness
 from .subitizelib import sort_offerings
 
@@ -244,6 +246,27 @@ def view_simplify():
         return redirect(url_for('view_json', **simplified))
     else:
         return redirect(url_for('view_root', **simplified))
+
+
+@app.route('/fetch/<readable_ids>')
+def view_fetch(readable_ids):
+    """Fetch the details of one or more comma-separated offerings."""
+    session = create_session()
+    offerings = []
+    for readable_id in readable_ids.split(','):
+        semester, department, number, section = readable_id.split('_')
+        query = create_query(session)
+        query = filter_by_semester(session, query, semester)
+        query = filter_by_department(session, query, department)
+        query = filter_by_number_str(session, query, number)
+        query = filter_by_section(session, query, section)
+        offering = query.first()
+        if offering is not None:
+            offerings.append(offering)
+    return jsonify({
+        offering.readable_id: offering.to_json_dict()
+        for offering in offerings
+    })
 
 
 @app.route('/json-doc/')

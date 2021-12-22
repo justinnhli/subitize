@@ -453,6 +453,10 @@ $(function () {
      * @returns {undefined}
      */
     function update_saved_courses_display() {
+        if (saved_courses_list.length !== Object.keys(saved_courses).length) {
+            setTimeout(update_saved_courses_display, 200);
+            return;
+        }
         if (saved_courses_list.length === 0) {
             $("#saved-courses-header").hide();
         } else {
@@ -579,13 +583,22 @@ $(function () {
      * @returns {undefined}
      */
     function load_saved_courses() {
-        var params = deparam(get_url_hash());
-        if (params["list"] === undefined) {
+        var course_list = get_url_hash();
+        if (course_list === "") {
             saved_courses_list = [];
             saved_courses = {};
         } else {
-            saved_courses_list = JSON.parse(atob(params["list"]));
-            saved_courses = JSON.parse(atob(params["dict"]));
+            var settings = {
+                url:"/fetch/" + course_list,
+                async: true
+            };
+            $.get(settings).done(function(response) {
+                saved_courses_list = Object.keys(response);
+                saved_courses_list.sort();
+                saved_courses = response;
+                update_saved_courses_display();
+                save_saved_courses();
+            });
         }
     }
 
@@ -600,10 +613,7 @@ $(function () {
             url += "?" + curr_parameters;
         }
         if (saved_courses_list.length > 0) {
-            url += "#" + param({
-                "list": btoa(JSON.stringify(saved_courses_list)),
-                "dict": btoa(JSON.stringify(saved_courses))
-            });
+            url += "#" + saved_courses_list.join(",");
         }
         history.pushState(null, "Subitize - Course Counts at a Glance", url);
     }
@@ -627,10 +637,7 @@ $(function () {
                 url = a.attr("href");
             }
             if (saved_courses_list.length > 0) {
-                url += "#" + param({
-                    "list": btoa(JSON.stringify(saved_courses_list)),
-                    "dict": btoa(JSON.stringify(saved_courses))
-                });
+                url += "#" + saved_courses_list.join(",");
             }
             a.attr("href", url);
         });
@@ -747,7 +754,6 @@ $(function () {
         // TODO set values of advanced options with javascript
         $("#advanced-toggle").click().click();
         load_saved_courses();
-        update_saved_courses_display();
         if (location.search) {
             search_from_parameters(location.search.substring(1), !from_back);
             show_tab("search-results");
