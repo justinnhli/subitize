@@ -182,7 +182,7 @@ $(function () {
     function build_search_result_save_checkbox(result) {
         var td = $("<td>");
         td.addClass("save-checkbox");
-        var label = $("<label>");
+        var label = $("<label title=\"save course\">");
         var checkbox = $("<input type=\"checkbox\">");
         checkbox.addClass(result.id + "-checkbox");
         if (Object.prototype.hasOwnProperty.call(saved_courses, result.id)) {
@@ -249,7 +249,7 @@ $(function () {
         html.push(result.title);
         if (result.info) {
             html.push(" ");
-            html.push("<span class=\"more-info\">[+]</span>");
+            html.push("<span class=\"more-info\" title=\"show catalog info\">[+]</span>");
         }
         html.push("</td>");
         return html.join("");
@@ -457,8 +457,10 @@ $(function () {
             return;
         }
         if (saved_courses_list.length === 0) {
+            $("#saved-courses-heading").hide();
             $("#saved-courses-header").hide();
         } else {
+            $("#saved-courses-heading").show();
             $("#saved-courses-header").show();
         }
         $("#saved-courses-count").html(saved_courses_list.length);
