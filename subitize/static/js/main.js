@@ -180,15 +180,22 @@ $(function () {
      * @returns {string} - The table cell.
      */
     function build_search_result_save_checkbox(result) {
+        var td = $("<td>");
+        td.addClass("save-checkbox");
+        var span = $("<span>");
         var checkbox = $("<input type=\"checkbox\">");
-        checkbox.addClass(result.id + "-checkbox");
+        checkbox.attr("id", result.id + "-checkbox");
         if (Object.prototype.hasOwnProperty.call(saved_courses, result.id)) {
             checkbox.prop("checked", "checked");
         }
         checkbox.click(function () {
             save_course_checkbox_handler(checkbox, result);
         });
-        return checkbox;
+        var label = $("<label for=\"" + result.id + "-checkbox\"></label>");
+        span.append(checkbox);
+        span.append(label);
+        td.append(span);
+        return td;
     }
 
     /**
@@ -464,7 +471,7 @@ $(function () {
             var row = build_course_listing_row(course, classes.concat(course.id));
             $("#saved-courses-header").after(row);
             // recheck checkboxes
-            $("." + course.id + "-checkbox").prop("checked", "checked");
+            $("#" + course.id + "-checkbox").prop("checked", "checked");
         }
     }
 
@@ -515,7 +522,7 @@ $(function () {
         saved_courses_list.splice(saved_courses_list.indexOf(result.id), 1);
         delete saved_courses[result.id];
         $("tbody." + result.id).remove();
-        $("." + result.id + "-checkbox").prop("checked", false);
+        $("#" + result.id + "-checkbox").prop("checked", false);
     }
 
     /**
