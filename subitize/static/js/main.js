@@ -599,6 +599,9 @@ $(function () {
                 saved_courses = response;
                 update_saved_courses_display();
                 save_saved_courses();
+                if (curr_tab === "" && saved_courses_list.length > 0) {
+                    show_tab("saved-courses");
+                }
             });
         }
     }
