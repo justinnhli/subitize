@@ -4,19 +4,24 @@ import re
 import sys
 from argparse import ArgumentParser
 from datetime import datetime
-from os.path import dirname, join as join_path, realpath
-from os import remove
+from os import chdir
+from pathlib import Path
+from subprocess import run
 
 import requests
 from bs4 import BeautifulSoup
 
-ROOT_DIRECTORY = dirname(dirname(realpath(__file__)))
-sys.path.insert(0, ROOT_DIRECTORY)
+ROOT_DIRECTORY = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT_DIRECTORY))
 
 from subitize import create_db, create_session, get_or_create
 from subitize import Semester, TimeSlot, Building, Room, Meeting, Core, Department, Course, Person, Offering
 from subitize import create_query, filter_by_semester, filter_by_department, filter_by_number_str, filter_by_section
 
+DB_PATH = ROOT_DIRECTORY.joinpath('subitize', 'data', 'counts.db')
+DUMP_PATH = ROOT_DIRECTORY.joinpath('subitize', 'data', 'data.sql')
+SCHEMA_PATH = ROOT_DIRECTORY.joinpath('subitize', 'data', 'schema.sql')
+LAST_UPDATE_PATH = ROOT_DIRECTORY.joinpath('subitize', 'data', 'last-update')
 COURSE_COUNTS = 'https://counts.oxy.edu/public/default.aspx'
 
 HEADINGS = (
@@ -301,8 +306,27 @@ def delete_section(session, semester_code, dept, num, sec):
         session.delete(offering)
 
 
+def dump():
+
+    def _dump(command, destination):
+        output = run(
+            ['sqlite3', DB_PATH, command],
+            capture_output=True,
+            check=True,
+        ).stdout.decode('utf-8')
+        output = output.replace('PRAGMA foreign_keys=OFF;', 'PRAGMA foreign_keys=ON;')
+        with open(destination, 'w') as fd:
+            fd.write(output)
+
+    create_db()
+    _dump('.schema', SCHEMA_PATH)
+    _dump('.dump', DUMP_PATH)
+
+
 def update_db(semester_code, session=None):
-    remove(join_path(ROOT_DIRECTORY, 'subitize', 'data', 'counts.db'))
+    DB_PATH.unlink()
+    with DUMP_PATH.open() as fd:
+        old_dump = fd.read()
     create_db()
     if session is None:
         session = create_session()
@@ -312,9 +336,18 @@ def update_db(semester_code, session=None):
     for section_str in sorted(old_sections - new_sections):
         delete_section(session, semester_code, *section_str.split())
     session.commit()
+    dump()
+    with DUMP_PATH.open() as fd:
+        new_dump = fd.read()
+    if old_dump != new_dump:
+        with LAST_UPDATE_PATH.open('w') as fd:
+            fd.write(datetime.now().strftime('%Y-%m-%d %H:%M:%S %Z').strip())
+            fd.write('\n')
+    DB_PATH.unlink()
 
 
 def main():
+    chdir(ROOT_DIRECTORY)
     arg_parser = ArgumentParser()
     arg_parser.add_argument('semester', nargs='?', default=Semester.current_semester_code())
     arg_parser.add_argument('--raw', action='store_true')
