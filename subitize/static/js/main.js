@@ -326,7 +326,7 @@ $(function () {
                     html.push(meeting.weekdays.codes);
                     html.push("</abbr>");
                 }
-                if (result.semester.code < "202001") {
+                if (result.semester.code >= "202001") {
                     continue;
                 }
                 html.push(" (");
