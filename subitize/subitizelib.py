@@ -296,7 +296,6 @@ def filter_by_search(session, query=None, terms=None):
         subquery_alias = 'search_subquery_{}'.format(index)
         subquery = (session.query(offering_alias)
             .join(Course, Department)
-            .outerjoin(OfferingMeeting, Meeting, TimeSlot, Room, Building)
             .outerjoin(OfferingCore, Core)
             .outerjoin(OfferingInstructor, Person)
             .filter(or_(
