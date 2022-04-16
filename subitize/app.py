@@ -88,6 +88,8 @@ JSON_RESULT_LIMIT = 200
 ROOT_DIRECTORY = dirname(realpath(__file__))
 LAST_UPDATE_FILE = join_path(ROOT_DIRECTORY, 'data/last-update')
 
+VALID_SORTS = set(['semester', 'course', 'title', 'units', 'instructors', 'meetings', 'cores'])
+
 
 def get_parameter_or_none(parameters, parameter):
     """Get a parameter if it is not its default value.
@@ -175,8 +177,7 @@ def get_search_results(session, parameters):
     query = filter_by_search(session, query, get_parameter_or_none(parameters, 'query'))
     # sort results
     sort = get_parameter_or_none(parameters, 'sort')
-    valid_sorts = ['semester', 'course', 'title', 'units', 'instructors', 'meetings', 'cores']
-    if sort is not None and sort not in valid_sorts:
+    if sort is not None and sort not in VALID_SORTS:
         raise abort(400)
     query = sort_offerings(session, query, sort)
     # return
