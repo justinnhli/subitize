@@ -2,6 +2,8 @@
 
 # pylint: disable = singleton-comparison
 
+from datetime import datetime
+
 from sqlalchemy.orm import aliased
 from sqlalchemy.sql.expression import and_, or_, text, asc, desc, func
 
@@ -194,8 +196,8 @@ def filter_by_meeting(session, query=None, days=None, starts_after=None, ends_be
         session (Session): The sqlalchemy session to connect with.
         query (Query): The existing query to build on. Optional.
         days (str): The concatenated one-letter abbreviation of the weekdays. Optional.
-        starts_after (Time): The earliest acceptable start time, inclusive. Optional.
-        ends_before (Time): The latest acceptable end time, inclusive. Optional.
+        starts_after (str): The earliest acceptable start time, inclusive. Optional.
+        ends_before (str): The latest acceptable end time, inclusive. Optional.
 
     Returns:
         Query: A filtered sqlalchemy Query.
@@ -204,17 +206,20 @@ def filter_by_meeting(session, query=None, days=None, starts_after=None, ends_be
         query = create_query(session)
     filters = []
     if days is not None:
-        if len(days) == 1:
-            filters.append(or_(TimeSlot.weekdays == None, TimeSlot.weekdays.ilike('%' + days + '%')))
-        else:
-            filters.append(or_(
-                TimeSlot.weekdays == None,
-                and_(*[TimeSlot.weekdays.ilike('%' + day + '%') for day in days]),
-            ))
+        filters.append(or_(
+            TimeSlot.weekdays == None,
+            and_(*[TimeSlot.weekdays.ilike('%' + day + '%') for day in days]),
+        ))
     if starts_after is not None:
-        filters.append(or_(TimeSlot.start == None, TimeSlot.start >= starts_after))
+        filters.append(or_(
+            TimeSlot.start == None,
+            TimeSlot.start >= datetime.strptime(starts_after, '%H%M').time(),
+        ))
     if ends_before is not None:
-        filters.append(or_(TimeSlot.end == None, TimeSlot.end <= ends_before))
+        filters.append(or_(
+            TimeSlot.end == None,
+            TimeSlot.end <= datetime.strptime(ends_before, '%H%M').time(),
+        ))
     if filters:
         offering_outer_alias = aliased(Offering)
         offering_inner_alias = aliased(Offering)

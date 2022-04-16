@@ -170,8 +170,8 @@ def get_search_results(session, parameters):
         session,
         query,
         get_parameter_or_none(parameters, 'day'),
-        datetime.strptime(get_parameter_or_default(parameters, 'start_hour'), '%H%M').time(),
-        datetime.strptime(get_parameter_or_default(parameters, 'end_hour'), '%H%M').time(),
+        get_parameter_or_none(parameters, 'start_hour'),
+        get_parameter_or_none(parameters, 'end_hour'),
     )
     # filter by search
     query = filter_by_search(session, query, get_parameter_or_none(parameters, 'query'))
