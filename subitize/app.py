@@ -113,24 +113,6 @@ def get_parameter_or_none(parameters, parameter):
         return None
 
 
-def get_parameter_or_default(parameters, parameter):
-    """Get a parameter or fallback to its default value.
-
-    Argument:
-        parameters (dict): The dictionary of parameters and values.
-        parameter (str): The parameter to get.
-
-    Returns:
-        str: The value of the parameter.
-    """
-    value = get_parameter_or_none(parameters, parameter)
-    if value:
-        return value
-    else:
-        assert parameter in DEFAULT_OPTIONS
-        return DEFAULT_OPTIONS[parameter]
-
-
 def get_search_results(session, parameters):
     """Build a query for the search.
 
