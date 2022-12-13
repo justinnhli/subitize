@@ -59,7 +59,7 @@ $(function () {
         var search_results_header = build_course_listing_header("search-results");
         search_results_table.append(search_results_header);
         search_results_header.after("<tbody class=\"search-results data\"><tr><td colspan=\"9\">Searching...</td></tr></tbody>");
-        $.get("/simplify?json=1&" + parameters).done(function(response) {
+        $.get("/simplify/?json=1&" + parameters).done(function(response) {
             // parse response
             var metadata = response.metadata;
             var results = response.results;
