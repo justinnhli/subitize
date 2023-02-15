@@ -14,7 +14,7 @@ setup(
         'Flask==1.0.3',
         'Jinja2==2.11.3',
         'SQLAlchemy==1.3.4',
-        'Werkzeug==0.15.4',
+        'Werkzeug==2.2.3',
         'beautifulsoup4==4.7.1',
         'gunicorn==19.9.0',
         'requests==2.22.0',
