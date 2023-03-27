@@ -2,6 +2,10 @@
 
 from setuptools import setup
 
+with open('requirements.txt', encoding='utf-8') as fd:
+    requirements = fd.read().splitlines()
+
+
 setup(
     name='subitize',
     version='',
@@ -10,16 +14,7 @@ setup(
     long_description='',
     license='',
 
-    install_requires=[
-        'Flask==1.0.3',
-        'Jinja2==2.11.3',
-        'SQLAlchemy==1.3.4',
-        'Werkzeug==0.15.4',
-        'beautifulsoup4==4.7.1',
-        'gunicorn==19.9.0',
-        'requests==2.22.0',
-        'sqlparse==0.3.0',
-    ],
+    install_requires=requirements,
 
     author='Justin Li',
     author_email='justinnhli@oxy.edu',
