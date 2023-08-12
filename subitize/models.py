@@ -534,7 +534,12 @@ class CourseInfo(Base):
     """Metadata about a course."""
 
     __tablename__ = 'course_info'
-    course_id = Column(Integer, ForeignKey('courses.id'), primary_key=True)
+    __table_args__ = (
+        UniqueConstraint('year', 'course_id', name='_year_course_uc'),
+    )
+    id = Column(Integer, primary_key=True)
+    year = Column(Integer, nullable=False)
+    course_id = Column(Integer, ForeignKey('courses.id'))
     course = relationship('Course', back_populates='info', uselist=False)
     url = Column(String, nullable=False)
     description = Column(String, nullable=True)

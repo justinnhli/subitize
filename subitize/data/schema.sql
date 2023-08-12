@@ -102,13 +102,16 @@ CREATE TABLE offering_instructor_assoc (
 	FOREIGN KEY(instructor_id) REFERENCES people (id) ON DELETE CASCADE
 );
 CREATE TABLE course_info (
+	id INTEGER NOT NULL, 
+	year INTEGER NOT NULL,
 	course_id INTEGER NOT NULL,
 	url VARCHAR NOT NULL,
 	description VARCHAR,
 	prerequisites VARCHAR,
 	corequisites VARCHAR,
 	parsed_prerequisites VARCHAR,
-	PRIMARY KEY(`course_id`),
+	PRIMARY KEY (id),
+	CONSTRAINT _year_course_uc UNIQUE (year, course_id), 
 	FOREIGN KEY(course_id) REFERENCES courses (id) ON DELETE CASCADE
 );
 CREATE INDEX ix_offering_meeting_assoc_offering_id ON offering_meeting_assoc (offering_id);
