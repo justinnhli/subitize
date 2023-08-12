@@ -4,7 +4,7 @@
 
 This project is a web app that redesigns Occidental College's [Course Counts](http://counts.oxy.edu/) with a friendlier user interface that simultaneously offers more flexibility. The long-term goal is to supersede Course Counts by serving all student-side course scheduling needs, including graduation and major/minor planning.
 
-The live app can be found at [http://subitize.herokuapp.com/](http://subitize.herokuapp.com/).
+The live app can be found at [https://justinnhli.com/subitize](https://justinnhli.com/subitize).
 
 ## Running Locally
 
