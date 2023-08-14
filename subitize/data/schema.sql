@@ -60,10 +60,24 @@ CREATE TABLE meetings (
 	FOREIGN KEY(timeslot_id) REFERENCES timeslots (id), 
 	FOREIGN KEY(room_id) REFERENCES rooms (id)
 );
+CREATE TABLE course_descriptions (
+	id INTEGER NOT NULL, 
+	year INTEGER NOT NULL,
+	course_id INTEGER NOT NULL,
+	url VARCHAR NOT NULL,
+	description VARCHAR,
+	prerequisites VARCHAR,
+	corequisites VARCHAR,
+	parsed_prerequisites VARCHAR,
+	PRIMARY KEY (id),
+	CONSTRAINT _year_course_uc UNIQUE (year, course_id), 
+	FOREIGN KEY(course_id) REFERENCES courses (id) ON DELETE CASCADE
+);
 CREATE TABLE offerings (
 	id INTEGER NOT NULL, 
 	semester_id INTEGER NOT NULL, 
 	course_id INTEGER NOT NULL, 
+	course_desc_id INTEGER,
 	section VARCHAR NOT NULL, 
 	title VARCHAR NOT NULL, 
 	units INTEGER NOT NULL, 
@@ -75,7 +89,8 @@ CREATE TABLE offerings (
 	PRIMARY KEY (id), 
 	CONSTRAINT _semester_course_section_uc UNIQUE (semester_id, course_id, section), 
 	FOREIGN KEY(semester_id) REFERENCES semesters (id), 
-	FOREIGN KEY(course_id) REFERENCES courses (id)
+	FOREIGN KEY(course_id) REFERENCES courses (id),
+	FOREIGN KEY(course_desc_id) REFERENCES course_descriptions (id)
 );
 CREATE TABLE offering_meeting_assoc (
 	id INTEGER NOT NULL, 
@@ -100,19 +115,6 @@ CREATE TABLE offering_instructor_assoc (
 	PRIMARY KEY (id), 
 	FOREIGN KEY(offering_id) REFERENCES offerings (id) ON DELETE CASCADE, 
 	FOREIGN KEY(instructor_id) REFERENCES people (id) ON DELETE CASCADE
-);
-CREATE TABLE course_descriptions (
-	id INTEGER NOT NULL, 
-	year INTEGER NOT NULL,
-	course_id INTEGER NOT NULL,
-	url VARCHAR NOT NULL,
-	description VARCHAR,
-	prerequisites VARCHAR,
-	corequisites VARCHAR,
-	parsed_prerequisites VARCHAR,
-	PRIMARY KEY (id),
-	CONSTRAINT _year_course_uc UNIQUE (year, course_id), 
-	FOREIGN KEY(course_id) REFERENCES courses (id) ON DELETE CASCADE
 );
 CREATE INDEX ix_offering_meeting_assoc_offering_id ON offering_meeting_assoc (offering_id);
 CREATE INDEX ix_offering_meeting_assoc_meeting_id ON offering_meeting_assoc (meeting_id);

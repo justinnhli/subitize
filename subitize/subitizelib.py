@@ -9,7 +9,6 @@ from sqlalchemy.sql.expression import and_, or_, text, asc, desc, func
 
 from .models import Semester, TimeSlot, Building, Room, Meeting, Core, Department, Course, Person, Offering
 from .models import OfferingMeeting, OfferingCore, OfferingInstructor
-from .models import CourseInfo
 
 
 def create_query(session):
@@ -338,7 +337,6 @@ def sort_offerings(session, query, field=None):
         query = create_query(session)
     query = query.join(Semester)
     query = query.join(Course, Department)
-    query = query.outerjoin(CourseInfo)
     query = query.outerjoin(OfferingMeeting, Meeting, TimeSlot, Room, Building)
     query = query.outerjoin(OfferingCore, Core)
     query = query.outerjoin(OfferingInstructor, Person)

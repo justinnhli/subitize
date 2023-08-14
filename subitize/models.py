@@ -337,7 +337,6 @@ class Course(Base):
     number = Column(String, nullable=False)
     number_int = Column(Integer, nullable=False)
     department = relationship('Department')
-    info = relationship('CourseInfo', back_populates='course', uselist=False)
 
     def __str__(self):
         return '{} {}'.format(self.department.code, self.number)
@@ -399,6 +398,8 @@ class Offering(Base):
     semester = relationship('Semester')
     course_id = Column(Integer, ForeignKey('courses.id'), nullable=False)
     course = relationship('Course')
+    course_desc_id = Column(Integer, ForeignKey('course_descriptions.id'), nullable=True)
+    course_desc = relationship('CourseInfo')
     section = Column(String, nullable=False)
     title = Column(String, nullable=False)
     units = Column(Integer, nullable=False)
@@ -518,14 +519,14 @@ class Offering(Base):
         result['num_reserved'] = self.num_reserved
         result['num_reserved_open'] = self.num_reserved_open
         result['num_waitlisted'] = self.num_waitlisted
-        if not self.course.info:
+        if not self.course_desc:
             result['info'] = None
         else:
             result['info'] = {
-                'description': self.course.info.description,
-                'prerequisites': self.course.info.prerequisites,
-                'corequisites': self.course.info.corequisites,
-                'url': self.course.info.url,
+                'description': self.course_desc.description,
+                'prerequisites': self.course_desc.prerequisites,
+                'corequisites': self.course_desc.corequisites,
+                'url': self.course_desc.url,
             }
         return result
 
@@ -540,7 +541,6 @@ class CourseInfo(Base):
     id = Column(Integer, primary_key=True)
     year = Column(Integer, nullable=False)
     course_id = Column(Integer, ForeignKey('courses.id'))
-    course = relationship('Course', back_populates='info', uselist=False)
     url = Column(String, nullable=False)
     description = Column(String, nullable=True)
     prerequisites = Column(String, nullable=True)
