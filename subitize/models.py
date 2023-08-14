@@ -533,7 +533,7 @@ class Offering(Base):
 class CourseInfo(Base):
     """Metadata about a course."""
 
-    __tablename__ = 'course_info'
+    __tablename__ = 'course_descriptions'
     __table_args__ = (
         UniqueConstraint('year', 'course_id', name='_year_course_uc'),
     )

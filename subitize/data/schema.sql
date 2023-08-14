@@ -101,7 +101,7 @@ CREATE TABLE offering_instructor_assoc (
 	FOREIGN KEY(offering_id) REFERENCES offerings (id) ON DELETE CASCADE, 
 	FOREIGN KEY(instructor_id) REFERENCES people (id) ON DELETE CASCADE
 );
-CREATE TABLE course_info (
+CREATE TABLE course_descriptions (
 	id INTEGER NOT NULL, 
 	year INTEGER NOT NULL,
 	course_id INTEGER NOT NULL,
