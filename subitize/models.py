@@ -399,7 +399,7 @@ class Offering(Base):
     course_id = Column(Integer, ForeignKey('courses.id'), nullable=False)
     course = relationship('Course')
     course_desc_id = Column(Integer, ForeignKey('course_descriptions.id'), nullable=True)
-    course_desc = relationship('CourseInfo')
+    course_desc = relationship('CourseDescription')
     section = Column(String, nullable=False)
     title = Column(String, nullable=False)
     units = Column(Integer, nullable=False)
@@ -531,8 +531,8 @@ class Offering(Base):
         return result
 
 
-class CourseInfo(Base):
-    """Metadata about a course."""
+class CourseDescription(Base):
+    """The catalog description of a course."""
 
     __tablename__ = 'course_descriptions'
     __table_args__ = (

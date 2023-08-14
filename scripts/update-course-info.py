@@ -12,7 +12,7 @@ from bs4.element import Comment
 sys.path.insert(0, dirname(dirname(realpath(__file__))))
 
 from subitize import create_session, get_or_create
-from subitize import Semester, Department, Course, CourseInfo
+from subitize import Semester, Department, Course, CourseDescription
 
 BASE_URL = 'http://oxy.smartcatalogiq.com/{}-{}/Catalog/Course-Descriptions/'
 
@@ -98,7 +98,7 @@ def parse_prerequisites(prerequisites):
     pass # TODO
 
 
-def extract_course_info(session, url):
+def extract_course_info(session, url, year):
     if not is_valid_url(url):
         return
     course_soup = get_soup_from_URL(url)
@@ -114,15 +114,18 @@ def extract_course_info(session, url):
         course = get_or_create(
             session, Course, department=department, number=number, number_int=int(re.sub('[^0-9]', '', number))
         )
-        course_info = session.query(CourseInfo).filter(CourseInfo.course_id == course.id).first()
-        if course_info:
-            course_info.url = url
+        course_desc = session.query(CourseDescription).filter(
+            CourseDescription.year == year,
+            CourseDescription.course_id == course.id,
+        ).first()
+        if course_desc:
+            course_desc.url = url
         else:
-            course_info = get_or_create(session, CourseInfo, course_id=course.id, url=url)
-        course_info.description = description
-        course_info.prerequisites = prerequisites
-        course_info.corequisites = corequisites
-        course_info.parsed_prerequisites = parsed_prerequisites
+            course_desc = get_or_create(session, CourseDescription, year=year, course_id=course.id, url=url)
+        course_desc.description = description
+        course_desc.prerequisites = prerequisites
+        course_desc.corequisites = corequisites
+        course_desc.parsed_prerequisites = parsed_prerequisites
         # TODO detect if prerequisites have changed
 
 
@@ -157,7 +160,7 @@ def main(year):
             if course_url in visited_urls:
                 continue
             visited_urls.add(course_url)
-            extract_course_info(session, course_url)
+            extract_course_info(session, course_url, year)
         session.commit()
         print('done')
 

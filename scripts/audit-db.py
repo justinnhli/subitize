@@ -11,7 +11,7 @@ from subitize import create_session
 from subitize import Semester, TimeSlot, Building, Room, Meeting
 from subitize import Core, Department, Course, Person
 from subitize import OfferingMeeting, OfferingCore, OfferingInstructor, Offering
-from subitize import CourseInfo
+from subitize import CourseDescription
 
 
 def delete_orphans(session):
@@ -25,7 +25,7 @@ def delete_orphans(session):
     for course in session.query(Course).all():
         referenced = (
             session.query(Offering).filter(Offering.course == course).first()
-            or session.query(CourseInfo).filter(CourseInfo.course == course).first()
+            or session.query(CourseDescription).filter(CourseDescription.course == course).first()
         )
         if not referenced:
             print('Course {} is never referenced; deleting...'.format(course))
@@ -120,9 +120,9 @@ def check_children(session):
         core = session.query(Core).get(offering_core.core_code)
         assert core, 'Cannot find instructor of {}'.format(offering_core)
 
-    for course_info in session.query(CourseInfo).all():
-        course = session.query(Course).get(course_info.course_id)
-        assert course, 'Cannot find course of {}'.format(course_info)
+    for course_desc in session.query(CourseDescription).all():
+        course = session.query(Course).get(course_desc.course_id)
+        assert course, 'Cannot find course of {}'.format(course_desc)
 
 
 def main():
