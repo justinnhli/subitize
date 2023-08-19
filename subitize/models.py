@@ -81,7 +81,6 @@ class Semester(Base):
 
         Returns:
             str: The semester code.
-
         """
         today = datetime.today().date()
         if today < date(today.year, 3, 22):
