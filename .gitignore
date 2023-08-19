@@ -1,3 +1,2 @@
-.coverage
-counts.db
-node_modules
+subitize/data/counts.db
+scripts/catalog-cache
