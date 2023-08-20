@@ -52,16 +52,16 @@ class Semester(Base):
         """Get the Oxy code for the semester."""
         season = self.season.lower()
         if season == 'fall':
-            return '{}01'.format(int(self.year) + 1)
+            return f'{int(self.year)+1}01'
         elif season == 'spring':
-            return '{}02'.format(self.year)
+            return f'{self.year}02'
         elif season == 'summer':
-            return '{}03'.format(self.year)
+            return f'{self.year}03'
         assert False
         return None
 
     def __str__(self):
-        return '{} {}'.format(self.year, self.season)
+        return f'{self.year} {self.season}'
 
     def __lt__(self, other):
         return self.code < other.code
@@ -108,7 +108,7 @@ class Semester(Base):
             return year, 'Spring'
         elif season == '03':
             return year, 'Summer'
-        raise ValueError('invalid semester code: {}'.format(code))
+        raise ValueError(f'invalid semester code: {code}')
 
 
 class TimeSlot(Base):
@@ -132,7 +132,7 @@ class TimeSlot(Base):
     end = Column(Time, nullable=False)
 
     def __str__(self):
-        return '{} {}-{}'.format(self.weekdays, self.us_start_time, self.us_end_time)
+        return f'{self.weekdays} {self.us_start_time}-{self.us_end_time}'
 
     @property
     def weekdays_names(self):
@@ -188,7 +188,7 @@ class Building(Base):
     name = Column(String, nullable=False)
 
     def __str__(self):
-        return '{} ({})'.format(self.name, self.code)
+        return f'{self.name} ({self.code})'
 
 
 class Room(Base):
@@ -204,7 +204,7 @@ class Room(Base):
     room = Column(String, nullable=True)
 
     def __str__(self):
-        return '{} {}'.format(self.building.code, self.room)
+        return f'{self.building.code} {self.room}'
 
 
 class Meeting(Base):
@@ -222,7 +222,7 @@ class Meeting(Base):
     room = relationship('Room')
 
     def __str__(self):
-        return '{} ({})'.format(str(self.timeslot), str(self.room))
+        return f'{self.timeslot} ({self.room})'
 
     @property
     def weekdays(self):
@@ -287,7 +287,7 @@ class Core(Base):
     name = Column(String, nullable=False)
 
     def __str__(self):
-        return '{} ({})'.format(self.name, self.code)
+        return f'{self.name} ({self.code})'
 
 
 class Department(Base):
@@ -298,7 +298,7 @@ class Department(Base):
     name = Column(String, nullable=False)
 
     def __str__(self):
-        return '{} ({})'.format(self.name, self.code)
+        return f'{self.name} ({self.code})'
 
 
 class Course(Base):
@@ -315,7 +315,7 @@ class Course(Base):
     department = relationship('Department')
 
     def __str__(self):
-        return '{} {}'.format(self.department.code, self.number)
+        return f'{self.department.code} {self.number}'
 
 
 class Person(Base):
@@ -329,7 +329,7 @@ class Person(Base):
     offerings = relationship('Offering', secondary='offering_instructor_assoc', back_populates='instructors')
 
     def __str__(self):
-        return '{} {}'.format(self.first_name, self.last_name)
+        return f'{self.first_name} {self.last_name}'
 
 
 class OfferingMeeting(Base):
@@ -384,6 +384,9 @@ class Offering(Base):
     num_reserved = Column(Integer, nullable=False)
     num_reserved_open = Column(Integer, nullable=False)
     num_waitlisted = Column(Integer, nullable=False)
+
+    def __str__(self):
+        return f'{self.semester} {self.course} {self.section}'
 
     @property
     def is_open(self):

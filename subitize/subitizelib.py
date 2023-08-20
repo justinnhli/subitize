@@ -305,14 +305,14 @@ def filter_by_search(session, query=None, terms=None):
             .filter(or_(
                 offering_alias.title.ilike('%{}%'.format(term)),
                 Department.code == term.upper(),
-                Department.name.ilike('%{}%'.format(term)),
+                Department.name.ilike(f'%{term}%'),
                 Course.number == term.upper(),
-                Course.number.ilike('%{}%'.format(term)),
+                Course.number.ilike(f'%{term}%'),
                 Core.code == term.upper(),
-                Core.name.ilike('%{}%'.format(term)),
-                Person.system_name.ilike('%{}%'.format(term)),
-                Person.first_name.ilike('%{}%'.format(term)),
-                Person.last_name.ilike('%{}%'.format(term)),
+                Core.name.ilike(f'%{term}%'),
+                Person.system_name.ilike(f'%{term}%'),
+                Person.first_name.ilike(f'%{term}%'),
+                Person.last_name.ilike(f'%{term}%'),
             )).subquery(subquery_alias))
         query = query.join(subquery, subquery.c.id == Offering.id)
     return query
@@ -382,5 +382,5 @@ def sort_offerings(session, query, field=None):
             asc(Core.code),
         )
     else:
-        raise ValueError('invalid sorting key: {}'.format(field))
+        raise ValueError(f'invalid sorting key: {field}')
     return query
