@@ -183,7 +183,7 @@ def view_root():
         parameters['semester'] = Semester.current_semester_code()
     context['defaults'] = dict((k, v) for k, v in DEFAULT_OPTIONS.items())
     context['defaults'].update(parameters)
-    with LAST_UPDATE_FILE.open() as fd:
+    with LAST_UPDATE_FILE.open(encoding='utf-8') as fd:
         context['last_update'] = fd.read().strip()
     return render_template('main.html', **context)
 

@@ -547,7 +547,7 @@ def create_db():
             # Normally we would need to do Base.metadata.create_all(), but not here
             # because the dump already contains CREATE TABLE statements
             assert SQL_PATH.exists()
-            with SQL_PATH.open() as fd:
+            with SQL_PATH.open(encoding='utf-8') as fd:
                 dump = fd.read()
             conn = sqlite3.connect(str(DB_PATH))
             with conn:
