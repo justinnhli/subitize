@@ -7,7 +7,7 @@
 from collections import namedtuple
 from copy import copy
 from datetime import datetime
-from os.path import exists as file_exists, join as join_path, dirname, realpath
+from pathlib import Path
 from time import sleep
 
 from flask import Flask, render_template, abort, request, send_from_directory, url_for, redirect
@@ -85,8 +85,8 @@ CONTEXT_TEMPLATE = create_context_template()
 
 JSON_RESULT_LIMIT = 200
 
-ROOT_DIRECTORY = dirname(realpath(__file__))
-LAST_UPDATE_FILE = join_path(ROOT_DIRECTORY, 'data/last-update')
+ROOT_DIRECTORY = Path(__file__).resolve().parent
+LAST_UPDATE_FILE = ROOT_DIRECTORY / 'data' / 'last-update'
 
 VALID_SORTS = set(['semester', 'course', 'title', 'units', 'instructors', 'meetings', 'cores'])
 
@@ -183,7 +183,7 @@ def view_root():
         parameters['semester'] = Semester.current_semester_code()
     context['defaults'] = dict((k, v) for k, v in DEFAULT_OPTIONS.items())
     context['defaults'].update(parameters)
-    with open(LAST_UPDATE_FILE) as fd:
+    with LAST_UPDATE_FILE.open() as fd:
         context['last_update'] = fd.read().strip()
     return render_template('main.html', **context)
 
@@ -261,9 +261,9 @@ def view_json_doc():
 @app.route('/static/css/<file>')
 def get_css(file):
     """Serve CSS files."""
-    file_dir = join_path(ROOT_DIRECTORY, 'static/css')
-    file_path = join_path(file_dir, file)
-    if file_exists(file_path):
+    file_dir = ROOT_DIRECTORY / 'static' / 'css'
+    file_path = file_dir / file
+    if file_path.exists():
         return send_from_directory(file_dir, file)
     else:
         return abort(404)
@@ -272,9 +272,9 @@ def get_css(file):
 @app.route('/static/js/<file>')
 def get_js(file):
     """Serve JavaScript files."""
-    file_dir = join_path(ROOT_DIRECTORY, 'static/js')
-    file_path = join_path(file_dir, file)
-    if file_exists(file_path):
+    file_dir = ROOT_DIRECTORY / 'static' / 'js'
+    file_path = file_dir / file
+    if file_path.exists():
         return send_from_directory(file_dir, file)
     else:
         return abort(404)
