@@ -66,9 +66,6 @@ class Semester(Base):
     def __lt__(self, other):
         return self.code < other.code
 
-    def __repr__(self):
-        return '<Semester(year={}, season="{}")>'.format(self.year, self.season)
-
     @staticmethod
     def current_semester_code():
         """Get the semester code for the "current" semester.
@@ -137,11 +134,6 @@ class TimeSlot(Base):
     def __str__(self):
         return '{} {}-{}'.format(self.weekdays, self.us_start_time, self.us_end_time)
 
-    def __repr__(self):
-        return '<TimeSlot(weekdays={}, start={}, end={})>'.format(
-            self.weekdays, self.start.strftime('%H:%M'), self.end.strftime('%H:%M')
-        )
-
     @property
     def weekdays_names(self):
         """Get the weekdays on which this TimeSlot meets.
@@ -198,9 +190,6 @@ class Building(Base):
     def __str__(self):
         return '{} ({})'.format(self.name, self.code)
 
-    def __repr__(self):
-        return '<Building(code="{}")>'.format(self.code)
-
 
 class Room(Base):
     """A room within a building."""
@@ -216,9 +205,6 @@ class Room(Base):
 
     def __str__(self):
         return '{} {}'.format(self.building.code, self.room)
-
-    def __repr__(self):
-        return '<Room(building="{}", room="{}")>'.format(self.building.code, self.room)
 
 
 class Meeting(Base):
@@ -237,9 +223,6 @@ class Meeting(Base):
 
     def __str__(self):
         return '{} ({})'.format(str(self.timeslot), str(self.room))
-
-    def __repr__(self):
-        return '<Meeting(UGH)>'
 
     @property
     def weekdays(self):
@@ -306,9 +289,6 @@ class Core(Base):
     def __str__(self):
         return '{} ({})'.format(self.name, self.code)
 
-    def __repr__(self):
-        return '<Core(code="{}")>'.format(self.code)
-
 
 class Department(Base):
     """A course subject."""
@@ -319,9 +299,6 @@ class Department(Base):
 
     def __str__(self):
         return '{} ({})'.format(self.name, self.code)
-
-    def __repr__(self):
-        return '<Department(code="{}")>'.format(self.code)
 
 
 class Course(Base):
@@ -339,9 +316,6 @@ class Course(Base):
 
     def __str__(self):
         return '{} {}'.format(self.department.code, self.number)
-
-    def __repr__(self):
-        return '<Course(department="{}", number="{}")>'.format(self.department.code, self.number)
 
 
 class Person(Base):
@@ -545,9 +519,6 @@ class CourseDescription(Base):
     prerequisites = Column(String, nullable=True)
     corequisites = Column(String, nullable=True)
     parsed_prerequisites = Column(String, nullable=True)
-
-    def __repr__(self):
-        return '_'.join(s for s in [self.url, self.description, self.prerequisites, self.corequisites] if s is not None)
 
 
 def create_session(engine=None):
