@@ -447,7 +447,7 @@ def delete_section(session, semester_code, dept, num, sec):
     query = filter_by_number_str(session, query, num)
     query = filter_by_section(session, query, sec)
     for offering in query:
-        print('deleting {semester_code} offering of {dept} {num} {sec}')
+        print(f'deleting {semester_code} offering of {dept} {num} {sec}')
         session.delete(offering)
 
 
