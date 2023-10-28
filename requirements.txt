@@ -1,8 +1,27 @@
+# core packages
 Flask==2.3.2
 Jinja2==3.1.2
-SQLAlchemy==1.4.35
-Werkzeug==2.3.3
-beautifulsoup4==4.10.0
-gunicorn==20.1.0
+SQLAlchemy==2.0.20
+
+# update packages
+beautifulsoup4==4.12.2
+
+# support packages
 requests==2.31.0
 sqlparse==0.4.4
+
+# dependencies
+MarkupSafe==2.1.3
+Werkzeug==2.3.7
+blinker==1.6.3
+certifi==2023.7.22
+charset-normalizer==3.3.1
+click==8.1.7
+greenlet==3.0.1
+gunicorn==21.2.0
+idna==3.4
+itsdangerous==2.1.2
+packaging==23.2
+soupsieve==2.5
+typing_extensions==4.8.0
+urllib3==2.0.7

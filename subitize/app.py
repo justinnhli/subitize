@@ -7,16 +7,16 @@
 from collections import namedtuple
 from copy import copy
 from datetime import datetime
-from os.path import exists as file_exists, join as join_path, dirname, realpath
-from time import sleep
+from pathlib import Path
 
 from flask import Flask, render_template, abort, request, send_from_directory, url_for, redirect
 from flask.json import jsonify
+from sqlalchemy import select
 from sqlalchemy.sql.expression import asc, desc
 
 from .models import create_session
 from .models import Semester, Core, Department, Person, Offering
-from .subitizelib import create_query
+from .subitizelib import create_select
 from .subitizelib import filter_study_abroad, filter_by_search
 from .subitizelib import filter_by_semester, filter_by_department, filter_by_instructor
 from .subitizelib import filter_by_number, filter_by_number_str, filter_by_section
@@ -48,45 +48,53 @@ def create_context_template():
     Returns:
         dict: The context.
     """
-    session = create_session()
-    hours = [
-        (lambda time: Hour(time.strftime('%H%M'), time.strftime('%I %p').strip('0').lower()))(
-            datetime.strptime(str(i), '%H')
-        ) for i in range(6, 24)
-    ]
-    return {
-        'semesters': list(session.query(Semester).order_by(desc(Semester.id))),
-        'instructors': sorted(session.query(Person), key=(lambda p: (p.last_name + ', ' + p.first_name).lower())),
-        'cores': list(session.query(Core).order_by(Core.name)),
-        'units': [
-            str(unit) for unit in
-            sorted(row[0] for row in session.query(Offering.units).distinct())
-        ],
-        'departments': list(session.query(Department).filter( # pylint: disable = no-member
-            Department.code != 'OXAB',
-            Department.code.notilike('AB%'),
-        ).order_by(asc(Department.name))),
-        'lower': 0,
-        'upper': 999,
-        'days': [
-            Day('M', 'Monday'),
-            Day('T', 'Tuesday'),
-            Day('W', 'Wednesday'),
-            Day('R', 'Thursday'),
-            Day('F', 'Friday'),
-            Day('U', 'Saturday'),
-        ],
-        'start_hours': hours,
-        'end_hours': hours,
-    }
+    with create_session() as session:
+        hours = [
+            Hour(
+                f'{i*100:04d}', 
+                datetime.strptime(str(i), '%H').strftime('%I %p').strip('0').lower(),
+            )
+            for i in range(6, 24)
+        ]
+        return {
+            'semesters': list(session.scalars(select(Semester).order_by(desc(Semester.id)))),
+            'instructors': sorted(
+                session.scalars(select(Person)),
+                key=(lambda person: (person.last_name + ', ' + person.first_name).lower()),
+            ),
+            'cores': list(session.scalars(select(Core).order_by(Core.name))),
+            'units': [
+                str(unit) for unit, in session.execute(
+                    select(Offering.units).distinct().order_by(Offering.units)
+                )
+            ],
+            'departments': list(session.scalars(
+                select(Department)
+                .where(Department.code != 'OXAB')
+                .where(Department.code.notilike('AB%'))
+                .order_by(asc(Department.name)))
+            ),
+            'lower': 0,
+            'upper': 999,
+            'days': [
+                Day('M', 'Monday'),
+                Day('T', 'Tuesday'),
+                Day('W', 'Wednesday'),
+                Day('R', 'Thursday'),
+                Day('F', 'Friday'),
+                Day('U', 'Saturday'),
+            ],
+            'start_hours': hours,
+            'end_hours': hours,
+        }
 
 
 CONTEXT_TEMPLATE = create_context_template()
 
 JSON_RESULT_LIMIT = 200
 
-ROOT_DIRECTORY = dirname(realpath(__file__))
-LAST_UPDATE_FILE = join_path(ROOT_DIRECTORY, 'data/last-update')
+ROOT_DIRECTORY = Path(__file__).resolve().parent
+LAST_UPDATE_FILE = ROOT_DIRECTORY / 'data' / 'last-update'
 
 VALID_SORTS = set(['semester', 'course', 'title', 'units', 'instructors', 'meetings', 'cores'])
 
@@ -113,57 +121,54 @@ def get_parameter_or_none(parameters, parameter):
         return None
 
 
-def get_search_results(session, parameters):
+def build_search_select(parameters):
     """Build a query for the search.
 
     Arguments:
-        session (Session): The sqlalchemy session to connect with.
         parameters (dict): The parameters of the current search.
 
     Returns:
         Query: A sqlalchemy Query object representing the search.
     """
-    # create query and filter out study abroad courses
-    query = create_query(session)
+    # create statement and filter out study abroad courses
+    statement = create_select()
     if not parameters:
-        return query.limit(JSON_RESULT_LIMIT)
-    query = filter_study_abroad(session, query)
+        return statement.limit(JSON_RESULT_LIMIT)
+    statement = filter_study_abroad(statement)
     # filter by semester
     semester = get_parameter_or_none(parameters, 'semester')
     if semester is None:
         semester = Semester.current_semester_code()
     elif semester == 'any':
         semester = None
-    query = filter_by_semester(session, query, semester)
+    statement = filter_by_semester(statement, semester)
     # filter by advanced options
     if get_parameter_or_none(parameters, 'open'):
-        query = filter_by_openness(session, query)
-    query = filter_by_department(session, query, get_parameter_or_none(parameters, 'department'))
-    query = filter_by_number(
-        session,
-        query,
+        statement = filter_by_openness(statement)
+    statement = filter_by_department(statement, get_parameter_or_none(parameters, 'department'))
+    statement = filter_by_number(
+        statement,
         get_parameter_or_none(parameters, 'lower'),
         get_parameter_or_none(parameters, 'upper'),
     )
-    query = filter_by_units(session, query, get_parameter_or_none(parameters, 'units'))
-    query = filter_by_instructor(session, query, get_parameter_or_none(parameters, 'instructor'))
-    query = filter_by_core(session, query, get_parameter_or_none(parameters, 'core'))
-    query = filter_by_meeting(
-        session,
-        query,
+    statement = filter_by_units(statement, get_parameter_or_none(parameters, 'units'))
+    statement = filter_by_instructor(statement, get_parameter_or_none(parameters, 'instructor'))
+    statement = filter_by_core(statement, get_parameter_or_none(parameters, 'core'))
+    statement = filter_by_meeting(
+        statement,
         get_parameter_or_none(parameters, 'day'),
         get_parameter_or_none(parameters, 'start_hour'),
         get_parameter_or_none(parameters, 'end_hour'),
     )
     # filter by search
-    query = filter_by_search(session, query, get_parameter_or_none(parameters, 'query'))
+    statement = filter_by_search(statement, get_parameter_or_none(parameters, 'query'))
     # sort results
     sort = get_parameter_or_none(parameters, 'sort')
     if sort is not None and sort not in VALID_SORTS:
         raise abort(400)
-    query = sort_offerings(session, query, sort)
+    statement = sort_offerings(statement, sort)
     # return
-    return query.limit(JSON_RESULT_LIMIT)
+    return statement.limit(JSON_RESULT_LIMIT)
 
 
 app = Flask(__name__, root_path=ROOT_DIRECTORY) # pylint: disable = invalid-name
@@ -183,7 +188,7 @@ def view_root():
         parameters['semester'] = Semester.current_semester_code()
     context['defaults'] = dict((k, v) for k, v in DEFAULT_OPTIONS.items())
     context['defaults'].update(parameters)
-    with open(LAST_UPDATE_FILE) as fd:
+    with LAST_UPDATE_FILE.open(encoding='utf-8') as fd:
         context['last_update'] = fd.read().strip()
     return render_template('main.html', **context)
 
@@ -191,10 +196,10 @@ def view_root():
 @app.route('/json/')
 def view_json():
     """Serve the JSON endpoint."""
-    session = create_session()
     parameters = request.args.to_dict()
-    query = get_search_results(session, parameters)
-    results = [offering.to_json_dict() for offering in query.all()]
+    statement = build_search_select(parameters)
+    with create_session() as session:
+        results = [offering.to_json_dict() for offering in session.scalars(statement)]
     metadata = {}
     if 'sort' in parameters:
         metadata['sorted'] = parameters['sort']
@@ -234,15 +239,14 @@ def view_simplify():
 @app.route('/fetch/<readable_ids>')
 def view_fetch(readable_ids):
     """Fetch the details of one or more comma-separated offerings."""
-    session = create_session()
     offerings = []
     for readable_id in readable_ids.split(','):
         semester, department, number, section = readable_id.split('_')
-        query = create_query(session)
-        query = filter_by_semester(session, query, semester)
-        query = filter_by_department(session, query, department)
-        query = filter_by_number_str(session, query, number)
-        query = filter_by_section(session, query, section)
+        query = create_select()
+        query = filter_by_semester(query, semester)
+        query = filter_by_department(query, department)
+        query = filter_by_number_str(query, number)
+        query = filter_by_section(query, section)
         offering = query.first()
         if offering is not None:
             offerings.append(offering)
@@ -261,9 +265,9 @@ def view_json_doc():
 @app.route('/static/css/<file>')
 def get_css(file):
     """Serve CSS files."""
-    file_dir = join_path(ROOT_DIRECTORY, 'static/css')
-    file_path = join_path(file_dir, file)
-    if file_exists(file_path):
+    file_dir = ROOT_DIRECTORY / 'static' / 'css'
+    file_path = file_dir / file
+    if file_path.exists():
         return send_from_directory(file_dir, file)
     else:
         return abort(404)
@@ -272,9 +276,9 @@ def get_css(file):
 @app.route('/static/js/<file>')
 def get_js(file):
     """Serve JavaScript files."""
-    file_dir = join_path(ROOT_DIRECTORY, 'static/js')
-    file_path = join_path(file_dir, file)
-    if file_exists(file_path):
+    file_dir = ROOT_DIRECTORY / 'static' / 'js'
+    file_path = file_dir / file
+    if file_path.exists():
         return send_from_directory(file_dir, file)
     else:
         return abort(404)
