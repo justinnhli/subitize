@@ -20,7 +20,7 @@ from subitize import Semester, TimeSlot, Building, Room, Meeting
 from subitize import Core, Department, Course, Person
 from subitize import OfferingMeeting, OfferingCore, OfferingInstructor, Offering
 from subitize import CourseDescription
-from subitize import create_query, filter_by_semester, filter_by_department, filter_by_number_str, filter_by_section
+from subitize import create_select, filter_by_semester, filter_by_department, filter_by_number_str, filter_by_section
 
 DB_PATH = ROOT_DIRECTORY / 'subitize' / 'data' / 'counts.db'
 DUMP_PATH = ROOT_DIRECTORY / 'subitize' / 'data' / 'data.sql'
@@ -431,22 +431,19 @@ def update_from_html(session, semester, html):
 
 
 def get_existing_sections(session, semester_code):
-    existing_sections = set()
-    query = create_query(session)
-    query = filter_by_semester(session, query, semester_code)
-    for offering in query:
-        offering_str = f'{offering.course.department.code} {offering.course.number} {offering.section}'
-        existing_sections.add(offering_str)
-    return existing_sections
+    return set([
+        f'{offering.course.department.code} {offering.course.number} {offering.section}'
+        for offering in session.scalars(filter_by_semester(create_select(), semester_code))
+    ])
 
 
 def delete_section(session, semester_code, dept, num, sec):
-    query = create_query(session)
-    query = filter_by_semester(session, query, semester_code)
-    query = filter_by_department(session, query, dept)
-    query = filter_by_number_str(session, query, num)
-    query = filter_by_section(session, query, sec)
-    for offering in query:
+    statement = create_select()
+    statement = filter_by_semester(statement, semester_code)
+    statement = filter_by_department(statement, dept)
+    statement = filter_by_number_str(statement, num)
+    statement = filter_by_section(statement, sec)
+    for offering in session.scalars(statement):
         print(f'deleting {semester_code} offering of {dept} {num} {sec}')
         session.delete(offering)
 
