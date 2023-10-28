@@ -9,6 +9,7 @@ from sqlalchemy import create_engine, event, select
 from sqlalchemy import Integer, String, Time, ForeignKey
 from sqlalchemy.orm import DeclarativeBase, mapped_column, relationship, Session
 from sqlalchemy.schema import UniqueConstraint
+from sqlalchemy.pool import NullPool
 
 DATA_DIR = Path(__file__).resolve().parent / 'data'
 DB_PATH = DATA_DIR / 'counts.db'
@@ -16,7 +17,7 @@ SQL_PATH = DATA_DIR / 'data.sql'
 
 SQLITE_URI = f'sqlite:///{DB_PATH}'
 
-ENGINE = create_engine(SQLITE_URI)
+ENGINE = create_engine(SQLITE_URI, poolclass=NullPool)
 event.listen(ENGINE, 'connect', (lambda dbapi_con, con_record: dbapi_con.execute('pragma foreign_keys=ON')))
 
 
