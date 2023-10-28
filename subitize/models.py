@@ -5,24 +5,24 @@ from datetime import datetime, date
 from pathlib import Path
 from time import sleep
 
-from sqlalchemy import create_engine, event
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy import Column, Integer, String, Time, ForeignKey
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
+from sqlalchemy import create_engine, event, select
+from sqlalchemy import Integer, String, Time, ForeignKey
+from sqlalchemy.orm import DeclarativeBase, mapped_column, relationship, Session
 from sqlalchemy.schema import UniqueConstraint
 
-DIR_PATH = Path(__file__).expanduser().resolve()
-DB_PATH = DIR_PATH.parent.joinpath('data', 'counts.db')
-SQL_PATH = DIR_PATH.parent.joinpath('data', 'data.sql')
+DATA_DIR = Path(__file__).resolve().parent / 'data'
+DB_PATH = DATA_DIR / 'counts.db'
+SQL_PATH = DATA_DIR / 'data.sql'
 
 SQLITE_URI = f'sqlite:///{DB_PATH}'
 
+ENGINE = create_engine(SQLITE_URI)
+event.listen(ENGINE, 'connect', (lambda dbapi_con, con_record: dbapi_con.execute('pragma foreign_keys=ON')))
 
-Base = declarative_base(create_engine( # pylint: disable = invalid-name
-    SQLITE_URI,
-    connect_args={'check_same_thread': False},
-))
+
+class Base(DeclarativeBase):
+    """The base model class."""
+    pass
 
 
 class Semester(Base):
@@ -32,9 +32,9 @@ class Semester(Base):
     __table_args__ = (
         UniqueConstraint('year', 'season', name='_year_season_uc'),
     )
-    id = Column(Integer, primary_key=True)
-    year = Column(Integer, nullable=False)
-    season = Column(String, nullable=False)
+    id = mapped_column(Integer, primary_key=True)
+    year = mapped_column(Integer, nullable=False)
+    season = mapped_column(String, nullable=False)
 
     def __init__(self, year, season):
         """Initialize the semester.
@@ -78,6 +78,7 @@ class Semester(Base):
 
         Returns:
             str: The semester code.
+
         """
         today = datetime.today().date()
         if today < date(today.year, 3, 22):
@@ -126,10 +127,10 @@ class TimeSlot(Base):
     __table_args__ = (
         UniqueConstraint('weekdays', 'start', 'end', name='_weekdays_time_uc'),
     )
-    id = Column(Integer, primary_key=True)
-    weekdays = Column(String, nullable=False)
-    start = Column(Time, nullable=False)
-    end = Column(Time, nullable=False)
+    id = mapped_column(Integer, primary_key=True)
+    weekdays = mapped_column(String, nullable=False)
+    start = mapped_column(Time, nullable=False)
+    end = mapped_column(Time, nullable=False)
 
     def __str__(self):
         return f'{self.weekdays} {self.us_start_time}-{self.us_end_time}'
@@ -184,8 +185,8 @@ class Building(Base):
     """A building."""
 
     __tablename__ = 'buildings'
-    code = Column(String, primary_key=True, nullable=False)
-    name = Column(String, nullable=False)
+    code = mapped_column(String, primary_key=True, nullable=False)
+    name = mapped_column(String, nullable=False)
 
     def __str__(self):
         return f'{self.name} ({self.code})'
@@ -198,10 +199,10 @@ class Room(Base):
     __table_args__ = (
         UniqueConstraint('building_code', 'room', name='_building_room_uc'),
     )
-    id = Column(Integer, primary_key=True)
-    building_code = Column(String, ForeignKey('buildings.code'), nullable=False)
+    id = mapped_column(Integer, primary_key=True)
+    building_code = mapped_column(String, ForeignKey('buildings.code'), nullable=False)
     building = relationship('Building')
-    room = Column(String, nullable=True)
+    room = mapped_column(String, nullable=True)
 
     def __str__(self):
         return f'{self.building.code} {self.room}'
@@ -215,9 +216,9 @@ class Meeting(Base):
     """
 
     __tablename__ = 'meetings'
-    id = Column(Integer, primary_key=True)
-    timeslot_id = Column(Integer, ForeignKey('timeslots.id'), nullable=True)
-    room_id = Column(Integer, ForeignKey('rooms.id'), nullable=True)
+    id = mapped_column(Integer, primary_key=True)
+    timeslot_id = mapped_column(Integer, ForeignKey('timeslots.id'), nullable=True)
+    room_id = mapped_column(Integer, ForeignKey('rooms.id'), nullable=True)
     timeslot = relationship('TimeSlot')
     room = relationship('Room')
 
@@ -283,8 +284,8 @@ class Core(Base):
     """A core requirement."""
 
     __tablename__ = 'cores'
-    code = Column(String, primary_key=True, nullable=False)
-    name = Column(String, nullable=False)
+    code = mapped_column(String, primary_key=True, nullable=False)
+    name = mapped_column(String, nullable=False)
 
     def __str__(self):
         return f'{self.name} ({self.code})'
@@ -294,8 +295,8 @@ class Department(Base):
     """A course subject."""
 
     __tablename__ = 'departments'
-    code = Column(String, primary_key=True, nullable=False)
-    name = Column(String, nullable=False)
+    code = mapped_column(String, primary_key=True, nullable=False)
+    name = mapped_column(String, nullable=False)
 
     def __str__(self):
         return f'{self.name} ({self.code})'
@@ -308,10 +309,10 @@ class Course(Base):
     __table_args__ = (
         UniqueConstraint('department_code', 'number', name='_department_number_uc'),
     )
-    id = Column(Integer, primary_key=True)
-    department_code = Column(String, ForeignKey('departments.code'), nullable=False)
-    number = Column(String, nullable=False)
-    number_int = Column(Integer, nullable=False)
+    id = mapped_column(Integer, primary_key=True)
+    department_code = mapped_column(String, ForeignKey('departments.code'), nullable=False)
+    number = mapped_column(String, nullable=False)
+    number_int = mapped_column(Integer, nullable=False)
     department = relationship('Department')
 
     def __str__(self):
@@ -322,10 +323,10 @@ class Person(Base):
     """A person."""
 
     __tablename__ = 'people'
-    id = Column(Integer, primary_key=True)
-    system_name = Column(String, nullable=False)
-    first_name = Column(String, nullable=False)
-    last_name = Column(String, nullable=False)
+    id = mapped_column(Integer, primary_key=True)
+    system_name = mapped_column(String, nullable=False)
+    first_name = mapped_column(String, nullable=False)
+    last_name = mapped_column(String, nullable=False)
     offerings = relationship('Offering', secondary='offering_instructor_assoc', back_populates='instructors')
 
     def __str__(self):
@@ -336,27 +337,27 @@ class OfferingMeeting(Base):
     """The many-to-many Offering-Meeting relation."""
 
     __tablename__ = 'offering_meeting_assoc'
-    id = Column(Integer, primary_key=True)
-    offering_id = Column(Integer, ForeignKey('offerings.id', ondelete='CASCADE'), nullable=False, index=True)
-    meeting_id = Column(Integer, ForeignKey('meetings.id', ondelete='CASCADE'), nullable=False, index=True)
+    id = mapped_column(Integer, primary_key=True)
+    offering_id = mapped_column(Integer, ForeignKey('offerings.id', ondelete='CASCADE'), nullable=False, index=True)
+    meeting_id = mapped_column(Integer, ForeignKey('meetings.id', ondelete='CASCADE'), nullable=False, index=True)
 
 
 class OfferingCore(Base):
     """The many-to-many Offering-Core relation."""
 
     __tablename__ = 'offering_core_assoc'
-    id = Column(Integer, primary_key=True)
-    offering_id = Column(Integer, ForeignKey('offerings.id', ondelete='CASCADE'), nullable=False, index=True)
-    core_code = Column(String, ForeignKey('cores.code', ondelete='CASCADE'), nullable=False, index=True)
+    id = mapped_column(Integer, primary_key=True)
+    offering_id = mapped_column(Integer, ForeignKey('offerings.id', ondelete='CASCADE'), nullable=False, index=True)
+    core_code = mapped_column(String, ForeignKey('cores.code', ondelete='CASCADE'), nullable=False, index=True)
 
 
 class OfferingInstructor(Base):
     """The many-to-many Offering-Person relation."""
 
     __tablename__ = 'offering_instructor_assoc'
-    id = Column(Integer, primary_key=True)
-    offering_id = Column(Integer, ForeignKey('offerings.id', ondelete='CASCADE'), nullable=False, index=True)
-    instructor_id = Column(Integer, ForeignKey('people.id', ondelete='CASCADE'), nullable=False, index=True)
+    id = mapped_column(Integer, primary_key=True)
+    offering_id = mapped_column(Integer, ForeignKey('offerings.id', ondelete='CASCADE'), nullable=False, index=True)
+    instructor_id = mapped_column(Integer, ForeignKey('people.id', ondelete='CASCADE'), nullable=False, index=True)
 
 
 class Offering(Base):
@@ -366,24 +367,24 @@ class Offering(Base):
     __table_args__ = (
         UniqueConstraint('semester_id', 'course_id', 'section', name='_semester_course_section_uc'),
     )
-    id = Column(Integer, primary_key=True)
-    semester_id = Column(Integer, ForeignKey('semesters.id'), nullable=False)
+    id = mapped_column(Integer, primary_key=True)
+    semester_id = mapped_column(Integer, ForeignKey('semesters.id'), nullable=False)
     semester = relationship('Semester')
-    course_id = Column(Integer, ForeignKey('courses.id'), nullable=False)
+    course_id = mapped_column(Integer, ForeignKey('courses.id'), nullable=False)
     course = relationship('Course')
-    course_desc_id = Column(Integer, ForeignKey('course_descriptions.id'), nullable=True)
+    course_desc_id = mapped_column(Integer, ForeignKey('course_descriptions.id'), nullable=True)
     course_desc = relationship('CourseDescription')
-    section = Column(String, nullable=False)
-    title = Column(String, nullable=False)
-    units = Column(Integer, nullable=False)
+    section = mapped_column(String, nullable=False)
+    title = mapped_column(String, nullable=False)
+    units = mapped_column(Integer, nullable=False)
     instructors = relationship('Person', secondary='offering_instructor_assoc', back_populates='offerings')
     meetings = relationship('Meeting', secondary='offering_meeting_assoc')
     cores = relationship('Core', secondary='offering_core_assoc')
-    num_enrolled = Column(Integer, nullable=False)
-    num_seats = Column(Integer, nullable=False)
-    num_reserved = Column(Integer, nullable=False)
-    num_reserved_open = Column(Integer, nullable=False)
-    num_waitlisted = Column(Integer, nullable=False)
+    num_enrolled = mapped_column(Integer, nullable=False)
+    num_seats = mapped_column(Integer, nullable=False)
+    num_reserved = mapped_column(Integer, nullable=False)
+    num_reserved_open = mapped_column(Integer, nullable=False)
+    num_waitlisted = mapped_column(Integer, nullable=False)
 
     def __str__(self):
         return f'{self.semester} {self.course} {self.section}'
@@ -514,59 +515,50 @@ class CourseDescription(Base):
     __table_args__ = (
         UniqueConstraint('year', 'course_id', name='_year_course_uc'),
     )
-    id = Column(Integer, primary_key=True)
-    year = Column(Integer, nullable=False)
-    course_id = Column(Integer, ForeignKey('courses.id'))
-    url = Column(String, nullable=False)
-    description = Column(String, nullable=True)
-    prerequisites = Column(String, nullable=True)
-    corequisites = Column(String, nullable=True)
-    parsed_prerequisites = Column(String, nullable=True)
+    id = mapped_column(Integer, primary_key=True)
+    year = mapped_column(Integer, nullable=False)
+    course_id = mapped_column(Integer, ForeignKey('courses.id'))
+    url = mapped_column(String, nullable=False)
+    description = mapped_column(String, nullable=True)
+    prerequisites = mapped_column(String, nullable=True)
+    corequisites = mapped_column(String, nullable=True)
+    parsed_prerequisites = mapped_column(String, nullable=True)
 
 
-def create_session(engine=None):
-    """Create a sqlalchemy session.
-
-    Arguments:
-        engine (Engine): The database engine. Optional.
+def create_session():
+    """Create a SQLAlchemy session.
 
     Returns:
-        Session: A sqlalchemy Session object.
+        Session: A SQLAlchemy Session object.
     """
-    if engine is None:
-        engine = Base.metadata.bind
-    event.listen(engine, 'connect', (lambda dbapi_con, con_record: dbapi_con.execute('pragma foreign_keys=ON')))
-    return sessionmaker(bind=engine)()
+    return Session(ENGINE)
 
 
 def create_db():
     """Read the dump into a binary SQLite file."""
+    Base.metadata.create_all(ENGINE)
     done = False
     while not done:
         if not DB_PATH.exists():
-            # Normally we would need to do Base.metadata.create_all(), but not here
-            # because the dump already contains CREATE TABLE statements
-            assert SQL_PATH.exists()
             with SQL_PATH.open(encoding='utf-8') as fd:
                 dump = fd.read()
-            conn = sqlite3.connect(str(DB_PATH))
-            with conn:
-                try:
-                    conn.executescript(dump)
-                except sqlite3.OperationalError:
-                    pass
-            conn.close()
-        assert DB_PATH.exists()
-        for _ in range(3):
+            conn = sqlite3.connect(DB_PATH)
             try:
-                conn = sqlite3.connect(str(DB_PATH))
+                with conn:
+                    conn.executescript(dump)
+            except sqlite3.OperationalError:
+                pass
+            conn.close()
+        for _ in range(3):
+            conn = sqlite3.connect(DB_PATH)
+            try:
                 with conn:
                     conn.execute('SELECT * FROM semesters')
-                conn.close()
                 done = True
                 break
             except sqlite3.OperationalError:
                 sleep(1)
+            conn.close()
         if not done:
             DB_PATH.unlink(missing_ok=True)
 
@@ -582,11 +574,11 @@ def get_or_create(session, model, **kwargs):
     Returns:
         object: The first object that passes all filters.
     """
-    instance = session.query(model).filter_by(**kwargs).first()
+    instance = session.scalars(select(model).filter_by(**kwargs)).first()
     if not instance:
         instance = model(**kwargs)
         session.add(instance)
-        instance = session.query(model).filter_by(**kwargs).first()
+        instance = session.scalars(select(model).filter_by(**kwargs)).first()
     assert instance is not None
     return instance
 
