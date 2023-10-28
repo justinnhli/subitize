@@ -50,9 +50,11 @@ def create_context_template():
     """
     session = create_session()
     hours = [
-        (lambda time: Hour(time.strftime('%H%M'), time.strftime('%I %p').strip('0').lower()))(
-            datetime.strptime(str(i), '%H')
-        ) for i in range(6, 24)
+        Hour(
+            f'{i*100:04d}', 
+            datetime.strptime(str(i), '%H').strftime('%I %p').strip('0').lower(),
+        )
+        for i in range(6, 24)
     ]
     return {
         'semesters': list(session.query(Semester).order_by(desc(Semester.id))),
