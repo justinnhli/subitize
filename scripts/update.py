@@ -11,6 +11,7 @@ from urllib.parse import urlsplit, urljoin
 
 import requests
 from bs4 import BeautifulSoup, Comment
+from sqlalchemy import select
 
 ROOT_DIRECTORY = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT_DIRECTORY))
@@ -480,62 +481,88 @@ def delete_orphans(session):
     """
     # pylint: disable=too-many-branches, too-many-statements
 
-    for course in session.query(Course).all():
-        referenced = (
-            session.query(Offering).filter(Offering.course == course).first()
-            or session.query(CourseDescription).filter(CourseDescription.course == course).first()
-        )
-        if not referenced:
-            print(f'Course {course} is never referenced; deleting...')
-            session.delete(course)
-    for department in session.query(Department).all():
-        if not session.query(Course).filter(Course.department == department).first():
-            print(f'Department {department} is never referenced; deleting...')
-            session.delete(department)
-
-    for offering_instructor in session.query(OfferingInstructor).all():
-        if not session.query(Offering).filter(Offering.id == offering_instructor.offering_id).first():
-            print(f'OfferingInstructor {offering_instructor} is never referenced; deleting...')
-            session.delete(offering_instructor)
-    for person in session.query(Person).all():
-        if not session.query(OfferingInstructor).filter(OfferingInstructor.instructor_id == person.id).first():
-            print(f'Person {person} is never referenced; deleting...')
-            session.delete(person)
-
-    for offering_core in session.query(OfferingCore).all():
-        if not session.query(Offering).filter(Offering.id == offering_core.offering_id).first():
-            print(f'OfferingCore {offering_core} is never referenced; deleting...')
-            session.delete(offering_core)
-    for core in session.query(Core).all():
-        if not session.query(OfferingCore).filter(OfferingCore.core_code == core.code).first():
-            print(f'Core {core} is never referenced; deleting...')
-            session.delete(core)
-
-    for offering_meeting in session.query(OfferingMeeting).all():
-        if not session.query(Offering).filter(Offering.id == offering_meeting.offering_id).first():
-            print(f'OfferingMeeting {offering_meeting} is never referenced; deleting...')
-            session.delete(offering_meeting)
-    for meeting in session.query(Meeting).all():
-        if not session.query(OfferingMeeting).filter(OfferingMeeting.meeting_id == meeting.id).first():
-            print(f'Meeting {meeting} is never referenced; deleting...')
-            session.delete(meeting)
-    for room in session.query(Room).all():
-        if not session.query(Meeting).filter(Meeting.room == room).first():
-            print(f'Room {room} is never referenced; deleting...')
-            session.delete(room)
-    for building in session.query(Building).all():
-        if not session.query(Room).filter(Room.building == building).first():
-            print(f'Building {building} is never referenced; deleting...')
-            session.delete(building)
-    for timeslot in session.query(TimeSlot).all():
-        if not session.query(Meeting).filter(Meeting.timeslot == timeslot).first():
-            print(f'Timeslot {timeslot} is never referenced; deleting...')
-            session.delete(timeslot)
-
-    for semester in session.query(Semester).all():
-        if not session.query(Offering).filter(Offering.semester == semester).first():
-            print(f'Semester {semester} is never referenced; deleting...')
-            session.delete(semester)
+    # delete courses that have never been offered
+    statement = select(Course).where(~(
+        select(Offering).where(Offering.course_id == Course.id).exists()
+    ))
+    for course in session.scalars(statement):
+        print(f'Course {course} is never referenced; deleting...')
+        session.delete(course)
+    # delete departments that do not have courses
+    statement = select(Department).where(~(
+        select(Course).where(Course.department_code == Department.code).exists()
+    ))
+    for department in session.scalars(statement):
+        print(f'Department {department} is never referenced; deleting...')
+        session.delete(department)
+    # delete people that do not have offerings
+    statement = select(OfferingInstructor).where(~(
+        select(Offering).where(Offering.id == OfferingInstructor.offering_id).exists()
+    ))
+    for offering_instructor in session.scalars(statement):
+        print(f'OfferingInstructor {offering_instructor} is never referenced; deleting...')
+        session.delete(offering_instructor)
+    statement = select(Person).where(~(
+        select(OfferingInstructor).where(OfferingInstructor.instructor_id == Person.id).exists()
+    ))
+    for person in session.scalars(statement):
+        print(f'Person {person} is never referenced; deleting...')
+        session.delete(person)
+    # delete core requirements that do not have offerings
+    statement = select(OfferingCore).where(~(
+        select(Offering).where(Offering.id == OfferingCore.offering_id).exists()
+    ))
+    for offering_core in session.scalars(statement):
+        print(f'OfferingCore {offering_core} is never referenced; deleting...')
+        session.delete(offering_core)
+    statement = select(Core).where(~(
+        select(OfferingCore).where(OfferingCore.core_code == Core.code).exists()
+    ))
+    for core in session.scalars(statement):
+        print(f'Core {core} is never referenced; deleting...')
+        session.delete(core)
+    # delete meetings that do not have offerings
+    statement = select(OfferingMeeting).where(~(
+        select(Offering)
+        .where(Offering.id == OfferingMeeting.offering_id)
+        .exists()
+    ))
+    for offering_meeting in session.scalars(statement):
+        print(f'OfferingMeeting {offering_meeting} is never referenced; deleting...')
+        session.delete(offering_meeting)
+    statement = select(Meeting).where(~(
+        select(OfferingMeeting).where(OfferingMeeting.meeting_id == Meeting.id).exists()
+    ))
+    for meeting in session.scalars(statement):
+        print(f'Meeting {meeting} is never referenced; deleting...')
+        session.delete(meeting)
+    # delete rooms and buildings that do not have meetings
+    statement = select(Room).where(~(
+        select(Meeting).where(Meeting.room_id == Room.id).exists()
+    ))
+    for room in session.scalars(statement):
+        print(f'Room {room} is never referenced; deleting...')
+        session.delete(room)
+    statement = select(Building).where(~(
+        select(Room).where(Room.building_code == Building.code).exists()
+    ))
+    for building in session.scalars(statement):
+        print(f'Building {building} is never referenced; deleting...')
+        session.delete(building)
+    # delete timeslots that do not have meetings
+    statement = select(TimeSlot).where(~(
+        select(Meeting).where(Meeting.timeslot_id == TimeSlot.id).exists()
+    ))
+    for timeslot in session.scalars(statement):
+        print(f'TimeSlot {timeslot} is never referenced; deleting...')
+        session.delete(timeslot)
+    # delete semesters that do not have offerings
+    statement = select(Semester).where(~(
+        select(Offering).where(Offering.semester_id == Semester.id).exists()
+    ))
+    for semester in session.scalars(statement):
+        print(f'Semester {semester} is never referenced; deleting...')
+        session.delete(semester)
 
 
 def audit():
