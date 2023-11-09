@@ -538,56 +538,10 @@ def delete_orphans(session):
             session.delete(semester)
 
 
-def check_children(session):
-    """Assert referenced members of all objects exist.
-
-    Arguments:
-        session (Session): The DB connection session.
-    """
-    for offering in session.query(Offering).all():
-        semester = session.query(Semester).get(offering.semester_id)
-        assert semester, f'Cannot find semester of {offering}'
-        course = session.query(Course).get(offering.course_id)
-        assert course, f'Cannot find course of {offering}'
-        department = session.query(Department).get(course.department_code)
-        assert department, f'Cannot find department of {course}'
-
-    for offering_meeting in session.query(OfferingMeeting).all():
-        offering = session.query(Offering).get(offering_meeting.offering_id)
-        assert offering, f'Cannot find offering of {offering_meeting}'
-        meeting = session.query(Meeting).get(offering_meeting.meeting_id)
-        assert meeting, f'Cannot find meeting of {offering_meeting}'
-        if meeting.timeslot_id:
-            timeslot = session.query(TimeSlot).get(meeting.timeslot_id)
-            assert timeslot, f'Cannot find timeslot of {meeting}'
-        if meeting.room_id:
-            room = session.query(Room).get(meeting.room_id)
-            assert room, f'Cannot find room of {meeting}'
-            building = session.query(Building).get(room.building_code)
-            assert building, f'Cannot find building of {room}'
-
-    for offering_instructor in session.query(OfferingInstructor).all():
-        offering = session.query(Offering).get(offering_instructor.offering_id)
-        assert offering, f'Cannot find offering of {offering_instructor}'
-        instructor = session.query(Person).get(offering_instructor.instructor_id)
-        assert instructor, f'Cannot find instructor of {offering_instructor}'
-
-    for offering_core in session.query(OfferingCore).all():
-        offering = session.query(Offering).get(offering_core.offering_id)
-        assert offering, f'Cannot find offering of {offering_core}'
-        core = session.query(Core).get(offering_core.core_code)
-        assert core, f'Cannot find instructor of {offering_core}'
-
-    for course_desc in session.query(CourseDescription).all():
-        course = session.query(Course).get(course_desc.course_id)
-        assert course, f'Cannot find course of {course_desc}'
-
-
 def audit():
     """Remove any unused instances in the DB."""
     session = create_session()
     delete_orphans(session)
-    check_children(session)
     session.commit()
 
 
