@@ -570,6 +570,7 @@ def audit():
     session = create_session()
     delete_orphans(session)
     session.commit()
+    dump()
 
 
 # cleanup functions
