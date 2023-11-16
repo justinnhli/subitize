@@ -239,21 +239,22 @@ def view_simplify():
 @app.route('/fetch/<readable_ids>')
 def view_fetch(readable_ids):
     """Fetch the details of one or more comma-separated offerings."""
-    offerings = []
-    for readable_id in readable_ids.split(','):
-        semester, department, number, section = readable_id.split('_')
-        query = create_select()
-        query = filter_by_semester(query, semester)
-        query = filter_by_department(query, department)
-        query = filter_by_number_str(query, number)
-        query = filter_by_section(query, section)
-        offering = query.first()
-        if offering is not None:
-            offerings.append(offering)
-    return jsonify({
-        offering.readable_id: offering.to_json_dict()
-        for offering in offerings
-    })
+    with create_session() as session:
+        offerings = []
+        for readable_id in readable_ids.split(','):
+            semester, department, number, section = readable_id.split('_')
+            statement = create_select()
+            statement = filter_by_semester(statement, semester)
+            statement = filter_by_department(statement, department)
+            statement = filter_by_number_str(statement, number)
+            statement = filter_by_section(statement, section)
+            offering = session.scalar(statement)
+            if offering is not None:
+                offerings.append(offering)
+        return jsonify({
+            offering.readable_id: offering.to_json_dict()
+            for offering in offerings
+        })
 
 
 @app.route('/json-doc/')
