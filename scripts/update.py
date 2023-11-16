@@ -436,10 +436,10 @@ def update_from_html(session, semester, html):
 
 
 def get_existing_sections(session, semester_code):
-    return set([
+    return set(
         f'{offering.course.department.code} {offering.course.number} {offering.section}'
         for offering in session.scalars(filter_by_semester(create_select(), semester_code))
-    ])
+    )
 
 
 def delete_section(session, semester_code, dept, num, sec):
