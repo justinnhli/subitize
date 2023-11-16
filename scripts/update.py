@@ -4,9 +4,11 @@ import re
 import sys
 from argparse import ArgumentParser
 from datetime import datetime
-from pathlib import Path
 from os import chdir
+from pathlib import Path
+from random import random
 from subprocess import run
+from time import sleep
 from urllib.parse import urlsplit, urljoin
 
 import requests
@@ -85,7 +87,7 @@ def get_courses_urls(year):
         depts_soup = get_soup_from_url(urljoin(CATALOG_URL, link['href']))
         for dept_link_soup in depts_soup.select('.sc-child-item-links li a'):
             dept_courses_soup = get_soup_from_url(urljoin(CATALOG_URL, dept_link_soup['href']))
-            for course_link_soup in dept_courses_soup.select('#main ul li a'):
+            for course_link_soup in dept_courses_soup.select('#main > ul li a'):
                 course_url = urljoin(CATALOG_URL, course_link_soup['href'])
                 if course_url in visited_urls:
                     continue
@@ -122,7 +124,7 @@ def extract_basic_info(session, course_soup):
     dept = dept.strip()
     number = number.strip()
     department = get_or_create(session, Department, code=dept)
-    description = str(clean_soup(course_soup.select('div.desc')[0]).unwrap())
+    description = str(clean_soup(course_soup.select('div.desc')[0]))
     if description:
         description = re.sub(r'\s+', ' ', description)
     else:
@@ -183,28 +185,32 @@ def extract_course_info(session, year, url, html):
         course_desc.description = description
         course_desc.prerequisites = prerequisites
         course_desc.corequisites = corequisites
-        course_desc.parsed_prerequisites = parsed_prerequisites
+        #course_desc.parsed_prerequisites = parsed_prerequisites
         # TODO detect if prerequisites have changed
 
 
 def update_course_info(year):
     year_cache_path = CATALOG_CACHE_PATH / str(year)
     # download all urls
+    cached_files = set()
     for course_url in get_courses_urls(year):
-        cache_path = (year_cache_path / urlsplit(course_url).path[1:]).with_suffix('.html')
-        if cache_path.exists():
+        cache_path = (year_cache_path / urlsplit(course_url).path[1:].lower()).with_suffix('.html')
+        cached_files.add(cache_path)
+        if cache_path.exists() and cache_path.stat().st_size > 1000:
             continue
+        print(f'downloading {course_url}...')
         cache_path.parent.mkdir(parents=True, exist_ok=True)
         with cache_path.open('w', encoding='utf-8') as fd:
             fd.write(get_url(course_url))
             fd.write('\n')
+        sleep(random())
     # scape and save into DB
     session = create_session()
-    for path in sorted(year_cache_path.glob('**/*.html')):
+    for path in sorted(cached_files):
         course_url = urljoin(CATALOG_URL, '/' + str(path.relative_to(year_cache_path)))
+        print(f'parsing {course_url}...')
         with path.open(encoding='utf-8') as fd:
             extract_course_info(session, year, course_url, fd.read())
-        break
     session.commit()
     dump()
 
@@ -448,10 +454,8 @@ def delete_section(session, semester_code, dept, num, sec):
 
 
 def update_offerings(semester_code, session=None):
-    DB_PATH.unlink()
     with DUMP_PATH.open(encoding='utf-8') as fd:
         old_dump = fd.read()
-    create_db()
     if session is None:
         session = create_session()
     old_sections = get_existing_sections(session, semester_code)
@@ -467,7 +471,6 @@ def update_offerings(semester_code, session=None):
         with LAST_UPDATE_PATH.open('w', encoding='utf-8') as fd:
             fd.write(datetime.now().strftime('%Y-%m-%d %H:%M:%S %Z').strip())
             fd.write('\n')
-    DB_PATH.unlink()
 
 
 # audit functions
@@ -599,6 +602,8 @@ def main():
     arg_parser.add_argument('action', choices=['audit', 'offerings', 'catalog'], help='the action to take')
     arg_parser.add_argument('arg', nargs='?', help='argument depending on the action')
     args = arg_parser.parse_args()
+    DB_PATH.unlink()
+    create_db()
     if args.action == 'audit':
         audit()
     elif args.action == 'offerings':
@@ -613,6 +618,7 @@ def main():
         else:
             year = int(Semester.current_semester_code()[:4])
         update_course_info(year)
+    DB_PATH.unlink()
 
 
 if __name__ == '__main__':
