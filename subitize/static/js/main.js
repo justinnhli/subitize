@@ -17,7 +17,7 @@ $(function () {
      */
     function link_course_numbers(result, text) {
         var replacement = ""
-        replacement += "<a href=\"/?advanced=true&department=$1\">"
+        replacement += "<a href=\"/?advanced=true&semester=" + $("#semester-select").val() + "&department=$1\">";
         if (result === null) {
             replacement += "$1";
         } else {
@@ -363,7 +363,7 @@ $(function () {
             var core = result.cores[i];
             url = "/";
             url += "?advanced=true";
-            url += "&semester=" + result.semester.code;
+            url += "&semester=" + $("#semester-select").val();
             url += "&core=" + core.code;
             html.push("<a href=\"" + url + "\">");
             html.push("<abbr title=\"" + core.name + "\">");
