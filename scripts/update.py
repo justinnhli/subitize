@@ -370,14 +370,13 @@ def get_offerings_data(semester):
         'tabContainer$TabPanel2$ddlCoreAreas':'CPFA',
         'tabContainer$TabPanel2$ddlCoreSubj':'AMST',
         'tabContainer$TabPanel2$ddlCoreTerms':semester,
-        'tabContainer$TabPanel3$ddlAdvDays':'u',
+        'tabContainer$TabPanel3$ddlAdvDays':'m',
         'tabContainer$TabPanel3$ddlAdvSubj':'AMST',
         'tabContainer$TabPanel3$ddlAdvTerms':semester,
-        'tabContainer$TabPanel3$ddlAdvTimes':'07000755',
+        'tabContainer$TabPanel3$ddlAdvTimes':'08000855',
         'tabContainer$TabPanel4$ddlCRNTerms':semester,
         'tabContainer$TabPanel4$txtCRN':'',
-        'tabContainer$TabPanel5$ddlMajorsTerm':semester,
-        'tabContainer_ClientState':'{"ActiveTabIndex":0,"TabEnabledState":[true,true,true,true,true],"TabWasLoadedOnceState":[true,false,false,false,false]}',
+        'tabContainer_ClientState':'{"ActiveTabIndex":0,"TabEnabledState":[true,true,true,true],"TabWasLoadedOnceState":[true,false,false,false]}',
     }
     params['__VIEWSTATE'], params['__EVENTVALIDATION'] = get_view_state()
     response = requests.post(COURSE_COUNTS, headers=REQUEST_HEADERS, data=params, verify=False)
