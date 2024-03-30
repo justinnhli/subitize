@@ -207,7 +207,7 @@ def update_course_info(year):
     # scape and save into DB
     session = create_session()
     for path in sorted(cached_files):
-        course_url = urljoin(CATALOG_URL, '/' + str(path.relative_to(year_cache_path)))
+        course_url = urljoin(CATALOG_URL, '/' + str(path.relative_to(year_cache_path).with_suffix('')))
         print(f'parsing {course_url}...')
         with path.open(encoding='utf-8') as fd:
             extract_course_info(session, year, course_url, fd.read())
