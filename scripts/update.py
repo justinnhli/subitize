@@ -215,6 +215,7 @@ def update_course_info(year):
             extract_course_info(session, year, course_url, fd.read())
     session.commit()
     dump()
+    link_offerings_catalog()
 
 
 # offering functions
@@ -466,12 +467,34 @@ def update_offerings(semester_code, session=None):
         delete_section(session, semester_code, *section_str.split())
     session.commit()
     dump()
+    link_offerings_catalog()
     with DUMP_PATH.open(encoding='utf-8') as fd:
         new_dump = fd.read()
     if old_dump != new_dump:
         with LAST_UPDATE_PATH.open('w', encoding='utf-8') as fd:
             fd.write(datetime.now().strftime('%Y-%m-%d %H:%M:%S %Z').strip())
             fd.write('\n')
+
+
+# linking functions
+
+
+def link_offerings_catalog(session=None):
+    if session is None:
+        session = create_session()
+    statement = create_select()
+    for offering in session.scalars(statement):
+        description_statement = (
+            select(CourseDescription)
+            .where(CourseDescription.year == (offering.semester_id // 100))
+            .where(CourseDescription.course_id == offering.course_id)
+        )
+        description = session.scalar(description_statement)
+        if description:
+            offering.course_desc = description
+            session.add(offering)
+    session.commit()
+    dump()
 
 
 # audit functions
