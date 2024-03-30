@@ -91,6 +91,8 @@ def get_courses_urls(year):
                 course_url = urljoin(CATALOG_URL, course_link_soup['href'])
                 if course_url in visited_urls:
                     continue
+                if not re.match('[A-Z]+ [0-9]+', extract_text(course_link_soup)):
+                    continue
                 visited_urls.add(course_url)
                 yield course_url
 
