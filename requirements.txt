@@ -19,7 +19,7 @@ charset-normalizer==3.3.1
 click==8.1.7
 greenlet==3.0.1
 gunicorn==21.2.0
-idna==3.4
+idna==3.7
 itsdangerous==2.1.2
 packaging==23.2
 soupsieve==2.5
