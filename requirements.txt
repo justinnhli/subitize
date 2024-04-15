@@ -8,7 +8,7 @@ beautifulsoup4==4.12.2
 
 # support packages
 requests==2.31.0
-sqlparse==0.4.4
+sqlparse==0.5.0
 
 # dependencies
 MarkupSafe==2.1.3
