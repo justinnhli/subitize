@@ -54,6 +54,7 @@ PREFERRED_NAMES = {
     'Justin de Leon': ('Justin', 'de Leon'),
     'To the Estate of Deborah Martinson': ('Deborah', 'Martinson'),
     'Carey Sargent': ('Jacob', 'Sargent'),
+    'Hector Camarillo Abad': ('Hector', 'Camarillo Abad'),
 }
 
 
