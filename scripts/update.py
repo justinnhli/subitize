@@ -501,7 +501,7 @@ def link_offerings_catalog(session=None):
 # lint functions
 
 
-def delete_orphans(session):
+def delete_orphans():
     """Delete unreferenced objects.
 
     Arguments:
@@ -509,6 +509,7 @@ def delete_orphans(session):
     """
     # pylint: disable=too-many-branches, too-many-statements
 
+    session = create_session()
     # delete courses that have never been offered
     statement = select(Course).where(~(
         select(Offering).where(Offering.course_id == Course.id).exists()
@@ -591,13 +592,12 @@ def delete_orphans(session):
     for semester in session.scalars(statement):
         print(f'Semester {semester} is never referenced; deleting...')
         session.delete(semester)
+    session.commit()
 
 
 def lint():
     """Remove any unused instances in the DB."""
-    session = create_session()
-    delete_orphans(session)
-    session.commit()
+    delete_orphans()
     dump()
 
 
