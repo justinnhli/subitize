@@ -48,13 +48,47 @@ REQUEST_HEADERS = {
     'Connection':'keep-alive',
 }
 
+# this dictionary exists for three reasons:
+# 1. unifying a person if they are in the system under multiple names
+# 2. using a preferred name if that is somehow not the system name
+# 3. fixing issues with the automatic name segmentation
+# format is (FIRST_NAME, LAST_NAME): (SYSTEM_NAME_1, SYSTEM_NAME_2, ...)
+# FIRST_NAME + LAST_NAME should itself be a system_name, but do not have to be in the tuple
+PREFERRED_NAMES_SOURCE = {
+    ('Aed', 'McMillian'): ('Laura Michelle McMillian',),
+    ('Alex', 'Gardner'): ('Alexander Gardner',),
+    ('Allison', 'de Fren'): ('Allison de Fren',),
+    ('Amanda J.', 'Zellmer'): ('Amanda J. Zellmer McCormack',),
+    ('Ben Robin', 'Weiss'): ('Benjamin Robin Weiss',),
+    ('Cathy I.', 'Del Russo'): ('Catherine I. Del Russo',),
+    ('Dan J.', 'Pondella'): ('Daniel J. Pondella',),
+    ('Deborah', 'Martinson'): ('To the Estate of Deborah Martinson',),
+    ('Elizabeth', 'Braker'): ('H. Elizabeth Braker',),
+    ('Erm', 'Navarro'): ('Ermuelito Navarro',),
+    ('Hector Miguel', 'Camarillo Abad'): ('Hector Miguel Camarillo Abad',),
+    ('Jackie Kate', 'Elam'): ('Jacqueline Kate Elam',),
+    ('Jacob', 'Sargent'): ('Carey Sargent',),
+    ('Jeff Scott', 'Cannon'): ('Jeffrey Scott Cannon',),
+    ('Justin', 'Li'): ('Ning Hui Li',),
+    ('Justin', 'de Leon'): ('Justin de Leon',),
+    ('Kasia', 'Marciniak'): ('Katarzyna Marciniak',),
+    ('Kevin', 'Williams'): ('Kevin Morris Williams',),
+    ('La Mont', 'Terry'): ('Clarence La Mont Terry',),
+    ('Luke Austin', 'Wetmore'): ('Luker Austin Wetmore',),
+    ('Mai', 'Thai'): ('Mai N. Thai',),
+    ('Natalie', 'Muren'): ('Natalie B. Muren',),
+    ('Nick Alexander', "O'Connell"): ("Nicholas Alexander O'Connell",),
+    ('Season', 'Blake'): ('Susan Marie Blake',),
+    ('ShahBano', 'Ijaz'): ('Syeda ShahBano Ijaz',),
+    ('Shanna', 'Lorenz'): ('Shushanna Lorenz',),
+    ('Steve', 'Gregory'): ('Steven Kent Gregory',),
+    ('Sydney Keiko', 'Mitsunaga-Whitten'): ('Sidney Keiko Mitsunaga-Whitten',),
+}
+
 PREFERRED_NAMES = {
-    'Allison de Fren': ('Allison', 'de Fren'),
-    'Amanda J. Zellmer McCormack': ('Amanda J.', 'Zellmer'),
-    'Justin de Leon': ('Justin', 'de Leon'),
-    'To the Estate of Deborah Martinson': ('Deborah', 'Martinson'),
-    'Carey Sargent': ('Jacob', 'Sargent'),
-    'Hector Camarillo Abad': ('Hector', 'Camarillo Abad'),
+    system_name: correct_name
+    for correct_name, system_names in PREFERRED_NAMES_SOURCE.items()
+    for system_name in system_names
 }
 
 
