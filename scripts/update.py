@@ -535,6 +535,31 @@ def link_offerings_catalog(session=None):
 # lint functions
 
 
+def fix_preferred_names():
+    session = create_session()
+    # loop over system names
+    for system_name, (first_name, last_name) in PREFERRED_NAMES.items():
+        correct_name = f'{first_name} {last_name}'
+        if system_name == correct_name:
+            continue
+        correct_person = session.scalar(
+            select(Person)
+            .where(Person.system_name == f'{first_name} {last_name}')
+        )
+        assert correct_person, f'no Person with system_name >>>{correct_name}<<<'
+        statement = (
+            select(OfferingInstructor)
+            .join(Person)
+            .where(Person.system_name == system_name)
+        )
+        if session.scalar(statement):
+            print(f'renaming {system_name} to {correct_person.system_name}')
+        for offering_instructor in session.scalars(statement):
+            offering_instructor.instructor_id = correct_person.id
+            session.add(offering_instructor)
+    session.commit()
+
+
 def delete_orphans():
     """Delete unreferenced objects.
 
@@ -631,6 +656,7 @@ def delete_orphans():
 
 def lint():
     """Remove any unused instances in the DB."""
+    fix_preferred_names()
     delete_orphans()
     dump()
 
