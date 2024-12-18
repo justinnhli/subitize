@@ -498,7 +498,7 @@ def link_offerings_catalog(session=None):
     dump()
 
 
-# audit functions
+# lint functions
 
 
 def delete_orphans(session):
@@ -593,7 +593,7 @@ def delete_orphans(session):
         session.delete(semester)
 
 
-def audit():
+def lint():
     """Remove any unused instances in the DB."""
     session = create_session()
     delete_orphans(session)
@@ -624,13 +624,13 @@ def dump():
 def main():
     chdir(ROOT_DIRECTORY)
     arg_parser = ArgumentParser()
-    arg_parser.add_argument('action', choices=['audit', 'offerings', 'catalog'], help='the action to take')
+    arg_parser.add_argument('action', choices=['lint', 'offerings', 'catalog'], help='the action to take')
     arg_parser.add_argument('arg', nargs='?', help='argument depending on the action')
     args = arg_parser.parse_args()
     DB_PATH.unlink()
     create_db()
-    if args.action == 'audit':
-        audit()
+    if args.action == 'lint':
+        lint()
     elif args.action == 'offerings':
         if args.arg:
             semester = args.arg
