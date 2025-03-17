@@ -1,7 +1,7 @@
 # core packages
 Flask==2.3.2
 Jinja2==3.1.6
-SQLAlchemy==2.0.20
+SQLAlchemy==2.0.38
 
 # update packages
 beautifulsoup4==4.12.3
