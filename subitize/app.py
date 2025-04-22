@@ -122,7 +122,7 @@ def get_parameter_or_none(parameters, parameter):
         return None
 
 
-def build_search_select(parameters):
+def build_search_query(parameters):
     """Build a query for the search.
 
     Arguments:
@@ -198,9 +198,11 @@ def view_root():
 def view_json():
     """Serve the JSON endpoint."""
     parameters = request.args.to_dict()
-    statement = build_search_select(parameters)
     with create_session() as session:
-        results = [offering.to_json_dict() for offering in session.scalars(statement)]
+        results = [
+            offering.to_json_dict() for offering
+            in session.scalars(build_search_query(parameters))
+        ]
     metadata = {}
     if 'sort' in parameters:
         metadata['sorted'] = parameters['sort']
