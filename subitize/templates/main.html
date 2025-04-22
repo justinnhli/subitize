@@ -5,17 +5,17 @@
 {% block content %}
     {% include 'search-form.html' %}
     <div id="tab-list">
-        <h4 id="saved-courses-heading" class="inactive tab" title="saved courses">★ (<span id="saved-courses-count">0</span>)</h4>
+        <h4 id="starred-courses-heading" class="inactive tab" title="starred courses">★ (<span id="starred-courses-count">0</span>)</h4>
         <h4 id="search-results-heading" class="inactive tab">Search Results (<span id="search-results-count">0</span>)</h4>
     </div>
-    <div id="saved-courses-content" class="tab-content">
-        <div id="saved-courses-warning">
+    <div id="starred-courses-content" class="tab-content">
+        <div id="starred-courses-warning">
             <p>
-                <strong>Note</strong>: The saved courses are <em>not</em> persistent - they will be lost when the browser/tab is closed.
+                <strong>Note</strong>: Starred courses are <em>not</em> persistent - they will be lost when the browser/tab is closed.
                 Copy or bookmark the URL for a persistent link.
             </p>
         </div>
-        <table id="saved-courses-table" class="course-listing"></table>
+        <table id="starred-courses-table" class="course-listing"></table>
     </div>
     <div id="search-results-content" class="tab-content">
         <table id="search-results-table" class="course-listing"></table>

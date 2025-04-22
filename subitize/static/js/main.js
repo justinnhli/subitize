@@ -5,8 +5,8 @@ $(function () {
 
     var curr_parameters = "";
     var curr_tab = "";
-    var saved_courses_list = [];
-    var saved_courses = {};
+    var starred_courses_list = [];
+    var starred_courses = {};
 
     /**
      * Link course numbers to a search for them.
@@ -66,7 +66,7 @@ $(function () {
             // change url first so it can be used in links in the result
             curr_parameters = metadata.parameters;
             if (update_history) {
-                save_saved_courses();
+                save_starred_courses();
             }
             // clear search results again
             search_results_table.empty();
@@ -75,7 +75,7 @@ $(function () {
             populate_search_results(metadata, results);
             // modify the new DOM as necessary
             enable_more_info_toggle();
-            propagate_saved_courses();
+            propagate_starred_courses();
         });
     }
 
@@ -157,7 +157,7 @@ $(function () {
         }
         tbody.addClass("data");
         var tr = $("<tr></tr>");
-        tr.append(build_search_result_save_checkbox(result));
+        tr.append(build_search_result_star_checkbox(result));
         tr.append(build_course_listing_semester_cell(result));
         tr.append(build_course_listing_course_cell(result));
         tr.append(build_course_listing_title_cell(result));
@@ -174,22 +174,22 @@ $(function () {
     }
 
     /**
-     * Create a table cell to save an offering.
+     * Create a table cell to star an offering.
      *
      * @param {Obj} result - The course object.
      * @returns {string} - The table cell.
      */
-    function build_search_result_save_checkbox(result) {
+    function build_search_result_star_checkbox(result) {
         var td = $("<td>");
-        td.addClass("save-checkbox");
-        var label = $("<label title=\"save course\">");
+        td.addClass("star-checkbox");
+        var label = $("<label title=\"star course\">");
         var checkbox = $("<input type=\"checkbox\">");
         checkbox.addClass(result.id + "-checkbox");
-        if (Object.prototype.hasOwnProperty.call(saved_courses, result.id)) {
+        if (Object.prototype.hasOwnProperty.call(starred_courses, result.id)) {
             checkbox.prop("checked", "checked");
         }
         checkbox.click(function () {
-            save_course_checkbox_handler(checkbox, result);
+            star_course_checkbox_handler(checkbox, result);
         });
         label.append(checkbox);
         label.append($("<span>"));
@@ -434,47 +434,47 @@ $(function () {
         return html.join("");
     }
 
-    // saved courses tab
+    // starred courses tab
 
     /**
-     * Create the saved courses table.
+     * Create the starred courses table.
      *
      * @returns {undefined}
      */
-    function build_saved_courses_table() {
-        $("#saved-courses-table").append(build_course_listing_header("saved-courses"));
-        update_saved_courses_display();
+    function build_starred_courses_table() {
+        $("#starred-courses-table").append(build_course_listing_header("starred-courses"));
+        update_starred_courses_display();
     }
 
     /**
-     * Update the saved courses table.
+     * Update the starred courses table.
      *
      * @returns {undefined}
      */
-    function update_saved_courses_display() {
-        if (saved_courses_list.length !== Object.keys(saved_courses).length) {
-            setTimeout(update_saved_courses_display, 200);
+    function update_starred_courses_display() {
+        if (starred_courses_list.length !== Object.keys(starred_courses).length) {
+            setTimeout(update_starred_courses_display, 200);
             return;
         }
-        if (saved_courses_list.length === 0) {
-            $("#saved-courses-heading").hide();
-            $("#saved-courses-header").hide();
+        if (starred_courses_list.length === 0) {
+            $("#starred-courses-heading").hide();
+            $("#starred-courses-header").hide();
         } else {
-            $("#saved-courses-heading").show();
-            $("#saved-courses-header").show();
+            $("#starred-courses-heading").show();
+            $("#starred-courses-header").show();
         }
-        $("#saved-courses-count").html(saved_courses_list.length);
-        saved_courses_list.sort();
-        // clear saved courses table
-        $("#saved-courses-table .data").remove();
+        $("#starred-courses-count").html(starred_courses_list.length);
+        starred_courses_list.sort();
+        // clear starred courses table
+        $("#starred-courses-table .data").remove();
         // clear checkboxes
         $("input[type=checkbox]").prop("checked", false);
-        var classes = ["saved-courses"];
-        for (var i = saved_courses_list.length - 1; i >= 0; i -= 1) {
-            // repopulate saved courses table
-            var course = saved_courses[saved_courses_list[i]];
+        var classes = ["starred-courses"];
+        for (var i = starred_courses_list.length - 1; i >= 0; i -= 1) {
+            // repopulate starred courses table
+            var course = starred_courses[starred_courses_list[i]];
             var row = build_course_listing_row(course, classes.concat(course.id));
-            $("#saved-courses-header").after(row);
+            $("#starred-courses-header").after(row);
             // recheck checkboxes
             $("." + course.id + "-checkbox").prop("checked", "checked");
         }
@@ -483,49 +483,49 @@ $(function () {
     /**
      * Toggle saving and unsaving a course.
      *
-     * @param {DOMObject} checkbox - The save course checkbox.
+     * @param {DOMObject} checkbox - The star course checkbox.
      * @param {Obj} result - The course object.
      * @returns {undefined}
      */
-    function save_course_checkbox_handler(checkbox, result) {
+    function star_course_checkbox_handler(checkbox, result) {
         if (checkbox.prop("checked")) {
-            save_course(result);
+            star_course(result);
         } else {
-            unsave_course(result);
+            unstar_course(result);
         }
-        update_saved_courses_display();
-        save_saved_courses();
-        propagate_saved_courses();
+        update_starred_courses_display();
+        save_starred_courses();
+        propagate_starred_courses();
         enable_more_info_toggle();
     }
 
     /**
-     * Save a course.
+     * Star a course.
      *
      * @param {Obj} result - The course object.
      * @returns {undefined}
      */
-    function save_course(result) {
-        if (Object.prototype.hasOwnProperty.call(saved_courses, result.id)) {
+    function star_course(result) {
+        if (Object.prototype.hasOwnProperty.call(starred_courses, result.id)) {
             return;
         }
-        saved_courses_list.push(result.id);
-        saved_courses[result.id] = result;
-        saved_courses_list.sort();
+        starred_courses_list.push(result.id);
+        starred_courses[result.id] = result;
+        starred_courses_list.sort();
     }
 
     /**
-     * Unsave a course.
+     * Unstar a course.
      *
      * @param {Obj} result - The course object.
      * @returns {undefined}
      */
-    function unsave_course(result) {
-        if (!Object.prototype.hasOwnProperty.call(saved_courses, result.id)) {
+    function unstar_course(result) {
+        if (!Object.prototype.hasOwnProperty.call(starred_courses, result.id)) {
             return;
         }
-        saved_courses_list.splice(saved_courses_list.indexOf(result.id), 1);
-        delete saved_courses[result.id];
+        starred_courses_list.splice(starred_courses_list.indexOf(result.id), 1);
+        delete starred_courses[result.id];
         $("tbody." + result.id).remove();
         $("." + result.id + "-checkbox").prop("checked", false);
     }
@@ -579,55 +579,55 @@ $(function () {
     }
 
     /**
-     * Load the saved courses from the URL.
+     * Load the starred courses from the URL.
      *
      * @returns {undefined}
      */
-    function load_saved_courses() {
+    function load_starred_courses() {
         var course_list = get_url_hash();
         if (course_list === "") {
-            saved_courses_list = [];
-            saved_courses = {};
+            starred_courses_list = [];
+            starred_courses = {};
         } else {
             var settings = {
                 url:"/fetch/" + course_list,
                 async: true
             };
             $.get(settings).done(function(response) {
-                saved_courses_list = Object.keys(response);
-                saved_courses_list.sort();
-                saved_courses = response;
-                update_saved_courses_display();
-                save_saved_courses();
-                if (curr_tab === "" && saved_courses_list.length > 0) {
-                    show_tab("saved-courses");
+                starred_courses_list = Object.keys(response);
+                starred_courses_list.sort();
+                starred_courses = response;
+                update_starred_courses_display();
+                save_starred_courses();
+                if (curr_tab === "" && starred_courses_list.length > 0) {
+                    show_tab("starred-courses");
                 }
             });
         }
     }
 
     /**
-     * Save the saved courses into the URL.
+     * Save the starred courses into the URL.
      *
      * @returns {undefined}
      */
-    function save_saved_courses() {
+    function save_starred_courses() {
         var url = location.origin;
         if (curr_parameters !== "") {
             url += "?" + curr_parameters;
         }
-        if (saved_courses_list.length > 0) {
-            url += "#" + saved_courses_list.join(",");
+        if (starred_courses_list.length > 0) {
+            url += "#" + starred_courses_list.join(",");
         }
         history.pushState(null, "Subitize - Course Counts at a Glance", url);
     }
 
     /**
-     * Update all links to contain the saved courses fragment.
+     * Update all links to contain the starred courses fragment.
      *
      * @returns {undefined}
      */
-    function propagate_saved_courses() {
+    function propagate_starred_courses() {
         $("a").each(function () {
             var a = $(this);
             if (!a.attr("href").startsWith("/")) {
@@ -640,8 +640,8 @@ $(function () {
             } else {
                 url = a.attr("href");
             }
-            if (saved_courses_list.length > 0) {
-                url += "#" + saved_courses_list.join(",");
+            if (starred_courses_list.length > 0) {
+                url += "#" + starred_courses_list.join(",");
             }
             a.attr("href", url);
         });
@@ -757,20 +757,20 @@ $(function () {
     function load_page(from_back) {
         // TODO set values of advanced options with javascript
         $("#advanced-toggle").click().click();
-        load_saved_courses();
+        load_starred_courses();
         if (location.search) {
             search_from_parameters(location.search.substring(1), !from_back);
             show_tab("search-results");
-        } else if (saved_courses_list.length > 0) {
-            show_tab("saved-courses");
+        } else if (starred_courses_list.length > 0) {
+            show_tab("starred-courses");
         } else {
             $("#tab-list").hide();
             $(".tab-content").hide();
         }
         if (!from_back && !location.search) {
-            save_saved_courses();
+            save_starred_courses();
         }
-        propagate_saved_courses();
+        propagate_starred_courses();
     }
 
     /**
@@ -792,8 +792,8 @@ $(function () {
         var advanced_toggle = $("#advanced-toggle");
         advanced_toggle.click(advanced_toggle_click_handler);
 
-        $("#saved-courses-heading").click(function () {
-            show_tab("saved-courses");
+        $("#starred-courses-heading").click(function () {
+            show_tab("starred-courses");
         });
         $("#search-results-heading").click(function () {
             show_tab("search-results");
@@ -803,7 +803,7 @@ $(function () {
             load_page(true);
         };
 
-        build_saved_courses_table();
+        build_starred_courses_table();
         load_page(false);
     }
 
