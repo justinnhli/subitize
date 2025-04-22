@@ -27,6 +27,7 @@ Day = namedtuple('Day', ['abbr', 'name'])
 Hour = namedtuple('Hour', ['value', 'display'])
 
 DEFAULT_OPTIONS = {
+    'advanced': 'false',
     'query': 'search for courses...',
     'semester': Semester.current_semester_code(),
     'open': '',
