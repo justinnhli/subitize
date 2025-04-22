@@ -457,10 +457,8 @@ $(function () {
             return;
         }
         if (starred_courses_list.length === 0) {
-            $("#starred-courses-heading").hide();
             $("#starred-courses-header").hide();
         } else {
-            $("#starred-courses-heading").show();
             $("#starred-courses-header").show();
         }
         $("#starred-courses-count").html(starred_courses_list.length);
@@ -763,9 +761,6 @@ $(function () {
             show_tab("search-results");
         } else if (starred_courses_list.length > 0) {
             show_tab("starred-courses");
-        } else {
-            $("#tab-list").hide();
-            $(".tab-content").hide();
         }
         if (!from_back && !location.search) {
             save_starred_courses();
