@@ -13,7 +13,7 @@ var starred_courses = {};
  * @param {string} text - The text to embed links in.
  * @returns {string} - The transformed text.
  */
-function link_course_numbers(result, text) {
+const link_course_numbers = (result, text) => {
     var replacement = ""
     replacement += "<a href=\"/?advanced=true&semester=" + $("#semester-select").val() + "&department=$1\">";
     if (result === null) {
@@ -24,18 +24,18 @@ function link_course_numbers(result, text) {
     replacement += "</a>"
     replacement += " <a href=\"/?advanced=true&semester=any&department=$1&lower=$2&upper=$2\">$2</a>"
     return text.replace(/([A-Z]{3,4}) ([0-9]{1,3})/g, replacement);
-}
+};
 
 /**
  * Handle the search.
  *
  * @returns {boolean} - Whether to change the URL.
  */
-function search_handler() {
+const search_handler = () => {
     search_from_parameters($("#search-form").serialize(), true);
     // return false to prevent the URL changing
     return false;
-}
+};
 
 
 /**
@@ -45,7 +45,7 @@ function search_handler() {
  * @param {boolean} update_history - Whether the history should be changed.
  * @returns {boolean} - Whether to change the URL.
  */
-function search_from_parameters(parameters, update_history) {
+const search_from_parameters = (parameters, update_history) => {
     if (parameters === curr_parameters) {
         return;
     }
@@ -75,7 +75,7 @@ function search_from_parameters(parameters, update_history) {
         enable_more_info_toggle();
         propagate_starred_courses();
     });
-}
+};
 
 /**
  * Populate the search results table.
@@ -84,7 +84,7 @@ function search_from_parameters(parameters, update_history) {
  * @param {List} results - The search results.
  * @returns {undefined}
  */
-function populate_search_results(metadata, results) {
+const populate_search_results = (metadata, results) => {
     if (results.length === 0) {
         return;
     }
@@ -93,7 +93,7 @@ function populate_search_results(metadata, results) {
     for (var i = results.length - 1; i >= 0; i -= 1) {
         search_results_header.after(build_course_listing_row(results[i]));
     }
-}
+};
 
 /**
  * Populate a course listing table header.
@@ -102,7 +102,7 @@ function populate_search_results(metadata, results) {
  * @param {string} sort - The column to sort by.
  * @returns {JQuery} - The table header.
  */
-function build_course_listing_header(section, sort) {
+const build_course_listing_header = (section, sort) => {
     // TODO keep heading, only change href and show sorted glyph
     var headings = [
         {label:""},
@@ -135,7 +135,7 @@ function build_course_listing_header(section, sort) {
     html.push("</tr>");
     html.push("</tbody>");
     return $(html.join(""));
-}
+};
 
 /**
  * Populate a course listing table row.
@@ -144,7 +144,7 @@ function build_course_listing_header(section, sort) {
  * @param {List<string>} classnames - CSS classes for the row.
  * @returns {JQuery} - The table header.
  */
-function build_course_listing_row(result, classnames) {
+const build_course_listing_row = (result, classnames) => {
     var tbody = $("<tbody class=\"data\"></tbody>").append(tr);
     if (classnames === undefined) {
         tbody.addClass("search-results");
@@ -169,7 +169,7 @@ function build_course_listing_row(result, classnames) {
         tbody.append(build_search_result_info_row(result));
     }
     return tbody;
-}
+};
 
 /**
  * Create a table cell to star an offering.
@@ -177,7 +177,7 @@ function build_course_listing_row(result, classnames) {
  * @param {Obj} result - The course object.
  * @returns {string} - The table cell.
  */
-function build_search_result_star_checkbox(result) {
+const build_search_result_star_checkbox = (result) => {
     var td = $("<td>");
     td.addClass("star-checkbox");
     var label = $("<label title=\"star course\">");
@@ -193,7 +193,7 @@ function build_search_result_star_checkbox(result) {
     label.append($("<span>"));
     td.append(label);
     return td;
-}
+};
 
 /**
  * Create a table cell for the semester of an offering.
@@ -201,7 +201,7 @@ function build_search_result_star_checkbox(result) {
  * @param {Obj} result - The course object.
  * @returns {string} - The table cell.
  */
-function build_course_listing_semester_cell(result) {
+const build_course_listing_semester_cell = (result) => {
     var html = [];
     var url = "";
     html.push("<td>");
@@ -213,7 +213,7 @@ function build_course_listing_semester_cell(result) {
     html.push("</a>");
     html.push("</td>");
     return html.join("");
-}
+};
 
 /**
  * Create a table cell for the course number of an offering.
@@ -221,7 +221,7 @@ function build_course_listing_semester_cell(result) {
  * @param {Obj} result - The course object.
  * @returns {string} - The table cell.
  */
-function build_course_listing_course_cell(result) {
+const build_course_listing_course_cell = (result) => {
     var html = [];
     var url = "";
     html.push("<td>");
@@ -233,7 +233,7 @@ function build_course_listing_course_cell(result) {
     html.push("(" + result.section + ")");
     html.push("</td>");
     return html.join("");
-}
+};
 
 /**
  * Create a table cell for the title of an offering.
@@ -241,7 +241,7 @@ function build_course_listing_course_cell(result) {
  * @param {Obj} result - The course object.
  * @returns {string} - The table cell.
  */
-function build_course_listing_title_cell(result) {
+const build_course_listing_title_cell = (result) => {
     var html = [];
     html.push("<td>");
     html.push(result.title);
@@ -251,7 +251,7 @@ function build_course_listing_title_cell(result) {
     }
     html.push("</td>");
     return html.join("");
-}
+};
 
 /**
  * Create a table cell for the units of an offering.
@@ -259,13 +259,13 @@ function build_course_listing_title_cell(result) {
  * @param {Obj} result - The course object.
  * @returns {string} - The table cell.
  */
-function build_course_listing_units_cell(result) {
+const build_course_listing_units_cell = (result) => {
     var html = [];
     html.push("<td>");
     html.push(result.units);
     html.push("</td>");
     return html.join("");
-}
+};
 
 /**
  * Create a table cell for the instructors of an offering.
@@ -273,7 +273,7 @@ function build_course_listing_units_cell(result) {
  * @param {Obj} result - The course object.
  * @returns {string} - The table cell.
  */
-function build_course_listing_instructors_cell(result) {
+const build_course_listing_instructors_cell = (result) => {
     var html = [];
     var url = "";
     html.push("<td>");
@@ -297,7 +297,7 @@ function build_course_listing_instructors_cell(result) {
     }
     html.push("</td>");
     return html.join("");
-}
+};
 
 /**
  * Create a table cell for the meeting times of an offering.
@@ -305,7 +305,7 @@ function build_course_listing_instructors_cell(result) {
  * @param {Obj} result - The course object.
  * @returns {string} - The table cell.
  */
-function build_course_listing_meetings_cell(result) {
+const build_course_listing_meetings_cell = (result) => {
     var html = [];
     html.push("<td>");
     if (result.meetings.length === 0) {
@@ -345,7 +345,7 @@ function build_course_listing_meetings_cell(result) {
     }
     html.push("</td>");
     return html.join("");
-}
+};
 
 /**
  * Create a table cell for the core requirements of an offering.
@@ -353,7 +353,7 @@ function build_course_listing_meetings_cell(result) {
  * @param {Obj} result - The course object.
  * @returns {string} - The table cell.
  */
-function build_course_listing_cores_cell(result) {
+const build_course_listing_cores_cell = (result) => {
     var html = [];
     var url = "";
     html.push("<td>");
@@ -373,7 +373,7 @@ function build_course_listing_cores_cell(result) {
     }
     html.push("</td>");
     return html.join("");
-}
+};
 
 /**
  * Create a table cell for the number of seats of an offering.
@@ -381,7 +381,7 @@ function build_course_listing_cores_cell(result) {
  * @param {Obj} result - The course object.
  * @returns {string} - The table cell.
  */
-function build_course_listing_seats_cell(result) {
+const build_course_listing_seats_cell = (result) => {
     var html = [];
     html.push("<td>");
     var title = [];
@@ -399,7 +399,7 @@ function build_course_listing_seats_cell(result) {
     html.push("</abbr>");
     html.push("</td>");
     return html.join("");
-}
+};
 
 /**
  * Create a table row for the catalog information of an offering.
@@ -407,7 +407,7 @@ function build_course_listing_seats_cell(result) {
  * @param {Obj} result - The course object.
  * @returns {string} - The table row.
  */
-function build_search_result_info_row(result) {
+const build_search_result_info_row = (result) => {
     var html = [];
     html.push("<tr class=\"description\" style=\"display:none;\">");
     html.push("<td></td><td></td><td></td>");
@@ -430,7 +430,7 @@ function build_search_result_info_row(result) {
     html.push("<td></td><td></td><td></td>");
     html.push("</tr>");
     return html.join("");
-}
+};
 
 // starred courses tab
 
@@ -439,17 +439,17 @@ function build_search_result_info_row(result) {
  *
  * @returns {undefined}
  */
-function build_starred_courses_table() {
+const build_starred_courses_table = () => {
     $("#starred-courses-table").append(build_course_listing_header("starred-courses"));
     update_starred_courses_display();
-}
+};
 
 /**
  * Update the starred courses table.
  *
  * @returns {undefined}
  */
-function update_starred_courses_display() {
+const update_starred_courses_display = () => {
     if (starred_courses_list.length !== Object.keys(starred_courses).length) {
         setTimeout(update_starred_courses_display, 200);
         return;
@@ -474,7 +474,7 @@ function update_starred_courses_display() {
         // recheck checkboxes
         $("." + course.id + "-checkbox").prop("checked", "checked");
     }
-}
+};
 
 /**
  * Toggle saving and unsaving a course.
@@ -483,7 +483,7 @@ function update_starred_courses_display() {
  * @param {Obj} result - The course object.
  * @returns {undefined}
  */
-function star_course_checkbox_handler(checkbox, result) {
+const star_course_checkbox_handler = (checkbox, result) => {
     if (checkbox.prop("checked")) {
         star_course(result);
     } else {
@@ -493,7 +493,7 @@ function star_course_checkbox_handler(checkbox, result) {
     save_starred_courses();
     propagate_starred_courses();
     enable_more_info_toggle();
-}
+};
 
 /**
  * Star a course.
@@ -501,14 +501,14 @@ function star_course_checkbox_handler(checkbox, result) {
  * @param {Obj} result - The course object.
  * @returns {undefined}
  */
-function star_course(result) {
+const star_course = (result) => {
     if (Object.prototype.hasOwnProperty.call(starred_courses, result.id)) {
         return;
     }
     starred_courses_list.push(result.id);
     starred_courses[result.id] = result;
     starred_courses_list.sort();
-}
+};
 
 /**
  * Unstar a course.
@@ -516,7 +516,7 @@ function star_course(result) {
  * @param {Obj} result - The course object.
  * @returns {undefined}
  */
-function unstar_course(result) {
+const unstar_course = (result) => {
     if (!Object.prototype.hasOwnProperty.call(starred_courses, result.id)) {
         return;
     }
@@ -524,7 +524,7 @@ function unstar_course(result) {
     delete starred_courses[result.id];
     $("tbody." + result.id).remove();
     $("." + result.id + "-checkbox").prop("checked", false);
-}
+};
 
 /**
  * Serialize a JavaScript object.
@@ -532,9 +532,9 @@ function unstar_course(result) {
  * @param {Obj} obj - The JavaScript object.
  * @returns {string} - The resulting serialized string.
  */
-function param(obj) {
+const param = (obj) => {
     return $.param(obj, false);
-}
+};
 
 /**
  * Deserialize a JavaScript object.
@@ -542,13 +542,13 @@ function param(obj) {
  * @param {string} str - The serialized string.
  * @returns {Obj} - The resulting JavaScript object.
  */
-function deparam(str) {
+const deparam = (str) => {
     var obj = {};
     str.replace(/([^=&]+)=([^&]*)/g, function(m, key, value) {
         obj[decodeURIComponent(key)] = decodeURIComponent(value);
     });
     return obj;
-}
+};
 
 /**
  * Get the fragment/hash part of the URL.
@@ -561,7 +561,7 @@ function deparam(str) {
  *
  * @returns {Obj} - The keys and values in the fragment.
  */
-function get_url_hash() {
+const get_url_hash = () => {
     var result = "";
     if (location.hash !== "") {
         result = location.hash.substring(1);
@@ -572,14 +572,14 @@ function get_url_hash() {
         }
     }
     return result;
-}
+};
 
 /**
  * Load the starred courses from the URL.
  *
  * @returns {undefined}
  */
-function load_starred_courses() {
+const load_starred_courses = () => {
     var course_list = get_url_hash();
     if (course_list === "") {
         starred_courses_list = [];
@@ -600,14 +600,14 @@ function load_starred_courses() {
             }
         });
     }
-}
+};
 
 /**
  * Save the starred courses into the URL.
  *
  * @returns {undefined}
  */
-function save_starred_courses() {
+const save_starred_courses = () => {
     var url = location.origin;
     if (curr_parameters !== "") {
         url += "?" + curr_parameters;
@@ -616,14 +616,14 @@ function save_starred_courses() {
         url += "#" + starred_courses_list.join(",");
     }
     history.pushState(null, "Subitize - Course Counts at a Glance", url);
-}
+};
 
 /**
  * Update all links to contain the starred courses fragment.
  *
  * @returns {undefined}
  */
-function propagate_starred_courses() {
+const propagate_starred_courses = () => {
     $("a").each(function () {
         var a = $(this);
         if (!a.attr("href").startsWith("/")) {
@@ -641,7 +641,7 @@ function propagate_starred_courses() {
         }
         a.attr("href", url);
     });
-}
+};
 
 // Miscellaneous GUI
 
@@ -651,7 +651,7 @@ function propagate_starred_courses() {
  * @param {string} tab - The tab to show.
  * @returns {undefined}
  */
-function show_tab(tab) {
+const show_tab = (tab) => {
     $("#tab-list").show();
     if (curr_tab === "") {
         $(".tab").removeClass("active");
@@ -663,50 +663,50 @@ function show_tab(tab) {
     $("#" + tab + "-heading").addClass("active");
     $("#" + tab + "-content").show();
     curr_tab = tab;
-}
+};
 
 /**
  * Attach a handler to the catalog information toggle.
  *
  * @returns {undefined}
  */
-function enable_more_info_toggle() {
+const enable_more_info_toggle = () => {
     var more_info = $(".more-info");
     more_info.off("click").click(more_info_click_handler);
-}
+};
 
 /**
  * Clear the search bar when focused.
  *
  * @returns {undefined}
  */
-function searchbar_focus_handler() {
+const searchbar_focus_handler = () => {
     var searchbar = $(this);
     if (searchbar.val() === "search for courses...") {
         searchbar.val("");
         searchbar.css("color", "#000000");
     }
-}
+};
 
 /**
  * Show default text in the search bar when unfocused.
  *
  * @returns {undefined}
  */
-function searchbar_blur_handler() {
+const searchbar_blur_handler = () => {
     var searchbar = $("#searchbar");
     if (searchbar.val() === "") {
         searchbar.val("search for courses...");
         searchbar.css("color", "#BABDB6");
     }
-}
+};
 
 /**
  * Show/Hide the advanced search panel.
  *
  * @returns {undefined}
  */
-function advanced_toggle_click_handler() {
+const advanced_toggle_click_handler = () => {
     var toggle = $(this);
     var state = $("#advanced-state");
     var div = $("#advanced-search");
@@ -719,14 +719,14 @@ function advanced_toggle_click_handler() {
         toggle.html("Hide Options");
         state.val("true");
     }
-}
+};
 
 /**
  * Show/Hide catalog information.
  *
  * @returns {undefined}
  */
-function more_info_click_handler() {
+const more_info_click_handler = (event) => {
     var more_info = $(this);
     var desc_tr = more_info.parents("tbody").children(".description");
     var colspan = desc_tr.children(".description").attr("colspan");
@@ -741,7 +741,7 @@ function more_info_click_handler() {
     } else {
         more_info.html("[+]");
     }
-}
+};
 
 /**
  * Load the page.
@@ -750,7 +750,7 @@ function more_info_click_handler() {
  *     navigating backwards.
  * @returns {undefined}
  */
-function load_page(from_back) {
+const load_page = (from_back) => {
     // TODO set values of advanced options with javascript
     $("#advanced-toggle").click().click();
     load_starred_courses();
@@ -764,7 +764,7 @@ function load_page(from_back) {
         save_starred_courses();
     }
     propagate_starred_courses();
-}
+};
 
 /**
  * Set up the app.
