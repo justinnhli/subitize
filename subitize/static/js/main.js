@@ -16,16 +16,19 @@ $(function () {
      * @returns {string} - The transformed text.
      */
     function link_course_numbers(result, text) {
-        var replacement = ""
-        replacement += "<a href=\"/?advanced=true&semester=" + $("#semester-select").val() + "&department=$1\">";
-        if (result === null) {
-            replacement += "$1";
-        } else {
-            replacement += "<abbr title=\"" + result.department.name + "\">$1</abbr>";
+        var abbr = "$1";
+        if (result !== null) {
+            abbr = `<abbr title="${result.department.name}">$1</abbr>`;
         }
-        replacement += "</a>"
-        replacement += " <a href=\"/?advanced=true&semester=any&department=$1&lower=$2&upper=$2\">$2</a>"
-        return text.replace(/([A-Z]{3,4}) ([0-9]{1,3})/g, replacement);
+        return text.replace(
+            /([A-Z]{3,4}) ([0-9]{1,3})/g,
+            `
+                <a href="/?advanced=true&semester=${$("#semester-select").val()}&department=$1">
+                    ${abbr}
+                </a>
+                <a href=\"/?advanced=true&semester=any&department=$1&lower=$2&upper=$2\">$2</a>
+            `,
+        )
     }
 
     /**
@@ -204,17 +207,13 @@ $(function () {
      * @returns {string} - The table cell.
      */
     function build_course_listing_semester_cell(result) {
-        var html = [];
-        var url = "";
-        html.push("<td>");
-        url = "/";
-        url += "?advanced=false";
-        url += "&semester=" + result.semester.code;
-        html.push("<a href=\"" + url + "\">");
-        html.push(result.semester.year + " " + result.semester.season);
-        html.push("</a>");
-        html.push("</td>");
-        return html.join("");
+        return `
+        <td>
+            <a href="/?advanced=false&semester=${result.semester.code}">
+                ${result.semester.year} ${result.semester.season}
+            </a>
+        </td>
+        `;
     }
 
     /**
@@ -224,17 +223,11 @@ $(function () {
      * @returns {string} - The table cell.
      */
     function build_course_listing_course_cell(result) {
-        var html = [];
-        var url = "";
-        html.push("<td>");
-        html.push(link_course_numbers(
+        var link = link_course_numbers(
             result,
-            result.department.code + " " + result.number.string
-        ));
-        html.push(" ");
-        html.push("(" + result.section + ")");
-        html.push("</td>");
-        return html.join("");
+            result.department.code + " " + result.number.string,
+        );
+        return `<td>${link} (${result.section})</td>`;
     }
 
     /**
@@ -244,15 +237,11 @@ $(function () {
      * @returns {string} - The table cell.
      */
     function build_course_listing_title_cell(result) {
-        var html = [];
-        html.push("<td>");
-        html.push(result.title);
+        var info = "";
         if (result.info) {
-            html.push(" ");
-            html.push("<span class=\"more-info\" title=\"show catalog info\">[+]</span>");
+            info = `<span class="more-info" title="show catalog info">[+]</span>`;
         }
-        html.push("</td>");
-        return html.join("");
+        return `<td>${result.title}${info}</td>`;
     }
 
     /**
@@ -262,11 +251,7 @@ $(function () {
      * @returns {string} - The table cell.
      */
     function build_course_listing_units_cell(result) {
-        var html = [];
-        html.push("<td>");
-        html.push(result.units);
-        html.push("</td>");
-        return html.join("");
+        return `<td>${result.units}</td>`;
     }
 
     /**
@@ -277,21 +262,17 @@ $(function () {
      */
     function build_course_listing_instructors_cell(result) {
         var html = [];
-        var url = "";
         html.push("<td>");
         if (result.instructors.length === 0) {
             html.push("Unassigned");
         } else {
             for (var i = 0; i < result.instructors.length; i += 1) {
                 var instructor = result.instructors[i];
-                url = "/";
-                url += "?advanced=true";
-                url += "&semester=" + $("#semester-select").val();
-                url += "&instructor=" + instructor.system_name;
-                html.push("<a href=\"" + url + "\">");
-                html.push("<abbr title=\"" + instructor.system_name + "\">");
-                html.push(instructor.last_name);
-                html.push("</abbr></a>");
+                html.push(`
+                    <a href="/?advanced=true&semester=${$("#semester-select").val()}&instructor=${instructor.system_name}">
+                          <abbr title="${instructor.system_name}">${instructor.last_name}</abbr>
+                    </a>
+                `);
                 if (i < result.instructors.length - 1) {
                     html.push("; ");
                 }
@@ -311,35 +292,18 @@ $(function () {
         var html = [];
         html.push("<td>");
         if (result.meetings.length === 0) {
-            html.push("Time TBD (Location TBD)");
+            html.push("Time TBD");
         } else {
             for (var i = 0; i < result.meetings.length; i += 1) {
                 var meeting = result.meetings[i];
                 if (meeting.weekdays === null) {
                     html.push("Time TBD");
                 } else {
-                    html.push(meeting.us_start_time);
-                    html.push("-");
-                    html.push(meeting.us_end_time);
-                    html.push(" ");
-                    html.push("<abbr title=\"" + meeting.weekdays.names + "\">");
-                    html.push(meeting.weekdays.codes);
-                    html.push("</abbr>");
+                    html.push(`
+                        ${meeting.us_start_time} - ${meeting.us_end_time} 
+                        <abbr title="${meeting.weekdays.names}">meeting.weekdays.codes</abbr>
+                    `);
                 }
-                if (result.semester.code >= "202001") {
-                    continue;
-                }
-                html.push(" (");
-                if (meeting.building === null) {
-                    html.push("Location TBD");
-                } else {
-                    html.push("<abbr title=\"" + meeting.building.name + "\">");
-                    html.push(meeting.building.code);
-                    html.push("</abbr>");
-                    html.push(" ");
-                    html.push(meeting.room);
-                }
-                html.push(")");
                 if (i < result.meetings.length - 1) {
                     html.push("; ");
                 }
@@ -365,10 +329,7 @@ $(function () {
             url += "?advanced=true";
             url += "&semester=" + $("#semester-select").val();
             url += "&core=" + core.code;
-            html.push("<a href=\"" + url + "\">");
-            html.push("<abbr title=\"" + core.name + "\">");
-            html.push(core.code);
-            html.push("</abbr></a>");
+            html.push(`<a href="${url}"><abbr title="${core.name}">${core.code}</abbr></a>`);
             if (i < result.cores.length - 1) {
                 html.push("; ");
             }
@@ -395,10 +356,7 @@ $(function () {
         }
         title.push("Waitlisted: " + result.num_waitlisted);
         html.push("<abbr title=\"" + title.join("") + "\">");
-        html.push(result.num_enrolled + "/" + result.num_seats);
-        html.push(" ");
-        html.push("[" + result.num_waitlisted + "]");
-        html.push("</abbr>");
+        html.push(`${result.num_enrolled}/${result.num_seats} [${result.num_waitlisted}]</abbr>`);
         html.push("</td>");
         return html.join("");
     }
@@ -411,26 +369,26 @@ $(function () {
      */
     function build_search_result_info_row(result) {
         var html = [];
-        html.push("<tr class=\"description\" style=\"display:none;\">");
-        html.push("<td></td><td></td><td></td>");
-        html.push("<td class=\"description\" colspan=\"3\">");
+        html.push(`
+            <tr class="description" style="display:none;">
+            <td></td><td></td><td></td>
+            <td class="description" colspan="3">
+        `);
         if (result.info.description) {
             html.push(link_course_numbers(null, result.info.description));
         }
         if (result.info.prerequisites) {
-            html.push("<p>Prerequisites: ");
-            html.push(link_course_numbers(null, result.info.prerequisites));
-            html.push("</p>");
+            html.push(`<p>Prerequisites: ${link_course_numbers(null, result.info.prerequisites)}</p>`);
         }
         if (result.info.corequisites) {
-            html.push("<p>Corequisites: ");
-            html.push(link_course_numbers(null, result.info.corequisites));
-            html.push("</p>");
+            html.push(`<p>Corequisites: ${link_course_numbers(null, result.info.corequisites)}</p>`);
         }
-        html.push("<p><a href=\"" + result.info.url + "\">View in Catalog</a></p>");
-        html.push("</td>");
-        html.push("<td></td><td></td><td></td>");
-        html.push("</tr>");
+        html.push(`
+            <p><a href="" + result.info.url + "">View in Catalog</a></p>
+            </td>
+            <td></td><td></td><td></td>
+            </tr>
+        `);
         return html.join("");
     }
 
