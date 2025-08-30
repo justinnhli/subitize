@@ -15,7 +15,7 @@ var starred_courses = {};
  */
 const link_course_numbers = (result, text) => {
     var replacement = ""
-    replacement += "<a href=\"/?advanced=true&semester=" + $("#semester-select").val() + "&department=$1\">";
+    replacement += "<a href=\"/?advanced=true&semester=" + document.getElementById("semester-select").value + "&department=$1\">";
     if (result === null) {
         replacement += "$1";
     } else {
@@ -31,8 +31,8 @@ const link_course_numbers = (result, text) => {
  *
  * @returns {boolean} - Whether to change the URL.
  */
-const search_handler = () => {
-    search_from_parameters($("#search-form").serialize(), true);
+const search_handler = (event) => {
+    search_from_parameters(document.getElementById("search-form").serialize(), true);
     // return false to prevent the URL changing
     return false;
 };
@@ -69,7 +69,7 @@ const search_from_parameters = (parameters, update_history) => {
         // clear search results again
         search_results_table.empty();
         // repopulate search results
-        $("#search-results-count").html(results.length);
+        document.getElementById("search-results-count").innerhtml = results.length;
         populate_search_results(metadata, results);
         // modify the new DOM as necessary
         enable_more_info_toggle();
@@ -284,7 +284,7 @@ const build_course_listing_instructors_cell = (result) => {
             var instructor = result.instructors[i];
             url = "/";
             url += "?advanced=true";
-            url += "&semester=" + $("#semester-select").val();
+            url += "&semester=" + document.getElementById("semester-select").value;
             url += "&instructor=" + instructor.system_name;
             html.push("<a href=\"" + url + "\">");
             html.push("<abbr title=\"" + instructor.system_name + "\">");
@@ -361,7 +361,7 @@ const build_course_listing_cores_cell = (result) => {
         var core = result.cores[i];
         url = "/";
         url += "?advanced=true";
-        url += "&semester=" + $("#semester-select").val();
+        url += "&semester=" + document.getElementById("semester-select").value;
         url += "&core=" + core.code;
         html.push("<a href=\"" + url + "\">");
         html.push("<abbr title=\"" + core.name + "\">");
@@ -440,7 +440,7 @@ const build_search_result_info_row = (result) => {
  * @returns {undefined}
  */
 const build_starred_courses_table = () => {
-    $("#starred-courses-table").append(build_course_listing_header("starred-courses"));
+    document.getElementById("starred-courses-table").append(build_course_listing_header("starred-courses"));
     update_starred_courses_display();
 };
 
@@ -454,10 +454,13 @@ const update_starred_courses_display = () => {
         setTimeout(update_starred_courses_display, 200);
         return;
     }
-    if (starred_courses_list.length === 0) {
-        $("#starred-courses-header").hide();
-    } else {
-        $("#starred-courses-header").show();
+    const starred_courses_header = document.getElementById("starred-courses-header");
+    if (starred_courses_header) {
+        if (starred_courses_list.length === 0) {
+            starred_courses_header.hide();
+        } else {
+            starred_courses_header.show();
+        }
     }
     $("#starred-courses-count").html(starred_courses_list.length);
     starred_courses_list.sort();
@@ -470,7 +473,7 @@ const update_starred_courses_display = () => {
         // repopulate starred courses table
         var course = starred_courses[starred_courses_list[i]];
         var row = build_course_listing_row(course, classes.concat(course.id));
-        $("#starred-courses-header").after(row);
+        document.getElementById("starred-courses-header").after(row);
         // recheck checkboxes
         $("." + course.id + "-checkbox").prop("checked", "checked");
     }
@@ -694,7 +697,7 @@ const searchbar_focus_handler = () => {
  * @returns {undefined}
  */
 const searchbar_blur_handler = () => {
-    var searchbar = $("#searchbar");
+    var searchbar = document.getElementById("searchbar");
     if (searchbar.val() === "") {
         searchbar.val("search for courses...");
         searchbar.css("color", "#BABDB6");
@@ -708,16 +711,16 @@ const searchbar_blur_handler = () => {
  */
 const advanced_toggle_click_handler = () => {
     var toggle = $(this);
-    var state = $("#advanced-state");
-    var div = $("#advanced-search");
-    if (state.val().toLowerCase() === "true") {
-        div.css("display", "none");
-        toggle.html("Show Options");
-        state.val("false");
+    var state = document.getElementById("advanced-state");
+    var div = document.getElementById("advanced-search");
+    if (state.value.toLowerCase() === "true") {
+        div.style.display = "none";
+        toggle.innerHTML = "Show Options"; // FIXME broken
+        state.value = "false";
     } else {
-        div.css("display", "block");
-        toggle.html("Hide Options");
-        state.val("true");
+        div.style.display = "block";
+        toggle.innerHTML = "Hide Options"; // FIXME broken
+        state.value = "true";
     }
 };
 
@@ -752,7 +755,8 @@ const more_info_click_handler = (event) => {
  */
 const load_page = (from_back) => {
     // TODO set values of advanced options with javascript
-    $("#advanced-toggle").click().click();
+    advanced_toggle_click_handler();
+    advanced_toggle_click_handler();
     load_starred_courses();
     if (location.search) {
         search_from_parameters(location.search.substring(1), !from_back);
