@@ -772,20 +772,20 @@ const load_page = (from_back) => {
  * @returns {undefined}
  */
 const main = () => {
-    const searchbar = document.getElementById('searchbar');
-    searchbar.addEventListener('focus', searchbar_focus_handler);
-    searchbar.addEventListener('blur', searchbar_blur_handler);
-    document.getElementById('search-form').addEventListener('submit', search_handler);
-    document.getElementById('search-button').addEventListener('click', search_handler);
-    document.getElementById('advanced-toggle').addEventListener('click', advanced_toggle_click_handler);
-    document.getElementById('advanced-search').style.display = 'none';
-    document.getElementById('starred-courses-heading').addEventListener('click', () => {
-        show_tab('starred-courses');
+    const searchbar = document.getElementById("searchbar");
+    searchbar.addEventListener("focus", searchbar_focus_handler);
+    searchbar.addEventListener("blur", searchbar_blur_handler);
+    document.getElementById("search-form").addEventListener("submit", search_handler);
+    document.getElementById("search-button").addEventListener("click", search_handler);
+    document.getElementById("advanced-toggle").addEventListener("click", advanced_toggle_click_handler);
+    document.getElementById("advanced-search").style.display = "none";
+    document.getElementById("starred-courses-heading").addEventListener("click", () => {
+        show_tab("starred-courses");
     });
-    document.getElementById('search-results-heading').addEventListener('click', () => {
-        show_tab('search-results');
+    document.getElementById("search-results-heading").addEventListener("click", () => {
+        show_tab("search-results");
     });
-    window.addEventListener('popstate', () => {
+    window.addEventListener("popstate", () => {
         load_page(true);
     });
     build_starred_courses_table();
