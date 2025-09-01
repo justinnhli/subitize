@@ -29,12 +29,13 @@ const link_course_numbers = (result, text) => {
 /**
  * Handle the search.
  *
- * @returns {boolean} - Whether to change the URL.
+ * @returns {undefined}
  */
 const search_handler = (event) => {
-    search_from_parameters(document.getElementById("search-form").serialize(), true);
-    // return false to prevent the URL changing
-    return false;
+    event.preventDefault();
+    const form_data = new FormData(document.getElementById("search-form"));
+    const params = new URLSearchParams(form_data);
+    search_from_parameters(params.toString(), true);
 };
 
 
