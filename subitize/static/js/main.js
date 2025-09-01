@@ -684,11 +684,11 @@ const enable_more_info_toggle = () => {
  *
  * @returns {undefined}
  */
-const searchbar_focus_handler = () => {
-    var searchbar = $(this);
-    if (searchbar.val() === "search for courses...") {
-        searchbar.val("");
-        searchbar.css("color", "#000000");
+const searchbar_focus_handler = (event) => {
+    var searchbar = document.getElementById("searchbar");
+    if (searchbar.value === "search for courses...") {
+        searchbar.value = "";
+        searchbar.style.color = "#000000";
     }
 };
 
@@ -697,11 +697,11 @@ const searchbar_focus_handler = () => {
  *
  * @returns {undefined}
  */
-const searchbar_blur_handler = () => {
+const searchbar_blur_handler = (event) => {
     var searchbar = document.getElementById("searchbar");
-    if (searchbar.val() === "") {
-        searchbar.val("search for courses...");
-        searchbar.css("color", "#BABDB6");
+    if (searchbar.value === "") {
+        searchbar.value = "search for courses...";
+        searchbar.style.color = "#BABDB6";
     }
 };
 
@@ -710,17 +710,17 @@ const searchbar_blur_handler = () => {
  *
  * @returns {undefined}
  */
-const advanced_toggle_click_handler = () => {
-    var toggle = $(this);
+const advanced_toggle_click_handler = (event) => {
+    var toggle = document.getElementById("advanced-toggle");
     var state = document.getElementById("advanced-state");
     var div = document.getElementById("advanced-search");
     if (state.value.toLowerCase() === "true") {
         div.style.display = "none";
-        toggle.innerHTML = "Show Options"; // FIXME broken
+        toggle.innerHTML = "Show Options";
         state.value = "false";
     } else {
         div.style.display = "block";
-        toggle.innerHTML = "Hide Options"; // FIXME broken
+        toggle.innerHTML = "Hide Options";
         state.value = "true";
     }
 };
@@ -731,19 +731,33 @@ const advanced_toggle_click_handler = () => {
  * @returns {undefined}
  */
 const more_info_click_handler = (event) => {
-    var more_info = $(this);
-    var desc_tr = more_info.parents("tbody").children(".description");
-    var colspan = desc_tr.children(".description").attr("colspan");
-    var tds = more_info.parents("td").prev("td").nextAll("td").slice(0, colspan);
-    $.each(tds, function (i, td) {
-        td = $(td);
-        td.width(td.width());
-    });
-    desc_tr.toggle();
-    if (desc_tr.is(":visible")) {
-        more_info.html("[-]");
+    const more_info = event.target;
+    const orig_tr = more_info.closest("tr");
+    const num_tds = orig_tr.children.length;
+    const desc_tr = more_info.closest("tbody").querySelector(".description");
+    var colspan = 0;
+    var colspan_end_index = num_tds;
+    for (var i = 0; i < num_tds; i++) {
+        const orig_td = orig_tr.children[i];
+        orig_td.style.maxWidth = orig_td.scrollWidth + "px";
+        if (colspan !== 0 && i < colspan_end_index) {
+            continue;
+        }
+        const desc_td = desc_tr.children[i - colspan];
+        if (desc_td.getAttribute("colspan") !== null) {
+            colspan = parseInt(desc_td.getAttribute("colspan")) - 1;
+            colspan_end_index = i + colspan;
+            desc_td.style.maxWidth = "0px";
+        } else {
+            desc_td.style.maxWidth = orig_td.scrollWidth + "px";
+        }
+    }
+    if (desc_tr.style.display === "none") {
+        desc_tr.style.display = "table-row";
+        more_info.innerHTML = "[-]";
     } else {
-        more_info.html("[+]");
+        desc_tr.style.display = "none";
+        more_info.innerHTML = "[+]";
     }
 };
 
