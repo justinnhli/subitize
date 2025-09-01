@@ -69,7 +69,7 @@ const search_from_parameters = (parameters, update_history) => {
         // clear search results again
         search_results_table.empty();
         // repopulate search results
-        document.getElementById("search-results-count").innerhtml = results.length;
+        document.getElementById("search-results-count").innerHTML = results.length;
         populate_search_results(metadata, results);
         // modify the new DOM as necessary
         enable_more_info_toggle();
@@ -178,20 +178,22 @@ const build_course_listing_row = (result, classnames) => {
  * @returns {string} - The table cell.
  */
 const build_search_result_star_checkbox = (result) => {
-    var td = $("<td>");
-    td.addClass("star-checkbox");
-    var label = $("<label title=\"star course\">");
-    var checkbox = $("<input type=\"checkbox\">");
-    checkbox.addClass(result.id + "-checkbox");
+    var td = document.createElement("td");
+    td.className = "star-checkbox";
+    var label = document.createElement("label");
+    label.setAttribute("title", "star course");
+    var checkbox = document.createElement("input");
+    checkbox.setAttribute("type", "checkbox");
+    checkbox.className = result.id + "-checkbox";
     if (Object.prototype.hasOwnProperty.call(starred_courses, result.id)) {
-        checkbox.prop("checked", "checked");
+        checkbox.checked = true;
     }
-    checkbox.click(function () {
-        star_course_checkbox_handler(checkbox, result);
+    checkbox.addEventListener("change", function(event) {
+        star_course_checkbox_handler(event.target, result);
     });
-    label.append(checkbox);
-    label.append($("<span>"));
-    td.append(label);
+    label.appendChild(checkbox);
+    label.appendChild(document.createElement("span"));
+    td.appendChild(label);
     return td;
 };
 
@@ -440,7 +442,7 @@ const build_search_result_info_row = (result) => {
  * @returns {undefined}
  */
 const build_starred_courses_table = () => {
-    document.getElementById("starred-courses-table").append(build_course_listing_header("starred-courses"));
+    document.getElementById("starred-courses-table").appendChild(build_course_listing_header("starred-courses")[0]);
     update_starred_courses_display();
 };
 
@@ -454,15 +456,16 @@ const update_starred_courses_display = () => {
         setTimeout(update_starred_courses_display, 200);
         return;
     }
+    const starred_courses_table = document.getElementById("starred-courses-table");
     const starred_courses_header = document.getElementById("starred-courses-header");
     if (starred_courses_header) {
         if (starred_courses_list.length === 0) {
-            starred_courses_header.hide();
+            starred_courses_header.style.display = "none";
         } else {
-            starred_courses_header.show();
+            starred_courses_header.style.display = "";
         }
     }
-    $("#starred-courses-count").html(starred_courses_list.length);
+    document.getElementById("starred-courses-count").innerHTML = starred_courses_list.length;
     starred_courses_list.sort();
     // clear starred courses table
     $("#starred-courses-table .data").remove();
@@ -473,7 +476,7 @@ const update_starred_courses_display = () => {
         // repopulate starred courses table
         var course = starred_courses[starred_courses_list[i]];
         var row = build_course_listing_row(course, classes.concat(course.id));
-        document.getElementById("starred-courses-header").after(row);
+        starred_courses_table.appendChild(row[0]);
         // recheck checkboxes
         $("." + course.id + "-checkbox").prop("checked", "checked");
     }
@@ -487,7 +490,7 @@ const update_starred_courses_display = () => {
  * @returns {undefined}
  */
 const star_course_checkbox_handler = (checkbox, result) => {
-    if (checkbox.prop("checked")) {
+    if (checkbox.checked) {
         star_course(result);
     } else {
         unstar_course(result);
