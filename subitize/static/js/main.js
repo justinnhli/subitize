@@ -38,7 +38,6 @@ const search_handler = (event) => {
     search_from_parameters(params.toString(), true);
 };
 
-
 /**
  * Search from the given parameters.
  *
