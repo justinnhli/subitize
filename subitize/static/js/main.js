@@ -100,7 +100,7 @@ const populate_search_results = (metadata, results) => {
  *
  * @param {string} section - The section the table resides in.
  * @param {string} sort - The column to sort by.
- * @returns {JQuery} - The table header.
+ * @returns {Element} - The table header.
  */
 const build_course_listing_header = (section, sort) => {
     // TODO keep heading, only change href and show sorted glyph
@@ -134,7 +134,9 @@ const build_course_listing_header = (section, sort) => {
     }
     html.push("</tr>");
     html.push("</tbody>");
-    return $(html.join(""));
+    const template = document.createElement("template");
+    template.innerHTML = html.join("");
+    return template.content.firstChild;
 };
 
 /**
@@ -442,7 +444,7 @@ const build_search_result_info_row = (result) => {
  * @returns {undefined}
  */
 const build_starred_courses_table = () => {
-    document.getElementById("starred-courses-table").appendChild(build_course_listing_header("starred-courses")[0]);
+    document.getElementById("starred-courses-table").appendChild(build_course_listing_header("starred-courses"));
     update_starred_courses_display();
 };
 
@@ -468,9 +470,9 @@ const update_starred_courses_display = () => {
     document.getElementById("starred-courses-count").innerHTML = starred_courses_list.length;
     starred_courses_list.sort();
     // clear starred courses table
-    $("#starred-courses-table .data").remove();
+    document.querySelectorAll("#starred-courses-table .data").forEach(e => e.remove());
     // clear checkboxes
-    $("input[type=checkbox]").prop("checked", false);
+    document.querySelectorAll("input[type=checkbox]").forEach(e => e.checked = false);
     var classes = ["starred-courses"];
     for (var i = starred_courses_list.length - 1; i >= 0; i -= 1) {
         // repopulate starred courses table
@@ -478,7 +480,7 @@ const update_starred_courses_display = () => {
         var row = build_course_listing_row(course, classes.concat("offering_" + course.id));
         starred_courses_table.appendChild(row[0]);
         // recheck checkboxes
-        $(".offering_" + course.id + "-checkbox").prop("checked", "checked");
+        document.querySelectorAll(".offering_" + course.id + "-checkbox").forEach(e => e.checked = true);
     }
 };
 
@@ -528,8 +530,8 @@ const unstar_course = (result) => {
     }
     starred_courses_list.splice(starred_courses_list.indexOf(result.id), 1);
     delete starred_courses[result.id];
-    $("tbody.offering_" + result.id).remove();
-    $(".offering_" + result.id + "-checkbox").prop("checked", false);
+    document.querySelectorAll("tbody.offering_" + result.id).forEach(e => e.remove());
+    document.querySelectorAll(".offering_" + result.id + "-checkbox").forEach(e => e.checked = false);
 };
 
 /**
@@ -630,22 +632,19 @@ const save_starred_courses = () => {
  * @returns {undefined}
  */
 const propagate_starred_courses = () => {
-    $("a").each(function () {
-        var a = $(this);
-        if (!a.attr("href").startsWith("/")) {
+    document.querySelectorAll("a").forEach(element => {
+        var url = element.getAttribute("href");
+        if (!url.startsWith("/")) {
             return;
         }
-        var index = a.attr("href").lastIndexOf("#");
-        var url = "";
+        var index = url.lastIndexOf("#");
         if (index !== -1) {
-            url = a.attr("href").substring(0, index);
-        } else {
-            url = a.attr("href");
+            url = url.substring(0, index);
         }
         if (starred_courses_list.length > 0) {
             url += "#" + starred_courses_list.join(",");
         }
-        a.attr("href", url);
+        element.setAttribute("href", url);
     });
 };
 
@@ -658,16 +657,16 @@ const propagate_starred_courses = () => {
  * @returns {undefined}
  */
 const show_tab = (tab) => {
-    $("#tab-list").show();
+    document.getElementById("tab-list").style.display = "block";
     if (curr_tab === "") {
-        $(".tab").removeClass("active");
-        $(".tab-content").hide();
+        document.querySelectorAll(".tab").forEach(e => e.classList.remove("active"));
+        document.querySelectorAll(".tab-content").forEach(e => e.style.display = "none");
     } else {
-        $("#" + curr_tab + "-heading").removeClass("active");
-        $("#" + curr_tab + "-content").hide();
+        document.getElementById(curr_tab + "-heading").classList.remove("active");
+        document.getElementById(curr_tab + "-content").style.display = "none";
     }
-    $("#" + tab + "-heading").addClass("active");
-    $("#" + tab + "-content").show();
+    document.getElementById(tab + "-heading").classList.add("active");
+    document.getElementById(tab + "-content").style.display = "block";
     curr_tab = tab;
 };
 
@@ -677,8 +676,10 @@ const show_tab = (tab) => {
  * @returns {undefined}
  */
 const enable_more_info_toggle = () => {
-    var more_info = $(".more-info");
-    more_info.off("click").click(more_info_click_handler);
+    document.querySelectorAll(".more-info").forEach(element => {
+        element.removeEventListener("click", more_info_click_handler);
+        element.addEventListener("click", more_info_click_handler);
+    });
 };
 
 /**
