@@ -184,7 +184,7 @@ const build_search_result_star_checkbox = (result) => {
     label.setAttribute("title", "star course");
     var checkbox = document.createElement("input");
     checkbox.setAttribute("type", "checkbox");
-    checkbox.className = result.id + "-checkbox";
+    checkbox.className = "offering_" + result.id + "-checkbox";
     if (Object.prototype.hasOwnProperty.call(starred_courses, result.id)) {
         checkbox.checked = true;
     }
@@ -475,10 +475,10 @@ const update_starred_courses_display = () => {
     for (var i = starred_courses_list.length - 1; i >= 0; i -= 1) {
         // repopulate starred courses table
         var course = starred_courses[starred_courses_list[i]];
-        var row = build_course_listing_row(course, classes.concat(course.id));
+        var row = build_course_listing_row(course, classes.concat("offering_" + course.id));
         starred_courses_table.appendChild(row[0]);
         // recheck checkboxes
-        $("." + course.id + "-checkbox").prop("checked", "checked");
+        $(".offering_" + course.id + "-checkbox").prop("checked", "checked");
     }
 };
 
@@ -528,8 +528,8 @@ const unstar_course = (result) => {
     }
     starred_courses_list.splice(starred_courses_list.indexOf(result.id), 1);
     delete starred_courses[result.id];
-    $("tbody." + result.id).remove();
-    $("." + result.id + "-checkbox").prop("checked", false);
+    $("tbody.offering_" + result.id).remove();
+    $(".offering_" + result.id + "-checkbox").prop("checked", false);
 };
 
 /**
