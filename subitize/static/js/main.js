@@ -326,20 +326,6 @@ const build_course_listing_meetings_cell = (result) => {
                 html.push(meeting.weekdays.codes);
                 html.push("</abbr>");
             }
-            if (result.semester.code >= "202001") {
-                continue;
-            }
-            html.push(" (");
-            if (meeting.building === null) {
-                html.push("Location TBD");
-            } else {
-                html.push("<abbr title=\"" + meeting.building.name + "\">");
-                html.push(meeting.building.code);
-                html.push("</abbr>");
-                html.push(" ");
-                html.push(meeting.room);
-            }
-            html.push(")");
             if (i < result.meetings.length - 1) {
                 html.push("; ");
             }
