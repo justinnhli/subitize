@@ -536,30 +536,6 @@ const unstar_course = (result) => {
 };
 
 /**
- * Serialize a JavaScript object.
- *
- * @param {Obj} obj - The JavaScript object.
- * @returns {string} - The resulting serialized string.
- */
-const param = (obj) => {
-    return $.param(obj, false);
-};
-
-/**
- * Deserialize a JavaScript object.
- *
- * @param {string} str - The serialized string.
- * @returns {Obj} - The resulting JavaScript object.
- */
-const deparam = (str) => {
-    var obj = {};
-    str.replace(/([^=&]+)=([^&]*)/g, function(m, key, value) {
-        obj[decodeURIComponent(key)] = decodeURIComponent(value);
-    });
-    return obj;
-};
-
-/**
  * Get the fragment/hash part of the URL.
  * 
  * This function is necessary because location.hash is not always accurate.
