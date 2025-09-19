@@ -13,12 +13,11 @@ var starred_courses = {};
  * @returns {string} - The transformed text.
  */
 const link_course_numbers = (result, text) => {
-    var replacement = ""
-    replacement += "<a href=\"/?advanced=true&semester=" + document.getElementById("semester-select").value + "&department=$1\">";
+    var replacement = `<a href="/?advanced=true&semester=${document.getElementById("semester-select").value}&department=$1">`;
     if (result === null) {
         replacement += "$1";
     } else {
-        replacement += "<abbr title=\"" + result.department.name + "\">$1</abbr>";
+        replacement += `<abbr title="${result.department.name}">$1</abbr>`;
     }
     replacement += "</a>"
     replacement += " <a href=\"/?advanced=true&semester=any&department=$1&lower=$2&upper=$2\">$2</a>"
@@ -117,13 +116,13 @@ const build_course_listing_header = (section, sort) => {
         {label:"Seats"}
     ];
     var html = [];
-    html.push("<tbody id=\"" + section + "-header\" class=\"" + section + "\">");
+    html.push(`<tbody id="${section}-header" class="${section}">`);
     html.push("<tr>");
     for (var i = 0; i < headings.length; i += 1) {
         var heading = headings[i];
         html.push("<th>");
         if (Object.prototype.hasOwnProperty.call(heading, "id") && sort) {
-            html.push("<a href=\"/" + location.search + "&sort=" + heading.id + location.hash + "\">");
+            html.push(`<a href="${location.search}&sort=${heading.id}${location.hash}">`);
         }
         html.push(heading.label);
         if (Object.prototype.hasOwnProperty.call(heading, "id") && sort) {
@@ -187,7 +186,7 @@ const build_search_result_star_checkbox = (result) => {
     label.setAttribute("title", "star course");
     var checkbox = document.createElement("input");
     checkbox.setAttribute("type", "checkbox");
-    checkbox.className = "offering_" + result.id + "-checkbox";
+    checkbox.className = `offering_${result.id}-checkbox`;
     if (Object.prototype.hasOwnProperty.call(starred_courses, result.id)) {
         checkbox.checked = true;
     }
@@ -207,16 +206,12 @@ const build_search_result_star_checkbox = (result) => {
  * @returns {string} - The table cell.
  */
 const build_course_listing_semester_cell = (result) => {
-    var html = [];
-    var url = "";
-    url = "/";
-    url += "?advanced=false";
-    url += "&semester=" + result.semester.code;
-    html.push("<a href=\"" + url + "\">");
-    html.push(result.semester.year + " " + result.semester.season);
-    html.push("</a>");
     var td = document.createElement("td");
-    td.innerHTML = html.join("");
+    td.innerHTML = `
+        <a href="/?advanced=false&semester=${result.semester.code}">
+            ${result.semester.year} ${result.semester.season}
+        </a>
+    `;
     return td;
 };
 
@@ -227,16 +222,12 @@ const build_course_listing_semester_cell = (result) => {
  * @returns {string} - The table cell.
  */
 const build_course_listing_course_cell = (result) => {
-    var html = [];
-    var url = "";
-    html.push(link_course_numbers(
+    var link = link_course_numbers(
         result,
-        result.department.code + " " + result.number.string
-    ));
-    html.push(" ");
-    html.push("(" + result.section + ")");
+        `${result.department.code} ${result.number.string}`,
+    );
     var td = document.createElement("td");
-    td.innerHTML = html.join("");
+    td.innerHTML = `${link} (${result.section})`;
     return td;
 };
 
@@ -247,14 +238,12 @@ const build_course_listing_course_cell = (result) => {
  * @returns {string} - The table cell.
  */
 const build_course_listing_title_cell = (result) => {
-    var html = [];
-    html.push(result.title);
+    var info = "";
     if (result.info) {
-        html.push(" ");
-        html.push("<span class=\"more-info\" title=\"show catalog info\">[+]</span>");
+        info = "<span class=\"more-info\" title=\"show catalog info\">[+]</span>";
     }
     var td = document.createElement("td");
-    td.innerHTML = html.join("");
+    td.innerHTML = `${result.title} ${info}`;
     return td;
 };
 
@@ -278,20 +267,16 @@ const build_course_listing_units_cell = (result) => {
  */
 const build_course_listing_instructors_cell = (result) => {
     var html = [];
-    var url = "";
     if (result.instructors.length === 0) {
         html.push("Unassigned");
     } else {
         for (var i = 0; i < result.instructors.length; i += 1) {
             var instructor = result.instructors[i];
-            url = "/";
-            url += "?advanced=true";
-            url += "&semester=" + document.getElementById("semester-select").value;
-            url += "&instructor=" + instructor.system_name;
-            html.push("<a href=\"" + url + "\">");
-            html.push("<abbr title=\"" + instructor.system_name + "\">");
-            html.push(instructor.last_name);
-            html.push("</abbr></a>");
+            html.push(`
+                <a href="/?advanced=true&semester=${document.getElementById("semester-select").value}&instructor=${instructor.system_name}">
+                      <abbr title="${instructor.system_name}">${instructor.last_name}</abbr>
+                </a>
+            `);
             if (i < result.instructors.length - 1) {
                 html.push("; ");
             }
@@ -318,13 +303,10 @@ const build_course_listing_meetings_cell = (result) => {
             if (meeting.weekdays === null) {
                 html.push("Time TBD");
             } else {
-                html.push(meeting.us_start_time);
-                html.push("-");
-                html.push(meeting.us_end_time);
-                html.push(" ");
-                html.push("<abbr title=\"" + meeting.weekdays.names + "\">");
-                html.push(meeting.weekdays.codes);
-                html.push("</abbr>");
+                html.push(`
+                    ${meeting.us_start_time} - ${meeting.us_end_time} 
+                    <abbr title="${meeting.weekdays.names}">meeting.weekdays.codes</abbr>
+                `);
             }
             if (i < result.meetings.length - 1) {
                 html.push("; ");
@@ -347,14 +329,8 @@ const build_course_listing_cores_cell = (result) => {
     var url = "";
     for (var i = 0; i < result.cores.length; i += 1) {
         var core = result.cores[i];
-        url = "/";
-        url += "?advanced=true";
-        url += "&semester=" + document.getElementById("semester-select").value;
-        url += "&core=" + core.code;
-        html.push("<a href=\"" + url + "\">");
-        html.push("<abbr title=\"" + core.name + "\">");
-        html.push(core.code);
-        html.push("</abbr></a>");
+        var url = `/?advanced=true&semester=${document.getElementById("semester-select").value}&core=${core.code}`;
+        html.push(`<a href="${url}"><abbr title="${core.name}">${core.code}</abbr></a>`);
         if (i < result.cores.length - 1) {
             html.push("; ");
         }
@@ -371,22 +347,18 @@ const build_course_listing_cores_cell = (result) => {
  * @returns {string} - The table cell.
  */
 const build_course_listing_seats_cell = (result) => {
-    var html = [];
     var title = [];
-    title.push("Enrolled: " + result.num_enrolled + "/" + result.num_seats);
-    title.push("&#13;");
+    title.push(`Enrolled: ${result.num_enrolled}/${result.num_seats}`);
     if (result.num_reserved !== 0) {
-        title.push("Reserved Remaining: " + result.num_reserved_open + "/" + result.num_reserved);
-        title.push("&#13;");
+        title.push(`Reserved Remaining: ${result.num_reserved_open}/${result.num_reserved}`);
     }
-    title.push("Waitlisted: " + result.num_waitlisted);
-    html.push("<abbr title=\"" + title.join("") + "\">");
-    html.push(result.num_enrolled + "/" + result.num_seats);
-    html.push(" ");
-    html.push("[" + result.num_waitlisted + "]");
-    html.push("</abbr>");
+    title.push(`Waitlisted: ${result.num_waitlisted}`);
     var td = document.createElement("td");
-    td.innerHTML = html.join("");
+    td.innerHTML = `
+        <abbr title="${title.join("&#13;")}">
+            ${result.num_enrolled}/${result.num_seats} [${result.num_waitlisted}]
+        </abbr>
+    `;
     return td;
 };
 
@@ -398,24 +370,24 @@ const build_course_listing_seats_cell = (result) => {
  */
 const build_search_result_info_row = (result) => {
     var html = [];
-    html.push("<td></td><td></td><td></td>");
-    html.push("<td class=\"description\" colspan=\"3\">");
+    html.push(`
+        <td></td><td></td><td></td>
+        <td class="description" colspan="3">
+    `);
     if (result.info.description) {
         html.push(link_course_numbers(null, result.info.description));
     }
     if (result.info.prerequisites) {
-        html.push("<p>Prerequisites: ");
-        html.push(link_course_numbers(null, result.info.prerequisites));
-        html.push("</p>");
+        html.push(`<p>Prerequisites: ${link_course_numbers(null, result.info.prerequisites)}</p>`);
     }
     if (result.info.corequisites) {
-        html.push("<p>Corequisites: ");
-        html.push(link_course_numbers(null, result.info.corequisites));
-        html.push("</p>");
+        html.push(`<p>Corequisites: ${link_course_numbers(null, result.info.corequisites)}</p>`);
     }
-    html.push("<p><a href=\"" + result.info.url + "\">View in Catalog</a></p>");
-    html.push("</td>");
-    html.push("<td></td><td></td><td></td>");
+    html.push(`
+        <p><a href="${result.info.url}">View in Catalog</a></p>
+        </td>
+        <td></td><td></td><td></td>
+    `);
     var tr = document.createElement("tr");
     tr.classList.add("description");
     tr.style.display = "none";
@@ -464,10 +436,10 @@ const update_starred_courses_display = () => {
     for (var i = starred_courses_list.length - 1; i >= 0; i -= 1) {
         // repopulate starred courses table
         var course = starred_courses[starred_courses_list[i]];
-        var row = build_course_listing_row(course, classes.concat("offering_" + course.id));
+        var row = build_course_listing_row(course, classes.concat(`offering_${course.id}`));
         starred_courses_table.appendChild(row);
         // recheck checkboxes
-        document.querySelectorAll(".offering_" + course.id + "-checkbox").forEach(e => e.checked = true);
+        document.querySelectorAll(`.offering_${course.id}-checkbox`).forEach(e => e.checked = true);
     }
 };
 
@@ -517,8 +489,8 @@ const unstar_course = (result) => {
     }
     starred_courses_list.splice(starred_courses_list.indexOf(result.id), 1);
     delete starred_courses[result.id];
-    document.querySelectorAll("tbody.offering_" + result.id).forEach(e => e.remove());
-    document.querySelectorAll(".offering_" + result.id + "-checkbox").forEach(e => e.checked = false);
+    document.querySelectorAll(`tbody.offering_${result.id}`).forEach(e => e.remove());
+    document.querySelectorAll(`.offering_${result.id}-checkbox`).forEach(e => e.checked = false);
 };
 
 /**
@@ -556,7 +528,7 @@ const load_starred_courses = () => {
         starred_courses_list = [];
         starred_courses = {};
     } else {
-        fetch("/fetch/" + course_list)
+        fetch(`/fetch/${course_list}`)
         .then((response) => response.json())
         .then((response) => {
             starred_courses_list = Object.keys(response);
@@ -579,10 +551,10 @@ const load_starred_courses = () => {
 const save_starred_courses = () => {
     var url = location.origin;
     if (curr_parameters !== "") {
-        url += "?" + curr_parameters;
+        url += `?${curr_parameters}`;
     }
     if (starred_courses_list.length > 0) {
-        url += "#" + starred_courses_list.join(",");
+        url += `#${starred_courses_list.join(",")}`;
     }
     history.pushState(null, "Subitize - Course Counts at a Glance", url);
 };
@@ -603,7 +575,7 @@ const propagate_starred_courses = () => {
             url = url.substring(0, index);
         }
         if (starred_courses_list.length > 0) {
-            url += "#" + starred_courses_list.join(",");
+            url += `#${starred_courses_list.join(",")}`;
         }
         element.setAttribute("href", url);
     });
@@ -623,11 +595,11 @@ const show_tab = (tab) => {
         document.querySelectorAll(".tab").forEach(e => e.classList.remove("active"));
         document.querySelectorAll(".tab-content").forEach(e => e.style.display = "none");
     } else {
-        document.getElementById(curr_tab + "-heading").classList.remove("active");
-        document.getElementById(curr_tab + "-content").style.display = "none";
+        document.getElementById(`${curr_tab}-heading`).classList.remove("active");
+        document.getElementById(`${curr_tab}-content`).style.display = "none";
     }
-    document.getElementById(tab + "-heading").classList.add("active");
-    document.getElementById(tab + "-content").style.display = "block";
+    document.getElementById(`${tab}-heading`).classList.add("active");
+    document.getElementById(`${tab}-content`).style.display = "block";
     curr_tab = tab;
 };
 
@@ -703,7 +675,7 @@ const more_info_click_handler = (event) => {
     var colspan_end_index = num_tds;
     for (var i = 0; i < num_tds; i++) {
         const orig_td = orig_tr.children[i];
-        orig_td.style.maxWidth = orig_td.scrollWidth + "px";
+        orig_td.style.maxWidth = `${orig_td.scrollWidth}px`;
         if (colspan !== 0 && i < colspan_end_index) {
             continue;
         }
@@ -713,7 +685,7 @@ const more_info_click_handler = (event) => {
             colspan_end_index = i + colspan;
             desc_td.style.maxWidth = "0px";
         } else {
-            desc_td.style.maxWidth = orig_td.scrollWidth + "px";
+            desc_td.style.maxWidth = `${orig_td.scrollWidth}px`;
         }
     }
     if (desc_tr.style.display === "none") {
