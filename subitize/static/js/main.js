@@ -57,7 +57,9 @@ const search_from_parameters = (parameters, update_history) => {
     var searching_message = document.createElement("p");
     searching_message.innerHTML = "searching...";
     search_results_table.after(searching_message);
-    $.get("/simplify/?json=1&" + parameters).done(function(response) {
+    fetch("/simplify/?json=1&" + parameters)
+    .then((response) => response.json())
+    .then((response) => {
         // parse response
         var metadata = response.metadata;
         var results = response.results;
@@ -593,11 +595,9 @@ const load_starred_courses = () => {
         starred_courses_list = [];
         starred_courses = {};
     } else {
-        var settings = {
-            url:"/fetch/" + course_list,
-            async: true
-        };
-        $.get(settings).done(function(response) {
+        fetch("/fetch/" + course_list)
+        .then((response) => response.json())
+        .then((response) => {
             starred_courses_list = Object.keys(response);
             starred_courses_list.sort();
             starred_courses = response;
