@@ -310,7 +310,7 @@ const build_course_listing_meetings_cell = (result) => {
             } else {
                 html.push(`
                     ${meeting.us_start_time} - ${meeting.us_end_time} 
-                    <abbr title="${meeting.weekdays.names}">meeting.weekdays.codes</abbr>
+                    <abbr title="${meeting.weekdays.names}">${meeting.weekdays.codes}</abbr>
                 `);
             }
             if (i < result.meetings.length - 1) {
