@@ -156,17 +156,17 @@ const build_course_listing_row = (result, classnames) => {
             tbody.classList.add(classnames[i]);
         }
     }
-    var tr = $("<tr></tr>");
-    tr.append(build_search_result_star_checkbox(result));
-    tr.append(build_course_listing_semester_cell(result));
-    tr.append(build_course_listing_course_cell(result));
-    tr.append(build_course_listing_title_cell(result));
-    tr.append(build_course_listing_units_cell(result));
-    tr.append(build_course_listing_instructors_cell(result));
-    tr.append(build_course_listing_meetings_cell(result));
-    tr.append(build_course_listing_cores_cell(result));
-    tr.append(build_course_listing_seats_cell(result));
-    tbody.appendChild(tr[0]);
+    var tr = document.createElement("tr");
+    tr.appendChild(build_search_result_star_checkbox(result));
+    tr.appendChild(build_course_listing_semester_cell(result));
+    tr.appendChild(build_course_listing_course_cell(result));
+    tr.appendChild(build_course_listing_title_cell(result));
+    tr.appendChild(build_course_listing_units_cell(result));
+    tr.appendChild(build_course_listing_instructors_cell(result));
+    tr.appendChild(build_course_listing_meetings_cell(result));
+    tr.appendChild(build_course_listing_cores_cell(result));
+    tr.appendChild(build_course_listing_seats_cell(result));
+    tbody.appendChild(tr);
     if (result.info !== null) {
         tbody.appendChild(build_search_result_info_row(result));
     }
@@ -208,15 +208,15 @@ const build_search_result_star_checkbox = (result) => {
 const build_course_listing_semester_cell = (result) => {
     var html = [];
     var url = "";
-    html.push("<td>");
     url = "/";
     url += "?advanced=false";
     url += "&semester=" + result.semester.code;
     html.push("<a href=\"" + url + "\">");
     html.push(result.semester.year + " " + result.semester.season);
     html.push("</a>");
-    html.push("</td>");
-    return html.join("");
+    var td = document.createElement("td");
+    td.innerHTML = html.join("");
+    return td;
 };
 
 /**
@@ -228,15 +228,15 @@ const build_course_listing_semester_cell = (result) => {
 const build_course_listing_course_cell = (result) => {
     var html = [];
     var url = "";
-    html.push("<td>");
     html.push(link_course_numbers(
         result,
         result.department.code + " " + result.number.string
     ));
     html.push(" ");
     html.push("(" + result.section + ")");
-    html.push("</td>");
-    return html.join("");
+    var td = document.createElement("td");
+    td.innerHTML = html.join("");
+    return td;
 };
 
 /**
@@ -247,14 +247,14 @@ const build_course_listing_course_cell = (result) => {
  */
 const build_course_listing_title_cell = (result) => {
     var html = [];
-    html.push("<td>");
     html.push(result.title);
     if (result.info) {
         html.push(" ");
         html.push("<span class=\"more-info\" title=\"show catalog info\">[+]</span>");
     }
-    html.push("</td>");
-    return html.join("");
+    var td = document.createElement("td");
+    td.innerHTML = html.join("");
+    return td;
 };
 
 /**
@@ -264,11 +264,9 @@ const build_course_listing_title_cell = (result) => {
  * @returns {string} - The table cell.
  */
 const build_course_listing_units_cell = (result) => {
-    var html = [];
-    html.push("<td>");
-    html.push(result.units);
-    html.push("</td>");
-    return html.join("");
+    var td = document.createElement("td");
+    td.innerHTML = result.units;
+    return td;
 };
 
 /**
@@ -280,7 +278,6 @@ const build_course_listing_units_cell = (result) => {
 const build_course_listing_instructors_cell = (result) => {
     var html = [];
     var url = "";
-    html.push("<td>");
     if (result.instructors.length === 0) {
         html.push("Unassigned");
     } else {
@@ -299,8 +296,9 @@ const build_course_listing_instructors_cell = (result) => {
             }
         }
     }
-    html.push("</td>");
-    return html.join("");
+    var td = document.createElement("td");
+    td.innerHTML = html.join("");
+    return td;
 };
 
 /**
@@ -311,7 +309,6 @@ const build_course_listing_instructors_cell = (result) => {
  */
 const build_course_listing_meetings_cell = (result) => {
     var html = [];
-    html.push("<td>");
     if (result.meetings.length === 0) {
         html.push("Time TBD (Location TBD)");
     } else {
@@ -347,8 +344,9 @@ const build_course_listing_meetings_cell = (result) => {
             }
         }
     }
-    html.push("</td>");
-    return html.join("");
+    var td = document.createElement("td");
+    td.innerHTML = html.join("");
+    return td;
 };
 
 /**
@@ -360,7 +358,6 @@ const build_course_listing_meetings_cell = (result) => {
 const build_course_listing_cores_cell = (result) => {
     var html = [];
     var url = "";
-    html.push("<td>");
     for (var i = 0; i < result.cores.length; i += 1) {
         var core = result.cores[i];
         url = "/";
@@ -375,8 +372,9 @@ const build_course_listing_cores_cell = (result) => {
             html.push("; ");
         }
     }
-    html.push("</td>");
-    return html.join("");
+    var td = document.createElement("td");
+    td.innerHTML = html.join("");
+    return td;
 };
 
 /**
@@ -387,7 +385,6 @@ const build_course_listing_cores_cell = (result) => {
  */
 const build_course_listing_seats_cell = (result) => {
     var html = [];
-    html.push("<td>");
     var title = [];
     title.push("Enrolled: " + result.num_enrolled + "/" + result.num_seats);
     title.push("&#13;");
@@ -401,8 +398,9 @@ const build_course_listing_seats_cell = (result) => {
     html.push(" ");
     html.push("[" + result.num_waitlisted + "]");
     html.push("</abbr>");
-    html.push("</td>");
-    return html.join("");
+    var td = document.createElement("td");
+    td.innerHTML = html.join("");
+    return td;
 };
 
 /**
@@ -413,7 +411,6 @@ const build_course_listing_seats_cell = (result) => {
  */
 const build_search_result_info_row = (result) => {
     var html = [];
-    html.push("<tr class=\"description\" style=\"display:none;\">");
     html.push("<td></td><td></td><td></td>");
     html.push("<td class=\"description\" colspan=\"3\">");
     if (result.info.description) {
@@ -432,8 +429,11 @@ const build_search_result_info_row = (result) => {
     html.push("<p><a href=\"" + result.info.url + "\">View in Catalog</a></p>");
     html.push("</td>");
     html.push("<td></td><td></td><td></td>");
-    html.push("</tr>");
-    return html.join("");
+    var tr = document.createElement("tr");
+    tr.classList.add("description");
+    tr.style.display = "none";
+    tr.innerHTML = html.join("");
+    return tr;
 };
 
 // starred courses tab
@@ -478,7 +478,7 @@ const update_starred_courses_display = () => {
         // repopulate starred courses table
         var course = starred_courses[starred_courses_list[i]];
         var row = build_course_listing_row(course, classes.concat("offering_" + course.id));
-        starred_courses_table.appendChild(row[0]);
+        starred_courses_table.appendChild(row);
         // recheck checkboxes
         document.querySelectorAll(".offering_" + course.id + "-checkbox").forEach(e => e.checked = true);
     }
