@@ -52,9 +52,8 @@ const search_from_parameters = (parameters, update_history) => {
     // clear search results
     search_results_table.innerHTML = "";
     // add temporary loading message
-    var searching_message = document.createElement("p");
-    searching_message.innerHTML = "searching...";
-    search_results_table.after(searching_message);
+    var search_status_message = document.getElementById("search-status-message");
+    search_status_message.innerHTML = "searching...";
     fetch("/simplify/?json=1&" + parameters)
     .then((response) => response.json())
     .then((response) => {
@@ -66,14 +65,20 @@ const search_from_parameters = (parameters, update_history) => {
         if (update_history) {
             save_starred_courses();
         }
-        // remove temporary loading message
-        searching_message.remove()
-        // repopulate search results
+        // update with search results, if any
         document.getElementById("search-results-count").innerHTML = results.length;
-        populate_search_results(metadata, results);
-        // modify the new DOM as necessary
-        enable_more_info_toggle();
-        propagate_starred_courses();
+        if (results.length === 0) {
+            // display a no results message
+            search_status_message.innerHTML = "No Courses Found";
+        } else {
+            // remove temporary loading message
+            search_status_message.innerHTML = "";
+            // repopulate search results
+            populate_search_results(metadata, results);
+            // modify the new DOM as necessary
+            enable_more_info_toggle();
+            propagate_starred_courses();
+        }
     });
 };
 
