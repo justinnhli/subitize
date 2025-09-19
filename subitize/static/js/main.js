@@ -50,13 +50,13 @@ const search_from_parameters = (parameters, update_history) => {
         return;
     }
     show_tab("search-results");
-    var search_results_table = $("#search-results-table");
+    var search_results_table = document.getElementById("search-results-table");
     // clear search results
-    search_results_table.empty();
+    search_results_table.innerHTML = "";
     // add temporary loading message
-    var search_results_header = build_course_listing_header("search-results");
-    search_results_table.append(search_results_header);
-    search_results_header.after("<tbody class=\"search-results data\"><tr><td colspan=\"9\">Searching...</td></tr></tbody>");
+    var searching_message = document.createElement("p");
+    searching_message.innerHTML = "searching...";
+    search_results_table.after(searching_message);
     $.get("/simplify/?json=1&" + parameters).done(function(response) {
         // parse response
         var metadata = response.metadata;
@@ -66,8 +66,8 @@ const search_from_parameters = (parameters, update_history) => {
         if (update_history) {
             save_starred_courses();
         }
-        // clear search results again
-        search_results_table.empty();
+        // remove temporary loading message
+        searching_message.remove()
         // repopulate search results
         document.getElementById("search-results-count").innerHTML = results.length;
         populate_search_results(metadata, results);
@@ -88,8 +88,8 @@ const populate_search_results = (metadata, results) => {
     if (results.length === 0) {
         return;
     }
-    $("#search-results-table").append(build_course_listing_header("search-results", metadata.sorted));
-    var search_results_header = $("#search-results-header");
+    document.getElementById("search-results-table").appendChild(build_course_listing_header("search-results", metadata.sorted));
+    var search_results_header = document.getElementById("search-results-header");
     for (var i = results.length - 1; i >= 0; i -= 1) {
         search_results_header.after(build_course_listing_row(results[i]));
     }
@@ -147,15 +147,15 @@ const build_course_listing_header = (section, sort) => {
  * @returns {JQuery} - The table header.
  */
 const build_course_listing_row = (result, classnames) => {
-    var tbody = $("<tbody class=\"data\"></tbody>").append(tr);
+    var tbody = document.createElement("tbody");
+    tbody.classList.add("data");
     if (classnames === undefined) {
-        tbody.addClass("search-results");
+        tbody.classList.add("search-results");
     } else {
         for (var i = 0; i < classnames.length; i += 1) {
-            tbody.addClass(classnames[i]);
+            tbody.classList.add(classnames[i]);
         }
     }
-    tbody.addClass("data");
     var tr = $("<tr></tr>");
     tr.append(build_search_result_star_checkbox(result));
     tr.append(build_course_listing_semester_cell(result));
@@ -166,9 +166,9 @@ const build_course_listing_row = (result, classnames) => {
     tr.append(build_course_listing_meetings_cell(result));
     tr.append(build_course_listing_cores_cell(result));
     tr.append(build_course_listing_seats_cell(result));
-    tbody.append(tr);
+    tbody.appendChild(tr[0]);
     if (result.info !== null) {
-        tbody.append(build_search_result_info_row(result));
+        tbody.appendChild(build_search_result_info_row(result));
     }
     return tbody;
 };
