@@ -117,6 +117,7 @@ class TimeSlot(Base):
     """A class meeting weekly time slot."""
 
     ALIASES = [
+        ['S', 'Sunday'],
         ['M', 'Monday'],
         ['T', 'Tuesday'],
         ['W', 'Wednesday'],
@@ -144,6 +145,45 @@ class TimeSlot(Base):
             str: A comma-separated list of weekday names.
         """
         return ', '.join(name for abbr, name in TimeSlot.ALIASES if abbr in self.weekdays)
+
+    @property
+    def weekdays_ints(self):
+        """Get the weekdays on which this TimeSlot meets.
+
+        Returns:
+            list[int]: A comma-separated list of weekday names.
+        """
+        return [
+            i for i, (abbr, name) in enumerate(TimeSlot.ALIASES)
+            if abbr in self.weekdays
+        ]
+
+    @property
+    def start_minute(self):
+        """Get the start time of this TimeSlot as minutes from midnight.
+
+        Returns:
+            int: The start time.
+        """
+        return self.start.hour * 60 + self.start.minute
+
+    @property
+    def end_minute(self):
+        """Get the end time of this TimeSlot as minutes from midnight.
+
+        Returns:
+            int: The end time.
+        """
+        return self.end.hour * 60 + self.end.minute
+
+    @property
+    def duration(self):
+        """Get the duration of this TimeSlot in minutes.
+
+        Returns:
+            int: The duration.
+        """
+        return self.end_minute - self.start_minute
 
     @property
     def iso_start_time(self):
@@ -243,6 +283,42 @@ class Meeting(Base):
             str: A comma-separated list of weekday names.
         """
         return self.timeslot.weekdays_names
+
+    @property
+    def weekdays_ints(self):
+        """Shortcut for TimeSlot.weekdays_names.
+
+        Returns:
+            str: A comma-separated list of weekday names.
+        """
+        return self.timeslot.weekdays_ints
+
+    @property
+    def start_minute(self):
+        """Shortcut for TimeSlot.start_minute.
+
+        Returns:
+            int: The start time.
+        """
+        return self.timeslot.start_minute
+
+    @property
+    def end_minute(self):
+        """Shortcut for TimeSlot.end_minute.
+
+        Returns:
+            int: The end time.
+        """
+        return self.timeslot.end_minute
+
+    @property
+    def duration(self):
+        """Shortcut for TimeSlot.duration.
+
+        Returns:
+            int: The duration.
+        """
+        return self.timeslot.duration
 
     @property
     def iso_start_time(self):
@@ -463,15 +539,18 @@ class Offering(Base):
             else:
                 meeting_dict.update({
                     'weekdays': {
+                        'ints': meeting.weekdays_ints,
                         'names': meeting.weekdays_names,
                         'codes': meeting.weekdays,
                     },
+                    'start_minute': meeting.start_minute,
+                    'end_minute': meeting.end_minute,
+                    'duration': meeting.duration,
                     'iso_start_time': meeting.iso_start_time,
                     'iso_end_time': meeting.iso_end_time,
                     'us_start_time': meeting.us_start_time,
                     'us_end_time': meeting.us_end_time,
                 })
-
             if not meeting.room:
                 meeting_dict.update({
                     'building': None,

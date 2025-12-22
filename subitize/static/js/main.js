@@ -1,5 +1,15 @@
 "use strict";
 
+const WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const CALENDAR_SETTINGS = {
+    "col_width_percent": 12,
+    "row_header_width_percent": 9,
+    "col_header_height": 30,
+    "from_hour": 8,
+    "upto_hour": 23,
+    "five_minute_height": 5,
+};
+
 var curr_parameters = "";
 var curr_tab = "";
 var starred_courses_list = [];
@@ -412,6 +422,53 @@ const build_starred_courses_table = () => {
     update_starred_courses_display();
 };
 
+const build_starred_courses_calendar = () => {
+    const calendar = document.getElementById("starred-courses-calendar");
+    // create column divs
+    const row_header_div = document.createElement("div");
+    row_header_div.classList.add("time-column");
+    calendar.appendChild(row_header_div);
+    const column_divs = WEEKDAYS.map((weekday, weekday_int) => {
+        const column_div = document.createElement("div");
+        column_div.classList.add("day-column");
+        calendar.appendChild(column_div);
+        return column_div;
+    });
+    // create hour row headers
+    row_header_div.appendChild(document.createElement("div"));
+    for (let hour = CALENDAR_SETTINGS.from_hour; hour < CALENDAR_SETTINGS.upto_hour; hour++) {
+        const div = document.createElement("div");
+        div.classList.add("header");
+        if (hour == 12) {
+            div.textContent = "NOON";
+        } else {
+            div.textContent = add_leading_zero(hour) + ":00";
+        }
+        row_header_div.appendChild(div);
+    }
+    // create weekday columns
+    WEEKDAYS.entries().forEach(([weekday_int, weekday]) => {
+        // create header
+        const div = document.createElement("div");
+        div.classList.add("header");
+        div.textContent = weekday.toUpperCase();
+        column_divs[weekday_int].appendChild(div);
+        // create grid
+        for (let hour = CALENDAR_SETTINGS.from_hour; hour < CALENDAR_SETTINGS.upto_hour; hour++) {
+            const div = document.createElement("div");
+            div.id = `calendar_grid_${weekday_int}_${add_leading_zero(hour)}`;
+            div.classList.add("grid");
+            column_divs[weekday_int].appendChild(div);
+        }
+    });
+    update_starred_courses_display();
+};
+
+const add_leading_zero = ((value) =>
+    value.toString().padStart(2, "0")
+);
+
+
 /**
  * Update the starred courses table.
  *
@@ -424,11 +481,14 @@ const update_starred_courses_display = () => {
     }
     const starred_courses_table = document.getElementById("starred-courses-table");
     const starred_courses_header = document.getElementById("starred-courses-header");
+    const calendar = document.getElementById("starred-courses-calendar");
     if (starred_courses_header) {
         if (starred_courses_list.length === 0) {
             starred_courses_header.style.display = "none";
+            calendar.style.display = "none";
         } else {
             starred_courses_header.style.display = "";
+            calendar.style.display = "";
         }
     }
     document.getElementById("starred-courses-count").innerHTML = starred_courses_list.length;
@@ -437,16 +497,130 @@ const update_starred_courses_display = () => {
     document.querySelectorAll("#starred-courses-table .data").forEach(e => e.remove());
     // clear checkboxes
     document.querySelectorAll("input[type=checkbox]").forEach(e => e.checked = false);
-    var classes = ["starred-courses"];
+    // clear starred courses calendar
+    document.querySelectorAll("#starred-courses-calendar .meeting").forEach(e => e.remove());
+    // populate table
+    const semesters = new Set();
+    const borders = [];
     for (var i = starred_courses_list.length - 1; i >= 0; i -= 1) {
         // repopulate starred courses table
         var course = starred_courses[starred_courses_list[i]];
-        var row = build_course_listing_row(course, classes.concat(`offering_${course.id}`));
+        var row = build_course_listing_row(course, ["starred-courses", `offering_${course.id}`]);
         starred_courses_table.appendChild(row);
         // recheck checkboxes
         document.querySelectorAll(`.offering_${course.id}-checkbox`).forEach(e => e.checked = true);
+        // add to borders for calendar slots
+        semesters.add(course.semester.code);
+        course.meetings.entries().forEach(([schedule_index, schedule]) => {
+            for (const weekday_int of schedule.weekdays.ints) {
+                borders.push({
+                    "course": course,
+                    "schedule": schedule,
+                    "schedule_index": schedule_index,
+                    "weekday_int": weekday_int,
+                    "time": schedule.start_minute,
+                    "is_start": 1
+                })
+                borders.push({
+                    "course": course,
+                    "schedule": schedule,
+                    "schedule_index": schedule_index,
+                    "weekday_int": weekday_int,
+                    "time": schedule.end_minute,
+                    "is_start": 0
+                })
+            }
+        });
     }
+    // only update calendar if all courses in the same semester
+    if (semesters.size !== 1) {
+        calendar.style.display = "none";
+        return;
+    }
+    // assign calendar slots
+    const occupied_slots = new Set();
+    const slots = {};
+    const meetings = []
+    let max_simultaneous = 0;
+    sort_borders(borders).forEach((border) =>  {
+        const meeting_id = `${border.course.id}_${border.schedule_index}`;
+        if (border.is_start) {
+            for (let i = 0; i < occupied_slots.size + 1; i++) {
+                if (!occupied_slots.has(i)) {
+                    occupied_slots.add(i);
+                    border.slot = i;
+                    meetings.push(border);
+                    slots[meeting_id] = i;
+                    break;
+                }
+            }
+        } else {
+            occupied_slots.delete(slots[meeting_id]);
+        }
+        if (occupied_slots.size > max_simultaneous) {
+            max_simultaneous = occupied_slots.size;
+        }
+    });
+    const course_width = 100 / (max_simultaneous + 0.5);
+    // create calendar meetings
+    meetings.forEach((meeting) => {
+        const meeting_div = document.createElement("div");
+        meeting_div.classList.add("meeting");
+        meeting_div.classList.add(`meeting_${meeting.course.id}`);
+        meeting_div.setAttribute("data-course", meeting.course.id);
+        meeting_div.setAttribute("style", [
+            `top:${100 * (meeting.time % 60) / 60}%`,
+            `left:${meeting.slot * course_width}%`,
+            `width:calc(${course_width}% - 3px)`,
+            `height:${CALENDAR_SETTINGS.five_minute_height * (meeting.schedule.duration / 5)}px`,
+        ].join("; "));
+        const title = ([
+            `${meeting.schedule.us_start_time}-${meeting.schedule.us_end_time}`,
+            `${meeting.course.department.code} ${meeting.course.number.string}`,
+            `${meeting.course.title}`,
+        ].join("&#13;"));
+        meeting_div.innerHTML = `<abbr title="${title}">${meeting.course.title}</abbr>`;
+        const hour = add_leading_zero(parseInt(meeting.schedule.start_minute / 60));
+        const grid = document.getElementById(`calendar_grid_${meeting.weekday_int}_${hour}`);
+        meeting_div.addEventListener("mouseenter", calendar_mouse_enter_handler);
+        meeting_div.addEventListener("mouseleave", calendar_mouse_leave_handler);
+        grid.appendChild(meeting_div);
+    });
 };
+
+const calendar_mouse_enter_handler = (event) => {
+    const course_id = event.target.getAttribute("data-course");
+    document.getElementById("starred-courses-calendar").querySelectorAll(`.meeting_${course_id}`).forEach(
+        e => e.style.background = "#BABDB6"
+    );
+};
+
+const calendar_mouse_leave_handler = (event) => {
+    const course_id = event.target.getAttribute("data-course");
+    document.getElementById("starred-courses-calendar").querySelectorAll(`.meeting_${course_id}`).forEach(
+        e => e.style.background = "#EEEEEC"
+    );
+};
+
+
+const sort_borders = ((borders) => {
+    return borders.toSorted((a, b) => {
+        if (a.weekday_int !== b.weekday_int) {
+            return a.weekday_int - b.weekday_int;
+        } else if (a.time !== b.time) {
+            return a.time - b.time;
+        } else if (a.is_start !== b.is_start) {
+            return a.is_start - b.is_start;
+        } else if (a.course.id < b.course.id) {
+            return -1;
+        } else if (b.course.id < a.course.id) {
+            return 1;
+        } else {
+            return 0;
+        };
+    });
+});
+
 
 /**
  * Toggle saving and unsaving a course.
@@ -749,5 +923,6 @@ const main = () => {
         load_page(true);
     });
     build_starred_courses_table();
+    build_starred_courses_calendar();
     load_page(false);
 };
