@@ -111,7 +111,7 @@ const populate_search_results = (metadata, results) => {
     document.getElementById("search-results-table").appendChild(build_course_listing_header("search-results", metadata.sorted));
     const search_results_header = document.getElementById("search-results-header");
     for (let i = results.length - 1; i >= 0; i -= 1) {
-        search_results_header.after(build_course_listing_row(results[i]));
+        search_results_header.after(build_course_listing_row(results[i], ["search-results"]));
     }
 };
 
@@ -167,12 +167,8 @@ const build_course_listing_header = (section, sort) => {
 const build_course_listing_row = (result, classnames) => {
     const tbody = document.createElement("tbody");
     tbody.classList.add("data");
-    if (classnames === undefined) {
-        tbody.classList.add("search-results");
-    } else {
-        for (let i = 0; i < classnames.length; i += 1) {
-            tbody.classList.add(classnames[i]);
-        }
+    for (let i = 0; i < classnames.length; i += 1) {
+        tbody.classList.add(classnames[i]);
     }
     const tr = document.createElement("tr");
     tr.appendChild(build_search_result_star_checkbox(result));
