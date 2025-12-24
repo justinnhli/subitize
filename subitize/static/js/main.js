@@ -2,9 +2,6 @@
 
 const WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const CALENDAR_SETTINGS = {
-    "col_width_percent": 12,
-    "row_header_width_percent": 9,
-    "col_header_height": 30,
     "from_hour": 8,
     "upto_hour": 23,
     "five_minute_height": 5,
@@ -561,7 +558,7 @@ const update_starred_courses_display = () => {
             max_simultaneous = occupied_slots.size;
         }
     });
-    const course_width = 100 / (max_simultaneous + 0.5);
+    const course_width = 95 / max_simultaneous;
     // create calendar meetings
     meetings.forEach((meeting) => {
         const meeting_div = document.createElement("div");

@@ -35,8 +35,8 @@ body > div {text-align:center;}
 .course-listing tbody tr.description td {border-style:none; padding-left:1em;}
 .course-listing .more-info {cursor:pointer; font-family:monospace;}
 #starred-courses-calendar {margin-top:2em; display:flex; justify-content:center;}
-#starred-courses-calendar > div.time-column {width:9%;}
-#starred-courses-calendar > div.day-column {width:13%;}
+#starred-courses-calendar > div.time-column {width:5%;}
+#starred-courses-calendar > div.day-column {width:10%;}
 #starred-courses-calendar > div > div:first-child {height:30px;}
 #starred-courses-calendar > div > div {height:60px;}
 #starred-courses-calendar div.header {align-items:center; display:flex; justify-content:center; border:dotted 1px transparent;}
