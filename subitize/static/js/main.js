@@ -119,7 +119,7 @@ const populate_search_results = (metadata, results) => {
  * Populate a course listing table header.
  *
  * @param {string} section - The section the table resides in.
- * @param {string} sort - The column to sort by.
+ * @param {string} sort - The column to sort by, or undefined if not sortable.
  * @returns {Element} - The table header.
  */
 const build_course_listing_header = (section, sort) => {
@@ -652,7 +652,7 @@ const unstar_course = (result) => {
  * location.hash first, but also tries to manually parse location if
  * location.hash is empty.
  *
- * @returns {Obj} - The keys and values in the fragment.
+ * @returns {Obj} - The URL fragment/hash.
  */
 const get_url_hash = () => {
     if (location.hash !== "") {
@@ -715,17 +715,22 @@ const save_starred_courses = () => {
  */
 const propagate_starred_courses = () => {
     document.querySelectorAll("a").forEach(element => {
+        // get the link's url
         let url = element.getAttribute("href");
+        // if the link is not internal, leave it alone
         if (!url.startsWith("/")) {
             return;
         }
+        // strip the url of its fragment/hash, if any
         const index = url.lastIndexOf("#");
         if (index !== -1) {
             url = url.substring(0, index);
         }
+        // add the new fragment/hash
         if (starred_courses_list.length > 0) {
             url += `#${starred_courses_list.join(",")}`;
         }
+        // update the link
         element.setAttribute("href", url);
     });
 };
