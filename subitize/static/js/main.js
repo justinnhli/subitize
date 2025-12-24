@@ -27,20 +27,17 @@ const parse_html = (html) => {
 /**
  * Link course numbers to a search for them.
  *
- * @param {Obj} result - The course object.
  * @param {string} text - The text to embed links in.
  * @returns {string} - The transformed text.
  */
-const link_course_numbers = (result, text) => {
-    let replacement = `<a href="/?advanced=true&semester=${document.getElementById("semester-select").value}&department=$1">`;
-    if (result === null) {
-        replacement += "$1";
-    } else {
-        replacement += `<abbr title="${result.department.name}">$1</abbr>`;
-    }
-    replacement += "</a>"
-    replacement += " <a href=\"/?advanced=true&semester=any&department=$1&lower=$2&upper=$2\">$2</a>"
-    return text.replace(/([A-Z]{3,4}) ([0-9]{1,3})/g, replacement);
+const link_course_numbers = (text) => {
+    return text.replace(
+        /([A-Z]{3,4}) ([0-9]{1,3})/g,
+        `
+            <a href="/?advanced=true&semester=${document.getElementById("semester-select").value}&department=$1">$1</a>
+            <a href=\"/?advanced=true&semester=any&department=$1&lower=$2&upper=$2\">$2</a>
+        `.trim()
+    );
 };
 
 /**
@@ -242,7 +239,7 @@ const build_course_listing_semester_cell = (result) => {
  * @returns {string} - The table cell.
  */
 const build_course_listing_course_cell = (result) => {
-    const link = link_course_numbers(result, `${result.department.code} ${result.number.string}`);
+    const link = link_course_numbers(`${result.department.code} ${result.number.string}`);
     return parse_html(`<td>${link} (${result.section})</td>`);
 };
 
@@ -361,13 +358,13 @@ const build_course_listing_seats_cell = (result) => {
 const build_search_result_info_row = (result) => {
     const description = [];
     if (result.info.description) {
-        description.push(link_course_numbers(null, result.info.description));
+        description.push(link_course_numbers(result.info.description));
     }
     if (result.info.prerequisites) {
-        description.push(`<p>Prerequisites: ${link_course_numbers(null, result.info.prerequisites)}</p>`);
+        description.push(`<p>Prerequisites: ${link_course_numbers(result.info.prerequisites)}</p>`);
     }
     if (result.info.corequisites) {
-        description.push(`<p>Corequisites: ${link_course_numbers(null, result.info.corequisites)}</p>`);
+        description.push(`<p>Corequisites: ${link_course_numbers(result.info.corequisites)}</p>`);
     }
     return parse_html(`
         <tr class="description" style="display:none">
