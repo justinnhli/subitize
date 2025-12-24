@@ -655,16 +655,15 @@ const unstar_course = (result) => {
  * @returns {Obj} - The keys and values in the fragment.
  */
 const get_url_hash = () => {
-    let result = "";
     if (location.hash !== "") {
-        result = location.hash.substring(1);
+        return location.hash.substring(1);
+    } 
+    const parts = location.toString().split("#");
+    if (parts.length > 1) {
+        return parts[parts.length - 1];
     } else {
-        const parts = location.toString().split("#");
-        if (parts.length > 1) {
-            result = parts[parts.length - 1];
-        }
+        return "";
     }
-    return result;
 };
 
 /**
