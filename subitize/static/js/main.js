@@ -55,18 +55,17 @@ const search_from_parameters = (parameters, update_history) => {
         return;
     }
     show_tab("search-results");
-    let search_results_table = document.getElementById("search-results-table");
     // clear search results
-    search_results_table.innerHTML = "";
+    document.getElementById("search-results-table").innerHTML = "";
     // add temporary loading message
-    let search_status_message = document.getElementById("search-status-message");
+    const search_status_message = document.getElementById("search-status-message");
     search_status_message.innerHTML = "searching...";
     fetch("/simplify/?json=1&" + parameters)
     .then((response) => response.json())
     .then((response) => {
         // parse response
-        let metadata = response.metadata;
-        let results = response.results;
+        const metadata = response.metadata;
+        const results = response.results;
         // change url first so it can be used in links in the result
         curr_parameters = metadata.parameters;
         if (update_history) {
@@ -101,7 +100,7 @@ const populate_search_results = (metadata, results) => {
         return;
     }
     document.getElementById("search-results-table").appendChild(build_course_listing_header("search-results", metadata.sorted));
-    let search_results_header = document.getElementById("search-results-header");
+    const search_results_header = document.getElementById("search-results-header");
     for (let i = results.length - 1; i >= 0; i -= 1) {
         search_results_header.after(build_course_listing_row(results[i]));
     }
@@ -116,7 +115,7 @@ const populate_search_results = (metadata, results) => {
  */
 const build_course_listing_header = (section, sort) => {
     // TODO keep heading, only change href and show sorted glyph
-    let headings = [
+    const headings = [
         {label:""},
         {id:"semester", label:"Semester"},
         {id:"course", label:"Course (Section)"},
@@ -127,7 +126,7 @@ const build_course_listing_header = (section, sort) => {
         {id:"cores", label:"Core"},
         {label:"Seats"}
     ];
-    let html = [];
+    const html = [];
     html.push(`<tbody id="${section}-header" class="${section}">`);
     html.push("<tr>");
     for (let i = 0; i < headings.length; i += 1) {
@@ -159,7 +158,7 @@ const build_course_listing_header = (section, sort) => {
  * @returns {JQuery} - The table header.
  */
 const build_course_listing_row = (result, classnames) => {
-    let tbody = document.createElement("tbody");
+    const tbody = document.createElement("tbody");
     tbody.classList.add("data");
     if (classnames === undefined) {
         tbody.classList.add("search-results");
@@ -168,7 +167,7 @@ const build_course_listing_row = (result, classnames) => {
             tbody.classList.add(classnames[i]);
         }
     }
-    let tr = document.createElement("tr");
+    const tr = document.createElement("tr");
     tr.appendChild(build_search_result_star_checkbox(result));
     tr.appendChild(build_course_listing_semester_cell(result));
     tr.appendChild(build_course_listing_course_cell(result));
@@ -192,7 +191,7 @@ const build_course_listing_row = (result, classnames) => {
  * @returns {string} - The table cell.
  */
 const build_search_result_star_checkbox = (result) => {
-    let td = document.createElement("td");
+    const td = document.createElement("td");
     td.className = "star-checkbox";
     let label = document.createElement("label");
     label.setAttribute("title", "star course");
@@ -218,7 +217,7 @@ const build_search_result_star_checkbox = (result) => {
  * @returns {string} - The table cell.
  */
 const build_course_listing_semester_cell = (result) => {
-    let td = document.createElement("td");
+    const td = document.createElement("td");
     td.innerHTML = `
         <a href="/?advanced=false&semester=${result.semester.code}">
             ${result.semester.year} ${result.semester.season}
@@ -234,11 +233,11 @@ const build_course_listing_semester_cell = (result) => {
  * @returns {string} - The table cell.
  */
 const build_course_listing_course_cell = (result) => {
-    let link = link_course_numbers(
+    const link = link_course_numbers(
         result,
         `${result.department.code} ${result.number.string}`,
     );
-    let td = document.createElement("td");
+    const td = document.createElement("td");
     td.innerHTML = `${link} (${result.section})`;
     return td;
 };
@@ -254,7 +253,7 @@ const build_course_listing_title_cell = (result) => {
     if (result.info) {
         info = "<span class=\"more-info\" title=\"show catalog info\">[+]</span>";
     }
-    let td = document.createElement("td");
+    const td = document.createElement("td");
     td.innerHTML = `${result.title} ${info}`;
     return td;
 };
@@ -278,7 +277,7 @@ const build_course_listing_units_cell = (result) => {
  * @returns {string} - The table cell.
  */
 const build_course_listing_instructors_cell = (result) => {
-    let html = [];
+    const html = [];
     if (result.instructors.length === 0) {
         html.push("Unassigned");
     } else {
@@ -294,7 +293,7 @@ const build_course_listing_instructors_cell = (result) => {
             }
         }
     }
-    let td = document.createElement("td");
+    const td = document.createElement("td");
     td.innerHTML = html.join("");
     return td;
 };
@@ -306,12 +305,12 @@ const build_course_listing_instructors_cell = (result) => {
  * @returns {string} - The table cell.
  */
 const build_course_listing_meetings_cell = (result) => {
-    let html = [];
+    const html = [];
     if (result.meetings.length === 0) {
         html.push("Time TBD (Location TBD)");
     } else {
         for (let i = 0; i < result.meetings.length; i += 1) {
-            let meeting = result.meetings[i];
+            const meeting = result.meetings[i];
             if (meeting.weekdays === null) {
                 html.push("Time TBD");
             } else {
@@ -325,7 +324,7 @@ const build_course_listing_meetings_cell = (result) => {
             }
         }
     }
-    let td = document.createElement("td");
+    const td = document.createElement("td");
     td.innerHTML = html.join("");
     return td;
 };
@@ -337,7 +336,7 @@ const build_course_listing_meetings_cell = (result) => {
  * @returns {string} - The table cell.
  */
 const build_course_listing_cores_cell = (result) => {
-    let html = [];
+    const html = [];
     let url = "";
     for (let i = 0; i < result.cores.length; i += 1) {
         let core = result.cores[i];
@@ -347,7 +346,7 @@ const build_course_listing_cores_cell = (result) => {
             html.push("; ");
         }
     }
-    let td = document.createElement("td");
+    const td = document.createElement("td");
     td.innerHTML = html.join("");
     return td;
 };
@@ -359,13 +358,13 @@ const build_course_listing_cores_cell = (result) => {
  * @returns {string} - The table cell.
  */
 const build_course_listing_seats_cell = (result) => {
-    let title = [];
+    const title = [];
     title.push(`Enrolled: ${result.num_enrolled}/${result.num_seats}`);
     if (result.num_reserved !== 0) {
         title.push(`Reserved Remaining: ${result.num_reserved_open}/${result.num_reserved}`);
     }
     title.push(`Waitlisted: ${result.num_waitlisted}`);
-    let td = document.createElement("td");
+    const td = document.createElement("td");
     td.innerHTML = `
         <abbr title="${title.join("&#13;")}">
             ${result.num_enrolled}/${result.num_seats} [${result.num_waitlisted}]
@@ -381,7 +380,7 @@ const build_course_listing_seats_cell = (result) => {
  * @returns {string} - The table row.
  */
 const build_search_result_info_row = (result) => {
-    let html = [];
+    const html = [];
     html.push(`
         <td></td><td></td><td></td>
         <td class="description" colspan="3">
@@ -400,7 +399,7 @@ const build_search_result_info_row = (result) => {
         </td>
         <td></td><td></td><td></td>
     `);
-    let tr = document.createElement("tr");
+    const tr = document.createElement("tr");
     tr.classList.add("description");
     tr.style.display = "none";
     tr.innerHTML = html.join("");
@@ -501,8 +500,8 @@ const update_starred_courses_display = () => {
     const borders = [];
     for (let i = starred_courses_list.length - 1; i >= 0; i -= 1) {
         // repopulate starred courses table
-        let course = starred_courses[starred_courses_list[i]];
-        let row = build_course_listing_row(course, ["starred-courses", `offering_${course.id}`]);
+        const course = starred_courses[starred_courses_list[i]];
+        const row = build_course_listing_row(course, ["starred-courses", `offering_${course.id}`]);
         starred_courses_table.appendChild(row);
         // recheck checkboxes
         document.querySelectorAll(`.offering_${course.id}-checkbox`).forEach(e => e.checked = true);
@@ -685,7 +684,7 @@ const get_url_hash = () => {
     if (location.hash !== "") {
         result = location.hash.substring(1);
     } else {
-        let parts = location.toString().split("#");
+        const parts = location.toString().split("#");
         if (parts.length > 1) {
             result = parts[parts.length - 1];
         }
@@ -699,7 +698,7 @@ const get_url_hash = () => {
  * @returns {undefined}
  */
 const load_starred_courses = () => {
-    let course_list = get_url_hash();
+    const course_list = get_url_hash();
     if (course_list === "") {
         starred_courses_list = [];
         starred_courses = {};
@@ -746,7 +745,7 @@ const propagate_starred_courses = () => {
         if (!url.startsWith("/")) {
             return;
         }
-        let index = url.lastIndexOf("#");
+        const index = url.lastIndexOf("#");
         if (index !== -1) {
             url = url.substring(0, index);
         }
@@ -797,7 +796,7 @@ const enable_more_info_toggle = () => {
  * @returns {undefined}
  */
 const searchbar_focus_handler = (event) => {
-    let searchbar = document.getElementById("searchbar");
+    const searchbar = document.getElementById("searchbar");
     if (searchbar.value === "search for courses...") {
         searchbar.value = "";
         searchbar.style.color = "#000000";
@@ -810,7 +809,7 @@ const searchbar_focus_handler = (event) => {
  * @returns {undefined}
  */
 const searchbar_blur_handler = (event) => {
-    let searchbar = document.getElementById("searchbar");
+    const searchbar = document.getElementById("searchbar");
     if (searchbar.value === "") {
         searchbar.value = "search for courses...";
         searchbar.style.color = "#BABDB6";
@@ -823,9 +822,9 @@ const searchbar_blur_handler = (event) => {
  * @returns {undefined}
  */
 const advanced_toggle_click_handler = (event) => {
-    let toggle = document.getElementById("advanced-toggle");
-    let state = document.getElementById("advanced-state");
-    let div = document.getElementById("advanced-search");
+    const toggle = document.getElementById("advanced-toggle");
+    const state = document.getElementById("advanced-state");
+    const div = document.getElementById("advanced-search");
     if (state.value.toLowerCase() === "true") {
         div.style.display = "none";
         toggle.innerHTML = "Show Options";
