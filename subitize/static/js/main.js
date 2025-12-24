@@ -110,9 +110,9 @@ const populate_search_results = (metadata, results) => {
     }
     document.getElementById("search-results-table").appendChild(build_course_listing_header("search-results", metadata.sorted));
     const search_results_header = document.getElementById("search-results-header");
-    for (let i = results.length - 1; i >= 0; i -= 1) {
-        search_results_header.after(build_course_listing_row(results[i], ["search-results"]));
-    }
+    results.reverse().forEach((result) => {
+        search_results_header.after(build_course_listing_row(result, ["search-results"]));
+    });
 };
 
 /**
@@ -138,20 +138,22 @@ const build_course_listing_header = (section, sort) => {
     const html = [];
     html.push(`<tbody id="${section}-header" class="${section}">`);
     html.push("<tr>");
-    for (let i = 0; i < headings.length; i += 1) {
-        let heading = headings[i];
+    headings.forEach((heading) => {
         html.push("<th>");
-        if (Object.prototype.hasOwnProperty.call(heading, "id") && sort) {
-            html.push(`<a href="${location.search}&sort=${heading.id}${location.hash}">`);
-        }
-        html.push(heading.label);
-        if (Object.prototype.hasOwnProperty.call(heading, "id") && sort) {
-            html.push("</a>");
+        if (heading.hasOwnProperty("id") && sort) {
+            html.push(`
+                <a href="${location.search}&sort=${heading.id}${location.hash}">
+                    ${heading.label}
+                </a>
+            `);
             if (sort === heading.id) {
                 html.push(" &#9660; ");
             }
+        } else {
+            html.push(heading.label);
         }
-    }
+        html.push("</th>");
+    });
     html.push("</tr>");
     html.push("</tbody>");
     return parse_html(html.join(""));
@@ -167,9 +169,9 @@ const build_course_listing_header = (section, sort) => {
 const build_course_listing_row = (result, classnames) => {
     const tbody = document.createElement("tbody");
     tbody.classList.add("data");
-    for (let i = 0; i < classnames.length; i += 1) {
-        tbody.classList.add(classnames[i]);
-    }
+    classnames.forEach((classname) => {
+        tbody.classList.add(classname);
+    });
     const tr = document.createElement("tr");
     tr.appendChild(build_search_result_star_checkbox(result));
     tr.appendChild(build_course_listing_semester_cell(result));
@@ -470,17 +472,18 @@ const update_starred_courses_display = () => {
     // populate table
     const semesters = new Set();
     const borders = [];
-    for (let i = starred_courses_list.length - 1; i >= 0; i -= 1) {
-        // repopulate starred courses table
-        const course = starred_courses[starred_courses_list[i]];
-        const row = build_course_listing_row(course, ["starred-courses", `offering_${course.id}`]);
-        starred_courses_table.appendChild(row);
+    starred_courses_list.reverse().forEach((course_id) => {
+        const course = starred_courses[course_id];
+        starred_courses_table.appendChild(build_course_listing_row(
+            course,
+            ["starred-courses", `offering_${course.id}`]
+        ));
         // recheck checkboxes
         document.querySelectorAll(`.offering_${course.id}-checkbox`).forEach(e => e.checked = true);
         // add to borders for calendar slots
         semesters.add(course.semester.code);
         course.meetings.entries().forEach(([schedule_index, schedule]) => {
-            for (const weekday_int of schedule.weekdays.ints) {
+            schedule.weekdays.ints.forEach((weekday_int) => {
                 borders.push({
                     "course": course,
                     "schedule": schedule,
@@ -497,9 +500,9 @@ const update_starred_courses_display = () => {
                     "time": schedule.end_minute,
                     "is_start": 0
                 })
-            }
+            });
         });
-    }
+    });
     // only update calendar if all courses in the same semester
     if (semesters.size !== 1) {
         calendar.style.display = "none";
