@@ -238,7 +238,11 @@ const build_course_listing_semester_cell = (result) => {
  */
 const build_course_listing_course_cell = (result) => {
     const link = link_course_numbers(`${result.department.code} ${result.number.string}`);
-    return parse_html(`<td>${link} (${result.section})</td>`);
+    const abbr_link = link.replace(
+        `>${result.department.code}<`,
+        `><abbr title="${result.department.name}">${result.department.code}</abbr><`
+    );
+    return parse_html(`<td>${abbr_link} (${result.section})</td>`);
 };
 
 /**
