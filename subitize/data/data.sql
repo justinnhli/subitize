@@ -51392,8 +51392,8 @@ INSERT INTO offerings VALUES(30065,202701,1511,14863,'2-2','Fundamentals of Comp
 INSERT INTO offerings VALUES(30066,202701,2648,14864,'1','Statistics',4,18,35,0,0,0);
 INSERT INTO offerings VALUES(30067,202701,2648,14864,'1-1','Statistics Lab',0,10,18,0,0,0);
 INSERT INTO offerings VALUES(30068,202701,2648,14864,'1-2','Statistics Lab',0,8,18,0,0,0);
-INSERT INTO offerings VALUES(30069,202701,2648,14864,'2','Statistics',4,17,35,0,0,0);
-INSERT INTO offerings VALUES(30070,202701,2648,14864,'2-1','Statistics Lab',0,17,18,0,0,0);
+INSERT INTO offerings VALUES(30069,202701,2648,14864,'2','Statistics',4,18,35,0,0,0);
+INSERT INTO offerings VALUES(30070,202701,2648,14864,'2-1','Statistics Lab',0,18,18,0,0,0);
 INSERT INTO offerings VALUES(30071,202701,2508,14865,'1','Mathematical Foundations of Computer Science',4,11,35,0,0,0);
 INSERT INTO offerings VALUES(30072,202701,2948,14867,'1','Advanced Programming',4,2,24,6,6,0);
 INSERT INTO offerings VALUES(30073,202701,1649,14870,'1','Data Structures',4,9,24,0,0,0);
@@ -51454,9 +51454,9 @@ INSERT INTO offerings VALUES(30130,202701,132,15183,'2','Principles of Economics
 INSERT INTO offerings VALUES(30131,202701,2895,15187,'1','Sustainability Lab',2,13,25,0,0,0);
 INSERT INTO offerings VALUES(30132,202701,133,15190,'1','Accounting and Financial Analysis',4,22,25,0,0,0);
 INSERT INTO offerings VALUES(30133,202701,134,15191,'1','Intermediate Microeconomic Theory',4,20,20,2,2,0);
-INSERT INTO offerings VALUES(30134,202701,134,15191,'2','Intermediate Microeconomic Theory',4,20,20,2,2,0);
+INSERT INTO offerings VALUES(30134,202701,134,15191,'2','Intermediate Microeconomic Theory',4,19,20,2,2,0);
 INSERT INTO offerings VALUES(30135,202701,135,15192,'1','Intermediate Macroeconomic Theory',4,18,20,2,2,0);
-INSERT INTO offerings VALUES(30136,202701,135,15192,'2','Intermediate Macroeconomic Theory',4,17,20,2,2,0);
+INSERT INTO offerings VALUES(30136,202701,135,15192,'2','Intermediate Macroeconomic Theory',4,18,20,2,2,0);
 INSERT INTO offerings VALUES(30137,202701,136,15193,'1','Applied Econometrics',4,10,20,0,0,0);
 INSERT INTO offerings VALUES(30138,202701,136,15193,'2','Applied Econometrics',4,22,20,0,0,0);
 INSERT INTO offerings VALUES(30139,202701,3551,15186,'1','Directed Research',2,1,2,0,0,0);
@@ -51533,7 +51533,7 @@ INSERT INTO offerings VALUES(30210,202701,1660,15524,'1','Nahuatl Language, Writ
 INSERT INTO offerings VALUES(30211,202701,201,15539,'1','History Colloquium. Rethinking the History of the American West',4,10,18,0,0,0);
 INSERT INTO offerings VALUES(30212,202701,206,15538,'1','Special Topics in History. Environmental History of North America',4,12,20,0,0,0);
 INSERT INTO offerings VALUES(30213,202701,620,15561,'1','Senior Seminar',4,9,20,0,0,0);
-INSERT INTO offerings VALUES(30214,202701,209,15568,'1','Elementary Japanese I',4,8,18,0,0,0);
+INSERT INTO offerings VALUES(30214,202701,209,15568,'1','Elementary Japanese I',4,9,18,0,0,0);
 INSERT INTO offerings VALUES(30215,202701,209,15568,'2','Elementary Japanese I',4,6,18,0,0,0);
 INSERT INTO offerings VALUES(30216,202701,210,15573,'1','Intermediate Japanese I',4,7,25,0,0,0);
 INSERT INTO offerings VALUES(30217,202701,212,15579,'1','Advanced Japanese I',4,2,18,0,0,0);
@@ -51950,7 +51950,7 @@ INSERT INTO offerings VALUES(30632,202701,1354,16358,'1','Sociology of (Non)Viol
 INSERT INTO offerings VALUES(30633,202701,378,16364,'1','Senior Seminar in Sociology',4,8,7,0,0,0);
 INSERT INTO offerings VALUES(30634,202701,378,16364,'2','Senior Seminar in Sociology',4,8,7,0,0,0);
 INSERT INTO offerings VALUES(30635,202701,380,16368,'1','Beginning Spanish I',4,2,18,5,5,0);
-INSERT INTO offerings VALUES(30636,202701,380,16368,'2','Beginning Spanish I',4,11,18,5,5,0);
+INSERT INTO offerings VALUES(30636,202701,380,16368,'2','Beginning Spanish I',4,10,18,5,5,0);
 INSERT INTO offerings VALUES(30637,202701,381,16369,'1','Beginning Spanish II',4,10,18,7,7,0);
 INSERT INTO offerings VALUES(30638,202701,381,16369,'2','Beginning Spanish II',4,8,18,7,7,0);
 INSERT INTO offerings VALUES(30639,202701,381,16369,'3','Beginning Spanish II',4,11,18,7,7,0);
@@ -52002,7 +52002,7 @@ INSERT INTO offerings VALUES(30684,202701,417,16476,'1','Intensive Performance L
 INSERT INTO offerings VALUES(30685,202701,417,16476,'2','Intensive Performance Laboratory',2,0,15,0,0,0);
 INSERT INTO offerings VALUES(30686,202701,1356,16477,'1','Acting Through Song',4,6,14,3,2,0);
 INSERT INTO offerings VALUES(30687,202701,421,16488,'1','Senior Seminar',4,5,18,0,0,0);
-INSERT INTO offerings VALUES(30688,202701,423,16490,'1','Environment and Society',4,9,25,13,13,0);
+INSERT INTO offerings VALUES(30688,202701,423,16490,'1','Environment and Society',4,8,25,13,13,0);
 INSERT INTO offerings VALUES(30691,202701,3916,16492,'1','Geographic Information Science I',4,5,25,0,0,0);
 INSERT INTO offerings VALUES(30692,202701,3921,NULL,'1','Geographic Information Science I Laboratory',0,2,12,0,0,0);
 INSERT INTO offerings VALUES(30693,202701,3921,NULL,'2','Geographic Information Science I Laboratory',0,3,13,0,0,0);
