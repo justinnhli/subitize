@@ -51473,7 +51473,7 @@ INSERT INTO offerings VALUES(30149,202701,142,15230,'3','Senior Seminar: Industr
 INSERT INTO offerings VALUES(30150,202701,142,15230,'4','Senior Seminar: Industrial Organization',4,17,15,0,0,0);
 INSERT INTO offerings VALUES(30151,202701,145,15235,'1','Community Literacy',2,13,25,0,0,0);
 INSERT INTO offerings VALUES(30152,202701,3262,15238,'1','Art Education Practicum: Community Studio at OXY ARTS',4,11,12,0,0,0);
-INSERT INTO offerings VALUES(30153,202701,146,15242,'1','Sociocultural Foundations of Schooling',4,10,25,0,0,0);
+INSERT INTO offerings VALUES(30153,202701,146,15242,'1','Sociocultural Foundations of Schooling',4,9,25,0,0,0);
 INSERT INTO offerings VALUES(30154,202701,147,15243,'1','The Politics and Pedagogy of First and Second Language Acquisition',4,9,25,0,0,0);
 INSERT INTO offerings VALUES(30155,202701,925,15246,'1','Chicano Education',4,9,25,0,0,0);
 INSERT INTO offerings VALUES(30156,202701,1015,15250,'1','Educational Inequality',4,19,25,0,0,0);
@@ -51586,7 +51586,7 @@ INSERT INTO offerings VALUES(30267,202701,247,15768,'1','Linear Algebra',4,24,25
 INSERT INTO offerings VALUES(30268,202701,644,15773,'1','Junior Colloquium',2,8,25,0,0,0);
 INSERT INTO offerings VALUES(30269,202701,949,15776,'1','Algebra',4,5,20,0,0,0);
 INSERT INTO offerings VALUES(30270,202701,249,15778,'1','Probability',4,21,20,0,0,0);
-INSERT INTO offerings VALUES(30271,202701,1388,15780,'1','Ordinary Differential Equations',4,21,20,0,0,0);
+INSERT INTO offerings VALUES(30271,202701,1388,15780,'1','Ordinary Differential Equations',4,22,20,0,0,0);
 INSERT INTO offerings VALUES(30272,202701,253,15794,'1','Senior Colloquium',2,10,25,0,0,0);
 INSERT INTO offerings VALUES(30273,202701,1529,15712,'1','Introduction to Digital Design',4,15,16,0,0,0);
 INSERT INTO offerings VALUES(30274,202701,1530,15709,'1','Introduction to Visual and Critical Studies',4,7,25,10,10,0);
@@ -51885,7 +51885,7 @@ INSERT INTO offerings VALUES(30567,202701,1310,16154,'1','Research Methods in Po
 INSERT INTO offerings VALUES(30568,202701,3998,16164,'1','Comparative and Global Political Theory',4,13,18,0,0,0);
 INSERT INTO offerings VALUES(30569,202701,1130,16170,'1','Introduction to Psychology',4,11,30,19,19,0);
 INSERT INTO offerings VALUES(30570,202701,1130,16170,'2','Introduction to Psychology',4,11,30,19,19,0);
-INSERT INTO offerings VALUES(30571,202701,1130,16170,'3','Introduction to Psychology',4,9,30,19,19,0);
+INSERT INTO offerings VALUES(30571,202701,1130,16170,'3','Introduction to Psychology',4,8,30,19,19,0);
 INSERT INTO offerings VALUES(30572,202701,344,16173,'1','Methods in Psychological Science',4,14,25,1,1,0);
 INSERT INTO offerings VALUES(30573,202701,344,16173,'2','Methods in Psychological Science',4,5,25,1,1,0);
 INSERT INTO offerings VALUES(30574,202701,345,16174,'1','Statistics in Psychological Science',4,23,25,14,1,0);
