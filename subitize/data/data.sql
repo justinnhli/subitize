@@ -51245,7 +51245,7 @@ INSERT INTO offerings VALUES(29915,202701,3967,14674,'10','Directed Research',2,
 INSERT INTO offerings VALUES(29916,202701,3967,14674,'11','Directed Research',2,1,5,0,0,0);
 INSERT INTO offerings VALUES(29917,202701,3967,14674,'12','Directed Research',2,0,5,0,0,0);
 INSERT INTO offerings VALUES(29918,202701,3967,14674,'13','Directed Research',2,0,5,0,0,0);
-INSERT INTO offerings VALUES(29919,202701,3328,14677,'1','Huntington-Occidental Pre-med Program (HOPP)',2,0,10,0,0,0);
+INSERT INTO offerings VALUES(29919,202701,3328,14677,'1','Huntington-Occidental Pre-med Program (HOPP)',2,3,10,0,0,0);
 INSERT INTO offerings VALUES(29920,202701,42,14680,'1','Principles of Biochemistry',4,16,16,2,2,0);
 INSERT INTO offerings VALUES(29921,202701,43,NULL,'1','Principles of Biochemistry Laboratory',0,8,8,1,1,0);
 INSERT INTO offerings VALUES(29922,202701,43,NULL,'2','Principles of Biochemistry Laboratory',0,8,8,1,1,0);
@@ -51334,7 +51334,7 @@ INSERT INTO offerings VALUES(30005,202701,69,14780,'1','Directed Research',4,0,9
 INSERT INTO offerings VALUES(30006,202701,69,14780,'2','Directed Research',4,1,99,0,0,0);
 INSERT INTO offerings VALUES(30007,202701,69,14780,'3','Directed Research',4,0,99,0,0,0);
 INSERT INTO offerings VALUES(30008,202701,69,14780,'4','Directed Research',4,1,99,0,0,0);
-INSERT INTO offerings VALUES(30009,202701,69,14780,'5','Directed Research',4,3,99,0,0,0);
+INSERT INTO offerings VALUES(30009,202701,69,14780,'5','Directed Research',4,2,99,0,0,0);
 INSERT INTO offerings VALUES(30010,202701,69,14780,'6','Directed Research',4,1,99,0,0,0);
 INSERT INTO offerings VALUES(30011,202701,70,14782,'1','Senior Seminar',2,9,18,0,0,0);
 INSERT INTO offerings VALUES(30012,202701,71,14785,'1','Elementary Chinese I',4,7,25,0,0,0);
@@ -51413,7 +51413,7 @@ INSERT INTO offerings VALUES(30086,202701,2738,15009,'1','Introduction to Critic
 INSERT INTO offerings VALUES(30087,202701,2738,15009,'2','Introduction to Critical Theory',4,8,25,0,0,0);
 INSERT INTO offerings VALUES(30088,202701,1110,15010,'1','Tools for Social Justice Activism',4,7,35,0,0,0);
 INSERT INTO offerings VALUES(30089,202701,2929,15012,'1','The New Queer Politics of the Middle East',4,25,25,0,0,0);
-INSERT INTO offerings VALUES(30090,202701,2330,15022,'1','Introduction to Feminist Studies',4,13,25,0,0,0);
+INSERT INTO offerings VALUES(30090,202701,2330,15022,'1','Introduction to Feminist Studies',4,12,25,0,0,0);
 INSERT INTO offerings VALUES(30091,202701,2847,15034,'1','Torture, Sex, and Metaphysics: Dehumanization Before Abu Ghraib and After',4,28,25,0,0,0);
 INSERT INTO offerings VALUES(30092,202701,1111,15038,'1','Mother Goose to Mother F*!@#$: Children''s Lit/Popular Texts',4,28,25,0,0,0);
 INSERT INTO offerings VALUES(30093,202701,2878,15044,'1','Intersectionality: Theory and Practice',4,12,25,0,0,0);
@@ -51439,7 +51439,7 @@ INSERT INTO offerings VALUES(30113,202701,1587,15117,'1','Latin American Politic
 INSERT INTO offerings VALUES(30114,202701,2826,15120,'1','Authoritarianism in the Age of Globalization',4,19,25,0,0,0);
 INSERT INTO offerings VALUES(30115,202701,124,15130,'1','Identity and Citizenship:  The South Asian Diaspora',4,14,25,0,0,0);
 INSERT INTO offerings VALUES(30116,202701,2426,15110,'1','Transitional Justice in Colombia: Comparative Perspectives',4,10,25,0,0,0);
-INSERT INTO offerings VALUES(30117,202701,828,15136,'1','International Security',4,22,25,0,0,0);
+INSERT INTO offerings VALUES(30117,202701,828,15136,'1','International Security',4,23,25,0,0,0);
 INSERT INTO offerings VALUES(30118,202701,4414,15152,'1','Directed Research',2,2,6,0,0,0);
 INSERT INTO offerings VALUES(30119,202701,129,15164,'1','Junior Seminar: Contemporary Issues in International and Human Rights Law',4,18,18,0,0,0);
 INSERT INTO offerings VALUES(30120,202701,1118,15174,'1','Special Topics at the United Nations',4,15,19,0,0,0);
@@ -51451,7 +51451,7 @@ INSERT INTO offerings VALUES(30126,202701,131,15182,'3','Principles of Economics
 INSERT INTO offerings VALUES(30127,202701,131,15182,'4','Principles of Economics I',4,0,30,15,15,0);
 INSERT INTO offerings VALUES(30128,202701,131,15182,'5','Principles of Economics I',4,6,30,15,15,0);
 INSERT INTO offerings VALUES(30130,202701,132,15183,'2','Principles of Economics II',4,20,25,4,4,0);
-INSERT INTO offerings VALUES(30131,202701,2895,15187,'1','Sustainability Lab',2,13,25,0,0,0);
+INSERT INTO offerings VALUES(30131,202701,2895,15187,'1','Sustainability Lab',2,12,25,0,0,0);
 INSERT INTO offerings VALUES(30132,202701,133,15190,'1','Accounting and Financial Analysis',4,23,25,0,0,0);
 INSERT INTO offerings VALUES(30133,202701,134,15191,'1','Intermediate Microeconomic Theory',4,20,20,2,2,0);
 INSERT INTO offerings VALUES(30134,202701,134,15191,'2','Intermediate Microeconomic Theory',4,19,20,2,2,0);
@@ -51585,7 +51585,7 @@ INSERT INTO offerings VALUES(30266,202701,246,15767,'1','Multivariable Calculus'
 INSERT INTO offerings VALUES(30267,202701,247,15768,'1','Linear Algebra',4,24,25,0,0,0);
 INSERT INTO offerings VALUES(30268,202701,644,15773,'1','Junior Colloquium',2,8,25,0,0,0);
 INSERT INTO offerings VALUES(30269,202701,949,15776,'1','Algebra',4,5,20,0,0,0);
-INSERT INTO offerings VALUES(30270,202701,249,15778,'1','Probability',4,21,20,0,0,0);
+INSERT INTO offerings VALUES(30270,202701,249,15778,'1','Probability',4,20,20,0,0,0);
 INSERT INTO offerings VALUES(30271,202701,1388,15780,'1','Ordinary Differential Equations',4,22,20,0,0,0);
 INSERT INTO offerings VALUES(30272,202701,253,15794,'1','Senior Colloquium',2,10,25,0,0,0);
 INSERT INTO offerings VALUES(30273,202701,1529,15712,'1','Introduction to Digital Design',4,15,16,0,0,0);
@@ -51873,7 +51873,7 @@ INSERT INTO offerings VALUES(30555,202701,2480,16106,'1','California State Gover
 INSERT INTO offerings VALUES(30556,202701,966,16111,'1','Los Angeles Politics',4,11,25,0,0,0);
 INSERT INTO offerings VALUES(30557,202701,713,16113,'1','Interest Group Politics',4,21,25,0,0,0);
 INSERT INTO offerings VALUES(30558,202701,1485,16116,'1','Latin American Politics',4,25,25,0,0,0);
-INSERT INTO offerings VALUES(30559,202701,1031,16122,'1','International Security',4,22,25,0,0,0);
+INSERT INTO offerings VALUES(30559,202701,1031,16122,'1','International Security',4,23,25,0,0,0);
 INSERT INTO offerings VALUES(30560,202701,1082,16123,'1','United States Foreign Relations',4,16,25,0,0,0);
 INSERT INTO offerings VALUES(30561,202701,335,16128,'1','Constitutional Law',4,11,25,0,0,0);
 INSERT INTO offerings VALUES(30562,202701,1307,16140,'1','Campaign Fieldwork Internship',8,18,40,0,0,0);
