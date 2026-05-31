@@ -51245,7 +51245,7 @@ INSERT INTO offerings VALUES(29915,202701,3967,14674,'10','Directed Research',2,
 INSERT INTO offerings VALUES(29916,202701,3967,14674,'11','Directed Research',2,1,5,0,0,0);
 INSERT INTO offerings VALUES(29917,202701,3967,14674,'12','Directed Research',2,0,5,0,0,0);
 INSERT INTO offerings VALUES(29918,202701,3967,14674,'13','Directed Research',2,0,5,0,0,0);
-INSERT INTO offerings VALUES(29919,202701,3328,14677,'1','Huntington-Occidental Pre-med Program (HOPP)',2,3,10,0,0,0);
+INSERT INTO offerings VALUES(29919,202701,3328,14677,'1','Huntington-Occidental Pre-med Program (HOPP)',2,5,10,0,0,0);
 INSERT INTO offerings VALUES(29920,202701,42,14680,'1','Principles of Biochemistry',4,16,16,2,2,0);
 INSERT INTO offerings VALUES(29921,202701,43,NULL,'1','Principles of Biochemistry Laboratory',0,8,8,1,1,0);
 INSERT INTO offerings VALUES(29922,202701,43,NULL,'2','Principles of Biochemistry Laboratory',0,8,8,1,1,0);
@@ -51812,7 +51812,7 @@ INSERT INTO offerings VALUES(30494,202701,294,15993,'1','Introduction to Philoso
 INSERT INTO offerings VALUES(30495,202701,2679,15994,'1','Formal Logic',4,21,35,13,13,0);
 INSERT INTO offerings VALUES(30496,202701,2679,15994,'2','Formal Logic',4,26,35,10,6,0);
 INSERT INTO offerings VALUES(30497,202701,3012,16008,'1','Mexican Philosophy, Culture, and Society',4,19,25,2,2,0);
-INSERT INTO offerings VALUES(30498,202701,4421,16018,'1','The Heart and the Mind: Philosophy of the Emotions',4,23,25,5,0,0);
+INSERT INTO offerings VALUES(30498,202701,4421,16018,'1','The Heart and the Mind: Philosophy of the Emotions',4,22,25,5,0,0);
 INSERT INTO offerings VALUES(30499,202701,2463,16026,'1','Ethics Bowl: Contemporary Debates on Ethical Issues',4,9,10,2,0,0);
 INSERT INTO offerings VALUES(30500,202701,2808,16030,'1','The Brothers Karamazov',4,18,18,5,0,0);
 INSERT INTO offerings VALUES(30501,202701,3284,16038,'1','Public Health Ethics',4,9,18,1,0,0);
@@ -51951,8 +51951,8 @@ INSERT INTO offerings VALUES(30633,202701,378,16364,'1','Senior Seminar in Socio
 INSERT INTO offerings VALUES(30634,202701,378,16364,'2','Senior Seminar in Sociology',4,8,7,0,0,0);
 INSERT INTO offerings VALUES(30635,202701,380,16368,'1','Beginning Spanish I',4,2,18,5,5,0);
 INSERT INTO offerings VALUES(30636,202701,380,16368,'2','Beginning Spanish I',4,10,18,5,5,0);
-INSERT INTO offerings VALUES(30637,202701,381,16369,'1','Beginning Spanish II',4,10,18,7,7,0);
-INSERT INTO offerings VALUES(30638,202701,381,16369,'2','Beginning Spanish II',4,8,18,7,7,0);
+INSERT INTO offerings VALUES(30637,202701,381,16369,'1','Beginning Spanish II',4,9,18,7,7,0);
+INSERT INTO offerings VALUES(30638,202701,381,16369,'2','Beginning Spanish II',4,9,18,7,7,0);
 INSERT INTO offerings VALUES(30639,202701,381,16369,'3','Beginning Spanish II',4,11,18,7,7,0);
 INSERT INTO offerings VALUES(30640,202701,381,16369,'4','Beginning Spanish II',4,10,18,7,7,0);
 INSERT INTO offerings VALUES(30641,202701,381,16369,'5','Beginning Spanish II',4,8,18,0,0,0);
