@@ -51172,7 +51172,7 @@ INSERT INTO offerings VALUES(29841,202701,8,14550,'1','Introduction to the Arts 
 INSERT INTO offerings VALUES(29842,202701,9,14551,'1','Global Modernism',4,17,35,7,6,0);
 INSERT INTO offerings VALUES(29843,202701,3242,14555,'1','Ways of Looking and Making',4,18,25,8,2,0);
 INSERT INTO offerings VALUES(29844,202701,889,14566,'1','Modern and Contemporary Art',4,26,25,8,0,0);
-INSERT INTO offerings VALUES(29845,202701,3014,14571,'1','Practicum in Art History',1,18,19,7,0,0);
+INSERT INTO offerings VALUES(29845,202701,3014,14571,'1','Practicum in Art History',1,19,19,7,0,0);
 INSERT INTO offerings VALUES(29846,202701,14,14578,'1','Art and Environment in East Asia',4,11,18,4,0,0);
 INSERT INTO offerings VALUES(29847,202701,1202,14579,'1','Curating Trans History: Archives, Art, and Politics',4,9,18,0,0,0);
 INSERT INTO offerings VALUES(29848,202701,447,14582,'1','Senior Seminar in Art History',2,3,18,2,0,0);
@@ -51245,7 +51245,7 @@ INSERT INTO offerings VALUES(29915,202701,3967,14674,'10','Directed Research',2,
 INSERT INTO offerings VALUES(29916,202701,3967,14674,'11','Directed Research',2,1,5,0,0,0);
 INSERT INTO offerings VALUES(29917,202701,3967,14674,'12','Directed Research',2,0,5,0,0,0);
 INSERT INTO offerings VALUES(29918,202701,3967,14674,'13','Directed Research',2,0,5,0,0,0);
-INSERT INTO offerings VALUES(29919,202701,3328,14677,'1','Huntington-Occidental Pre-med Program (HOPP)',2,5,10,0,0,0);
+INSERT INTO offerings VALUES(29919,202701,3328,14677,'1','Huntington-Occidental Pre-med Program (HOPP)',2,7,10,0,0,0);
 INSERT INTO offerings VALUES(29920,202701,42,14680,'1','Principles of Biochemistry',4,16,16,2,2,0);
 INSERT INTO offerings VALUES(29921,202701,43,NULL,'1','Principles of Biochemistry Laboratory',0,8,8,1,1,0);
 INSERT INTO offerings VALUES(29922,202701,43,NULL,'2','Principles of Biochemistry Laboratory',0,8,8,1,1,0);
@@ -51368,7 +51368,7 @@ INSERT INTO offerings VALUES(30039,202701,1059,14845,'1','Linguistics as a Cogni
 INSERT INTO offerings VALUES(30040,202701,80,14857,'1','Senior Seminar in Cognitive Science',4,7,8,0,0,0);
 INSERT INTO offerings VALUES(30041,202701,80,14857,'2','Senior Seminar in Cognitive Science',4,8,8,0,0,0);
 INSERT INTO offerings VALUES(30042,202701,3860,15086,'1','Occidental Weekly Practicum',1,1,18,0,0,0);
-INSERT INTO offerings VALUES(30043,202701,3831,15088,'1','The Art of Essay Writing: Writing in Class, Whiteness, and Conflict',4,14,16,1,1,0);
+INSERT INTO offerings VALUES(30043,202701,3831,15088,'1','The Art of Essay Writing: Writing in Class, Whiteness, and Conflict',4,15,16,1,1,0);
 INSERT INTO offerings VALUES(30045,202701,3831,15088,'3','The Art of Essay Writing: Art House Cinema',4,16,16,1,1,0);
 INSERT INTO offerings VALUES(30046,202701,3831,15088,'4','The Art of Essay Writing: Art House Cinema',4,15,16,1,1,0);
 INSERT INTO offerings VALUES(30047,202701,3833,15093,'1','Principles of Journalism I: Covering News Across Media',4,4,14,0,0,0);
@@ -51934,7 +51934,7 @@ INSERT INTO offerings VALUES(30616,202701,4425,16243,'1','Sacred Flesh: Bodies, 
 INSERT INTO offerings VALUES(30617,202701,1191,16253,'1','Shamans, Sages, and Spirits in East Asia',4,15,25,7,7,0);
 INSERT INTO offerings VALUES(30618,202701,366,16279,'1','Senior Seminar',4,4,15,0,0,0);
 INSERT INTO offerings VALUES(30619,202701,368,16283,'1','Elementary Russian I',4,2,25,0,0,0);
-INSERT INTO offerings VALUES(30620,202701,4000,16288,'1','Advanced Russian: Reading and Translation',4,8,25,0,0,0);
+INSERT INTO offerings VALUES(30620,202701,4000,16288,'1','Advanced Russian: Reading and Translation',4,7,25,0,0,0);
 INSERT INTO offerings VALUES(30621,202701,2854,16299,'1','The Russian Novel',5,2,15,0,0,0);
 INSERT INTO offerings VALUES(30622,202701,371,16307,'1','Introduction to Sociology',4,7,30,26,26,0);
 INSERT INTO offerings VALUES(30623,202701,371,16307,'2','Introduction to Sociology',4,5,30,27,27,0);
@@ -51985,7 +51985,7 @@ INSERT INTO offerings VALUES(30667,202701,396,16428,'1','Intensive Production La
 INSERT INTO offerings VALUES(30668,202701,3859,16429,'1','Elective Production Laboratory',1,0,4,0,0,0);
 INSERT INTO offerings VALUES(30669,202701,3859,16429,'2','Elective Production Laboratory',1,0,4,0,0,0);
 INSERT INTO offerings VALUES(30670,202701,397,16430,'1','Modern Dance',1,1,24,0,0,0);
-INSERT INTO offerings VALUES(30671,202701,398,16432,'1','Tai Chi',1,13,25,0,0,0);
+INSERT INTO offerings VALUES(30671,202701,398,16432,'1','Tai Chi',1,12,25,0,0,0);
 INSERT INTO offerings VALUES(30672,202701,399,16433,'1','Beginning Ballet',1,5,24,0,0,0);
 INSERT INTO offerings VALUES(30673,202701,400,16436,'1','Choreography',2,3,18,0,0,0);
 INSERT INTO offerings VALUES(30674,202701,403,16439,'1','Folk and Historical Dance',1,6,18,0,0,0);
