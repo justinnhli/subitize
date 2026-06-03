@@ -51291,9 +51291,9 @@ INSERT INTO offerings VALUES(29960,202701,4109,14746,'1','Senior Comps Directed 
 INSERT INTO offerings VALUES(29961,202701,4109,14746,'2','Senior Comps Directed Research',2,2,5,0,0,0);
 INSERT INTO offerings VALUES(29962,202701,51,14750,'1','Introduction to Chemistry',4,1,35,0,0,0);
 INSERT INTO offerings VALUES(29963,202701,53,14752,'1','Foundations of General Chemistry',4,7,35,0,0,0);
-INSERT INTO offerings VALUES(29964,202701,53,14752,'2','Foundations of General Chemistry',4,23,35,0,0,0);
+INSERT INTO offerings VALUES(29964,202701,53,14752,'2','Foundations of General Chemistry',4,22,35,0,0,0);
 INSERT INTO offerings VALUES(29965,202701,54,NULL,'1','Foundations of General Chemistry Laboratory',0,14,14,0,0,0);
-INSERT INTO offerings VALUES(29966,202701,54,NULL,'2','Foundations of General Chemistry Laboratory',0,9,14,0,0,0);
+INSERT INTO offerings VALUES(29966,202701,54,NULL,'2','Foundations of General Chemistry Laboratory',0,8,14,0,0,0);
 INSERT INTO offerings VALUES(29967,202701,54,NULL,'3','Foundations of General Chemistry Laboratory',0,3,14,0,0,0);
 INSERT INTO offerings VALUES(29968,202701,54,NULL,'4','Foundations of General Chemistry Laboratory',0,1,14,0,0,0);
 INSERT INTO offerings VALUES(29969,202701,54,NULL,'5','Foundations of General Chemistry Laboratory',0,3,14,0,0,0);
@@ -51437,10 +51437,10 @@ INSERT INTO offerings VALUES(30109,202701,1655,15104,'1','International Organiza
 INSERT INTO offerings VALUES(30110,202701,2549,15105,'1','Introduction to Global Political Economy',4,8,25,0,0,0);
 INSERT INTO offerings VALUES(30111,202701,827,15115,'1','International Development',4,12,25,0,0,0);
 INSERT INTO offerings VALUES(30112,202701,1586,NULL,'1','Understanding Human Rights through Literature & Film I: The U.S. Context',4,12,25,0,0,0);
-INSERT INTO offerings VALUES(30113,202701,1587,15117,'1','Latin American Politics',4,25,25,0,0,0);
-INSERT INTO offerings VALUES(30114,202701,2826,15120,'1','Authoritarianism in the Age of Globalization',4,19,25,0,0,0);
-INSERT INTO offerings VALUES(30115,202701,124,15130,'1','Identity and Citizenship:  The South Asian Diaspora',4,14,25,0,0,0);
-INSERT INTO offerings VALUES(30116,202701,2426,15110,'1','Transitional Justice in Colombia: Comparative Perspectives',4,10,25,0,0,0);
+INSERT INTO offerings VALUES(30113,202701,1587,15117,'1','Latin American Politics',4,24,25,0,0,0);
+INSERT INTO offerings VALUES(30114,202701,2826,15120,'1','Authoritarianism in the Age of Globalization',4,18,25,0,0,0);
+INSERT INTO offerings VALUES(30115,202701,124,15130,'1','Identity and Citizenship:  The South Asian Diaspora',4,15,25,0,0,0);
+INSERT INTO offerings VALUES(30116,202701,2426,15110,'1','Transitional Justice in Colombia: Comparative Perspectives',4,11,25,0,0,0);
 INSERT INTO offerings VALUES(30117,202701,828,15136,'1','International Security',4,23,25,0,0,0);
 INSERT INTO offerings VALUES(30118,202701,4414,15152,'1','Directed Research',2,2,6,0,0,0);
 INSERT INTO offerings VALUES(30119,202701,129,15164,'1','Junior Seminar: Contemporary Issues in International and Human Rights Law',4,18,18,0,0,0);
@@ -51540,7 +51540,7 @@ INSERT INTO offerings VALUES(30215,202701,209,15568,'2','Elementary Japanese I',
 INSERT INTO offerings VALUES(30216,202701,210,15573,'1','Intermediate Japanese I',4,7,25,0,0,0);
 INSERT INTO offerings VALUES(30217,202701,212,15579,'1','Advanced Japanese I',4,2,18,0,0,0);
 INSERT INTO offerings VALUES(30219,202701,214,15589,'1','Introduction to Kinesiology',4,18,45,30,30,0);
-INSERT INTO offerings VALUES(30220,202701,4269,15595,'1','Research Methods',4,19,25,16,4,0);
+INSERT INTO offerings VALUES(30220,202701,4269,15595,'1','Research Methods',4,20,25,16,4,0);
 INSERT INTO offerings VALUES(30221,202701,216,15597,'1','Directed Research',2,0,5,0,0,0);
 INSERT INTO offerings VALUES(30222,202701,217,15601,'1','Musculoskeletal Anatomy',4,18,24,4,4,0);
 INSERT INTO offerings VALUES(30223,202701,218,NULL,'1','Musculoskeletal Anatomy Laboratory',0,10,12,2,2,0);
@@ -51549,8 +51549,8 @@ INSERT INTO offerings VALUES(30228,202701,1384,15603,'1','Human Physiology',4,28
 INSERT INTO offerings VALUES(30229,202701,1385,NULL,'1','Human Physiology Laboratory',0,18,12,9,-2,0);
 INSERT INTO offerings VALUES(30230,202701,1385,NULL,'2','Human Physiology Laboratory',0,10,12,8,2,0);
 INSERT INTO offerings VALUES(30231,202701,224,15608,'1','Motor Learning and Control',4,21,24,17,4,0);
-INSERT INTO offerings VALUES(30232,202701,225,15609,'1','Motor Learning and Control Laboratory',0,11,12,8,2,0);
-INSERT INTO offerings VALUES(30233,202701,225,15609,'2','Motor Learning and Control Laboratory',0,10,12,9,2,0);
+INSERT INTO offerings VALUES(30232,202701,225,15609,'1','Motor Learning and Control Laboratory',0,10,12,8,2,0);
+INSERT INTO offerings VALUES(30233,202701,225,15609,'2','Motor Learning and Control Laboratory',0,11,12,9,2,0);
 INSERT INTO offerings VALUES(30234,202701,632,15610,'1','Sport and Exercise Psychology',4,25,25,1,0,0);
 INSERT INTO offerings VALUES(30235,202701,226,15611,'1','Directed Research',2,3,5,0,0,0);
 INSERT INTO offerings VALUES(30236,202701,227,15612,'1','Internship',2,4,6,0,0,0);
@@ -51564,7 +51564,7 @@ INSERT INTO offerings VALUES(30243,202701,3870,15665,'1','Latina and Latin Ameri
 INSERT INTO offerings VALUES(30244,202701,2346,15671,'1','Chicano Education',4,9,25,5,5,0);
 INSERT INTO offerings VALUES(30245,202701,4289,15673,'1','Mexican Philosophy, Culture, and Society',4,19,25,0,0,0);
 INSERT INTO offerings VALUES(30246,202701,4417,15680,'1','Immigrant Youth in the United States',4,25,25,7,7,0);
-INSERT INTO offerings VALUES(30247,202701,3238,15685,'1','Transitional Justice in Colombia: Comparative Perspectives',4,10,25,5,5,0);
+INSERT INTO offerings VALUES(30247,202701,3238,15685,'1','Transitional Justice in Colombia: Comparative Perspectives',4,11,25,5,5,0);
 INSERT INTO offerings VALUES(30248,202701,1125,15707,'1','Senior Seminar',4,3,16,0,0,0);
 INSERT INTO offerings VALUES(30249,202701,857,15652,'1','Introduction to Linguistics',4,17,18,0,0,0);
 INSERT INTO offerings VALUES(30250,202701,857,15652,'2','Introduction to Linguistics',4,18,18,0,0,0);
@@ -51874,7 +51874,7 @@ INSERT INTO offerings VALUES(30554,202701,1553,16103,'1','Introduction to Politi
 INSERT INTO offerings VALUES(30555,202701,2480,16106,'1','California State Government and Politics',4,17,25,0,0,0);
 INSERT INTO offerings VALUES(30556,202701,966,16111,'1','Los Angeles Politics',4,11,25,0,0,0);
 INSERT INTO offerings VALUES(30557,202701,713,16113,'1','Interest Group Politics',4,21,25,0,0,0);
-INSERT INTO offerings VALUES(30558,202701,1485,16116,'1','Latin American Politics',4,25,25,0,0,0);
+INSERT INTO offerings VALUES(30558,202701,1485,16116,'1','Latin American Politics',4,24,25,0,0,0);
 INSERT INTO offerings VALUES(30559,202701,1031,16122,'1','International Security',4,23,25,0,0,0);
 INSERT INTO offerings VALUES(30560,202701,1082,16123,'1','United States Foreign Relations',4,16,25,0,0,0);
 INSERT INTO offerings VALUES(30561,202701,335,16128,'1','Constitutional Law',4,11,25,0,0,0);
@@ -51900,8 +51900,8 @@ INSERT INTO offerings VALUES(30580,202701,347,16176,'6','Directed Research',2,2,
 INSERT INTO offerings VALUES(30581,202701,871,16188,'1','Cognitive Psychology',4,17,18,18,1,0);
 INSERT INTO offerings VALUES(30582,202701,871,16188,'2','Cognitive Psychology',4,18,18,15,-2,0);
 INSERT INTO offerings VALUES(30583,202701,2492,16197,'1','Motor Learning and Control',4,21,24,0,0,0);
-INSERT INTO offerings VALUES(30584,202701,2493,16190,'1','Motor Learning and Control Laboratory',0,11,12,0,0,0);
-INSERT INTO offerings VALUES(30585,202701,2493,16190,'2','Motor Learning and Control Laboratory',0,10,12,0,0,0);
+INSERT INTO offerings VALUES(30584,202701,2493,16190,'1','Motor Learning and Control Laboratory',0,10,12,0,0,0);
+INSERT INTO offerings VALUES(30585,202701,2493,16190,'2','Motor Learning and Control Laboratory',0,11,12,0,0,0);
 INSERT INTO offerings VALUES(30586,202701,1736,16191,'1','Sport and Exercise Psychology',4,25,25,0,0,0);
 INSERT INTO offerings VALUES(30587,202701,349,16192,'1','Physiological Psychology',4,17,18,9,1,0);
 INSERT INTO offerings VALUES(30588,202701,350,16179,'1','Physiological Psychology Laboratory',2,9,9,0,0,0);
