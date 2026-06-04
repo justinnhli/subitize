@@ -51349,7 +51349,7 @@ INSERT INTO offerings VALUES(30018,202701,77,14812,'2','Introduction to Neurosci
 INSERT INTO offerings VALUES(30019,202701,1504,14816,'1','Empirical Methods in Cognitive Science',4,21,18,9,-1,0);
 INSERT INTO offerings VALUES(30020,202701,1505,NULL,'1','Empirical Methods in Cognitive Science Laboratory',0,12,9,0,0,0);
 INSERT INTO offerings VALUES(30021,202701,1505,NULL,'2','Empirical Methods in Cognitive Science Laboratory',0,9,9,0,0,0);
-INSERT INTO offerings VALUES(30022,202701,4411,14818,'1','Current Advances in Neuroscience and AI',2,12,25,4,0,0);
+INSERT INTO offerings VALUES(30022,202701,4411,14818,'1','Current Advances in Neuroscience and AI',2,12,25,3,0,0);
 INSERT INTO offerings VALUES(30023,202701,3874,14826,'1','Language and Culture in the Deaf Communities',4,16,25,2,2,0);
 INSERT INTO offerings VALUES(30024,202701,4412,14829,'1','Arts, Health, and Wellbeing',4,19,25,8,6,0);
 INSERT INTO offerings VALUES(30025,202701,3473,14832,'1','Directed Research',2,1,6,0,0,0);
@@ -51385,8 +51385,8 @@ INSERT INTO offerings VALUES(30056,202701,1688,14992,'1','Style and "Substance":
 INSERT INTO offerings VALUES(30057,202701,1688,14992,'2','Style and "Substance": Philosophy and the Arts',4,26,25,0,0,0);
 INSERT INTO offerings VALUES(30058,202701,1648,15006,'1','Senior Seminar',2,15,25,0,0,0);
 INSERT INTO offerings VALUES(30059,202701,2947,14860,'1','Justice and Equity in Technology',4,12,25,5,5,0);
-INSERT INTO offerings VALUES(30060,202701,1511,14863,'1','Fundamentals of Computer Science',4,15,35,20,20,0);
-INSERT INTO offerings VALUES(30061,202701,1511,14863,'1-1','Fundamentals of Computer Science Lab',0,5,18,0,0,0);
+INSERT INTO offerings VALUES(30060,202701,1511,14863,'1','Fundamentals of Computer Science',4,16,35,20,20,0);
+INSERT INTO offerings VALUES(30061,202701,1511,14863,'1-1','Fundamentals of Computer Science Lab',0,6,18,0,0,0);
 INSERT INTO offerings VALUES(30062,202701,1511,14863,'1-2','Fundamentals of Computer Science Lab',0,10,18,0,0,0);
 INSERT INTO offerings VALUES(30063,202701,1511,14863,'2','Fundamentals of Computer Science',4,17,35,20,20,0);
 INSERT INTO offerings VALUES(30064,202701,1511,14863,'2-1','Fundamentals of Computer Science Lab',0,5,18,0,0,0);
@@ -51403,7 +51403,7 @@ INSERT INTO offerings VALUES(30074,202701,2509,14872,'1','Computer Organization'
 INSERT INTO offerings VALUES(30075,202701,3984,NULL,'1-1','Computer Organization Laboratory',0,12,24,0,0,0);
 INSERT INTO offerings VALUES(30076,202701,2786,14890,'1','Networking',4,6,18,0,0,0);
 INSERT INTO offerings VALUES(30077,202701,2329,14891,'1','Practicum in Computer Science',4,10,18,0,0,0);
-INSERT INTO offerings VALUES(30078,202701,1689,14898,'1','Special Topics in Computer Science. Data Science',4,19,18,0,0,0);
+INSERT INTO offerings VALUES(30078,202701,1689,14898,'1','Special Topics in Computer Science. Data Science',4,20,18,0,0,0);
 INSERT INTO offerings VALUES(30079,202701,1689,14898,'2','Special Topics in Computer Science. Deep Learning',4,17,18,0,0,0);
 INSERT INTO offerings VALUES(30080,202701,2540,14902,'1','Computer Science Senior Seminar',4,12,12,0,0,0);
 INSERT INTO offerings VALUES(30081,202701,2540,14902,'2','Computer Science Senior Seminar',4,13,12,0,0,0);
@@ -51471,7 +51471,7 @@ INSERT INTO offerings VALUES(30145,202701,2439,15205,'1','Economic Data Analysis
 INSERT INTO offerings VALUES(30146,202701,923,15211,'1','Finance, Growth, and Development',4,18,18,0,0,0);
 INSERT INTO offerings VALUES(30147,202701,142,15230,'1','Senior Seminar: Monetary Policy and Financial Markets',4,17,15,0,0,0);
 INSERT INTO offerings VALUES(30148,202701,142,15230,'2','Senior Seminar: Monetary Policy and Financial Markets',4,16,15,0,0,0);
-INSERT INTO offerings VALUES(30149,202701,142,15230,'3','Senior Seminar: Industrial Organization',4,17,15,0,0,0);
+INSERT INTO offerings VALUES(30149,202701,142,15230,'3','Senior Seminar: Industrial Organization',4,16,15,0,0,0);
 INSERT INTO offerings VALUES(30150,202701,142,15230,'4','Senior Seminar: Industrial Organization',4,17,15,0,0,0);
 INSERT INTO offerings VALUES(30151,202701,145,15235,'1','Community Literacy',2,12,25,0,0,0);
 INSERT INTO offerings VALUES(30152,202701,3262,15238,'1','Art Education Practicum: Community Studio at OXY ARTS',4,11,12,0,0,0);
@@ -51898,7 +51898,7 @@ INSERT INTO offerings VALUES(30578,202701,347,16176,'4','Directed Research',2,7,
 INSERT INTO offerings VALUES(30579,202701,347,16176,'5','Directed Research',2,1,5,0,0,0);
 INSERT INTO offerings VALUES(30580,202701,347,16176,'6','Directed Research',2,2,5,0,0,0);
 INSERT INTO offerings VALUES(30581,202701,871,16188,'1','Cognitive Psychology',4,17,18,18,1,0);
-INSERT INTO offerings VALUES(30582,202701,871,16188,'2','Cognitive Psychology',4,18,18,15,-2,0);
+INSERT INTO offerings VALUES(30582,202701,871,16188,'2','Cognitive Psychology',4,18,18,15,-1,0);
 INSERT INTO offerings VALUES(30583,202701,2492,16197,'1','Motor Learning and Control',4,21,24,0,0,0);
 INSERT INTO offerings VALUES(30584,202701,2493,16190,'1','Motor Learning and Control Laboratory',0,10,12,0,0,0);
 INSERT INTO offerings VALUES(30585,202701,2493,16190,'2','Motor Learning and Control Laboratory',0,11,12,0,0,0);
@@ -52083,7 +52083,7 @@ INSERT INTO offerings VALUES(30784,202701,171,15384,'1','Earth: Our Environment'
 INSERT INTO offerings VALUES(30785,202701,171,15384,'1-1','Earth: Our Environment Lab',0,0,16,0,0,0);
 INSERT INTO offerings VALUES(30786,202701,171,15384,'1-2','Earth: Our Environment Lab',0,0,16,0,0,0);
 INSERT INTO offerings VALUES(30787,202701,559,15214,'1','Economic Development',4,18,18,0,0,0);
-INSERT INTO offerings VALUES(30788,202701,140,15197,'1','Managerial Economics',4,18,18,0,0,0);
+INSERT INTO offerings VALUES(30788,202701,140,15197,'1','Managerial Economics',4,17,18,0,0,0);
 INSERT INTO offerings VALUES(30789,202701,3264,15368,'2','Social Difference and the Politics of Technology',4,0,16,16,16,0);
 INSERT INTO offerings VALUES(30790,202701,2960,15378,'2','All That Glitters: Life, Literature, and Film in Los Angeles',4,0,16,16,16,0);
 INSERT INTO offerings VALUES(30791,202701,2961,15379,'2','Cultural Anthropology & Other/Realities',4,0,16,16,16,0);
