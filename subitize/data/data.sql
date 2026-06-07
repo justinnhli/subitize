@@ -51489,7 +51489,7 @@ INSERT INTO offerings VALUES(30163,202701,1518,15292,'1','Creative Writing: Poet
 INSERT INTO offerings VALUES(30164,202701,1224,15296,'1','Introduction to Literary Methods',4,9,20,0,0,0);
 INSERT INTO offerings VALUES(30165,202701,1455,15317,'1','Afrofuturism',4,18,18,0,0,0);
 INSERT INTO offerings VALUES(30166,202701,1230,15320,'1','Advanced Creative Writing',4,15,14,0,0,0);
-INSERT INTO offerings VALUES(30167,202701,1231,15321,'1','Junior Seminar in English',4,5,15,0,0,0);
+INSERT INTO offerings VALUES(30167,202701,1231,15321,'1','Junior Seminar in English',4,6,15,0,0,0);
 INSERT INTO offerings VALUES(30168,202701,1232,15325,'1','Senior Seminar: Comprehensive Project',4,13,15,0,0,0);
 INSERT INTO offerings VALUES(30169,202701,165,15329,'1','Beginning French I',4,4,18,5,5,0);
 INSERT INTO offerings VALUES(30170,202701,165,15329,'2','Beginning French I',4,8,18,5,5,0);
