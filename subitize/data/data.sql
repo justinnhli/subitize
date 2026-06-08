@@ -51172,7 +51172,7 @@ INSERT INTO offerings VALUES(29838,202701,4060,14527,'1','Senior Directed Resear
 INSERT INTO offerings VALUES(29839,202701,5,14531,'1','Elementary Arabic I',5,5,18,0,0,0);
 INSERT INTO offerings VALUES(29841,202701,8,14550,'1','Introduction to the Arts of the Early Mediterranean World',4,26,35,8,6,0);
 INSERT INTO offerings VALUES(29842,202701,9,14551,'1','Global Modernism',4,17,35,7,6,0);
-INSERT INTO offerings VALUES(29843,202701,3242,14555,'1','Ways of Looking and Making',4,18,25,8,2,0);
+INSERT INTO offerings VALUES(29843,202701,3242,14555,'1','Ways of Looking and Making',4,17,25,8,2,0);
 INSERT INTO offerings VALUES(29844,202701,889,14566,'1','Modern and Contemporary Art',4,26,25,8,0,0);
 INSERT INTO offerings VALUES(29845,202701,3014,14571,'1','Practicum in Art History',1,19,19,7,0,0);
 INSERT INTO offerings VALUES(29846,202701,14,14578,'1','Art and Environment in East Asia',4,11,18,4,0,0);
@@ -51199,8 +51199,8 @@ INSERT INTO offerings VALUES(29866,202701,26,14657,'2-2','Marine Biology Laborat
 INSERT INTO offerings VALUES(29867,202701,30,14658,'1','Introductory Biology: Biodiversity, Ecology, and Evolution',4,16,32,12,12,0);
 INSERT INTO offerings VALUES(29868,202701,30,14658,'1-1','Introductory Biology: Biodiversity, Ecology, and Evolution Lab',0,8,16,0,0,0);
 INSERT INTO offerings VALUES(29869,202701,30,14658,'1-2','Introductory Biology: Biodiversity, Ecology, and Evolution Lab',0,8,16,0,0,0);
-INSERT INTO offerings VALUES(29870,202701,30,14658,'2','Introductory Biology: Biodiversity, Ecology, and Evolution',4,7,32,12,12,0);
-INSERT INTO offerings VALUES(29871,202701,30,14658,'2-1','Introductory Biology: Biodiversity, Ecology, and Evolution Lab',0,5,16,0,0,0);
+INSERT INTO offerings VALUES(29870,202701,30,14658,'2','Introductory Biology: Biodiversity, Ecology, and Evolution',4,6,32,12,12,0);
+INSERT INTO offerings VALUES(29871,202701,30,14658,'2-1','Introductory Biology: Biodiversity, Ecology, and Evolution Lab',0,4,16,0,0,0);
 INSERT INTO offerings VALUES(29872,202701,30,14658,'2-2','Introductory Biology: Biodiversity, Ecology, and Evolution Lab',0,2,16,0,0,0);
 INSERT INTO offerings VALUES(29873,202701,34,14659,'1','Introductory Biology: Cellular and Molecular Biology',4,30,32,12,12,0);
 INSERT INTO offerings VALUES(29874,202701,34,14659,'1-1','Introductory Biology: Cellular and Molecular Biology Lab',0,14,16,0,0,0);
@@ -51291,12 +51291,12 @@ INSERT INTO offerings VALUES(29960,202701,4109,14746,'1','Senior Comps Directed 
 INSERT INTO offerings VALUES(29961,202701,4109,14746,'2','Senior Comps Directed Research',2,2,5,0,0,0);
 INSERT INTO offerings VALUES(29962,202701,51,14750,'1','Introduction to Chemistry',4,1,35,0,0,0);
 INSERT INTO offerings VALUES(29963,202701,53,14752,'1','Foundations of General Chemistry',4,7,35,0,0,0);
-INSERT INTO offerings VALUES(29964,202701,53,14752,'2','Foundations of General Chemistry',4,22,35,0,0,0);
+INSERT INTO offerings VALUES(29964,202701,53,14752,'2','Foundations of General Chemistry',4,21,35,0,0,0);
 INSERT INTO offerings VALUES(29965,202701,54,NULL,'1','Foundations of General Chemistry Laboratory',0,14,14,0,0,0);
 INSERT INTO offerings VALUES(29966,202701,54,NULL,'2','Foundations of General Chemistry Laboratory',0,8,14,0,0,0);
 INSERT INTO offerings VALUES(29967,202701,54,NULL,'3','Foundations of General Chemistry Laboratory',0,3,14,0,0,0);
 INSERT INTO offerings VALUES(29968,202701,54,NULL,'4','Foundations of General Chemistry Laboratory',0,1,14,0,0,0);
-INSERT INTO offerings VALUES(29969,202701,54,NULL,'5','Foundations of General Chemistry Laboratory',0,3,14,0,0,0);
+INSERT INTO offerings VALUES(29969,202701,54,NULL,'5','Foundations of General Chemistry Laboratory',0,2,14,0,0,0);
 INSERT INTO offerings VALUES(29970,202701,55,14753,'1','Advanced Placement General Chemistry',4,3,35,0,0,0);
 INSERT INTO offerings VALUES(29971,202701,56,NULL,'1','Advanced Placement General Chemistry Laboratory',0,3,14,0,0,0);
 INSERT INTO offerings VALUES(29972,202701,57,14755,'1','Directed Research',0,0,99,0,0,0);
@@ -51320,9 +51320,9 @@ INSERT INTO offerings VALUES(29989,202701,59,NULL,'4','Organic Chemistry I Labor
 INSERT INTO offerings VALUES(29990,202701,60,14760,'1','Organic Chemistry II',4,25,25,0,0,0);
 INSERT INTO offerings VALUES(29991,202701,61,NULL,'1','Organic Chemistry II Laboratory',0,11,14,0,0,0);
 INSERT INTO offerings VALUES(29992,202701,61,NULL,'2','Organic Chemistry II Laboratory',0,13,14,0,0,0);
-INSERT INTO offerings VALUES(29993,202701,481,14761,'1','Integrated Concepts in General Chemistry',4,23,25,0,0,0);
+INSERT INTO offerings VALUES(29993,202701,481,14761,'1','Integrated Concepts in General Chemistry',4,24,25,0,0,0);
 INSERT INTO offerings VALUES(29994,202701,482,NULL,'1','Integrated Concepts in General Chemistry Laboratory',0,13,14,0,0,0);
-INSERT INTO offerings VALUES(29995,202701,482,NULL,'2','Integrated Concepts in General Chemistry Laboratory',0,10,14,0,0,0);
+INSERT INTO offerings VALUES(29995,202701,482,NULL,'2','Integrated Concepts in General Chemistry Laboratory',0,11,14,0,0,0);
 INSERT INTO offerings VALUES(29996,202701,62,14763,'1','Directed Research',2,0,99,0,0,0);
 INSERT INTO offerings VALUES(29997,202701,62,14763,'2','Directed Research',2,0,99,0,0,0);
 INSERT INTO offerings VALUES(29998,202701,62,14763,'3','Directed Research',2,0,99,0,0,0);
@@ -51622,7 +51622,7 @@ INSERT INTO offerings VALUES(30302,202701,2558,15869,'1','Voice Class II',1,7,12
 INSERT INTO offerings VALUES(30303,202701,2707,15871,'1','Piano Class',1,6,6,0,0,0);
 INSERT INTO offerings VALUES(30304,202701,2707,15871,'2','Piano Class',1,6,6,0,0,0);
 INSERT INTO offerings VALUES(30305,202701,258,15873,'1','Topics in Vocal Music. Opera',4,5,35,0,0,0);
-INSERT INTO offerings VALUES(30306,202701,259,15878,'1','College Chorus',1,17,60,0,0,0);
+INSERT INTO offerings VALUES(30306,202701,259,15878,'1','College Chorus',1,18,60,0,0,0);
 INSERT INTO offerings VALUES(30307,202701,259,15878,'2','College Chorus',0,4,60,0,0,0);
 INSERT INTO offerings VALUES(30308,202701,260,15879,'1','Glee Club (Sopranos/Altos)',2,1,32,0,0,0);
 INSERT INTO offerings VALUES(30309,202701,260,15879,'2','Glee Club (Sopranos/Altos)',0,3,32,0,0,0);
