@@ -51345,7 +51345,7 @@ INSERT INTO offerings VALUES(30014,202701,74,14798,'1','Expository Essays and Sh
 INSERT INTO offerings VALUES(30015,202701,1205,14806,'1','Translating Chinese I',4,12,18,0,0,0);
 INSERT INTO offerings VALUES(30016,202701,76,14811,'1','Introduction to Cognitive Science',4,9,45,22,22,0);
 INSERT INTO offerings VALUES(30017,202701,77,14812,'1','Introduction to Neuroscience',4,11,25,11,11,0);
-INSERT INTO offerings VALUES(30018,202701,77,14812,'2','Introduction to Neuroscience',4,14,25,13,11,0);
+INSERT INTO offerings VALUES(30018,202701,77,14812,'2','Introduction to Neuroscience',4,15,25,13,11,0);
 INSERT INTO offerings VALUES(30019,202701,1504,14816,'1','Empirical Methods in Cognitive Science',4,21,18,9,-1,0);
 INSERT INTO offerings VALUES(30020,202701,1505,NULL,'1','Empirical Methods in Cognitive Science Laboratory',0,12,9,0,0,0);
 INSERT INTO offerings VALUES(30021,202701,1505,NULL,'2','Empirical Methods in Cognitive Science Laboratory',0,9,9,0,0,0);
@@ -51466,7 +51466,7 @@ INSERT INTO offerings VALUES(30140,202701,3551,15186,'2','Directed Research',0,0
 INSERT INTO offerings VALUES(30141,202701,3551,15186,'3','Directed Research',0,1,1,0,0,0);
 INSERT INTO offerings VALUES(30142,202701,3551,15186,'4','Directed Research',2,0,2,0,0,0);
 INSERT INTO offerings VALUES(30143,202701,3551,15186,'5','Directed Research',2,0,2,0,0,0);
-INSERT INTO offerings VALUES(30144,202701,1165,15202,'1','Natural Resource Economics',4,16,18,0,0,0);
+INSERT INTO offerings VALUES(30144,202701,1165,15202,'1','Natural Resource Economics',4,17,18,0,0,0);
 INSERT INTO offerings VALUES(30145,202701,2439,15205,'1','Economic Data Analysis',4,21,18,0,0,0);
 INSERT INTO offerings VALUES(30146,202701,923,15211,'1','Finance, Growth, and Development',4,18,18,0,0,0);
 INSERT INTO offerings VALUES(30147,202701,142,15230,'1','Senior Seminar: Monetary Policy and Financial Markets',4,17,15,0,0,0);
@@ -51956,8 +51956,8 @@ INSERT INTO offerings VALUES(30636,202701,380,16368,'2','Beginning Spanish I',4,
 INSERT INTO offerings VALUES(30637,202701,381,16369,'1','Beginning Spanish II',4,8,18,7,7,0);
 INSERT INTO offerings VALUES(30638,202701,381,16369,'2','Beginning Spanish II',4,10,18,7,7,0);
 INSERT INTO offerings VALUES(30639,202701,381,16369,'3','Beginning Spanish II',4,11,18,7,7,0);
-INSERT INTO offerings VALUES(30640,202701,381,16369,'4','Beginning Spanish II',4,10,18,7,7,0);
-INSERT INTO offerings VALUES(30641,202701,381,16369,'5','Beginning Spanish II',4,8,18,0,0,0);
+INSERT INTO offerings VALUES(30640,202701,381,16369,'4','Beginning Spanish II',4,9,18,7,7,0);
+INSERT INTO offerings VALUES(30641,202701,381,16369,'5','Beginning Spanish II',4,9,18,0,0,0);
 INSERT INTO offerings VALUES(30642,202701,381,16369,'6','Beginning Spanish II',4,11,18,0,0,0);
 INSERT INTO offerings VALUES(30643,202701,382,16371,'1','Intermediate Conversation I',1,2,99,0,0,0);
 INSERT INTO offerings VALUES(30644,202701,382,16371,'2','Intermediate Conversation I',1,2,99,0,0,0);
@@ -52081,7 +52081,7 @@ INSERT INTO offerings VALUES(30783,202701,2974,15369,'2','Understanding Society 
 INSERT INTO offerings VALUES(30784,202701,171,15384,'1','Earth: Our Environment',4,0,32,32,32,0);
 INSERT INTO offerings VALUES(30785,202701,171,15384,'1-1','Earth: Our Environment Lab',0,0,16,0,0,0);
 INSERT INTO offerings VALUES(30786,202701,171,15384,'1-2','Earth: Our Environment Lab',0,0,16,0,0,0);
-INSERT INTO offerings VALUES(30787,202701,559,15214,'1','Economic Development',4,17,18,0,0,0);
+INSERT INTO offerings VALUES(30787,202701,559,15214,'1','Economic Development',4,16,18,0,0,0);
 INSERT INTO offerings VALUES(30788,202701,140,15197,'1','Managerial Economics',4,17,18,0,0,0);
 INSERT INTO offerings VALUES(30789,202701,3264,15368,'2','Social Difference and the Politics of Technology',4,0,16,16,16,0);
 INSERT INTO offerings VALUES(30790,202701,2960,15378,'2','All That Glitters: Life, Literature, and Film in Los Angeles',4,0,16,16,16,0);
