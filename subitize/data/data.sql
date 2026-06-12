@@ -51810,11 +51810,11 @@ INSERT INTO offerings VALUES(30490,202701,3288,15860,'1','Rock Guitar (Half Hour
 INSERT INTO offerings VALUES(30491,202701,3288,15860,'2','Rock Guitar (Half Hour)',0,0,16,12,12,0);
 INSERT INTO offerings VALUES(30492,202701,3289,15861,'1','Rock Guitar (One Hour)',1,0,16,12,12,0);
 INSERT INTO offerings VALUES(30493,202701,3289,15861,'2','Rock Guitar (One Hour)',0,1,16,12,12,0);
-INSERT INTO offerings VALUES(30494,202701,294,15993,'1','Introduction to Philosophy',4,13,25,10,10,0);
+INSERT INTO offerings VALUES(30494,202701,294,15993,'1','Introduction to Philosophy',4,14,25,10,10,0);
 INSERT INTO offerings VALUES(30495,202701,2679,15994,'1','Formal Logic',4,22,35,13,13,0);
 INSERT INTO offerings VALUES(30496,202701,2679,15994,'2','Formal Logic',4,26,35,10,6,0);
 INSERT INTO offerings VALUES(30497,202701,3012,16008,'1','Mexican Philosophy, Culture, and Society',4,20,25,2,2,0);
-INSERT INTO offerings VALUES(30498,202701,4421,16018,'1','The Heart and the Mind: Philosophy of the Emotions',4,21,25,5,0,0);
+INSERT INTO offerings VALUES(30498,202701,4421,16018,'1','The Heart and the Mind: Philosophy of the Emotions',4,22,25,5,0,0);
 INSERT INTO offerings VALUES(30499,202701,2463,16026,'1','Ethics Bowl: Contemporary Debates on Ethical Issues',4,10,10,2,0,0);
 INSERT INTO offerings VALUES(30500,202701,2808,16030,'1','The Brothers Karamazov',4,18,18,5,0,0);
 INSERT INTO offerings VALUES(30501,202701,3284,16038,'1','Public Health Ethics',4,9,18,1,0,0);
@@ -51890,7 +51890,7 @@ INSERT INTO offerings VALUES(30570,202701,1130,16170,'2','Introduction to Psycho
 INSERT INTO offerings VALUES(30571,202701,1130,16170,'3','Introduction to Psychology',4,7,30,19,19,0);
 INSERT INTO offerings VALUES(30572,202701,344,16173,'1','Methods in Psychological Science',4,14,25,1,1,0);
 INSERT INTO offerings VALUES(30573,202701,344,16173,'2','Methods in Psychological Science',4,5,25,1,1,0);
-INSERT INTO offerings VALUES(30574,202701,345,16174,'1','Statistics in Psychological Science',4,23,25,14,1,0);
+INSERT INTO offerings VALUES(30574,202701,345,16174,'1','Statistics in Psychological Science',4,24,25,14,1,0);
 INSERT INTO offerings VALUES(30575,202701,347,16176,'1','Directed Research',2,0,5,0,0,0);
 INSERT INTO offerings VALUES(30576,202701,347,16176,'2','Directed Research',2,4,5,0,0,0);
 INSERT INTO offerings VALUES(30577,202701,347,16176,'3','Directed Research',2,1,5,0,0,0);
@@ -51908,9 +51908,9 @@ INSERT INTO offerings VALUES(30588,202701,350,16179,'1','Physiological Psycholog
 INSERT INTO offerings VALUES(30589,202701,350,16179,'2','Physiological Psychology Laboratory',2,8,9,0,0,0);
 INSERT INTO offerings VALUES(30590,202701,351,16180,'1','Social Psychology',4,17,18,10,1,0);
 INSERT INTO offerings VALUES(30591,202701,352,16181,'1','Abnormal Psychology',4,17,18,10,1,0);
-INSERT INTO offerings VALUES(30592,202701,736,16182,'1','Health Psychology',4,18,18,10,0,0);
+INSERT INTO offerings VALUES(30592,202701,736,16182,'1','Health Psychology',4,17,18,10,0,0);
 INSERT INTO offerings VALUES(30593,202701,972,16193,'1','Evolutionary Psychology',4,17,18,10,1,0);
-INSERT INTO offerings VALUES(30594,202701,2513,16194,'1','Psycholinguistics',4,16,18,9,1,0);
+INSERT INTO offerings VALUES(30594,202701,2513,16194,'1','Psycholinguistics',4,17,18,9,1,0);
 INSERT INTO offerings VALUES(30595,202701,355,16195,'1','Directed Research',2,0,5,0,0,0);
 INSERT INTO offerings VALUES(30596,202701,355,16195,'2','Directed Research',2,0,5,0,0,0);
 INSERT INTO offerings VALUES(30597,202701,355,16195,'3','Directed Research',2,2,5,0,0,0);
@@ -51962,7 +51962,7 @@ INSERT INTO offerings VALUES(30642,202701,381,16369,'6','Beginning Spanish II',4
 INSERT INTO offerings VALUES(30643,202701,382,16371,'1','Intermediate Conversation I',1,2,99,0,0,0);
 INSERT INTO offerings VALUES(30644,202701,382,16371,'2','Intermediate Conversation I',1,2,99,0,0,0);
 INSERT INTO offerings VALUES(30645,202701,383,16377,'1','Intermediate Spanish',4,8,18,5,5,0);
-INSERT INTO offerings VALUES(30646,202701,383,16377,'2','Intermediate Spanish',4,3,18,5,5,0);
+INSERT INTO offerings VALUES(30646,202701,383,16377,'2','Intermediate Spanish',4,4,18,5,5,0);
 INSERT INTO offerings VALUES(30647,202701,384,16378,'1','Advanced Spanish',4,11,18,5,5,0);
 INSERT INTO offerings VALUES(30648,202701,384,16378,'2','Advanced Spanish',4,7,18,5,5,0);
 INSERT INTO offerings VALUES(30649,202701,386,16374,'1','Advanced Conversation I',1,7,99,0,0,0);
@@ -52017,7 +52017,7 @@ INSERT INTO offerings VALUES(30701,202701,430,16519,'1','Controversies in Policy
 INSERT INTO offerings VALUES(30702,202701,430,16519,'2','Controversies in Policy and Politics',4,0,20,0,0,0);
 INSERT INTO offerings VALUES(30705,202701,4458,NULL,'1','Occidental-in-Austria',16,1,20,0,0,0);
 INSERT INTO offerings VALUES(30706,202701,1860,NULL,'1','Occidental-in-Chile',16,2,20,0,0,0);
-INSERT INTO offerings VALUES(30716,202701,1863,NULL,'1','Occidental-in-Italy',16,7,20,0,0,0);
+INSERT INTO offerings VALUES(30716,202701,1863,NULL,'1','Occidental-in-Italy',16,6,20,0,0,0);
 INSERT INTO offerings VALUES(30717,202701,1864,NULL,'1','Occidental-in-Japan',16,5,30,0,0,0);
 INSERT INTO offerings VALUES(30720,202701,1867,NULL,'1','Occidental-in-South Africa',16,3,30,0,0,0);
 INSERT INTO offerings VALUES(30722,202701,1868,NULL,'1','Occidental-in-Spain',16,6,30,0,0,0);
@@ -52031,7 +52031,7 @@ INSERT INTO offerings VALUES(30732,202701,3878,16204,'4','Directed Research',2,3
 INSERT INTO offerings VALUES(30733,202701,3878,16204,'5','Directed Research',2,2,5,0,0,0);
 INSERT INTO offerings VALUES(30734,202701,3878,16204,'6','Directed Research',2,0,5,0,0,0);
 INSERT INTO offerings VALUES(30735,202701,4060,14527,'2','Senior Directed Research',4,1,1,0,0,0);
-INSERT INTO offerings VALUES(30736,202701,892,14594,'1','Intermediate Sculpture',4,3,15,0,0,0);
+INSERT INTO offerings VALUES(30736,202701,892,14594,'1','Intermediate Sculpture',4,4,15,0,0,0);
 INSERT INTO offerings VALUES(30737,202701,59,NULL,'5','Organic Chemistry I Laboratory',0,12,14,0,0,0);
 INSERT INTO offerings VALUES(30738,202701,4014,15322,'1','Directed Research',4,0,1,0,0,0);
 INSERT INTO offerings VALUES(30739,202701,4014,15322,'2','Directed Research',4,0,1,0,0,0);
@@ -52041,7 +52041,7 @@ INSERT INTO offerings VALUES(30742,202701,4462,NULL,'2','Systems Anatomy Laborat
 INSERT INTO offerings VALUES(30743,202701,3661,15738,'1','Directed Research',2,2,4,0,0,0);
 INSERT INTO offerings VALUES(30744,202701,1345,16148,'1','Seminar in Washington Politics: Inside Washington Politics and Policies',4,2,5,0,0,0);
 INSERT INTO offerings VALUES(30745,202701,1346,16149,'1','Seminar in Washington Politics: International and Foreign Policy Studies',4,0,5,0,0,0);
-INSERT INTO offerings VALUES(30746,202701,345,16174,'2','Statistics in Psychological Science',4,24,25,1,0,0);
+INSERT INTO offerings VALUES(30746,202701,345,16174,'2','Statistics in Psychological Science',4,23,25,1,0,0);
 INSERT INTO offerings VALUES(30747,202701,352,16181,'2','Abnormal Psychology',4,17,18,4,1,0);
 INSERT INTO offerings VALUES(30748,202701,972,16193,'2','Evolutionary Psychology',4,17,18,10,1,0);
 INSERT INTO offerings VALUES(30749,202701,355,16195,'7','Directed Research',0,3,5,0,0,0);
