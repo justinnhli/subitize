@@ -51979,7 +51979,7 @@ INSERT INTO offerings VALUES(30659,202701,3917,16419,'2','Directed Research: Com
 INSERT INTO offerings VALUES(30660,202701,392,16424,'1','From Page to Stage: Introduction to Reading and Writing for Performance',4,21,25,8,8,0);
 INSERT INTO offerings VALUES(30661,202701,393,16425,'1','Introduction to Acting',2,8,12,0,0,0);
 INSERT INTO offerings VALUES(30662,202701,393,16425,'2','Introduction to Acting',2,1,12,3,3,0);
-INSERT INTO offerings VALUES(30663,202701,394,16426,'1','Introduction to Technical Theater',4,5,14,2,2,0);
+INSERT INTO offerings VALUES(30663,202701,394,16426,'1','Introduction to Technical Theater',4,6,14,2,2,0);
 INSERT INTO offerings VALUES(30664,202701,395,16427,'1','Production Laboratory',1,2,12,0,0,0);
 INSERT INTO offerings VALUES(30665,202701,395,16427,'2','Production Laboratory',1,0,4,0,0,0);
 INSERT INTO offerings VALUES(30666,202701,395,16427,'3','Production Laboratory',1,0,4,0,0,0);
