@@ -51196,8 +51196,8 @@ INSERT INTO offerings VALUES(29863,202701,26,14657,'1-2','Marine Biology Laborat
 INSERT INTO offerings VALUES(29864,202701,26,14657,'2','Marine Biology',4,21,32,12,12,0);
 INSERT INTO offerings VALUES(29865,202701,26,14657,'2-1','Marine Biology Laboratory',0,15,16,0,0,0);
 INSERT INTO offerings VALUES(29866,202701,26,14657,'2-2','Marine Biology Laboratory',0,6,16,0,0,0);
-INSERT INTO offerings VALUES(29867,202701,30,14658,'1','Introductory Biology: Biodiversity, Ecology, and Evolution',4,16,32,12,12,0);
-INSERT INTO offerings VALUES(29868,202701,30,14658,'1-1','Introductory Biology: Biodiversity, Ecology, and Evolution Lab',0,8,16,0,0,0);
+INSERT INTO offerings VALUES(29867,202701,30,14658,'1','Introductory Biology: Biodiversity, Ecology, and Evolution',4,15,32,12,12,0);
+INSERT INTO offerings VALUES(29868,202701,30,14658,'1-1','Introductory Biology: Biodiversity, Ecology, and Evolution Lab',0,7,16,0,0,0);
 INSERT INTO offerings VALUES(29869,202701,30,14658,'1-2','Introductory Biology: Biodiversity, Ecology, and Evolution Lab',0,8,16,0,0,0);
 INSERT INTO offerings VALUES(29870,202701,30,14658,'2','Introductory Biology: Biodiversity, Ecology, and Evolution',4,6,32,12,12,0);
 INSERT INTO offerings VALUES(29871,202701,30,14658,'2-1','Introductory Biology: Biodiversity, Ecology, and Evolution Lab',0,4,16,0,0,0);
@@ -51579,8 +51579,8 @@ INSERT INTO offerings VALUES(30258,202701,232,15756,'2','Calculus 1',4,8,28,0,0,
 INSERT INTO offerings VALUES(30259,202701,234,15757,'1','Calculus 1 (Advanced)',4,1,28,0,0,0);
 INSERT INTO offerings VALUES(30260,202701,236,15758,'1','Calculus 2',4,6,28,0,0,0);
 INSERT INTO offerings VALUES(30261,202701,236,15758,'2','Calculus 2',4,17,28,0,0,0);
-INSERT INTO offerings VALUES(30262,202701,242,15760,'1','Statistical Data Analysis',4,10,28,0,0,0);
-INSERT INTO offerings VALUES(30263,202701,4419,NULL,'1','Statistical Data Analysis Lab',0,4,14,0,0,0);
+INSERT INTO offerings VALUES(30262,202701,242,15760,'1','Statistical Data Analysis',4,9,28,0,0,0);
+INSERT INTO offerings VALUES(30263,202701,4419,NULL,'1','Statistical Data Analysis Lab',0,3,14,0,0,0);
 INSERT INTO offerings VALUES(30264,202701,4419,NULL,'2','Statistical Data Analysis Lab',0,6,14,0,0,0);
 INSERT INTO offerings VALUES(30265,202701,245,15765,'1','Discrete Mathematics',4,16,25,0,0,0);
 INSERT INTO offerings VALUES(30266,202701,246,15767,'1','Multivariable Calculus',4,14,25,0,0,0);
@@ -51827,7 +51827,7 @@ INSERT INTO offerings VALUES(30507,202701,313,15949,'4','Beginning Yoga',0,6,10,
 INSERT INTO offerings VALUES(30508,202701,313,15949,'5','Beginning Yoga',1,6,24,0,0,0);
 INSERT INTO offerings VALUES(30509,202701,313,15949,'6','Beginning Yoga',0,1,10,0,0,0);
 INSERT INTO offerings VALUES(30510,202701,313,15949,'7','Beginning Yoga',1,4,24,0,0,0);
-INSERT INTO offerings VALUES(30511,202701,313,15949,'8','Beginning Yoga',0,3,10,0,0,0);
+INSERT INTO offerings VALUES(30511,202701,313,15949,'8','Beginning Yoga',0,4,10,0,0,0);
 INSERT INTO offerings VALUES(30512,202701,315,15951,'1','Karate',1,5,99,0,0,0);
 INSERT INTO offerings VALUES(30513,202701,315,15951,'2','Karate',0,0,99,0,0,0);
 INSERT INTO offerings VALUES(30514,202701,1546,15953,'1','Intercollegiate Men''s Cross Country',1,0,99,0,0,0);
@@ -51924,7 +51924,7 @@ INSERT INTO offerings VALUES(30604,202701,357,16200,'1','Clinical Psychology',4,
 INSERT INTO offerings VALUES(30605,202701,973,16203,'1','Theories of Personality',4,16,16,9,0,0);
 INSERT INTO offerings VALUES(30606,202701,358,16207,'1','Contemporary Topics Seminar. Human Development and Aging',4,13,16,9,0,0);
 INSERT INTO offerings VALUES(30607,202701,2838,16210,'1','Introduction to Public Health',4,15,25,10,10,0);
-INSERT INTO offerings VALUES(30608,202701,2838,16210,'2','Introduction to Public Health',4,19,25,10,10,0);
+INSERT INTO offerings VALUES(30608,202701,2838,16210,'2','Introduction to Public Health',4,18,25,10,10,0);
 INSERT INTO offerings VALUES(30609,202701,3844,16213,'1','Public Health Nutrition',4,8,25,0,0,0);
 INSERT INTO offerings VALUES(30610,202701,2840,16219,'1','Women''s Health',4,17,18,0,0,0);
 INSERT INTO offerings VALUES(30611,202701,2841,16221,'1','Public Health Practicum',2,4,12,0,0,0);
@@ -52009,8 +52009,8 @@ INSERT INTO offerings VALUES(30692,202701,3921,NULL,'1','Geographic Information 
 INSERT INTO offerings VALUES(30693,202701,3921,NULL,'2','Geographic Information Science I Laboratory',0,3,13,0,0,0);
 INSERT INTO offerings VALUES(30695,202701,425,16501,'1','Sustainable Oxy',2,6,25,0,0,0);
 INSERT INTO offerings VALUES(30696,202701,996,16509,'1','Housing Problems and Policy',4,17,18,0,0,0);
-INSERT INTO offerings VALUES(30697,202701,427,16511,'1','Urban Data Analysis',4,21,32,0,0,0);
-INSERT INTO offerings VALUES(30698,202701,1566,16512,'1','Urban Data Analysis Laboratory',0,13,16,0,0,0);
+INSERT INTO offerings VALUES(30697,202701,427,16511,'1','Urban Data Analysis',4,22,32,0,0,0);
+INSERT INTO offerings VALUES(30698,202701,1566,16512,'1','Urban Data Analysis Laboratory',0,14,16,0,0,0);
 INSERT INTO offerings VALUES(30699,202701,1566,16512,'2','Urban Data Analysis Laboratory',0,8,16,0,0,0);
 INSERT INTO offerings VALUES(30700,202701,792,16513,'1','Food and the Environment',4,15,18,0,0,0);
 INSERT INTO offerings VALUES(30701,202701,430,16519,'1','Controversies in Policy and Politics',4,16,20,0,0,0);
@@ -52082,7 +52082,7 @@ INSERT INTO offerings VALUES(30784,202701,171,15384,'1','Earth: Our Environment'
 INSERT INTO offerings VALUES(30785,202701,171,15384,'1-1','Earth: Our Environment Lab',0,0,16,0,0,0);
 INSERT INTO offerings VALUES(30786,202701,171,15384,'1-2','Earth: Our Environment Lab',0,0,16,0,0,0);
 INSERT INTO offerings VALUES(30787,202701,559,15214,'1','Economic Development',4,17,18,0,0,0);
-INSERT INTO offerings VALUES(30788,202701,140,15197,'1','Managerial Economics',4,17,18,0,0,0);
+INSERT INTO offerings VALUES(30788,202701,140,15197,'1','Managerial Economics',4,16,18,0,0,0);
 INSERT INTO offerings VALUES(30789,202701,3264,15368,'2','Social Difference and the Politics of Technology',4,0,16,16,16,0);
 INSERT INTO offerings VALUES(30790,202701,2960,15378,'2','All That Glitters: Life, Literature, and Film in Los Angeles',4,0,16,16,16,0);
 INSERT INTO offerings VALUES(30791,202701,2961,15379,'2','Cultural Anthropology & Other/Realities',4,0,16,16,16,0);
