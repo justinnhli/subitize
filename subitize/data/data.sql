@@ -51578,7 +51578,7 @@ INSERT INTO offerings VALUES(30256,202701,4418,15755,'2','Data, Functions, and G
 INSERT INTO offerings VALUES(30257,202701,232,15756,'1','Calculus 1',4,9,28,0,0,0);
 INSERT INTO offerings VALUES(30258,202701,232,15756,'2','Calculus 1',4,8,28,0,0,0);
 INSERT INTO offerings VALUES(30259,202701,234,15757,'1','Calculus 1 (Advanced)',4,1,28,0,0,0);
-INSERT INTO offerings VALUES(30260,202701,236,15758,'1','Calculus 2',4,6,28,0,0,0);
+INSERT INTO offerings VALUES(30260,202701,236,15758,'1','Calculus 2',4,7,28,0,0,0);
 INSERT INTO offerings VALUES(30261,202701,236,15758,'2','Calculus 2',4,17,28,0,0,0);
 INSERT INTO offerings VALUES(30262,202701,242,15760,'1','Statistical Data Analysis',4,9,28,0,0,0);
 INSERT INTO offerings VALUES(30263,202701,4419,NULL,'1','Statistical Data Analysis Lab',0,3,14,0,0,0);
@@ -51848,8 +51848,8 @@ INSERT INTO offerings VALUES(30527,202701,316,16056,'1','Relativity, Quanta, and
 INSERT INTO offerings VALUES(30528,202701,4422,16057,'1','Waves',4,1,35,20,20,0);
 INSERT INTO offerings VALUES(30529,202701,4423,NULL,'1','Waves Laboratory',0,0,14,0,0,0);
 INSERT INTO offerings VALUES(30530,202701,4423,NULL,'2','Waves Laboratory',0,1,14,0,0,0);
-INSERT INTO offerings VALUES(30531,202701,318,16060,'1','General Physics I',4,22,28,0,0,0);
-INSERT INTO offerings VALUES(30532,202701,319,NULL,'1','General Physics I Laboratory',0,13,14,0,0,0);
+INSERT INTO offerings VALUES(30531,202701,318,16060,'1','General Physics I',4,21,28,0,0,0);
+INSERT INTO offerings VALUES(30532,202701,319,NULL,'1','General Physics I Laboratory',0,12,14,0,0,0);
 INSERT INTO offerings VALUES(30533,202701,319,NULL,'2','General Physics I Laboratory',0,9,14,0,0,0);
 INSERT INTO offerings VALUES(30534,202701,696,16062,'1','General Physics II',4,11,28,0,0,0);
 INSERT INTO offerings VALUES(30535,202701,697,NULL,'1','General Physics II Laboratory',0,5,14,0,0,0);
@@ -52074,7 +52074,7 @@ INSERT INTO offerings VALUES(30775,202701,2969,15361,'1','"The White Man?s Burde
 INSERT INTO offerings VALUES(30776,202701,3265,15362,'1','Debates in Sexuality',4,17,17,17,0,0);
 INSERT INTO offerings VALUES(30777,202701,2971,15363,'1','The Body in Words',4,16,17,17,1,0);
 INSERT INTO offerings VALUES(30778,202701,2972,15364,'1','Revolution',4,17,17,17,0,0);
-INSERT INTO offerings VALUES(30779,202701,3266,15365,'1','Latinidad and Pop Culture: Media, Power, and Representation',4,14,17,17,3,0);
+INSERT INTO offerings VALUES(30779,202701,3266,15365,'1','Latinidad and Pop Culture: Media, Power, and Representation',4,15,17,17,2,0);
 INSERT INTO offerings VALUES(30780,202701,3267,15366,'1','City Scenes: Urban Cultural Studies',4,17,17,17,0,0);
 INSERT INTO offerings VALUES(30781,202701,2973,15367,'1','Chaos: Just How Predictable is Our Universe?',4,17,17,17,0,0);
 INSERT INTO offerings VALUES(30782,202701,2974,15369,'1','Understanding Society through Soccer',4,17,17,17,0,0);
@@ -52088,7 +52088,7 @@ INSERT INTO offerings VALUES(30789,202701,3264,15368,'2','Social Difference and 
 INSERT INTO offerings VALUES(30790,202701,2960,15378,'2','All That Glitters: Life, Literature, and Film in Los Angeles',4,17,17,17,0,0);
 INSERT INTO offerings VALUES(30791,202701,2961,15379,'2','Cultural Anthropology & Other/Realities',4,17,17,17,0,0);
 INSERT INTO offerings VALUES(30792,202701,2962,15380,'2','Why This; and What Else?: Social Criticism and the Literary Imagination',4,16,17,17,1,0);
-INSERT INTO offerings VALUES(30793,202701,2971,15363,'2','The Body in Words',4,16,17,17,1,0);
+INSERT INTO offerings VALUES(30793,202701,2971,15363,'2','The Body in Words',4,17,17,17,0,0);
 INSERT INTO offerings VALUES(30794,202701,1357,16495,'1','Environmental Health and Policy',4,0,25,0,0,0);
 INSERT INTO offerings VALUES(30795,202701,2976,15371,'1','Artificial Intimacy: AI Companionship on Screen and in Everyday Life',4,16,17,17,1,0);
 INSERT INTO offerings VALUES(30796,202701,2976,15371,'2','Artificial Intimacy: AI Companionship on Screen and in Everyday Life',4,16,17,17,1,0);
