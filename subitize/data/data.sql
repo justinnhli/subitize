@@ -51336,7 +51336,7 @@ INSERT INTO offerings VALUES(30002,202701,63,14765,'1','Physical Chemistry: Ther
 INSERT INTO offerings VALUES(30003,202701,64,14766,'1','Thermodynamics and Kinetics Laboratory',1,11,18,0,0,0);
 INSERT INTO offerings VALUES(30004,202701,65,14772,'1','Inorganic Chemistry',4,7,18,0,0,0);
 INSERT INTO offerings VALUES(30005,202701,69,14780,'1','Directed Research',4,0,99,0,0,0);
-INSERT INTO offerings VALUES(30006,202701,69,14780,'2','Directed Research',4,1,99,0,0,0);
+INSERT INTO offerings VALUES(30006,202701,69,14780,'2','Directed Research',4,2,99,0,0,0);
 INSERT INTO offerings VALUES(30007,202701,69,14780,'3','Directed Research',4,0,99,0,0,0);
 INSERT INTO offerings VALUES(30008,202701,69,14780,'4','Directed Research',4,1,99,0,0,0);
 INSERT INTO offerings VALUES(30009,202701,69,14780,'5','Directed Research',4,2,99,0,0,0);
@@ -51980,7 +51980,7 @@ INSERT INTO offerings VALUES(30657,202701,390,16418,'1','Senior Seminar: Genre a
 INSERT INTO offerings VALUES(30658,202701,3917,16419,'1','Directed Research: Comprehensive Requirement',2,0,5,0,0,0);
 INSERT INTO offerings VALUES(30659,202701,3917,16419,'2','Directed Research: Comprehensive Requirement',2,0,5,0,0,0);
 INSERT INTO offerings VALUES(30660,202701,392,16424,'1','From Page to Stage: Introduction to Reading and Writing for Performance',4,21,25,8,8,0);
-INSERT INTO offerings VALUES(30661,202701,393,16425,'1','Introduction to Acting',2,8,12,0,0,0);
+INSERT INTO offerings VALUES(30661,202701,393,16425,'1','Introduction to Acting',2,7,12,0,0,0);
 INSERT INTO offerings VALUES(30662,202701,393,16425,'2','Introduction to Acting',2,1,12,3,3,0);
 INSERT INTO offerings VALUES(30663,202701,394,16426,'1','Introduction to Technical Theater',4,6,14,2,2,0);
 INSERT INTO offerings VALUES(30664,202701,395,16427,'1','Production Laboratory',1,2,12,0,0,0);
@@ -51991,7 +51991,7 @@ INSERT INTO offerings VALUES(30668,202701,3859,16429,'1','Elective Production La
 INSERT INTO offerings VALUES(30669,202701,3859,16429,'2','Elective Production Laboratory',1,0,4,0,0,0);
 INSERT INTO offerings VALUES(30670,202701,397,16430,'1','Modern Dance',1,1,24,0,0,0);
 INSERT INTO offerings VALUES(30671,202701,398,16432,'1','Tai Chi',1,12,25,0,0,0);
-INSERT INTO offerings VALUES(30672,202701,399,16433,'1','Beginning Ballet',1,5,24,0,0,0);
+INSERT INTO offerings VALUES(30672,202701,399,16433,'1','Beginning Ballet',1,6,24,0,0,0);
 INSERT INTO offerings VALUES(30673,202701,400,16436,'1','Choreography',2,3,18,0,0,0);
 INSERT INTO offerings VALUES(30674,202701,403,16439,'1','Folk and Historical Dance',1,6,18,0,0,0);
 INSERT INTO offerings VALUES(30676,202701,3773,16443,'1','Directed Research',2,0,4,0,0,0);
@@ -52038,8 +52038,8 @@ INSERT INTO offerings VALUES(30736,202701,892,14594,'1','Intermediate Sculpture'
 INSERT INTO offerings VALUES(30737,202701,59,NULL,'5','Organic Chemistry I Laboratory',0,12,14,0,0,0);
 INSERT INTO offerings VALUES(30738,202701,4014,15322,'1','Directed Research',4,0,1,0,0,0);
 INSERT INTO offerings VALUES(30739,202701,4014,15322,'2','Directed Research',4,0,1,0,0,0);
-INSERT INTO offerings VALUES(30740,202701,4446,15591,'1','Systems Anatomy',4,9,24,0,0,0);
-INSERT INTO offerings VALUES(30741,202701,4462,NULL,'1','Systems Anatomy Laboratory',0,6,12,0,0,0);
+INSERT INTO offerings VALUES(30740,202701,4446,15591,'1','Systems Anatomy',4,10,24,0,0,0);
+INSERT INTO offerings VALUES(30741,202701,4462,NULL,'1','Systems Anatomy Laboratory',0,7,12,0,0,0);
 INSERT INTO offerings VALUES(30742,202701,4462,NULL,'2','Systems Anatomy Laboratory',0,3,12,0,0,0);
 INSERT INTO offerings VALUES(30743,202701,3661,15738,'1','Directed Research',2,2,4,0,0,0);
 INSERT INTO offerings VALUES(30744,202701,1345,16148,'1','Seminar in Washington Politics: Inside Washington Politics and Policies',4,2,5,0,0,0);
