@@ -51348,7 +51348,7 @@ INSERT INTO offerings VALUES(30014,202701,74,14798,'1','Expository Essays and Sh
 INSERT INTO offerings VALUES(30015,202701,1205,14806,'1','Translating Chinese I',4,12,18,0,0,0);
 INSERT INTO offerings VALUES(30016,202701,76,14811,'1','Introduction to Cognitive Science',4,9,45,22,22,0);
 INSERT INTO offerings VALUES(30017,202701,77,14812,'1','Introduction to Neuroscience',4,11,25,11,11,0);
-INSERT INTO offerings VALUES(30018,202701,77,14812,'2','Introduction to Neuroscience',4,15,25,13,11,0);
+INSERT INTO offerings VALUES(30018,202701,77,14812,'2','Introduction to Neuroscience',4,14,25,13,11,0);
 INSERT INTO offerings VALUES(30019,202701,1504,14816,'1','Empirical Methods in Cognitive Science',4,21,18,9,-1,0);
 INSERT INTO offerings VALUES(30020,202701,1505,NULL,'1','Empirical Methods in Cognitive Science Laboratory',0,12,9,0,0,0);
 INSERT INTO offerings VALUES(30021,202701,1505,NULL,'2','Empirical Methods in Cognitive Science Laboratory',0,9,9,0,0,0);
@@ -51499,7 +51499,7 @@ INSERT INTO offerings VALUES(30170,202701,165,15329,'2','Beginning French I',4,8
 INSERT INTO offerings VALUES(30171,202701,166,15330,'1','Beginning French II',4,2,18,5,5,0);
 INSERT INTO offerings VALUES(30172,202701,166,15330,'2','Beginning French II',4,12,18,5,5,0);
 INSERT INTO offerings VALUES(30173,202701,167,15331,'1','Intermediate Conversation I',1,2,99,0,0,0);
-INSERT INTO offerings VALUES(30174,202701,168,15338,'1','Intermediate French',4,10,18,5,5,0);
+INSERT INTO offerings VALUES(30174,202701,168,15338,'1','Intermediate French',4,11,18,5,4,0);
 INSERT INTO offerings VALUES(30175,202701,169,15335,'1','Advanced Conversation I',1,4,99,0,0,0);
 INSERT INTO offerings VALUES(30177,202701,4008,15342,'1','Directed Research',2,0,5,0,0,0);
 INSERT INTO offerings VALUES(30178,202701,4009,15353,'1','Directed Research: Comprehensive Requirement',4,0,5,0,0,0);
@@ -51936,7 +51936,7 @@ INSERT INTO offerings VALUES(30613,202701,1035,16232,'1','Introduction to Americ
 INSERT INTO offerings VALUES(30614,202701,742,16234,'1','Islam on the Move',4,11,30,11,10,0);
 INSERT INTO offerings VALUES(30615,202701,1673,16235,'1','How to Live and Die Well in Buddhist Traditions',4,18,30,11,10,0);
 INSERT INTO offerings VALUES(30616,202701,4425,16243,'1','Sacred Flesh: Bodies, Religion, and Power in America',4,8,25,6,6,0);
-INSERT INTO offerings VALUES(30617,202701,1191,16253,'1','Shamans, Sages, and Spirits in East Asia',4,15,25,7,7,0);
+INSERT INTO offerings VALUES(30617,202701,1191,16253,'1','Shamans, Sages, and Spirits in East Asia',4,16,25,7,7,0);
 INSERT INTO offerings VALUES(30618,202701,366,16279,'1','Senior Seminar',4,4,15,0,0,0);
 INSERT INTO offerings VALUES(30619,202701,368,16283,'1','Elementary Russian I',4,3,25,0,0,0);
 INSERT INTO offerings VALUES(30620,202701,4000,16288,'1','Advanced Russian: Reading and Translation',4,7,25,0,0,0);
