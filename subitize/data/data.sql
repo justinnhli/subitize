@@ -51555,7 +51555,7 @@ INSERT INTO offerings VALUES(30231,202701,224,15608,'1','Motor Learning and Cont
 INSERT INTO offerings VALUES(30232,202701,225,15609,'1','Motor Learning and Control Laboratory',0,11,12,8,2,0);
 INSERT INTO offerings VALUES(30233,202701,225,15609,'2','Motor Learning and Control Laboratory',0,12,12,9,2,0);
 INSERT INTO offerings VALUES(30234,202701,632,15610,'1','Sport and Exercise Psychology',4,25,25,1,0,0);
-INSERT INTO offerings VALUES(30235,202701,226,15611,'1','Directed Research',2,3,5,0,0,0);
+INSERT INTO offerings VALUES(30235,202701,226,15611,'1','Directed Research',2,4,5,0,0,0);
 INSERT INTO offerings VALUES(30236,202701,227,15612,'1','Internship',2,4,6,0,0,0);
 INSERT INTO offerings VALUES(30237,202701,3990,15621,'1','Directed Research: Comprehensive Requirement',4,0,5,0,0,0);
 INSERT INTO offerings VALUES(30238,202701,3990,15621,'2','Directed Research: Comprehensive Requirement',4,0,5,0,0,0);
@@ -52054,7 +52054,7 @@ INSERT INTO offerings VALUES(30752,202701,3282,15750,'2','Senior Directed Resear
 INSERT INTO offerings VALUES(30753,202701,3282,15750,'3','Senior Directed Research',4,0,4,0,0,0);
 INSERT INTO offerings VALUES(30754,202701,3350,16491,'1','Food, Energy, and Sustainability Team',1,11,25,0,0,0);
 INSERT INTO offerings VALUES(30755,202701,3828,16500,'1','Urban Sustainability: Raising Animals as a Part of Regenerative Agriculture',2,22,25,0,0,0);
-INSERT INTO offerings VALUES(30756,202701,2738,15009,'3','Introduction to Critical Theory',4,0,25,0,0,0);
+INSERT INTO offerings VALUES(30756,202701,2738,15009,'3','Introduction to Critical Theory',4,1,25,0,0,0);
 INSERT INTO offerings VALUES(30757,202701,3975,14631,'1','From Jomon to Pokemon: Japan''s Cultural History',4,4,35,0,0,0);
 INSERT INTO offerings VALUES(30758,202701,3982,14950,'1','From Jomon to Pokemon: Japan''s Cultural History',4,4,35,0,0,0);
 INSERT INTO offerings VALUES(30759,202701,4463,NULL,'1','Global Francophone Worlds: Displacement, Migration, Memory, & Identity on the Page and on the Screen',4,3,18,0,0,0);
