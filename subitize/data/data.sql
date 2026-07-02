@@ -51376,7 +51376,7 @@ INSERT INTO offerings VALUES(30042,202701,3860,15086,'1','Occidental Weekly Prac
 INSERT INTO offerings VALUES(30043,202701,3831,15088,'1','The Art of Essay Writing: Writing in Class, Whiteness, and Conflict',4,15,16,1,1,0);
 INSERT INTO offerings VALUES(30045,202701,3831,15088,'3','The Art of Essay Writing: Art House Cinema',4,16,16,1,1,0);
 INSERT INTO offerings VALUES(30046,202701,3831,15088,'4','The Art of Essay Writing: Art House Cinema',4,15,16,1,1,0);
-INSERT INTO offerings VALUES(30047,202701,3833,15093,'1','Principles of Journalism I: Covering News Across Media',4,4,14,0,0,0);
+INSERT INTO offerings VALUES(30047,202701,3833,15093,'1','Principles of Journalism I: Covering News Across Media',4,5,14,0,0,0);
 INSERT INTO offerings VALUES(30048,202701,3834,15095,'1','Rhetorical Fault Lines: Journalism, Persuasion, Propaganda',4,8,14,0,0,0);
 INSERT INTO offerings VALUES(30049,202701,3835,15096,'1','Argument and Rhetoric Across the Disciplines',4,14,18,0,0,0);
 INSERT INTO offerings VALUES(30050,202701,3836,15100,'1','Theory and Pedagogy of Writing',1,11,18,0,0,0);
@@ -51455,8 +51455,8 @@ INSERT INTO offerings VALUES(30125,202701,131,15182,'2','Principles of Economics
 INSERT INTO offerings VALUES(30126,202701,131,15182,'3','Principles of Economics I',4,7,30,15,15,0);
 INSERT INTO offerings VALUES(30127,202701,131,15182,'4','Principles of Economics I',4,0,30,15,15,0);
 INSERT INTO offerings VALUES(30128,202701,131,15182,'5','Principles of Economics I',4,7,30,15,15,0);
-INSERT INTO offerings VALUES(30130,202701,132,15183,'2','Principles of Economics II',4,18,25,4,4,0);
-INSERT INTO offerings VALUES(30131,202701,2895,15187,'1','Sustainability Lab',2,12,25,0,0,0);
+INSERT INTO offerings VALUES(30130,202701,132,15183,'2','Principles of Economics II',4,19,25,4,4,0);
+INSERT INTO offerings VALUES(30131,202701,2895,15187,'1','Sustainability Lab',2,13,25,0,0,0);
 INSERT INTO offerings VALUES(30132,202701,133,15190,'1','Accounting and Financial Analysis',4,24,25,0,0,0);
 INSERT INTO offerings VALUES(30133,202701,134,15191,'1','Intermediate Microeconomic Theory',4,19,20,2,2,0);
 INSERT INTO offerings VALUES(30134,202701,134,15191,'2','Intermediate Microeconomic Theory',4,18,20,2,2,0);
@@ -51579,7 +51579,7 @@ INSERT INTO offerings VALUES(30255,202701,4418,15755,'1','Data, Functions, and G
 INSERT INTO offerings VALUES(30256,202701,4418,15755,'2','Data, Functions, and Graphs',4,13,35,0,0,0);
 INSERT INTO offerings VALUES(30257,202701,232,15756,'1','Calculus 1',4,9,28,0,0,0);
 INSERT INTO offerings VALUES(30258,202701,232,15756,'2','Calculus 1',4,7,28,0,0,0);
-INSERT INTO offerings VALUES(30259,202701,234,15757,'1','Calculus 1 (Advanced)',4,1,28,0,0,0);
+INSERT INTO offerings VALUES(30259,202701,234,15757,'1','Calculus 1 (Advanced)',4,0,28,0,0,0);
 INSERT INTO offerings VALUES(30260,202701,236,15758,'1','Calculus 2',4,7,28,0,0,0);
 INSERT INTO offerings VALUES(30261,202701,236,15758,'2','Calculus 2',4,17,28,0,0,0);
 INSERT INTO offerings VALUES(30262,202701,242,15760,'1','Statistical Data Analysis',4,9,28,0,0,0);
@@ -51823,7 +51823,7 @@ INSERT INTO offerings VALUES(30500,202701,2808,16030,'1','The Brothers Karamazov
 INSERT INTO offerings VALUES(30501,202701,3284,16038,'1','Public Health Ethics',4,8,18,1,0,0);
 INSERT INTO offerings VALUES(30502,202701,2936,16045,'1','Imagination',4,18,18,5,0,0);
 INSERT INTO offerings VALUES(30503,202701,302,16050,'1','Senior Seminar',4,4,18,0,0,0);
-INSERT INTO offerings VALUES(30504,202701,313,15949,'1','Beginning Yoga',1,18,25,0,0,0);
+INSERT INTO offerings VALUES(30504,202701,313,15949,'1','Beginning Yoga',1,17,25,0,0,0);
 INSERT INTO offerings VALUES(30505,202701,313,15949,'2','Beginning Yoga',0,3,10,0,0,0);
 INSERT INTO offerings VALUES(30506,202701,313,15949,'3','Beginning Yoga',1,12,24,0,0,0);
 INSERT INTO offerings VALUES(30507,202701,313,15949,'4','Beginning Yoga',0,6,10,0,0,0);
@@ -52011,7 +52011,7 @@ INSERT INTO offerings VALUES(30691,202701,3916,16492,'1','Geographic Information
 INSERT INTO offerings VALUES(30692,202701,3921,NULL,'1','Geographic Information Science I Laboratory',0,2,12,0,0,0);
 INSERT INTO offerings VALUES(30693,202701,3921,NULL,'2','Geographic Information Science I Laboratory',0,3,13,0,0,0);
 INSERT INTO offerings VALUES(30695,202701,425,16501,'1','Sustainable Oxy',2,5,25,0,0,0);
-INSERT INTO offerings VALUES(30696,202701,996,16509,'1','Housing Problems and Policy',4,16,18,0,0,0);
+INSERT INTO offerings VALUES(30696,202701,996,16509,'1','Housing Problems and Policy',4,15,18,0,0,0);
 INSERT INTO offerings VALUES(30697,202701,427,16511,'1','Urban Data Analysis',4,20,32,0,0,0);
 INSERT INTO offerings VALUES(30698,202701,1566,16512,'1','Urban Data Analysis Laboratory',0,13,16,0,0,0);
 INSERT INTO offerings VALUES(30699,202701,1566,16512,'2','Urban Data Analysis Laboratory',0,7,16,0,0,0);
