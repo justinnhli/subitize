@@ -51340,7 +51340,7 @@ INSERT INTO offerings VALUES(30006,202701,69,14780,'2','Directed Research',4,2,9
 INSERT INTO offerings VALUES(30007,202701,69,14780,'3','Directed Research',4,0,99,0,0,0);
 INSERT INTO offerings VALUES(30008,202701,69,14780,'4','Directed Research',4,1,99,0,0,0);
 INSERT INTO offerings VALUES(30009,202701,69,14780,'5','Directed Research',4,2,99,0,0,0);
-INSERT INTO offerings VALUES(30010,202701,69,14780,'6','Directed Research',4,1,99,0,0,0);
+INSERT INTO offerings VALUES(30010,202701,69,14780,'6','Directed Research',4,2,99,0,0,0);
 INSERT INTO offerings VALUES(30011,202701,70,14782,'1','Senior Seminar',2,9,18,0,0,0);
 INSERT INTO offerings VALUES(30012,202701,71,14785,'1','Elementary Chinese I',4,7,25,0,0,0);
 INSERT INTO offerings VALUES(30013,202701,72,14790,'1','Intermediate Chinese I',4,3,25,0,0,0);
@@ -51481,7 +51481,7 @@ INSERT INTO offerings VALUES(30152,202701,3262,15238,'1','Art Education Practicu
 INSERT INTO offerings VALUES(30153,202701,146,15242,'1','Sociocultural Foundations of Schooling',4,9,25,0,0,0);
 INSERT INTO offerings VALUES(30154,202701,147,15243,'1','The Politics and Pedagogy of First and Second Language Acquisition',4,10,25,0,0,0);
 INSERT INTO offerings VALUES(30155,202701,925,15246,'1','Chicano Education',4,9,25,0,0,0);
-INSERT INTO offerings VALUES(30156,202701,1015,15250,'1','Educational Inequality',4,19,25,0,0,0);
+INSERT INTO offerings VALUES(30156,202701,1015,15250,'1','Educational Inequality',4,18,25,0,0,0);
 INSERT INTO offerings VALUES(30157,202701,150,15255,'1','Community Engagement in Education',2,5,12,0,0,0);
 INSERT INTO offerings VALUES(30158,202701,1168,15258,'1','Pedagogy of the Oppressed',4,13,18,0,0,0);
 INSERT INTO offerings VALUES(30159,202701,1657,15272,'1','Shakespeare and Film',4,6,25,12,12,0);
@@ -51582,9 +51582,9 @@ INSERT INTO offerings VALUES(30258,202701,232,15756,'2','Calculus 1',4,7,28,0,0,
 INSERT INTO offerings VALUES(30259,202701,234,15757,'1','Calculus 1 (Advanced)',4,0,28,0,0,0);
 INSERT INTO offerings VALUES(30260,202701,236,15758,'1','Calculus 2',4,7,28,0,0,0);
 INSERT INTO offerings VALUES(30261,202701,236,15758,'2','Calculus 2',4,17,28,0,0,0);
-INSERT INTO offerings VALUES(30262,202701,242,15760,'1','Statistical Data Analysis',4,9,28,0,0,0);
+INSERT INTO offerings VALUES(30262,202701,242,15760,'1','Statistical Data Analysis',4,10,28,0,0,0);
 INSERT INTO offerings VALUES(30263,202701,4419,NULL,'1','Statistical Data Analysis Lab',0,3,14,0,0,0);
-INSERT INTO offerings VALUES(30264,202701,4419,NULL,'2','Statistical Data Analysis Lab',0,6,14,0,0,0);
+INSERT INTO offerings VALUES(30264,202701,4419,NULL,'2','Statistical Data Analysis Lab',0,7,14,0,0,0);
 INSERT INTO offerings VALUES(30265,202701,245,15765,'1','Discrete Mathematics',4,15,25,0,0,0);
 INSERT INTO offerings VALUES(30266,202701,246,15767,'1','Multivariable Calculus',4,14,25,0,0,0);
 INSERT INTO offerings VALUES(30267,202701,247,15768,'1','Linear Algebra',4,23,25,0,0,0);
@@ -51853,9 +51853,9 @@ INSERT INTO offerings VALUES(30530,202701,4423,NULL,'2','Waves Laboratory',0,1,1
 INSERT INTO offerings VALUES(30531,202701,318,16060,'1','General Physics I',4,21,28,0,0,0);
 INSERT INTO offerings VALUES(30532,202701,319,NULL,'1','General Physics I Laboratory',0,12,14,0,0,0);
 INSERT INTO offerings VALUES(30533,202701,319,NULL,'2','General Physics I Laboratory',0,9,14,0,0,0);
-INSERT INTO offerings VALUES(30534,202701,696,16062,'1','General Physics II',4,11,28,0,0,0);
+INSERT INTO offerings VALUES(30534,202701,696,16062,'1','General Physics II',4,12,28,0,0,0);
 INSERT INTO offerings VALUES(30535,202701,697,NULL,'1','General Physics II Laboratory',0,5,14,0,0,0);
-INSERT INTO offerings VALUES(30536,202701,697,NULL,'2','General Physics II Laboratory',0,6,14,0,0,0);
+INSERT INTO offerings VALUES(30536,202701,697,NULL,'2','General Physics II Laboratory',0,7,14,0,0,0);
 INSERT INTO offerings VALUES(30537,202701,4336,16069,'1','Space, Time, and Black Holes',4,7,25,0,0,0);
 INSERT INTO offerings VALUES(30538,202701,2835,16073,'1','Introductory Electricity and Magnetism',4,23,28,0,0,0);
 INSERT INTO offerings VALUES(30539,202701,2836,NULL,'1','Introductory Electricity and Magnetism Laboratory',0,9,14,0,0,0);
