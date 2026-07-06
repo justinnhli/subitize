@@ -51809,7 +51809,7 @@ INSERT INTO offerings VALUES(30486,202701,2817,15858,'1','Drum Set (Half Hour)',
 INSERT INTO offerings VALUES(30487,202701,2817,15858,'2','Drum Set (Half Hour)',0,0,16,12,12,0);
 INSERT INTO offerings VALUES(30488,202701,2818,15859,'1','Drum Set (One Hour)',1,4,16,13,12,0);
 INSERT INTO offerings VALUES(30489,202701,2818,15859,'2','Drum Set (One Hour)',0,0,16,12,12,0);
-INSERT INTO offerings VALUES(30490,202701,3288,15860,'1','Rock Guitar (Half Hour)',1,3,16,13,12,0);
+INSERT INTO offerings VALUES(30490,202701,3288,15860,'1','Rock Guitar (Half Hour)',1,4,16,13,12,0);
 INSERT INTO offerings VALUES(30491,202701,3288,15860,'2','Rock Guitar (Half Hour)',0,0,16,12,12,0);
 INSERT INTO offerings VALUES(30492,202701,3289,15861,'1','Rock Guitar (One Hour)',1,0,16,12,12,0);
 INSERT INTO offerings VALUES(30493,202701,3289,15861,'2','Rock Guitar (One Hour)',0,1,16,12,12,0);
@@ -51956,15 +51956,15 @@ INSERT INTO offerings VALUES(30633,202701,378,16364,'1','Senior Seminar in Socio
 INSERT INTO offerings VALUES(30634,202701,378,16364,'2','Senior Seminar in Sociology',4,8,7,0,0,0);
 INSERT INTO offerings VALUES(30635,202701,380,16368,'1','Beginning Spanish I',4,2,18,5,5,0);
 INSERT INTO offerings VALUES(30636,202701,380,16368,'2','Beginning Spanish I',4,10,18,5,5,0);
-INSERT INTO offerings VALUES(30637,202701,381,16369,'1','Beginning Spanish II',4,9,18,7,7,0);
+INSERT INTO offerings VALUES(30637,202701,381,16369,'1','Beginning Spanish II',4,10,18,7,6,0);
 INSERT INTO offerings VALUES(30638,202701,381,16369,'2','Beginning Spanish II',4,10,18,7,7,0);
-INSERT INTO offerings VALUES(30639,202701,381,16369,'3','Beginning Spanish II',4,11,18,7,7,0);
+INSERT INTO offerings VALUES(30639,202701,381,16369,'3','Beginning Spanish II',4,12,18,7,6,0);
 INSERT INTO offerings VALUES(30640,202701,381,16369,'4','Beginning Spanish II',4,9,18,7,7,0);
 INSERT INTO offerings VALUES(30641,202701,381,16369,'5','Beginning Spanish II',4,9,18,0,0,0);
 INSERT INTO offerings VALUES(30642,202701,381,16369,'6','Beginning Spanish II',4,11,18,0,0,0);
 INSERT INTO offerings VALUES(30643,202701,382,16371,'1','Intermediate Conversation I',1,2,99,0,0,0);
 INSERT INTO offerings VALUES(30644,202701,382,16371,'2','Intermediate Conversation I',1,2,99,0,0,0);
-INSERT INTO offerings VALUES(30645,202701,383,16377,'1','Intermediate Spanish',4,9,18,5,5,0);
+INSERT INTO offerings VALUES(30645,202701,383,16377,'1','Intermediate Spanish',4,10,18,5,5,0);
 INSERT INTO offerings VALUES(30646,202701,383,16377,'2','Intermediate Spanish',4,4,18,5,5,0);
 INSERT INTO offerings VALUES(30647,202701,384,16378,'1','Advanced Spanish',4,11,18,5,5,0);
 INSERT INTO offerings VALUES(30648,202701,384,16378,'2','Advanced Spanish',4,7,18,5,5,0);
