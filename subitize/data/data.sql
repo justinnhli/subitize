@@ -51480,7 +51480,7 @@ INSERT INTO offerings VALUES(30150,202701,142,15230,'4','Senior Seminar: Industr
 INSERT INTO offerings VALUES(30151,202701,145,15235,'1','Community Literacy',2,12,25,0,0,0);
 INSERT INTO offerings VALUES(30152,202701,3262,15238,'1','Art Education Practicum: Community Studio at OXY ARTS',4,11,12,0,0,0);
 INSERT INTO offerings VALUES(30153,202701,146,15242,'1','Sociocultural Foundations of Schooling',4,9,25,0,0,0);
-INSERT INTO offerings VALUES(30154,202701,147,15243,'1','The Politics and Pedagogy of First and Second Language Acquisition',4,11,25,0,0,0);
+INSERT INTO offerings VALUES(30154,202701,147,15243,'1','The Politics and Pedagogy of First and Second Language Acquisition',4,10,25,0,0,0);
 INSERT INTO offerings VALUES(30155,202701,925,15246,'1','Chicano Education',4,8,25,0,0,0);
 INSERT INTO offerings VALUES(30156,202701,1015,15250,'1','Educational Inequality',4,18,25,0,0,0);
 INSERT INTO offerings VALUES(30157,202701,150,15255,'1','Community Engagement in Education',2,6,12,0,0,0);
@@ -51563,7 +51563,7 @@ INSERT INTO offerings VALUES(30238,202701,3990,15621,'2','Directed Research: Com
 INSERT INTO offerings VALUES(30239,202701,639,15624,'1','Elementary and Intermediate Latin',4,8,25,0,0,0);
 INSERT INTO offerings VALUES(30240,202701,1663,15662,'1','Colonial Latin America',4,8,25,14,14,0);
 INSERT INTO offerings VALUES(30241,202701,1663,15662,'2','Colonial Latin America',4,24,25,14,14,0);
-INSERT INTO offerings VALUES(30242,202701,1664,15668,'1','The Politics and Pedagogy of First and Second Language Acquisition',4,11,25,5,5,0);
+INSERT INTO offerings VALUES(30242,202701,1664,15668,'1','The Politics and Pedagogy of First and Second Language Acquisition',4,10,25,5,5,0);
 INSERT INTO offerings VALUES(30243,202701,3870,15665,'1','Latina and Latin American Women''s Labors',4,9,25,7,7,0);
 INSERT INTO offerings VALUES(30244,202701,2346,15671,'1','Chicano Education',4,8,25,5,5,0);
 INSERT INTO offerings VALUES(30245,202701,4289,15673,'1','Mexican Philosophy, Culture, and Society',4,20,25,0,0,0);
@@ -52055,7 +52055,7 @@ INSERT INTO offerings VALUES(30752,202701,3282,15750,'2','Senior Directed Resear
 INSERT INTO offerings VALUES(30753,202701,3282,15750,'3','Senior Directed Research',4,0,4,0,0,0);
 INSERT INTO offerings VALUES(30754,202701,3350,16491,'1','Food, Energy, and Sustainability Team',1,11,25,0,0,0);
 INSERT INTO offerings VALUES(30755,202701,3828,16500,'1','Urban Sustainability: Raising Animals as a Part of Regenerative Agriculture',2,22,25,0,0,0);
-INSERT INTO offerings VALUES(30756,202701,2738,15009,'3','Introduction to Critical Theory',4,1,25,0,0,0);
+INSERT INTO offerings VALUES(30756,202701,2738,15009,'3','Introduction to Critical Theory',4,2,25,0,0,0);
 INSERT INTO offerings VALUES(30757,202701,3975,14631,'1','From Jomon to Pokemon: Japan''s Cultural History',4,4,35,0,0,0);
 INSERT INTO offerings VALUES(30758,202701,3982,14950,'1','From Jomon to Pokemon: Japan''s Cultural History',4,4,35,0,0,0);
 INSERT INTO offerings VALUES(30759,202701,4463,NULL,'1','Global Francophone Worlds: Displacement, Migration, Memory, & Identity on the Page and on the Screen',4,3,18,0,0,0);
