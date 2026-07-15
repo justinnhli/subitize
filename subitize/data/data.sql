@@ -51231,8 +51231,8 @@ INSERT INTO offerings VALUES(29894,202701,814,NULL,'2','Vertebrate Physiology La
 INSERT INTO offerings VALUES(29895,202701,462,14667,'1','Plant Form and Function',4,9,24,0,0,0);
 INSERT INTO offerings VALUES(29896,202701,463,NULL,'1','Plant Form and Function Laboratory',0,4,12,0,0,0);
 INSERT INTO offerings VALUES(29897,202701,463,NULL,'2','Plant Form and Function Laboratory',0,5,12,0,0,0);
-INSERT INTO offerings VALUES(29898,202701,38,14668,'1','Biodiversity and Organization of Marine Ecosystems',4,18,24,0,0,0);
-INSERT INTO offerings VALUES(29899,202701,39,NULL,'1','Biodiversity and Organization of Marine Ecosystems Laboratory',0,9,12,0,0,0);
+INSERT INTO offerings VALUES(29898,202701,38,14668,'1','Biodiversity and Organization of Marine Ecosystems',4,17,24,0,0,0);
+INSERT INTO offerings VALUES(29899,202701,39,NULL,'1','Biodiversity and Organization of Marine Ecosystems Laboratory',0,8,12,0,0,0);
 INSERT INTO offerings VALUES(29900,202701,39,NULL,'2','Biodiversity and Organization of Marine Ecosystems Laboratory',0,9,12,0,0,0);
 INSERT INTO offerings VALUES(29901,202701,1049,14669,'1','Biostatistics',4,12,24,0,0,0);
 INSERT INTO offerings VALUES(29902,202701,3976,NULL,'1','Biostatistics Laboratory',0,12,12,0,0,0);
@@ -51634,7 +51634,7 @@ INSERT INTO offerings VALUES(30310,202701,261,15880,'1','Glee Club (Tenors/Basse
 INSERT INTO offerings VALUES(30311,202701,261,15880,'2','Glee Club (Tenors/Basses)',0,0,32,0,0,0);
 INSERT INTO offerings VALUES(30312,202701,955,15882,'1','Son Jarocho Ensemble',1,5,15,0,0,0);
 INSERT INTO offerings VALUES(30313,202701,265,15883,'1','Jazz Ensemble',1,3,40,0,0,0);
-INSERT INTO offerings VALUES(30314,202701,265,15883,'2','Jazz Ensemble',0,2,40,0,0,0);
+INSERT INTO offerings VALUES(30314,202701,265,15883,'2','Jazz Ensemble',0,3,40,0,0,0);
 INSERT INTO offerings VALUES(30315,202701,1239,15884,'1','Chamber Jazz',1,3,12,0,0,0);
 INSERT INTO offerings VALUES(30316,202701,1239,15884,'2','Chamber Jazz',1,4,12,0,0,0);
 INSERT INTO offerings VALUES(30317,202701,1239,15884,'3','Chamber Jazz',1,1,12,0,0,0);
@@ -51644,7 +51644,7 @@ INSERT INTO offerings VALUES(30320,202701,266,15885,'2','Chamber Music',0,4,35,0
 INSERT INTO offerings VALUES(30321,202701,267,15886,'1','Symphony Orchestra',1,16,60,0,0,0);
 INSERT INTO offerings VALUES(30322,202701,267,15886,'2','Symphony Orchestra',0,4,60,0,0,0);
 INSERT INTO offerings VALUES(30323,202701,268,15887,'1','Improvisation',1,4,15,0,0,0);
-INSERT INTO offerings VALUES(30324,202701,4313,15891,'1','Topics in the Study of Popular Music. History of Electronic Dance Music',4,25,35,0,0,0);
+INSERT INTO offerings VALUES(30324,202701,4313,15891,'1','Topics in the Study of Popular Music. History of Electronic Dance Music',4,26,35,0,0,0);
 INSERT INTO offerings VALUES(30325,202701,3232,15897,'1','Keyboard Musicianship I',1,5,6,0,0,0);
 INSERT INTO offerings VALUES(30326,202701,3232,15897,'2','Keyboard Musicianship I',1,3,6,0,0,0);
 INSERT INTO offerings VALUES(30327,202701,3232,15897,'3','Keyboard Musicianship I',1,3,6,0,0,0);
@@ -51816,7 +51816,7 @@ INSERT INTO offerings VALUES(30492,202701,3289,15861,'1','Rock Guitar (One Hour)
 INSERT INTO offerings VALUES(30493,202701,3289,15861,'2','Rock Guitar (One Hour)',0,1,16,12,12,0);
 INSERT INTO offerings VALUES(30494,202701,294,15993,'1','Introduction to Philosophy',4,15,25,10,10,0);
 INSERT INTO offerings VALUES(30495,202701,2679,15994,'1','Formal Logic',4,22,35,13,13,0);
-INSERT INTO offerings VALUES(30496,202701,2679,15994,'2','Formal Logic',4,26,35,10,6,0);
+INSERT INTO offerings VALUES(30496,202701,2679,15994,'2','Formal Logic',4,27,35,10,6,0);
 INSERT INTO offerings VALUES(30497,202701,3012,16008,'1','Mexican Philosophy, Culture, and Society',4,20,25,2,2,0);
 INSERT INTO offerings VALUES(30498,202701,4421,16018,'1','The Heart and the Mind: Philosophy of the Emotions',4,23,25,5,0,0);
 INSERT INTO offerings VALUES(30499,202701,2463,16026,'1','Ethics Bowl: Contemporary Debates on Ethical Issues',4,10,10,2,0,0);
@@ -51828,7 +51828,7 @@ INSERT INTO offerings VALUES(30504,202701,313,15949,'1','Beginning Yoga',1,16,25
 INSERT INTO offerings VALUES(30505,202701,313,15949,'2','Beginning Yoga',0,3,10,0,0,0);
 INSERT INTO offerings VALUES(30506,202701,313,15949,'3','Beginning Yoga',1,12,24,0,0,0);
 INSERT INTO offerings VALUES(30507,202701,313,15949,'4','Beginning Yoga',0,6,10,0,0,0);
-INSERT INTO offerings VALUES(30508,202701,313,15949,'5','Beginning Yoga',1,7,24,0,0,0);
+INSERT INTO offerings VALUES(30508,202701,313,15949,'5','Beginning Yoga',1,8,24,0,0,0);
 INSERT INTO offerings VALUES(30509,202701,313,15949,'6','Beginning Yoga',0,1,10,0,0,0);
 INSERT INTO offerings VALUES(30510,202701,313,15949,'7','Beginning Yoga',1,3,24,0,0,0);
 INSERT INTO offerings VALUES(30511,202701,313,15949,'8','Beginning Yoga',0,4,10,0,0,0);
@@ -51964,9 +51964,9 @@ INSERT INTO offerings VALUES(30640,202701,381,16369,'4','Beginning Spanish II',4
 INSERT INTO offerings VALUES(30641,202701,381,16369,'5','Beginning Spanish II',4,9,18,0,0,0);
 INSERT INTO offerings VALUES(30642,202701,381,16369,'6','Beginning Spanish II',4,11,18,0,0,0);
 INSERT INTO offerings VALUES(30643,202701,382,16371,'1','Intermediate Conversation I',1,2,99,0,0,0);
-INSERT INTO offerings VALUES(30644,202701,382,16371,'2','Intermediate Conversation I',1,2,99,0,0,0);
+INSERT INTO offerings VALUES(30644,202701,382,16371,'2','Intermediate Conversation I',1,3,99,0,0,0);
 INSERT INTO offerings VALUES(30645,202701,383,16377,'1','Intermediate Spanish',4,10,18,5,5,0);
-INSERT INTO offerings VALUES(30646,202701,383,16377,'2','Intermediate Spanish',4,4,18,5,5,0);
+INSERT INTO offerings VALUES(30646,202701,383,16377,'2','Intermediate Spanish',4,5,18,5,5,0);
 INSERT INTO offerings VALUES(30647,202701,384,16378,'1','Advanced Spanish',4,11,18,5,5,0);
 INSERT INTO offerings VALUES(30648,202701,384,16378,'2','Advanced Spanish',4,7,18,5,5,0);
 INSERT INTO offerings VALUES(30649,202701,386,16374,'1','Advanced Conversation I',1,8,99,0,0,0);
@@ -52011,7 +52011,7 @@ INSERT INTO offerings VALUES(30688,202701,423,16490,'1','Environment and Society
 INSERT INTO offerings VALUES(30691,202701,3916,16492,'1','Geographic Information Science I',4,5,25,0,0,0);
 INSERT INTO offerings VALUES(30692,202701,3921,NULL,'1','Geographic Information Science I Laboratory',0,2,12,0,0,0);
 INSERT INTO offerings VALUES(30693,202701,3921,NULL,'2','Geographic Information Science I Laboratory',0,3,13,0,0,0);
-INSERT INTO offerings VALUES(30695,202701,425,16501,'1','Sustainable Oxy',2,5,25,0,0,0);
+INSERT INTO offerings VALUES(30695,202701,425,16501,'1','Sustainable Oxy',2,4,25,0,0,0);
 INSERT INTO offerings VALUES(30696,202701,996,16509,'1','Housing Problems and Policy',4,15,18,0,0,0);
 INSERT INTO offerings VALUES(30697,202701,427,16511,'1','Urban Data Analysis',4,20,32,0,0,0);
 INSERT INTO offerings VALUES(30698,202701,1566,16512,'1','Urban Data Analysis Laboratory',0,13,16,0,0,0);
@@ -52072,7 +52072,7 @@ INSERT INTO offerings VALUES(30769,202701,2964,15382,'1','German Film: Modernity
 INSERT INTO offerings VALUES(30770,202701,2965,15383,'1','Transnational Feminist Film',4,17,17,17,0,0);
 INSERT INTO offerings VALUES(30771,202701,2966,15358,'1','White Privilege, White Grievance, Why We Don''t Talk About Class',4,17,17,17,0,0);
 INSERT INTO offerings VALUES(30773,202701,2967,15359,'1','Isn''t It Romantic? Romance Novels as the People''s Genre',4,17,17,17,0,0);
-INSERT INTO offerings VALUES(30774,202701,2968,15360,'1','Rescued Books Club: Novels from the New York Review of Books Classics Series',4,14,17,17,3,0);
+INSERT INTO offerings VALUES(30774,202701,2968,15360,'1','Rescued Books Club: Novels from the New York Review of Books Classics Series',4,15,17,17,2,0);
 INSERT INTO offerings VALUES(30775,202701,2969,15361,'1','"The White Man?s Burden": Foreign Aid, Development and Neo-Imperialism',4,17,17,17,0,0);
 INSERT INTO offerings VALUES(30776,202701,3265,15362,'1','Debates in Sexuality',4,17,17,17,0,0);
 INSERT INTO offerings VALUES(30777,202701,2971,15363,'1','The Body in Words',4,17,17,17,0,0);
