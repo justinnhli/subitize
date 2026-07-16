@@ -51255,16 +51255,16 @@ INSERT INTO offerings VALUES(29919,202701,3328,14677,'1','Huntington-Occidental 
 INSERT INTO offerings VALUES(29920,202701,42,14680,'1','Principles of Biochemistry',4,16,16,2,2,0);
 INSERT INTO offerings VALUES(29921,202701,43,NULL,'1','Principles of Biochemistry Laboratory',0,8,8,1,1,0);
 INSERT INTO offerings VALUES(29922,202701,43,NULL,'2','Principles of Biochemistry Laboratory',0,8,8,1,1,0);
-INSERT INTO offerings VALUES(29923,202701,468,14682,'1','Microbial Diversity',4,16,16,0,0,0);
-INSERT INTO offerings VALUES(29924,202701,469,NULL,'1','Microbial Diversity Laboratory',0,8,8,0,0,0);
+INSERT INTO offerings VALUES(29923,202701,468,14682,'1','Microbial Diversity',4,15,16,0,0,0);
+INSERT INTO offerings VALUES(29924,202701,469,NULL,'1','Microbial Diversity Laboratory',0,7,8,0,0,0);
 INSERT INTO offerings VALUES(29925,202701,469,NULL,'2','Microbial Diversity Laboratory',0,8,8,0,0,0);
 INSERT INTO offerings VALUES(29926,202701,815,14684,'1','Neurobiology',4,13,16,2,2,0);
 INSERT INTO offerings VALUES(29927,202701,816,NULL,'1','Neurobiology Laboratory',0,8,8,1,1,0);
 INSERT INTO offerings VALUES(29928,202701,816,NULL,'2','Neurobiology Laboratory',0,5,8,1,1,0);
 INSERT INTO offerings VALUES(29929,202701,1003,14688,'1','Biochemistry I',4,11,16,0,0,0);
-INSERT INTO offerings VALUES(29930,202701,1003,14688,'2','Biochemistry I',4,15,16,0,0,0);
+INSERT INTO offerings VALUES(29930,202701,1003,14688,'2','Biochemistry I',4,16,16,0,0,0);
 INSERT INTO offerings VALUES(29931,202701,1004,NULL,'1','Biochemistry I Laboratory',0,13,12,0,0,0);
-INSERT INTO offerings VALUES(29932,202701,1004,NULL,'2','Biochemistry I Laboratory',0,13,12,0,0,0);
+INSERT INTO offerings VALUES(29932,202701,1004,NULL,'2','Biochemistry I Laboratory',0,14,12,0,0,0);
 INSERT INTO offerings VALUES(29934,202701,3357,14695,'1','Global Change Biology',4,12,16,0,0,0);
 INSERT INTO offerings VALUES(29935,202701,3358,NULL,'1','Global Change Biology Laboratory',0,9,8,0,0,0);
 INSERT INTO offerings VALUES(29936,202701,3358,NULL,'2','Global Change Biology Laboratory',0,3,8,0,0,0);
@@ -51317,7 +51317,7 @@ INSERT INTO offerings VALUES(29982,202701,57,14755,'11','Directed Research',0,0,
 INSERT INTO offerings VALUES(29983,202701,57,14755,'12','Directed Research',1,0,99,0,0,0);
 INSERT INTO offerings VALUES(29984,202701,58,14759,'1','Organic Chemistry I',4,31,25,0,0,0);
 INSERT INTO offerings VALUES(29985,202701,58,14759,'2','Organic Chemistry I',4,33,25,0,0,0);
-INSERT INTO offerings VALUES(29986,202701,59,NULL,'1','Organic Chemistry I Laboratory',0,13,14,0,0,0);
+INSERT INTO offerings VALUES(29986,202701,59,NULL,'1','Organic Chemistry I Laboratory',0,14,14,0,0,0);
 INSERT INTO offerings VALUES(29987,202701,59,NULL,'2','Organic Chemistry I Laboratory',0,14,14,0,0,0);
 INSERT INTO offerings VALUES(29988,202701,59,NULL,'3','Organic Chemistry I Laboratory',0,13,14,0,0,0);
 INSERT INTO offerings VALUES(29989,202701,59,NULL,'4','Organic Chemistry I Laboratory',0,13,14,0,0,0);
@@ -51347,7 +51347,7 @@ INSERT INTO offerings VALUES(30012,202701,71,14785,'1','Elementary Chinese I',4,
 INSERT INTO offerings VALUES(30013,202701,72,14790,'1','Intermediate Chinese I',4,3,25,0,0,0);
 INSERT INTO offerings VALUES(30014,202701,74,14798,'1','Expository Essays and Short Narratives I',4,2,18,0,0,0);
 INSERT INTO offerings VALUES(30015,202701,1205,14806,'1','Translating Chinese I',4,12,18,0,0,0);
-INSERT INTO offerings VALUES(30016,202701,76,14811,'1','Introduction to Cognitive Science',4,9,45,22,22,0);
+INSERT INTO offerings VALUES(30016,202701,76,14811,'1','Introduction to Cognitive Science',4,10,45,22,22,0);
 INSERT INTO offerings VALUES(30017,202701,77,14812,'1','Introduction to Neuroscience',4,11,25,11,11,0);
 INSERT INTO offerings VALUES(30018,202701,77,14812,'2','Introduction to Neuroscience',4,14,25,13,11,0);
 INSERT INTO offerings VALUES(30019,202701,1504,14816,'1','Empirical Methods in Cognitive Science',4,20,18,9,-1,0);
@@ -51876,7 +51876,7 @@ INSERT INTO offerings VALUES(30552,202701,330,16099,'3','American Politics and P
 INSERT INTO offerings VALUES(30553,202701,1423,16102,'1','Law and Society',4,9,25,15,15,0);
 INSERT INTO offerings VALUES(30554,202701,1553,16103,'1','Introduction to Political Theory',4,14,25,12,12,0);
 INSERT INTO offerings VALUES(30555,202701,2480,16106,'1','California State Government and Politics',4,17,25,0,0,0);
-INSERT INTO offerings VALUES(30556,202701,966,16111,'1','Los Angeles Politics',4,12,25,0,0,0);
+INSERT INTO offerings VALUES(30556,202701,966,16111,'1','Los Angeles Politics',4,11,25,0,0,0);
 INSERT INTO offerings VALUES(30557,202701,713,16113,'1','Interest Group Politics',4,21,25,0,0,0);
 INSERT INTO offerings VALUES(30558,202701,1485,16116,'1','Latin American Politics',4,24,25,0,0,0);
 INSERT INTO offerings VALUES(30559,202701,1031,16122,'1','International Security',4,23,25,0,0,0);
@@ -52036,7 +52036,7 @@ INSERT INTO offerings VALUES(30733,202701,3878,16204,'5','Directed Research',2,3
 INSERT INTO offerings VALUES(30734,202701,3878,16204,'6','Directed Research',2,0,5,0,0,0);
 INSERT INTO offerings VALUES(30735,202701,4060,14527,'2','Senior Directed Research',4,1,1,0,0,0);
 INSERT INTO offerings VALUES(30736,202701,892,14594,'1','Intermediate Sculpture',4,4,15,0,0,0);
-INSERT INTO offerings VALUES(30737,202701,59,NULL,'5','Organic Chemistry I Laboratory',0,11,14,0,0,0);
+INSERT INTO offerings VALUES(30737,202701,59,NULL,'5','Organic Chemistry I Laboratory',0,10,14,0,0,0);
 INSERT INTO offerings VALUES(30738,202701,4014,15322,'1','Directed Research',4,0,1,0,0,0);
 INSERT INTO offerings VALUES(30739,202701,4014,15322,'2','Directed Research',4,0,1,0,0,0);
 INSERT INTO offerings VALUES(30740,202701,4446,15591,'1','Systems Anatomy',4,10,24,0,0,0);
@@ -52096,7 +52096,7 @@ INSERT INTO offerings VALUES(30794,202701,1357,16495,'1','Environmental Health a
 INSERT INTO offerings VALUES(30795,202701,2976,15371,'1','Artificial Intimacy: AI Companionship on Screen and in Everyday Life',4,17,17,17,0,0);
 INSERT INTO offerings VALUES(30796,202701,2976,15371,'2','Artificial Intimacy: AI Companionship on Screen and in Everyday Life',4,17,17,17,0,0);
 INSERT INTO offerings VALUES(30797,202701,54,NULL,'6','Foundations of General Chemistry Laboratory',0,0,14,0,0,0);
-INSERT INTO offerings VALUES(30798,202701,2975,15370,'1','Refuse, Reduce, Repair, Repurpose, Recycle: How do we do more with less to reclaim our planet?',4,17,17,17,0,0);
+INSERT INTO offerings VALUES(30798,202701,2975,15370,'1','Refuse, Reduce, Repair, Repurpose, Recycle: How do we do more with less to reclaim our planet?',4,16,17,17,1,0);
 INSERT INTO offerings VALUES(30799,202701,2678,15722,'2','Topics in Media Production: Cinematography',4,3,16,0,0,0);
 INSERT INTO offerings VALUES(30800,202701,310,15945,'1','Spin Class I',1,0,14,0,0,0);
 INSERT INTO offerings VALUES(30801,202701,310,15945,'2','Spin Class I',0,1,3,0,0,0);
