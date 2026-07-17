@@ -51489,7 +51489,7 @@ INSERT INTO offerings VALUES(30159,202701,1657,15272,'1','Shakespeare and Film',
 INSERT INTO offerings VALUES(30160,202701,4211,15281,'1','Realism and the Rise of the Novel',4,9,20,0,0,0);
 INSERT INTO offerings VALUES(30161,202701,4415,15287,'1','The Literature and Film of American Immigration',4,8,25,0,0,0);
 INSERT INTO offerings VALUES(30162,202701,1593,15291,'1','Creative Writing: Introduction to Fiction Writing',4,13,14,0,0,0);
-INSERT INTO offerings VALUES(30163,202701,1518,15292,'1','Creative Writing: Poetry',4,11,16,4,4,0);
+INSERT INTO offerings VALUES(30163,202701,1518,15292,'1','Creative Writing: Poetry',4,12,16,4,4,0);
 INSERT INTO offerings VALUES(30164,202701,1224,15296,'1','Introduction to Literary Methods',4,9,20,0,0,0);
 INSERT INTO offerings VALUES(30165,202701,1455,15317,'1','Afrofuturism',4,17,18,0,0,0);
 INSERT INTO offerings VALUES(30166,202701,1230,15320,'1','Advanced Creative Writing',4,15,14,0,0,0);
