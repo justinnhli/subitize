@@ -51843,7 +51843,7 @@ INSERT INTO offerings VALUES(30501,202701,3284,16038,'1','Public Health Ethics',
 INSERT INTO offerings VALUES(30502,202701,2936,16045,'1','Imagination',4,17,18,5,0,0);
 INSERT INTO offerings VALUES(30503,202701,302,16050,'1','Senior Seminar',4,4,18,0,0,0);
 INSERT INTO offerings VALUES(30504,202701,313,15949,'1','Beginning Yoga',1,15,25,0,0,0);
-INSERT INTO offerings VALUES(30505,202701,313,15949,'2','Beginning Yoga',0,2,10,0,0,0);
+INSERT INTO offerings VALUES(30505,202701,313,15949,'2','Beginning Yoga',0,1,10,0,0,0);
 INSERT INTO offerings VALUES(30506,202701,313,15949,'3','Beginning Yoga',1,11,24,0,0,0);
 INSERT INTO offerings VALUES(30507,202701,313,15949,'4','Beginning Yoga',0,6,10,0,0,0);
 INSERT INTO offerings VALUES(30508,202701,313,15949,'5','Beginning Yoga',1,10,24,0,0,0);
@@ -51985,7 +51985,7 @@ INSERT INTO offerings VALUES(30644,202701,382,16371,'2','Intermediate Conversati
 INSERT INTO offerings VALUES(30645,202701,383,16377,'1','Intermediate Spanish',4,13,18,5,2,0);
 INSERT INTO offerings VALUES(30646,202701,383,16377,'2','Intermediate Spanish',4,5,18,5,5,0);
 INSERT INTO offerings VALUES(30647,202701,384,16378,'1','Advanced Spanish',4,14,18,5,3,0);
-INSERT INTO offerings VALUES(30648,202701,384,16378,'2','Advanced Spanish',4,7,18,5,5,0);
+INSERT INTO offerings VALUES(30648,202701,384,16378,'2','Advanced Spanish',4,8,18,5,4,0);
 INSERT INTO offerings VALUES(30649,202701,386,16374,'1','Advanced Conversation I',1,8,99,0,0,0);
 INSERT INTO offerings VALUES(30650,202701,386,16374,'2','Advanced Conversation I',1,2,99,0,0,0);
 INSERT INTO offerings VALUES(30651,202701,4397,16392,'1','Violence in Latin American Fiction and Film',4,15,18,0,0,0);
@@ -52072,8 +52072,8 @@ INSERT INTO offerings VALUES(30752,202701,3282,15750,'2','Senior Directed Resear
 INSERT INTO offerings VALUES(30753,202701,3282,15750,'3','Senior Directed Research',4,0,4,0,0,0);
 INSERT INTO offerings VALUES(30754,202701,3350,16491,'1','Food, Energy, and Sustainability Team',1,11,25,0,0,0);
 INSERT INTO offerings VALUES(30755,202701,3828,16500,'1','Urban Sustainability: Raising Animals as a Part of Regenerative Agriculture',2,21,25,0,0,0);
-INSERT INTO offerings VALUES(30757,202701,3975,14631,'1','From Jomon to Pokemon: Japan''s Cultural History',4,3,35,0,0,0);
-INSERT INTO offerings VALUES(30758,202701,3982,14950,'1','From Jomon to Pokemon: Japan''s Cultural History',4,3,35,0,0,0);
+INSERT INTO offerings VALUES(30757,202701,3975,14631,'1','From Jomon to Pokemon: Japan''s Cultural History',4,4,35,0,0,0);
+INSERT INTO offerings VALUES(30758,202701,3982,14950,'1','From Jomon to Pokemon: Japan''s Cultural History',4,4,35,0,0,0);
 INSERT INTO offerings VALUES(30759,202701,4463,NULL,'1','Global Francophone Worlds: Displacement, Migration, Memory, & Identity on the Page and on the Screen',4,3,18,0,0,0);
 INSERT INTO offerings VALUES(30760,202701,2958,15357,'1','Life on the Edge: How Geology Shapes Our Lives in Los Angeles and Environs',4,14,16,16,2,0);
 INSERT INTO offerings VALUES(30761,202701,2958,15357,'2','Life on the Edge: How Geology Shapes Our Lives in Los Angeles and Environs',4,14,16,16,2,0);
