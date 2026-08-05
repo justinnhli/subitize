@@ -51197,7 +51197,7 @@ INSERT INTO offerings VALUES(29842,202701,9,14551,'1','Global Modernism',4,17,35
 INSERT INTO offerings VALUES(29843,202701,3242,14555,'1','Ways of Looking and Making',4,18,25,8,2,0);
 INSERT INTO offerings VALUES(29844,202701,889,14566,'1','Modern and Contemporary Art',4,26,25,8,0,0);
 INSERT INTO offerings VALUES(29845,202701,3014,14571,'1','Practicum in Art History',1,19,19,7,0,0);
-INSERT INTO offerings VALUES(29846,202701,14,14578,'1','Art and Environment in East Asia',4,10,18,3,0,0);
+INSERT INTO offerings VALUES(29846,202701,14,14578,'1','Art and Environment in East Asia',4,11,18,3,0,0);
 INSERT INTO offerings VALUES(29847,202701,1202,14579,'1','Curating Trans History: Archives, Art, and Politics',4,10,18,0,0,0);
 INSERT INTO offerings VALUES(29848,202701,447,14582,'1','Senior Seminar in Art History',2,2,18,2,0,0);
 INSERT INTO offerings VALUES(29849,202701,2729,14585,'1','Art Education Practicum: Community Studio at OXY ARTS',4,11,12,3,2,0);
@@ -51212,18 +51212,18 @@ INSERT INTO offerings VALUES(29857,202701,2892,14617,'1','Advanced Projects in S
 INSERT INTO offerings VALUES(29858,202701,3884,14618,'1','Advanced Projects in Photography',4,7,15,5,0,0);
 INSERT INTO offerings VALUES(29859,202701,2730,14749,'1','Obama Scholars Program Seminar',2,11,18,0,0,0);
 INSERT INTO offerings VALUES(29860,202701,24,14654,'1','Senior Seminar',2,16,18,0,0,0);
-INSERT INTO offerings VALUES(29861,202701,26,14657,'1','Marine Biology',4,19,32,12,12,0);
+INSERT INTO offerings VALUES(29861,202701,26,14657,'1','Marine Biology',4,20,32,12,12,0);
 INSERT INTO offerings VALUES(29862,202701,26,14657,'1-1','Marine Biology Laboratory',0,15,16,0,0,0);
-INSERT INTO offerings VALUES(29863,202701,26,14657,'1-2','Marine Biology Laboratory',0,4,16,0,0,0);
+INSERT INTO offerings VALUES(29863,202701,26,14657,'1-2','Marine Biology Laboratory',0,5,16,0,0,0);
 INSERT INTO offerings VALUES(29864,202701,26,14657,'2','Marine Biology',4,21,32,12,12,0);
 INSERT INTO offerings VALUES(29865,202701,26,14657,'2-1','Marine Biology Laboratory',0,15,16,0,0,0);
 INSERT INTO offerings VALUES(29866,202701,26,14657,'2-2','Marine Biology Laboratory',0,6,16,0,0,0);
 INSERT INTO offerings VALUES(29867,202701,30,14658,'1','Introductory Biology: Biodiversity, Ecology, and Evolution',4,17,32,12,12,0);
 INSERT INTO offerings VALUES(29868,202701,30,14658,'1-1','Introductory Biology: Biodiversity, Ecology, and Evolution Lab',0,9,16,0,0,0);
 INSERT INTO offerings VALUES(29869,202701,30,14658,'1-2','Introductory Biology: Biodiversity, Ecology, and Evolution Lab',0,8,16,0,0,0);
-INSERT INTO offerings VALUES(29870,202701,30,14658,'2','Introductory Biology: Biodiversity, Ecology, and Evolution',4,8,32,12,12,0);
+INSERT INTO offerings VALUES(29870,202701,30,14658,'2','Introductory Biology: Biodiversity, Ecology, and Evolution',4,7,32,12,12,0);
 INSERT INTO offerings VALUES(29871,202701,30,14658,'2-1','Introductory Biology: Biodiversity, Ecology, and Evolution Lab',0,5,16,0,0,0);
-INSERT INTO offerings VALUES(29872,202701,30,14658,'2-2','Introductory Biology: Biodiversity, Ecology, and Evolution Lab',0,3,16,0,0,0);
+INSERT INTO offerings VALUES(29872,202701,30,14658,'2-2','Introductory Biology: Biodiversity, Ecology, and Evolution Lab',0,2,16,0,0,0);
 INSERT INTO offerings VALUES(29873,202701,34,14659,'1','Introductory Biology: Cellular and Molecular Biology',4,29,32,12,12,0);
 INSERT INTO offerings VALUES(29874,202701,34,14659,'1-1','Introductory Biology: Cellular and Molecular Biology Lab',0,13,16,0,0,0);
 INSERT INTO offerings VALUES(29875,202701,34,14659,'1-2','Introductory Biology: Cellular and Molecular Biology Lab',0,16,16,0,0,0);
@@ -51243,8 +51243,8 @@ INSERT INTO offerings VALUES(29888,202701,3427,14661,'13','Directed Research',1,
 INSERT INTO offerings VALUES(29889,202701,460,14663,'1','Molecular Biology',4,25,24,0,0,0);
 INSERT INTO offerings VALUES(29890,202701,461,NULL,'1','Molecular Biology Laboratory',0,13,12,0,0,0);
 INSERT INTO offerings VALUES(29891,202701,461,NULL,'2','Molecular Biology Laboratory',0,12,12,0,0,0);
-INSERT INTO offerings VALUES(29892,202701,813,14666,'1','Vertebrate Physiology',4,23,24,0,0,0);
-INSERT INTO offerings VALUES(29893,202701,814,NULL,'1','Vertebrate Physiology Laboratory',0,11,12,0,0,0);
+INSERT INTO offerings VALUES(29892,202701,813,14666,'1','Vertebrate Physiology',4,24,24,0,0,0);
+INSERT INTO offerings VALUES(29893,202701,814,NULL,'1','Vertebrate Physiology Laboratory',0,12,12,0,0,0);
 INSERT INTO offerings VALUES(29894,202701,814,NULL,'2','Vertebrate Physiology Laboratory',0,12,12,0,0,0);
 INSERT INTO offerings VALUES(29895,202701,462,14667,'1','Plant Form and Function',4,9,24,0,0,0);
 INSERT INTO offerings VALUES(29896,202701,463,NULL,'1','Plant Form and Function Laboratory',0,4,12,0,0,0);
@@ -51306,12 +51306,12 @@ INSERT INTO offerings VALUES(29953,202701,4002,14719,'1','Fueling the Green Ener
 INSERT INTO offerings VALUES(29954,202701,3263,14720,'1','Black Ecological Thought',4,22,25,0,0,0);
 INSERT INTO offerings VALUES(29955,202701,2609,14730,'1','Black Women Write Social Justice',4,8,25,0,0,0);
 INSERT INTO offerings VALUES(29956,202701,3977,14726,'1','Directed Research',2,1,5,0,0,0);
-INSERT INTO offerings VALUES(29957,202701,2782,14739,'1','Afrofuturism',4,17,18,0,0,0);
+INSERT INTO offerings VALUES(29957,202701,2782,14739,'1','Afrofuturism',4,18,18,0,0,0);
 INSERT INTO offerings VALUES(29958,202701,3930,14740,'1','Racial Capitalism: Reading Cedric Robinson',4,8,18,0,0,0);
 INSERT INTO offerings VALUES(29959,202701,2543,14745,'1','Black Studies Senior Seminar',2,2,18,0,0,0);
 INSERT INTO offerings VALUES(29960,202701,4109,14746,'1','Senior Comps Directed Research',2,0,5,0,0,0);
 INSERT INTO offerings VALUES(29961,202701,4109,14746,'2','Senior Comps Directed Research',2,2,5,0,0,0);
-INSERT INTO offerings VALUES(29962,202701,51,14750,'1','Introduction to Chemistry',4,4,35,0,0,0);
+INSERT INTO offerings VALUES(29962,202701,51,14750,'1','Introduction to Chemistry',4,3,35,0,0,0);
 INSERT INTO offerings VALUES(29963,202701,53,14752,'1','Foundations of General Chemistry',4,12,35,0,0,0);
 INSERT INTO offerings VALUES(29964,202701,53,14752,'2','Foundations of General Chemistry',4,23,35,0,0,0);
 INSERT INTO offerings VALUES(29965,202701,54,NULL,'1','Foundations of General Chemistry Laboratory',0,14,14,0,0,0);
@@ -51340,8 +51340,8 @@ INSERT INTO offerings VALUES(29987,202701,59,NULL,'2','Organic Chemistry I Labor
 INSERT INTO offerings VALUES(29988,202701,59,NULL,'3','Organic Chemistry I Laboratory',0,13,14,0,0,0);
 INSERT INTO offerings VALUES(29989,202701,59,NULL,'4','Organic Chemistry I Laboratory',0,11,14,0,0,0);
 INSERT INTO offerings VALUES(29990,202701,60,14760,'1','Organic Chemistry II',4,25,25,0,0,0);
-INSERT INTO offerings VALUES(29991,202701,61,NULL,'1','Organic Chemistry II Laboratory',0,11,14,0,0,0);
-INSERT INTO offerings VALUES(29992,202701,61,NULL,'2','Organic Chemistry II Laboratory',0,13,14,0,0,0);
+INSERT INTO offerings VALUES(29991,202701,61,NULL,'1','Organic Chemistry II Laboratory',0,10,14,0,0,0);
+INSERT INTO offerings VALUES(29992,202701,61,NULL,'2','Organic Chemistry II Laboratory',0,14,14,0,0,0);
 INSERT INTO offerings VALUES(29993,202701,481,14761,'1','Integrated Concepts in General Chemistry',4,24,25,0,0,0);
 INSERT INTO offerings VALUES(29994,202701,482,NULL,'1','Integrated Concepts in General Chemistry Laboratory',0,13,14,0,0,0);
 INSERT INTO offerings VALUES(29995,202701,482,NULL,'2','Integrated Concepts in General Chemistry Laboratory',0,11,14,0,0,0);
@@ -51396,7 +51396,7 @@ INSERT INTO offerings VALUES(30043,202701,3831,15088,'1','The Art of Essay Writi
 INSERT INTO offerings VALUES(30045,202701,3831,15088,'3','The Art of Essay Writing: Art House Cinema',4,15,16,1,1,0);
 INSERT INTO offerings VALUES(30046,202701,3831,15088,'4','The Art of Essay Writing: Art House Cinema',4,15,16,1,1,0);
 INSERT INTO offerings VALUES(30047,202701,3833,15093,'1','Principles of Journalism I: Covering News Across Media',4,5,14,0,0,0);
-INSERT INTO offerings VALUES(30048,202701,3834,15095,'1','Rhetorical Fault Lines: Journalism, Persuasion, Propaganda',4,8,14,0,0,0);
+INSERT INTO offerings VALUES(30048,202701,3834,15095,'1','Rhetorical Fault Lines: Journalism, Persuasion, Propaganda',4,7,14,0,0,0);
 INSERT INTO offerings VALUES(30049,202701,3835,15096,'1','Argument and Rhetoric Across the Disciplines',4,14,18,0,0,0);
 INSERT INTO offerings VALUES(30050,202701,3836,15100,'1','Theory and Pedagogy of Writing',1,11,18,0,0,0);
 INSERT INTO offerings VALUES(30051,202701,3981,15101,'1','Writing Fellows Practicum',1,6,12,0,0,0);
@@ -51407,9 +51407,9 @@ INSERT INTO offerings VALUES(30056,202701,1688,14992,'1','Style and "Substance":
 INSERT INTO offerings VALUES(30057,202701,1688,14992,'2','Style and "Substance": Philosophy and the Arts',4,25,25,0,0,0);
 INSERT INTO offerings VALUES(30058,202701,1648,15006,'1','Senior Seminar',2,15,25,0,0,0);
 INSERT INTO offerings VALUES(30059,202701,2947,14860,'1','Justice and Equity in Technology',4,12,25,5,5,0);
-INSERT INTO offerings VALUES(30060,202701,1511,14863,'1','Fundamentals of Computer Science',4,18,35,20,20,0);
+INSERT INTO offerings VALUES(30060,202701,1511,14863,'1','Fundamentals of Computer Science',4,17,35,20,20,0);
 INSERT INTO offerings VALUES(30061,202701,1511,14863,'1-1','Fundamentals of Computer Science Lab',0,7,18,0,0,0);
-INSERT INTO offerings VALUES(30062,202701,1511,14863,'1-2','Fundamentals of Computer Science Lab',0,11,18,0,0,0);
+INSERT INTO offerings VALUES(30062,202701,1511,14863,'1-2','Fundamentals of Computer Science Lab',0,10,18,0,0,0);
 INSERT INTO offerings VALUES(30063,202701,1511,14863,'2','Fundamentals of Computer Science',4,16,35,20,20,0);
 INSERT INTO offerings VALUES(30064,202701,1511,14863,'2-1','Fundamentals of Computer Science Lab',0,5,18,0,0,0);
 INSERT INTO offerings VALUES(30065,202701,1511,14863,'2-2','Fundamentals of Computer Science Lab',0,11,18,0,0,0);
@@ -51426,7 +51426,7 @@ INSERT INTO offerings VALUES(30075,202701,3984,NULL,'1-1','Computer Organization
 INSERT INTO offerings VALUES(30076,202701,2786,14890,'1','Networking',4,5,18,0,0,0);
 INSERT INTO offerings VALUES(30077,202701,2329,14891,'1','Practicum in Computer Science',4,10,18,0,0,0);
 INSERT INTO offerings VALUES(30078,202701,1689,14898,'1','Special Topics in Computer Science: Data Science',4,18,18,0,0,0);
-INSERT INTO offerings VALUES(30079,202701,1689,14898,'2','Special Topics in Computer Science: Deep Learning',4,16,18,0,0,0);
+INSERT INTO offerings VALUES(30079,202701,1689,14898,'2','Special Topics in Computer Science: Deep Learning',4,17,18,0,0,0);
 INSERT INTO offerings VALUES(30080,202701,2540,14902,'1','Computer Science Senior Seminar',4,12,12,0,0,0);
 INSERT INTO offerings VALUES(30081,202701,2540,14902,'2','Computer Science Senior Seminar',4,12,12,0,0,0);
 INSERT INTO offerings VALUES(30082,202701,3951,14917,'1','Experiencing Different Perspectives',1,2,99,0,0,0);
@@ -51490,7 +51490,7 @@ INSERT INTO offerings VALUES(30142,202701,3551,15186,'4','Directed Research',2,0
 INSERT INTO offerings VALUES(30143,202701,3551,15186,'5','Directed Research',2,0,2,0,0,0);
 INSERT INTO offerings VALUES(30144,202701,1165,15202,'1','Natural Resource Economics',4,17,18,2,2,0);
 INSERT INTO offerings VALUES(30145,202701,2439,15205,'1','Economic Data Analysis',4,19,18,0,0,0);
-INSERT INTO offerings VALUES(30146,202701,923,15211,'1','Finance, Growth, and Development',4,17,18,0,0,0);
+INSERT INTO offerings VALUES(30146,202701,923,15211,'1','Finance, Growth, and Development',4,16,18,0,0,0);
 INSERT INTO offerings VALUES(30147,202701,142,15230,'1','Senior Seminar: Monetary Policy and Financial Markets',4,17,15,0,0,0);
 INSERT INTO offerings VALUES(30148,202701,142,15230,'2','Senior Seminar: Monetary Policy and Financial Markets',4,16,15,0,0,0);
 INSERT INTO offerings VALUES(30149,202701,142,15230,'3','Senior Seminar: Industrial Organization',4,16,15,0,0,0);
@@ -51506,10 +51506,10 @@ INSERT INTO offerings VALUES(30158,202701,1168,15258,'1','Pedagogy of the Oppres
 INSERT INTO offerings VALUES(30159,202701,1657,15272,'1','Shakespeare and Film',4,5,25,12,12,0);
 INSERT INTO offerings VALUES(30160,202701,4211,15281,'1','Realism and the Rise of the Novel',4,9,20,0,0,0);
 INSERT INTO offerings VALUES(30161,202701,4415,15287,'1','The Literature and Film of American Immigration',4,9,25,0,0,0);
-INSERT INTO offerings VALUES(30162,202701,1593,15291,'1','Creative Writing: Introduction to Fiction Writing',4,12,14,0,0,0);
+INSERT INTO offerings VALUES(30162,202701,1593,15291,'1','Creative Writing: Introduction to Fiction Writing',4,13,14,0,0,0);
 INSERT INTO offerings VALUES(30163,202701,1518,15292,'1','Creative Writing: Poetry',4,12,16,4,4,0);
 INSERT INTO offerings VALUES(30164,202701,1224,15296,'1','Introduction to Literary Methods',4,9,20,0,0,0);
-INSERT INTO offerings VALUES(30165,202701,1455,15317,'1','Afrofuturism',4,17,18,0,0,0);
+INSERT INTO offerings VALUES(30165,202701,1455,15317,'1','Afrofuturism',4,18,18,0,0,0);
 INSERT INTO offerings VALUES(30166,202701,1230,15320,'1','Advanced Creative Writing',4,15,14,0,0,0);
 INSERT INTO offerings VALUES(30167,202701,1231,15321,'1','Junior Seminar in English',4,6,15,0,0,0);
 INSERT INTO offerings VALUES(30168,202701,1232,15325,'1','Senior Seminar: Comprehensive Project',4,13,15,0,0,0);
@@ -51522,7 +51522,7 @@ INSERT INTO offerings VALUES(30174,202701,168,15338,'1','Intermediate French',4,
 INSERT INTO offerings VALUES(30175,202701,169,15335,'1','Advanced Conversation I',1,3,99,0,0,0);
 INSERT INTO offerings VALUES(30177,202701,4008,15342,'1','Directed Research',2,0,5,0,0,0);
 INSERT INTO offerings VALUES(30178,202701,4009,15353,'1','Directed Research: Comprehensive Requirement',4,0,5,0,0,0);
-INSERT INTO offerings VALUES(30179,202701,3935,15466,'1','Introduction to Gender and Sexuality Studies',4,8,35,15,15,0);
+INSERT INTO offerings VALUES(30179,202701,3935,15466,'1','Introduction to Gender and Sexuality Studies',4,9,35,15,15,0);
 INSERT INTO offerings VALUES(30180,202701,171,15384,'2','Earth: Our Environment',4,4,24,10,10,0);
 INSERT INTO offerings VALUES(30181,202701,171,15384,'2-1','Earth: Our Environment Lab',0,2,12,0,0,0);
 INSERT INTO offerings VALUES(30182,202701,171,15384,'2-2','Earth: Our Environment Lab',0,2,12,0,0,0);
@@ -51585,7 +51585,7 @@ INSERT INTO offerings VALUES(30242,202701,1664,15668,'1','The Politics and Pedag
 INSERT INTO offerings VALUES(30243,202701,3870,15665,'1','Latina and Latin American Women''s Labors',4,9,25,7,7,0);
 INSERT INTO offerings VALUES(30244,202701,2346,15671,'1','Chicano Education',4,11,25,5,5,0);
 INSERT INTO offerings VALUES(30245,202701,4289,15673,'1','Mexican Philosophy, Culture, and Society',4,20,25,0,0,0);
-INSERT INTO offerings VALUES(30246,202701,4417,15680,'1','Immigrant Youth in the United States',4,25,25,7,7,0);
+INSERT INTO offerings VALUES(30246,202701,4417,15680,'1','Immigrant Youth in the United States',4,24,25,7,7,0);
 INSERT INTO offerings VALUES(30247,202701,3238,15685,'1','Transitional Justice in Colombia: Comparative Perspectives',4,11,25,5,5,0);
 INSERT INTO offerings VALUES(30248,202701,1125,15707,'1','Senior Seminar',4,3,16,0,0,0);
 INSERT INTO offerings VALUES(30249,202701,857,15652,'1','Introduction to Linguistics',4,18,18,0,0,0);
@@ -51839,7 +51839,7 @@ INSERT INTO offerings VALUES(30497,202701,3012,16008,'1','Mexican Philosophy, Cu
 INSERT INTO offerings VALUES(30498,202701,4421,16018,'1','The Heart and the Mind: Philosophy of the Emotions',4,22,25,5,0,0);
 INSERT INTO offerings VALUES(30499,202701,2463,16026,'1','Ethics Bowl: Contemporary Debates on Ethical Issues',4,10,10,2,0,0);
 INSERT INTO offerings VALUES(30500,202701,2808,16030,'1','The Brothers Karamazov',4,18,18,5,0,0);
-INSERT INTO offerings VALUES(30501,202701,3284,16038,'1','Public Health Ethics',4,9,18,1,0,0);
+INSERT INTO offerings VALUES(30501,202701,3284,16038,'1','Public Health Ethics',4,8,18,0,0,0);
 INSERT INTO offerings VALUES(30502,202701,2936,16045,'1','Imagination',4,17,18,5,0,0);
 INSERT INTO offerings VALUES(30503,202701,302,16050,'1','Senior Seminar',4,4,18,0,0,0);
 INSERT INTO offerings VALUES(30504,202701,313,15949,'1','Beginning Yoga',1,15,25,0,0,0);
@@ -51908,14 +51908,14 @@ INSERT INTO offerings VALUES(30566,202701,1344,16144,'1','Seminar in Political L
 INSERT INTO offerings VALUES(30567,202701,1310,16154,'1','Research Methods in Politics and Public Policy',4,18,18,0,0,0);
 INSERT INTO offerings VALUES(30568,202701,3998,16164,'1','Comparative and Global Political Theory',4,14,18,0,0,0);
 INSERT INTO offerings VALUES(30569,202701,1130,16170,'1','Introduction to Psychology',4,11,30,19,19,0);
-INSERT INTO offerings VALUES(30570,202701,1130,16170,'2','Introduction to Psychology',4,10,30,19,19,0);
+INSERT INTO offerings VALUES(30570,202701,1130,16170,'2','Introduction to Psychology',4,9,30,19,19,0);
 INSERT INTO offerings VALUES(30571,202701,1130,16170,'3','Introduction to Psychology',4,6,30,19,19,0);
 INSERT INTO offerings VALUES(30572,202701,344,16173,'1','Methods in Psychological Science',4,13,25,1,1,0);
 INSERT INTO offerings VALUES(30573,202701,344,16173,'2','Methods in Psychological Science',4,5,25,1,1,0);
 INSERT INTO offerings VALUES(30574,202701,345,16174,'1','Statistics in Psychological Science',4,23,25,14,1,0);
 INSERT INTO offerings VALUES(30575,202701,347,16176,'1','Directed Research',2,0,5,0,0,0);
 INSERT INTO offerings VALUES(30576,202701,347,16176,'2','Directed Research',2,4,5,0,0,0);
-INSERT INTO offerings VALUES(30577,202701,347,16176,'3','Directed Research',2,1,5,0,0,0);
+INSERT INTO offerings VALUES(30577,202701,347,16176,'3','Directed Research',2,2,5,0,0,0);
 INSERT INTO offerings VALUES(30578,202701,347,16176,'4','Directed Research',2,7,5,0,0,0);
 INSERT INTO offerings VALUES(30579,202701,347,16176,'5','Directed Research',2,1,5,0,0,0);
 INSERT INTO offerings VALUES(30580,202701,347,16176,'6','Directed Research',2,2,5,0,0,0);
@@ -51928,7 +51928,7 @@ INSERT INTO offerings VALUES(30586,202701,1736,16191,'1','Sport and Exercise Psy
 INSERT INTO offerings VALUES(30587,202701,349,16192,'1','Physiological Psychology',4,17,18,9,1,0);
 INSERT INTO offerings VALUES(30588,202701,350,16179,'1','Physiological Psychology Laboratory',2,9,9,0,0,0);
 INSERT INTO offerings VALUES(30589,202701,350,16179,'2','Physiological Psychology Laboratory',2,8,9,0,0,0);
-INSERT INTO offerings VALUES(30590,202701,351,16180,'1','Social Psychology',4,16,18,9,1,0);
+INSERT INTO offerings VALUES(30590,202701,351,16180,'1','Social Psychology',4,17,18,9,1,0);
 INSERT INTO offerings VALUES(30591,202701,352,16181,'1','Abnormal Psychology',4,17,18,10,1,0);
 INSERT INTO offerings VALUES(30592,202701,736,16182,'1','Health Psychology',4,17,18,10,1,0);
 INSERT INTO offerings VALUES(30593,202701,972,16193,'1','Evolutionary Psychology',4,17,18,10,1,0);
@@ -51950,7 +51950,7 @@ INSERT INTO offerings VALUES(30608,202701,2838,16210,'2','Introduction to Public
 INSERT INTO offerings VALUES(30609,202701,3844,16213,'1','Public Health Nutrition',4,8,25,0,0,0);
 INSERT INTO offerings VALUES(30610,202701,2840,16219,'1','Women''s Health',4,18,18,0,0,0);
 INSERT INTO offerings VALUES(30612,202701,4424,16226,'1','Religion and Popular Culture in America',4,19,30,7,7,0);
-INSERT INTO offerings VALUES(30613,202701,1035,16232,'1','Introduction to American Religion',4,9,30,10,10,0);
+INSERT INTO offerings VALUES(30613,202701,1035,16232,'1','Introduction to American Religion',4,8,30,10,10,0);
 INSERT INTO offerings VALUES(30614,202701,742,16234,'1','Islam on the Move',4,12,30,11,10,0);
 INSERT INTO offerings VALUES(30615,202701,1673,16235,'1','How to Live and Die Well in Buddhist Traditions',4,17,30,11,10,0);
 INSERT INTO offerings VALUES(30616,202701,4425,16243,'1','Sacred Flesh: Bodies, Religion, and Power in America',4,9,25,6,6,0);
@@ -51965,10 +51965,10 @@ INSERT INTO offerings VALUES(30624,202701,371,16307,'3','Introduction to Sociolo
 INSERT INTO offerings VALUES(30625,202701,372,16313,'1','Contemporary Sociological Theory',4,16,25,12,2,0);
 INSERT INTO offerings VALUES(30626,202701,3872,16314,'1','Latina and Latin American Women''s Labors',4,9,25,0,0,0);
 INSERT INTO offerings VALUES(30627,202701,3307,16317,'1','Black Ecological Thought',4,22,25,0,0,0);
-INSERT INTO offerings VALUES(30628,202701,4426,16327,'1','Immigrant Youth in the United States',4,25,25,2,2,0);
+INSERT INTO offerings VALUES(30628,202701,4426,16327,'1','Immigrant Youth in the United States',4,24,25,2,2,0);
 INSERT INTO offerings VALUES(30629,202701,3235,16334,'1','Criminology',4,21,25,11,2,0);
 INSERT INTO offerings VALUES(30630,202701,1563,16342,'1','Qualitative Research Methods',4,5,18,5,1,0);
-INSERT INTO offerings VALUES(30631,202701,4390,16351,'1','Technology & Society',4,13,18,1,1,0);
+INSERT INTO offerings VALUES(30631,202701,4390,16351,'1','Technology & Society',4,12,18,1,1,0);
 INSERT INTO offerings VALUES(30632,202701,1354,16358,'1','Sociology of (Non)Violence',4,9,18,7,1,0);
 INSERT INTO offerings VALUES(30633,202701,378,16364,'1','Senior Seminar in Sociology',4,8,7,0,0,0);
 INSERT INTO offerings VALUES(30634,202701,378,16364,'2','Senior Seminar in Sociology',4,8,7,0,0,0);
@@ -51999,7 +51999,7 @@ INSERT INTO offerings VALUES(30658,202701,3917,16419,'1','Directed Research: Com
 INSERT INTO offerings VALUES(30659,202701,3917,16419,'2','Directed Research: Comprehensive Requirement',2,0,5,0,0,0);
 INSERT INTO offerings VALUES(30660,202701,392,16424,'1','From Page to Stage: Introduction to Reading and Writing for Performance',4,18,25,8,8,0);
 INSERT INTO offerings VALUES(30661,202701,393,16425,'1','Introduction to Acting',2,7,12,0,0,0);
-INSERT INTO offerings VALUES(30662,202701,393,16425,'2','Introduction to Acting',2,1,12,3,3,0);
+INSERT INTO offerings VALUES(30662,202701,393,16425,'2','Introduction to Acting',2,2,12,3,3,0);
 INSERT INTO offerings VALUES(30663,202701,394,16426,'1','Introduction to Technical Theater',4,6,14,2,2,0);
 INSERT INTO offerings VALUES(30664,202701,395,16427,'1','Production Laboratory',1,2,12,0,0,0);
 INSERT INTO offerings VALUES(30665,202701,395,16427,'2','Production Laboratory',1,0,4,0,0,0);
@@ -52091,7 +52091,7 @@ INSERT INTO offerings VALUES(30773,202701,2967,15359,'1','Isn''t It Romantic? Ro
 INSERT INTO offerings VALUES(30774,202701,2968,15360,'1','Rescued Books Club: Novels from the New York Review of Books Classics Series',4,17,17,17,0,0);
 INSERT INTO offerings VALUES(30775,202701,2969,15361,'1','"The White Man?s Burden": Foreign Aid, Development and Neo-Imperialism',4,17,17,17,0,0);
 INSERT INTO offerings VALUES(30776,202701,3265,15362,'1','Debates in Sexuality',4,17,17,17,0,0);
-INSERT INTO offerings VALUES(30777,202701,2971,15363,'1','The Body in Words',4,17,17,17,0,0);
+INSERT INTO offerings VALUES(30777,202701,2971,15363,'1','The Body in Words',4,16,17,17,1,0);
 INSERT INTO offerings VALUES(30778,202701,2972,15364,'1','Revolution',4,17,17,17,0,0);
 INSERT INTO offerings VALUES(30779,202701,3266,15365,'1','Latinidad and Pop Culture: Media, Power, and Representation',4,17,17,17,0,0);
 INSERT INTO offerings VALUES(30780,202701,3267,15366,'1','City Scenes: Urban Cultural Studies',4,17,17,17,0,0);
@@ -52102,7 +52102,7 @@ INSERT INTO offerings VALUES(30784,202701,171,15384,'1','Earth: Our Environment'
 INSERT INTO offerings VALUES(30785,202701,171,15384,'1-1','Earth: Our Environment Lab',0,14,16,0,0,0);
 INSERT INTO offerings VALUES(30786,202701,171,15384,'1-2','Earth: Our Environment Lab',0,14,16,0,0,0);
 INSERT INTO offerings VALUES(30787,202701,559,15214,'1','Economic Development',4,18,18,0,0,0);
-INSERT INTO offerings VALUES(30788,202701,140,15197,'1','Managerial Economics',4,17,18,1,1,0);
+INSERT INTO offerings VALUES(30788,202701,140,15197,'1','Managerial Economics',4,16,18,1,1,0);
 INSERT INTO offerings VALUES(30789,202701,3264,15368,'2','Social Difference and the Politics of Technology',4,17,17,17,0,0);
 INSERT INTO offerings VALUES(30790,202701,2960,15378,'2','All That Glitters: Life, Literature, and Film in Los Angeles',4,17,17,17,0,0);
 INSERT INTO offerings VALUES(30791,202701,2961,15379,'2','Cultural Anthropology & Other/Realities',4,17,17,17,0,0);
@@ -87883,7 +87883,6 @@ INSERT INTO offering_core_assoc VALUES(16501,29844,'CPUD');
 INSERT INTO offering_core_assoc VALUES(16502,29846,'CPFA');
 INSERT INTO offering_core_assoc VALUES(16503,29846,'CPPE');
 INSERT INTO offering_core_assoc VALUES(16504,29846,'CPRF');
-INSERT INTO offering_core_assoc VALUES(16505,29847,'CFAP');
 INSERT INTO offering_core_assoc VALUES(16506,29849,'CPFA');
 INSERT INTO offering_core_assoc VALUES(16507,29850,'CPFA');
 INSERT INTO offering_core_assoc VALUES(16508,29851,'CPFA');
@@ -88423,6 +88422,7 @@ INSERT INTO offering_core_assoc VALUES(17052,30758,'CPRF');
 INSERT INTO offering_core_assoc VALUES(17053,30759,'CPGC');
 INSERT INTO offering_core_assoc VALUES(17054,30784,'CPLS');
 INSERT INTO offering_core_assoc VALUES(17055,30799,'CPFA');
+INSERT INTO offering_core_assoc VALUES(17056,29847,'CPFA');
 CREATE TABLE offering_instructor_assoc (
 	id INTEGER NOT NULL, 
 	offering_id INTEGER NOT NULL, 
