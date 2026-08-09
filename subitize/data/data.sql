@@ -51396,7 +51396,7 @@ INSERT INTO offerings VALUES(30042,202701,3860,15086,'1','Occidental Weekly Prac
 INSERT INTO offerings VALUES(30043,202701,3831,15088,'1','The Art of Essay Writing: Writing in Class, Whiteness, and Conflict',4,15,16,1,1,0);
 INSERT INTO offerings VALUES(30045,202701,3831,15088,'3','The Art of Essay Writing: Art House Cinema',4,15,16,1,1,0);
 INSERT INTO offerings VALUES(30046,202701,3831,15088,'4','The Art of Essay Writing: Art House Cinema',4,15,16,1,1,0);
-INSERT INTO offerings VALUES(30047,202701,3833,15093,'1','Principles of Journalism I: Covering News Across Media',4,5,14,0,0,0);
+INSERT INTO offerings VALUES(30047,202701,3833,15093,'1','Principles of Journalism I: Covering News Across Media',4,4,14,0,0,0);
 INSERT INTO offerings VALUES(30048,202701,3834,15095,'1','Rhetorical Fault Lines: Journalism, Persuasion, Propaganda',4,7,14,0,0,0);
 INSERT INTO offerings VALUES(30049,202701,3835,15096,'1','Argument and Rhetoric Across the Disciplines',4,14,18,0,0,0);
 INSERT INTO offerings VALUES(30050,202701,3836,15100,'1','Theory and Pedagogy of Writing',1,11,18,0,0,0);
@@ -51462,7 +51462,7 @@ INSERT INTO offerings VALUES(30111,202701,827,15115,'1','International Developme
 INSERT INTO offerings VALUES(30112,202701,1586,NULL,'1','Understanding Human Rights through Literature & Film I: The U.S. Context',4,12,25,0,0,0);
 INSERT INTO offerings VALUES(30113,202701,1587,15117,'1','Latin American Politics',4,23,25,0,0,0);
 INSERT INTO offerings VALUES(30114,202701,2826,15120,'1','Authoritarianism in the Age of Globalization',4,16,25,0,0,0);
-INSERT INTO offerings VALUES(30115,202701,124,15130,'1','Identity and Citizenship:  The South Asian Diaspora',4,14,25,0,0,0);
+INSERT INTO offerings VALUES(30115,202701,124,15130,'1','Identity and Citizenship:  The South Asian Diaspora',4,15,25,0,0,0);
 INSERT INTO offerings VALUES(30116,202701,2426,15110,'1','Transitional Justice in Colombia: Comparative Perspectives',4,11,25,0,0,0);
 INSERT INTO offerings VALUES(30117,202701,828,15136,'1','International Security',4,24,25,0,0,0);
 INSERT INTO offerings VALUES(30118,202701,4414,15152,'1','Directed Research',2,2,6,0,0,0);
@@ -51575,7 +51575,7 @@ INSERT INTO offerings VALUES(30231,202701,224,15608,'1','Motor Learning and Cont
 INSERT INTO offerings VALUES(30232,202701,225,15609,'1','Motor Learning and Control Laboratory',0,11,12,8,2,0);
 INSERT INTO offerings VALUES(30233,202701,225,15609,'2','Motor Learning and Control Laboratory',0,12,12,9,2,0);
 INSERT INTO offerings VALUES(30234,202701,632,15610,'1','Sport and Exercise Psychology',4,24,25,1,0,0);
-INSERT INTO offerings VALUES(30235,202701,226,15611,'1','Directed Research',2,6,5,0,0,0);
+INSERT INTO offerings VALUES(30235,202701,226,15611,'1','Directed Research',2,7,5,0,0,0);
 INSERT INTO offerings VALUES(30236,202701,227,15612,'1','Internship',2,4,6,0,0,0);
 INSERT INTO offerings VALUES(30237,202701,3990,15621,'1','Directed Research: Comprehensive Requirement',4,0,5,0,0,0);
 INSERT INTO offerings VALUES(30238,202701,3990,15621,'2','Directed Research: Comprehensive Requirement',4,0,5,0,0,0);
