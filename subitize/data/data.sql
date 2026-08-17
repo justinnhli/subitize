@@ -51214,7 +51214,7 @@ INSERT INTO offerings VALUES(29852,202701,18,14589,'1','Printmaking Fundamentals
 INSERT INTO offerings VALUES(29853,202701,999,14591,'1','Photography Fundamentals',4,12,15,7,3,0);
 INSERT INTO offerings VALUES(29854,202701,4075,14597,'1','Contextualizing Portraits',4,13,15,5,1,0);
 INSERT INTO offerings VALUES(29855,202701,20,14599,'1','Screen Printing',4,8,15,6,6,0);
-INSERT INTO offerings VALUES(29856,202701,1203,14612,'1','Art Outside the Bounds: Fiber Art + Community',4,9,15,3,1,0);
+INSERT INTO offerings VALUES(29856,202701,1203,14612,'1','Art Outside the Bounds: Fiber Art + Community',4,10,15,3,1,0);
 INSERT INTO offerings VALUES(29857,202701,2892,14617,'1','Advanced Projects in Sculpture',4,5,15,2,0,0);
 INSERT INTO offerings VALUES(29858,202701,3884,14618,'1','Advanced Projects in Photography',4,7,15,5,0,0);
 INSERT INTO offerings VALUES(29859,202701,2730,14749,'1','Obama Scholars Program Seminar',2,11,18,0,0,0);
@@ -51438,7 +51438,7 @@ INSERT INTO offerings VALUES(30080,202701,2540,14902,'1','Computer Science Senio
 INSERT INTO offerings VALUES(30081,202701,2540,14902,'2','Computer Science Senior Seminar',4,12,12,0,0,0);
 INSERT INTO offerings VALUES(30082,202701,3951,14917,'1','Experiencing Different Perspectives',1,2,99,0,0,0);
 INSERT INTO offerings VALUES(30083,202701,2723,14905,'1','Experiencing Los Angeles Cultures',1,9,99,0,0,0);
-INSERT INTO offerings VALUES(30084,202701,2724,14921,'1','Experiencing the Arts',1,2,99,0,0,0);
+INSERT INTO offerings VALUES(30084,202701,2724,14921,'1','Experiencing the Arts',1,1,99,0,0,0);
 INSERT INTO offerings VALUES(30085,202701,3316,14915,'1','Introduction to Letterpress Printing',2,12,12,0,0,0);
 INSERT INTO offerings VALUES(30086,202701,2738,15009,'1','Introduction to Critical Theory',4,20,25,0,0,0);
 INSERT INTO offerings VALUES(30087,202701,2738,15009,'2','Introduction to Critical Theory',4,6,25,0,0,0);
@@ -51514,7 +51514,7 @@ INSERT INTO offerings VALUES(30159,202701,1657,15272,'1','Shakespeare and Film',
 INSERT INTO offerings VALUES(30160,202701,4211,15281,'1','Realism and the Rise of the Novel',4,8,20,0,0,0);
 INSERT INTO offerings VALUES(30161,202701,4415,15287,'1','The Literature and Film of American Immigration',4,10,25,0,0,0);
 INSERT INTO offerings VALUES(30162,202701,1593,15291,'1','Creative Writing: Introduction to Fiction Writing',4,12,14,0,0,0);
-INSERT INTO offerings VALUES(30163,202701,1518,15292,'1','Creative Writing: Poetry',4,12,16,4,4,0);
+INSERT INTO offerings VALUES(30163,202701,1518,15292,'1','Creative Writing: Poetry',4,11,16,4,4,0);
 INSERT INTO offerings VALUES(30164,202701,1224,15296,'1','Introduction to Literary Methods',4,9,20,0,0,0);
 INSERT INTO offerings VALUES(30165,202701,1455,15317,'1','Afrofuturism',4,17,18,0,0,0);
 INSERT INTO offerings VALUES(30166,202701,1230,15320,'1','Advanced Creative Writing',4,15,14,0,0,0);
@@ -51553,7 +51553,7 @@ INSERT INTO offerings VALUES(30199,202701,2944,15428,'1','Advanced German: Topic
 INSERT INTO offerings VALUES(30200,202701,607,15447,'1','Elementary Greek',4,8,25,0,0,0);
 INSERT INTO offerings VALUES(30201,202701,1701,15456,'1','Style and Substance: Philosophy and the Arts',5,8,18,0,0,0);
 INSERT INTO offerings VALUES(30202,202701,188,15469,'1','United States Culture and Society I',4,10,35,7,7,0);
-INSERT INTO offerings VALUES(30203,202701,942,15475,'1','Rethinking "the West": A Critical History of Europe, SW Asia, & North Africa from Antiquity to 1700',4,13,35,7,7,0);
+INSERT INTO offerings VALUES(30203,202701,942,15475,'1','Rethinking "the West": A Critical History of Europe, SW Asia, & North Africa from Antiquity to 1700',4,12,35,7,7,0);
 INSERT INTO offerings VALUES(30204,202701,189,15479,'1','East Asian Survey',4,11,35,12,12,0);
 INSERT INTO offerings VALUES(30205,202701,190,15480,'1','Colonial Latin America',4,8,25,7,7,0);
 INSERT INTO offerings VALUES(30206,202701,190,15480,'2','Colonial Latin America',4,23,25,7,7,0);
@@ -51581,7 +51581,7 @@ INSERT INTO offerings VALUES(30231,202701,224,15608,'1','Motor Learning and Cont
 INSERT INTO offerings VALUES(30232,202701,225,15609,'1','Motor Learning and Control Laboratory',0,11,12,8,2,0);
 INSERT INTO offerings VALUES(30233,202701,225,15609,'2','Motor Learning and Control Laboratory',0,12,12,9,2,0);
 INSERT INTO offerings VALUES(30234,202701,632,15610,'1','Sport and Exercise Psychology',4,24,25,1,0,0);
-INSERT INTO offerings VALUES(30235,202701,226,15611,'1','Directed Research',2,7,5,0,0,0);
+INSERT INTO offerings VALUES(30235,202701,226,15611,'1','Directed Research',2,8,5,0,0,0);
 INSERT INTO offerings VALUES(30236,202701,227,15612,'1','Internship',2,5,6,0,0,0);
 INSERT INTO offerings VALUES(30237,202701,3990,15621,'1','Directed Research: Comprehensive Requirement',4,0,5,0,0,0);
 INSERT INTO offerings VALUES(30238,202701,3990,15621,'2','Directed Research: Comprehensive Requirement',4,0,5,0,0,0);
@@ -51984,8 +51984,8 @@ INSERT INTO offerings VALUES(30636,202701,380,16368,'2','Beginning Spanish I',4,
 INSERT INTO offerings VALUES(30637,202701,381,16369,'1','Beginning Spanish II',4,13,18,7,3,0);
 INSERT INTO offerings VALUES(30638,202701,381,16369,'2','Beginning Spanish II',4,15,18,7,4,0);
 INSERT INTO offerings VALUES(30639,202701,381,16369,'3','Beginning Spanish II',4,16,18,7,2,0);
-INSERT INTO offerings VALUES(30640,202701,381,16369,'4','Beginning Spanish II',4,9,18,7,7,0);
-INSERT INTO offerings VALUES(30641,202701,381,16369,'5','Beginning Spanish II',4,9,18,0,0,0);
+INSERT INTO offerings VALUES(30640,202701,381,16369,'4','Beginning Spanish II',4,10,18,7,7,0);
+INSERT INTO offerings VALUES(30641,202701,381,16369,'5','Beginning Spanish II',4,10,18,0,0,0);
 INSERT INTO offerings VALUES(30642,202701,381,16369,'6','Beginning Spanish II',4,10,18,0,0,0);
 INSERT INTO offerings VALUES(30643,202701,382,16371,'1','Intermediate Conversation I',1,2,99,0,0,0);
 INSERT INTO offerings VALUES(30644,202701,382,16371,'2','Intermediate Conversation I',1,3,99,0,0,0);
