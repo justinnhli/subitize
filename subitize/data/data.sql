@@ -51405,7 +51405,7 @@ INSERT INTO offerings VALUES(30024,202701,4412,14829,'1','Arts, Health, and Well
 INSERT INTO offerings VALUES(30025,202701,3473,14832,'1','Directed Research',2,4,6,0,0,0);
 INSERT INTO offerings VALUES(30026,202701,3473,14832,'2','Directed Research',2,3,6,0,0,0);
 INSERT INTO offerings VALUES(30027,202701,3473,14832,'3','Directed Research',2,0,6,0,0,0);
-INSERT INTO offerings VALUES(30028,202701,3473,14832,'4','Directed Research',2,2,6,0,0,0);
+INSERT INTO offerings VALUES(30028,202701,3473,14832,'4','Directed Research',2,3,6,0,0,0);
 INSERT INTO offerings VALUES(30029,202701,3473,14832,'5','Directed Research',2,4,6,0,0,0);
 INSERT INTO offerings VALUES(30030,202701,3473,14832,'6','Directed Research',2,7,6,0,0,0);
 INSERT INTO offerings VALUES(30031,202701,3473,14832,'7','Directed Research',2,7,6,0,0,0);
@@ -51454,7 +51454,7 @@ INSERT INTO offerings VALUES(30079,202701,1689,14898,'2','Special Topics in Comp
 INSERT INTO offerings VALUES(30080,202701,2540,14902,'1','Computer Science Senior Seminar',4,15,12,0,0,0);
 INSERT INTO offerings VALUES(30081,202701,2540,14902,'2','Computer Science Senior Seminar',4,13,12,0,0,0);
 INSERT INTO offerings VALUES(30082,202701,3951,14917,'1','Experiencing Different Perspectives',1,3,99,0,0,0);
-INSERT INTO offerings VALUES(30083,202701,2723,14905,'1','Experiencing Los Angeles Cultures',1,13,99,0,0,0);
+INSERT INTO offerings VALUES(30083,202701,2723,14905,'1','Experiencing Los Angeles Cultures',1,14,99,0,0,0);
 INSERT INTO offerings VALUES(30084,202701,2724,14921,'1','Experiencing the Arts',1,6,99,0,0,0);
 INSERT INTO offerings VALUES(30085,202701,3316,14915,'1','Introduction to Letterpress Printing',2,12,12,0,0,0);
 INSERT INTO offerings VALUES(30086,202701,2738,15009,'1','Introduction to Critical Theory',4,26,25,0,0,0);
@@ -51541,7 +51541,7 @@ INSERT INTO offerings VALUES(30169,202701,165,15329,'1','Beginning French I',4,5
 INSERT INTO offerings VALUES(30170,202701,165,15329,'2','Beginning French I',4,17,18,5,0,0);
 INSERT INTO offerings VALUES(30171,202701,166,15330,'1','Beginning French II',4,10,18,5,0,0);
 INSERT INTO offerings VALUES(30172,202701,166,15330,'2','Beginning French II',4,17,18,4,0,0);
-INSERT INTO offerings VALUES(30173,202701,167,15331,'1','Intermediate Conversation I',1,4,20,0,0,0);
+INSERT INTO offerings VALUES(30173,202701,167,15331,'1','Intermediate Conversation I',1,5,20,0,0,0);
 INSERT INTO offerings VALUES(30174,202701,168,15338,'1','Intermediate French',4,11,18,3,0,0);
 INSERT INTO offerings VALUES(30175,202701,169,15335,'1','Advanced Conversation I',1,5,20,0,0,0);
 INSERT INTO offerings VALUES(30177,202701,4008,15342,'1','Directed Research',2,0,5,0,0,0);
@@ -51645,7 +51645,7 @@ INSERT INTO offerings VALUES(30281,202701,2454,15718,'1','The Politics and Poeti
 INSERT INTO offerings VALUES(30282,202701,2678,15722,'1','Topics in Media Production: Cinematography',4,16,16,9,0,0);
 INSERT INTO offerings VALUES(30283,202701,1708,15723,'1','Topics in Media History: New Waves of East Asian Cinema',4,20,20,4,0,0);
 INSERT INTO offerings VALUES(30284,202701,3212,15724,'1','3D Design & Animation',4,9,16,4,0,0);
-INSERT INTO offerings VALUES(30285,202701,3355,15726,'1','Los Angeles and Film',4,13,20,0,0,0);
+INSERT INTO offerings VALUES(30285,202701,3355,15726,'1','Los Angeles and Film',4,12,20,0,0,0);
 INSERT INTO offerings VALUES(30286,202701,1536,15727,'1','Topics in Media Theory and Practice. Media Activism through Participatory Video',4,16,16,6,0,0);
 INSERT INTO offerings VALUES(30287,202701,1536,15727,'2','Topics in Media Theory and Practice. The Video Essay',4,13,16,2,0,0);
 INSERT INTO offerings VALUES(30288,202701,1709,15729,'1','African-American Film: 1967-Present',4,21,20,0,0,0);
@@ -51974,7 +51974,7 @@ INSERT INTO offerings VALUES(30610,202701,2840,16219,'1','Women''s Health',4,17,
 INSERT INTO offerings VALUES(30612,202701,4424,16226,'1','Religion and Popular Culture in America',4,29,30,5,0,0);
 INSERT INTO offerings VALUES(30613,202701,1035,16232,'1','Introduction to American Religion',4,27,30,9,0,0);
 INSERT INTO offerings VALUES(30614,202701,742,16234,'1','Islam on the Move',4,22,30,7,0,0);
-INSERT INTO offerings VALUES(30615,202701,1673,16235,'1','How to Live and Die Well in Buddhist Traditions',4,31,30,7,-1,0);
+INSERT INTO offerings VALUES(30615,202701,1673,16235,'1','How to Live and Die Well in Buddhist Traditions',4,30,30,7,-1,0);
 INSERT INTO offerings VALUES(30616,202701,4425,16243,'1','Sacred Flesh: Bodies, Religion, and Power in America',4,11,25,1,0,0);
 INSERT INTO offerings VALUES(30617,202701,1191,16253,'1','Shamans, Sages, and Spirits in East Asia',4,25,25,6,-1,0);
 INSERT INTO offerings VALUES(30618,202701,366,16279,'1','Senior Seminar',4,4,15,0,0,0);
@@ -52032,10 +52032,10 @@ INSERT INTO offerings VALUES(30669,202701,3859,16429,'2','Elective Production La
 INSERT INTO offerings VALUES(30671,202701,398,16432,'1','Tai Chi',1,26,25,0,0,0);
 INSERT INTO offerings VALUES(30672,202701,399,16433,'1','Beginning Ballet',1,6,24,0,0,0);
 INSERT INTO offerings VALUES(30673,202701,400,16436,'1','Choreography',2,3,18,0,0,0);
-INSERT INTO offerings VALUES(30674,202701,403,16439,'1','Folk and Historical Dance',1,7,18,0,0,0);
+INSERT INTO offerings VALUES(30674,202701,403,16439,'1','Folk and Historical Dance',1,6,18,0,0,0);
 INSERT INTO offerings VALUES(30676,202701,3773,16443,'1','Directed Research',2,1,4,0,0,0);
 INSERT INTO offerings VALUES(30677,202701,406,16456,'1','Performance Laboratory',1,0,20,0,0,0);
-INSERT INTO offerings VALUES(30678,202701,406,16456,'2','Performance Laboratory',1,2,20,0,0,0);
+INSERT INTO offerings VALUES(30678,202701,406,16456,'2','Performance Laboratory',1,3,20,0,0,0);
 INSERT INTO offerings VALUES(30679,202701,778,16458,'1','Acting for the Camera',4,12,14,0,0,0);
 INSERT INTO offerings VALUES(30680,202701,408,16459,'1','Intermediate Ballet',1,8,14,0,0,0);
 INSERT INTO offerings VALUES(30681,202701,411,16461,'1','Stage Management',2,14,14,0,0,0);
@@ -52137,8 +52137,8 @@ INSERT INTO offerings VALUES(30809,202701,4418,15755,'3','Data, Functions, and G
 INSERT INTO offerings VALUES(30810,202701,347,16176,'7','Directed Research',2,3,5,0,0,0);
 INSERT INTO offerings VALUES(30811,202701,347,16176,'8','Directed Research',2,0,5,0,0,0);
 INSERT INTO offerings VALUES(30812,202701,56,NULL,'2','Advanced Placement General Chemistry Laboratory',0,18,14,0,0,0);
-INSERT INTO offerings VALUES(30813,202701,3272,14897,'1','Directed Research',0,1,10,0,0,0);
-INSERT INTO offerings VALUES(30814,202701,3272,14897,'2','Directed Research',2,5,10,0,0,0);
+INSERT INTO offerings VALUES(30813,202701,3272,14897,'1','Directed Research',0,0,10,0,0,0);
+INSERT INTO offerings VALUES(30814,202701,3272,14897,'2','Directed Research',2,6,10,0,0,0);
 INSERT INTO offerings VALUES(30815,202701,3272,14897,'3','Directed Research',0,2,10,0,0,0);
 INSERT INTO offerings VALUES(30816,202701,3272,14897,'4','Directed Research',2,1,10,0,0,0);
 INSERT INTO offerings VALUES(30817,202701,3875,14649,'1','Senior Comprehensive Directed Research',2,1,1,0,0,0);
