@@ -51239,7 +51239,7 @@ INSERT INTO offerings VALUES(29855,202701,20,14599,'1','Screen Printing',4,16,15
 INSERT INTO offerings VALUES(29856,202701,1203,14612,'1','Art Outside the Bounds: Fiber Art + Community',4,15,15,1,0,0);
 INSERT INTO offerings VALUES(29857,202701,2892,14617,'1','Advanced Projects in Sculpture',4,5,15,2,0,0);
 INSERT INTO offerings VALUES(29858,202701,3884,14618,'1','Advanced Projects in Photography',4,8,15,5,0,0);
-INSERT INTO offerings VALUES(29859,202701,2730,14749,'1','Obama Scholars Program Seminar',2,11,18,0,0,0);
+INSERT INTO offerings VALUES(29859,202701,2730,14749,'1','Obama Scholars Program Seminar',2,12,18,0,0,0);
 INSERT INTO offerings VALUES(29860,202701,24,14654,'1','Senior Seminar',2,17,18,0,0,0);
 INSERT INTO offerings VALUES(29861,202701,26,14657,'1','Marine Biology',4,32,32,10,0,0);
 INSERT INTO offerings VALUES(29862,202701,26,14657,'1-1','Marine Biology Laboratory',0,17,16,0,0,0);
@@ -51396,7 +51396,7 @@ INSERT INTO offerings VALUES(30014,202701,74,14798,'1','Expository Essays and Sh
 INSERT INTO offerings VALUES(30015,202701,1205,14806,'1','Translating Chinese I',4,14,18,0,0,0);
 INSERT INTO offerings VALUES(30016,202701,76,14811,'1','Introduction to Cognitive Science',4,44,45,21,0,0);
 INSERT INTO offerings VALUES(30017,202701,77,14812,'1','Introduction to Neuroscience',4,24,25,11,-1,0);
-INSERT INTO offerings VALUES(30018,202701,77,14812,'2','Introduction to Neuroscience',4,25,25,12,0,0);
+INSERT INTO offerings VALUES(30018,202701,77,14812,'2','Introduction to Neuroscience',4,24,25,12,0,0);
 INSERT INTO offerings VALUES(30019,202701,1504,14816,'1','Empirical Methods in Cognitive Science',4,19,18,9,-1,0);
 INSERT INTO offerings VALUES(30020,202701,1505,NULL,'1','Empirical Methods in Cognitive Science Laboratory',0,9,9,0,0,0);
 INSERT INTO offerings VALUES(30021,202701,1505,NULL,'2','Empirical Methods in Cognitive Science Laboratory',0,10,9,0,0,0);
@@ -51404,14 +51404,14 @@ INSERT INTO offerings VALUES(30022,202701,4411,14818,'1','Current Advances in Ne
 INSERT INTO offerings VALUES(30023,202701,3874,14826,'1','Language and Culture in the Deaf Communities',4,23,25,1,0,0);
 INSERT INTO offerings VALUES(30024,202701,4412,14829,'1','Arts, Health, and Wellbeing',4,26,25,7,-1,0);
 INSERT INTO offerings VALUES(30025,202701,3473,14832,'1','Directed Research',2,4,6,0,0,0);
-INSERT INTO offerings VALUES(30026,202701,3473,14832,'2','Directed Research',2,3,6,0,0,0);
+INSERT INTO offerings VALUES(30026,202701,3473,14832,'2','Directed Research',2,4,6,0,0,0);
 INSERT INTO offerings VALUES(30027,202701,3473,14832,'3','Directed Research',2,0,6,0,0,0);
 INSERT INTO offerings VALUES(30028,202701,3473,14832,'4','Directed Research',2,3,6,0,0,0);
 INSERT INTO offerings VALUES(30029,202701,3473,14832,'5','Directed Research',2,4,6,0,0,0);
 INSERT INTO offerings VALUES(30030,202701,3473,14832,'6','Directed Research',2,7,6,0,0,0);
 INSERT INTO offerings VALUES(30031,202701,3473,14832,'7','Directed Research',2,7,6,0,0,0);
 INSERT INTO offerings VALUES(30032,202701,3473,14832,'9','Directed Research',0,2,6,0,0,0);
-INSERT INTO offerings VALUES(30033,202701,3473,14832,'10','Directed Research',0,1,6,0,0,0);
+INSERT INTO offerings VALUES(30033,202701,3473,14832,'10','Directed Research',0,0,6,0,0,0);
 INSERT INTO offerings VALUES(30034,202701,3473,14832,'11','Directed Research',0,0,6,0,0,0);
 INSERT INTO offerings VALUES(30035,202701,3473,14832,'12','Directed Research',0,0,6,0,0,0);
 INSERT INTO offerings VALUES(30036,202701,3473,14832,'13','Directed Research',0,0,6,0,0,0);
@@ -51448,8 +51448,8 @@ INSERT INTO offerings VALUES(30069,202701,2648,14864,'2','Statistics',4,12,35,0,
 INSERT INTO offerings VALUES(30070,202701,2648,14864,'2-1','Statistics Lab',0,12,18,0,0,0);
 INSERT INTO offerings VALUES(30071,202701,2508,14865,'1','Mathematical Foundations of Computer Science',4,13,35,0,0,0);
 INSERT INTO offerings VALUES(30073,202701,1649,14870,'1','Data Structures',4,11,24,0,0,0);
-INSERT INTO offerings VALUES(30074,202701,2509,14872,'1','Computer Organization',4,17,24,0,0,0);
-INSERT INTO offerings VALUES(30075,202701,3984,NULL,'1-1','Computer Organization Laboratory',0,17,24,0,0,0);
+INSERT INTO offerings VALUES(30074,202701,2509,14872,'1','Computer Organization',4,16,24,0,0,0);
+INSERT INTO offerings VALUES(30075,202701,3984,NULL,'1-1','Computer Organization Laboratory',0,16,24,0,0,0);
 INSERT INTO offerings VALUES(30078,202701,1689,14898,'1','Special Topics in Computer Science: Data Science',4,19,18,0,0,0);
 INSERT INTO offerings VALUES(30079,202701,1689,14898,'2','Special Topics in Computer Science: Deep Learning',4,24,18,0,0,0);
 INSERT INTO offerings VALUES(30080,202701,2540,14902,'1','Computer Science Senior Seminar',4,15,12,0,0,0);
@@ -51623,7 +51623,7 @@ INSERT INTO offerings VALUES(30256,202701,4418,15755,'2','Data, Functions, and G
 INSERT INTO offerings VALUES(30257,202701,232,15756,'1','Calculus 1',4,36,28,0,0,0);
 INSERT INTO offerings VALUES(30258,202701,232,15756,'2','Calculus 1',4,22,28,0,0,0);
 INSERT INTO offerings VALUES(30260,202701,236,15758,'1','Calculus 2',4,25,28,0,0,0);
-INSERT INTO offerings VALUES(30261,202701,236,15758,'2','Calculus 2',4,26,28,0,0,0);
+INSERT INTO offerings VALUES(30261,202701,236,15758,'2','Calculus 2',4,25,28,0,0,0);
 INSERT INTO offerings VALUES(30262,202701,242,15760,'1','Statistical Data Analysis',4,17,28,0,0,0);
 INSERT INTO offerings VALUES(30263,202701,4419,NULL,'1','Statistical Data Analysis Lab',0,7,14,0,0,0);
 INSERT INTO offerings VALUES(30264,202701,4419,NULL,'2','Statistical Data Analysis Lab',0,10,14,0,0,0);
@@ -51668,7 +51668,7 @@ INSERT INTO offerings VALUES(30303,202701,2707,15871,'1','Piano Class',1,6,6,0,0
 INSERT INTO offerings VALUES(30304,202701,2707,15871,'2','Piano Class',1,4,6,0,0,0);
 INSERT INTO offerings VALUES(30305,202701,258,15873,'1','Topics in Vocal Music: Opera',4,13,35,0,0,0);
 INSERT INTO offerings VALUES(30306,202701,259,15878,'1','College Chorus',1,33,60,0,0,0);
-INSERT INTO offerings VALUES(30307,202701,259,15878,'2','College Chorus',0,6,60,0,0,0);
+INSERT INTO offerings VALUES(30307,202701,259,15878,'2','College Chorus',0,5,60,0,0,0);
 INSERT INTO offerings VALUES(30308,202701,260,15879,'1','Glee Club (Sopranos/Altos)',2,18,32,0,0,0);
 INSERT INTO offerings VALUES(30309,202701,260,15879,'2','Glee Club (Sopranos/Altos)',0,6,32,0,0,0);
 INSERT INTO offerings VALUES(30310,202701,261,15880,'1','Glee Club (Tenors/Basses)',2,11,32,0,0,0);
@@ -51683,11 +51683,11 @@ INSERT INTO offerings VALUES(30318,202701,1239,15884,'4','Chamber Jazz',0,11,12,
 INSERT INTO offerings VALUES(30319,202701,266,15885,'1','Chamber Music',1,7,35,0,0,0);
 INSERT INTO offerings VALUES(30320,202701,266,15885,'2','Chamber Music',0,2,35,0,0,0);
 INSERT INTO offerings VALUES(30321,202701,267,15886,'1','Symphony Orchestra',1,36,60,0,0,0);
-INSERT INTO offerings VALUES(30322,202701,267,15886,'2','Symphony Orchestra',0,2,60,0,0,0);
+INSERT INTO offerings VALUES(30322,202701,267,15886,'2','Symphony Orchestra',0,4,60,0,0,0);
 INSERT INTO offerings VALUES(30323,202701,268,15887,'1','Improvisation',1,11,15,0,0,0);
 INSERT INTO offerings VALUES(30324,202701,4313,15891,'1','Topics in the Study of Popular Music. History of Electronic Dance Music',4,34,35,0,0,0);
 INSERT INTO offerings VALUES(30325,202701,3232,15897,'1','Keyboard Musicianship I',1,3,6,0,0,0);
-INSERT INTO offerings VALUES(30326,202701,3232,15897,'2','Keyboard Musicianship I',1,5,6,0,0,0);
+INSERT INTO offerings VALUES(30326,202701,3232,15897,'2','Keyboard Musicianship I',1,4,6,0,0,0);
 INSERT INTO offerings VALUES(30327,202701,3232,15897,'3','Keyboard Musicianship I',1,6,6,0,0,0);
 INSERT INTO offerings VALUES(30328,202701,284,15898,'1','Keyboard Musicianship II',1,3,6,0,0,0);
 INSERT INTO offerings VALUES(30329,202701,284,15898,'2','Keyboard Musicianship II',1,3,6,0,0,0);
@@ -51856,7 +51856,7 @@ INSERT INTO offerings VALUES(30491,202701,3288,15860,'2','Rock Guitar (Half Hour
 INSERT INTO offerings VALUES(30492,202701,3289,15861,'1','Rock Guitar (One Hour)',1,1,16,1,0,0);
 INSERT INTO offerings VALUES(30493,202701,3289,15861,'2','Rock Guitar (One Hour)',0,1,16,0,0,0);
 INSERT INTO offerings VALUES(30494,202701,294,15993,'1','Introduction to Philosophy',4,25,25,10,0,0);
-INSERT INTO offerings VALUES(30495,202701,2679,15994,'1','Formal Logic',4,35,35,11,0,0);
+INSERT INTO offerings VALUES(30495,202701,2679,15994,'1','Formal Logic',4,34,35,11,1,0);
 INSERT INTO offerings VALUES(30496,202701,2679,15994,'2','Formal Logic',4,35,35,10,-1,0);
 INSERT INTO offerings VALUES(30497,202701,3012,16008,'1','Mexican Philosophy, Culture, and Society',4,25,25,0,0,0);
 INSERT INTO offerings VALUES(30498,202701,4421,16018,'1','The Heart and the Mind: Philosophy of the Emotions',4,25,25,5,0,0);
@@ -52151,7 +52151,7 @@ INSERT INTO offerings VALUES(30822,202701,1246,15802,'6','Piano (Half Hour)',0,0
 INSERT INTO offerings VALUES(30823,202701,1247,15803,'5','Piano (One Hour)',1,0,16,0,0,0);
 INSERT INTO offerings VALUES(30824,202701,1247,15803,'6','Piano (One Hour)',0,0,16,0,0,0);
 INSERT INTO offerings VALUES(30825,202701,4262,15572,'1','Directed Research in Japanese Studies',2,1,4,0,0,0);
-INSERT INTO offerings VALUES(30826,202701,4016,15586,'1','Senior Comps DR',2,3,4,0,0,0);
+INSERT INTO offerings VALUES(30826,202701,4016,15586,'1','Senior Comps DR',2,4,4,0,0,0);
 INSERT INTO offerings VALUES(30827,202701,3875,14649,'2','Senior Comprehensive Directed Research',2,2,5,0,0,0);
 INSERT INTO offerings VALUES(30828,202701,3551,15186,'6','Directed Research',2,1,1,0,0,0);
 INSERT INTO offerings VALUES(30829,202701,4017,15535,'1','Directed Research',2,1,1,0,0,0);
