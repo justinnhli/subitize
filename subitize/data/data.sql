@@ -51257,7 +51257,7 @@ INSERT INTO offerings VALUES(29873,202701,34,14659,'1','Introductory Biology: Ce
 INSERT INTO offerings VALUES(29874,202701,34,14659,'1-1','Introductory Biology: Cellular and Molecular Biology Lab',0,17,16,0,0,0);
 INSERT INTO offerings VALUES(29875,202701,34,14659,'1-2','Introductory Biology: Cellular and Molecular Biology Lab',0,18,16,0,0,0);
 INSERT INTO offerings VALUES(29876,202701,3427,14661,'1','Directed Research',1,4,5,0,0,0);
-INSERT INTO offerings VALUES(29877,202701,3427,14661,'2','Directed Research',1,3,5,0,0,0);
+INSERT INTO offerings VALUES(29877,202701,3427,14661,'2','Directed Research',1,4,5,0,0,0);
 INSERT INTO offerings VALUES(29878,202701,3427,14661,'3','Directed Research',1,5,5,0,0,0);
 INSERT INTO offerings VALUES(29879,202701,3427,14661,'4','Directed Research',1,2,5,0,0,0);
 INSERT INTO offerings VALUES(29880,202701,3427,14661,'5','Directed Research',1,1,5,0,0,0);
@@ -51290,9 +51290,9 @@ INSERT INTO offerings VALUES(29907,202701,3967,14674,'2','Directed Research',2,3
 INSERT INTO offerings VALUES(29908,202701,3967,14674,'3','Directed Research',2,2,5,0,0,0);
 INSERT INTO offerings VALUES(29909,202701,3967,14674,'4','Directed Research',2,4,5,0,0,0);
 INSERT INTO offerings VALUES(29910,202701,3967,14674,'5','Directed Research',2,1,5,0,0,0);
-INSERT INTO offerings VALUES(29911,202701,3967,14674,'6','Directed Research',2,2,5,0,0,0);
+INSERT INTO offerings VALUES(29911,202701,3967,14674,'6','Directed Research',2,3,5,0,0,0);
 INSERT INTO offerings VALUES(29912,202701,3967,14674,'7','Directed Research',2,3,5,0,0,0);
-INSERT INTO offerings VALUES(29913,202701,3967,14674,'8','Directed Research',2,3,5,0,0,0);
+INSERT INTO offerings VALUES(29913,202701,3967,14674,'8','Directed Research',2,4,5,0,0,0);
 INSERT INTO offerings VALUES(29914,202701,3967,14674,'9','Directed Research',2,1,5,0,0,0);
 INSERT INTO offerings VALUES(29915,202701,3967,14674,'10','Directed Research',2,3,5,0,0,0);
 INSERT INTO offerings VALUES(29916,202701,3967,14674,'11','Directed Research',2,7,5,0,0,0);
@@ -51393,7 +51393,7 @@ INSERT INTO offerings VALUES(30011,202701,70,14782,'1','Senior Seminar',2,9,18,0
 INSERT INTO offerings VALUES(30012,202701,71,14785,'1','Elementary Chinese I',4,20,25,0,0,0);
 INSERT INTO offerings VALUES(30013,202701,72,14790,'1','Intermediate Chinese I',4,6,25,0,0,0);
 INSERT INTO offerings VALUES(30014,202701,74,14798,'1','Expository Essays and Short Narratives I',4,6,18,0,0,0);
-INSERT INTO offerings VALUES(30015,202701,1205,14806,'1','Translating Chinese I',4,14,18,0,0,0);
+INSERT INTO offerings VALUES(30015,202701,1205,14806,'1','Translating Chinese I',4,13,18,0,0,0);
 INSERT INTO offerings VALUES(30016,202701,76,14811,'1','Introduction to Cognitive Science',4,44,45,21,0,0);
 INSERT INTO offerings VALUES(30017,202701,77,14812,'1','Introduction to Neuroscience',4,24,25,11,-1,0);
 INSERT INTO offerings VALUES(30018,202701,77,14812,'2','Introduction to Neuroscience',4,24,25,12,0,0);
@@ -51476,7 +51476,7 @@ INSERT INTO offerings VALUES(30101,202701,3534,15061,'1','Directed Research',2,0
 INSERT INTO offerings VALUES(30102,202701,3534,15061,'2','Directed Research',2,0,5,0,0,0);
 INSERT INTO offerings VALUES(30103,202701,3534,15061,'5','Directed Research',4,1,5,0,0,0);
 INSERT INTO offerings VALUES(30104,202701,3534,15061,'6','Directed Research',4,0,5,0,0,0);
-INSERT INTO offerings VALUES(30105,202701,1513,15078,'1','Critical Theory and Social Justice Journal of Undergraduate Research Colloquium',2,8,10,0,0,0);
+INSERT INTO offerings VALUES(30105,202701,1513,15078,'1','Critical Theory and Social Justice Journal of Undergraduate Research Colloquium',2,10,10,0,0,0);
 INSERT INTO offerings VALUES(30106,202701,90,15083,'1','Senior Seminar in Critical Theory - Social Justice',4,10,25,0,0,0);
 INSERT INTO offerings VALUES(30107,202701,120,15103,'1','International Relations: The Changing Rules of the Game',4,23,30,0,0,0);
 INSERT INTO offerings VALUES(30108,202701,120,15103,'2','International Relations: The Changing Rules of the Game',4,30,30,0,0,0);
@@ -51511,7 +51511,7 @@ INSERT INTO offerings VALUES(30138,202701,136,15193,'2','Applied Econometrics',4
 INSERT INTO offerings VALUES(30139,202701,3551,15186,'1','Directed Research',2,1,2,0,0,0);
 INSERT INTO offerings VALUES(30140,202701,3551,15186,'2','Directed Research',0,0,1,0,0,0);
 INSERT INTO offerings VALUES(30141,202701,3551,15186,'3','Directed Research',0,1,1,0,0,0);
-INSERT INTO offerings VALUES(30142,202701,3551,15186,'4','Directed Research',2,1,2,0,0,0);
+INSERT INTO offerings VALUES(30142,202701,3551,15186,'4','Directed Research',2,2,2,0,0,0);
 INSERT INTO offerings VALUES(30143,202701,3551,15186,'5','Directed Research',2,2,2,0,0,0);
 INSERT INTO offerings VALUES(30144,202701,1165,15202,'1','Natural Resource Economics',4,20,18,1,-2,0);
 INSERT INTO offerings VALUES(30145,202701,2439,15205,'1','Economic Data Analysis',4,19,18,0,0,0);
@@ -51621,7 +51621,7 @@ INSERT INTO offerings VALUES(30254,202701,3992,15657,'2','Directed Research: Com
 INSERT INTO offerings VALUES(30255,202701,4418,15755,'1','Data, Functions, and Graphs',4,35,35,0,0,0);
 INSERT INTO offerings VALUES(30256,202701,4418,15755,'2','Data, Functions, and Graphs',4,31,35,0,0,0);
 INSERT INTO offerings VALUES(30257,202701,232,15756,'1','Calculus 1',4,36,28,0,0,0);
-INSERT INTO offerings VALUES(30258,202701,232,15756,'2','Calculus 1',4,22,28,0,0,0);
+INSERT INTO offerings VALUES(30258,202701,232,15756,'2','Calculus 1',4,21,28,0,0,0);
 INSERT INTO offerings VALUES(30260,202701,236,15758,'1','Calculus 2',4,25,28,0,0,0);
 INSERT INTO offerings VALUES(30261,202701,236,15758,'2','Calculus 2',4,25,28,0,0,0);
 INSERT INTO offerings VALUES(30262,202701,242,15760,'1','Statistical Data Analysis',4,17,28,0,0,0);
@@ -51682,7 +51682,7 @@ INSERT INTO offerings VALUES(30317,202701,1239,15884,'3','Chamber Jazz',1,7,12,0
 INSERT INTO offerings VALUES(30318,202701,1239,15884,'4','Chamber Jazz',0,11,12,0,0,0);
 INSERT INTO offerings VALUES(30319,202701,266,15885,'1','Chamber Music',1,7,35,0,0,0);
 INSERT INTO offerings VALUES(30320,202701,266,15885,'2','Chamber Music',0,2,35,0,0,0);
-INSERT INTO offerings VALUES(30321,202701,267,15886,'1','Symphony Orchestra',1,36,60,0,0,0);
+INSERT INTO offerings VALUES(30321,202701,267,15886,'1','Symphony Orchestra',1,37,60,0,0,0);
 INSERT INTO offerings VALUES(30322,202701,267,15886,'2','Symphony Orchestra',0,4,60,0,0,0);
 INSERT INTO offerings VALUES(30323,202701,268,15887,'1','Improvisation',1,11,15,0,0,0);
 INSERT INTO offerings VALUES(30324,202701,4313,15891,'1','Topics in the Study of Popular Music. History of Electronic Dance Music',4,34,35,0,0,0);
@@ -51868,7 +51868,7 @@ INSERT INTO offerings VALUES(30503,202701,302,16050,'1','Senior Seminar',4,5,18,
 INSERT INTO offerings VALUES(30504,202701,313,15949,'1','Beginning Yoga',1,23,25,0,0,0);
 INSERT INTO offerings VALUES(30505,202701,313,15949,'2','Beginning Yoga',0,1,10,0,0,0);
 INSERT INTO offerings VALUES(30506,202701,313,15949,'3','Beginning Yoga',1,11,24,0,0,0);
-INSERT INTO offerings VALUES(30507,202701,313,15949,'4','Beginning Yoga',0,3,10,0,0,0);
+INSERT INTO offerings VALUES(30507,202701,313,15949,'4','Beginning Yoga',0,2,10,0,0,0);
 INSERT INTO offerings VALUES(30508,202701,313,15949,'5','Beginning Yoga',1,24,24,0,0,0);
 INSERT INTO offerings VALUES(30509,202701,313,15949,'6','Beginning Yoga',0,4,10,0,0,0);
 INSERT INTO offerings VALUES(30510,202701,313,15949,'7','Beginning Yoga',1,8,24,0,0,0);
@@ -52031,7 +52031,7 @@ INSERT INTO offerings VALUES(30667,202701,396,16428,'1','Intensive Production La
 INSERT INTO offerings VALUES(30668,202701,3859,16429,'1','Elective Production Laboratory',1,0,4,0,0,0);
 INSERT INTO offerings VALUES(30669,202701,3859,16429,'2','Elective Production Laboratory',1,0,4,0,0,0);
 INSERT INTO offerings VALUES(30671,202701,398,16432,'1','Tai Chi',1,26,25,0,0,0);
-INSERT INTO offerings VALUES(30672,202701,399,16433,'1','Beginning Ballet',1,6,24,0,0,0);
+INSERT INTO offerings VALUES(30672,202701,399,16433,'1','Beginning Ballet',1,7,24,0,0,0);
 INSERT INTO offerings VALUES(30673,202701,400,16436,'1','Choreography',2,3,18,0,0,0);
 INSERT INTO offerings VALUES(30674,202701,403,16439,'1','Folk and Historical Dance',1,6,18,0,0,0);
 INSERT INTO offerings VALUES(30676,202701,3773,16443,'1','Directed Research',2,1,4,0,0,0);
@@ -52049,7 +52049,7 @@ INSERT INTO offerings VALUES(30687,202701,421,16488,'1','Senior Seminar',4,5,18,
 INSERT INTO offerings VALUES(30688,202701,423,16490,'1','Environment and Society',4,28,25,12,-3,0);
 INSERT INTO offerings VALUES(30691,202701,3916,16492,'1','Geographic Information Science I',4,8,25,0,0,0);
 INSERT INTO offerings VALUES(30693,202701,3921,NULL,'2','Geographic Information Science I Laboratory',0,8,13,0,0,0);
-INSERT INTO offerings VALUES(30695,202701,425,16501,'1','Sustainable Oxy',2,7,25,0,0,0);
+INSERT INTO offerings VALUES(30695,202701,425,16501,'1','Sustainable Oxy',2,6,25,0,0,0);
 INSERT INTO offerings VALUES(30696,202701,996,16509,'1','Housing Problems and Policy',4,15,18,0,0,0);
 INSERT INTO offerings VALUES(30697,202701,427,16511,'1','Urban Data Analysis',4,21,32,0,0,0);
 INSERT INTO offerings VALUES(30698,202701,1566,16512,'1','Urban Data Analysis Laboratory',0,13,16,0,0,0);
@@ -52117,7 +52117,7 @@ INSERT INTO offerings VALUES(30784,202701,171,15384,'1','Earth: Our Environment'
 INSERT INTO offerings VALUES(30785,202701,171,15384,'1-1','Earth: Our Environment Lab',0,16,16,0,0,0);
 INSERT INTO offerings VALUES(30786,202701,171,15384,'1-2','Earth: Our Environment Lab',0,13,16,0,0,0);
 INSERT INTO offerings VALUES(30787,202701,559,15214,'1','Economic Development',4,18,18,0,0,0);
-INSERT INTO offerings VALUES(30788,202701,140,15197,'1','Managerial Economics',4,19,18,0,0,0);
+INSERT INTO offerings VALUES(30788,202701,140,15197,'1','Managerial Economics',4,18,18,0,0,0);
 INSERT INTO offerings VALUES(30789,202701,3264,15368,'2','Social Difference and the Politics of Technology',4,34,34,17,0,0);
 INSERT INTO offerings VALUES(30790,202701,2960,15378,'2','All That Glitters: Life, Literature, and Film in Los Angeles',4,17,17,16,0,0);
 INSERT INTO offerings VALUES(30791,202701,2961,15379,'2','Cultural Anthropology & Other/Realities',4,17,17,17,0,0);
@@ -52139,7 +52139,7 @@ INSERT INTO offerings VALUES(30810,202701,347,16176,'7','Directed Research',2,3,
 INSERT INTO offerings VALUES(30811,202701,347,16176,'8','Directed Research',2,0,5,0,0,0);
 INSERT INTO offerings VALUES(30812,202701,56,NULL,'2','Advanced Placement General Chemistry Laboratory',0,18,14,0,0,0);
 INSERT INTO offerings VALUES(30813,202701,3272,14897,'1','Directed Research',0,0,10,0,0,0);
-INSERT INTO offerings VALUES(30814,202701,3272,14897,'2','Directed Research',2,6,10,0,0,0);
+INSERT INTO offerings VALUES(30814,202701,3272,14897,'2','Directed Research',2,5,10,0,0,0);
 INSERT INTO offerings VALUES(30815,202701,3272,14897,'3','Directed Research',0,2,10,0,0,0);
 INSERT INTO offerings VALUES(30816,202701,3272,14897,'4','Directed Research',2,1,10,0,0,0);
 INSERT INTO offerings VALUES(30817,202701,3875,14649,'1','Senior Comprehensive Directed Research',2,1,1,0,0,0);
@@ -52160,6 +52160,7 @@ INSERT INTO offerings VALUES(30831,202701,3878,16204,'7','Directed Research',4,1
 INSERT INTO offerings VALUES(30832,202701,3967,14674,'14','Directed Research',0,0,5,0,0,0);
 INSERT INTO offerings VALUES(30833,202701,3272,14897,'5','Directed Research',2,0,5,0,0,0);
 INSERT INTO offerings VALUES(30834,202701,456,14626,'2','Honors Comps',4,1,1,0,0,0);
+INSERT INTO offerings VALUES(30835,202701,4409,16421,'1','Advanced Directed Research',2,0,1,0,0,0);
 CREATE TABLE offering_meeting_assoc (
 	id INTEGER NOT NULL, 
 	offering_id INTEGER NOT NULL, 
@@ -117862,6 +117863,7 @@ INSERT INTO offering_instructor_assoc VALUES(32569,30075,1306);
 INSERT INTO offering_instructor_assoc VALUES(32570,30081,1306);
 INSERT INTO offering_instructor_assoc VALUES(32571,30833,1235);
 INSERT INTO offering_instructor_assoc VALUES(32572,30834,1016);
+INSERT INTO offering_instructor_assoc VALUES(32573,30835,1230);
 CREATE INDEX ix_offering_meeting_assoc_offering_id ON offering_meeting_assoc (offering_id);
 CREATE INDEX ix_offering_meeting_assoc_meeting_id ON offering_meeting_assoc (meeting_id);
 CREATE INDEX ix_offering_core_assoc_core_code ON offering_core_assoc (core_code);
