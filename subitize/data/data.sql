@@ -51266,7 +51266,7 @@ INSERT INTO offerings VALUES(29882,202701,3427,14661,'7','Directed Research',1,2
 INSERT INTO offerings VALUES(29883,202701,3427,14661,'8','Directed Research',1,3,5,0,0,0);
 INSERT INTO offerings VALUES(29884,202701,3427,14661,'9','Directed Research',1,1,5,0,0,0);
 INSERT INTO offerings VALUES(29885,202701,3427,14661,'10','Directed Research',1,0,5,0,0,0);
-INSERT INTO offerings VALUES(29886,202701,3427,14661,'11','Directed Research',1,1,5,0,0,0);
+INSERT INTO offerings VALUES(29886,202701,3427,14661,'11','Directed Research',1,2,5,0,0,0);
 INSERT INTO offerings VALUES(29887,202701,3427,14661,'12','Directed Research',1,1,5,0,0,0);
 INSERT INTO offerings VALUES(29888,202701,3427,14661,'13','Directed Research',1,3,5,0,0,0);
 INSERT INTO offerings VALUES(29889,202701,460,14663,'1','Molecular Biology',4,24,24,0,0,0);
@@ -51881,11 +51881,11 @@ INSERT INTO offerings VALUES(30516,202701,1547,15954,'1','Intercollegiate Women'
 INSERT INTO offerings VALUES(30517,202701,1547,15954,'2','Intercollegiate Women''s Cross Country',0,0,99,0,0,0);
 INSERT INTO offerings VALUES(30518,202701,1549,15955,'1','Intercollegiate Women''s Soccer',1,2,99,0,0,0);
 INSERT INTO offerings VALUES(30519,202701,1549,15955,'2','Intercollegiate Women''s Soccer',0,0,99,0,0,0);
-INSERT INTO offerings VALUES(30520,202701,1550,15956,'1','Intercollegiate Men''s Soccer',1,3,99,0,0,0);
+INSERT INTO offerings VALUES(30520,202701,1550,15956,'1','Intercollegiate Men''s Soccer',1,4,99,0,0,0);
 INSERT INTO offerings VALUES(30521,202701,1550,15956,'2','Intercollegiate Men''s Soccer',0,0,99,0,0,0);
 INSERT INTO offerings VALUES(30522,202701,1551,15957,'1','Intercollegiate Volleyball',1,3,99,0,0,0);
 INSERT INTO offerings VALUES(30523,202701,1551,15957,'2','Intercollegiate Volleyball',0,0,99,0,0,0);
-INSERT INTO offerings VALUES(30524,202701,1552,15958,'1','Intercollegiate Men''s Water Polo',1,11,99,0,0,0);
+INSERT INTO offerings VALUES(30524,202701,1552,15958,'1','Intercollegiate Men''s Water Polo',1,12,99,0,0,0);
 INSERT INTO offerings VALUES(30525,202701,1552,15958,'2','Intercollegiate Men''s Water Polo',0,0,99,0,0,0);
 INSERT INTO offerings VALUES(30526,202701,4003,16053,'1','Astronomy',4,23,24,0,0,0);
 INSERT INTO offerings VALUES(30527,202701,316,16056,'1','Relativity, Quanta, and All That',4,7,35,0,0,0);
@@ -52160,7 +52160,8 @@ INSERT INTO offerings VALUES(30831,202701,3878,16204,'7','Directed Research',4,1
 INSERT INTO offerings VALUES(30832,202701,3967,14674,'14','Directed Research',0,0,5,0,0,0);
 INSERT INTO offerings VALUES(30833,202701,3272,14897,'5','Directed Research',2,0,5,0,0,0);
 INSERT INTO offerings VALUES(30834,202701,456,14626,'2','Honors Comps',4,1,1,0,0,0);
-INSERT INTO offerings VALUES(30835,202701,4409,16421,'1','Advanced Directed Research',2,0,1,0,0,0);
+INSERT INTO offerings VALUES(30835,202701,4409,16421,'1','Advanced Directed Research',2,1,1,0,0,0);
+INSERT INTO offerings VALUES(30836,202701,3272,14897,'6','Directed Research',0,0,5,0,0,0);
 CREATE TABLE offering_meeting_assoc (
 	id INTEGER NOT NULL, 
 	offering_id INTEGER NOT NULL, 
@@ -117864,6 +117865,7 @@ INSERT INTO offering_instructor_assoc VALUES(32570,30081,1306);
 INSERT INTO offering_instructor_assoc VALUES(32571,30833,1235);
 INSERT INTO offering_instructor_assoc VALUES(32572,30834,1016);
 INSERT INTO offering_instructor_assoc VALUES(32573,30835,1230);
+INSERT INTO offering_instructor_assoc VALUES(32574,30836,1237);
 CREATE INDEX ix_offering_meeting_assoc_offering_id ON offering_meeting_assoc (offering_id);
 CREATE INDEX ix_offering_meeting_assoc_meeting_id ON offering_meeting_assoc (meeting_id);
 CREATE INDEX ix_offering_core_assoc_core_code ON offering_core_assoc (core_code);
