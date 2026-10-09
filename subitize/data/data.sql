@@ -51598,7 +51598,7 @@ INSERT INTO offerings VALUES(30231,202701,224,15608,'1','Motor Learning and Cont
 INSERT INTO offerings VALUES(30232,202701,225,15609,'1','Motor Learning and Control Laboratory',0,12,12,6,0,0);
 INSERT INTO offerings VALUES(30233,202701,225,15609,'2','Motor Learning and Control Laboratory',0,12,12,7,0,0);
 INSERT INTO offerings VALUES(30234,202701,632,15610,'1','Sport and Exercise Psychology',4,24,25,1,0,0);
-INSERT INTO offerings VALUES(30235,202701,226,15611,'1','Directed Research',2,12,5,0,0,0);
+INSERT INTO offerings VALUES(30235,202701,226,15611,'1','Directed Research',2,13,5,0,0,0);
 INSERT INTO offerings VALUES(30236,202701,227,15612,'1','Internship',2,5,6,0,0,0);
 INSERT INTO offerings VALUES(30237,202701,3990,15621,'1','Directed Research: Comprehensive Requirement',4,0,5,0,0,0);
 INSERT INTO offerings VALUES(30238,202701,3990,15621,'2','Directed Research: Comprehensive Requirement',4,0,5,0,0,0);
@@ -51883,7 +51883,7 @@ INSERT INTO offerings VALUES(30518,202701,1549,15955,'1','Intercollegiate Women'
 INSERT INTO offerings VALUES(30519,202701,1549,15955,'2','Intercollegiate Women''s Soccer',0,0,99,0,0,0);
 INSERT INTO offerings VALUES(30520,202701,1550,15956,'1','Intercollegiate Men''s Soccer',1,6,99,0,0,0);
 INSERT INTO offerings VALUES(30521,202701,1550,15956,'2','Intercollegiate Men''s Soccer',0,0,99,0,0,0);
-INSERT INTO offerings VALUES(30522,202701,1551,15957,'1','Intercollegiate Volleyball',1,3,99,0,0,0);
+INSERT INTO offerings VALUES(30522,202701,1551,15957,'1','Intercollegiate Volleyball',1,4,99,0,0,0);
 INSERT INTO offerings VALUES(30523,202701,1551,15957,'2','Intercollegiate Volleyball',0,0,99,0,0,0);
 INSERT INTO offerings VALUES(30524,202701,1552,15958,'1','Intercollegiate Men''s Water Polo',1,12,99,0,0,0);
 INSERT INTO offerings VALUES(30525,202701,1552,15958,'2','Intercollegiate Men''s Water Polo',0,0,99,0,0,0);
@@ -52161,7 +52161,7 @@ INSERT INTO offerings VALUES(30832,202701,3967,14674,'14','Directed Research',0,
 INSERT INTO offerings VALUES(30833,202701,3272,14897,'5','Directed Research',2,0,5,0,0,0);
 INSERT INTO offerings VALUES(30834,202701,456,14626,'2','Honors Comps',4,1,1,0,0,0);
 INSERT INTO offerings VALUES(30835,202701,4409,16421,'1','Advanced Directed Research',2,1,1,0,0,0);
-INSERT INTO offerings VALUES(30836,202701,3272,14897,'6','Directed Research',0,0,5,0,0,0);
+INSERT INTO offerings VALUES(30836,202701,3272,14897,'6','Directed Research',0,1,5,0,0,0);
 CREATE TABLE offering_meeting_assoc (
 	id INTEGER NOT NULL, 
 	offering_id INTEGER NOT NULL, 
