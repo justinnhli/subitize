@@ -12,7 +12,7 @@ sqlparse==0.6.0
 
 # dependencies
 MarkupSafe==3.0.3
-Werkzeug==3.1.6
+Werkzeug==3.1.9
 blinker==1.9.0
 certifi==2026.2.25
 charset-normalizer==3.4.6
