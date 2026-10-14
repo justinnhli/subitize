@@ -51763,7 +51763,7 @@ INSERT INTO offerings VALUES(30346,202701,293,15941,'1','Senior Seminar',4,10,10
 INSERT INTO offerings VALUES(30347,202701,293,15941,'2','Senior Seminar',4,10,10,0,0,0);
 INSERT INTO offerings VALUES(30348,202701,1243,15798,'1','Classical Guitar Class (Beginning)',1,5,16,2,0,0);
 INSERT INTO offerings VALUES(30349,202701,1244,15799,'1','Classical Guitar Class (Intermediate)',1,2,16,0,0,0);
-INSERT INTO offerings VALUES(30350,202701,1245,15800,'1','Alexander Technique Class',1,3,16,0,0,0);
+INSERT INTO offerings VALUES(30350,202701,1245,15800,'1','Alexander Technique Class',1,4,16,0,0,0);
 INSERT INTO offerings VALUES(30351,202701,2503,15801,'1','Ukulele Class',1,0,16,0,0,0);
 INSERT INTO offerings VALUES(30352,202701,1246,15802,'1','Piano (Half Hour)',1,3,16,0,0,0);
 INSERT INTO offerings VALUES(30353,202701,1246,15802,'2','Piano (Half Hour)',0,0,16,0,0,0);
@@ -51931,9 +51931,9 @@ INSERT INTO offerings VALUES(30514,202701,1546,15953,'1','Intercollegiate Men''s
 INSERT INTO offerings VALUES(30515,202701,1546,15953,'2','Intercollegiate Men''s Cross Country',0,1,99,0,0,0);
 INSERT INTO offerings VALUES(30516,202701,1547,15954,'1','Intercollegiate Women''s Cross Country',1,3,99,0,0,0);
 INSERT INTO offerings VALUES(30517,202701,1547,15954,'2','Intercollegiate Women''s Cross Country',0,0,99,0,0,0);
-INSERT INTO offerings VALUES(30518,202701,1549,15955,'1','Intercollegiate Women''s Soccer',1,10,99,0,0,0);
+INSERT INTO offerings VALUES(30518,202701,1549,15955,'1','Intercollegiate Women''s Soccer',1,11,99,0,0,0);
 INSERT INTO offerings VALUES(30519,202701,1549,15955,'2','Intercollegiate Women''s Soccer',0,0,99,0,0,0);
-INSERT INTO offerings VALUES(30520,202701,1550,15956,'1','Intercollegiate Men''s Soccer',1,11,99,0,0,0);
+INSERT INTO offerings VALUES(30520,202701,1550,15956,'1','Intercollegiate Men''s Soccer',1,12,99,0,0,0);
 INSERT INTO offerings VALUES(30521,202701,1550,15956,'2','Intercollegiate Men''s Soccer',0,0,99,0,0,0);
 INSERT INTO offerings VALUES(30522,202701,1551,15957,'1','Intercollegiate Volleyball',1,8,99,0,0,0);
 INSERT INTO offerings VALUES(30523,202701,1551,15957,'2','Intercollegiate Volleyball',0,0,99,0,0,0);
@@ -51993,7 +51993,7 @@ INSERT INTO offerings VALUES(30576,202701,347,16176,'2','Directed Research',2,4,
 INSERT INTO offerings VALUES(30577,202701,347,16176,'3','Directed Research',2,3,5,0,0,0);
 INSERT INTO offerings VALUES(30578,202701,347,16176,'4','Directed Research',2,9,5,0,0,0);
 INSERT INTO offerings VALUES(30579,202701,347,16176,'5','Directed Research',2,2,5,0,0,0);
-INSERT INTO offerings VALUES(30580,202701,347,16176,'6','Directed Research',2,5,5,0,0,0);
+INSERT INTO offerings VALUES(30580,202701,347,16176,'6','Directed Research',2,6,5,0,0,0);
 INSERT INTO offerings VALUES(30581,202701,871,16188,'1','Cognitive Psychology',4,18,18,15,-2,0);
 INSERT INTO offerings VALUES(30582,202701,871,16188,'2','Cognitive Psychology',4,18,18,15,0,0);
 INSERT INTO offerings VALUES(30583,202701,2492,16197,'1','Motor Learning and Control',4,24,24,0,0,0);
@@ -52094,7 +52094,7 @@ INSERT INTO offerings VALUES(30680,202701,408,16459,'1','Intermediate Ballet',1,
 INSERT INTO offerings VALUES(30681,202701,411,16461,'1','Stage Management',2,14,14,0,0,0);
 INSERT INTO offerings VALUES(30682,202701,883,16462,'1','Costume Construction',2,12,14,1,0,0);
 INSERT INTO offerings VALUES(30683,202701,414,16472,'1','Black Theatre from West African Ritual Performance to the Contemporary Stage',4,7,20,3,1,0);
-INSERT INTO offerings VALUES(30684,202701,417,16476,'1','Intensive Performance Laboratory',2,1,18,0,0,0);
+INSERT INTO offerings VALUES(30684,202701,417,16476,'1','Intensive Performance Laboratory',2,2,18,0,0,0);
 INSERT INTO offerings VALUES(30685,202701,417,16476,'2','Intensive Performance Laboratory',2,3,15,0,0,0);
 INSERT INTO offerings VALUES(30686,202701,1356,16477,'1','Acting Through Song',4,10,14,1,0,0);
 INSERT INTO offerings VALUES(30687,202701,421,16488,'1','Senior Seminar',4,5,18,0,0,0);
