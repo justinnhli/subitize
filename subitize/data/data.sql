@@ -2495,6 +2495,8 @@ INSERT INTO people VALUES(1310,'Michael John Garces','Michael John','Garces');
 INSERT INTO people VALUES(1311,'Cynthia Fang','Cynthia','Fang');
 INSERT INTO people VALUES(1312,'Erin A. Fitzpatrick','Erin A.','Fitzpatrick');
 INSERT INTO people VALUES(1313,'Christopher J. Hansen','Christopher J.','Hansen');
+INSERT INTO people VALUES(1314,'Jennifer Locke','Jennifer','Locke');
+INSERT INTO people VALUES(1315,'Corey Field','Corey','Field');
 CREATE TABLE rooms (
 	id INTEGER NOT NULL, 
 	building_code VARCHAR NOT NULL, 
@@ -52421,7 +52423,7 @@ INSERT INTO offerings VALUES(31023,202702,491,14786,'1','Elementary Chinese II',
 INSERT INTO offerings VALUES(31024,202702,492,14791,'1','Intermediate Chinese II',4,0,25,0,0,0);
 INSERT INTO offerings VALUES(31025,202702,1058,14800,'1','Topics in Fiction and Film',4,0,18,0,0,0);
 INSERT INTO offerings VALUES(31026,202702,76,14811,'1','Introduction to Cognitive Science',4,0,45,24,24,0);
-INSERT INTO offerings VALUES(31027,202702,1006,14819,'1','Mind, Brain, and Behavior',4,0,25,8,8,0);
+INSERT INTO offerings VALUES(31027,202702,1006,14819,'1','Mind, Brain, and Behavior',4,0,25,12,12,0);
 INSERT INTO offerings VALUES(31028,202702,3253,14836,'1','Computational Neuroscience: Minds, Math and Machines',4,0,24,12,12,0);
 INSERT INTO offerings VALUES(31029,202702,3254,NULL,'1','Computational Neuroscience Laboratory',0,0,12,0,0,0);
 INSERT INTO offerings VALUES(31030,202702,3254,NULL,'2','Computational Neuroscience Laboratory',0,0,12,0,0,0);
@@ -53117,7 +53119,7 @@ INSERT INTO offerings VALUES(31731,202702,3921,NULL,'2','Geographic Information 
 INSERT INTO offerings VALUES(31732,202702,1198,16496,'1','Health Policy',4,0,25,0,0,0);
 INSERT INTO offerings VALUES(31733,202702,3828,16500,'1','Urban Sustainability: Raising Animals as a Part of Regenerative Agriculture',2,0,25,0,0,0);
 INSERT INTO offerings VALUES(31734,202702,789,16502,'1','Sustainable Oxy: Urban Agriculture and Sustainable Landscape Practicum',2,0,25,0,0,0);
-INSERT INTO offerings VALUES(31735,202702,1138,16505,'1','Topics in Urban and Environmental Policy',4,0,25,0,0,0);
+INSERT INTO offerings VALUES(31735,202702,1138,16505,'1','Topics in Urban and Environmental Policy: Poverty and Inequality in America',4,0,25,0,0,0);
 INSERT INTO offerings VALUES(31737,202702,790,16508,'1','Urban Policy and Politics',4,0,18,0,0,0);
 INSERT INTO offerings VALUES(31738,202702,428,16514,'1','Community Organizing and Leadership',4,0,18,0,0,0);
 INSERT INTO offerings VALUES(31739,202702,429,16515,'1','Community Internship',4,0,36,0,0,0);
@@ -120952,6 +120954,8 @@ INSERT INTO offering_instructor_assoc VALUES(33546,31785,1235);
 INSERT INTO offering_instructor_assoc VALUES(33547,31786,1237);
 INSERT INTO offering_instructor_assoc VALUES(33548,31080,1235);
 INSERT INTO offering_instructor_assoc VALUES(33549,31734,655);
+INSERT INTO offering_instructor_assoc VALUES(33550,31043,1314);
+INSERT INTO offering_instructor_assoc VALUES(33551,31375,1315);
 CREATE INDEX ix_offering_meeting_assoc_offering_id ON offering_meeting_assoc (offering_id);
 CREATE INDEX ix_offering_meeting_assoc_meeting_id ON offering_meeting_assoc (meeting_id);
 CREATE INDEX ix_offering_core_assoc_core_code ON offering_core_assoc (core_code);
