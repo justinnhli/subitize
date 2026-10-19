@@ -53170,6 +53170,7 @@ INSERT INTO offerings VALUES(31784,202702,4053,14742,'4','Junior Directed Resear
 INSERT INTO offerings VALUES(31785,202702,2711,14882,'1','Natural Language Processing',4,0,24,0,0,0);
 INSERT INTO offerings VALUES(31786,202702,2859,14889,'1','Full Stack Web Development',4,0,24,0,0,0);
 INSERT INTO offerings VALUES(31787,202702,1651,14883,'1','Programming Languages',4,0,24,0,0,0);
+INSERT INTO offerings VALUES(31788,202702,232,15756,'3','Calculus 1',4,0,28,0,0,0);
 CREATE TABLE offering_meeting_assoc (
 	id INTEGER NOT NULL, 
 	offering_id INTEGER NOT NULL, 
@@ -74303,6 +74304,7 @@ INSERT INTO offering_meeting_assoc VALUES(26533,31786,3816);
 INSERT INTO offering_meeting_assoc VALUES(26534,31081,3677);
 INSERT INTO offering_meeting_assoc VALUES(26535,31787,3704);
 INSERT INTO offering_meeting_assoc VALUES(26536,31299,3676);
+INSERT INTO offering_meeting_assoc VALUES(26537,31788,3262);
 CREATE TABLE offering_core_assoc (
 	id INTEGER NOT NULL, 
 	offering_id INTEGER NOT NULL, 
@@ -90594,6 +90596,7 @@ INSERT INTO offering_core_assoc VALUES(17614,31780,'CPGC');
 INSERT INTO offering_core_assoc VALUES(17615,31785,'CPMS');
 INSERT INTO offering_core_assoc VALUES(17616,31786,'CPMS');
 INSERT INTO offering_core_assoc VALUES(17617,31787,'CPMS');
+INSERT INTO offering_core_assoc VALUES(17618,31788,'CPMS');
 CREATE TABLE offering_instructor_assoc (
 	id INTEGER NOT NULL, 
 	offering_id INTEGER NOT NULL, 
@@ -120956,6 +120959,7 @@ INSERT INTO offering_instructor_assoc VALUES(33549,31734,655);
 INSERT INTO offering_instructor_assoc VALUES(33550,31043,1314);
 INSERT INTO offering_instructor_assoc VALUES(33551,31375,1315);
 INSERT INTO offering_instructor_assoc VALUES(33552,31787,1306);
+INSERT INTO offering_instructor_assoc VALUES(33553,31788,443);
 CREATE INDEX ix_offering_meeting_assoc_offering_id ON offering_meeting_assoc (offering_id);
 CREATE INDEX ix_offering_meeting_assoc_meeting_id ON offering_meeting_assoc (meeting_id);
 CREATE INDEX ix_offering_core_assoc_core_code ON offering_core_assoc (core_code);
