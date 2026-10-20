@@ -2497,6 +2497,8 @@ INSERT INTO people VALUES(1312,'Erin A. Fitzpatrick','Erin A.','Fitzpatrick');
 INSERT INTO people VALUES(1313,'Christopher J. Hansen','Christopher J.','Hansen');
 INSERT INTO people VALUES(1314,'Jennifer Locke','Jennifer','Locke');
 INSERT INTO people VALUES(1315,'Corey Field','Corey','Field');
+INSERT INTO people VALUES(1316,'Lillian Ngan','Lillian','Ngan');
+INSERT INTO people VALUES(1317,'Jesi Aiko Sasaki','Jesi Aiko','Sasaki');
 CREATE TABLE rooms (
 	id INTEGER NOT NULL, 
 	building_code VARCHAR NOT NULL, 
@@ -52445,7 +52447,7 @@ INSERT INTO offerings VALUES(31045,202702,3860,15086,'1','Occidental Weekly Prac
 INSERT INTO offerings VALUES(31046,202702,3831,15088,'1','The Art of Essay Writing. The Body Politic: Writing in the Politics of Pleasure',4,0,16,1,1,0);
 INSERT INTO offerings VALUES(31047,202702,3831,15088,'2','The Art of Essay Writing. The Body Politic: Writing in the Politics of Pleasure',4,0,16,1,1,0);
 INSERT INTO offerings VALUES(31048,202702,3831,15088,'3','The Art of Essay Writing: Art House Cinema',4,0,16,1,1,0);
-INSERT INTO offerings VALUES(31049,202702,3897,15094,'1','Principles of Journalism II: Narrative Nonfiction: True Stories Told Well',4,0,14,0,0,0);
+INSERT INTO offerings VALUES(31049,202702,3897,15094,'1','Controversies in Journalism: How Newsrooms Make Difficult Decisions ? and Defend Them',4,0,14,0,0,0);
 INSERT INTO offerings VALUES(31050,202702,3899,15098,'1','Creative Nonfiction',4,0,14,0,0,0);
 INSERT INTO offerings VALUES(31051,202702,4179,15099,'1','Directed Research',2,0,2,0,0,0);
 INSERT INTO offerings VALUES(31052,202702,3836,15100,'1','Theory and Pedagogy of Writing',1,0,18,0,0,0);
@@ -53171,6 +53173,7 @@ INSERT INTO offerings VALUES(31785,202702,2711,14882,'1','Natural Language Proce
 INSERT INTO offerings VALUES(31786,202702,2859,14889,'1','Full Stack Web Development',4,0,24,0,0,0);
 INSERT INTO offerings VALUES(31787,202702,1651,14883,'1','Programming Languages',4,0,24,0,0,0);
 INSERT INTO offerings VALUES(31788,202702,232,15756,'3','Calculus 1',4,0,28,0,0,0);
+INSERT INTO offerings VALUES(31789,202702,4313,15891,'1','Decolonizing/Indigenizing Popular Music in the Americas',4,0,35,0,0,0);
 CREATE TABLE offering_meeting_assoc (
 	id INTEGER NOT NULL, 
 	offering_id INTEGER NOT NULL, 
@@ -74305,6 +74308,7 @@ INSERT INTO offering_meeting_assoc VALUES(26534,31081,3677);
 INSERT INTO offering_meeting_assoc VALUES(26535,31787,3704);
 INSERT INTO offering_meeting_assoc VALUES(26536,31299,3676);
 INSERT INTO offering_meeting_assoc VALUES(26537,31788,3262);
+INSERT INTO offering_meeting_assoc VALUES(26538,31789,3680);
 CREATE TABLE offering_core_assoc (
 	id INTEGER NOT NULL, 
 	offering_id INTEGER NOT NULL, 
@@ -90597,6 +90601,8 @@ INSERT INTO offering_core_assoc VALUES(17615,31785,'CPMS');
 INSERT INTO offering_core_assoc VALUES(17616,31786,'CPMS');
 INSERT INTO offering_core_assoc VALUES(17617,31787,'CPMS');
 INSERT INTO offering_core_assoc VALUES(17618,31788,'CPMS');
+INSERT INTO offering_core_assoc VALUES(17619,31789,'CPFA');
+INSERT INTO offering_core_assoc VALUES(17620,31789,'CPGC');
 CREATE TABLE offering_instructor_assoc (
 	id INTEGER NOT NULL, 
 	offering_id INTEGER NOT NULL, 
@@ -120405,7 +120411,6 @@ INSERT INTO offering_instructor_assoc VALUES(32986,31259,1236);
 INSERT INTO offering_instructor_assoc VALUES(32987,31260,1236);
 INSERT INTO offering_instructor_assoc VALUES(32988,31261,1236);
 INSERT INTO offering_instructor_assoc VALUES(32989,31262,1174);
-INSERT INTO offering_instructor_assoc VALUES(32990,31263,1139);
 INSERT INTO offering_instructor_assoc VALUES(32991,31264,1236);
 INSERT INTO offering_instructor_assoc VALUES(32992,31265,504);
 INSERT INTO offering_instructor_assoc VALUES(32993,31266,504);
@@ -120960,6 +120965,9 @@ INSERT INTO offering_instructor_assoc VALUES(33550,31043,1314);
 INSERT INTO offering_instructor_assoc VALUES(33551,31375,1315);
 INSERT INTO offering_instructor_assoc VALUES(33552,31787,1306);
 INSERT INTO offering_instructor_assoc VALUES(33553,31788,443);
+INSERT INTO offering_instructor_assoc VALUES(33554,31025,1316);
+INSERT INTO offering_instructor_assoc VALUES(33555,31263,1317);
+INSERT INTO offering_instructor_assoc VALUES(33556,31789,150);
 CREATE INDEX ix_offering_meeting_assoc_offering_id ON offering_meeting_assoc (offering_id);
 CREATE INDEX ix_offering_meeting_assoc_meeting_id ON offering_meeting_assoc (meeting_id);
 CREATE INDEX ix_offering_core_assoc_core_code ON offering_core_assoc (core_code);
