@@ -2499,6 +2499,7 @@ INSERT INTO people VALUES(1314,'Jennifer Locke','Jennifer','Locke');
 INSERT INTO people VALUES(1315,'Corey Field','Corey','Field');
 INSERT INTO people VALUES(1316,'Lillian Ngan','Lillian','Ngan');
 INSERT INTO people VALUES(1317,'Jesi Aiko Sasaki','Jesi Aiko','Sasaki');
+INSERT INTO people VALUES(1318,'Maxine M. McCuller','Maxine M.','McCuller');
 CREATE TABLE rooms (
 	id INTEGER NOT NULL, 
 	building_code VARCHAR NOT NULL, 
@@ -52593,11 +52594,7 @@ INSERT INTO offerings VALUES(31201,202702,1016,15349,'1','Seminar in a Literary 
 INSERT INTO offerings VALUES(31202,202702,4008,15342,'1','Directed Research',2,0,5,0,0,0);
 INSERT INTO offerings VALUES(31203,202702,4009,15353,'1','Directed Research: Comprehensive Requirement',4,0,5,0,0,0);
 INSERT INTO offerings VALUES(31204,202702,171,15384,'1','Earth: Our Environment',4,0,24,10,10,0);
-INSERT INTO offerings VALUES(31205,202702,171,15384,'1-1','Earth: Our Environment Laboratory',0,0,12,0,0,0);
-INSERT INTO offerings VALUES(31206,202702,171,15384,'1-2','Earth: Our Environment Laboratory',0,0,12,0,0,0);
 INSERT INTO offerings VALUES(31207,202702,171,15384,'2','Earth: Our Environment',4,0,24,10,10,0);
-INSERT INTO offerings VALUES(31208,202702,171,15384,'2-1','Earth: Our Environment Laboratory',0,0,12,0,0,0);
-INSERT INTO offerings VALUES(31209,202702,171,15384,'2-2','Earth: Our Environment Laboratory',0,0,12,0,0,0);
 INSERT INTO offerings VALUES(31210,202702,173,15391,'1','Earth: A field perspective',4,0,16,0,0,0);
 INSERT INTO offerings VALUES(31211,202702,174,NULL,'1','Earth: A field perspective Laboratory',0,0,16,0,0,0);
 INSERT INTO offerings VALUES(31212,202702,593,15393,'1','Global Geophysics and Tectonics',4,0,25,0,0,0);
@@ -53105,7 +53102,7 @@ INSERT INTO offerings VALUES(31716,202702,408,16459,'1','Intermediate Ballet',1,
 INSERT INTO offerings VALUES(31717,202702,4402,16463,'1','Live Sound Engineering',4,0,16,0,0,0);
 INSERT INTO offerings VALUES(31718,202702,1102,16465,'1','Period Styles for Stage and Screen',4,0,18,1,1,0);
 INSERT INTO offerings VALUES(31719,202702,412,16466,'1','Teaching Artist Practicum in Local Elementary Schools',2,0,6,0,0,0);
-INSERT INTO offerings VALUES(31720,202702,2567,16447,'1','Topics in Performance',4,0,16,0,0,0);
+INSERT INTO offerings VALUES(31720,202702,2567,16447,'1','Topics in Performance: Tools for Creative Performance and Social Change',4,0,16,0,0,0);
 INSERT INTO offerings VALUES(31721,202702,417,16476,'1','Intensive Performance Laboratory',2,0,24,0,0,0);
 INSERT INTO offerings VALUES(31722,202702,417,16476,'2','Intensive Performance Laboratory',2,0,12,0,0,0);
 INSERT INTO offerings VALUES(31723,202702,785,16480,'1','Producing the Live Event',4,0,18,0,0,0);
@@ -53174,6 +53171,11 @@ INSERT INTO offerings VALUES(31786,202702,2859,14889,'1','Full Stack Web Develop
 INSERT INTO offerings VALUES(31787,202702,1651,14883,'1','Programming Languages',4,0,24,0,0,0);
 INSERT INTO offerings VALUES(31788,202702,232,15756,'3','Calculus 1',4,0,28,0,0,0);
 INSERT INTO offerings VALUES(31789,202702,4313,15891,'1','Decolonizing/Indigenizing Popular Music in the Americas',4,0,35,0,0,0);
+INSERT INTO offerings VALUES(31790,202702,4013,14540,'1','Topics in Arabic',2,0,18,0,0,0);
+INSERT INTO offerings VALUES(31791,202702,172,NULL,'1','Earth: Our Environment Laboratory',0,0,12,0,0,0);
+INSERT INTO offerings VALUES(31792,202702,172,NULL,'2','Earth: Our Environment Laboratory',0,0,12,0,0,0);
+INSERT INTO offerings VALUES(31793,202702,172,NULL,'3','Earth: Our Environment Laboratory',0,0,12,0,0,0);
+INSERT INTO offerings VALUES(31794,202702,172,NULL,'4','Earth: Our Environment Laboratory',0,0,12,0,0,0);
 CREATE TABLE offering_meeting_assoc (
 	id INTEGER NOT NULL, 
 	offering_id INTEGER NOT NULL, 
@@ -73993,11 +73995,7 @@ INSERT INTO offering_meeting_assoc VALUES(26212,31199,3676);
 INSERT INTO offering_meeting_assoc VALUES(26213,31200,3719);
 INSERT INTO offering_meeting_assoc VALUES(26214,31201,3692);
 INSERT INTO offering_meeting_assoc VALUES(26215,31204,3678);
-INSERT INTO offering_meeting_assoc VALUES(26216,31205,2408);
-INSERT INTO offering_meeting_assoc VALUES(26217,31206,3720);
 INSERT INTO offering_meeting_assoc VALUES(26218,31207,3676);
-INSERT INTO offering_meeting_assoc VALUES(26219,31208,2411);
-INSERT INTO offering_meeting_assoc VALUES(26220,31209,3721);
 INSERT INTO offering_meeting_assoc VALUES(26221,31210,3674);
 INSERT INTO offering_meeting_assoc VALUES(26222,31212,3678);
 INSERT INTO offering_meeting_assoc VALUES(26223,31213,3681);
@@ -74022,7 +74020,6 @@ INSERT INTO offering_meeting_assoc VALUES(26242,31238,3677);
 INSERT INTO offering_meeting_assoc VALUES(26243,31239,3677);
 INSERT INTO offering_meeting_assoc VALUES(26244,31240,3677);
 INSERT INTO offering_meeting_assoc VALUES(26245,31241,3708);
-INSERT INTO offering_meeting_assoc VALUES(26246,31242,3681);
 INSERT INTO offering_meeting_assoc VALUES(26247,31243,3680);
 INSERT INTO offering_meeting_assoc VALUES(26248,31244,3677);
 INSERT INTO offering_meeting_assoc VALUES(26249,31245,3708);
@@ -74267,14 +74264,12 @@ INSERT INTO offering_meeting_assoc VALUES(26491,31697,3674);
 INSERT INTO offering_meeting_assoc VALUES(26492,31698,3676);
 INSERT INTO offering_meeting_assoc VALUES(26493,31699,3676);
 INSERT INTO offering_meeting_assoc VALUES(26494,31700,3678);
-INSERT INTO offering_meeting_assoc VALUES(26495,31707,3695);
 INSERT INTO offering_meeting_assoc VALUES(26496,31708,3289);
 INSERT INTO offering_meeting_assoc VALUES(26497,31709,3760);
 INSERT INTO offering_meeting_assoc VALUES(26498,31710,3675);
 INSERT INTO offering_meeting_assoc VALUES(26499,31711,3761);
 INSERT INTO offering_meeting_assoc VALUES(26500,31712,3692);
 INSERT INTO offering_meeting_assoc VALUES(26501,31714,3677);
-INSERT INTO offering_meeting_assoc VALUES(26502,31716,3704);
 INSERT INTO offering_meeting_assoc VALUES(26503,31717,3709);
 INSERT INTO offering_meeting_assoc VALUES(26504,31718,3675);
 INSERT INTO offering_meeting_assoc VALUES(26505,31719,3679);
@@ -74309,6 +74304,13 @@ INSERT INTO offering_meeting_assoc VALUES(26535,31787,3704);
 INSERT INTO offering_meeting_assoc VALUES(26536,31299,3676);
 INSERT INTO offering_meeting_assoc VALUES(26537,31788,3262);
 INSERT INTO offering_meeting_assoc VALUES(26538,31789,3680);
+INSERT INTO offering_meeting_assoc VALUES(26539,31791,2408);
+INSERT INTO offering_meeting_assoc VALUES(26540,31792,3720);
+INSERT INTO offering_meeting_assoc VALUES(26541,31793,2411);
+INSERT INTO offering_meeting_assoc VALUES(26542,31794,3721);
+INSERT INTO offering_meeting_assoc VALUES(26543,31242,3675);
+INSERT INTO offering_meeting_assoc VALUES(26544,31707,2449);
+INSERT INTO offering_meeting_assoc VALUES(26545,31716,3695);
 CREATE TABLE offering_core_assoc (
 	id INTEGER NOT NULL, 
 	offering_id INTEGER NOT NULL, 
@@ -90207,11 +90209,7 @@ INSERT INTO offering_core_assoc VALUES(17219,31199,'CPRF');
 INSERT INTO offering_core_assoc VALUES(17220,31199,'LANG');
 INSERT INTO offering_core_assoc VALUES(17221,31201,'CPRF');
 INSERT INTO offering_core_assoc VALUES(17222,31204,'CPLS');
-INSERT INTO offering_core_assoc VALUES(17223,31205,'CPLS');
-INSERT INTO offering_core_assoc VALUES(17224,31206,'CPLS');
 INSERT INTO offering_core_assoc VALUES(17225,31207,'CPLS');
-INSERT INTO offering_core_assoc VALUES(17226,31208,'CPLS');
-INSERT INTO offering_core_assoc VALUES(17227,31209,'CPLS');
 INSERT INTO offering_core_assoc VALUES(17228,31210,'CPLS');
 INSERT INTO offering_core_assoc VALUES(17229,31212,'CPLS');
 INSERT INTO offering_core_assoc VALUES(17230,31213,'CPLS');
@@ -90603,6 +90601,7 @@ INSERT INTO offering_core_assoc VALUES(17617,31787,'CPMS');
 INSERT INTO offering_core_assoc VALUES(17618,31788,'CPMS');
 INSERT INTO offering_core_assoc VALUES(17619,31789,'CPFA');
 INSERT INTO offering_core_assoc VALUES(17620,31789,'CPGC');
+INSERT INTO offering_core_assoc VALUES(17621,31720,'CPUD');
 CREATE TABLE offering_instructor_assoc (
 	id INTEGER NOT NULL, 
 	offering_id INTEGER NOT NULL, 
@@ -120356,8 +120355,6 @@ INSERT INTO offering_instructor_assoc VALUES(32931,31201,113);
 INSERT INTO offering_instructor_assoc VALUES(32932,31202,113);
 INSERT INTO offering_instructor_assoc VALUES(32933,31203,113);
 INSERT INTO offering_instructor_assoc VALUES(32934,31204,1167);
-INSERT INTO offering_instructor_assoc VALUES(32935,31205,1167);
-INSERT INTO offering_instructor_assoc VALUES(32936,31206,1167);
 INSERT INTO offering_instructor_assoc VALUES(32937,31210,1169);
 INSERT INTO offering_instructor_assoc VALUES(32938,31211,1169);
 INSERT INTO offering_instructor_assoc VALUES(32939,31212,1027);
@@ -120968,6 +120965,11 @@ INSERT INTO offering_instructor_assoc VALUES(33553,31788,443);
 INSERT INTO offering_instructor_assoc VALUES(33554,31025,1316);
 INSERT INTO offering_instructor_assoc VALUES(33555,31263,1317);
 INSERT INTO offering_instructor_assoc VALUES(33556,31789,150);
+INSERT INTO offering_instructor_assoc VALUES(33557,31790,991);
+INSERT INTO offering_instructor_assoc VALUES(33558,30847,1311);
+INSERT INTO offering_instructor_assoc VALUES(33559,31791,1167);
+INSERT INTO offering_instructor_assoc VALUES(33560,31792,1167);
+INSERT INTO offering_instructor_assoc VALUES(33561,31533,1318);
 CREATE INDEX ix_offering_meeting_assoc_offering_id ON offering_meeting_assoc (offering_id);
 CREATE INDEX ix_offering_meeting_assoc_meeting_id ON offering_meeting_assoc (meeting_id);
 CREATE INDEX ix_offering_core_assoc_core_code ON offering_core_assoc (core_code);
