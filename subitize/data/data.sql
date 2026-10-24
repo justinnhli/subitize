@@ -52312,7 +52312,7 @@ INSERT INTO offerings VALUES(30904,202702,1150,NULL,'2','Cell Biology Laboratory
 INSERT INTO offerings VALUES(30905,202702,1049,14669,'1','Biostatistics',4,0,24,1,1,0);
 INSERT INTO offerings VALUES(30906,202702,3976,NULL,'1','Biostatistics Laboratory',0,0,12,0,0,0);
 INSERT INTO offerings VALUES(30907,202702,3976,NULL,'2','Biostatistics Laboratory',0,0,12,0,0,0);
-INSERT INTO offerings VALUES(30908,202702,464,14670,'1','Ecology',4,0,24,0,0,0);
+INSERT INTO offerings VALUES(30908,202702,464,14670,'1','Ecology',4,0,24,1,1,0);
 INSERT INTO offerings VALUES(30909,202702,465,NULL,'1','Ecology Laboratory',0,0,12,0,0,0);
 INSERT INTO offerings VALUES(30910,202702,465,NULL,'2','Ecology Laboratory',0,0,12,0,0,0);
 INSERT INTO offerings VALUES(30911,202702,1050,14671,'1','Flora of Southern California',4,0,14,0,0,0);
@@ -52334,9 +52334,9 @@ INSERT INTO offerings VALUES(30927,202702,3967,14674,'12','Directed Research',2,
 INSERT INTO offerings VALUES(30928,202702,3967,14674,'13','Directed Research',2,0,5,0,0,0);
 INSERT INTO offerings VALUES(30929,202702,3328,14677,'1','Huntington-Occidental Pre-med Program (HOPP)',2,0,10,0,0,0);
 INSERT INTO offerings VALUES(30930,202702,41,14678,'1','Museum Science',2,0,12,0,0,0);
-INSERT INTO offerings VALUES(30931,202702,893,14679,'1','Developmental Biology',4,0,16,0,0,0);
+INSERT INTO offerings VALUES(30931,202702,893,14679,'1','Developmental Biology',4,0,16,1,1,0);
 INSERT INTO offerings VALUES(30932,202702,894,NULL,'1','Developmental Biology Laboratory',0,0,8,0,0,0);
-INSERT INTO offerings VALUES(30933,202702,894,NULL,'2','Developmental Biology Laboratory',0,0,8,0,0,0);
+INSERT INTO offerings VALUES(30933,202702,894,NULL,'2','Developmental Biology Laboratory',0,0,8,1,1,0);
 INSERT INTO offerings VALUES(30934,202702,470,14686,'1','Sensory Biology and Neurophysiology',4,0,16,0,0,0);
 INSERT INTO offerings VALUES(30935,202702,471,NULL,'1','Sensory Biology and Neurophysiology Laboratory',0,0,8,0,0,0);
 INSERT INTO offerings VALUES(30936,202702,471,NULL,'2','Sensory Biology and Neurophysiology Laboratory',0,0,8,0,0,0);
@@ -52428,7 +52428,7 @@ INSERT INTO offerings VALUES(31021,202702,69,14780,'6','Directed Research',4,0,9
 INSERT INTO offerings VALUES(31022,202702,70,14782,'1','Senior Seminar',2,0,18,0,0,0);
 INSERT INTO offerings VALUES(31023,202702,491,14786,'1','Elementary Chinese II',4,0,25,0,0,0);
 INSERT INTO offerings VALUES(31024,202702,492,14791,'1','Intermediate Chinese II',4,0,25,0,0,0);
-INSERT INTO offerings VALUES(31025,202702,1058,14800,'1','Topics in Fiction and Film',4,0,18,0,0,0);
+INSERT INTO offerings VALUES(31025,202702,1058,14800,'1','Topics in Fiction and Film: Female Who Writes and Who Is Written',4,0,18,0,0,0);
 INSERT INTO offerings VALUES(31026,202702,76,14811,'1','Introduction to Cognitive Science',4,0,45,24,24,0);
 INSERT INTO offerings VALUES(31027,202702,1006,14819,'1','Mind, Brain, and Behavior',4,0,25,12,12,0);
 INSERT INTO offerings VALUES(31028,202702,3253,14836,'1','Computational Neuroscience: Minds, Math and Machines',4,0,24,12,12,0);
@@ -53181,6 +53181,8 @@ INSERT INTO offerings VALUES(31794,202702,172,NULL,'4','Earth: Our Environment L
 INSERT INTO offerings VALUES(31795,202702,4155,14964,'1','Being-With, from City-State to Nation-State: Culture, Politics, & Comm Late Antiquity - Renaissance',4,0,25,10,10,0);
 INSERT INTO offerings VALUES(31796,202702,700,NULL,'2','Modern Physics Laboratory',0,0,14,0,0,0);
 INSERT INTO offerings VALUES(31797,202702,4048,16521,'1','Seniors Directed Research',4,0,10,0,0,0);
+INSERT INTO offerings VALUES(31798,202702,3661,15738,'1','Directed Research',2,0,5,0,0,0);
+INSERT INTO offerings VALUES(31799,202702,4410,16339,'1','Directed Research',2,0,1,0,0,0);
 CREATE TABLE offering_meeting_assoc (
 	id INTEGER NOT NULL, 
 	offering_id INTEGER NOT NULL, 
@@ -90606,6 +90608,7 @@ INSERT INTO offering_core_assoc VALUES(17620,31789,'CPGC');
 INSERT INTO offering_core_assoc VALUES(17621,31720,'CPUD');
 INSERT INTO offering_core_assoc VALUES(17622,31795,'CPGC');
 INSERT INTO offering_core_assoc VALUES(17623,31795,'CPPE');
+INSERT INTO offering_core_assoc VALUES(17624,31025,'CPRF');
 CREATE TABLE offering_instructor_assoc (
 	id INTEGER NOT NULL, 
 	offering_id INTEGER NOT NULL, 
@@ -120978,6 +120981,8 @@ INSERT INTO offering_instructor_assoc VALUES(33568,31796,592);
 INSERT INTO offering_instructor_assoc VALUES(33569,30995,425);
 INSERT INTO offering_instructor_assoc VALUES(33570,30996,44);
 INSERT INTO offering_instructor_assoc VALUES(33571,31797,864);
+INSERT INTO offering_instructor_assoc VALUES(33572,31798,1111);
+INSERT INTO offering_instructor_assoc VALUES(33573,31799,891);
 CREATE INDEX ix_offering_meeting_assoc_offering_id ON offering_meeting_assoc (offering_id);
 CREATE INDEX ix_offering_meeting_assoc_meeting_id ON offering_meeting_assoc (meeting_id);
 CREATE INDEX ix_offering_core_assoc_core_code ON offering_core_assoc (core_code);
