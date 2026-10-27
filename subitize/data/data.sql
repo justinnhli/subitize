@@ -52306,7 +52306,7 @@ INSERT INTO offerings VALUES(30898,202702,3427,14661,'13','Directed Research',1,
 INSERT INTO offerings VALUES(30899,202702,36,14664,'1','Genetic Analysis',4,0,24,2,2,0);
 INSERT INTO offerings VALUES(30900,202702,37,NULL,'1','Genetic Analysis Laboratory',0,0,12,0,0,0);
 INSERT INTO offerings VALUES(30901,202702,37,NULL,'2','Genetic Analysis Laboratory',0,0,12,0,0,0);
-INSERT INTO offerings VALUES(30902,202702,1149,14665,'1','Cell Biology',4,0,24,0,0,0);
+INSERT INTO offerings VALUES(30902,202702,1149,14665,'1','Cell Biology',4,0,24,1,1,0);
 INSERT INTO offerings VALUES(30903,202702,1150,NULL,'1','Cell Biology Laboratory',0,0,12,0,0,0);
 INSERT INTO offerings VALUES(30904,202702,1150,NULL,'2','Cell Biology Laboratory',0,0,12,0,0,0);
 INSERT INTO offerings VALUES(30905,202702,1049,14669,'1','Biostatistics',4,0,24,1,1,0);
@@ -53183,6 +53183,7 @@ INSERT INTO offerings VALUES(31796,202702,700,NULL,'2','Modern Physics Laborator
 INSERT INTO offerings VALUES(31797,202702,4048,16521,'1','Seniors Directed Research',4,0,10,0,0,0);
 INSERT INTO offerings VALUES(31798,202702,3661,15738,'1','Directed Research',2,0,5,0,0,0);
 INSERT INTO offerings VALUES(31799,202702,4410,16339,'1','Directed Research',2,0,1,0,0,0);
+INSERT INTO offerings VALUES(31800,202702,4410,16339,'2','Directed Research',2,0,4,0,0,0);
 CREATE TABLE offering_meeting_assoc (
 	id INTEGER NOT NULL, 
 	offering_id INTEGER NOT NULL, 
@@ -74179,9 +74180,7 @@ INSERT INTO offering_meeting_assoc VALUES(26403,31584,3688);
 INSERT INTO offering_meeting_assoc VALUES(26404,31585,3700);
 INSERT INTO offering_meeting_assoc VALUES(26405,31586,3694);
 INSERT INTO offering_meeting_assoc VALUES(26406,31588,3678);
-INSERT INTO offering_meeting_assoc VALUES(26407,31588,3725);
 INSERT INTO offering_meeting_assoc VALUES(26408,31589,3262);
-INSERT INTO offering_meeting_assoc VALUES(26409,31589,3713);
 INSERT INTO offering_meeting_assoc VALUES(26410,31595,3727);
 INSERT INTO offering_meeting_assoc VALUES(26411,31596,3678);
 INSERT INTO offering_meeting_assoc VALUES(26412,31597,3676);
@@ -74318,6 +74317,8 @@ INSERT INTO offering_meeting_assoc VALUES(26550,31270,3262);
 INSERT INTO offering_meeting_assoc VALUES(26551,31531,3817);
 INSERT INTO offering_meeting_assoc VALUES(26552,31545,3818);
 INSERT INTO offering_meeting_assoc VALUES(26553,31546,3818);
+INSERT INTO offering_meeting_assoc VALUES(26554,31588,3713);
+INSERT INTO offering_meeting_assoc VALUES(26555,31589,3725);
 CREATE TABLE offering_core_assoc (
 	id INTEGER NOT NULL, 
 	offering_id INTEGER NOT NULL, 
@@ -120983,6 +120984,7 @@ INSERT INTO offering_instructor_assoc VALUES(33570,30996,44);
 INSERT INTO offering_instructor_assoc VALUES(33571,31797,864);
 INSERT INTO offering_instructor_assoc VALUES(33572,31798,1111);
 INSERT INTO offering_instructor_assoc VALUES(33573,31799,891);
+INSERT INTO offering_instructor_assoc VALUES(33574,31800,324);
 CREATE INDEX ix_offering_meeting_assoc_offering_id ON offering_meeting_assoc (offering_id);
 CREATE INDEX ix_offering_meeting_assoc_meeting_id ON offering_meeting_assoc (meeting_id);
 CREATE INDEX ix_offering_core_assoc_core_code ON offering_core_assoc (core_code);
